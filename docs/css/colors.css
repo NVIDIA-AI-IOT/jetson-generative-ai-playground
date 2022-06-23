@@ -1,0 +1,149 @@
+[data-md-color-scheme="nvgreen"] {
+
+	--md-primary-fg-color:        #76B900;
+	--md-primary-fg-color--light: #C5E1A5;
+	--md-primary-fg-color--dark:  #518000;
+	--md-accent-fg-color: #004D40;
+
+	--md-mermaid-node-bg-color: #e3f5c5;
+    --md-mermaid-node-fg-color: #518000;
+	--md-default-fg-color--lightest:     #f9fff2;
+	
+}
+
+[data-md-color-scheme="slate"] {
+	
+	--md-primary-fg-color:        #76B900;
+	--md-primary-fg-color--light: #C5E1A5;
+	--md-primary-fg-color--dark:  #518000;
+	--md-accent-fg-color: #a2ff00;
+
+	--md-mermaid-node-bg-color: #518000;
+    --md-mermaid-node-fg-color: #e3f5c5;
+    --md-default-fg-color--lightest:     #384e4c;
+
+	--md-hue: 210; 
+  }
+
+
+.numberCircle {
+	
+	font:  Arial, sans-serif;
+
+    width: 1.5em;
+    height: 1.5em;
+    box-sizing: initial;
+	
+	display: inline-block;
+
+	background: #76B900;
+	color: #FFFFFF;
+	text-align: center;
+    border-radius: 100%;    
+
+    line-height: 1.5em;
+    box-sizing: content-box;   
+}
+
+
+.roundSquare {
+	
+	font:  Arial, sans-serif;
+
+    height: 1.25em;
+    box-sizing: initial;
+	
+	display: inline-block;
+
+	background: #004D40;
+    border: 0.1em solid #CCCCCC;
+	color: #FFFFFF;
+	text-align: center;
+    border-radius: 0.5em;    
+
+    line-height: 1.25em;
+    box-sizing: content-box;   
+
+	padding: 0.2em
+
+}
+
+.highlightYellow {
+	background: #ffc105;
+    border-radius: 0.5em;  
+	padding: 0.2em
+}
+
+.highlightGreen {
+	background: #00c753;
+    border-radius: 0.5em;  
+	padding: 0.2em
+}
+
+.highlightGray {
+	background: #DDDDDD;
+    border-radius: 0.5em;  
+	padding: 0.2em;
+	color: #333333;
+}
+
+.center50 {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+}
+
+.right {
+	clear: none;
+	float: right;
+	width: 50%;
+	padding: 0rem 0.5rem 0rem 0.5rem ;
+}
+
+.left {
+	clear: none;
+	float: left;
+	width: 50%;
+	padding: 0rem 0.5rem 0rem 0.5rem ;
+}
+
+.right40 {
+	clear: none;
+	float: right;
+	width: 40%;
+	padding: 0rem 0.5rem 0rem 1.5rem ;
+}
+
+.left40 {
+	clear: none;
+	float: left;
+	width: 40%;
+	padding: 0rem 1.5rem 0rem 0.5rem ;
+}
+
+.dmark {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.dmark .dmarkpopup {
+    visibility: hidden;
+    width: 400px;
+    background-color: #DDDDDD;
+    color: #fff;
+    text-align: center;
+    border-radius: 12px;
+    padding: 15px;
+    margin: 5px;
+	box-shadow: 5px 5px 15px #004D40;
+    position: absolute;
+    z-index: 1;
+}
+
+.dmark:hover .dmarkpopup {
+    visibility: visible;
+}
+
+.md-footer__inner { display: none }
