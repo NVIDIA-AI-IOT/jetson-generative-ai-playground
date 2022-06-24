@@ -12,15 +12,24 @@ The auto generated documentation is hosted on the following, using their CI/CD f
 
 ## How to use this template
 
-### 1. Copy
+### [1] Create your project from this template
 
-Copy this template repo to your own GitLab group/namespace.
+1. On the top bar of GitLab web interface, select **Menu** > **Projects** > **Create new project**.
+2. Select **Create from template**.
+3. Select **Group**.
+4. Under "**jetson/template**", find "**Jetson Mkdocs Template**". Select **Use template**.
+5. Enter the project details
+    - In the **Project name** field, enter the name of your project. You cannot use special characters at the start or end of a project name.
+    - In the "Project URL" field, select "jetson/jetson-docs" as the group your new project resides for now. You can later move to your own user namespace. 
+    - In the **Project slug** field, enter the path to your project. The GitLab instance uses the slug as the URL path to the project. To change the slug, first enter the project name, then change the slug.
+    - The description of your project’s dashboard in the **Project description (optional)** field.
+    - To modify the project’s viewing and access rights for users, change the Visibility Level.
+6. Select **Create project**.
 
-Let's say this is your repo's new URL.
+Let's say your new project URL is following.
+> `https://gitlab-master.nvidia.com/${group}/${project_slug}`
 
-`https://gitlab-master.nvidia.com/${group}/${project_slug}`
-
-### 2. Replace
+### [2] Replace
 
 Once copied, perform repo-wide text replacement.
 
@@ -36,11 +45,20 @@ $ project_slug=MY_PROJECT_SLUG
 $ # sed base comment to actually perform the replacements
 ```
 
-### 3. Trim
+### [3] Enable GitLab Pages
 
-Delete this ([How to use this template](#how-to-use-this-template)) section.
+1. Go to **Settings** > **CI/CD**, on **Runners** click "**Expand**".<br>Under "**Shared runners**", toggle "**Enable shared runners for this project**" on.
+2. Make a small edit and commit.
+    - You can delete this ([How to use this template](#how-to-use-this-template)) section of [`README.md`](READEME.md). 
+3. Go to **CI/CD** > **Pipeline**, and wait until the most recent pipeline status turns to **"passed"**.
+4. Go to **Settings** > **Pages** to find the URL for your documentation site.
 
-## How to use this repo
+
+## How to also publish on GitHub
+
+(to be documented)
+
+## How to use this repo locally
 
 ### MkDocs: Initial setup
 
@@ -72,9 +90,9 @@ docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material
 
 #### 2. Enable shared runners
 
-Go to `Settings` > [`CI/CD`](./-/settings/ci_cd), on `Runners` click "`Expand`".
+Go to **Settings** > **CI/CD**, on **Runners** click "**Expand**".
 
-Under "`Shared runners`", toggle "`Enable shared runners for this project`" on.
+Under "**Shared runners**", toggle "**Enable shared runners for this project**" on.
 
 #### 3. Create a `.gitlab-ci.yml` file and commit
 
@@ -97,7 +115,7 @@ pages:
 
 #### 4. Check the build process
 
-Go to `CI/CD` > [`Pipeline`](./-/pipelines), and wait until the most recent pipeline status turns to `"passed"`.
+Go to **CI/CD** > **Pipeline**, and wait until the most recent pipeline status turns to **"passed"**.
 
 #### 5. Go to rendered site
 
