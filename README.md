@@ -1,15 +1,5 @@
 # Jetson Mkdocs Template
 
-Document generation status: [![pipeline status](https://gitlab-master.nvidia.com/jetson/jetson-mkdocs-template/badges/main/pipeline.svg)](https://gitlab-master.nvidia.com/cyato/jetson-camera-guide/-/commits/main)
-
-# About this repo
-
-
-
-The auto generated documentation is hosted on the following, using their CI/CD feature to automatically generate/update the HTML documentation site upon new commit:
-  - (Internal) [GitLab Pages site](https://jetson.gitlab-master-pages.nvidia.com/jetson-mkdocs-template/)
-  - (**Not published yet**) GitHub Pages site
-
 ## How to use this template
 
 ### [1] Create your project from this template
@@ -38,10 +28,13 @@ Once copied, perform repo-wide text replacement.
 | Repo URL | `jetson/jetson-mkdocs-template/` | `${group}/${project_slug}` |
 | Page URL | `jetson.gitlab-master-pages.nvidia.com/jetson-mkdocs-template/` | `${group}.gitlab-master-pages.nvidia.com/{project_slug}/` |
 | Site name | `TEMPLATE_SITE_NAME` | `${site_name}/` |
+| Repo name | `TEMPLATE_REPO_NAME` | `${repo_name}/` |
 
 ```bash
 $ group=MY_GROUP
 $ project_slug=MY_PROJECT_SLUG
+$ site_name=MY_SITE_NAME
+$ repo_name=MY_REPO_NAME
 $ # sed base comment to actually perform the replacements
 ```
 
@@ -53,6 +46,14 @@ $ # sed base comment to actually perform the replacements
 3. Go to **CI/CD** > **Pipeline**, and wait until the most recent pipeline status turns to **"passed"**.
 4. Go to **Settings** > **Pages** to find the URL for your documentation site.
 
+### [4] Remove template README.md
+
+```
+rm README.md
+mv README_real.md README.md
+git add .
+git commit -m "Replace with the real README.md"
+```
 
 ## How to also publish on GitHub
 
@@ -83,7 +84,7 @@ docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material
 
 ### On GitLab
 
-#### 1. Check necessary files for mkdocs
+#### 1. Prepare necessary files for mkdocs
 
 - [`mkdocs.yml`](mkdocs.yml) : Check `nav:` section and make sure you have all markdown files under `docs` directory
 - [`docs/index.md`](docs/index.md) 
@@ -116,9 +117,5 @@ pages:
 #### 4. Check the build process
 
 Go to **CI/CD** > **Pipeline**, and wait until the most recent pipeline status turns to **"passed"**.
-
-#### 5. Go to rendered site
-
-Go to https://jetson.gitlab-master-pages.nvidia.com/jetson-mkdocs-template/
 
 
