@@ -72,7 +72,7 @@ docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material
 
 #### 2. Enable shared runners
 
-Go to `Settings` > [`CI/CD`](https://gitlab-master.nvidia.com/jetson/jetson-mkdocs-template/-/settings/ci_cd), on `Runners` click "`Expand`".
+Go to `Settings` > [`CI/CD`](./-/settings/ci_cd), on `Runners` click "`Expand`".
 
 Under "`Shared runners`", toggle "`Enable shared runners for this project`" on.
 
@@ -97,7 +97,7 @@ pages:
 
 #### 4. Check the build process
 
-Go to `CI/CD` > [`Pipeline`](https://gitlab-master.nvidia.com/jetson/jetson-mkdocs-template/-/pipelines), and wait until the most recent pipeline status turns to `"passed"`.
+Go to `CI/CD` > [`Pipeline`](./-/pipelines), and wait until the most recent pipeline status turns to `"passed"`.
 
 #### 5. Go to rendered site
 
