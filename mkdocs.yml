@@ -1,4 +1,4 @@
-site_name: TEMPLATE-PLACEHOLDER
+site_name: TEMPLATE_SITE_NAME
 theme:
     name: "material"
     favicon: images/m48-document-support-guide-256px-wht.png

@@ -28,6 +28,7 @@ Once copied, perform repo-wide text replacement.
 | -- | -- | -- |
 | Repo URL | `jetson/jetson-mkdocs-template/` | `${group}/${project_slug}` |
 | Page URL | `jetson.gitlab-master-pages.nvidia.com/jetson-mkdocs-template/` | `${group}.gitlab-master-pages.nvidia.com/{project_slug}/` |
+| Site name | `TEMPLATE_SITE_NAME` | `${site_name}/` |
 
 ```bash
 $ group=MY_GROUP
