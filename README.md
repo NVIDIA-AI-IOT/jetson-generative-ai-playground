@@ -10,11 +10,15 @@
 4. Under "**jetson/template**", find "**Jetson Mkdocs Template**". Select **Use template**.
 5. Enter the project details
     - In the **Project name** field, enter the name of your project. You cannot use special characters at the start or end of a project name.
-    - In the "Project URL" field, select "jetson/jetson-docs" as the group your new project resides for now. You can later move to your own user namespace. 
+    - In the "Project URL" field, select "jetson/jetson-docs" as the group your new project resides ***for now***. You can later move to your own user namespace. 
     - In the **Project slug** field, enter the path to your project. The GitLab instance uses the slug as the URL path to the project. To change the slug, first enter the project name, then change the slug.
     - The description of your project’s dashboard in the **Project description (optional)** field.
     - To modify the project’s viewing and access rights for users, change the Visibility Level.
 6. Select **Create project**.
+7. Move the project to your namespace.
+    - On the left menu of GitLab web interface, select **Settings** > **General**.
+    - On **Advanced** click "**Expand**".
+    - On **Transfer project** (2nd from the bottom), in **Select a new namespace**, pick your user namespace (or any desired group), and select **Transfer project**.
 
 Let's say your new project URL is following.
 > `https://gitlab-master.nvidia.com/${group}/${project_slug}`
@@ -25,8 +29,8 @@ Once copied, perform repo-wide text replacement.
 
 |    | TEMPLATE | Yours |
 | -- | -- | -- |
-| Repo URL | `jetson/jetson-mkdocs-template/` | `${group}/${project_slug}` |
-| Page URL | `jetson.gitlab-master-pages.nvidia.com/jetson-mkdocs-template/` | `${group}.gitlab-master-pages.nvidia.com/{project_slug}/` |
+| Repo URL | `TEMPLATE_REPO_URL` | `https://gitlab-master.nvidia.com/${group}/${project_slug}` |
+| Page URL | `TEMPLATE_PAGE_URL` | `${group}.gitlab-master-pages.nvidia.com/{project_slug}/` |
 | Site name | `TEMPLATE_SITE_NAME` | `${site_name}/` |
 | Repo name | `TEMPLATE_REPO_NAME` | `${repo_name}/` |
 
@@ -35,7 +39,7 @@ $ group=MY_GROUP
 $ project_slug=MY_PROJECT_SLUG
 $ site_name=MY_SITE_NAME
 $ repo_name=MY_REPO_NAME
-$ # sed base comment to actually perform the replacements
+$ # sed base commands to actually perform the replacements
 ```
 
 ### [3] Enable GitLab Pages

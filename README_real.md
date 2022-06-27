@@ -1,13 +1,13 @@
 # TEMPLATE_REPO_NAME
 
-Document generation status: [![pipeline status](https://gitlab-master.nvidia.com/jetson/jetson-mkdocs-template/badges/main/pipeline.svg)](https://gitlab-master.nvidia.com/cyato/jetson-camera-guide/-/commits/main)
+Document generation status: [![pipeline status](TEMPLATE_REPO_URL/badges/main/pipeline.svg)](https://gitlab-master.nvidia.com/cyato/jetson-camera-guide/-/commits/main)
 
 # About this repo
 
 This repo is to host {}.
 
 The auto generated documentation is hosted on the following, using their CI/CD feature to automatically generate/update the HTML documentation site upon new commit:
-  - (Internal) [GitLab Pages site](https://jetson.gitlab-master-pages.nvidia.com/${group}/${project_slug})
+  - (Internal) [GitLab Pages site](TEMPLATE_PAGE_URL)
   - (**Not yet published**) GitHub Pages site
 
 ## How to use this repo locally

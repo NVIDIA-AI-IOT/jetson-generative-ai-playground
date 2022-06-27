@@ -20,7 +20,7 @@ theme:
        - navigation.expand
        - content.tabs.link
 
-repo_url: https://gitlab-master.nvidia.com/jetson/jetson-mkdocs-template/
+repo_url: TEMPLATE_REPO_URL
 
 plugins:
   - search
