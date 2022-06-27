@@ -1,6 +1,6 @@
 # TEMPLATE_REPO_NAME
 
-Document generation status: [![pipeline status](TEMPLATE_REPO_URL/badges/main/pipeline.svg)](https://gitlab-master.nvidia.com/cyato/jetson-camera-guide/-/commits/main)
+Document generation status: [![pipeline status](TEMPLATE_REPO_URL/badges/main/pipeline.svg)](TEMPLATE_REPO_URL/-/commits/main)
 
 # About this repo
 

@@ -31,15 +31,23 @@ Once copied, perform repo-wide text replacement.
 | -- | -- | -- |
 | Repo URL | `TEMPLATE_REPO_URL` | `https://gitlab-master.nvidia.com/${group}/${project_slug}` |
 | Page URL | `TEMPLATE_PAGE_URL` | `${group}.gitlab-master-pages.nvidia.com/{project_slug}/` |
-| Site name | `TEMPLATE_SITE_NAME` | `${site_name}/` |
 | Repo name | `TEMPLATE_REPO_NAME` | `${repo_name}/` |
+| Site name | `TEMPLATE_PAGE_NAME` | `${page_name}/` |
 
+Set environment variables.
 ```bash
 $ group=MY_GROUP
 $ project_slug=MY_PROJECT_SLUG
-$ site_name=MY_SITE_NAME
 $ repo_name=MY_REPO_NAME
-$ # sed base commands to actually perform the replacements
+$ page_name=MY_SITE_NAME
+```
+
+Copy the following and execute.
+```bash
+find . -type f ! -name "README.md" ! -path "./.git/*" -exec grep -Iq . {} \; -and -exec sed -i "s|TEMPLATE_REPO_URL|https://gitlab-master.nvidia.com/${group}/${project_slug}|g" {} \;
+find . -type f ! -name "README.md" ! -path "./.git/*" -exec grep -Iq . {} \; -and -exec sed -i "s|TEMPLATE_PAGE_URL|${group}.gitlab-master-pages.nvidia.com/{project_slug}|g" {} \;
+find . -type f ! -name "README.md" ! -path "./.git/*" -exec grep -Iq . {} \; -and -exec sed -i "s|TEMPLATE_REPO_NAME|${repo_name}|g" {} \;
+find . -type f ! -name "README.md" ! -path "./.git/*" -exec grep -Iq . {} \; -and -exec sed -i "s|TEMPLATE_PAGE_NAME|${page_name}|g" {} \;
 ```
 
 ### [3] Enable GitLab Pages
