@@ -42,7 +42,13 @@ $ repo_name=MY_REPO_NAME
 $ page_name=MY_SITE_NAME
 ```
 
-Copy the following and execute.
+First clone the repo to your local machine.
+```bash
+git clone https://gitlab-master.nvidia.com/${group}/${project_slug}
+cd ${project_slug}
+```
+
+Then, copy the following and execute.
 ```bash
 find . -type f ! -name "README.md" ! -path "./.git/*" -exec grep -Iq . {} \; -and -exec sed -i "s|TEMPLATE_REPO_URL|https://gitlab-master.nvidia.com/${group}/${project_slug}|g" {} \;
 find . -type f ! -name "README.md" ! -path "./.git/*" -exec grep -Iq . {} \; -and -exec sed -i "s|TEMPLATE_PAGE_URL|${group}.gitlab-master-pages.nvidia.com/{project_slug}|g" {} \;

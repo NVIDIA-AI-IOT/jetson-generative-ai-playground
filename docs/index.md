@@ -1,4 +1,4 @@
-# TEMPLATE_SITE_NAME
+# TEMPLATE_PAGE_NAME
 
 This site is ...
 
