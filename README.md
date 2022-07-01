@@ -60,7 +60,14 @@ find . -type f ! -name "README.md" ! -path "./.git/*" -exec grep -Iq . {} \; -an
 
 1. Go to **Settings** > **CI/CD**, on **Runners** click "**Expand**".<br>Under "**Shared runners**", toggle "**Enable shared runners for this project**" on.
 2. Make a small edit and commit.
-    - You can delete this ([How to use this template](#how-to-use-this-template)) section of [`README.md`](READEME.md). 
+    - Replace README
+      ```
+      mv README.md README_tmpl.md
+      mv README_real.md README.md
+      git add .
+      git commit -m "Replace template README"
+      git push
+      ```
 3. Go to **CI/CD** > **Pipeline**, and wait until the most recent pipeline status turns to **"passed"**.
 4. Go to **Settings** > **Pages** to find the URL for your documentation site.
 
