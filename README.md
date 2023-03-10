@@ -30,7 +30,7 @@ Once copied, perform repo-wide text replacement.
 |    | TEMPLATE | Yours |
 | -- | -- | -- |
 | Repo URL | `TEMPLATE_REPO_URL` | `https://gitlab-master.nvidia.com/${group}/${project_slug}` |
-| Page URL | `TEMPLATE_PAGE_URL` | `${group}.gitlab-master-pages.nvidia.com/{project_slug}/` |
+| Page URL | `TEMPLATE_PAGE_URL` | `${group}.gitlab-master-pages.nvidia.com/${project_slug}/` |
 | Repo name | `TEMPLATE_REPO_NAME` | `${repo_name}/` |
 | Site name | `TEMPLATE_PAGE_NAME` | `${page_name}/` |
 
@@ -51,7 +51,7 @@ cd ${project_slug}
 Then, copy the following and execute.
 ```bash
 find . -type f ! -name "README.md" ! -path "./.git/*" -exec grep -Iq . {} \; -and -exec sed -i "s|TEMPLATE_REPO_URL|https://gitlab-master.nvidia.com/${group}/${project_slug}|g" {} \;
-find . -type f ! -name "README.md" ! -path "./.git/*" -exec grep -Iq . {} \; -and -exec sed -i "s|TEMPLATE_PAGE_URL|${group}.gitlab-master-pages.nvidia.com/{project_slug}|g" {} \;
+find . -type f ! -name "README.md" ! -path "./.git/*" -exec grep -Iq . {} \; -and -exec sed -i "s|TEMPLATE_PAGE_URL|${group}.gitlab-master-pages.nvidia.com/${project_slug}|g" {} \;
 find . -type f ! -name "README.md" ! -path "./.git/*" -exec grep -Iq . {} \; -and -exec sed -i "s|TEMPLATE_REPO_NAME|${repo_name}|g" {} \;
 find . -type f ! -name "README.md" ! -path "./.git/*" -exec grep -Iq . {} \; -and -exec sed -i "s|TEMPLATE_PAGE_NAME|${page_name}|g" {} \;
 ```
