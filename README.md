@@ -7,7 +7,7 @@ Document generation status: [![pipeline status](https://gitlab-master.nvidia.com
 This repo is to host {}.
 
 The auto generated documentation is hosted on the following, using their CI/CD feature to automatically generate/update the HTML documentation site upon new commit:
-  - (Internal) [GitLab Pages site](Jetson-TME.gitlab-master-pages.nvidia.com/jetson-generative-ai-playground)
+  - (Internal) [GitLab Pages site](https://Jetson-TME.gitlab-master-pages.nvidia.com/jetson-generative-ai-playground)
   - (**Not yet published**) GitHub Pages site
 
 ## How to use this repo locally
