@@ -1,4 +1,4 @@
-site_name: TEMPLATE_PAGE_NAME
+site_name: Jetson Generative AI Playground
 theme:
     name: "material"
     favicon: images/m48-document-support-guide-256px-wht.png
@@ -20,7 +20,7 @@ theme:
        - navigation.expand
        - content.tabs.link
 
-repo_url: TEMPLATE_REPO_URL
+repo_url: https://gitlab-master.nvidia.com/Jetson-TME/jetson-generative-ai-playground
 
 plugins:
   - search

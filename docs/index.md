@@ -1,4 +1,4 @@
-# TEMPLATE_PAGE_NAME
+# Jetson Generative AI Playground
 
 This site is ...
 

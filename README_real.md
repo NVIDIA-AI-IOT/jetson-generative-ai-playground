@@ -1,13 +1,13 @@
-# TEMPLATE_REPO_NAME
+# Jetson Generative AI Playground
 
-Document generation status: [![pipeline status](TEMPLATE_REPO_URL/badges/main/pipeline.svg)](TEMPLATE_REPO_URL/-/commits/main)
+Document generation status: [![pipeline status](https://gitlab-master.nvidia.com/Jetson-TME/jetson-generative-ai-playground/badges/main/pipeline.svg)](https://gitlab-master.nvidia.com/Jetson-TME/jetson-generative-ai-playground/-/commits/main)
 
 # About this repo
 
 This repo is to host {}.
 
 The auto generated documentation is hosted on the following, using their CI/CD feature to automatically generate/update the HTML documentation site upon new commit:
-  - (Internal) [GitLab Pages site](TEMPLATE_PAGE_URL)
+  - (Internal) [GitLab Pages site](Jetson-TME.gitlab-master-pages.nvidia.com/jetson-generative-ai-playground)
   - (**Not yet published**) GitHub Pages site
 
 ## How to use this repo locally
