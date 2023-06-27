@@ -1,23 +1,14 @@
 site_name: Jetson Generative AI Playground
 theme:
     name: "material"
+    custom_dir: docs/theme_override_home/
     favicon: images/m48-document-support-guide-256px-wht.png
     logo: images/m48-document-support-guide-256px-wht.png
     font: Incosolata
-    palette:
-      - media: "(prefers-color-scheme: light)" 
-        scheme: nvgreen
-        toggle:
-            icon: material/toggle-switch-off-outline
-            name: Switch to dark mode
-      - media: "(prefers-color-scheme: dark)" 
-        scheme: slate
-        toggle:
-            icon: material/toggle-switch
-            name: Switch to light mode
     features:
        - navigation.indexes
        - navigation.expand
+       - navigation.tabs
        - content.tabs.link
 
 repo_url: https://gitlab-master.nvidia.com/Jetson-TME/jetson-generative-ai-playground
@@ -50,13 +41,18 @@ markdown_extensions:
   - pymdownx.snippets
   - pymdownx.tabbed:
       alternate_style: true 
+  - meta
 
 extra_css:
   - css/colors.css
+  - css/extra.css
 
 nav:
 
   - Home: index.md
+  - Getting started: getting-started.md
+  - Tutorials: tutorials.md
+  - Buy: buy.md
 
 extra:
   analytics:

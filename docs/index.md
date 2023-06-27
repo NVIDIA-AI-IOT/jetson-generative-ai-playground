@@ -1,4 +1,4 @@
-# Jetson Generative AI Playground
-
-This site is ...
-
+---
+template: home.html
+title: Home
+---
