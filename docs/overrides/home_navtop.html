@@ -1,8 +1,17 @@
 <!-- Custom HTML site displayed as the Home chapter -->
 
+<script type="text/javascript">
+function nat_at_top() {
+    var navtab  = document.getElementsByClassName('md-tabs');
+    navtab[0].classList.add("topped");	
+}
+window.onload = nat_at_top;
+</script>
+
 {% extends "base.html" %}
 {% block tabs %}
 {{ super() }}
+
 <style>
 
     .md-main {
@@ -16,12 +25,14 @@
 
     .tx-container {
         padding-top: .0rem;
-        background: linear-gradient(to bottom, var(--md-primary-fg-color), hsla(160deg,47%,55%,1) 99%,#fff 99%)
+        background: linear-gradient(90deg, #004B96 0%,hsl(132, 100%, 92%) 80%, #76b900 100%),
+                    linear-gradient(to bottom, #000000 0%, #FFFFFF 100%);
+        background-blend-mode: screen;
     }
 
     .tx-hero {
         margin: 32px 2.8rem;
-        color: var(--md-primary-bg-color);
+        color: var(--md-default-fg-color);
         justify-content: center;
     }
 
@@ -274,6 +285,16 @@
     </div>
 </div>
 
+
+<script>
+window.addEventListener('scroll', function(){
+    var scroll = document.body.scrollTop || document.documentElement.scrollTop
+    var navtab  = document.getElementsByClassName('md-tabs');
+    console.log(scroll, navtab[0].offsetHeight);
+    console.log(navtab);
+    navtab[0].classList.toggle("topped", scroll < navtab[0].offsetHeight);	
+});
+</script>
 
 {% endblock %}
 {% block content %}{% endblock %}

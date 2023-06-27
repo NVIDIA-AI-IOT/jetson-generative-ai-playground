@@ -1,9 +1,20 @@
 .md-header {
-    background: linear-gradient(90deg, #05C9F9 0%,hsla(134, 75%, 84%, 1) 50%, #76b900 100%);
-    color: black;
+    background: linear-gradient(90deg, #004B96 0%,hsl(132, 100%, 92%) 66%, #76b900 100%);
+    /* color: black; */
 }
 
 .md-tabs {
-    background: linear-gradient(90deg, #05C9F9 0%,hsla(134, 75%, 84%, 1) 50%, #76b900 100%);
-    color: black;
+    background: linear-gradient(90deg, #004B96 0%,hsl(132, 100%, 92%) 66%, #76b900 100%)
+                #DDDDDD;
+    background-blend-mode: multiply;
+    transition: background-color 500ms linear;
+    color: white; 
+    font-weight: bold;
+}
+
+.md-tabs.topped {
+    background: linear-gradient(90deg, #004B96 0%,hsl(132, 100%, 92%) 66%, #76b900 100%);
+    transition: background-color 500ms linear;
+    color: black; 
+    font-weight: bold;
 }

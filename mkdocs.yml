@@ -1,20 +1,28 @@
 site_name: Jetson Generative AI Playground
+site_url: 
+site_description: Showcasing generative AI projects that run on Jetson
+## Repository
+repo_name: jetson-generative-ai-playground
+repo_url: https://Jetson-TME.gitlab-master-pages.nvidia.com/jetson-generative-ai-playground
+edit_uri: ''
 theme:
-    name: "material"
-    custom_dir: docs/theme_override_home/
-    favicon: images/m48-document-support-guide-256px-wht.png
-    logo: images/m48-document-support-guide-256px-wht.png
-    font: Incosolata
-    features:
-       - navigation.indexes
-       - navigation.expand
-       - navigation.tabs
-       - content.tabs.link
+  name: "material"
+  custom_dir: docs/overrides
+  favicon: images/m48-document-support-guide-256px-wht.png
+  logo: images/m48-document-support-guide-256px-wht.png
+  font: Incosolata
+  features:
+      - navigation.indexes
+      - navigation.expand
+      - navigation.tabs
+      - navigation.tabs.sticky
+      - content.tabs.link
 
-repo_url: https://gitlab-master.nvidia.com/Jetson-TME/jetson-generative-ai-playground
 
 plugins:
   - search
+
+  
 use_directory_urls: false
 
 markdown_extensions:
