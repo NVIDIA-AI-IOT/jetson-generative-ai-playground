@@ -8,9 +8,13 @@ edit_uri: ''
 theme:
   name: "material"
   custom_dir: docs/overrides
-  favicon: images/m48-document-support-guide-256px-wht.png
-  logo: images/m48-document-support-guide-256px-wht.png
+  favicon: images/favicon_darkbluebg.png
+  logo: images/cube_white.png
   font: Incosolata
+  palette:
+    - media: "(prefers-color-scheme: light)" 
+      scheme: playful-purple
+
   features:
       - navigation.indexes
       - navigation.expand
@@ -58,8 +62,11 @@ extra_css:
 nav:
 
   - Home: index.md
-  - Getting started: getting-started.md
-  - Tutorials: tutorials.md
+  - Tutorials:
+    - Intro: tutorial-intro.md
+    - 1. Text Generation: tutorial_text-generation.md 
+    - 2. Image Generation: tutorial_diffusion.md
+    - 3. Distrillation: tutorial_distillation.md
   - Buy: buy.md
 
 extra:

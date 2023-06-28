@@ -1,3 +1,18 @@
+[data-md-color-scheme="playful-purple"] {
+
+	--md-accent-fg-color: #b12bff;
+	--md-accent-fg-color--light: hsl(278, 100%, 78%);
+	--md-accent-bg-color: #ffffff;
+
+	--md-primary-fg-color:        hsl(210, 100%, 40%);
+	--md-primary-fg-color--light: hsl(210, 100%, 50%);
+	--md-primary-fg-color--dark:  hsl(210, 100%, 20%);
+
+	--md-mermaid-node-bg-color: #e3f5c5;
+    --md-mermaid-node-fg-color: #518000;
+	--md-default-fg-color--lightest:     #f9fff2;
+}
+
 [data-md-color-scheme="nvgreen"] {
 
 	--md-primary-fg-color:        #76B900;

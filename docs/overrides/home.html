@@ -47,20 +47,20 @@
     .tx-hero .md-button {
         margin-top: .5rem;
         margin-right: .5rem;
-        color: var(--md-primary-bg-color)
+        color: var(--md-primary-fg-color)
     }
 
     .tx-hero .md-button--primary {
-        background-color: var(--md-primary-bg-color);
-        color: hsla(280deg, 37%, 48%, 1);
-        border-color: var(--md-primary-bg-color)
+        background-color: var(--md-accent-fg-color);
+        color: var(--md-accent-bg-color);
+        border-color: var(--md-accent-bg-color)
     }
 
     .tx-hero .md-button:focus,
     .tx-hero .md-button:hover {
-        background-color: var(--md-accent-fg-color);
-        color: var(--md-default-bg-color);
-        border-color: var(--md-accent-fg-color)
+        background-color: var(--md-accent-fg-color--light);
+        color: var(--md-default-fg-color);
+        border-color: var(--md-accent-bg-color)
     }
 
     .feature-item h2 svg {
@@ -223,16 +223,16 @@
     <div class="md-grid md-typeset">
       <div class="tx-hero">
         <div class="tx-hero__image">
-            <img src="assets/product-layers.png" draggable="false">
+            <img src="../images/JON-with-Gcube.png" draggable="false">
           </div>
           <div class="tx-hero__content">
-            <h1> Generative AIs at the Edge </h1>
+            <h1> Generative AI at the Edge </h1>
             <p>Bring generative AI to the world with NVIDIA Jetson</p>
             <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | striptags }}" class="md-button md-button--primary">
-              Get started
+              Explore
             </a>
-            <a href="{{ config.repo_url }}" title="{{ lang.t('source.link.title') }}" class="md-button">
-              Go to GitHub
+            <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | striptags }}" class="md-button">
+              Go to Tutorials
             </a>
           </div>
       </div>
