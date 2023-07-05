@@ -18,3 +18,7 @@
     color: black; 
     font-weight: bold;
 }
+
+.md-nav__link {
+    font-weight: 900;
+}

@@ -8,7 +8,7 @@ edit_uri: ''
 theme:
   name: "material"
   custom_dir: docs/overrides
-  favicon: images/favicon_darkbluebg.png
+  favicon: images/favicon_navy.png
   logo: images/cube_white.png
   font: Incosolata
   palette:
@@ -21,6 +21,7 @@ theme:
       - navigation.tabs
       - navigation.tabs.sticky
       - content.tabs.link
+      - content.code.copy
 
 
 plugins:
