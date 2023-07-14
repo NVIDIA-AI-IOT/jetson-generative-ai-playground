@@ -3,7 +3,7 @@ site_url:
 site_description: Showcasing generative AI projects that run on Jetson
 ## Repository
 repo_name: jetson-generative-ai-playground
-repo_url: https://Jetson-TME.gitlab-master-pages.nvidia.com/jetson-generative-ai-playground
+repo_url: https://nvidia-ai-iot.github.io/jetson-generative-ai-playground
 edit_uri: ''
 theme:
   name: "material"
@@ -22,7 +22,6 @@ theme:
       - navigation.tabs.sticky
       - content.tabs.link
       - content.code.copy
-
 
 plugins:
   - search
@@ -67,11 +66,11 @@ nav:
     - Intro: tutorial-intro.md
     - 1. Text Generation: tutorial_text-generation.md 
     - 2. Image Generation: tutorial_diffusion.md
-    - 3. Distrillation: tutorial_distillation.md
-  - Buy: buy.md
+    - 3. Distillation: tutorial_distillation.md
+  - Try: try.md
 
 extra:
   analytics:
     provider: google
-    property: 
+    property: G-SXH8S4Y8RW
   

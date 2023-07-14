@@ -13,7 +13,7 @@ Let's run oobabooga's [`text-generaton-webui`](https://github.com/oobabooga/text
 
 ### RAM optimization
 
-> You can skip this process if you are on Jetson AGX Orin Developer Kit, which has 32GB RAM.
+> You can skip this process if you are on Jetson AGX Orin Developer Kit, which has 32GB RAM (or 64GB).
 
 ```
 sudo systemctl disable nvzramconfig.service

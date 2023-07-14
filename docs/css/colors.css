@@ -13,6 +13,52 @@
 	--md-default-fg-color--lightest:     #f9fff2;
 }
 
+a.nv-buy-link,.load-buy-link {
+    text-decoration: none;
+    background-color: #76b900;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    line-height: 24px;
+    font-family: Arial,Helvetica,Sans-Serif!important;
+    transition: all .2s ease-out;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    font-size: 1.2em;
+    padding: .625em 2em;
+}
+
+a.nv-buy-link:hover,.load-buy-link:hover {
+    background-color: #91c733;
+    color: #000;
+}
+
+.specs-container {
+    margin-top: 0.6rem;
+}
+
+.specs-container li {
+    list-style: none;
+	margin-left: 0!important;
+	padding: 0!important;
+}
+
+.specs-container ul {
+    padding: 0;
+	margin: 0
+}
+
+.specs {
+    font-weight: 400;
+    background: url(https://store.nvidia.com/jetson/store/UL-icon.d0c461d7202592cb.svg);
+    background-repeat: no-repeat;
+    background-position: 0 8px;
+    padding-left: 18px;
+    padding-bottom: 10px;
+	font-size: 16px
+}
+
 [data-md-color-scheme="nvgreen"] {
 
 	--md-primary-fg-color:        #76B900;
