@@ -35,28 +35,25 @@ sudo cp /etc/fstab /etc/fstab.bak
 echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 ```
 
-### Pull l4t-pytorch container image
+## Set up a container for `text-generation-webuit`
 
-We use `l4t-pytorch` as the base container image.
+### Clone `jetson-containers`
 
-```
-docker pull nvcr.io/nvidia/l4t-pytorch:r35.3.1-pth2.0-py3
-docker tag nvcr.io/nvidia/l4t-pytorch:r35.3.1-pth2.0-py3 l4t-pytorch:r35.3.1-pth2.0-py3
-```
-
-If the image is not available on NGC yet, build the base container by yourself.
+> We the `dev` branch of `jetson-container` for now.
 
 ```
 git clone https://github.com/dusty-nv/jetson-containers
-./scripts/docker_build_ml.sh pytorch  
+cd jetson-containers
+git checkout dev
+sudo apt update; sudo apt install -y python3-pip
+pip install -r requirements.txt
 ```
 
-### Build a container for text-generation-webuit
+### Build a container for `text-generation-webui` 
 
 ```
-git clone https://github.com/nvidia-ai-iot/jetson-text-generation-webui
-cd jetson-text-generation-webui
-./docker/build.sh
+./build.sh --list-packages
+./build.sh text-generation-webui
 ```
 
 ## How to start
@@ -64,20 +61,21 @@ cd jetson-text-generation-webui
 > If you are running this for the first time, go through the [pre-setup](#pre-setup) described below.
 
 ```
-cd jetson-text-generation-webui
-./docker/run.sh
+cd jetson-containers
+./run.sh text-generation-webui
 ```
 
 Inside the docker:
 
 ```
-cd /text-generation-webui
-python3 server.py --listen --chat
+cd /opt/text-generation-webui
+python3 webui.py --listen
 ```
+
+You should see it's downloading the model checkpoint on the first run.
 
 Open your browser and access `http://<IP_ADDRESS>:7860`.
 
-From the "**Model**" tab, download a model, and then load the model.
 
 !!! info
 
