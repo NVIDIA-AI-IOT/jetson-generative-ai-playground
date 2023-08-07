@@ -7,7 +7,10 @@ Let's run oobabooga's [`text-generaton-webui`](https://github.com/oobabooga/text
     Assume we are using either **Jetson AGX Orin Developer Kit** or **Jetson Orin Nano Developer Kit**.
 
     - With sufficient storage space (preferably with NVMe SSD).
-    - Running JetPack 5.1.1 (L4T r35.3.1) 
+    - Running JetPack 5.x
+        - JetPack 5.1 (L4T r35.2.1)
+        - JetPack 5.1.1 (L4T r35.3.1)
+        - JetPack 5.1.2 (L4T r35.4.1)
 
 ## Pre-setup
 
@@ -39,40 +42,36 @@ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 
 ### Clone `jetson-containers`
 
-> We the `dev` branch of `jetson-container` for now.
-
 ```
 git clone https://github.com/dusty-nv/jetson-containers
 cd jetson-containers
-git checkout dev
 sudo apt update; sudo apt install -y python3-pip
 pip install -r requirements.txt
 ```
 
-### Build a container for `text-generation-webui` 
-
-```
-./build.sh --list-packages
-./build.sh text-generation-webui
-```
-
 ## How to start
 
-> If you are running this for the first time, go through the [pre-setup](#pre-setup) described below.
+> If you are running this for the first time, go through the [pre-setup](#pre-setup).
+
+### Start the container
+
+Use `run.sh` and `autotag` script to automatically pull or build a compatible container image.
 
 ```
 cd jetson-containers
-./run.sh text-generation-webui
+./run.sh $(./autotag text-generation-webui)
 ```
+
+> For other ways to start the container, check the [README of `jetson-containers`' `text-generation-webui` package](https://github.com/dusty-nv/jetson-containers/blob/master/packages/llm/text-generation-webui/README.md#user-content-run).
+
+### Start webui app in the container
 
 Inside the docker:
 
 ```
 cd /opt/text-generation-webui
-python3 webui.py --listen
+python3 server.py --listen --chat
 ```
-
-You should see it's downloading the model checkpoint on the first run.
 
 Open your browser and access `http://<IP_ADDRESS>:7860`.
 

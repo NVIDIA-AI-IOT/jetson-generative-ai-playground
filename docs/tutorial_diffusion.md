@@ -7,43 +7,20 @@ Let's run AUTOMATIC1111's [`stable-diffusion-webui`](https://github.com/AUTOMATI
     Assume we are using either **Jetson AGX Orin Developer Kit** or **Jetson Orin Nano Developer Kit**.
 
     - With sufficient storage space (preferably with NVMe SSD).
-    - Running JetPack 5.1.1 (L4T r35.3.1) 
+    - Running JetPack 5.x
+        - JetPack 5.1 (L4T r35.2.1)
+        - JetPack 5.1.1 (L4T r35.3.1)
+        - JetPack 5.1.2 (L4T r35.4.1)
 
 ## Set up a container for `stable-diffusion-webui`
 
 ### Clone `jetson-containers`
 
-> We use the `dev` branch of `jetson-container` for now.
-
 ```
 git clone https://github.com/dusty-nv/jetson-containers
 cd jetson-containers
-git checkout dev
 sudo apt update; sudo apt install -y python3-pip
 pip install -r requirements.txt
-```
-
-### Build a container for `stable-diffusion-webui` 
-
-```
-./build.sh --list-packages
-./build.sh stable-diffusion-webui
-```
-
-For a reference, `jetson-containers` builds this container based on packages `stable-diffusion-webui` package depends on.
-
-```
-$ docker image ls | grep stable-diffusion-webui
-$ docker image ls | grep stable-diffusion-webui
-stable-diffusion-webui         r35.3.1                          7baa25e62d23   25 hours ago   12.9GB
-stable-diffusion-webui         r35.3.1-stable-diffusion-webui   7baa25e62d23   25 hours ago   12.9GB
-stable-diffusion-webui         r35.3.1-opencv                   1126f131f935   26 hours ago   11.2GB
-stable-diffusion-webui         r35.3.1-torchvision              d0559d35e3ae   2 days ago     10.8GB
-stable-diffusion-webui         r35.3.1-cmake                    eb82c3e7eed0   2 days ago     10.7GB
-stable-diffusion-webui         r35.3.1-pytorch                  d20d1969b5fa   2 days ago     10.6GB
-stable-diffusion-webui         r35.3.1-numpy                    859f4bf688da   3 days ago     9.95GB
-stable-diffusion-webui         r35.3.1-build-essential          eb68abbb13e5   3 days ago     9.89GB
-stable-diffusion-webui         r35.3.1-python                   5580e2be6245   3 days ago     9.86GB
 ```
 
 !!! tips
@@ -60,17 +37,13 @@ stable-diffusion-webui         r35.3.1-python                   5580e2be6245   3
 
 ## How to start
 
-Check the exact container tag name.
+### Start the container
 
-```
-docker image ls | grep stable-diffusion-webui
-```
-
-And remember to use that tag name for running the container.
+Use `run.sh` and `autotag` script to automatically pull or build a compatible container image.
 
 ```
 cd jetson-containers
-./run.sh stable-diffusion-webui:r35.3.1
+./run.sh $(./autotag stable-diffusion-webui)
 ```
 
 !!! tips
@@ -82,8 +55,12 @@ cd jetson-containers
     ./run.sh \
        -v ${PWD}/stable-diffusion-webui_for_mount/models/:/opt/stable-diffusion-webui/models \
        -v ${PWD}/stable-diffusion-webui_for_mount/outputs/:/opt/stable-diffusion-webui/outputs \
-       stable-diffusion-webui:r35.3.1
+       $(./autotag stable-diffusion-webui)
     ```
+
+> For other ways to start the container, check the [README of `jetson-containers`' `stable-diffusion-webui` package](https://github.com/dusty-nv/jetson-containers/blob/master/packages/diffusion/stable-diffusion-webui/README.md#user-content-run).
+
+### Starting WEBUI in the container
 
 Inside the docker:
 
@@ -92,7 +69,7 @@ cd /opt/stable-diffusion-webui
 python3 webui.py --listen
 ```
 
-!!! tips
+!!! info
 
     Other relevant arguments from https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Command-Line-Arguments-and-Settings
     
