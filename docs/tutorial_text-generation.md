@@ -69,7 +69,7 @@ cd jetson-containers
     ```
     cd jetson-containers
     ./run.sh \
-       -v ${PWD}/text-generation-webui_for_mount/models/:/opt/text-generation-webui/models \
+       -v ${HOME}/text-generation-webui_for_mount/models/:/opt/text-generation-webui/models \
        $(./autotag stable-diffusion-webui)
     ```
 

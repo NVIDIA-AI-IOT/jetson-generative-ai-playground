@@ -28,7 +28,7 @@ pip install -r requirements.txt
     If you want to make the models you download and output generated persistent, mount the local directories.
 
     ```
-    cd jetson-containers
+    cd ${HOME}
     git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui stable-diffusion-webui_for_mount
     find ./stable-diffusion-webui_for_mount -mindepth 1 -maxdepth 1 \
         ! -name models -type d -not -path '.' -exec rm -rf {} +
@@ -53,14 +53,14 @@ cd jetson-containers
     ```
     cd jetson-containers
     ./run.sh \
-       -v ${PWD}/stable-diffusion-webui_for_mount/models/:/opt/stable-diffusion-webui/models \
-       -v ${PWD}/stable-diffusion-webui_for_mount/outputs/:/opt/stable-diffusion-webui/outputs \
+       -v ${HOME}/stable-diffusion-webui_for_mount/models/:/opt/stable-diffusion-webui/models \
+       -v ${HOME}/stable-diffusion-webui_for_mount/outputs/:/opt/stable-diffusion-webui/outputs \
        $(./autotag stable-diffusion-webui)
     ```
 
 > For other ways to start the container, check the [README of `jetson-containers`' `stable-diffusion-webui` package](https://github.com/dusty-nv/jetson-containers/blob/master/packages/diffusion/stable-diffusion-webui/README.md#user-content-run).
 
-### Starting WEBUI in the container
+### Start webui app in the container
 
 Inside the docker:
 
