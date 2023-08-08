@@ -53,8 +53,6 @@ pip install -r requirements.txt
 
 > If you are running this for the first time, go through the [pre-setup](#pre-setup).
 
-### Start the container
-
 Use `run.sh` and `autotag` script to automatically pull or build a compatible container image.
 
 ```
@@ -62,30 +60,18 @@ cd jetson-containers
 ./run.sh $(./autotag text-generation-webui)
 ```
 
-!!! tips
-
-    If you want to make the models you download persistent, mount a local directory.
-    
-    ```
-    cd jetson-containers
-    ./run.sh \
-       -v ${HOME}/text-generation-webui_for_mount/models/:/opt/text-generation-webui/models \
-       $(./autotag stable-diffusion-webui)
-    ```
-
 > For other ways to start the container, check the [README of `jetson-containers`' `text-generation-webui` package](https://github.com/dusty-nv/jetson-containers/blob/master/packages/llm/text-generation-webui/README.md#user-content-run).
 
-### Start webui app in the container
-
-Inside the docker:
+The container has a default run command (`CMD`) that will automatically start the webserver like this:
 
 ```
-cd /opt/text-generation-webui
-python3 server.py --listen --chat
+cd /opt/text-generation-webui && python3 server.py \
+  --model-dir=/data/models/text-generation-webui
+  --chat \
+  --listen \
 ```
 
 Open your browser and access `http://<IP_ADDRESS>:7860`.
-
 
 !!! info
 
