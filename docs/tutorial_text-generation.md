@@ -66,9 +66,9 @@ The container has a default run command (`CMD`) that will automatically start th
 
 ```
 cd /opt/text-generation-webui && python3 server.py \
-  --model-dir=/data/models/text-generation-webui
+  --model-dir=/data/models/text-generation-webui \
   --chat \
-  --listen \
+  --listen
 ```
 
 Open your browser and access `http://<IP_ADDRESS>:7860`.
