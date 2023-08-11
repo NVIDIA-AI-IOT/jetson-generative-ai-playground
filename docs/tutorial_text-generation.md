@@ -84,14 +84,18 @@ Open your browser and access `http://<IP_ADDRESS>:7860`.
     If you are working with 7B model, it probably takes more than 10 minutes to load the model as it needs to first load everything to CPU memory and then shuffle it down to GPU memory using swap.
 
 
-### Results
+## Results
 
 ![](./images/text-generation-webui_sf-trip.gif)
 
-#### Metrics
+### Metrics
 
 |                 | Loader | Jetson AGX Orin Developer Kit  | Jetson Orin Nano Developer Kit  |
 |-----------------|--------|-----|-----|
 | 7B network quantized 4bit-128g | AutoGPTQ | nnn token/sec | nnn token/sec |
 | 13B network quantized 4bit-128g | AutoGPTQ | nnn token/sec | DNR |
 | 1.3B network |  | nnn token/sec | nnn token/sec |
+
+!!! tip ""
+
+    Want to explore using Python APIs to run LLMs directly? See `[jetson-containers](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm)` for its LLM related packages and containers.

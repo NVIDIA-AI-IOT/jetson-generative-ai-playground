@@ -54,3 +54,7 @@ Open your browser and access `http://<IP_ADDRESS>:7860`.
 ![](./images/stable-diffusion-webui_green-web.gif)
 
 ![](./images/stable-diffusion_space-ferret.png)
+
+!!! tip ""
+
+    Want to explore using Python APIs to run diffusion models directly? See `[jetson-containers](https://github.com/dusty-nv/jetson-containers/tree/master/packages/diffusion)`.
