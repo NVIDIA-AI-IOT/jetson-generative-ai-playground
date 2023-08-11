@@ -93,15 +93,6 @@ Open your browser and access `http://<IP_ADDRESS>:7860`.
 
 ![](./images/text-generation-webui_sf-trip.gif)
 
-### Metrics
-
-<iframe width="733" height="503" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTg-6kS86pbexkoC1hyAotIOLbwLRH7Use9VlDHrDCqIex9pAf5rDnsiLN1FxR5Vv0HDMeE14uodvaa/pubchart?oid=79099204&amp;format=interactive"></iframe>
-
-|                 | Loader | Jetson AGX Orin Developer Kit  | Jetson Orin Nano Developer Kit  |
-|-----------------|--------|-----|-----|
-| 7B network quantized 4bit-128g | AutoGPTQ | nnn token/sec | nnn token/sec |
-| 13B network quantized 4bit-128g | AutoGPTQ | nnn token/sec | DNR |
-| 1.3B network |  | nnn token/sec | nnn token/sec |
 
 !!! tip ""
 
