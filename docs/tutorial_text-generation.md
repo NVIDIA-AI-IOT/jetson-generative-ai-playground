@@ -21,7 +21,7 @@ Let's run oobabooga's [`text-generaton-webui`](https://github.com/oobabooga/text
 !!! warning
 
     Please note that below disables Ubuntu desktop GUI.<br> 
-    Make sure you are operaring on SSH terminal from a remote machine, so that you can continue working ever after diabling the GUI output.
+    Make sure you are operaring on SSH terminal from a remote machine, so that you can continue working even after diabling the GUI output.
 
 ```
 sudo systemctl disable nvzramconfig.service
