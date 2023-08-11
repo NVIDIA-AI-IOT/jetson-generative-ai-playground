@@ -20,7 +20,7 @@ Let's run AUTOMATIC1111's [`stable-diffusion-webui`](https://github.com/AUTOMATI
 git clone https://github.com/dusty-nv/jetson-containers
 cd jetson-containers
 sudo apt update; sudo apt install -y python3-pip
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ## How to start
