@@ -18,6 +18,11 @@ Let's run oobabooga's [`text-generaton-webui`](https://github.com/oobabooga/text
 
 > You can skip this process if you are on Jetson AGX Orin Developer Kit, which has 32GB RAM (or 64GB).
 
+!!! warning
+
+    Please note that below disables Ubuntu desktop GUI.<br> 
+    Make sure you are operaring on SSH terminal from a remote machine, so that you can continue working ever after diabling the GUI output.
+
 ```
 sudo systemctl disable nvzramconfig.service
 sudo systemctl disable nvargus-daemon.service
@@ -89,6 +94,8 @@ Open your browser and access `http://<IP_ADDRESS>:7860`.
 ![](./images/text-generation-webui_sf-trip.gif)
 
 ### Metrics
+
+<iframe width="733" height="503" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTg-6kS86pbexkoC1hyAotIOLbwLRH7Use9VlDHrDCqIex9pAf5rDnsiLN1FxR5Vv0HDMeE14uodvaa/pubchart?oid=79099204&amp;format=interactive"></iframe>
 
 |                 | Loader | Jetson AGX Orin Developer Kit  | Jetson Orin Nano Developer Kit  |
 |-----------------|--------|-----|-----|
