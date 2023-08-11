@@ -98,4 +98,5 @@ Open your browser and access `http://<IP_ADDRESS>:7860`.
 
 !!! tip ""
 
-    Want to explore using Python APIs to run LLMs directly? See `[jetson-containers](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm)` for its LLM related packages and containers.
+    **Want to explore using Python APIs to run LLMs directly? <br>
+    See [`jetson-containers`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm) for its LLM related packages and containers.**

@@ -57,4 +57,4 @@ Open your browser and access `http://<IP_ADDRESS>:7860`.
 
 !!! tip ""
 
-    Want to explore using Python APIs to run diffusion models directly? See `[jetson-containers](https://github.com/dusty-nv/jetson-containers/tree/master/packages/diffusion)`.
+    **Want to explore using Python APIs to run diffusion models directly? <br>See [`jetson-containers`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/diffusion)**.
