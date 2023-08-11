@@ -51,7 +51,7 @@ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 git clone https://github.com/dusty-nv/jetson-containers
 cd jetson-containers
 sudo apt update; sudo apt install -y python3-pip
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ## How to start
