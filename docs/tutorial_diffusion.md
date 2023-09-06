@@ -23,6 +23,14 @@ sudo apt update; sudo apt install -y python3-pip
 pip3 install -r requirements.txt
 ```
 
+!!! info
+
+    JetsonHacks provides an informative walkthrough video on `jetson-containers`, showcasing the usage of both the `stable-diffusion-webui` and `text-generation-webui` containers.
+    
+    You can find the complete article with detailed instructions [here](https://jetsonhacks.com/2023/09/04/use-these-jetson-docker-containers-tutorial/).
+
+    <iframe width="720" height="405" src="https://www.youtube.com/embed/HlH3QkS1F5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ## How to start
 
 Use `run.sh` and `autotag` script to automatically pull or build a compatible container image.
