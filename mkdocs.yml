@@ -60,7 +60,6 @@ extra_css:
   - css/extra.css
 
 nav:
-
   - Home: index.md
   - Tutorials:
     - Intro: tutorial-intro.md
