@@ -88,7 +88,7 @@ Enter the Hugging Face username/model path (that you can click on Hugging Face m
 
 The fastest model loader to use is currently [llama.cpp](https://github.com/dusty-nv/jetson-containers/blob/dev/packages/llm/llama_cpp) with 4-bit quantized GGML models.
 
-You can download a single model file for a particular quantization, like `*.a4_0.bin`. Input the file name and hit "Download"
+You can download a single model file for a particular quantization, like `*.a4_0.bin`. Input the file name and hit "Download" button.
 
 ![](./images/tgwui_model-download-animation.gif)
 
