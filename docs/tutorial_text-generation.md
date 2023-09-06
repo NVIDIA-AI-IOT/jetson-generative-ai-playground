@@ -43,7 +43,7 @@ sudo cp /etc/fstab /etc/fstab.bak
 echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 ```
 
-## Set up a container for `text-generation-webuit`
+## Set up a container for `text-generation-webui`
 
 ### Clone `jetson-containers`
 
@@ -78,6 +78,20 @@ cd /opt/text-generation-webui && python3 server.py \
 
 Open your browser and access `http://<IP_ADDRESS>:7860`.
 
+## Download a model on web UI
+
+On the web UI, select **Model** tab and navigate to "**Download model or LoRA**" section.
+
+Enter the Hugging Face username/model path (that you can click on Hugging Face model repo page to click to copy to your clipboard).
+
+### GGML models
+
+The fastest model loader to use is currently [llama.cpp](https://github.com/dusty-nv/jetson-containers/blob/dev/packages/llm/llama_cpp) with 4-bit quantized GGML models.
+
+You can download a single model file for a particular quantization, like `*.a4_0.bin`. Input the file name and hit "Download"
+
+![](./images/tgwui_model-download-animation.gif)
+
 !!! info
 
     ### Model selection for Jetson Orin Nano
@@ -87,6 +101,15 @@ Open your browser and access `http://<IP_ADDRESS>:7860`.
     7 billion parameter models are usually little less than 4GB if it uses 4-bit quantization, and that's probably the biggest you can run on Jetson Orin Nano Developer Kit.
 
     If you are working with 7B model, it probably takes more than 10 minutes to load the model as it needs to first load everything to CPU memory and then shuffle it down to GPU memory using swap.
+
+## Load a model
+
+After clicking 🔄 button to refresh your model list, select the model you want to use.
+
+For a GGML model, remember to
+
+- Set `n-gpu-layers` to `128`
+- Set `n_gqa` to `8` if you using Llama-2-70B (on Jetson AGX Orin 64GB)
 
 
 ## Results
