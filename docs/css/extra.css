@@ -19,6 +19,6 @@
     font-weight: bold;
 }
 
-.md-nav__link {
+.md-nav__link--active {
     font-weight: 900;
 }

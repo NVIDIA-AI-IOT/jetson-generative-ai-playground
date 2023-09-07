@@ -1,5 +1,7 @@
 # Tutorial - Intro
 
+## About Jetson
+
 !!! note
 
     We are mainly targeting Orin generation Jetson.
