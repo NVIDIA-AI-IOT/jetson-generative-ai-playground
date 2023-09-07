@@ -64,22 +64,22 @@ nav:
   - Home: index.md
   - Tutorials:
     - About Jetson: tutorial-intro.md
-    - LLM:
+    - Text:
       - text-generation-webui: tutorial_text-generation.md 
     # - LLM + ASR/TTS:
     #   - LlamaSpeak: tutorial_llamaspeak.md
-    - LLM + Vision:
+    - Text + Vision:
       - Mini-GPT4: tutorial_minigpt4.md
       - LLaVA: tutorial_llava.md
       # - NeVA: tutorial_NeVA.md
+    - Vision:
+      - NanoSAM: tutorial_nanosam.md
     - Image Generation:
       - Stable Diffusion: tutorial_stable-diffusion.md
     # - Tools:
     #   - LangChain: tutorial_distillation.md
-    - Foundation models:
-      - 📑 Knowledge Distillation: tutorial_distillation.md
-      - NanoSAM: tutorial_nanosam.md
     - Tips:
+      - 📑 Knowledge Distillation: tutorial_distillation.md
       - 🔖 SSD + Docker: tips_ssd-docker.md
       - 🔖 Memory optimization: tips_ram-optimization.md
   - Buy: buy.md
