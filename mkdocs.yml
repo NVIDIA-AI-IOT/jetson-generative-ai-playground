@@ -16,10 +16,12 @@ theme:
       scheme: playful-purple
 
   features:
-      - navigation.indexes
+      # - navigation.indexes
       - navigation.expand
       - navigation.tabs
       - navigation.tabs.sticky
+      # - navigation.sections
+      - navigation.top
       - content.tabs.link
       - content.code.copy
 
@@ -73,9 +75,8 @@ nav:
       - LLaVA: tutorial_llava.md
       # - NeVA: tutorial_NeVA.md
     - Vision:
-      - NanoSAM: tutorial_nanosam.md
-    - Image Generation:
       - Stable Diffusion: tutorial_stable-diffusion.md
+      - NanoSAM: tutorial_nanosam.md
     # - Tools:
     #   - LangChain: tutorial_distillation.md
     - Tips:

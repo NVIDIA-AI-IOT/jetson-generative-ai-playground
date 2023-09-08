@@ -38,20 +38,12 @@ sudo apt update; sudo apt install -y python3-pip
 pip3 install -r requirements.txt
 ```
 
-### Start `minigpt4` container
-
-Use `run.sh` and `autotag` script to automatically pull or build a compatible container image.
-
-```
-cd jetson-containers
-./run.sh $(./autotag minigpt4)
-```
-
-### Run MiniGPT-4 inside the container
+### Start `minigpt4` container with models
 
 To start the MiniGPT4 container and webserver with the recommended models, run this command:
 
 ```
+cd jetson-containers
 ./run.sh $(./autotag minigpt4) /bin/bash -c 'cd /opt/minigpt4.cpp/minigpt4 && python3 webui.py \
   $(huggingface-downloader --type=dataset maknee/minigpt4-13b-ggml/minigpt4-13B-f16.bin) \
   $(huggingface-downloader --type=dataset maknee/ggml-vicuna-v0-quantized/ggml-vicuna-13B-v0-q5_k.bin)'
