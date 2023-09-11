@@ -74,8 +74,9 @@ nav:
       - Mini-GPT4: tutorial_minigpt4.md
       - LLaVA: tutorial_llava.md
       # - NeVA: tutorial_NeVA.md
-    - Vision:
+    - Image Generation:
       - Stable Diffusion: tutorial_stable-diffusion.md
+    - Vision:
       - NanoSAM: tutorial_nanosam.md
     # - Tools:
     #   - LangChain: tutorial_distillation.md

@@ -118,11 +118,11 @@ For a GGML model, remember to
 With llama.cpp, GGML model, 4-bit quantization.
 
 | Model size  | Jetson AGX Orin 64GB | Jetson AGX Orin 32GB | Jetson Orin Nano 8GB |
-| -----------:| -------------------- | -------------------- | -------------------- |
-| 70B model   |                      |                      |                      |
-| 30B model   |                      |                      |                      |
-| 13B model   |                      |                      |                      |
-|  7B model   |                      |                      |                      |
+| -----------:|:--------------------:|:--------------------:|:--------------------:|
+| 70B model   |✅                    |                      |                     |
+| 30B model   |✅                    |✅                    |                     |
+| 13B model   |✅                    |✅                    |                     |
+|  7B model   |✅                    |✅                    |✅                   |
 
 !!! tip ""
 
