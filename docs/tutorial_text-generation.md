@@ -1,51 +1,37 @@
-# Tutorial 1 - Text Generation
+# Tutorial - text-generation-webui
 
-Let's run oobabooga's [`text-generaton-webui`](https://github.com/oobabooga/text-generation-webui) on NVIDIA Jetson using a Docker container.
+Interact with a local AI assistant by running a LLM with oobabooga's [`text-generaton-webui`](https://github.com/oobabooga/text-generation-webui) on NVIDIA Jetson!
 
-!!! note
+![](./images/text-generation-webui_sf-trip.gif)
 
-    Assume we are using either **Jetson AGX Orin Developer Kit** or **Jetson Orin Nano Developer Kit**.
+!!! abstract "What you need"
 
-    - With sufficient storage space (preferably with NVMe SSD).
-    - Running JetPack 5.x
-        - JetPack 5.1 (L4T r35.2.1)
-        - JetPack 5.1.1 (L4T r35.3.1)
-        - JetPack 5.1.2 (L4T r35.4.1)
+    1. One of the following Jetson:
 
-## Pre-setup
+        <span class="blobDarkGreen4">Jetson AGX Orin 64GB</span>
+        <span class="blobDarkGreen5">Jetson AGX Orin (32GB)</span>
+        <span class="blobLightGreen4">Jetson Orin Nano Orin (8GB)</span>[^1]
 
-### RAM optimization
+    2. Running one of the following [JetPack.5x](https://developer.nvidia.com/embedded/jetpack)
 
-> You can skip this process if you are on Jetson AGX Orin Developer Kit, which has 32GB RAM (or 64GB).
+        <span class="blobPink1">JetPack 5.1.2 (L4T r35.4.1)</span>
+        <span class="blobPink2">JetPack 5.1.1 (L4T r35.3.1)</span>
+        <span class="blobPink3">JetPack 5.1 (L4T r35.2.1)</span>
 
-!!! warning
+    3. Sufficient storage space (preferably with NVMe SSD).
 
-    Please note that below disables Ubuntu desktop GUI.<br> 
-    Make sure you are operaring on SSH terminal from a remote machine, so that you can continue working even after diabling the GUI output.
+        - `6.2GB` for container image
+        - Spaces for models
 
-```
-sudo systemctl disable nvzramconfig.service
-sudo systemctl disable nvargus-daemon.service
-sudo systemctl set-default multi-user
-sudo reboot
-```
-
-After reboot, create swap file.
-
-```
-sudo fallocate -l 8G /swapfile
-sudo chmod 600 /swapfile
-sudo mkswap /swapfile
-sudo swapon /swapfile
-sudo swapon --show
-free -h
-sudo cp /etc/fstab /etc/fstab.bak
-echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
-```
+    [^1]: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 ## Set up a container for `text-generation-webui`
 
 ### Clone `jetson-containers`
+
+!!! tip ""
+
+    See [`jetson-containers`' `text-generation-webui` package README](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/text-generation-webui) for more infomation**
 
 ```
 git clone https://github.com/dusty-nv/jetson-containers
@@ -56,7 +42,7 @@ pip3 install -r requirements.txt
 
 !!! info
 
-    JetsonHacks provides an informative walkthrough video on `jetson-containers`, showcasing the usage of both the `stable-diffusion-webui` and `text-generation-webui` containers.
+    **JetsonHacks** provides an informative walkthrough video on `jetson-containers`, showcasing the usage of both the `stable-diffusion-webui` and `text-generation-webui` containers.
     
     You can find the complete article with detailed instructions [here](https://jetsonhacks.com/2023/09/04/use-these-jetson-docker-containers-tutorial/).
 
@@ -104,11 +90,13 @@ You can download a single model file for a particular quantization, like `*.a4_0
 
     ### Model selection for Jetson Orin Nano
 
-    Jetson Orin Nano Developer Kit has only 8GB RAM for both CPU (system) and GPU, so you need to pick a model that fits in the RAM size.
+    <span class="blobLightGreen4">Jetson Orin Nano Developer Kit</span> has only 8GB RAM for both CPU (system) and GPU, so you need to pick a model that fits in the RAM size.
 
-    7 billion parameter models are usually little less than 4GB if it uses 4-bit quantization, and that's probably the biggest you can run on Jetson Orin Nano Developer Kit.
+    7 billion parameter models typically takes up about 4GB if it uses 4-bit quantization, and that's probably the biggest you can run on Jetson Orin Nano.
 
-    If you are working with 7B model, it probably takes more than 10 minutes to load the model as it needs to first load everything to CPU memory and then shuffle it down to GPU memory using swap.
+    Make sure you go through the [RAM optimization](./tips_ram-optimization.md) steps before attempting to load such model on Jetson Orin Nano.
+
+    It would still take more than 10 minutes to load the model as it needs to first load everything to CPU memory and then shuffle it down to GPU memory using swap.
 
 ## Load a model
 
@@ -124,6 +112,17 @@ For a GGML model, remember to
 
 ![](./images/text-generation-webui_sf-trip.gif)
 
+
+## Model size tested
+
+With llama.cpp, GGML model, 4-bit quantization.
+
+| Model size  | Jetson AGX Orin 64GB | Jetson AGX Orin 32GB | Jetson Orin Nano 8GB |
+| -----------:|:--------------------:|:--------------------:|:--------------------:|
+| 70B model   |✅                    |                      |                     |
+| 30B model   |✅                    |✅                    |                     |
+| 13B model   |✅                    |✅                    |                     |
+|  7B model   |✅                    |✅                    |✅                   |
 
 !!! tip ""
 

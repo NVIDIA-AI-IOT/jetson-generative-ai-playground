@@ -1,20 +1,35 @@
-# Tutorial 2 - Image Generation
+# Tutorial - Stable Diffusion
 
-Let's run AUTOMATIC1111's [`stable-diffusion-webui`](https://github.com/AUTOMATIC1111/stable-diffusion-webui) on NVIDIA Jetson using a Docker container.
+Let's run AUTOMATIC1111's [`stable-diffusion-webui`](https://github.com/AUTOMATIC1111/stable-diffusion-webui) on NVIDIA Jetson.
 
-!!! note
+![](./images/stable-diffusion-webui_green-web.gif)
 
-    Assume we are using either **Jetson AGX Orin Developer Kit** or **Jetson Orin Nano Developer Kit**.
+!!! abstract "What you need"
 
-    - With sufficient storage space (preferably with NVMe SSD).
-    - Running JetPack 5.x
-        - JetPack 5.1 (L4T r35.2.1)
-        - JetPack 5.1.1 (L4T r35.3.1)
-        - JetPack 5.1.2 (L4T r35.4.1)
+    1. One of the following Jetson:
+
+        <span class="blobDarkGreen4">Jetson AGX Orin 64GB</span>
+        <span class="blobDarkGreen5">Jetson AGX Orin (32GB)</span>
+        <span class="blobLightGreen4">Jetson Orin Nano Orin (8GB)</span>[^1]
+
+    2. Running one of the following [JetPack.5x](https://developer.nvidia.com/embedded/jetpack)
+
+        <span class="blobPink1">JetPack 5.1.2 (L4T r35.4.1)</span>
+        <span class="blobPink2">JetPack 5.1.1 (L4T r35.3.1)</span>
+        <span class="blobPink3">JetPack 5.1 (L4T r35.2.1)</span>
+
+    3. Sufficient storage space (preferably with NVMe SSD).
+
+        - `6.8GB` for container image
+        - Spaces for models
 
 ## Set up a container for `stable-diffusion-webui`
 
 ### Clone `jetson-containers`
+
+!!! tip ""
+
+    See [`jetson-containers`' `stable-diffusion-webui` package README](https://github.com/dusty-nv/jetson-containers/tree/master/packages/diffusion/stable-diffusion-webui) for more infomation**
 
 ```
 git clone https://github.com/dusty-nv/jetson-containers
@@ -25,7 +40,7 @@ pip3 install -r requirements.txt
 
 !!! info
 
-    JetsonHacks provides an informative walkthrough video on `jetson-containers`, showcasing the usage of both the `stable-diffusion-webui` and `text-generation-webui` containers.
+    **JetsonHacks** provides an informative walkthrough video on `jetson-containers`, showcasing the usage of both the `stable-diffusion-webui` and `text-generation-webui` containers.
     
     You can find the complete article with detailed instructions [here](https://jetsonhacks.com/2023/09/04/use-these-jetson-docker-containers-tutorial/).
 

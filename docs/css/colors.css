@@ -127,6 +127,48 @@ a.nv-buy-link:hover,.load-buy-link:hover {
 
 }
 
+.blobDarkGreen1 {
+	background: #0066467f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em
+}
+.blobDarkGreen2 {
+	background: #0085697f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em
+}
+.blobDarkGreen3 {
+	background: #00a48f7f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em
+}
+.blobDarkGreen4 {
+	background: #00c5b97f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em
+}
+.blobDarkGreen5 {
+	background: #00e6e67f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em
+}
+
+.blobLightGreen1 {
+	background: #76b9007f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em
+}
+.blobLightGreen2 {
+	background: #7fc33a7f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em
+}
+.blobLightGreen3 {
+	background: #95d6767f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em
+}
+.blobLightGreen4 {
+	background: #b1e8a97f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em
+}
+.blobLightGreen5 {
+	background: #d5f8d87f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em
+}
+
+.blobPink1 {
+	background: #ec84d07f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em
+}
+.blobPink2 {
+	background: #fe8fbe7f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em
+}
+.blobPink3 {
+	background: #ff9fb27f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em; 
+}
+
 .highlightYellow {
 	background: #ffc105;
     border-radius: 0.5em;  
