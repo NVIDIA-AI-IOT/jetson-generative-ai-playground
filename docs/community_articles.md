@@ -25,7 +25,7 @@ JetsonHacks has a in-depth tutorial on how to use `jetson-containers` and even s
 
 ## <span class="blobHackster">Hackster</span> `[08-17-2023]` [LLaMa 2 LLMs w/ NVIDIA Jetson and textgeneration-web-ui](https://www.hackster.io/pjdecarlo/llama-2-llms-w-nvidia-jetson-and-textgeneration-web-ui-96b070){:target="_blank"}
 
-Paul DeCarlo demonstrates 13B and 70B parameter LLama 2 models running locally on <span class="blobDarkGreen4">Jetson AGX Orin 64GB Developer Kit.
+Paul DeCarlo demonstrates 13B and 70B parameter LLama 2 models running locally on <span class="blobDarkGreen4">Jetson AGX Orin 64GB Developer Kit</span>.
 
 ![](https://hackster.imgix.net/uploads/attachments/1621246/img_1231_RqW30jjm1q.gif?auto=format%2Ccompress&gifq=35&w=640&h=458&fit=min&fm=mp4)
 
@@ -48,3 +48,23 @@ JetsonHacks gives a nice introduction to NVIDIA RIVA SDK and demonstrate its aut
 <iframe width="640" height="360" src="https://www.youtube.com/embed/FZWgQvI7MxE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 > Link :fontawesome-solid-arrow-up-right-from-square: : [https://jetsonhacks.com/2023/08/07/speech-ai-on-nvidia-jetson-tutorial/](https://jetsonhacks.com/2023/08/07/speech-ai-on-nvidia-jetson-tutorial/){:target="_blank"}
+
+
+## <span class="blobHackster">Hackster</span> `[07-12-2023]` [LLM based Multimodal AI w/ Azure Open AI & NVIDIA Jetson](https://www.hackster.io/pjdecarlo/llm-based-multimodal-ai-w-azure-open-ai-nvidia-jetson-135ff2){:target="_blank"}
+
+Learn how to harness the power of Multimodal AI by running Microsoft JARVIS on an <span class="blobDarkGreen4">Jetson AGX Orin 64GB Developer Kit</span>, enabling a wide range of AI tasks with ChatGPT-like capabilities, image generation, and more, in this comprehensive guide by Paul DeCarlo.
+
+![](https://hackster.imgix.net/uploads/attachments/1610773/2023-07-12_21-40-55_YHOalYh1xU.gif?auto=format%2Ccompress&gifq=35&w=640&h=458&fit=min&fm=mp4)
+
+> Link :fontawesome-solid-arrow-up-right-from-square: : [https://www.hackster.io/pjdecarlo/llm-based-multimodal-ai-w-azure-open-ai-nvidia-jetson-135ff2](https://www.hackster.io/pjdecarlo/llm-based-multimodal-ai-w-azure-open-ai-nvidia-jetson-135ff2){:target="_blank"}
+
+
+
+## <span class="blobHackster">Hackster</span> `[06-13-2023]` [How to Run a ChatGPT-Like LLM on NVIDIA Jetson board](https://www.hackster.io/shahizat/how-to-run-a-chatgpt-like-llm-on-nvidia-jetson-board-41fd79){:target="_blank"}
+
+Nurgaliyev Shakhizat explores voice AI assistant on Jetson using FastChat and VoskAPI.
+
+![](https://hackster.imgix.net/uploads/attachments/1599748/_51IDaX5X5J.blob?auto=compress%2Cformat&w=640&h=458&fit=min)
+
+> Link :fontawesome-solid-arrow-up-right-from-square: : [https://www.hackster.io/shahizat/how-to-run-a-chatgpt-like-llm-on-nvidia-jetson-board-41fd79](https://www.hackster.io/shahizat/how-to-run-a-chatgpt-like-llm-on-nvidia-jetson-board-41fd79){:target="_blank"}
+
