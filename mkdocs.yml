@@ -84,6 +84,7 @@ nav:
       - 📑 Knowledge Distillation: tutorial_distillation.md
       - 🔖 SSD + Docker: tips_ssd-docker.md
       - 🔖 Memory optimization: tips_ram-optimization.md
+  - Community Articles: community_articles.md
   - Buy: buy.md
 
 extra:
