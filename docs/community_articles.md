@@ -7,6 +7,24 @@ hide:
 
 Below, you'll find a collection of community articles showcasing the implementation of generative AIs on the Jetson platform.
 
+
+## <span class="blobMedium">Medium</span> `[10-02-2023]` [How to set up your Jetson device for LLM inference and fine-tuning](https://medium.com/@michaelyuan_88928/how-to-set-up-your-jetson-device-for-llm-inference-and-fine-tuning-682e36444d43){:target="_blank"}
+
+Michael Yuan's guide demonstrating how to set up the <span class="blobDarkGreen4">Jetson AGX Orin 64GB Developer Kit</span> specifically for large language model (LLM) inference, highlighting the crucial role of GPUs and the cost-effectiveness of the Jetson AGX Orin for LLM tasks.
+
+> Link :fontawesome-solid-arrow-up-right-from-square: : [https://medium.com/@michaelyuan_88928/how-to-set-up-your-jetson-device-for-llm-inference-and-fine-tuning-682e36444d43](https://medium.com/@michaelyuan_88928/how-to-set-up-your-jetson-device-for-llm-inference-and-fine-tuning-682e36444d43){:target="_blank"}
+
+
+## <span class="blobHackster">Hackster</span> `[09-16-2023]` [Getting Started with AI on Nvidia Jetson AGX Orin Dev Kit](https://www.hackster.io/shahizat/getting-started-with-ai-on-nvidia-jetson-agx-orin-dev-kit-5a55b5){:target="_blank"}
+
+Nurgaliyev Shakhizat demonstrates `llamaspeak` on <span class="blobDarkGreen4">Jetson AGX Orin 64GB Developer Kit</span>.
+
+![](https://hackster.imgix.net/uploads/attachments/1634209/_YUIZvPChHh.blob?auto=compress%2Cformat&w=640&h=458&fit=min)
+
+> Link :fontawesome-solid-arrow-up-right-from-square: : [https://www.hackster.io/shahizat/getting-started-with-ai-on-nvidia-jetson-agx-orin-dev-kit-5a55b5](https://www.hackster.io/shahizat/getting-started-with-ai-on-nvidia-jetson-agx-orin-dev-kit-5a55b5){:target="_blank"}
+
+
+
 ## <span class="blobHackster">Hackster</span> `[09-13-2023]` [New AI Tool Is Generating a Lot of Buzz](https://www.hackster.io/news/new-ai-tool-is-generating-a-lot-of-buzz-3cc5f23a3598){:target="_blank"}
 
 Nick Bild provides an insightful introduction to the Jetson Generative AI Playground.

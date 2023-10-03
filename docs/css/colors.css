@@ -177,6 +177,9 @@ a.nv-buy-link:hover,.load-buy-link:hover {
 	background: #2e9fe6; color: #fff; font-size: 0.8em; border-radius: 0.1em;  padding-left: 0.3em; padding-right: 0.3em;  margin: 0.2em; 
 }
 
+.blobMedium {
+	background: #292929; color: #fff; font-size: 0.8em; border-radius: 0.1em;  padding-left: 0.3em; padding-right: 0.3em;  margin: 0.2em; 
+}
 
 .highlightYellow {
 	background: #ffc105;
