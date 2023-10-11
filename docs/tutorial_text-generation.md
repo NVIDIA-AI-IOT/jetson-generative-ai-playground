@@ -10,7 +10,7 @@ Interact with a local AI assistant by running a LLM with oobabooga's [`text-gene
 
         <span class="blobDarkGreen4">Jetson AGX Orin 64GB</span>
         <span class="blobDarkGreen5">Jetson AGX Orin (32GB)</span>
-        <span class="blobLightGreen4">Jetson Orin Nano Orin (8GB)</span>[^1]
+        <span class="blobLightGreen4">Jetson Orin Nano Orin (8GB)</span>⚠️[^1]
 
     2. Running one of the following [JetPack.5x](https://developer.nvidia.com/embedded/jetpack)
 
@@ -23,7 +23,7 @@ Interact with a local AI assistant by running a LLM with oobabooga's [`text-gene
         - `6.2GB` for container image
         - Spaces for models
 
-    [^1]: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    [^1]: Limited to 7B model (4-bit quantized).
 
 ## Set up a container for `text-generation-webui`
 
