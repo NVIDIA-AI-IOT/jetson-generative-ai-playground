@@ -77,7 +77,12 @@ nav:
     - Image Generation:
       - Stable Diffusion: tutorial_stable-diffusion.md
     - Vision:
+      - SAM: tutorial_sam.md
       - NanoSAM: tutorial_nanosam.md
+      - TAM: tutorial_tam.md
+    # - NanoOWL: tutorial_nanoowl.md
+    - VectorDB:
+      - nanodb: tutorial_nanodb.md
     # - Tools:
     #   - LangChain: tutorial_distillation.md
     - Tips:
