@@ -82,7 +82,7 @@ nav:
       - TAM: tutorial_tam.md
     # - NanoOWL: tutorial_nanoowl.md
     - VectorDB:
-      - nanodb: tutorial_nanodb.md
+      - NanoDB: tutorial_nanodb.md
     # - Tools:
     #   - LangChain: tutorial_distillation.md
     - Tips:

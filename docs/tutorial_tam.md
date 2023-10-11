@@ -55,7 +55,7 @@ Open your browser and access `http://<IP_ADDRESS>:12212`.
 Check out the [official tutorial](https://github.com/gaomingqi/Track-Anything/blob/master/doc/tutorials.md) to learn how to operate the web UI.
 
 <video controls>
-<source src="./images/TAM_screencast_cat_720p-80pcnt" type="video/mp4">
+<source src="./images/TAM_screencast_cat_720p-80pcnt.mp4" type="video/mp4">
 </video>
 
 ## Results
