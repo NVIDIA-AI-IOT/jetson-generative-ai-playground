@@ -66,11 +66,11 @@ nav:
   - Home: index.md
   - Tutorials:
     - About Jetson: tutorial-intro.md
-    - Text:
+    - Text (LLM):
       - text-generation-webui: tutorial_text-generation.md 
     # - LLM + ASR/TTS:
     #   - LlamaSpeak: tutorial_llamaspeak.md
-    - Text + Vision:
+    - Text + Vision (VLM):
       - Mini-GPT4: tutorial_minigpt4.md
       - LLaVA: tutorial_llava.md
       # - NeVA: tutorial_NeVA.md
