@@ -117,18 +117,20 @@
         padding-left: 15px;
     }
 
-    .col-sm-6 {
-        -ms-flex: 0 0 50%;
-        flex: 0 0 50%;
-        max-width: 50%;
+    @media (min-width: 576px) {
+        .col-sm-6 {
+            -ms-flex: 0 0 50%;
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
     }
-
-    .col-lg-4 {
-        -ms-flex: 0 0 33.333333%;
-        flex: 0 0 33.333333%;
-        max-width: 33.333333%;
+    @media (min-width: 992px) {
+        .col-lg-4 {
+            -ms-flex: 0 0 33.333333%;
+            flex: 0 0 33.333333%;
+            max-width: 33.333333%;
+        }
     }
-
     .mb-4, .my-4 {
         margin-bottom: 1.5rem!important;
     }
@@ -384,6 +386,8 @@
     </div>
 </section>
 <!-- /feature-box -->
+
+
 
 <script type="text/javascript">
 function nat_at_top() {
