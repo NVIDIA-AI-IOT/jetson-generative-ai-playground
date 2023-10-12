@@ -65,19 +65,37 @@ cd jetson-containers
 
 This will take about 2 hours.
 
+Once the database has loaded and completed any start-up operations , it will drop down to a `> ` prompt from which the user can run search queries.<br>
+You can quickly check the operation by typing your query on this prompt.
+
+```
+> a girl riding a horse
+
+* index=80110   /data/datasets/coco/2017/train2017/000000393735.jpg      similarity=0.29991915822029114
+* index=158747  /data/datasets/coco/2017/unlabeled2017/000000189708.jpg  similarity=0.29254037141799927
+* index=123846  /data/datasets/coco/2017/unlabeled2017/000000026239.jpg  similarity=0.292171448469162
+* index=127338  /data/datasets/coco/2017/unlabeled2017/000000042508.jpg  similarity=0.29118549823760986
+* index=77416   /data/datasets/coco/2017/train2017/000000380634.jpg      similarity=0.28964102268218994
+* index=51992   /data/datasets/coco/2017/train2017/000000256290.jpg      similarity=0.28929752111434937
+* index=228640  /data/datasets/coco/2017/unlabeled2017/000000520381.jpg  similarity=0.28642547130584717
+* index=104819  /data/datasets/coco/2017/train2017/000000515895.jpg      similarity=0.285491943359375
+```
+
+You can press ++ctrl+c++ to exit from the app and the container.
+
 ### Interactive web UI
 
 Spin up the Gradio server.
 
 ```
 cd jetson-containers
-./run.sh -v /path/to/your/dataset:/my_dataset $(./autotag nanodb) \
+./run.sh -v ${PWD}/data/datasets/coco:/my_dataset $(./autotag nanodb) \
   python3 -m nanodb \
     --path /my_dataset/nanodb \
     --server --port=7860
 ```
 
-You can use your PC (or any machine) that can access your Jetson via a network, and navigate your browser to `http://<IP_ADDRESS>:7860?__theme=dark`
+You can use your PC (or any machine) that can access your Jetson via a network, and navigate your browser to `http://<IP_ADDRESS>:7860`
 
 You can enter text search queries as well as drag/upload images.
 
