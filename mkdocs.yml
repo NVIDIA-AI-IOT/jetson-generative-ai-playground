@@ -76,13 +76,13 @@ nav:
       # - NeVA: tutorial_NeVA.md
     - Image Generation:
       - Stable Diffusion: tutorial_stable-diffusion.md
-    - Vision:
+    - Vision Transformers (ViT):
       - SAM: tutorial_sam.md
       - NanoSAM: tutorial_nanosam.md
       - NanoOWL: tutorial_nanoowl.md
       - TAM: tutorial_tam.md
     # - NanoOWL: tutorial_nanoowl.md
-    - VectorDB:
+    - Vector Database:
       - NanoDB: tutorial_nanodb.md
     # - Tools:
     #   - LangChain: tutorial_distillation.md

@@ -81,5 +81,4 @@ You can use your PC (or any machine) that can access your Jetson via a network, 
 
 You can enter text search queries as well as drag/upload images.
 
-[![](https://raw.githubusercontent.com/dusty-nv/jetson-containers/docs/docs/images/nanodb_tennis.jpg)](https://youtu.be/ayqKpQNd1Jw)
-
+<iframe width="720" height="405" src="https://www.youtube.com/embed/ayqKpQNd1Jw?si=hKIluxxCaBJ8ZkPR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
