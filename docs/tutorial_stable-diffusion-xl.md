@@ -58,7 +58,7 @@ Guidance on other relevant settings:
 * Change the width/height to 1024x1024.  SDXL works best at higher resolutions, and using 512x512 often results in more simplistic/cartoonish content.  Changing image resolutions impacts the actual scene contents of the image, not just the details.
 * The refiner's `Switch at` setting dictates the step at which the refiner takes over from the base model.  At this point, additional subject content will no longer be added to the scene, but rather its details further refined in the image.
 * Typical `Sampling steps` are between 20-40 and `Switch at` is between 0.7-0.9.  This takes experimentation to find the best combination for the characteristics of your desired output.
-* Extensive negative prompts are not as necessary in the same way as SD 1.5 was (e.g. `low quality, jpeg artifacts, blurry, cartoon, poorly drawn face, missing arms, ect`)
+* Extensive negative prompts are not as necessary in the same way as SD 1.5 was (e.g. `low quality, jpeg artifacts, blurry, ect`)
 * `CFG Scale` controls how closely the model conforms to your prompt versus how creative it is.
     
 When you get a good image, remember to save your random seed and settings so you can re-generate it later!
@@ -75,7 +75,7 @@ When you get a good image, remember to save your random seed and settings so you
 !!! tip ""
 
     ![](./images/stable-diffusion-xl-kids-workshop.jpg)<br/>
-    *a girl and a boy buiding a friendly robot in their basement workshop* (seed 642273464, steps 25, switch @ 0.9, cfg scale 7)
+    *a girl and a boy building a friendly robot in their basement workshop* (seed 642273464, steps 25, switch @ 0.9, cfg scale 7)
 
 !!! tip ""
 
