@@ -25,7 +25,7 @@ Interact with a local AI assistant by running a LLM with oobabooga's [`text-gene
 
     [^1]: Limited to 7B model (4-bit quantized).
 
-## Set up a container for `text-generation-webui`
+## Set up a container for text-generation-webui
 
 The jetson-containers project provides pre-built Docker images for [`text-generation-webui`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/text-generation-webui) along with all of the loader API's built with CUDA enabled (llama.cpp, ExLlama, AutoGPTQ, Transformers, ect).  You can clone the repo to use its utilities that will automatically pull/start the correct container for you, or you can do it [manually](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/text-generation-webui#user-content-run).
 
