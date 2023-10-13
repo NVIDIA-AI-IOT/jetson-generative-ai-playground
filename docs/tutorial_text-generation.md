@@ -139,9 +139,7 @@ Then change back to the Chat tab, and under the Mode selection, make sure Instru
 
 ## Things to do with your LLM
 
-[Here](https://modal.com/docs/guide/ex/vllm_inference#run-the-model) are some common test prompts for coding, math, history ect.  You can also ask it about geography, travel, nature, recipies, fixing things, general life advice, and practically everything else.  
-
-Llama-2 is quite playful and likes to play games to test it's logic abilities!
+[Here](https://modal.com/docs/guide/ex/vllm_inference#run-the-model) are some common test prompts for coding, math, history ect.  You can also ask it about geography, travel, nature, recipies, fixing things, general life advice, and practically everything else.  Ask it to tell you about itself.  Also Llama-2 is quite playful and likes to play games to test it's logic abilities!
 
 ```
 >> What games do you like to play?
