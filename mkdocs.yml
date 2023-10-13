@@ -24,7 +24,7 @@ theme:
       - navigation.top
       - content.tabs.link
       - content.code.copy
-
+      
 plugins:
   - search
 
