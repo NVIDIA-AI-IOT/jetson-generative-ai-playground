@@ -44,7 +44,7 @@ pip3 install -r requirements.txt
 
 ## How to start
 
-> If you are running this for the first time, go through the [pre-setup](https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md) and see the [`jetson-containers/text-generation-webui` container readme](https://github.com/dusty-nv/jetson-containers/blob/master/packages/llm/text-generation-webui/README.md)
+> If you are running this for the first time, go through the [pre-setup](https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md) and see the [`jetson-containers/text-generation-webui`](https://github.com/dusty-nv/jetson-containers/blob/master/packages/llm/text-generation-webui/README.md) container readme.
 
 Use `run.sh` and `autotag` script to automatically pull or build a compatible container image:
 
