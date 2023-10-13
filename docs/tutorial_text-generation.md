@@ -66,7 +66,7 @@ Open your browser and access `http://<IP_ADDRESS>:7860`.
 
 ## Download a model on web UI
 
-See the [oobabooga documentation](https://github.com/oobabooga/text-generation-webui/tree/main#downloading-models) for instructions for downloading models - either from within the web UI, or using the [`download-model.py`](https://github.com/oobabooga/text-generation-webui/blob/main/download-model.py) script:
+See the [oobabooga documentation](https://github.com/oobabooga/text-generation-webui/tree/main#downloading-models) for instructions for downloading models - either from within the web UI, or using [`download-model.py`](https://github.com/oobabooga/text-generation-webui/blob/main/download-model.py)
 
 ```bash
 ./run.sh --workdir=/opt/text-generation-webui $(./autotag text-generation-webui) /bin/bash -c \
@@ -111,13 +111,13 @@ Then click the **Load** button.
 
 ## Chat Template
 
-If you're using a Llama model fine-tuned for chat, like the models listed above (except for `LLaMA-30b`), you need to use the oobabooga Instruct mode.  On the **Parameters** tab, go to the **Instruction Template** sub-tab, then select `Llama-v2` from the **Instruction Template** drop-down (or Vicuna, Guanaco, ect if you are using those models)  
+If you're using a Llama model fine-tuned for chat, like the models listed above (except for `LLaMA-30b`), you need to use the oobabooga Instruct mode and set the template.  On the **Parameters** tab, go to the **Instruction Template** sub-tab, then select `Llama-v2` from the **Instruction Template** drop-down (or Vicuna, Guanaco, ect if you are using one of those models)  
 
 !!! tip ""
 
     For the base text completion models (like `LLaMA-30b`), use the Default or Notebook tab.
     
-Selecting the right template will make sure the model is being [prompted correctly](https://huggingface.co/blog/llama2#how-to-prompt-llama-2) - you can also change the system prompt in the **Context** box to alter the agent's personality and behavior.  There are a lot of other settings under the Generation tab, like the maximum length it should output per reply, and token sampling parameters like [`temperature` and `top_p`](https://medium.com/@dixnjakindah/top-p-temperature-and-other-parameters-1a53d2f8d7d7) for controlling randomness.
+Selecting the right chat template will make sure the model is being [prompted correctly](https://huggingface.co/blog/llama2#how-to-prompt-llama-2) - you can also change the system prompt in the **Context** box to alter the agent's personality and behavior.  There are a lot of other settings under the **Generation** tab, like the maximum length it should output per reply, and token sampling parameters like [`temperature` and `top_p`](https://medium.com/@dixnjakindah/top-p-temperature-and-other-parameters-1a53d2f8d7d7) for controlling randomness.
 
 Then change back to the **Chat** tab, and under the mode section, make sure **Instruct** is selected (confusingly, not chat mode).  Then you can start chatting with the LLM!
 
@@ -127,7 +127,7 @@ Then change back to the **Chat** tab, and under the mode section, make sure **In
 
 ## Things to do with your LLM
 
-[Here](https://modal.com/docs/guide/ex/vllm_inference#run-the-model) are some common test prompts for coding, math, history ect.  You can also ask it about geography, travel, nature, recipies, fixing things, general life advice, and practically everything else.  Also Llama-2 is quite playful and likes to play games to test it's logic abilities!
+[Here](https://modal.com/docs/guide/ex/vllm_inference#run-the-model) are some common test prompts for coding, math, history ect.  You can also ask it about geography, travel, nature, recipies, fixing things, general life advice, and practically everything else.  Also Llama-2 is quite playful and likes to play games to test its logic abilities!
 
 ```
 >> What games do you like to play?
@@ -144,7 +144,7 @@ I'm a large language model, so I can play text-based games and answer questions 
 
 ## Model size tested
 
-With llama.cpp, GGML model, 4-bit quantization.
+With llama.cpp, GGUF model, 4-bit quantization:
 
 | Model size  | Jetson AGX Orin 64GB | Jetson AGX Orin 32GB | Jetson Orin Nano 8GB |
 | -----------:|:--------------------:|:--------------------:|:--------------------:|
