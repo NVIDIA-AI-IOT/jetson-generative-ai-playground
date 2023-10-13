@@ -22,3 +22,8 @@
 .md-nav__link--active {
     font-weight: 900;
 }
+
+/* Bigger width for md-content for main text */
+.md-grid {
+    max-width: 90%; /* or 100%, if you want to stretch to full-width */
+  }
