@@ -74,15 +74,29 @@ Open your browser and access `http://<IP_ADDRESS>:7860`.
 
 ## Download a model on web UI
 
-On the web UI, select **Model** tab and navigate to "**Download model or LoRA**" section.
+See the [oobabooga documentation](https://github.com/oobabooga/text-generation-webui/tree/main#downloading-models) for instructions for downloading models - either from within the web UI, or with the [`download-model.py`](https://github.com/oobabooga/text-generation-webui/blob/main/download-model.py) script:
 
-Enter the Hugging Face username/model path (that you can click on Hugging Face model repo page to click to copy to your clipboard).
+```bash
+./run.sh --workdir=/opt/text-generation-webui $(./autotag text-generation-webui) /bin/bash -c \
+  'python3 download-model.py --output=/data/models/text-generation-webui TheBloke/Llama-2-7b-Chat-GPTQ'
+```
 
-### GGML models
+From within the web UI, select **Model** tab and navigate to "**Download model or LoRA**" section.  You can find text generation models on [Hugging Face Hub](https://huggingface.co/models?pipeline_tag=text-generation&sort=trending), then enter the Hugging Face username/model path (that you can click on Hugging Face model repo page to click to copy to your clipboard).  Then click the Download button.
 
-The fastest model loader to use is currently [llama.cpp](https://github.com/dusty-nv/jetson-containers/blob/dev/packages/llm/llama_cpp) with 4-bit quantized GGML models.
+### GGUF models
 
-You can download a single model file for a particular quantization, like `*.a4_0.bin`. Input the file name and hit "Download" button.
+The fastest oobabooga model loader to use is currently [llama.cpp](https://github.com/dusty-nv/jetson-containers/blob/dev/packages/llm/llama_cpp) with 4-bit quantized GGUF models.
+
+You can download a single model file for a particular quantization, like `*.Q4_K_M.bin`. Input the file name and hit "Download" button.
+
+| Model                                                                           |          Quantization         | Memory (MB) |
+|---------------------------------------------------------------------------------|:-----------------------------:|:-----------:|
+| [`TheBloke/Llama-2-7b-Chat-GGUF`](https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF)   |  `llama-2-7b-chat.Q4_K_M.gguf` |    5,268    |
+| [`TheBloke/Llama-2-13B-chat-GGUF`](https://huggingface.co/TheBloke/Llama-2-13B-chat-GGUF) | `llama-2-13b-chat.Q4_K_M.gguf` |    8,609    |
+| [`TheBloke/LLaMA-30b-GGUF`](https://huggingface.co/TheBloke/LLaMA-30b-GGUF)     | `llama-30b.Q4_K_S.gguf`   |    19,045   |
+| [`TheBloke/Llama-2-70B-chat-GGUF`](https://huggingface.co/TheBloke/Llama-2-70b-Chat-GGUF) | `llama-2-70b-chat.Q4_K_M.gguf` |    37,655   |
+
+See the [Model Size](#model-size-tested) section below to select a model that fits in the memory capacity of your Jetson.
 
 ![](./images/tgwui_model-download-animation.gif)
 
@@ -90,28 +104,55 @@ You can download a single model file for a particular quantization, like `*.a4_0
 
     ### Model selection for Jetson Orin Nano
 
-    <span class="blobLightGreen4">Jetson Orin Nano Developer Kit</span> has only 8GB RAM for both CPU (system) and GPU, so you need to pick a model that fits in the RAM size.
-
-    7 billion parameter models typically takes up about 4GB if it uses 4-bit quantization, and that's probably the biggest you can run on Jetson Orin Nano.
-
+    <span class="blobLightGreen4">Jetson Orin Nano Developer Kit</span> has only 8GB RAM for both CPU (system) and GPU, so you need to pick a model that fits in the RAM size.  7 billion parameter models typically takes up about 4GB if it uses 4-bit quantization, and that's probably the biggest you can run on Jetson Orin Nano.  
+    
     Make sure you go through the [RAM optimization](./tips_ram-optimization.md) steps before attempting to load such model on Jetson Orin Nano.
 
-    It would still take more than 10 minutes to load the model as it needs to first load everything to CPU memory and then shuffle it down to GPU memory using swap.
+    It would still several minutes to load the model as it needs to first load everything to CPU memory and then shuffle it down to GPU memory using swap.
 
 ## Load a model
 
-After clicking 🔄 button to refresh your model list, select the model you want to use.
+After you have downloaded a model, click the 🔄 button to refresh your model list, and select the model you want to use.
 
-For a GGML model, remember to
+For a GGUF model, remember to
 
 - Set `n-gpu-layers` to `128`
 - Set `n_gqa` to `8` if you using Llama-2-70B (on Jetson AGX Orin 64GB)
 
+Then click the "Load" button.
+
+## Chat Template
+
+If you're using a Llama model fine-tuned for chat, like the models listed above (except for `LLaMA-30b`), you need to use the oobabooga Instruct mode - confusingly, not the Chat mode.  On the Parameters tab, go to the Instruction Template sub-tab, then change the Instruction Template drop-down to `Llama-v2` - or Vicuna, Guanaco, ect if you are using those models.  
+
+Doing this will make sure the model is being [prompted correctly](https://huggingface.co/blog/llama2#how-to-prompt-llama-2) - you can also change the system prompt in the Context box to alter the agent's personality and behavior.  There are a lot of other settings under the Generation tab, like max_new_tokens and token sampling parameters like [temperature and top_p](https://medium.com/@dixnjakindah/top-p-temperature-and-other-parameters-1a53d2f8d7d7) for controlling randomness.
+
+Then change back to the Chat tab, and under the Mode selection, make sure Instruct is selected (not chat mode).  Then you can start chatting!
+
+!!! info
+
+    For the base text completion models (like `LLaMA-30b`), use the Default or Notebook tab.  Refer to https://github.com/oobabooga/text-generation-webui for documentation on the web UI and [jetson-containers/text-generation-webui](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/text-generation-webui) about the container.
 
 ## Results
 
 ![](./images/text-generation-webui_sf-trip.gif)
 
+## Things to do with your LLM
+
+[Here](https://modal.com/docs/guide/ex/vllm_inference#run-the-model) are some common test prompts for coding, math, history ect.  You can also ask it about geography, travel, nature, recipies, fixing things, general life advice, and practically everything else.  And Llama-2 is quite playful and likes to play games!  These are a good test of it's logical abilities.
+
+```
+>> What games do you like to play?
+
+I'm a large language model, so I can play text-based games and answer questions on a wide variety of topics. Here are some game ideas:
+
+- 20 Questions:  You or I can think of an object, and the other player tries to guess what it is by asking up to 20 yes-or-no questions.  The goal is to guess the object in as few questions as possible.
+- Hangman: I can think of a word or phrase and you try to guess it by suggesting letters. Each incorrect guess will bring the hangman one step closer to being complete!
+- Word association: I'll give you a word and you have to come up with a word that is related to it. We can keep playing back and forth as long as you'd like!
+- Trivia: I can provide questions on a wide range of topics, from history to science to pop culture. See how many questions you can answer correctly!
+- Storytelling: I can start telling a story and then stop at a cliffhanger. You can then try to guess what happens next or even take over the storytelling and continue it in your own
+- Jokes: I love to tell jokes and make people laugh with my "Dad humor"!  Knock knock!  *giggles*
+```
 
 ## Model size tested
 
