@@ -24,13 +24,13 @@ If you wish to make this persistent across reboots, you can use the following co
 - To disable desktop on boot
 
     ```
-    $ sudo systemctl set-default multi-user.target     
+    sudo systemctl set-default multi-user.target     
     ```
 
 - To enable desktop on boot
 
     ```
-    $ sudo systemctl set-default graphical.target      
+    sudo systemctl set-default graphical.target      
     ```
 
 ## Disabling misc services
