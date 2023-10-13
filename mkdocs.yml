@@ -76,6 +76,7 @@ nav:
       # - NeVA: tutorial_NeVA.md
     - Image Generation:
       - Stable Diffusion: tutorial_stable-diffusion.md
+      - Stable Diffusion XL: tutorial_stable-diffusion-xl.md
     - Vision Transformers (ViT):
       - SAM: tutorial_sam.md
       - NanoSAM: tutorial_nanosam.md
