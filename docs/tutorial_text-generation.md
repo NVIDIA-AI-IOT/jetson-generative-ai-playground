@@ -53,8 +53,6 @@ cd jetson-containers
 ./run.sh $(./autotag text-generation-webui)
 ```
 
-> For other ways to start the container, check the #user-content-run).
-
 The container has a default run command (`CMD`) that will automatically start the webserver like this:
 
 ```
@@ -113,15 +111,15 @@ Then click the **Load** button.
 
 ## Chat Template
 
-If you're using a Llama model fine-tuned for chat, like the models listed above (except for `LLaMA-30b`), you need to use the oobabooga Instruct mode.  On the **Parameters** tab, go to the **Instruction Template** sub-tab, then select `Llama-v2` from the Instruction Template drop-down (or Vicuna, Guanaco, ect if you are using those models)  
+If you're using a Llama model fine-tuned for chat, like the models listed above (except for `LLaMA-30b`), you need to use the oobabooga Instruct mode.  On the **Parameters** tab, go to the **Instruction Template** sub-tab, then select `Llama-v2` from the **Instruction Template** drop-down (or Vicuna, Guanaco, ect if you are using those models)  
 
 !!! tip ""
 
     For the base text completion models (like `LLaMA-30b`), use the Default or Notebook tab.
     
-Selecting the right template will make sure the model is being [prompted correctly](https://huggingface.co/blog/llama2#how-to-prompt-llama-2) - you can also change the system prompt in the **Context** box to alter the agent's personality and behavior.  There are a lot of other settings under the Generation tab, like the maximum length it should output per reply, and token sampling parameters like [temperature and top_p](https://medium.com/@dixnjakindah/top-p-temperature-and-other-parameters-1a53d2f8d7d7) for controlling randomness.
+Selecting the right template will make sure the model is being [prompted correctly](https://huggingface.co/blog/llama2#how-to-prompt-llama-2) - you can also change the system prompt in the **Context** box to alter the agent's personality and behavior.  There are a lot of other settings under the Generation tab, like the maximum length it should output per reply, and token sampling parameters like [`temperature` and `top_p`](https://medium.com/@dixnjakindah/top-p-temperature-and-other-parameters-1a53d2f8d7d7) for controlling randomness.
 
-Then change back to the **Chat** tab, and under the Mode section, make sure **Instruct** is selected (confusingly, not chat mode).  Then you can start chatting with the LLM!
+Then change back to the **Chat** tab, and under the mode section, make sure **Instruct** is selected (confusingly, not chat mode).  Then you can start chatting with the LLM!
 
 ## Results
 
