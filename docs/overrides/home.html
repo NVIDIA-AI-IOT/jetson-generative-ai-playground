@@ -108,6 +108,11 @@
     .section-title {
         margin-bottom: 32px;
     }
+    
+    .section-gray {
+        background: linear-gradient(to bottom, #FFFFFF 0%, #dbe7e1 20%,#dbe7e1 80%, #FFFFFF 100%);
+        padding-bottom: 32px;
+    }
 
     .col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
         position: relative;
@@ -135,28 +140,35 @@
         margin-bottom: 1.5rem!important;
     }
 
+    .bg-white{background-color:#fff!important}
+    .px-4{padding-left:1.5rem!important}
+    .py-5{padding-top:3rem!important}
+    .no-padding{padding:0rem!important}
+
     .shadow {
-        padding-left: 1.0rem!important;
-        padding-right: 1.0rem!important;
-        padding-top: 1.5rem!important;
-        padding-bottom: 1.5rem!important;
-        background-color:#fff!important;
-        display:block!important;
         box-shadow: 0 5px 15px rgba(0, 0, 0, .1) !important;
         transition: .3s ease;
         display: block !important;
     }
 
     .shadow:hover {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, .3) !important;
+        transition: .3s ease;
+        display: block !important;
+    }
+
+    .padding-v1h1rem5{
         padding-left: 1.0rem!important;
         padding-right: 1.0rem!important;
         padding-top: 1.5rem!important;
         padding-bottom: 1.5rem!important;
-        background-color:#fff!important;
-        display:block!important;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, .3) !important;
-        transition: .3s ease;
-        display: block !important;
+    }
+
+    .padding-graph{
+        padding-left: 0.5rem!important;
+        padding-right: 0.5rem!important;
+        padding-top: 0.5rem!important;
+        padding-bottom: 0.5rem!important;
     }
 
     .icon {
@@ -348,42 +360,42 @@
             </div>
             <!-- feature-box-item -->
             <div class="col-lg-4 col-sm-6 mb-4">
-                <a href="tutorial_text-generation.html" class="px-4 py-5 bg-white shadow text-center d-block match-height" style="height: 280px;">
+                <a href="tutorial_text-generation.html" class="bg-white shadow padding-v1h1rem5 text-center d-block match-height" style="height: 280px;">
                     <img src="./images/icon_text-generation_512px.png" width="96" height="96">
                     <h3 class="mb-3 mt-0">Text Generation</h3>
                     <p class="mb-0">Run LLM-based chat bot on Jetson</p>
                 </a>
             </div>
             <div class="col-lg-4 col-sm-6 mb-4">
-                <a href="tutorial_llava.html" class="px-4 py-5 bg-white shadow text-center d-block match-height" style="height: 280px;">
+                <a href="tutorial_llava.html" class="bg-white shadow padding-v1h1rem5 text-center d-block match-height" style="height: 280px;">
                     <img src="./images/icon_vision-language-model_512px.jpg" width="96" height="96">
                     <h3 class="mb-3 mt-0">Text + Vision</h3>
                     <p class="mb-0">Run Vision-Language model to give your AI access to vision</p>
                 </a>
             </div>
             <div class="col-lg-4 col-sm-6 mb-4">
-                <a href="tutorial_stable-diffusion.html" class="px-4 py-5 bg-white shadow text-center d-block match-height" style="height: 280px;">
+                <a href="tutorial_stable-diffusion.html" class="bg-white shadow padding-v1h1rem5 text-center d-block match-height" style="height: 280px;">
                     <img src="./images/icon_diffusion_512px.jpg" width="96" height="96">
                     <h3 class="mb-3 mt-0">Image Generation</h3>
                     <p class="mb-0">Run diffusion models to generate stunning images interactively on Jetson</p>
                 </a>
             </div>
             <div class="col-lg-4 col-sm-6 mb-4">
-                <a href="tutorial_distillation.html" class="px-4 py-5 bg-white shadow text-center d-block match-height" style="height: 280px;">
+                <a href="tutorial_distillation.html" class="bg-white shadow padding-v1h1rem5 text-center d-block match-height" style="height: 280px;">
                     <img src="./images/icon_distillation.png" width="96" height="96">
                     <h3 class="mb-3 mt-0">Distillation</h3>
                     <p class="mb-0">Learn a technique to bring the power of a large foundation model to Jetson by knowledge distilation</p>
                 </a>
             </div>
             <div class="col-lg-4 col-sm-6 mb-4">
-                <a href="tutorial_nanosam.html" class="px-4 py-5 bg-white shadow text-center d-block match-height" style="height: 280px;">
+                <a href="tutorial_nanosam.html" class="bg-white shadow padding-v1h1rem5 text-center d-block match-height" style="height: 280px;">
                     <img src="./images/icon_NanoSAM_512px.jpg" width="96" height="96">
                     <h3 class="mb-3 mt-0">NanoSAM</h3>
                     <p class="mb-0">SAM (Segment Anything Model) optimized to run blazing fast by distilation</p>
                 </a>
             </div>
             <div class="col-lg-4 col-sm-6 mb-4">
-                <a href="tutorial_nanodb.html" class="px-4 py-5 bg-white shadow text-center d-block match-height" style="height: 280px;">
+                <a href="tutorial_nanodb.html" class="bg-white shadow padding-v1h1rem5 text-center d-block match-height" style="height: 280px;">
                     <img src="./images/icon_NanoDB_512px.png" width="96" height="96">
                     <h3 class="mb-3 mt-0">NanoDB</h3>
                     <p class="mb-0">Multimodal vector database that uses embeddings for txt2img and img2img similarity search</p>
@@ -394,6 +406,34 @@
 </section>
 <!-- /feature-box -->
 
+
+<!-- feature-box -->
+<section class="section-gray">
+    <div class="top-hr feature-box">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center">
+                <h2 class="section-title">Benchmarks</h2>
+            </div>
+            <!-- feature-box-item -->
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <a href="benchmarks.html#llm" class="padding-graph bg-white shadow text-center d-block match-height" style="height: 280px;">
+                    <img src="./images/graph_llm-text-generation.svg" style="width: 100%; height: 100%; object-fit:cover"></img>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <a href="benchmarks.html#vlm" class="padding-graph bg-white shadow padding-v1h1rem5 text-center d-block match-height" style="height: 280px;">
+                    <img src="./images/graph_vlm-text-generation.svg" style="width: 100%; height: 100%; object-fit:cover"></img>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <a href="benchmarks.html#vit" class="padding-graph bg-white shadow text-center d-block match-height" style="height: 280px;">
+                    <img src="./images/graph_vit-vision-transformers.svg" style="width: 100%; height: 100%; object-fit:cover"></img>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /feature-box -->
 
 
 <script type="text/javascript">
