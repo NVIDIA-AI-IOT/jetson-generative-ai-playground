@@ -65,7 +65,7 @@ extra_css:
 nav:
   - Home: index.md
   - Tutorials:
-    - About Jetson: tutorial-intro.md
+    - About NVIDIA Jetson: tutorial-intro.md
     - Text (LLM):
       - text-generation-webui: tutorial_text-generation.md 
     # - LLM + ASR/TTS:
