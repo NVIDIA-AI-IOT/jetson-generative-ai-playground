@@ -1,6 +1,7 @@
 site_name: NVIDIA Jetson Generative AI Lab
 site_url: 
 site_description: Showcasing generative AI projects that run on Jetson
+copyright: Copyright &copy; 2023 NVIDIA Corporation
 ## Repository
 #repo_name: jetson-generative-ai-playground
 #repo_url: https://github.com/NVIDIA-AI-IOT/jetson-generative-ai-playground
@@ -96,6 +97,7 @@ nav:
   - Buy: buy.md
 
 extra:
+  generator: false
   analytics:
     provider: google
     property: G-SXH8S4Y8RW
