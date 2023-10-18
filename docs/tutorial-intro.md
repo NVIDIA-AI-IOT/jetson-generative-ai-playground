@@ -1,10 +1,10 @@
 # Tutorial - Intro
 
-## About Jetson
+## About NVIDIA Jetson
 
 !!! note
 
-    We are mainly targeting **Orin** generation Jetson.
+    We are mainly targeting Jetson Orin generation devices for deploying the latest LLMs and generative AI models.
 
     |   | <span class="blobDarkGreen4">Jetson AGX Orin 64GB Developer Kit</span>  | <span class="blobDarkGreen5">Jetson AGX Orin Developer Kit</span>  | <span class="blobLightGreen4">Jetson Orin Nano Developer Kit</span> |
     |-----------------|:-:|:-:|:-:|
