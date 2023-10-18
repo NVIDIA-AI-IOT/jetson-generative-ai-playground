@@ -1,4 +1,4 @@
-# Jetson Generative AI Playground
+# Jetson Generative AI Lab
 
 Document generation status: [![example workflow](https://github.com/NVIDIA-AI-IOT/jetson-generative-ai-playground/actions/workflows/ci.yml/badge.svg)](https://github.com/NVIDIA-AI-IOT/jetson-generative-ai-playground/actions)
 
