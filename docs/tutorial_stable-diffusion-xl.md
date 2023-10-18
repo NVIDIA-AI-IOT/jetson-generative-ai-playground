@@ -81,7 +81,12 @@ When you get a good image, remember to save your random seed and settings so you
 
     ![](./images/stable-diffusion-xl-tokyo-gardens.jpg)<br/>
     *small friendly robots playing games with people, in a futuristic Tokyo central park gardens with cherry blossoms and water, coy fish swimming in the water, sunshine* (seed 642273464, steps 40, switch @ 0.8, cfg scale 7)
-    
+
+!!! tip ""
+
+    ![](./images/stable-diffusion-xl-central-park.jpg)<br/>
+    *small friendly robots playing games with people in a futuristic New York City Central Park in autumn, water* (seed 642273464, steps 25, switch @ 0.8, cfg scale 7)
+        
 !!! tip ""
 
     **Want to explore using Python APIs to run diffusion models directly? See [`jetson-containers/stable-diffusion`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/diffusion/stable-diffusion)**.
