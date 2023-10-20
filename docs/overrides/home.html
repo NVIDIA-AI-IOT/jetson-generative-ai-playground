@@ -50,17 +50,24 @@
         color: var(--md-primary-fg-color)
     }
 
-    .tx-hero .md-button--primary {
-        background-color: var(--md-accent-fg-color);
-        color: var(--md-accent-bg-color);
-        border-color: var(--md-accent-bg-color)
-    }
-
     .tx-hero .md-button:focus,
     .tx-hero .md-button:hover {
-        background-color: var(--md-accent-fg-color--light);
-        color: var(--md-default-fg-color);
-        border-color: var(--md-accent-bg-color)
+        background-color: rgba(255,255,255,0.5);
+        color: var(--md-primary-fg-color);
+        border-color: var(--md-primary-fg-color);
+    }
+    
+    .tx-hero .md-button--primary {
+        background-color: var(--md-accent-fg-color);
+        color: hsl(0, 0%, 96%);
+        border-color: hsl(0, 0%, 93%);
+    }
+
+    .tx-hero .md-button--primary:focus,
+    .tx-hero .md-button--primary:hover {
+        background-color: var(--md-accent-fg-color--dark);
+        color: hsl(0, 0%, 99%);
+        border-color: hsl(0, 0%, 86%);
     }
 
     .feature-item h2 svg {
@@ -343,8 +350,8 @@
             <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | striptags }}" class="md-button md-button--primary">
               Explore Tutorials
             </a>
-            <a href="benchmarks.html" title="{{ page.next_page.title | striptags }}" class="md-button">
-              Benchmarks
+            <a href="https://developer.nvidia.com/blog/bringing-generative-ai-to-life-with-jetson/" title="Walkthrough Blog" class="md-button" target="_blank">
+              Walkthrough
             </a>
           </div>
       </div>
