@@ -27,3 +27,13 @@
 .md-grid {
     max-width: 90%; /* or 100%, if you want to stretch to full-width */
   }
+
+.md-banner__inner {
+    font-size: .7rem;
+    margin: 0.2rem auto;
+    margin-top: 0.2rem;
+    margin-right: auto;
+    margin-bottom: 0.2rem;
+    margin-left: auto;
+    padding: 0 0.8rem;
+}

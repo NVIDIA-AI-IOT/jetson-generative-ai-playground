@@ -1,0 +1,13 @@
+<!-- Elements added to main will be displayed on all pages -->
+{% extends "base.html" %}
+
+<!-- Announcement bar -->
+{% block announce %}
+  <style>
+    .md-announce a { color: #76b900; text-decoration: underline;}
+    .md-announce a:focus { color: hsl(82, 100%, 72%);  text-decoration: underline; }
+    .md-announce a:hover { color: hsl(82, 100%, 72%); text-decoration: underline;}
+  </style>
+    <div class="md-announce">Join us Tuesday, November 7, 2023 at 9 a.m. PT for a <a href="https://info.nvidia.com/jetson-gen-ai-webinar.html" target="_blank"><strong>webinar</strong></a> diving even deeper into many of the topics discussed on this site, along with a live Q&A!</div>
+    
+{% endblock %}
