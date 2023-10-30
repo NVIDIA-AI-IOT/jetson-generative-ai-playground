@@ -21,7 +21,7 @@
     }
 
     .tx-hero {
-        margin: 32px 2.8rem;
+        margin: 32px 1.8rem;
         color: var(--md-default-fg-color);
         justify-content: center;
     }
@@ -38,10 +38,24 @@
     }
 
     .tx-hero__image{
-        width:17rem;
-        height:17rem;
+        width:32rem;
+        height:18rem;
         order:1;
         padding-right: 2.5rem;
+    }
+
+    .tx-hero__ytvideo{
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
     }
 
     .tx-hero .md-button {
@@ -333,21 +347,27 @@
 <!-- Main site Entry button descriptions -->
 <section class="tx-container">
     <div class="md-grid md-typeset">
-      <div class="tx-hero">
-        <div class="tx-hero__image">
-            <img src="./images/JON_Gen-AI-panels_1024px.png" draggable="false">
-          </div>
-          <div class="tx-hero__content">
-            <h1> Generative AI at the Edge </h1>
-            <p>Bring generative AI to the world with NVIDIA<sup><small>&reg;</small></sup> Jetson&trade;</p>
-            <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | striptags }}" class="md-button md-button--primary">
-              Explore Tutorials
-            </a>
-            <a href="benchmarks.html" title="{{ page.next_page.title | striptags }}" class="md-button">
-              Benchmarks
-            </a>
-          </div>
-      </div>
+        <div class="tx-hero">
+            <div class="tx-hero__image">
+                <div class="tx-hero__ytvideo">
+                    <iframe src="https://www.youtube.com/embed/9ObzbbBTbcc?autoplay=1"
+                      title="YouTube video player" frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen class="video"></iframe>
+                </div>
+            </div>
+            <div class="tx-hero__content">
+                <h1> Generative AI at the Edge </h1>
+                <p>Bring generative AI to the world with NVIDIA<sup><small>&reg;</small></sup> Jetson&trade;</p>
+                <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | striptags }}"
+                  class="md-button md-button--primary">
+                    Explore Tutorials
+                </a>
+                <a href="benchmarks.html" title="{{ page.next_page.title | striptags }}" class="md-button">
+                    Benchmarks
+                </a>
+            </div>
+        </div>
     </div>
 </section>
 
