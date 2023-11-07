@@ -89,6 +89,7 @@ nav:
       - NanoDB: tutorial_nanodb.md
     - Audio:
       - Audiocraft: tutorial_audiocraft.md
+      - Whisper: tutorial_whisper.md
     # - Tools:
     #   - LangChain: tutorial_distillation.md
     - Tips:
