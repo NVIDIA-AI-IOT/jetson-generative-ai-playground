@@ -69,8 +69,7 @@ nav:
     - About NVIDIA Jetson: tutorial-intro.md
     - Text (LLM):
       - text-generation-webui: tutorial_text-generation.md 
-    # - LLM + ASR/TTS:
-    #   - LlamaSpeak: tutorial_llamaspeak.md
+      - llamaspeak: tutorial_llamaspeak.md
     - Text + Vision (VLM):
       - Mini-GPT4: tutorial_minigpt4.md
       - LLaVA: tutorial_llava.md
