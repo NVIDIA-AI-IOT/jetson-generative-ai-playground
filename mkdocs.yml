@@ -87,6 +87,8 @@ nav:
     # - NanoOWL: tutorial_nanoowl.md
     - Vector Database:
       - NanoDB: tutorial_nanodb.md
+    - Audio:
+      - Audiocraft: tutorial_audiocraft.md
     # - Tools:
     #   - LangChain: tutorial_distillation.md
     - Tips:
