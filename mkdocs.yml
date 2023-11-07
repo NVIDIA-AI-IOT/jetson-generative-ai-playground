@@ -78,17 +78,17 @@ nav:
       - Stable Diffusion: tutorial_stable-diffusion.md
       - Stable Diffusion XL: tutorial_stable-diffusion-xl.md
     - Vision Transformers (ViT):
-      - EfficientViT: tutorial_efficientvit.md
+      - EfficientViT 🆕: tutorial_efficientvit.md
       - NanoSAM: tutorial_nanosam.md
-      - NanoOWL: tutorial_nanoowl.md
+      - NanoOWL 🆕: tutorial_nanoowl.md
       - SAM: tutorial_sam.md
       - TAM: tutorial_tam.md
     # - NanoOWL: tutorial_nanoowl.md
     - Vector Database:
       - NanoDB: tutorial_nanodb.md
     - Audio:
-      - Audiocraft: tutorial_audiocraft.md
-      - Whisper: tutorial_whisper.md
+      - Audiocraft 🆕: tutorial_audiocraft.md
+      - Whisper 🆕: tutorial_whisper.md
     # - Tools:
     #   - LangChain: tutorial_distillation.md
     - Tips:
