@@ -1,8 +1,8 @@
 # Tutorial - NanoOWL 
 
-Check out the GitHub repo, [https://github.com/NVIDIA-AI-IOT/nanoowl](https://github.com/NVIDIA-AI-IOT/nanoowl).
+Let's run [NanoOWL](https://github.com/NVIDIA-AI-IOT/nanoowl), [OWL-ViT](https://huggingface.co/docs/transformers/model_doc/owlvit) optimized to run real-time on Jetson with [NVIDIA TensorRT](https://developer.nvidia.com/tensorrt).
 
-![](https://raw.githubusercontent.com/NVIDIA-AI-IOT/nanoowl/main/assets/tree_predict_out.jpg)
+![](https://github.com/NVIDIA-AI-IOT/nanoowl/raw/main/assets/jetson_person_2x.gif)
 
 !!! abstract "What you need"
 
@@ -20,16 +20,10 @@ Check out the GitHub repo, [https://github.com/NVIDIA-AI-IOT/nanoowl](https://gi
 
     3. Sufficient storage space (preferably with NVMe SSD).
 
-        - `7.3GB` for container image
+        - `7.2 GB` for container image
         - Spaces for models
 
-## Set up a container for `nanoowl`
-
-### Clone `jetson-containers`
-
-!!! tip ""
-
-    See [`jetson-containers`' `nanoowl` package README](https://github.com/dusty-nv/jetson-containers/tree/master/packages/vit/nanoowl) for more infomation**
+## Clone and set up `jetson-containers`
 
 ```
 git clone https://github.com/dusty-nv/jetson-containers
@@ -47,29 +41,41 @@ cd jetson-containers
 ./run.sh $(./autotag nanoowl)
 ```
 
-## Run examples
+## How to run the tree prediction (live camera) example
 
-Inside the container, you can move to `/opt/nanoowl` directory, to go through all the examples demonstrated on the repo.
+1. Ensure you have a camera device connected
 
-```
-cd /opt/nanoowl
-```
+    ```
+    ls /dev/video*
+    ```
 
-To run the "[**Example 1 - Basic prediction**](https://github.com/NVIDIA-AI-IOT/nanoowl#example-1---basic-prediction)":
+    > If no video device is found, exit from the container and check if you can see a video device on the host side.
 
-```
-python3 owl_predict.py \
-    --prompt="[an owl, a glove]" \
-    --threshold=0.1 \
-    --image_encoder_engine=../data/owl_image_encoder_patch32.engine
-```
+2. Launch the demo
+    ```bash
+    cd examples/tree_demo
+    python3 tree_demo.py ../../data/owl_image_encoder_patch32.engine
+    ```
 
-The result is saved under `/opt/nanosam/data/owl_predict_out.jpg`.
+    !!! info
 
-To check on your host machine, you can copy that into `/data` directory of the container where that is mounted from the host.
+        If it fails to find or load the TensorRT engine file, build the TensorRT engine for the OWL-ViT vision encoder on your Jetson device.
 
-```
-cp data/owl_predict_out.jpg /data/
-```
+        ```bash
+        python3 -m nanoowl.build_image_encoder_engine \
+            data/owl_image_encoder_patch32.engine
+        ```
 
-Then you can go to your host system, and find the file under the `jetson_containers`' `data` directory, like `jetson_containers/data/basic_usage_out.jpg`.
+3. Second, open your browser to ``http://<ip address>:7860``
+
+4. Type whatever prompt you like to see what works!  
+
+    Here are some examples
+
+    - Example: `[a face [a nose, an eye, a mouth]]`
+    - Example: `[a face (interested, yawning / bored)]`
+    - Example: `(indoors, outdoors)`
+
+### Result
+
+![](https://github.com/NVIDIA-AI-IOT/nanoowl/raw/main/assets/jetson_person_2x.gif)
