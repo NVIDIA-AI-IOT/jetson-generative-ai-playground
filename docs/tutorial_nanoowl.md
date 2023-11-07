@@ -78,4 +78,4 @@ cd jetson-containers
 
 ### Result
 
-![](https://github.com/NVIDIA-AI-IOT/nanoowl/raw/main/assets/jetson_person_2x.gif)
+![](./images/nanoowl_chrome_window.png)
