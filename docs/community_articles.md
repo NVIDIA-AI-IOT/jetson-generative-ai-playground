@@ -8,6 +8,18 @@ hide:
 Below, you'll find a collection of community articles showcasing the implementation of generative AI on the Jetson platform.
 
 
+## <span class="blobJetsonHacks">JetsonHacks</span> [Jetson AI Labs – Generative AI Playground](https://jetsonhacks.com/2023/10/31/jetson-ai-labs-generative-ai-playground/){:target="_blank"} <sup><small>(10-31-2023)</small></sup>
+
+JetsonHacks publishes an insightful video that walks developers through the typical steps for running generative AI models on Jetson following this site's tutorials. The video shows the interaction with the LLaVA model. 
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/atClrWoldoI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+## <span class="blobHackster">Hackster</span> [Vision2Audio - Giving the blind an understanding through AI](https://www.hackster.io/shahizat/vision2audio-giving-the-blind-an-understanding-through-ai-33f929){:target="_blank"} <sup><small>(10-15-2023)</small></sup>
+
+Nurgaliyev Shakhizat demonstrates Vision2Audio running on <span class="blobDarkGreen4">Jetson AGX Orin 64GB Developer Kit</span> to harness the power of LLaVA to help visually impaired people.
+
+![](https://hackster.imgix.net/uploads/attachments/1652753/_qKOfQUA6JP.blob?auto=compress%2Cformat&w=640&h=458&fit=min)
+
 ## <span class="blobNvidia">NVIDIA</span> [Bringing Generative AI to Life with NVIDIA Jetson](https://developer.nvidia.com/blog/bringing-generative-ai-to-life-with-jetson/){:target="_blank"} <sup><small>(10-19-2023)</small></sup>
 
 Follow this walkthrough of the Jetson AI Lab tutorials along with coverage of the latest features and advances coming to JetPack 6 and beyond:
