@@ -6,16 +6,16 @@ Let's run [NanoDB](https://github.com/dusty-nv/jetson-containers/blob/master/pac
 
 !!! abstract "What you need"
 
-    1. One of the following Jetson:
+    1. One of the following Jetson devices:
 
-        <span class="blobDarkGreen4">Jetson AGX Orin 64GB</span>
+        <span class="blobDarkGreen4">Jetson AGX Orin (64GB)</span>
         <span class="blobDarkGreen5">Jetson AGX Orin (32GB)</span>
+        <span class="blobLightGreen3">Jetson Orin NX (16GB)</span>
+	   
+    2. Running one of the following versions of [JetPack](https://developer.nvidia.com/embedded/jetpack):
 
-    2. Running one of the following [JetPack.5x](https://developer.nvidia.com/embedded/jetpack)
-
-        <span class="blobPink1">JetPack 5.1.2 (L4T r35.4.1)</span>
-        <span class="blobPink2">JetPack 5.1.1 (L4T r35.3.1)</span>
-        <span class="blobPink3">JetPack 5.1 (L4T r35.2.1)</span>
+        <span class="blobPink1">JetPack 5 (L4T r35.x)</span>
+        <span class="blobPink2">JetPack 6 (L4T r36.x)</span>
 
     3. Sufficient storage space (preferably with NVMe SSD).
 
