@@ -1,10 +1,13 @@
 # Tutorial - LLaVA
 
-Give your locally running LLM an access to vision, by running [LLaVA](https://llava-vl.github.io/) on Jetson!
+[LLaVA](https://llava-vl.github.io/) is a leading multimodal vision/language model that you can run locally on Jetson to answer questions about image prompts and queries.  Internally, it uses the [CLIP](https://openai.com/research/clip) vision encoder to transform images into a common embedding space that the LLM (which is the same as Llama architecture) can understand with text.  Below we will cover a few methods to Llava on Jetson, some with quantization for improved performance:
+
+1. [Chat with Llava using `text-generation-webui`](#1-chat-with-llava-using-text-generation-webui)
+2. [Run from the terminal with `llava.serve.cli`](#2-run-from-the-terminal-with-llavaservecli)
 
 ![](./images/tgwui_multimodal_llava_spacewalk.png)
 
-## Clone and set up `jetson-containers`
+### Clone and set up `jetson-containers`
 
 ```
 git clone https://github.com/dusty-nv/jetson-containers
@@ -12,7 +15,7 @@ cd jetson-containers
 sudo apt update; sudo apt install -y python3-pip
 pip3 install -r requirements.txt
 ```
-## 1. Use `text-generation-webui` container to test Llava model
+## 1. Chat with Llava using `text-generation-webui`
 
 !!! abstract "What you need"
 
@@ -32,29 +35,32 @@ pip3 install -r requirements.txt
         - `6.2GB` for `text-generation-webui` container image
         - Space for models
             - CLIP model : `1.7GB`
-            - Llava-Llama2 merged model : `7.3GB`
+            - Llava-v1.5-13B-GPTQ model : `7.25GB`
 
-### Use `text-generation-webui` container for web UI
+The [oobabooga](https://github.com/oobabooga/text-generation-webui) chat UI from the [LLM tutorial](tutorial_text-generation.md) has a multimodal extension for Llava, and it supports 4-bit quantization using AutoGPTQ.  If you already used text-generation-webui before 12/2023, do `sudo docker pull $(./autotag text-generation-webui)` to update to the latest container.
 
-Using the `multimodal` extension, you can use the LLaVA model in oobaboonga's `text-generation-webui`.
+### Download Model
 
 ```
-./run.sh $(./autotag text-generation-webui) /bin/bash -c \
-  "python3 /opt/text-generation-webui/download-model.py \
-  --output=/data/models/text-generation-webui \
-  liuhaotian/llava-llama-2-13b-chat-lightning-gptq"
-  
-./run.sh $(./autotag text-generation-webui) /bin/bash -c \
-  "cd /opt/text-generation-webui && python3 server.py --listen \
-	--model-dir=/data/models/text-generation-webui \
-	--model=liuhaotian_llava-llama-2-13b-chat-lightning-gptq \
-	--multimodal-pipeline=llava-llama-2-13b \
-	--extensions=multimodal \
-	--chat \
-	--verbose"
+./run.sh --workdir=/opt/text-generation-webui $(./autotag text-generation-webui) \
+  python3 download-model.py --output=/data/models/text-generation-webui \
+    TheBloke/llava-v1.5-13B-GPTQ
 ```
 
-Go to **Chat** tab, drag and drop an image of your choice into the **Drop Image Here** area, and your question in the text area above and hit **Generate** button.
+### Start Web UI with Multimodal Extension
+
+```
+./run.sh --workdir=/opt/text-generation-webui $(./autotag text-generation-webui) \
+  python3 server.py --listen \
+    --model-dir /data/models/text-generation-webui \
+    --model TheBloke_llava-v1.5-13B-GPTQ \
+    --multimodal-pipeline llava-v1.5-13b \
+    --loader autogptq \
+    --disable_exllama \
+    --verbose
+```
+
+Go to **Chat** tab, drag and drop an image of your choice into the **Drop Image Here** area, and your question in the text area above and hit **Generate**.
 
 ![](./images/tgwui_llava_drag-n-drop_birds.gif)
 
@@ -62,7 +68,7 @@ Go to **Chat** tab, drag and drop an image of your choice into the **Drop Image 
 
 ![](./images/tgwui_multimodal_llava_spacewalk.png)
 
-## 2. Use `llava` container to run `llava.serve.cli`
+## 2. Run from the terminal with `llava.serve.cli`
 
 !!! abstract "What you need"
 
@@ -71,11 +77,10 @@ Go to **Chat** tab, drag and drop an image of your choice into the **Drop Image 
         <span class="blobDarkGreen4">Jetson AGX Orin 64GB</span>
         <span class="blobDarkGreen5">Jetson AGX Orin (32GB)</span>
 
-    2. Running one of the following [JetPack.5x](https://developer.nvidia.com/embedded/jetpack)
+    2. Running one of the following versions of [JetPack](https://developer.nvidia.com/embedded/jetpack):
 
-        <span class="blobPink1">JetPack 5.1.2 (L4T r35.4.1)</span>
-        <span class="blobPink2">JetPack 5.1.1 (L4T r35.3.1)</span>
-        <span class="blobPink3">JetPack 5.1 (L4T r35.2.1)</span>
+        <span class="blobPink1">JetPack 5 (L4T r35.x)</span>
+        <span class="blobPink2">JetPack 6 (L4T r36.x)</span>
 
     3. Sufficient storage space (preferably with NVMe SSD).
 
@@ -84,33 +89,26 @@ Go to **Chat** tab, drag and drop an image of your choice into the **Drop Image 
             - 7B model : `14GB`, or
             - 13B model : `26GB`
 
-!!! tip ""
+This example uses the upstream [Llava codebase](https://github.com/haotian-liu/LLaVA) to run the original, unquantized Llava models from the command-line.  As such, it uses more memory due to using FP16 precision, and is provided mostly as a reference for debugging.  See the [Llava container](https://github.com/dusty-nv/jetson-containers/blob/master/packages/llm/llava/README.md) readme for more infomation.
 
-    See [`jetson-containers`' `llava` package README](https://github.com/dusty-nv/jetson-containers/blob/master/packages/llm/llava/README.md) for more infomation**
-
-
-
-### llava-llama-2-7b-chat
-
-```
-./run.sh --env HUGGING_FACE_HUB_TOKEN=<YOUR-ACCESS-TOKEN> $(./autotag llava) \
-  python3 -m llava.serve.cli \
-    --model-path liuhaotian/llava-llama-2-7b-chat-lightning-lora-preview \
-    --model-base meta-llama/Llama-2-7b-chat-hf \
-    --image-file /data/images/hoover.jpg
-```
-
-### llava-llama-2-13b-chat
-
-This may only run on <span class="blobDarkGreen4">Jetson AGX Orin 64GB</span>.
+### llava-v1.5-7b
 
 ```
 ./run.sh $(./autotag llava) \
   python3 -m llava.serve.cli \
-    --model-path liuhaotian/llava-llama-2-13b-chat-lightning-preview \
+    --model-path liuhaotian/llava-v1.5-7b \
     --image-file /data/images/hoover.jpg
 ```
 
+### llava-v1.5-13b
+
+``` bash
+./run.sh $(./autotag llava) \
+  python3 -m llava.serve.cli \
+    --model-path liuhaotian/llava-v1.5-13b \
+    --image-file /data/images/hoover.jpg
+```
+<small>This may run only on Jetson AGX Orin 64GB due to memory requirements.</small>
 
 <!-- 
 
