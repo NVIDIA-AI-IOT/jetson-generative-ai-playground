@@ -1,9 +1,10 @@
 # Tutorial - LLaVA
 
-[LLaVA](https://llava-vl.github.io/) is a leading multimodal vision/language model that you can run locally on Jetson to answer questions about image prompts and queries.  Internally, it uses the [CLIP](https://openai.com/research/clip) vision encoder to transform images into a common embedding space that the LLM (which is the same as Llama architecture) can understand with text.  Below we will cover a few methods to Llava on Jetson, some with quantization for improved performance:
+[LLaVA](https://llava-vl.github.io/) is a popular multimodal vision/language model that you can run locally on Jetson to answer questions about image prompts and queries.  Llava uses the [CLIP](https://openai.com/research/clip) vision encoder to transform images into a common embedding space so that its LLM (which is the same as Llama architecture) can understand text.  Below we'll cover a few methods to run Llava on Jetson, using quantization for improved performance.
 
 1. [Chat with Llava using `text-generation-webui`](#1-chat-with-llava-using-text-generation-webui)
 2. [Run from the terminal with `llava.serve.cli`](#2-run-from-the-terminal-with-llavaservecli)
+3. [Quantized GGUF with llama.cpp](#3-quantized-ggml-with-llamacpp)
 
 ![](./images/tgwui_multimodal_llava_spacewalk.png)
 
@@ -37,7 +38,7 @@ pip3 install -r requirements.txt
             - CLIP model : `1.7GB`
             - Llava-v1.5-13B-GPTQ model : `7.25GB`
 
-The [oobabooga](https://github.com/oobabooga/text-generation-webui) chat UI from the [LLM tutorial](tutorial_text-generation.md) has a multimodal extension for Llava, and it supports 4-bit quantization using AutoGPTQ.  If you already used text-generation-webui before 12/2023, do `sudo docker pull $(./autotag text-generation-webui)` to update to the latest container.
+The [oobabooga](https://github.com/oobabooga/text-generation-webui) chat UI from the [LLM tutorial](tutorial_text-generation.md) has a multimodal extension for Llava, and it supports AutoGPTQ quantization.  If you already used text-generation-webui before 12/2023, do `sudo docker pull $(./autotag text-generation-webui)` to update to the latest container.
 
 ### Download Model
 
@@ -108,7 +109,7 @@ This example uses the upstream [Llava codebase](https://github.com/haotian-liu/L
     --model-path liuhaotian/llava-v1.5-13b \
     --image-file /data/images/hoover.jpg
 ```
-<small>This may run only on Jetson AGX Orin 64GB due to memory requirements.</small>
+<small>Unquantized 13B may run only on Jetson AGX Orin 64GB due to memory requirements.</small>
 
 <!-- 
 
@@ -156,4 +157,71 @@ python3 -m llava.serve.model_worker \
     --controller http://localhost:10000 --port 40000 \
     --worker http://localhost:40000 \
     --model-path $(huggingface-downloader liuhaotian/llava-llama-2-13b-chat-lightning-preview)
-``` -->
+``` 
+-->
+
+## 3. Quantized GGUF with `llama.cpp`
+
+[llama.cpp](https://github.com/ggerganov/llama.cpp) is one of the faster LLM API's, and can apply a variety of quantization methods to llava to reduce its memory usage and runtime.  It also implements the CLIP vision encoder.  There are pre-quantized versions of Llava-1.5 available in GGUF format for 4-bit and 5-bit:
+
+* [mys/ggml_llava-v1.5-7b](https://huggingface.co/mys/ggml_llava-v1.5-7b)
+* [mys/ggml_llava-v1.5-13b](https://huggingface.co/mys/ggml_llava-v1.5-13b)
+
+```bash
+./run.sh --workdir=/opt/llama.cpp/bin $(./autotag llama_cpp:gguf) \
+  /bin/bash -c './llava-cli \
+    --model $(huggingface-downloader mys/ggml_llava-v1.5-13b/ggml-model-q4_k.gguf) \
+    --mmproj $(huggingface-downloader mys/ggml_llava-v1.5-13b/mmproj-model-f16.gguf) \
+    --n-gpu-layers 999 \
+    --image /data/images/hoover.jpg \
+    --prompt "What does the sign say"'
+```
+
+| Quantization | Bits | Response                            | Tokens/sec |  Memory |
+|--------------|:----:|-------------------------------------|:----------:|:-------:|
+| `Q4_K`       |   4  | The sign says "Hoover Dam, Exit 9." |    10.17   |  9.2 GB |
+| `Q5_K`       |   5  | The sign says "Hoover Dam exit 9."  |    9.73    | 10.4 GB |
+
+A lower temperature like 0.1 is recommended for better quality (`--temp 0.1`), and if you omit `--prompt` it will describe the image:
+
+```bash
+./run.sh --workdir=/opt/llama.cpp/bin $(./autotag llama_cpp:gguf) \
+  /bin/bash -c './llava-cli \
+    --model $(huggingface-downloader mys/ggml_llava-v1.5-13b/ggml-model-q4_k.gguf) \
+    --mmproj $(huggingface-downloader mys/ggml_llava-v1.5-13b/mmproj-model-f16.gguf) \
+    --n-gpu-layers 999 \
+    --image /data/images/lake.jpg'
+    
+In this image, a small wooden pier extends out into a calm lake, surrounded by tall trees and mountains. The pier seems to be the only access point to the lake. The serene scene includes a few boats scattered across the water, with one near the pier and the others further away. The overall atmosphere suggests a peaceful and tranquil setting, perfect for relaxation and enjoying nature.
+```
+
+You can put your own images in the mounted `jetson-containers/data` directory.  The code for llava-cli can be found [here](https://github.com/ggerganov/llama.cpp/tree/master/examples/llava).
+
+## 4. Python Script with `llama-cpp-python`
+
+The [llama-cpp-python](https://github.com/abetlen/llama-cpp-python) bindings come with [Python code](https://github.com/abetlen/llama-cpp-python?tab=readme-ov-file#multi-modal-models) for running the quantized GGUF Llava-1.5 models from above:
+
+```python
+>>> from llama_cpp import Llama
+>>> from llama_cpp.llama_chat_format import Llava15ChatHandler
+>>> chat_handler = Llava15ChatHandler(clip_model_path="path/to/llava/mmproj.bin")
+>>> llm = Llama(
+  model_path="./path/to/llava/llama-model.gguf",
+  chat_handler=chat_handler,
+  n_ctx=2048, # n_ctx should be increased to accomodate the image embedding
+  logits_all=True,# needed to make llava work
+)
+>>> llm.create_chat_completion(
+    messages = [
+        {"role": "system", "content": "You are an assistant who perfectly describes images."},
+        {
+            "role": "user",
+            "content": [
+                {"type": "image_url", "image_url": {"url": "https://.../image.png"}},
+                {"type" : "text", "text": "Describe this image in detail please."}
+            ]
+        }
+    ]
+)
+```
+
