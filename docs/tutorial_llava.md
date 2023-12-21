@@ -4,11 +4,17 @@
 
 1. [Chat with Llava using `text-generation-webui`](#1-chat-with-llava-using-text-generation-webui)
 2. [Run from the terminal with `llava.serve.cli`](#2-run-from-the-terminal-with-llavaservecli)
-3. [Quantized GGUF with llama.cpp](#3-quantized-ggml-with-llamacpp)
+3. [Quantized GGUF with llama.cpp](#3-quantized-gguf-with-llamacpp)
+
+| Llava-1.5-13B (Jetson AGX Orin)                                           | Quantization | Tokens/sec |  Memory |
+|---------------------------------------------------------------------------|:------------:|:----------:|:-------:|
+| [`text-generation-webui`](#1-chat-with-llava-using-text-generation-webui) | 4-bit (GPTQ) |     2.3    |  8.8 GB |
+| [`llava.serve.cli`](#2-run-from-the-terminal-with-llavaservecli)          |  FP16 (None) |     4.2    | 27.7 GB |
+| [`llama.cpp`](#3-quantized-gguf-with-llamacpp)                            | 4-bit (Q4_K) |    10.1    |  9.2 GB |
 
 The latest Llava-1.5 is used in this tutorial.  It comes in 7B and 13B variants, however the 13B model has significantly improved accuracy.
 
-![](./images/tgwui_multimodal_llava_spacewalk.png)
+![](./images/tgwui_multimodal_llava_fish.jpg)
 
 ### Clone and set up `jetson-containers`
 
