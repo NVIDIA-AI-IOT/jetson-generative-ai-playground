@@ -6,6 +6,8 @@
 2. [Run from the terminal with `llava.serve.cli`](#2-run-from-the-terminal-with-llavaservecli)
 3. [Quantized GGUF with llama.cpp](#3-quantized-ggml-with-llamacpp)
 
+The latest Llava-1.5 is used in this tutorial.  It comes in 7B and 13B variants, however the 13B model has significantly improved accuracy.
+
 ![](./images/tgwui_multimodal_llava_spacewalk.png)
 
 ### Clone and set up `jetson-containers`
@@ -162,7 +164,7 @@ python3 -m llava.serve.model_worker \
 
 ## 3. Quantized GGUF with `llama.cpp`
 
-[llama.cpp](https://github.com/ggerganov/llama.cpp) is one of the faster LLM API's, and can apply a variety of quantization methods to llava to reduce its memory usage and runtime.  It also implements the CLIP vision encoder.  There are pre-quantized versions of Llava-1.5 available in GGUF format for 4-bit and 5-bit:
+[llama.cpp](https://github.com/ggerganov/llama.cpp) is one of the faster LLM API's, and can apply a variety of quantization methods to Llava to reduce its memory usage and runtime.  It uses CUDA for LLM inference on the GPU.  There are pre-quantized versions of Llava-1.5 available in GGUF format for 4-bit and 5-bit:
 
 * [mys/ggml_llava-v1.5-7b](https://huggingface.co/mys/ggml_llava-v1.5-7b)
 * [mys/ggml_llava-v1.5-13b](https://huggingface.co/mys/ggml_llava-v1.5-13b)
@@ -195,33 +197,4 @@ A lower temperature like 0.1 is recommended for better quality (`--temp 0.1`), a
 In this image, a small wooden pier extends out into a calm lake, surrounded by tall trees and mountains. The pier seems to be the only access point to the lake. The serene scene includes a few boats scattered across the water, with one near the pier and the others further away. The overall atmosphere suggests a peaceful and tranquil setting, perfect for relaxation and enjoying nature.
 ```
 
-You can put your own images in the mounted `jetson-containers/data` directory.  The code for llava-cli can be found [here](https://github.com/ggerganov/llama.cpp/tree/master/examples/llava).
-
-## 4. Python Script with `llama-cpp-python`
-
-The [llama-cpp-python](https://github.com/abetlen/llama-cpp-python) bindings come with [Python code](https://github.com/abetlen/llama-cpp-python?tab=readme-ov-file#multi-modal-models) for running the quantized GGUF Llava-1.5 models from above:
-
-```python
->>> from llama_cpp import Llama
->>> from llama_cpp.llama_chat_format import Llava15ChatHandler
->>> chat_handler = Llava15ChatHandler(clip_model_path="path/to/llava/mmproj.bin")
->>> llm = Llama(
-  model_path="./path/to/llava/llama-model.gguf",
-  chat_handler=chat_handler,
-  n_ctx=2048, # n_ctx should be increased to accomodate the image embedding
-  logits_all=True,# needed to make llava work
-)
->>> llm.create_chat_completion(
-    messages = [
-        {"role": "system", "content": "You are an assistant who perfectly describes images."},
-        {
-            "role": "user",
-            "content": [
-                {"type": "image_url", "image_url": {"url": "https://.../image.png"}},
-                {"type" : "text", "text": "Describe this image in detail please."}
-            ]
-        }
-    ]
-)
-```
-
+You can put your own images in the mounted `jetson-containers/data` directory.  The C++ code for llava-cli can be found [here](https://github.com/ggerganov/llama.cpp/tree/master/examples/llava).  The llama-cpp-python bindings also [support Llava](https://github.com/abetlen/llama-cpp-python?tab=readme-ov-file#multi-modal-models), however they are significantly slower from Python for some reason (potentially the pre/post-processing) 
