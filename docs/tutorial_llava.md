@@ -4,13 +4,15 @@
 
 1. [Chat with Llava using `text-generation-webui`](#1-chat-with-llava-using-text-generation-webui)
 2. [Run from the terminal with `llava.serve.cli`](#2-run-from-the-terminal-with-llavaservecli)
-3. [Quantized GGUF with llama.cpp](#3-quantized-gguf-with-llamacpp)
+3. [Quantized GGUF with `llama.cpp`](#3-quantized-gguf-with-llamacpp)
+4. [Optimized Multimodal Pipeline with `local_llm`](#4-optimized-multimodal-pipeline-with-local_llm)
 
 | Llava-1.5-13B (Jetson AGX Orin)                                           | Quantization | Tokens/sec |  Memory |
 |---------------------------------------------------------------------------|:------------:|:----------:|:-------:|
 | [`text-generation-webui`](#1-chat-with-llava-using-text-generation-webui) | 4-bit (GPTQ) |     2.3    |  8.8 GB |
 | [`llava.serve.cli`](#2-run-from-the-terminal-with-llavaservecli)          |  FP16 (None) |     4.2    | 27.7 GB |
 | [`llama.cpp`](#3-quantized-gguf-with-llamacpp)                            | 4-bit (Q4_K) |    10.1    |  9.2 GB |
+| [`local_llm`](#4-optimized-multimodal-pipeline-with-local_llm)            | 4-bit (MLC)  |    21.1    |  8.5 GB |
 
 The latest Llava-1.5 is used in this tutorial.  It comes in 7B and 13B variants, however the 13B model has significantly improved accuracy.
 
@@ -204,3 +206,71 @@ In this image, a small wooden pier extends out into a calm lake, surrounded by t
 ```
 
 You can put your own images in the mounted `jetson-containers/data` directory.  The C++ code for llava-cli can be found [here](https://github.com/ggerganov/llama.cpp/tree/master/examples/llava).  The llama-cpp-python bindings also [support Llava](https://github.com/abetlen/llama-cpp-python?tab=readme-ov-file#multi-modal-models), however they are significantly slower from Python for some reason (potentially the pre/post-processing) 
+
+## 4. Optimized Multimodal Pipeline with `local_llm`
+
+The optimized [local_llm](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm) container using MLC/TVM for quantization and inference  provides the highest performance in this tutorial on Jetson.  It efficiently manages the CLIP embeddings and KV cache.  You can find the Python code for the chat program used in this example [here](https://github.com/dusty-nv/jetson-containers/blob/master/packages/llm/local_llm/__main__.py). 
+
+``` bash
+./run.sh $(./autotag local_llm) \
+  python3 -m local_llm --api=mlc \
+    --model liuhaotian/llava-v1.5-13b 
+```
+
+This starts an interactive console-based chat with Llava, and on the first run the model will automatically be downloaded from HuggingFace and quantized using MLC and W4A16 precision (which can take some time).  See [here](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm#text-chat) for command-line options for the local_llm [`__main__.py`](https://github.com/dusty-nv/jetson-containers/blob/master/packages/llm/local_llm/__main__.py)
+
+You'll end up at a `>> PROMPT:` in which you can enter the path or URL of an image file, followed by your question about the image.  You can follow-up with multiple questions about the same image.  Llava-1.5 does not understand multiple images in the same chat, so when changing images, first reset the chat history by entering `clear` or `reset` as the prompt.  You can also automate this from the command-line:
+
+```
+./run.sh $(./autotag local_llm) \
+  python3 -m local_llm --api=mlc \
+    --model liuhaotian/llava-v1.5-13b \
+    --prompt '/data/images/hoover.jpg' \
+    --prompt 'what does the road sign say?' \
+    --prompt 'what kind of environment is it?' \
+    --prompt 'reset' \
+    --prompt '/data/images/lake.jpg' \
+    --prompt 'please describe the scene.' \
+    --prompt 'are there any hazards to be aware of?'
+```
+
+**Results** [[hoover.jpg]](https://github.com/dusty-nv/jetson-containers/blob/master/data/images/hoover.jpg) [[lake.jpg]](https://github.com/dusty-nv/jetson-containers/blob/master/data/images/lake.jpg)
+
+```
+>> PROMPT: /data/images/hoover.jpg
+>> PROMPT: what does the road sign say?
+The road sign says "Hoover Dam exit 2".
+
+>> PROMPT: what kind of environment is it?
+It is a mountainous environment, with a road going through the mountains.
+
+>> PROMPT: /data/images/lake.jpg
+>> PROMPT: please describe the scene.
+The image features a wooden pier extending out into a large body of water, possibly a lake. The pier is situated near a forest, creating a serene and peaceful atmosphere. The water appears to be calm, and the pier seems to be the only structure in the area. The scene is captured during the day, with the sunlight illuminating the landscape.
+
+>> PROMPT: are there any hazards to be aware of?
+The image does not provide any specific hazards to be aware of. However, it is essential to be cautious while walking on a pier, as it may be slippery or have loose boards. Additionally, one should be mindful of the water depth and currents, as well as any potential wildlife in the area.
+```
+
+#### Benchmarks
+
+#### JSON
+
+Llava-1.5 can also output JSON, which the authors cover in the [paper](https://arxiv.org/abs/2310.03744), and can be used to programatically query information about the image:
+
+```
+./run.sh $(./autotag local_llm) \
+  python3 -m local_llm --api=mlc \
+    --model liuhaotian/llava-v1.5-13b \
+    --prompt '/data/images/hoover.jpg' \
+    --prompt 'extract any text from the image as json'
+```
+```  
+{
+  "sign": "Hoover Dam",
+  "exit": "2",
+  "distance": "1 1/2 mile"
+}
+```
+
+ 
