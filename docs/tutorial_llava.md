@@ -4,15 +4,15 @@
 
 1. [Chat with Llava using `text-generation-webui`](#1-chat-with-llava-using-text-generation-webui)
 2. [Run from the terminal with `llava.serve.cli`](#2-run-from-the-terminal-with-llavaservecli)
-3. [Quantized GGUF with `llama.cpp`](#3-quantized-gguf-with-llamacpp)
+3. [Quantized GGUF models with `llama.cpp`](#3-quantized-gguf-models-with-llamacpp)
 4. [Optimized Multimodal Pipeline with `local_llm`](#4-optimized-multimodal-pipeline-with-local_llm)
 
 | Llava-1.5-13B (Jetson AGX Orin)                                           | Quantization | Tokens/sec |  Memory |
 |---------------------------------------------------------------------------|:------------:|:----------:|:-------:|
-| [`text-generation-webui`](#1-chat-with-llava-using-text-generation-webui) | 4-bit (GPTQ) |     2.3    |  8.8 GB |
+| [`text-generation-webui`](#1-chat-with-llava-using-text-generation-webui) | 4-bit (GPTQ) |     2.3    |  9.7 GB |
 | [`llava.serve.cli`](#2-run-from-the-terminal-with-llavaservecli)          |  FP16 (None) |     4.2    | 27.7 GB |
-| [`llama.cpp`](#3-quantized-gguf-with-llamacpp)                            | 4-bit (Q4_K) |    10.1    |  9.2 GB |
-| [`local_llm`](#4-optimized-multimodal-pipeline-with-local_llm)            | 4-bit (MLC)  |    21.1    |  8.5 GB |
+| [`llama.cpp`](#3-quantized-gguf-models-with-llamacpp)                     | 4-bit (Q4_K) |    10.1    |  9.2 GB |
+| [`local_llm`](#4-optimized-multimodal-pipeline-with-local_llm)            | 4-bit (MLC)  |    21.1    |  8.7 GB |
 
 The latest Llava-1.5 is used in this tutorial.  It comes in 7B and 13B variants, however the 13B model has significantly improved accuracy.
 
@@ -170,7 +170,7 @@ python3 -m llava.serve.model_worker \
 ``` 
 -->
 
-## 3. Quantized GGUF with `llama.cpp`
+## 3. Quantized GGUF models with `llama.cpp`
 
 [llama.cpp](https://github.com/ggerganov/llama.cpp) is one of the faster LLM API's, and can apply a variety of quantization methods to Llava to reduce its memory usage and runtime.  It uses CUDA for LLM inference on the GPU.  There are pre-quantized versions of Llava-1.5 available in GGUF format for 4-bit and 5-bit:
 
@@ -254,6 +254,11 @@ The image does not provide any specific hazards to be aware of. However, it is e
 
 #### Benchmarks
 
+| Model           | Response                                  | Tokens/sec | Memory |
+|-----------------|-------------------------------------------|:----------:|:------:|
+| `llava-1.5-7b`  | The road sign says "Hoover Dam 1/2 Mile." |    42.2    | 6.4 GB |
+| `llava-1.5-13b` | The road sign says "Hoover Dam exit 2".   |    21.1    | 8.7 GB |
+
 #### JSON
 
 Llava-1.5 can also output JSON, which the authors cover in the [paper](https://arxiv.org/abs/2310.03744), and can be used to programatically query information about the image:
@@ -273,4 +278,8 @@ Llava-1.5 can also output JSON, which the authors cover in the [paper](https://a
 }
 ```
 
- 
+#### Web UI
+
+To use local_llm with a web UI instead, see the [Voice Chat](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm#voice-chat) section of the documentation: 
+
+<a href="https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm#local_llm" target="_blank"><img src="https://raw.githubusercontent.com/dusty-nv/jetson-containers/docs/docs/images/llamaspeak_llava_clip.gif"></a>
