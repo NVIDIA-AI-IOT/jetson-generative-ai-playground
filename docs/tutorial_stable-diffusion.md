@@ -6,17 +6,17 @@ Let's run AUTOMATIC1111's [`stable-diffusion-webui`](https://github.com/AUTOMATI
 
 !!! abstract "What you need"
 
-    1. One of the following Jetson's:
+    1. One of the following Jetson devices:
 
-        <span class="blobDarkGreen4">Jetson AGX Orin 64GB</span>
+        <span class="blobDarkGreen4">Jetson AGX Orin (64GB)</span>
         <span class="blobDarkGreen5">Jetson AGX Orin (32GB)</span>
-        <span class="blobLightGreen4">Jetson Orin Nano Orin (8GB)</span>
+        <span class="blobLightGreen3">Jetson Orin NX (16GB)</span>
+        <span class="blobLightGreen4">Jetson Orin Nano (8GB)</span>
 
-    2. Running one of the following versions of [JetPack 5](https://developer.nvidia.com/embedded/jetpack)
+    2. Running one of the following versions of [JetPack](https://developer.nvidia.com/embedded/jetpack):
 
-        <span class="blobPink1">JetPack 5.1.2 (L4T r35.4.1)</span>
-        <span class="blobPink2">JetPack 5.1.1 (L4T r35.3.1)</span>
-        <span class="blobPink3">JetPack 5.1 (L4T r35.2.1)</span>
+        <span class="blobPink1">JetPack 5 (L4T r35.x)</span>
+        <span class="blobPink2">JetPack 6 (L4T r36.x)</span>
 
     3. Sufficient storage space (preferably with NVMe SSD).
 
