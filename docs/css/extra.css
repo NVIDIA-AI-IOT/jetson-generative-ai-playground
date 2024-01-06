@@ -1,22 +1,13 @@
 .md-header {
-    background: linear-gradient(90deg, #004B96 0%,hsl(132, 100%, 92%) 66%, #76b900 100%);
-    /* color: black; */
+    background: #FFFFFF
+}
+
+.md-header__title {
+    color: #000000
 }
 
 .md-tabs {
-    background: linear-gradient(90deg, #004B96 0%,hsl(132, 100%, 92%) 66%, #76b900 100%)
-                #DDDDDD;
-    background-blend-mode: multiply;
-    transition: background-color 500ms linear;
-    color: white; 
-    font-weight: bold;
-}
-
-.md-tabs.topped {
-    background: linear-gradient(90deg, #004B96 0%,hsl(132, 100%, 92%) 66%, #76b900 100%);
-    transition: background-color 500ms linear;
-    color: black; 
-    font-weight: bold;
+    background: #000000
 }
 
 .md-nav__link--active {
@@ -36,4 +27,18 @@
     margin-bottom: 0.2rem;
     margin-left: auto;
     padding: 0 0.8rem;
+}
+
+.md-typeset a {
+    text-decoration: underline;
+    text-decoration-color: var(--md-accent-fg-color);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.3125em;
+}
+
+.md-typeset a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--md-primary-fg-color);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.3125em;
 }

@@ -14,7 +14,7 @@ theme:
   font: Incosolata
   palette:
     - media: "(prefers-color-scheme: light)" 
-      scheme: playful-purple
+      scheme: nv-black-green
 
   features:
       # - navigation.indexes
