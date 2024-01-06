@@ -1,0 +1,13 @@
+<!-- Elements added to main will be displayed on all pages -->
+{% extends "base.html" %}
+
+<!-- Announcement bar -->
+{% block announce %}
+  <style>
+    .md-announce a { color: #76b900; text-decoration: underline;}
+    .md-announce a:focus { color: hsl(82, 100%, 72%);  text-decoration: underline; }
+    .md-announce a:hover { color: hsl(82, 100%, 72%); text-decoration: underline;}
+  </style>
+    <div class="md-announce">View our latest technical webinar, <a href="https://youtu.be/6mCFzDatGGc" target="_blank"><b></b>Bringing AI to Life with NVIDIA Jetson</b></a> on YouTube.</div>
+    
+{% endblock %}

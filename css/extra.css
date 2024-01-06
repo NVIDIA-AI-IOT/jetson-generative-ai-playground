@@ -1,0 +1,44 @@
+.md-header {
+    background: #FFFFFF
+}
+
+.md-header__title {
+    color: #000000
+}
+
+.md-tabs {
+    background: #000000
+}
+
+.md-nav__link--active {
+    font-weight: 900;
+}
+
+/* Bigger width for md-content for main text */
+.md-grid {
+    max-width: 90%; /* or 100%, if you want to stretch to full-width */
+  }
+
+.md-banner__inner {
+    font-size: .7rem;
+    margin: 0.2rem auto;
+    margin-top: 0.2rem;
+    margin-right: auto;
+    margin-bottom: 0.2rem;
+    margin-left: auto;
+    padding: 0 0.8rem;
+}
+
+.md-typeset a {
+    text-decoration: underline;
+    text-decoration-color: var(--md-accent-fg-color);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.3125em;
+}
+
+.md-typeset a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--md-primary-fg-color);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.3125em;
+}
