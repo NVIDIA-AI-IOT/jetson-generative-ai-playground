@@ -23,6 +23,33 @@
 	--md-default-fg-color--lightest:     #f9fff2;
 }
 
+[data-md-color-scheme="nv-black-green"] {
+
+	--md-typeset-a-color: #000000;
+
+	--md-accent-fg-color--rgb: #76b900;  
+	--md-accent-fg-color--hsl: hsl(82, 100%, 36%);
+	--md-accent-fg-color: var(--md-accent-fg-color--hsl);
+	
+	--md-accent-fg-color--dark-hsl: hsl(82, 100%, 32%);
+	--md-accent-fg-color--dark: var(--md-accent-fg-color--dark-hsl);
+	
+	--md-accent-fg-color--light-rgb: #81BF15;
+	--md-accent-fg-color--light-hsl: hsla(82, 80%, 42%, 1.0);
+	--md-accent-fg-color--light: var(--md-accent-fg-color--light-hsl);
+	
+	--md-accent-bg-color--rgb: 255, 255, 255; /* #ffffff */
+	--md-accent-bg-color: rgb(#000000);
+
+	--md-primary-fg-color:        hsl(82, 0%, 10%);
+	--md-primary-fg-color--light: hsl(82, 0%, 30%);
+	--md-primary-fg-color--dark:  hsl(82, 0%, 0%);
+
+	--md-mermaid-node-bg-color: #e3f5c5;
+    --md-mermaid-node-fg-color: #518000;
+	--md-default-fg-color--lightest:     #f9fff2;
+}
+
 a.nv-buy-link,.load-buy-link {
     text-decoration: none;
     background-color: #76b900;
