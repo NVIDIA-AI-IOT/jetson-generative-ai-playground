@@ -26,8 +26,17 @@ sudo docker pull squidfunk/mkdocs-material
 docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material
 ```
 
-> If you get "docker: Got permission denied while trying to connect to the Docker daemon socket at ..." error, 
-> issue `sudo chmod 666 /var/run/docker.sock` to get around with the issue.
+**Tip**: If you see the following output:   
+> "docker: Got permission denied while trying to connect to the Docker daemon socket at ..." 
+
+You can execute the following (preferred) and then logout and login for it to take effect:
+```
+sudo usermod -aG docker ${USER}
+```
+OR the following
+```
+sudo chmod 666 /var/run/docker.sock 
+```
 
 ## How to also publish on GitHub
 
