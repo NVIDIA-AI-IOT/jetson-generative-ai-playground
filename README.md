@@ -31,9 +31,11 @@ docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material
 
 You can execute the following (preferred) and then logout and login for it to take effect:
 ```
+sudo groupadd docker
 sudo usermod -aG docker ${USER}
+newgrp docker # If you don't want to logout and login
 ```
-OR the following
+OR the following (as a temporary workaround)
 ```
 sudo chmod 666 /var/run/docker.sock 
 ```
