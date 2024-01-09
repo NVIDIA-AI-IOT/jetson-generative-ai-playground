@@ -2,7 +2,7 @@
 
 Let's run [`TAM`](https://github.com/gaomingqi/Track-Anything) to perform Segment Anything on videos on NVIDIA Jetson.
 
-![](./images/TAM_screenshot_cat.png)
+![](../images/TAM_screenshot_cat.png)
 
 !!! abstract "What you need"
 
@@ -53,11 +53,11 @@ Open your browser and access `http://<IP_ADDRESS>:12212`.
 Check out the [official tutorial](https://github.com/gaomingqi/Track-Anything/blob/master/doc/tutorials.md) to learn how to operate the web UI.
 
 <video controls>
-<source src="./images/TAM_screencast_cat_720p-80pcnt.mp4" type="video/mp4">
+<source src="../images/TAM_screencast_cat_720p-80pcnt.mp4" type="video/mp4">
 </video>
 
 ## Results
 
 <video controls autoplay>
-<source src="./images/TAM_15s_1080p.mp4" type="video/mp4">
+<source src="../images/TAM_15s_1080p.mp4" type="video/mp4">
 </video>

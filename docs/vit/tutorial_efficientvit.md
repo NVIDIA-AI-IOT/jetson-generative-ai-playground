@@ -84,4 +84,4 @@ So you can go back to your host machine, and check `./jetson-containers/data/ben
 
 You should find the output like this.
 
-![](./images/efficientvit_sam_demo.png)
+![](../images/efficientvit_sam_demo.png)

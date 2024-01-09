@@ -17,7 +17,7 @@ theme:
       scheme: nv-black-green
 
   features:
-      # - navigation.indexes
+      - navigation.indexes
       - navigation.expand
       - navigation.tabs
       - navigation.tabs.sticky
@@ -28,7 +28,13 @@ theme:
       
 plugins:
   - search
-
+  - redirects:
+      redirect_maps:
+        'tutorial_efficientvit.md': 'vit/tutorial_efficientvit.md'
+        'tutorial_nanosam.md': 'vit/tutorial_nanosam.md'
+        'tutorial_nanoowl.md': 'vit/tutorial_nanoowl.md'
+        'tutorial_sam.md': 'vit/tutorial_sam.md'
+        'tutorial_tam.md': 'vit/tutorial_tam.md'
   
 use_directory_urls: false
 
@@ -77,12 +83,13 @@ nav:
     - Image Generation:
       - Stable Diffusion: tutorial_stable-diffusion.md
       - Stable Diffusion XL: tutorial_stable-diffusion-xl.md
-    - Vision Transformers (ViT):
-      - EfficientViT 🆕: tutorial_efficientvit.md
-      - NanoSAM: tutorial_nanosam.md
-      - NanoOWL 🆕: tutorial_nanoowl.md
-      - SAM: tutorial_sam.md
-      - TAM: tutorial_tam.md
+    - Vision Transformers (ViT): 
+      - vit/index.md
+      - EfficientViT 🆕: vit/tutorial_efficientvit.md
+      - NanoSAM: vit/tutorial_nanosam.md
+      - NanoOWL 🆕: vit/tutorial_nanoowl.md
+      - SAM: vit/tutorial_sam.md
+      - TAM: vit/tutorial_tam.md
     # - NanoOWL: tutorial_nanoowl.md
     - Vector Database:
       - NanoDB: tutorial_nanodb.md
