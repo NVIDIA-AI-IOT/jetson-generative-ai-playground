@@ -78,4 +78,4 @@ cd jetson-containers
 
 ### Result
 
-![](./images/nanoowl_chrome_window.png)
+![](../images/nanoowl_chrome_window.png)
