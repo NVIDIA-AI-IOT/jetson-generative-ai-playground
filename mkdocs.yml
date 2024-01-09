@@ -9,8 +9,7 @@ edit_uri: ''
 theme:
   name: "material"
   custom_dir: docs/overrides
-  favicon: images/favicon_navy.png
-  logo: images/cube_white.png
+  favicon: images/nvidia-favicon-rgb-16x16px@2x.png
   font: Incosolata
   palette:
     - media: "(prefers-color-scheme: light)" 
