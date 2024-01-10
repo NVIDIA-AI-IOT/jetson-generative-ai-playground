@@ -1,7 +1,7 @@
 site_name: NVIDIA Jetson Generative AI Lab
 site_url: 
 site_description: Showcasing generative AI projects that run on Jetson
-copyright: Copyright &copy; 2024 NVIDIA Corporation
+copyright: <ul class="global-footer__links"><li><a href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/" target="_blank">Privacy Policy</a></li><li> <a href="https://www.nvidia.com/en-us/privacy-center/" target="_blank">Manage My Privacy</a> </li> <li> <a href="https://www.nvidia.com/en-us/preferences/email-preferences/" target="_blank">Do Not Sell or Share My Data</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/legal-info/" target="_blank">Legal</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/accessibility/" target="_blank">Accessibility</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/company-policies/" target="_self">Corporate Policies</a> </li> <li> <a href="https://www.nvidia.com/en-us/product-security/" target="_blank">Product Security</a> </li> <li> <a href="https://www.nvidia.com/en-us/contact/" target="_blank">Contact</a> </li> </ul><div class="global-footer__copyright">Copyright &copy; 2024 NVIDIA Corporation</div>
 ## Repository
 #repo_name: jetson-generative-ai-playground
 #repo_url: https://github.com/NVIDIA-AI-IOT/jetson-generative-ai-playground
@@ -25,7 +25,7 @@ theme:
       - content.tabs.link
       - content.code.copy
       - announce.dismiss
-      
+
 plugins:
   - search
   - redirects:
