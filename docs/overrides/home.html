@@ -1,5 +1,9 @@
 <!-- Custom HTML site displayed as the Home chapter -->
 {% extends "main.html" %}
+{% block extrahead %}
+  <script src="https://kit.fontawesome.com/1512963100.js" crossorigin="anonymous"></script>
+  {{ super() }}
+{% endblock %}
 {% block tabs %}
 {{ super() }}
 <style>
@@ -154,6 +158,20 @@
             max-width: 33.333333%;
         }
     }
+    @media (min-width: 720px) {
+        .col-lg-3 {
+            -ms-flex: 0 0 33.333333%;
+            flex: 0 0 33.333333%;
+            max-width: 33.333333%;
+        }
+    }
+    @media (min-width: 992px) {
+        .col-lg-3 {
+            -ms-flex: 0 0 25%;
+            flex: 0 0 25%;
+            max-width: 25%;
+        }
+    }
     .mb-4, .my-4 {
         margin-bottom: 1.5rem!important;
     }
@@ -175,11 +193,11 @@
         display: block !important;
     }
 
-    .padding-v1h1rem5{
-        padding-left: 1.0rem!important;
-        padding-right: 1.0rem!important;
-        padding-top: 1.5rem!important;
-        padding-bottom: 1.5rem!important;
+    .padding-feature-box-item{
+        padding-left: 0.8rem!important;
+        padding-right: 0.8rem!important;
+        padding-top: 0.8rem!important;
+        padding-bottom: 0.8rem!important;
     }
 
     .padding-graph{
@@ -197,9 +215,9 @@
         display: block!important;
     }
     
-    .mb-3, .my-3 {
+    /* .mb-3, .my-3 {
         margin-bottom: 1rem!important;
-    }
+    } */
     
     .mb-0, .my-0 {
         margin-bottom: 0!important;
@@ -213,18 +231,7 @@
         word-break: break-word
     }
 
-    .feature-box h2 {
-        color: #333;
-        font-weight: 700;
-        font-size: 1.5rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        line-height: normal;
-        font-family: inherit;
-    }
-
-    .feature-box h3 {
+    h2 {
         color: #333;
         font-weight: 700;
         font-size: 1.2rem;
@@ -232,20 +239,42 @@
         overflow: hidden;
         text-overflow: ellipsis;
         line-height: normal;
-        margin-top: 20px;
-        margin-bottom: 10px;
         font-family: inherit;
     }
 
+    .feature-box {
+        text-align: left;
+    }
+
+    .feature-box a{
+        height: 300px;
+        max-width: 320px;
+    }
+
+    .feature-box h3 {
+        color: #333;
+        font-weight: 700;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: normal;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        font-family: inherit;
+        text-align: left;
+    }
+
     .feature-box p {
-        font-size: 16px;
-        font-weight: 500;
+        font-size: 0.6rem;
+        font-weight: 300;
         line-height: 1.8em;
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
         color: #111;
         margin: 0 0 10px;
         display: block;
+        text-align: left;
     }
 
     @media screen and (max-width:30em) {
@@ -346,6 +375,12 @@
     .md-footer-social {
         padding-top: 20px;
     }
+
+    .twemoji {
+        display: inline-flex;
+        height: 0.6rem;
+        vertical-align: text-top;
+    }
 </style>
 
 <!-- Main site Entry button descriptions -->
@@ -371,66 +406,82 @@
 
 <!-- feature-box -->
 <section class="section">
-    <div class="top-hr feature-box">
+    <div class="top-hr">
         <div class="row justify-content-center">
             <div class="col-12 text-center">
                 <h2 class="section-title">Check out our tutorials</h2>
             </div>
             <!-- feature-box-item -->
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <a href="tutorial_text-generation.html" class="bg-white shadow padding-v1h1rem5 text-center d-block match-height" style="height: 300px;">
+            <div class="col-lg-3 col-sm-6 mb-4 feature-box">
+                <a href="tutorial_text-generation.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height">
                     <img src="./images/iconnv_text-generation_512x512.jpg" width="120" height="120">
                     <h3 class="mb-3 mt-0">Text Generation</h3>
                     <p class="mb-0">Run LLM-based chat bot on Jetson</p>
+                    <p class="nv-teaser-text-link">Learn More
+                        <span class="fa-solid fa-angle-right nv-teaser_action-link-icon"></span></p>
                 </a>
             </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <a href="tutorial_llava.html" class="bg-white shadow padding-v1h1rem5 text-center d-block match-height" style="height: 300px;">
+            <div class="col-lg-3 col-sm-6 mb-4 feature-box">
+                <a href="tutorial_llava.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height" >
                     <img src="./images/iconnv_text-vision_512x512.jpg" width="120" height="120">
                     <h3 class="mb-3 mt-0">Text + Vision</h3>
                     <p class="mb-0">Run multimodal Vision-Language models to give your AI access to vision</p>
+                    <p class="nv-teaser-text-link">Learn More
+                        <span class="fa-solid fa-angle-right nv-teaser_action-link-icon"></span></p>
                 </a>
             </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <a href="tutorial_stable-diffusion.html" class="bg-white shadow padding-v1h1rem5 text-center d-block match-height" style="height: 300px;">
+            <div class="col-lg-3 col-sm-6 mb-4 feature-box">
+                <a href="tutorial_stable-diffusion.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height" >
                     <img src="./images/iconnv_image-generation_512x512.jpg" width="120" height="120">
                     <h3 class="mb-3 mt-0">Image Generation</h3>
                     <p class="mb-0">Run diffusion models to generate stunning images interactively on Jetson</p>
+                    <p class="nv-teaser-text-link">Learn More
+                        <span class="fa-solid fa-angle-right nv-teaser_action-link-icon"></span></p>
                 </a>
             </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <a href="tutorial_distillation.html" class="bg-white shadow padding-v1h1rem5 text-center d-block match-height" style="height: 300px;">
+            <div class="col-lg-3 col-sm-6 mb-4 feature-box">
+                <a href="tutorial_distillation.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height" >
                     <img src="./images/iconnv_distillation_512x512.jpg" width="120" height="120">
                     <h3 class="mb-3 mt-0">Distillation</h3>
-                    <p class="mb-0">Learn a technique to bring the power of a large foundation model to Jetson by knowledge distilation</p>
+                    <p class="mb-0">Learn a technique to bring the power of a large foundation model to Jetson
+                    <p class="nv-teaser-text-link">Learn More
+                        <span class="fa-solid fa-angle-right nv-teaser_action-link-icon"></span></p>
                 </a>
             </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <a href="vit/index.html" class="bg-white shadow padding-v1h1rem5 text-center d-block match-height" style="height: 300px;">
+            <div class="col-lg-3 col-sm-6 mb-4 feature-box">
+                <a href="vit/index.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height" >
                     <img src="./images/iconnv_nanosam_512x512.jpg" width="120" height="120">
                     <h3 class="mb-3 mt-0">Vision Transformer (ViT)</h3>
-                    <p class="mb-0">Vision Transformer examples, with some models optimized to run in realtime on Jetson</p>
+                    <p class="mb-0">Vision Transformer examples, with models optimized to run in realtime on Jetson</p>
+                    <p class="nv-teaser-text-link">Learn More
+                        <span class="fa-solid fa-angle-right nv-teaser_action-link-icon"></span></p>
                 </a>
             </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <a href="tutorial_nanodb.html" class="bg-white shadow padding-v1h1rem5 text-center d-block match-height" style="height: 300px;">
+            <div class="col-lg-3 col-sm-6 mb-4 feature-box">
+                <a href="tutorial_nanodb.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height" >
                     <img src="./images/iconnv_nanodb_512x512.jpg" width="120" height="120">
                     <h3 class="mb-3 mt-0">NanoDB</h3>
                     <p class="mb-0">Multimodal vector database that uses embeddings for txt2img and img2img similarity search</p>
+                    <p class="nv-teaser-text-link">Learn More
+                        <span class="fa-solid fa-angle-right nv-teaser_action-link-icon"></span></p>
                 </a>
             </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <a href="tutorial_whisper.html" class="bg-white shadow padding-v1h1rem5 text-center d-block match-height" style="height: 300px;">
+            <div class="col-lg-3 col-sm-6 mb-4 feature-box">
+                <a href="tutorial_whisper.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height" >
                     <img src="./images/iconnv_audio-generation_512x512.jpg" width="120" height="120">
                     <h3 class="mb-3 mt-0">Whisper</h3>
                     <p class="mb-0">Run OpenAI's Whisper model to transcribe audio</p>
+                    <p class="nv-teaser-text-link">Learn More
+                        <span class="fa-solid fa-angle-right nv-teaser_action-link-icon"></span></p>
                 </a>
             </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <a href="tutorial_llamaspeak.html" class="bg-white shadow padding-v1h1rem5 text-center d-block match-height" style="height: 300px;">
+            <div class="col-lg-3 col-sm-6 mb-4 feature-box">
+                <a href="tutorial_llamaspeak.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height" >
                     <img src="./images/iconnv_llamaspeak_512x512.jpg" width="120" height="120">
                     <h3 class="mb-3 mt-0">Llamaspeak</h3>
                     <p class="mb-0">Live interaction with Llama LLM using NVIDIA Riva AST/TTS</p>
+                    <p class="nv-teaser-text-link">Learn More
+                        <span class="fa-solid fa-angle-right nv-teaser_action-link-icon"></span></p>
                 </a>
             </div>
         </div>
@@ -441,7 +492,7 @@
 
 <!-- feature-box -->
 <section class="section-gray">
-    <div class="top-hr feature-box">
+    <div class="top-hr">
         <div class="row justify-content-center">
             <div class="col-12 text-center">
                 <h2 class="section-title">Benchmarks</h2>
@@ -453,7 +504,7 @@
                 </a>
             </div>
             <div class="col-lg-4 col-sm-6 mb-4">
-                <a href="benchmarks.html#vlm" class="padding-graph bg-white shadow padding-v1h1rem5 text-center d-block match-height" style="height: 280px;">
+                <a href="benchmarks.html#vlm" class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height" style="height: 280px;">
                     <img src="./images/graph_vlm-text-generation.svg" style="width: 100%; height: 100%; object-fit:cover"></img>
                 </a>
             </div>
