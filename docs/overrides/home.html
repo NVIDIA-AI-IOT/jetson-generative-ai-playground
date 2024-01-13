@@ -251,6 +251,28 @@
         max-width: 320px;
     }
 
+    .feature-box a i {
+        color: #76b900!important;
+        font-size: 0.6rem;
+        -webkit-transition: .4s ease-out;
+        transition: all ease-out .4s !important
+    }
+
+    .feature-box a:hover i {
+        color: #000!important;
+        transform: translate(0.5em);
+    }
+
+    .feature-box a p.feature-card-desc{
+        min-height: 60px;
+    }
+
+    .feature-box a .nv-teaser-text-link {
+        font-weight: 700;
+        padding-bottom: 15px !important;
+        padding-top: 0px !important;
+    }
+
     .feature-box h3 {
         color: #333;
         font-weight: 700;
@@ -416,72 +438,64 @@
                 <a href="tutorial_text-generation.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height">
                     <img src="./images/iconnv_text-generation_512x512.jpg" width="120" height="120">
                     <h3 class="mb-3 mt-0">Text Generation</h3>
-                    <p class="mb-0">Run LLM-based chat bot on Jetson</p>
-                    <p class="nv-teaser-text-link">Learn More
-                        <span class="fa-solid fa-angle-right nv-teaser_action-link-icon"></span></p>
+                    <p class="feature-card-desc">Run LLM-based chat bot on Jetson</p>
+                    <p class="nv-teaser-text-link">Learn More <i class="fa-solid fa-angle-right"></i></p>
                 </a>
             </div>
             <div class="col-lg-3 col-sm-6 mb-4 feature-box">
                 <a href="tutorial_llava.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height" >
                     <img src="./images/iconnv_text-vision_512x512.jpg" width="120" height="120">
                     <h3 class="mb-3 mt-0">Text + Vision</h3>
-                    <p class="mb-0">Run multimodal Vision-Language models to give your AI access to vision</p>
-                    <p class="nv-teaser-text-link">Learn More
-                        <span class="fa-solid fa-angle-right nv-teaser_action-link-icon"></span></p>
+                    <p class="feature-card-desc">Run multimodal Vision-Language models to give your AI access to vision</p>
+                    <p class="nv-teaser-text-link">Learn More <i class="fa-solid fa-angle-right"></i></p>
                 </a>
             </div>
             <div class="col-lg-3 col-sm-6 mb-4 feature-box">
                 <a href="tutorial_stable-diffusion.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height" >
                     <img src="./images/iconnv_image-generation_512x512.jpg" width="120" height="120">
                     <h3 class="mb-3 mt-0">Image Generation</h3>
-                    <p class="mb-0">Run diffusion models to generate stunning images interactively on Jetson</p>
-                    <p class="nv-teaser-text-link">Learn More
-                        <span class="fa-solid fa-angle-right nv-teaser_action-link-icon"></span></p>
+                    <p class="feature-card-desc">Run diffusion models to generate stunning images interactively on Jetson</p>
+                    <p class="nv-teaser-text-link">Learn More <i class="fa-solid fa-angle-right"></i></p>
                 </a>
             </div>
             <div class="col-lg-3 col-sm-6 mb-4 feature-box">
                 <a href="tutorial_distillation.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height" >
                     <img src="./images/iconnv_distillation_512x512.jpg" width="120" height="120">
                     <h3 class="mb-3 mt-0">Distillation</h3>
-                    <p class="mb-0">Learn a technique to bring the power of a large foundation model to Jetson
-                    <p class="nv-teaser-text-link">Learn More
-                        <span class="fa-solid fa-angle-right nv-teaser_action-link-icon"></span></p>
+                    <p class="feature-card-desc">Learn a technique to bring the power of a large foundation model to Jetson
+                    <p class="nv-teaser-text-link">Learn More <i class="fa-solid fa-angle-right"></i></p>
                 </a>
             </div>
             <div class="col-lg-3 col-sm-6 mb-4 feature-box">
                 <a href="vit/index.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height" >
                     <img src="./images/iconnv_nanosam_512x512.jpg" width="120" height="120">
                     <h3 class="mb-3 mt-0">Vision Transformer (ViT)</h3>
-                    <p class="mb-0">Vision Transformer examples, with models optimized to run in realtime on Jetson</p>
-                    <p class="nv-teaser-text-link">Learn More
-                        <span class="fa-solid fa-angle-right nv-teaser_action-link-icon"></span></p>
+                    <p class="feature-card-desc">Vision Transformer examples, with models optimized to run in realtime on Jetson</p>
+                    <p class="nv-teaser-text-link">Learn More <i class="fa-solid fa-angle-right"></i></p>
                 </a>
             </div>
             <div class="col-lg-3 col-sm-6 mb-4 feature-box">
                 <a href="tutorial_nanodb.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height" >
                     <img src="./images/iconnv_nanodb_512x512.jpg" width="120" height="120">
                     <h3 class="mb-3 mt-0">NanoDB</h3>
-                    <p class="mb-0">Multimodal vector database that uses embeddings for txt2img and img2img similarity search</p>
-                    <p class="nv-teaser-text-link">Learn More
-                        <span class="fa-solid fa-angle-right nv-teaser_action-link-icon"></span></p>
+                    <p class="feature-card-desc">Multimodal vector database that uses embeddings for txt2img and img2img similarity search</p>
+                    <p class="nv-teaser-text-link">Learn More <i class="fa-solid fa-angle-right"></i></p>
                 </a>
             </div>
             <div class="col-lg-3 col-sm-6 mb-4 feature-box">
                 <a href="tutorial_whisper.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height" >
                     <img src="./images/iconnv_audio-generation_512x512.jpg" width="120" height="120">
                     <h3 class="mb-3 mt-0">Whisper</h3>
-                    <p class="mb-0">Run OpenAI's Whisper model to transcribe audio</p>
-                    <p class="nv-teaser-text-link">Learn More
-                        <span class="fa-solid fa-angle-right nv-teaser_action-link-icon"></span></p>
+                    <p class="feature-card-desc">Run OpenAI's Whisper model to transcribe audio</p>
+                    <p class="nv-teaser-text-link">Learn More <i class="fa-solid fa-angle-right"></i></p>
                 </a>
             </div>
             <div class="col-lg-3 col-sm-6 mb-4 feature-box">
                 <a href="tutorial_llamaspeak.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height" >
                     <img src="./images/iconnv_llamaspeak_512x512.jpg" width="120" height="120">
                     <h3 class="mb-3 mt-0">Llamaspeak</h3>
-                    <p class="mb-0">Live interaction with Llama LLM using NVIDIA Riva AST/TTS</p>
-                    <p class="nv-teaser-text-link">Learn More
-                        <span class="fa-solid fa-angle-right nv-teaser_action-link-icon"></span></p>
+                    <p class="feature-card-desc">Live interaction with Llama LLM using NVIDIA Riva AST/TTS</p>
+                    <p class="nv-teaser-text-link">Learn More <i class="fa-solid fa-angle-right"></i></p>
                 </a>
             </div>
         </div>
