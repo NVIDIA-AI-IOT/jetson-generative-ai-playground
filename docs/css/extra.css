@@ -100,20 +100,3 @@
     font-size: 9pt;
     line-height: 1pc;
 }
-
-.nv-teaser-text-link{
-    margin-top: 1rem!important;
-    margin-bottom: 0.3rem!important;
-    text-align: left!important;
-    font-size: 0.6rem!important;
-    font-weight: 700!important;
-    line-height: 1.25em!important;
-    text-decoration: none!important;
-}
-
-.nv-teaser_action-link-icon{
-    color: #76b900!important;
-    font-size: 0.6rem;
-    -webkit-transition: .4s ease-out;
-    transition: .4s ease-out;
-}
