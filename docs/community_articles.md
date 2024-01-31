@@ -7,6 +7,11 @@ hide:
 
 Below, you'll find a collection of community articles showcasing the implementation of generative AI on the Jetson platform.
 
+## <span class="blobNvidia">NVIDIA</span> [Bringing Generative AI to Life with NVIDIA Jetson](https://youtu.be/6mCFzDatGGc){:target="_blank"} <sup><small>(11-7-2023)</small></sup>
+
+Watch this webinar about deploying LLMs, VLMs, ViTs, and vector databases onboard Jetson Orin for building next-generation applications using Generative AI:
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/6mCFzDatGGc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## <span class="blobJetsonHacks">JetsonHacks</span> [Jetson AI Labs – Generative AI Playground](https://jetsonhacks.com/2023/10/31/jetson-ai-labs-generative-ai-playground/){:target="_blank"} <sup><small>(10-31-2023)</small></sup>
 
@@ -20,7 +25,7 @@ Nurgaliyev Shakhizat demonstrates Vision2Audio running on <span class="blobDarkG
 
 ![](https://hackster.imgix.net/uploads/attachments/1652753/_qKOfQUA6JP.blob?auto=compress%2Cformat&w=640&h=458&fit=min)
 
-## <span class="blobNvidia">NVIDIA</span> [Bringing Generative AI to Life with NVIDIA Jetson](https://developer.nvidia.com/blog/bringing-generative-ai-to-life-with-jetson/){:target="_blank"} <sup><small>(10-19-2023)</small></sup>
+## <span class="blobNvidia">NVIDIA</span> [Generative AI Models at the Edge](https://developer.nvidia.com/blog/bringing-generative-ai-to-life-with-jetson/){:target="_blank"} <sup><small>(10-19-2023)</small></sup>
 
 Follow this walkthrough of the Jetson AI Lab tutorials along with coverage of the latest features and advances coming to JetPack 6 and beyond:
 
