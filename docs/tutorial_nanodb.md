@@ -2,7 +2,7 @@
 
 Let's run [NanoDB](https://github.com/dusty-nv/jetson-containers/blob/master/packages/vectordb/nanodb/README.md)'s interactive demo to witness the impact of Vector Database that handles multimodal data.
 
-![](https://raw.githubusercontent.com/dusty-nv/jetson-containers/docs/docs/images/nanodb_horse.gif)
+<a href="https://youtu.be/ayqKpQNd1Jw" target=”_blank”><img src="https://raw.githubusercontent.com/dusty-nv/jetson-containers/docs/docs/images/nanodb_horse.gif"></a>
 
 !!! abstract "What you need"
 
