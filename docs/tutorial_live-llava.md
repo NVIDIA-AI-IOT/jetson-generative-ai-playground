@@ -8,7 +8,7 @@ This multimodal agent runs a vision-language model on a live camera feed or vide
 
 <a href="https://youtu.be/X-OXxPiUTuU" target="_blank"><img src="https://raw.githubusercontent.com/dusty-nv/jetson-containers/docs/docs/images/live_llava.gif"></a>
 
-This example uses the popular [LLaVA](https://llava-vl.github.io/) model (based on Llama and [CLIP](https://openai.com/research/clip)) and has been quantized with 4-bit precision to be deployed on Jetson Orin.  It is using an optimized multimodal pipeline from the [`local_llm`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm) package using the MLC/TVM inferencing runtime.
+This example uses the popular [LLaVA](https://llava-vl.github.io/) model (based on Llama and [CLIP](https://openai.com/research/clip)) and has been quantized with 4-bit precision to be deployed on Jetson Orin.  It's using an optimized multimodal pipeline from the [`local_llm`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm) package and the MLC/TVM inferencing runtime, and acts as a building block for creating always-on edge applications that can trigger user-promptable alerts and actions with the flexibility of VLMs.
 
 ### Clone and set up `jetson-containers`
 
