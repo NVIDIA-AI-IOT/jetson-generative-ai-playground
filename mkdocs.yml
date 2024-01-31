@@ -79,26 +79,26 @@ nav:
     - Introduction: tutorial-intro.md
     - Text (LLM):
       - text-generation-webui: tutorial_text-generation.md 
-      - llamaspeak 🆕: tutorial_llamaspeak.md
+      - llamaspeak: tutorial_llamaspeak.md
     - Text + Vision (VLM):
       - Mini-GPT4: tutorial_minigpt4.md
       - LLaVA: tutorial_llava.md
-      # - NeVA: tutorial_NeVA.md
+      - Live LLaVA 🆕: tutorial_live-llava.md
     - Image Generation:
       - Stable Diffusion: tutorial_stable-diffusion.md
       - Stable Diffusion XL: tutorial_stable-diffusion-xl.md
     - Vision Transformers (ViT): 
       - vit/index.md
-      - EfficientViT 🆕: vit/tutorial_efficientvit.md
+      - EfficientViT: vit/tutorial_efficientvit.md
       - NanoSAM: vit/tutorial_nanosam.md
-      - NanoOWL 🆕: vit/tutorial_nanoowl.md
+      - NanoOWL: vit/tutorial_nanoowl.md
       - SAM: vit/tutorial_sam.md
       - TAM: vit/tutorial_tam.md
     # - NanoOWL: tutorial_nanoowl.md
     - Vector Database:
       - NanoDB: tutorial_nanodb.md
     - Audio:
-      - AudioCraft 🆕: tutorial_audiocraft.md
+      - AudioCraft: tutorial_audiocraft.md
       - Whisper 🆕: tutorial_whisper.md
     # - Tools:
     #   - LangChain: tutorial_distillation.md
