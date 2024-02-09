@@ -19,7 +19,8 @@ Give your locally running LLM an access to vision!
 |      |                     |
 | :---------- | :----------------------------------- |
 | **[Mini-GPT4](./tutorial_minigpt4.md)** | [Mini-GPT4](https://minigpt-4.github.io/), an open-source model that demonstrate vision-language capabilities.|
-| **[LLaVA](./tutorial_llava.md)** | [Large Language and Vision Assistant](https://llava-vl.github.io/), multimodal model that combines a vision encoder and Vicuna LLM for general-purpose visual and language understanding. |
+| **[LLaVA](./tutorial_llava.md)** | [Large Language and Vision Assistant](https://llava-vl.github.io/), multimodal model that combines a vision encoder and LLM for visual and language understanding. |
+| **[Live LLaVA](./tutorial_live-llava.md)** | Run multimodal models interactively on live video streams over a repeating set of prompts. |
 
 ### Image Generation
 
@@ -32,11 +33,11 @@ Give your locally running LLM an access to vision!
 
 |      |                     |
 | :---------- | :----------------------------------- |
-| **[EfficientVIT](./tutorial_efficientvit.md)** | MIT Han Lab's [EfficientViT](https://github.com/mit-han-lab/efficientvit), Multi-Scale Linear Attention for High-Resolution Dense Prediction |
-| **[NanoSAM](./tutorial_nanosam.md)** | [NanoSAM](https://github.com/NVIDIA-AI-IOT/nanosam), SAM model variant capable of running in real-time on Jetson |
-| **[NanoOWL](./tutorial_nanoowl.md)** | [OWL-ViT](https://huggingface.co/docs/transformers/model_doc/owlvit) optimized to run real-time on Jetson with NVIDIA TensorRT |
-| **[SAM](./tutorial_sam.md)** | Meta's [SAM](https://github.com/facebookresearch/segment-anything), Segment Anything model |
-| **[TAM](./tutorial_tam.md)** | [TAM](https://github.com/gaomingqi/Track-Anything), Track-Anything model, is an interactive tool for video object tracking and segmentation |
+| **[EfficientVIT](./vit/tutorial_efficientvit.md)** | MIT Han Lab's [EfficientViT](https://github.com/mit-han-lab/efficientvit), Multi-Scale Linear Attention for High-Resolution Dense Prediction |
+| **[NanoSAM](./vit/tutorial_nanosam.md)** | [NanoSAM](https://github.com/NVIDIA-AI-IOT/nanosam), SAM model variant capable of running in real-time on Jetson |
+| **[NanoOWL](./vit/tutorial_nanoowl.md)** | [OWL-ViT](https://huggingface.co/docs/transformers/model_doc/owlvit) optimized to run real-time on Jetson with NVIDIA TensorRT |
+| **[SAM](./vit/tutorial_sam.md)** | Meta's [SAM](https://github.com/facebookresearch/segment-anything), Segment Anything model |
+| **[TAM](./vit/tutorial_tam.md)** | [TAM](https://github.com/gaomingqi/Track-Anything), Track-Anything model, is an interactive tool for video object tracking and segmentation |
 
 ### Vector Database
 
