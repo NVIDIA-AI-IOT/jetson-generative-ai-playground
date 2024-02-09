@@ -29,10 +29,24 @@
     }
 
     .tx-hero h1 {
+        line-height: 1.25;
         margin-bottom: 1rem;
         color: currentColor;
         font-weight: 700
     }
+
+    @media (min-width: 576px){ .tx-hero h1 { font-size: 28px; } }
+    @media (min-width: 720px){ .tx-hero h1 { font-size: 36px; } }
+    @media (min-width: 992px){ .tx-hero h1 { font-size: 48px; } }
+
+    .tx-hero p {
+        line-height: 1.75;
+        font-weight: 400
+    }
+
+    @media (min-width: 576px){ .tx-hero p { font-size: 18px; } }
+    @media (min-width: 720px){ .tx-hero p { font-size: 20px; } }
+    @media (min-width: 992px){ .tx-hero p { font-size: 22px; } }
 
     .tx-hero__content {
         padding-bottom: 1rem;
@@ -66,7 +80,13 @@
         color: var(--md-primary-fg-color);
         border-color: var(--md-accent-fg-color);
         text-decoration: none;
+        line-height: 1.25;
+        font-weight: 700;
     }
+
+    @media (min-width: 576px){ .tx-hero .md-button { font-size: 14px; } }
+    @media (min-width: 720px){ .tx-hero .md-button { font-size: 16px; } }
+    @media (min-width: 992px){ .tx-hero .md-button { font-size: 18px; } }
 
     .tx-hero .md-button:focus,
     .tx-hero .md-button:hover {
@@ -130,7 +150,12 @@
 
     .section-title {
         margin-bottom: 32px;
+        line-height: 1.25;
+        font-weight: 700;
     }
+    @media (min-width: 576px){ .section-title  { font-size: 24px; } }
+    @media (min-width: 720px){ .section-title  { font-size: 28px; } }
+    @media (min-width: 992px){ .section-title  { font-size: 36px; } }
     
     .section-gray {
         background: #EFEFEF;
@@ -243,7 +268,7 @@
     }
 
     .feature-box a{
-        height: 300px;
+        height: 320px;
         width: 320px;
     }
 
@@ -260,7 +285,10 @@
     }
 
     .feature-box a p.feature-card-desc{
-        min-height: 60px;
+        min-height: 80px;
+        font-size: 15px;
+        line-height: 1.667;
+        font-weight: 400;
     }
 
     .feature-box a .nv-teaser-text-link {
@@ -270,20 +298,25 @@
         padding-bottom: 15px !important;
         padding-top: 0px !important;
     }
+    @media (min-width: 576px){ .nv-teaser-text-link  { font-size: 12px; } }
+    @media (min-width: 720px){ .nv-teaser-text-link  { font-size: 14px; } }
+    @media (min-width: 992px){ .nv-teaser-text-link  { font-size: 16px; } }
 
     .feature-box h3 {
         color: #333;
+        line-height: 1.25;
         font-weight: 700;
-        font-size: 0.8rem;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        line-height: normal;
         margin-top: 0.5rem;
         margin-bottom: 0.5rem;
         font-family: inherit;
         text-align: left;
     }
+    @media (min-width: 576px){ .feature-box h3 { font-size: 16px; } }
+    @media (min-width: 720px){ .feature-box h3 { font-size: 18px; } }
+    @media (min-width: 992px){ .feature-box h3 { font-size: 20px; } }
 
     .feature-box p {
         font-size: 0.6rem;
