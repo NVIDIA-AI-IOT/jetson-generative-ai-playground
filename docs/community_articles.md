@@ -7,6 +7,26 @@ hide:
 
 Below, you'll find a collection of community articles showcasing the implementation of generative AI on the Jetson platform.
 
+## <span class="blobDavesArmoury">Dave's Armoury</span> [Bringing GLaDOS to life with Robotics and AI](https://www.youtube.com/watch?v=yNcKTZsHyfA){:target="_blank"} <sup><small>(2-8-2024)</small></sup>
+
+See how DIY robotics legend Dave Niewinski from [davesarmoury.com](https://www.davesarmoury.com/){:target="_blank"} brings GLaDOS to life using Jetson AGX Orin, running LLMs onboard alongside object + depth tracking, and RIVA ASR/TTS with a custom-trained voice model for speech recognition and synthesis!  Using [Unitree Z1](https://shop.unitree.com/){:target="_blank"} arm with 3D printing and [StereoLabs ZED2](https://www.stereolabs.com/products/zed-2){:target="_blank"}.
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/yNcKTZsHyfA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+> :fontawesome-solid-arrow-up-right-from-square: &nbsp; Find more resources about this project here:  [[Forums]](https://forums.developer.nvidia.com/t/robotic-ai-driven-glados-from-portal/282278){:target="_blank"} [[GitHub]](https://github.com/davesarmoury/GLaDOS){:target="_blank"}
+
+## <span class="blobHackster">Hackster</span> [Seeed Studio's Local Voice Chatbot Puts a Speech-Recognizing LLaMa-2 LLM on Your Jetson](https://www.hackster.io/news/seeed-studio-s-local-voice-chatbot-puts-a-speech-recognizing-llama-2-llm-on-your-nvidia-jetson-a82bb3c5ec1d){:target="_blank"} <sup><small>(2-7-2024)</small></sup>
+
+[Seeed Studio](https://www.seeedstudio.com/tag/nvidia.html){:target="_blank"} has announced the launch of the [**Local Voice Chatbot**](https://wiki.seeedstudio.com/Local_Voice_Chatbot/){:target="_blank"}, an NVIDIA Riva- and LLaMa-2-based large language model (LLM) chatbot with voice recognition capabilities — running entirely locally on NVIDIA Jetson devices, including the company's own [reComputer](https://www.seeedstudio.com/Nvidia-Jetson-c-2016.html){:target="_blank"} range.  Follow the step-by-step guide on the [Seeed Studio wiki](https://wiki.seeedstudio.com/Local_Voice_Chatbot/){:target="_blank"}.
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/Nc3D-qITDoU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+## <span class="blobYouTube">YouTube</span> [GenAI Nerds React - Insider Look at NVIDIA's Newest Generative AI](https://www.youtube.com/watch?v=OjI_p5a85c4){:target="_blank"} <sup><small>(2-6-2024)</small></sup>
+
+Watch this panel about the latest trends & tech in edge AI, featuring Kerry Shih from [OStream](https://www.ostream.com/){:target="_blank"}, Jim Benson from [JetsonHacks](https://jetsonhacks.com/){:target="_blank"}, and Dusty from NVIDIA.
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/OjI_p5a85c4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ## <span class="blobNvidia">NVIDIA</span> [Bringing Generative AI to Life with NVIDIA Jetson](https://youtu.be/6mCFzDatGGc){:target="_blank"} <sup><small>(11-7-2023)</small></sup>
 
 Watch this webinar about deploying LLMs, VLMs, ViTs, and vector databases onboard Jetson Orin for building next-generation applications using Generative AI:
@@ -21,9 +41,9 @@ JetsonHacks publishes an insightful video that walks developers through the typi
 
 ## <span class="blobHackster">Hackster</span> [Vision2Audio - Giving the blind an understanding through AI](https://www.hackster.io/shahizat/vision2audio-giving-the-blind-an-understanding-through-ai-33f929){:target="_blank"} <sup><small>(10-15-2023)</small></sup>
 
-Nurgaliyev Shakhizat demonstrates Vision2Audio running on <span class="blobDarkGreen4">Jetson AGX Orin 64GB Developer Kit</span> to harness the power of LLaVA to help visually impaired people.
+Nurgaliyev Shakhizat demonstrates [Vision2Audio](https://www.hackster.io/shahizat/vision2audio-giving-the-blind-an-understanding-through-ai-33f929){:target="_blank"} running on <span class="blobDarkGreen4">Jetson AGX Orin 64GB Developer Kit</span> to harness the power of LLaVA to help visually impaired people:
 
-![](https://hackster.imgix.net/uploads/attachments/1652753/_qKOfQUA6JP.blob?auto=compress%2Cformat&w=640&h=458&fit=min)
+[![](https://hackster.imgix.net/uploads/attachments/1652753/_qKOfQUA6JP.blob?auto=compress%2Cformat&w=640&h=458&fit=min)](https://www.hackster.io/shahizat/vision2audio-giving-the-blind-an-understanding-through-ai-33f929){:target="_blank"}
 
 ## <span class="blobNvidia">NVIDIA</span> [Generative AI Models at the Edge](https://developer.nvidia.com/blog/bringing-generative-ai-to-life-with-jetson/){:target="_blank"} <sup><small>(10-19-2023)</small></sup>
 
@@ -31,7 +51,7 @@ Follow this walkthrough of the Jetson AI Lab tutorials along with coverage of th
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/BAMOw7qlVXw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-> :fontawesome-solid-arrow-up-right-from-square: &nbsp; [https://developer.nvidia.com/blog/bringing-generative-ai-to-life-with-jetson/](https://developer.nvidia.com/blog/bringing-generative-ai-to-life-with-jetson/){:target="_blank"}
+> :fontawesome-solid-arrow-up-right-from-square: &nbsp; Technical Blog - [https://developer.nvidia.com/blog/bringing-generative-ai-to-life-with-jetson/](https://developer.nvidia.com/blog/bringing-generative-ai-to-life-with-jetson/){:target="_blank"}
 
 
 ## <span class="blobMedium">Medium</span> [How to set up your Jetson device for LLM inference and fine-tuning](https://medium.com/@michaelyuan_88928/how-to-set-up-your-jetson-device-for-llm-inference-and-fine-tuning-682e36444d43){:target="_blank"} <sup><small>(10-02-2023)</small></sup>
@@ -43,70 +63,52 @@ Michael Yuan's guide demonstrating how to set up the <span class="blobDarkGreen4
 
 ## <span class="blobHackster">Hackster</span> [Getting Started with AI on Nvidia Jetson AGX Orin Dev Kit](https://www.hackster.io/shahizat/getting-started-with-ai-on-nvidia-jetson-agx-orin-dev-kit-5a55b5){:target="_blank"}  <sup><small>(09-16-2023)</small></sup>
 
-Nurgaliyev Shakhizat demonstrates `llamaspeak` on <span class="blobDarkGreen4">Jetson AGX Orin 64GB Developer Kit</span>.
+Nurgaliyev Shakhizat demonstrates `llamaspeak` on <span class="blobDarkGreen4">Jetson AGX Orin 64GB Developer Kit</span> in this [Hackster post](https://www.hackster.io/shahizat/getting-started-with-ai-on-nvidia-jetson-agx-orin-dev-kit-5a55b5){:target="_blank"}:
 
-![](https://hackster.imgix.net/uploads/attachments/1634209/_YUIZvPChHh.blob?auto=compress%2Cformat&w=640&h=458&fit=min)
-
-> :fontawesome-solid-arrow-up-right-from-square: &nbsp; [https://www.hackster.io/shahizat/getting-started-with-ai-on-nvidia-jetson-agx-orin-dev-kit-5a55b5](https://www.hackster.io/shahizat/getting-started-with-ai-on-nvidia-jetson-agx-orin-dev-kit-5a55b5){:target="_blank"}
-
+[![](https://hackster.imgix.net/uploads/attachments/1634209/_YUIZvPChHh.blob?auto=compress%2Cformat&w=640&h=458&fit=min)](https://www.hackster.io/shahizat/getting-started-with-ai-on-nvidia-jetson-agx-orin-dev-kit-5a55b5){:target="_blank"}
 
 ## <span class="blobHackster">Hackster</span> [New AI Tool Is Generating a Lot of Buzz](https://www.hackster.io/news/new-ai-tool-is-generating-a-lot-of-buzz-3cc5f23a3598){:target="_blank"} <sup><small>(09-13-2023)</small></sup>
 
-Nick Bild provides an insightful introduction to the Jetson Generative AI Playground.
+Nick Bild provides an insightful introduction to the Jetson Generative AI Playground:
 
 > :fontawesome-solid-arrow-up-right-from-square: &nbsp; [https://www.hackster.io/news/new-ai-tool-is-generating-a-lot-of-buzz-3cc5f23a3598](https://www.hackster.io/news/new-ai-tool-is-generating-a-lot-of-buzz-3cc5f23a3598){:target="_blank"}
 
 
 ## <span class="blobJetsonHacks">JetsonHacks</span> [Use These! Jetson Docker Containers Tutorial](https://jetsonhacks.com/2023/09/04/use-these-jetson-docker-containers-tutorial/){:target="_blank"} <sup><small>(09-04-2023)</small></sup>
 
-JetsonHacks has a in-depth tutorial on how to use `jetson-containers` and even show `text-generation-webui` and `stable-diffusion-webui` containers in action!
+JetsonHacks has a [in-depth tutorial](https://jetsonhacks.com/2023/09/04/use-these-jetson-docker-containers-tutorial/){:target="_blank"} on how to use `jetson-containers` and even show `text-generation-webui` and `stable-diffusion-webui` containers in action!
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/HlH3QkS1F5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-> :fontawesome-solid-arrow-up-right-from-square: &nbsp; [https://jetsonhacks.com/2023/09/04/use-these-jetson-docker-containers-tutorial/](https://jetsonhacks.com/2023/09/04/use-these-jetson-docker-containers-tutorial/){:target="_blank"}
-
-
 ## <span class="blobHackster">Hackster</span> [LLaMa 2 LLMs w/ NVIDIA Jetson and textgeneration-web-ui](https://www.hackster.io/pjdecarlo/llama-2-llms-w-nvidia-jetson-and-textgeneration-web-ui-96b070){:target="_blank"} <sup><small>(08-17-2023)</small></sup>
 
-Paul DeCarlo demonstrates 13B and 70B parameter LLama 2 models running locally on <span class="blobDarkGreen4">Jetson AGX Orin 64GB Developer Kit</span>.
+Paul DeCarlo demonstrates 13B and 70B parameter LLama 2 models running locally on <span class="blobDarkGreen4">Jetson AGX Orin 64GB Developer Kit</span> in this [Hackster post](https://www.hackster.io/pjdecarlo/llama-2-llms-w-nvidia-jetson-and-textgeneration-web-ui-96b070){:target="_blank"}:
 
-![](https://hackster.imgix.net/uploads/attachments/1621246/img_1231_RqW30jjm1q.gif?auto=format%2Ccompress&gifq=35&w=640&h=458&fit=min&fm=mp4)
-
-> :fontawesome-solid-arrow-up-right-from-square: &nbsp; [https://www.hackster.io/pjdecarlo/llama-2-llms-w-nvidia-jetson-and-textgeneration-web-ui-96b070](https://www.hackster.io/pjdecarlo/llama-2-llms-w-nvidia-jetson-and-textgeneration-web-ui-96b070){:target="_blank"}
+[![](https://hackster.imgix.net/uploads/attachments/1621246/img_1231_RqW30jjm1q.gif?auto=format%2Ccompress&gifq=35&w=640&h=458&fit=min&fm=mp4)](https://www.hackster.io/pjdecarlo/llama-2-llms-w-nvidia-jetson-and-textgeneration-web-ui-96b070){:target="_blank"}
 
 
 ## <span class="blobHackster">Hackster</span> [Running a ChatGPT-Like LLM-LLaMA2 on a Nvidia Jetson Cluster](https://www.hackster.io/shahizat/running-a-chatgpt-like-llm-llama2-on-a-nvidia-jetson-cluster-cbc7d4){:target="_blank"} <sup><small>(08-14-2023)</small></sup>
 
-Discover how to run a LLaMA-2 7B model on an NVIDIA Jetson cluster in this insightful tutorial by Nurgaliyev Shakhizat.
+Discover how to run a LLaMA-2 7B model on an [NVIDIA Jetson cluster](https://www.hackster.io/shahizat/running-a-chatgpt-like-llm-llama2-on-a-nvidia-jetson-cluster-cbc7d4){:target="_blank"} in this insightful tutorial by Nurgaliyev Shakhizat:
 
-![](https://hackster.imgix.net/uploads/attachments/1621367/_NioNNBZrnm.blob?auto=compress%2Cformat&w=640&h=458&fit=min)
-
-> :fontawesome-solid-arrow-up-right-from-square: &nbsp; [https://www.hackster.io/shahizat/running-a-chatgpt-like-llm-llama2-on-a-nvidia-jetson-cluster-cbc7d4](https://www.hackster.io/shahizat/running-a-chatgpt-like-llm-llama2-on-a-nvidia-jetson-cluster-cbc7d4){:target="_blank"}
+[![](https://hackster.imgix.net/uploads/attachments/1621367/_NioNNBZrnm.blob?auto=compress%2Cformat&w=640&h=458&fit=min)](https://www.hackster.io/shahizat/running-a-chatgpt-like-llm-llama2-on-a-nvidia-jetson-cluster-cbc7d4){:target="_blank"}
 
 
 ## <span class="blobJetsonHacks">JetsonHacks</span> [Speech AI on NVIDIA Jetson Tutorial](https://jetsonhacks.com/2023/08/07/speech-ai-on-nvidia-jetson-tutorial/){:target="_blank"} <sup><small>(08-07-2023)</small></sup>
 
-JetsonHacks gives a nice introduction to NVIDIA RIVA SDK and demonstrate its automated speech recognition (ASR) capability on <span class="blobLightGreen4">Jetson Orin Nano Developer Kit</span>.
+JetsonHacks gives a [nice introduction](https://jetsonhacks.com/2023/08/07/speech-ai-on-nvidia-jetson-tutorial/){:target="_blank"} to NVIDIA RIVA SDK and demonstrate its automated speech recognition (ASR) capability on <span class="blobLightGreen4">Jetson Orin Nano Developer Kit</span>.
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/FZWgQvI7MxE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-> :fontawesome-solid-arrow-up-right-from-square: &nbsp; [https://jetsonhacks.com/2023/08/07/speech-ai-on-nvidia-jetson-tutorial/](https://jetsonhacks.com/2023/08/07/speech-ai-on-nvidia-jetson-tutorial/){:target="_blank"}
 
 
 ## <span class="blobHackster">Hackster</span> [LLM based Multimodal AI w/ Azure Open AI & NVIDIA Jetson](https://www.hackster.io/pjdecarlo/llm-based-multimodal-ai-w-azure-open-ai-nvidia-jetson-135ff2){:target="_blank"} <sup><small>(07-12-2023)</small></sup>
 
-Learn how to harness the power of Multimodal AI by running Microsoft JARVIS on an <span class="blobDarkGreen4">Jetson AGX Orin 64GB Developer Kit</span>, enabling a wide range of AI tasks with ChatGPT-like capabilities, image generation, and more, in this comprehensive guide by Paul DeCarlo.
+Learn how to harness the power of Multimodal AI by running Microsoft JARVIS on an <span class="blobDarkGreen4">Jetson AGX Orin 64GB Developer Kit</span>, enabling a wide range of AI tasks with ChatGPT-like capabilities, image generation, and more, in this [comprehensive guide](https://www.hackster.io/pjdecarlo/llm-based-multimodal-ai-w-azure-open-ai-nvidia-jetson-135ff2){:target="_blank"} by Paul DeCarlo.
 
-![](https://hackster.imgix.net/uploads/attachments/1610773/2023-07-12_21-40-55_YHOalYh1xU.gif?auto=format%2Ccompress&gifq=35&w=640&h=458&fit=min&fm=mp4)
-
-> :fontawesome-solid-arrow-up-right-from-square: &nbsp; [https://www.hackster.io/pjdecarlo/llm-based-multimodal-ai-w-azure-open-ai-nvidia-jetson-135ff2](https://www.hackster.io/pjdecarlo/llm-based-multimodal-ai-w-azure-open-ai-nvidia-jetson-135ff2){:target="_blank"}
-
+[![](https://hackster.imgix.net/uploads/attachments/1610773/2023-07-12_21-40-55_YHOalYh1xU.gif?auto=format%2Ccompress&gifq=35&w=640&h=458&fit=min&fm=mp4)](https://www.hackster.io/pjdecarlo/llm-based-multimodal-ai-w-azure-open-ai-nvidia-jetson-135ff2){:target="_blank"}
 
 ## <span class="blobHackster">Hackster</span> [How to Run a ChatGPT-Like LLM on NVIDIA Jetson board](https://www.hackster.io/shahizat/how-to-run-a-chatgpt-like-llm-on-nvidia-jetson-board-41fd79){:target="_blank"} <sup><small>(06-13-2023)</small></sup>
 
-Nurgaliyev Shakhizat explores voice AI assistant on Jetson using FastChat and VoskAPI.
+Nurgaliyev Shakhizat explores [voice AI assistant](https://www.hackster.io/shahizat/how-to-run-a-chatgpt-like-llm-on-nvidia-jetson-board-41fd79){:target="_blank"} on Jetson using FastChat and VoskAPI.
 
-![](https://hackster.imgix.net/uploads/attachments/1599748/_51IDaX5X5J.blob?auto=compress%2Cformat&w=640&h=458&fit=min)
-
-> :fontawesome-solid-arrow-up-right-from-square: &nbsp; [https://www.hackster.io/shahizat/how-to-run-a-chatgpt-like-llm-on-nvidia-jetson-board-41fd79](https://www.hackster.io/shahizat/how-to-run-a-chatgpt-like-llm-on-nvidia-jetson-board-41fd79){:target="_blank"}
-
+[![](https://hackster.imgix.net/uploads/attachments/1599748/_51IDaX5X5J.blob?auto=compress%2Cformat&w=640&h=458&fit=min)](https://www.hackster.io/shahizat/how-to-run-a-chatgpt-like-llm-on-nvidia-jetson-board-41fd79){:target="_blank"}
