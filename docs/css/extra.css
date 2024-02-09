@@ -2,16 +2,13 @@
     background: #FFFFFF
 }
 
-.md-header__button {
+.md-logo {
     display: none!important;
 }
 
-.md-logo {
-    display: none;
-    width: 0;
-    margin: 0!important;
-    padding: 0!important;
-}
+.md-icon {
+    color: black;
+} 
 
 .md-header__title {
     color: #000000;
