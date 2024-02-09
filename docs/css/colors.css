@@ -210,6 +210,10 @@ a.nv-buy-link:hover,.load-buy-link:hover {
 	background: #394657; color: #fff; font-size: 0.8em; border-radius: 0.1em;  padding-left: 0.3em; padding-right: 0.3em;  margin: 0.2em; 
 }
 
+.blobDavesArmoury {
+	background: #f7b700; color: #fff; font-size: 0.8em; border-radius: 0.1em;  padding-left: 0.3em; padding-right: 0.3em;  margin: 0.2em; 
+}
+
 .blobHackster {
 	background: #2e9fe6; color: #fff; font-size: 0.8em; border-radius: 0.1em;  padding-left: 0.3em; padding-right: 0.3em;  margin: 0.2em; 
 }
@@ -220,6 +224,10 @@ a.nv-buy-link:hover,.load-buy-link:hover {
 
 .blobNvidia {
 	background: #76b900; color: #fff; font-size: 0.8em; border-radius: 0.1em;  padding-left: 0.3em; padding-right: 0.3em;  margin: 0.2em; 
+}
+
+.blobYouTube {
+	background: #FF0000; color: #fff; font-size: 0.8em; border-radius: 0.1em;  padding-left: 0.3em; padding-right: 0.3em;  margin: 0.2em; 
 }
 
 .highlightYellow {
