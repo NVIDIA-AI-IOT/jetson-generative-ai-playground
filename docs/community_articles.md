@@ -7,6 +7,21 @@ hide:
 
 Below, you'll find a collection of community articles showcasing the implementation of generative AI on the Jetson platform.
 
+## <span class="blobYouTube">YouTube</span> [JetBot Voice to Action Tools: Empowering Your ROS2 Robot with Voice Control](https://www.youtube.com/watch?v=SynIj1pxzdQ){:target="_blank"} <sup><small>(2-17-2024)</small></sup>
+
+[Jen Hung Ho](https://forums.developer.nvidia.com/t/jetbot-voice-to-action-tools-with-jetson-asr-deep-learning-interface-library-for-ros2-robot/283130){:target="_blank"} created ROS2 nodes for ASR/TTS on Jetson Nano that can can be used to control JetBot, including customizable voice commands and the execution of advanced actions.  Check it out on GitHub under [`Jen-Hung-Ho/ros2_jetbot_tools`](https://github.com/Jen-Hung-Ho/ros2_jetbot_tools){:target="_blank"} and [`Jen-Hung-Ho/ros2_jetbot_voice`](https://github.com/Jen-Hung-Ho/ros2_jetbot_voice){:target="_blank"} and on the forums [here](https://forums.developer.nvidia.com/t/jetbot-voice-to-action-tools-with-jetson-asr-deep-learning-interface-library-for-ros2-robot/283130){:target="_blank"}.
+
+<iframe width="288" height="512" src="https://www.youtube.com/embed/SynIj1pxzdQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+## <span class="blobHackster">Hackster</span> [ClearWater: Underwater Image Enhancement with Generative AI](https://www.hackster.io/vpvypham1994/clearwater-underwater-image-enhancement-with-generative-a-i-8f7aff){:target="_blank"} <sup><small>(2-16-2024)</small></sup>
+
+[Vy Pham](https://www.hackster.io/vpvypham1994){:target="_blank"} has created a novel [denoising pipeline](https://www.hackster.io/vpvypham1994/clearwater-underwater-image-enhancement-with-generative-a-i-8f7aff){:target="_blank"} using a custom trained Transformer-based diffusion model and GAN upscaler for image enhancement, running on Jetson AGX Orin.  It runs interactively in a Streamlit web UI for photo capturing and the processing of images and videos.  Great work!
+
+<video autoplay controls>
+	<source src="https://hackster.imgix.net/uploads/attachments/1685447/untitled_video_-_made_with_clipchamp_(1)_iHRjaZTew3.gif?auto=compress&gifq=35&w=1280&h=960&fit=max&fm=mp4">
+	Your browser does not support the video tag.
+</video>
+
 ## <span class="blobDavesArmoury">Dave's Armoury</span> [Bringing GLaDOS to life with Robotics and AI](https://www.youtube.com/watch?v=yNcKTZsHyfA){:target="_blank"} <sup><small>(2-8-2024)</small></sup>
 
 See how DIY robotics legend Dave Niewinski from [davesarmoury.com](https://www.davesarmoury.com/){:target="_blank"} brings GLaDOS to life using Jetson AGX Orin, running LLMs onboard alongside object + depth tracking, and RIVA ASR/TTS with a custom-trained voice model for speech recognition and synthesis!  Using [Unitree Z1](https://shop.unitree.com/){:target="_blank"} arm with 3D printing and [StereoLabs ZED2](https://www.stereolabs.com/products/zed-2){:target="_blank"}.
