@@ -3,11 +3,20 @@ hide:
   - navigation
 ---
 
-# Community Articles
+# Community Projects
 
-Below, you'll find a collection of community articles showcasing the implementation of generative AI on the Jetson platform.
+Below, you'll find a collection of guides, tutorials, and articles contributed by the community showcasing the implementation of generative AI on the Jetson platform.
 
-## <span class="blobYouTube">YouTube</span> [JetBot Voice to Action Tools: Empowering Your ROS2 Robot with Voice Control](https://www.youtube.com/watch?v=SynIj1pxzdQ){:target="_blank"} <sup><small>(2-17-2024)</small></sup>
+## <span class="blobGitHub">GitHub</span> [Japanese NMT Translation for Stable Diffusion](https://github.com/to-aoki/ja-tiny-sd-webui){:target="_blank"} <sup><small>(2-23-2024)</small></sup>
+
+[Toshihiko Aoki](https://github.com/to-aoki/ja-tiny-sd-webui){:target="_blank"} has created a prompt generator for [`stable-diffusion-webui`](https://www.jetson-ai-lab.com/tutorial_stable-diffusion.html){:target="_blank"} that translates Japanese queries into English using a fine-tuned GPT-2 NMT model before feeding them into Stable Diffusion.  Check out the full guide on GitHub under [`to-aoki/ja-tiny-sd-webui`](https://github.com/to-aoki/ja-tiny-sd-webui){:target="_blank"}, including the training dataset and LoRA building!
+
+<video width="640" height="340" autoplay controls>
+	<source src="https://github.com/to-aoki/ja-tiny-sd-webui/assets/47078021/38677e7a-2c81-4546-b53e-f084d5692205">
+	Your browser does not support the video tag.
+</video>
+
+## <span class="blobGitHub">GitHub</span> [JetBot Voice to Action Tools: Empowering Your ROS2 Robot with Voice Control](https://www.youtube.com/watch?v=SynIj1pxzdQ){:target="_blank"} <sup><small>(2-17-2024)</small></sup>
 
 [Jen Hung Ho](https://forums.developer.nvidia.com/t/jetbot-voice-to-action-tools-with-jetson-asr-deep-learning-interface-library-for-ros2-robot/283130){:target="_blank"} created ROS2 nodes for ASR/TTS on Jetson Nano that can can be used to control JetBot, including customizable voice commands and the execution of advanced actions.  Check it out on GitHub under [`Jen-Hung-Ho/ros2_jetbot_tools`](https://github.com/Jen-Hung-Ho/ros2_jetbot_tools){:target="_blank"} and [`Jen-Hung-Ho/ros2_jetbot_voice`](https://github.com/Jen-Hung-Ho/ros2_jetbot_voice){:target="_blank"} and on the forums [here](https://forums.developer.nvidia.com/t/jetbot-voice-to-action-tools-with-jetson-asr-deep-learning-interface-library-for-ros2-robot/283130){:target="_blank"}.
 
