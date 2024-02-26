@@ -206,6 +206,10 @@ a.nv-buy-link:hover,.load-buy-link:hover {
 	background: #ff9fb27f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em; 
 }
 
+.blobGitHub {
+	background: #394657; color: #fff; font-size: 0.8em; border-radius: 0.1em;  padding-left: 0.3em; padding-right: 0.3em;  margin: 0.2em; 
+}
+
 .blobJetsonHacks {
 	background: #394657; color: #fff; font-size: 0.8em; border-radius: 0.1em;  padding-left: 0.3em; padding-right: 0.3em;  margin: 0.2em; 
 }
