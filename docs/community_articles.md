@@ -31,6 +31,14 @@ Below, you'll find a collection of guides, tutorials, and articles contributed b
 	Your browser does not support the video tag.
 </video>
 
+## <span class="blobHackster">Hackster</span> [AI-Powered Application for the Blind and Visually Impaired](https://www.hackster.io/shahizat/ai-powered-application-for-the-blind-and-visually-impaired-df3f9e){:target="_blank"} <sup><small>(12-13-2023)</small></sup>
+
+Nurgaliyev Shakhizat demonstrates a locally-hosted [Blind Assistant Device](https://www.hackster.io/shahizat/ai-powered-application-for-the-blind-and-visually-impaired-df3f9e){:target="_blank"} running on <span class="blobDarkGreen4">Jetson AGX Orin 64GB Developer Kit</span> for realtime image-to-speech translation:
+
+[![](https://hackster.imgix.net/uploads/attachments/1683310/_KUakkgQR2i.blob?auto=compress%2Cformat&w=640&fit=min)](https://www.hackster.io/shahizat/ai-powered-application-for-the-blind-and-visually-impaired-df3f9e){:target="_blank"}
+
+> :fontawesome-solid-arrow-up-right-from-square: &nbsp; Find more resources about this project here:  [[Hackster]](https://www.hackster.io/shahizat/ai-powered-application-for-the-blind-and-visually-impaired-df3f9e){:target="_blank"} [[GitHub]](https://github.com/shahizat/Vision2Audio_2){:target="_blank"}
+
 ## <span class="blobDavesArmoury">Dave's Armoury</span> [Bringing GLaDOS to life with Robotics and AI](https://www.youtube.com/watch?v=yNcKTZsHyfA){:target="_blank"} <sup><small>(2-8-2024)</small></sup>
 
 See how DIY robotics legend Dave Niewinski from [davesarmoury.com](https://www.davesarmoury.com/){:target="_blank"} brings GLaDOS to life using Jetson AGX Orin, running LLMs onboard alongside object + depth tracking, and RIVA ASR/TTS with a custom-trained voice model for speech recognition and synthesis!  Using [Unitree Z1](https://shop.unitree.com/){:target="_blank"} arm with 3D printing and [StereoLabs ZED2](https://www.stereolabs.com/products/zed-2){:target="_blank"}.
