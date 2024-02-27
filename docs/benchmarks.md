@@ -5,19 +5,31 @@ hide:
 
 # Benchmarks
 
-## LLM
+## Large Language Models (LLM)
 
 <iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubchart?oid=363544488&amp;format=interactive"></iframe>
 
 For running LLM benchmarks, see the [`MLC`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/mlc) container documentation.
 
-## VLM
+## Small Language Models (SLM)
 
-<iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubchart?oid=1183626625&amp;format=interactive"></iframe>
+<iframe width="818" height="507" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubchart?oid=1746097360&format=interactive"></iframe>
 
-For running VLM benchmarks, see the [`MLC`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/mlc) and [`MiniGPT-4`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/minigpt4) container documentation.
+Small language models are generally defined as having fewer than 7B parameters *(Llama2-7B shown for reference)*   
+For more info about these models, see the [`SLM`](tutorial_slm.md) tutorial and [`MLC`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/mlc) container documentation for running benchmarks.
 
-## ViT
+## Vision Language Models (VLM)
+
+<iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubchart?oid=642317430&format=interactive"></iframe>
+
+This measures the end-to-end pipeline performance for continuous streaming with [Live Llava](tutorial_live-llava.md).  
+
+> <sup>These are all using [`CLIP ViT-L/14@336px`](https://huggingface.co/openai/clip-vit-large-patch14-336) for the vision encoder.</sup>  
+> <sup>Jetson Orin Nano 8GB runs out of memory trying to run Llava-7B or larger.</sup>  
+> <sup>The tokens/sec performance is roughly equal to the base LM ([`StableLM-3B`](https://huggingface.co/stabilityai/stablelm-3b-4e1t) for [`Obsidian`](https://huggingface.co/NousResearch/Obsidian-3B-V0.5), Llama for Llava)</sup>  
+
+
+## Vision Transformers (ViT)
 
 <iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubchart?oid=1923307503&amp;format=interactive"></iframe>
 
