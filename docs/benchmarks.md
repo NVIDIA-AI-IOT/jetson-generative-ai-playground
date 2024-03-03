@@ -16,16 +16,7 @@ For running LLM benchmarks, see the [`MLC`](https://github.com/dusty-nv/jetson-c
 <iframe width="916" height="507" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubchart?oid=1746097360&format=interactive"></iframe>
 
 Small language models are generally defined as having fewer than 7B parameters *(Llama-7B shown for reference)*   
-For more info about these models, see the [`SLM`](tutorial_slm.md) tutorial and [`MLC`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/mlc) container documentation for running benchmarks.
-
-
-<iframe width="1064px" height="350px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubhtml?gid=921468602&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
-
-> <sup>The HuggingFace [Open LLM Leaderboard](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard) is a large collection of multi-task benchmarks including reasoning, math & coding, history, geography, ect.</sup>  
-> <sup>The memory usage includes 4-bit quantized model weights and KV cache (factor in an extra ~500MB for process overhead, library code, ect)</sup>  
-> <sup>The `Chat Model` is the instruction-tuned variant for chatting with, as opposed to the base model and text completion.</sup>    
-
-SLM page only:  The `Chat Model` is the instruction-tuned variant for chatting with, as opposed to the base model and text completion.  These are model repo names on HuggingFace Hub - use them in the commands below to specify which model to load.
+For more data and info about running these models, see the [`SLM`](tutorial_slm.md) tutorial and [`MLC`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/mlc) container documentation.
 
 ## Vision Language Models (VLM)
 
@@ -33,9 +24,9 @@ SLM page only:  The `Chat Model` is the instruction-tuned variant for chatting w
 
 This measures the end-to-end pipeline performance for continuous streaming with [Live Llava](tutorial_live-llava.md).  
 
-> <sup>These are all using [`CLIP ViT-L/14@336px`](https://huggingface.co/openai/clip-vit-large-patch14-336) for the vision encoder.</sup>  
-> <sup>Jetson Orin Nano 8GB runs out of memory trying to run Llava-7B or larger.</sup>  
-> <sup>The tokens/sec performance is roughly equal to the base LM ([`StableLM-3B`](https://huggingface.co/stabilityai/stablelm-3b-4e1t) for [`Obsidian`](https://huggingface.co/NousResearch/Obsidian-3B-V0.5), Llama for Llava)</sup>  
+> <sup>• &nbsp; These are all using [`CLIP ViT-L/14@336px`](https://huggingface.co/openai/clip-vit-large-patch14-336) for the vision encoder.</sup>  
+> <sup>• &nbsp; Jetson Orin Nano 8GB runs out of memory trying to run Llava-13B.</sup>  
+> <sup>• &nbsp; The tokens/sec performance is roughly equal to the base LM ([`StableLM-3B`](https://huggingface.co/stabilityai/stablelm-3b-4e1t) for [`Obsidian`](https://huggingface.co/NousResearch/Obsidian-3B-V0.5), Llama for Llava)</sup>  
 
 
 ## Vision Transformers (ViT)
