@@ -23,22 +23,17 @@ Let's run Meta's [`SAM`](https://github.com/facebookresearch/segment-anything) o
         - `6.8GB` for container image
         - Spaces for models
 
+    4. Clone and setup [`jetson-containers`](https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md){:target="_blank"}:
+    
+		```bash
+		git clone https://github.com/dusty-nv/jetson-containers
+		cd jetson-containers
+		sudo apt update; sudo apt install -y python3-pip
+		pip3 install -r requirements.txt
+		``` 
+		
     [^1]: The biggest `vit_h` (2.4GB) model may not ran due to OOM, but `vit_l` (1.1GB) runs on Jetson Orin Nano.
  
-## Set up a container for `sam`
-
-### Clone `jetson-containers`
-
-!!! tip ""
-
-    See [`jetson-containers`' `sam` package README](https://github.com/dusty-nv/jetson-containers/tree/master/packages/vit/sam) for more infomation**
-
-```
-git clone https://github.com/dusty-nv/jetson-containers
-cd jetson-containers
-sudo apt update; sudo apt install -y python3-pip
-pip3 install -r requirements.txt
-```
 
 ## How to start
 

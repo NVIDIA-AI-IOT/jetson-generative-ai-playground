@@ -23,22 +23,16 @@ Give your locally running LLM an access to vision, by running [MiniGPT-4](https:
         - `5.8GB` for container image
         - Space for [pre-quantized MiniGPT-4 model](https://github.com/Maknee/minigpt4.cpp/tree/master#3-obtaining-the-model)
 
-## Set up a container for `MiniGPT-4`
-
-!!! tip ""
-
-    See [`jetson-containers`' `minigpt4` package README](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/minigpt4) for more infomation**
-
-### Clone and set up `jetson-containers`
-
-```
-git clone https://github.com/dusty-nv/jetson-containers
-cd jetson-containers
-sudo apt update; sudo apt install -y python3-pip
-pip3 install -r requirements.txt
-```
-
-### Start `minigpt4` container with models
+    4. Clone and setup [`jetson-containers`](https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md){:target="_blank"}:
+    
+		```bash
+		git clone https://github.com/dusty-nv/jetson-containers
+		cd jetson-containers
+		sudo apt update; sudo apt install -y python3-pip
+		pip3 install -r requirements.txt
+		``` 
+		
+## Start `minigpt4` container with models
 
 To start the MiniGPT4 container and webserver with the recommended models, run this command:
 

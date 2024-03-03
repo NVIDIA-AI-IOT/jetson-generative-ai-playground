@@ -21,14 +21,15 @@ Let's run OpenAI's [Whisper](https://github.com/openai/whisper), pre-trained mod
         - `6.1 GB` for `whisper` container image
         - Space for checkpoints
 
-## Clone and set up `jetson-containers`
+    4. Clone and setup [`jetson-containers`](https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md){:target="_blank"}:
+    
+		```bash
+		git clone https://github.com/dusty-nv/jetson-containers
+		cd jetson-containers
+		sudo apt update; sudo apt install -y python3-pip
+		pip3 install -r requirements.txt
+		``` 
 
-```
-git clone https://github.com/dusty-nv/jetson-containers
-cd jetson-containers
-sudo apt update; sudo apt install -y python3-pip
-pip3 install -r requirements.txt
-```
 ## How to start
 
 Use `run.sh` and `autotag` script to automatically pull or build a compatible container image.

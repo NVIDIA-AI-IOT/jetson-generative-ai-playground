@@ -21,20 +21,14 @@ Let's run [NanoDB](https://github.com/dusty-nv/jetson-containers/blob/master/pac
 
         - `7.0GB` for container image
 
-## Set up a container for `nanodb`
-
-### Clone `jetson-containers`
-
-!!! tip ""
-
-    See [`jetson-containers`' `nanodb` package README](https://github.com/dusty-nv/jetson-containers/tree/master/packages/vectordb/nanodb) for more infomation**
-
-```
-git clone https://github.com/dusty-nv/jetson-containers
-cd jetson-containers
-sudo apt update; sudo apt install -y python3-pip
-pip3 install -r requirements.txt
-```
+    4. Clone and setup [`jetson-containers`](https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md){:target="_blank"}:
+    
+		```bash
+		git clone https://github.com/dusty-nv/jetson-containers
+		cd jetson-containers
+		sudo apt update; sudo apt install -y python3-pip
+		pip3 install -r requirements.txt
+		``` 
 
 ## How to start 
 
