@@ -80,11 +80,12 @@ nav:
     - Text (LLM):
       - text-generation-webui: tutorial_text-generation.md 
       - llamaspeak: tutorial_llamaspeak.md
-      - Small LMs (SLM) 🆕: tutorial_slm.md
+      - Small LM (SLM) 🆕: tutorial_slm.md
     - Text + Vision (VLM):
       - Mini-GPT4: tutorial_minigpt4.md
       - LLaVA: tutorial_llava.md
       - Live LLaVA 🆕: tutorial_live-llava.md
+      - NanoVLM 🆕: tutorial_nano-vlm.md
     - Image Generation:
       - Stable Diffusion: tutorial_stable-diffusion.md
       - Stable Diffusion XL: tutorial_stable-diffusion-xl.md

@@ -23,14 +23,14 @@ Let's run [NanoOWL](https://github.com/NVIDIA-AI-IOT/nanoowl), [OWL-ViT](https:/
         - `7.2 GB` for container image
         - Spaces for models
 
-## Clone and set up `jetson-containers`
-
-```
-git clone https://github.com/dusty-nv/jetson-containers
-cd jetson-containers
-sudo apt update; sudo apt install -y python3-pip
-pip3 install -r requirements.txt
-```
+    4. Clone and setup [`jetson-containers`](https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md){:target="_blank"}:
+    
+		```bash
+		git clone https://github.com/dusty-nv/jetson-containers
+		cd jetson-containers
+		sudo apt update; sudo apt install -y python3-pip
+		pip3 install -r requirements.txt
+		``` 
 
 ## How to start
 
@@ -49,7 +49,7 @@ cd jetson-containers
     ls /dev/video*
     ```
 
-    > If no video device is found, exit from the container and check if you can see a video device on the host side.
+    <small>If no video device is found, exit from the container and check if you can see a video device on the host side.</small>
 
 2. Launch the demo
     ```bash

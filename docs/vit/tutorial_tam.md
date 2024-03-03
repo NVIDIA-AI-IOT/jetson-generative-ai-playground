@@ -19,21 +19,15 @@ Let's run [`TAM`](https://github.com/gaomingqi/Track-Anything) to perform Segmen
 
         - `6.8GB` for container image
         - Spaces for models
- 
-## Set up a container for `tam`
 
-### Clone `jetson-containers`
-
-!!! tip ""
-
-    See [`jetson-containers`' `tam` package README](https://github.com/dusty-nv/jetson-containers/tree/master/packages/vit/tam) for more infomation**
-
-```
-git clone https://github.com/dusty-nv/jetson-containers
-cd jetson-containers
-sudo apt update; sudo apt install -y python3-pip
-pip3 install -r requirements.txt
-```
+    4. Clone and setup [`jetson-containers`](https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md){:target="_blank"}:
+    
+		```bash
+		git clone https://github.com/dusty-nv/jetson-containers
+		cd jetson-containers
+		sudo apt update; sudo apt install -y python3-pip
+		pip3 install -r requirements.txt
+		``` 
 
 ## How to start
 

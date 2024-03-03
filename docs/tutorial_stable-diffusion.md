@@ -23,9 +23,9 @@ Let's run AUTOMATIC1111's [`stable-diffusion-webui`](https://github.com/AUTOMATI
         - `6.8GB` for container image
         - `4.1GB` for SD 1.5 model
 
-## Set up a container for stable-diffusion-webui
+## Setup a container for stable-diffusion-webui
 
-The jetson-containers project provides pre-built Docker images for [`stable-diffusion-webui`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/diffusion/stable-diffusion-webui).  You can clone the repo to use its utilities that will automatically pull/start the correct container for you, or you can do it [manually](https://github.com/dusty-nv/jetson-containers/tree/master/packages/diffusion/stable-diffusion-webui#user-content-run).
+The [jetson-containers](https://github.com/dusty-nv/jetson-containers) project provides pre-built Docker images for [`stable-diffusion-webui`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/diffusion/stable-diffusion-webui).  You can clone the repo to use its utilities that will automatically pull/start the correct container for you, or you can do it [manually](https://github.com/dusty-nv/jetson-containers/tree/master/packages/diffusion/stable-diffusion-webui#user-content-run).
 
 ```
 git clone https://github.com/dusty-nv/jetson-containers
@@ -42,7 +42,7 @@ pip3 install -r requirements.txt
 
 ## How to start
 
-> If you are running this for the first time, go through the [pre-setup](https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md) and see the [`jetson-containers/stable-diffusion-webui`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/diffusion/stable-diffusion-webui) readme.
+<small>If you are running this for the first time, go through the [pre-setup](https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md) and see the [`jetson-containers/stable-diffusion-webui`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/diffusion/stable-diffusion-webui) readme.</small>
 
 Use `run.sh` and `autotag` script to automatically pull or build a compatible container image:
 

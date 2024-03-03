@@ -22,12 +22,8 @@ For more data and info about running these models, see the [`SLM`](tutorial_slm.
 
 <iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubchart?oid=642317430&format=interactive"></iframe>
 
-This measures the end-to-end pipeline performance for continuous streaming with [Live Llava](tutorial_live-llava.md).  
-
-> <sup>• &nbsp; These are all using [`CLIP ViT-L/14@336px`](https://huggingface.co/openai/clip-vit-large-patch14-336) for the vision encoder.</sup>  
-> <sup>• &nbsp; Jetson Orin Nano 8GB runs out of memory trying to run Llava-13B.</sup>  
-> <sup>• &nbsp; The tokens/sec performance is roughly equal to the base LM ([`StableLM-3B`](https://huggingface.co/stabilityai/stablelm-3b-4e1t) for [`Obsidian`](https://huggingface.co/NousResearch/Obsidian-3B-V0.5), Llama for Llava)</sup>  
-
+This measures the end-to-end pipeline performance for continuous streaming like with [Live Llava](tutorial_live-llava.md).  
+For more data and info about running these models, see the [`NanoVLM`](tutorial_nano-vlm.md) tutorial and [`local_llm`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm) documentation.
 
 ## Vision Transformers (ViT)
 
