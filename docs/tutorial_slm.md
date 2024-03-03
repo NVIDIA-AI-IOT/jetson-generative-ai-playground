@@ -12,9 +12,9 @@ This tutorial shows how to run optimized SLMs with quantization using the [`loca
 
 <iframe width="1325px" height="350px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubhtml?gid=921468602&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
 
-> <sup>• &nbsp; The HuggingFace [Open LLM Leaderboard](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard){:target="_blank"} is a collection of multitask benchmarks including reasoning & comprehension, math, coding, history, geography, ect.</sup>  
-> <sup>• &nbsp; The model's memory footprint includes 4-bit weights and KV cache at full context length (factor in extra for process overhead, library code, ect)</sup>  
-> <sup>• &nbsp; The `Chat Model` is the instruction-tuned variant for chatting with in the commands below, as opposed to the base completion model.</sup> 
+> <small>• &nbsp; The HuggingFace [Open LLM Leaderboard](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard){:target="_blank"} is a collection of multitask benchmarks including reasoning & comprehension, math, coding, history, geography, ect.</small>  
+> <small>• &nbsp; The model's memory footprint includes 4-bit weights and KV cache at full context length (factor in extra for process overhead, library code, ect)</small>  
+> <small>• &nbsp; The `Chat Model` is the instruction-tuned variant for chatting with in the commands below, as opposed to the base completion model.</small> 
 
 Based on user interactions, the recommended models to try are [`stabilityai/stablelm-zephyr-3b`](https://huggingface.co/stabilityai/stablelm-zephyr-3b){:target="_blank"} and [`princeton-nlp/Sheared-LLaMA-2.7B-ShareGPT`](https://huggingface.co/princeton-nlp/Sheared-LLaMA-2.7B-ShareGPT){:target="_blank"}, for having output quality on par with Llama-2-7B and well-optimized neural architectures. These models have also been used as the base for various fine-tunes (for example [`Nous-Capybara-3B-V1.9`](https://huggingface.co/NousResearch/Nous-Capybara-3B-V1.9){:target="_blank"}) and mini VLMs. Others may not be particularly coherent.
 
@@ -47,7 +47,7 @@ Based on user interactions, the recommended models to try are [`stabilityai/stab
 		pip3 install -r requirements.txt
 		```  
 		
-    5. If you had previous used [`local_llm`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm){:target="_blank"} container, update it first:
+    5. If you had previously used [`local_llm`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm){:target="_blank"} container, update it first:
     
          - `sudo docker pull $(./autotag local_llm)`
 
@@ -58,8 +58,8 @@ The [`local_llm.chat`](https://github.com/dusty-nv/jetson-containers/tree/master
   python3 -m local_llm.chat --api=mlc \
     --model princeton-nlp/Sheared-LLaMA-2.7B-ShareGPT
 ```
-> <sup>• &nbsp; For models requiring authentication, use `--env HUGGINGFACE_TOKEN=<YOUR-ACCESS-TOKEN>`</sup>   
-> <sup>• &nbsp; Press <kbd>Ctrl+C</kbd> twice in succession to exit (once will interrupt bot output)</sup>  
+> <small>• &nbsp; For models requiring authentication, use `--env HUGGINGFACE_TOKEN=<YOUR-ACCESS-TOKEN>`</small>   
+> <small>• &nbsp; Press <kbd>Ctrl+C</kbd> twice in succession to exit (once will interrupt bot output)</small>  
 
 This will enter into interactive mode where you chat back and forth using the keyboard (entering `reset` will clear the chat history)  
 
@@ -81,10 +81,10 @@ During testing, you can specify prompts on the command-line that will run sequen
 
 You can also load JSON files containing prompt sequences, like with [`--prompt /data/prompts/qa.json`](https://github.com/dusty-nv/jetson-containers/blob/master/data/prompts/qa.json){:target="_blank"} (the output of which is below)
 
-### Example Output
+### Results
 
 <iframe width="1325px" height="650px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubhtml?gid=1801223941&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
  
-<sup>• &nbsp; The model responses are with 4-bit quantization and are truncated to 256 tokens for brevity.</sup>  
-<sup>• &nbsp; These chat questions are from [`/data/prompts/qa.json`](https://github.com/dusty-nv/jetson-containers/blob/master/data/prompts/qa.json){:target="_blank"} (found in jetson-containers)</sup> 
+<small>• &nbsp; The model responses are with 4-bit quantization, and are truncated to 256 tokens for brevity.</small>  
+<small>• &nbsp; These chat questions are from [`/data/prompts/qa.json`](https://github.com/dusty-nv/jetson-containers/blob/master/data/prompts/qa.json){:target="_blank"} (found in jetson-containers)</small> 
 
