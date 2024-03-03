@@ -80,6 +80,7 @@ nav:
     - Text (LLM):
       - text-generation-webui: tutorial_text-generation.md 
       - llamaspeak: tutorial_llamaspeak.md
+      - Small LM (SLM) 🆕: tutorial_slm.md
     - Text + Vision (VLM):
       - Mini-GPT4: tutorial_minigpt4.md
       - LLaVA: tutorial_llava.md
@@ -99,7 +100,7 @@ nav:
       - NanoDB: tutorial_nanodb.md
     - Audio:
       - AudioCraft: tutorial_audiocraft.md
-      - Whisper 🆕: tutorial_whisper.md
+      - Whisper: tutorial_whisper.md
     # - Tools:
     #   - LangChain: tutorial_distillation.md
     - Tips:
