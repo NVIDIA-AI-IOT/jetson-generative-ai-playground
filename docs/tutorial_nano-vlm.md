@@ -2,7 +2,7 @@
 
 We saw in the previous [LLaVA](tutorial_llava.md) tutorial how to run vision-language models through tools like `text-generation-webui` and `llama.cpp`.  In a similar vein to the [SLM](tutorial_slm.md) page on Small Language Models, here we'll explore optimizing VLMs for reduced memory usage and higher performance that reaches interactive levels (like in [Liva LLava](tutorial_live-llava.md)).  These are great for fitting on Orin Nano and increasing the framerate.
 
-There are 3 model families currently supported:  [Llava](https://llava-vl.github.io/){:target="_blank"}, [VILA](https://github.com/Efficient-Large-Model){:target="_blank"}, and [Obsidian](https://huggingface.co/NousResearch/Obsidian-3B-V0.5){:target="_blank"} (mini VLM)
+There are 3 model families currently supported:  [Llava](https://llava-vl.github.io/){:target="_blank"}, [VILA](https://github.com/Efficient-Large-Model/VILA){:target="_blank"}, and [Obsidian](https://huggingface.co/NousResearch/Obsidian-3B-V0.5){:target="_blank"} (mini VLM)
 
 ## VLM Benchmarks
 
