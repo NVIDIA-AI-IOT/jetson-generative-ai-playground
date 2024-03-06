@@ -102,7 +102,7 @@ nav:
     - Audio:
       - AudioCraft: tutorial_audiocraft.md
       - Whisper: tutorial_whisper.md
-    - Metropolis Microservices for Jetson:
+    - Metropolis Microservices:
       - First steps: tutorial_mmj.md
     # - Tools:
     #   - LangChain: tutorial_distillation.md
