@@ -2,9 +2,9 @@
     
 
 
-NVIDIA [Metropolis Microservices for Jetson](https://developer.nvidia.com/blog/announcing-metropolis-microservices-on-nvidia-jetson-orin-for-rapid-edge-ai-development/) simplifies the development of vision AI applications, offering a suite of customizable, cloud-native tools. Perfect for both newcomers and experts, this tutorial provides straightforward steps to kick-start your edge AI projects. 
+NVIDIA [Metropolis Microservices for Jetson](https://developer.nvidia.com/blog/announcing-metropolis-microservices-on-nvidia-jetson-orin-for-rapid-edge-ai-development/) simplifies the development of vision AI applications, offering a suite of customizable, cloud-native tools. Before diving into this tutorial, ensure you've filled out the Metropolis Microservices for Jetson [Early Access form](https://developer.nvidia.com/metropolis-microservices/jetson-application-form) to gain the necessary access to launch the services. This step is crucial as it enables you to utilize all the features and capabilities discussed in this guide.
 
-Whether you're a student or an ecosystem partner working on a use case, this guide offers a straightforward start for every skill level:
+Perfect for both newcomers and experts, this tutorial provides straightforward steps to kick-start your edge AI projects. Whether you're a student or an ecosystem partner working on a use case, this guide offers a straightforward start for every skill level:
 
 ### 0. Install NVIDIA Jetson Services:
 
