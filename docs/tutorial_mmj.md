@@ -183,10 +183,11 @@ There is an Android app that allows you to track events and create areas of inte
 
 
 Here is a quick walkthough where you can see how to:
-* Add the IP address of the Jetson
-* Track current events
-* Add new areas of interest
-* Add tripwire to track the flux and direction of events
+
+- Add the IP address of the Jetson
+- Track current events
+- Add new areas of interest
+- Add tripwire to track the flux and direction of events
 
 ![android2](./images/mmj_app.gif)
 
