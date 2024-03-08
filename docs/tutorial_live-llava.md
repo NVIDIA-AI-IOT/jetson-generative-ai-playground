@@ -2,13 +2,17 @@
 
 !!! abstract "Recommended"
 
-    Follow the chat-based [LLaVA](tutorial_llava.md) and [NanoVLM](tutorial_nano-vlm.md) tutorials and see the [`local_llm`](https://github.com/dusty-nv/jetson-containers/blob/master/packages/llm/local_llm) documentation to familiarize yourself with VLMs and test the models first.
+    Follow the chat-based [LLaVA](tutorial_llava.md) and [NanoVLM](tutorial_nano-vlm.md) tutorials and see the [`local_llm`](https://github.com/dusty-nv/jetson-containers/blob/master/packages/llm/local_llm){:target="_blank"} documentation to familiarize yourself with VLMs and test the models first.
     
 This multimodal agent runs a vision-language model on a live camera feed or video stream, repeatedly applying the same prompts to it:
 
 <a href="https://youtu.be/X-OXxPiUTuU" target="_blank"><img src="https://raw.githubusercontent.com/dusty-nv/jetson-containers/docs/docs/images/live_llava.gif"></a>
 
-This example uses the popular [LLaVA](https://llava-vl.github.io/) model (based on Llama and [CLIP](https://openai.com/research/clip)) and has been quantized with 4-bit precision to be deployed on Jetson Orin.  It's using an optimized multimodal pipeline from the [`local_llm`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm) package and the MLC/TVM inferencing runtime, and acts as a building block for creating always-on edge applications that can trigger user-promptable alerts and actions with the flexibility of VLMs.
+It uses models like [LLaVA](https://llava-vl.github.io/){:target="_blank"} or [VILA](https://github.com/Efficient-Large-Model/VILA){:target="_blank"} (based on Llama and [CLIP](https://openai.com/research/clip)) and has been quantized with 4-bit precision to be deployed on Jetson Orin.  This runs an optimized multimodal pipeline from the [`local_llm`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm){:target="_blank"} package, and acts as a building block for creating event-driven streaming applications that trigger user-promptable alerts and actions with the flexibility of VLMs:
+
+<iframe width="720" height="405" src="https://www.youtube.com/embed/dRmAGGuupuE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+The interactive web UI supports event filters, alerts, and multimodal [vector DB](tutorial_nanodb.md) integration.
 
 ## Running the Live Llava Demo
 
@@ -39,45 +43,30 @@ This example uses the popular [LLaVA](https://llava-vl.github.io/) model (based 
         - [`NousResearch/Obsidian-3B-V0.5`](https://huggingface.co/NousResearch/Obsidian-3B-V0.5)
         - [`VILA-2.7b`](https://huggingface.co/Efficient-Large-Model/VILA-2.7b), [`VILA-7b`](https://huggingface.co/Efficient-Large-Model/VILA-7b), [`Llava-7b`](https://huggingface.co/liuhaotian/llava-v1.6-vicuna-7b), and [`Obsidian-3B`](https://huggingface.co/NousResearch/Obsidian-3B-V0.5) can run on Orin Nano 8GB
 		
-The [`VideoQuery`](https://github.com/dusty-nv/jetson-containers/blob/master/packages/llm/local_llm/agents/video_query.py) agent processes an incoming camera or video feed on prompts in a closed loop with Llava.  
+The [VideoQuery](https://github.com/dusty-nv/jetson-containers/blob/master/packages/llm/local_llm/agents/video_query.py){:target="_blank"} agent processes an incoming camera or video feed on prompts in a closed loop with the VLM.  Navigate your browser to `https://<IP_ADDRESS>:8050` after launching it, and see this [demo walkthrough](https://www.youtube.com/watch?v=dRmAGGuupuE){:target="_blank"} video for pointers on using the web UI.   
 
 ```bash
-./run.sh \
-  -e SSL_KEY=/data/key.pem -e SSL_CERT=/data/cert.pem \
-  $(./autotag local_llm) \
+./run.sh $(./autotag local_llm) \
 	python3 -m local_llm.agents.video_query --api=mlc --verbose \
-	  --model liuhaotian/llava-v1.5-7b \
+	  --model Efficient-Large-Model/VILA-2.7b \
 	  --max-context-len 768 \
 	  --max-new-tokens 32 \
 	  --video-input /dev/video0 \
-	  --video-output webrtc://@:8554/output \
-	  --prompt "How many fingers am I holding up?"
+	  --video-output webrtc://@:8554/output
 ```
-> <small>Refer to [Enabling HTTPS/SSL](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm#enabling-httpsssl) to generate self-signed SSL certificates for enabling client-side browser webcams.</small>
 
-This uses [`jetson_utils`](https://github.com/dusty-nv/jetson-utils) for video I/O, and for options related to protocols and file formats, see [Camera Streaming and Multimedia](https://github.com/dusty-nv/jetson-inference/blob/master/docs/aux-streaming.md).  In the example above, it captures a V4L2 USB webcam connected to the Jetson (`/dev/video0`) and outputs a WebRTC stream that can be viewed from a browser at `https://HOSTNAME:8554`.  When HTTPS/SSL is enabled, it can also capture from the browser's webcam.
-
-### Changing the Prompt 
-
-The `--prompt` can be specified multiple times, and changed at runtime by pressing the number of the prompt followed by enter on the terminal's keyboard (for example, <kbd>1</kbd> + <kbd>Enter</kbd> for the first prompt).  These are the default prompts when no `--prompt` is specified:
-
-1. Describe the image concisely.
-2. How many fingers is the person holding up?
-3. What does the text in the image say?
-4. There is a question asked in the image.  What is the answer?
-
-Future versions of this demo will have the prompts dynamically editable from the web UI.
+This uses [jetson_utils](https://github.com/dusty-nv/jetson-utils) for video I/O, and for options related to protocols and file formats, see [Camera Streaming and Multimedia](https://github.com/dusty-nv/jetson-inference/blob/master/docs/aux-streaming.md).  In the example above, it captures a V4L2 USB webcam connected to the Jetson (`/dev/video0`) and outputs a WebRTC stream that can be viewed from a browser at `https://HOSTNAME:8554`.  When HTTPS/SSL is enabled, it can also capture from the browser's webcam.
 
 ### Processing a Video File or Stream
 
-The example above was running on a live camera, but you can also read and write a [video file or stream](https://github.com/dusty-nv/jetson-inference/blob/master/docs/aux-streaming.md) by substituting the path or URL to the `--video-input` and `--video-output` command-line arguments like this:
+The example above was running on a live camera, but you can also read and write a [video file or network stream](https://github.com/dusty-nv/jetson-inference/blob/master/docs/aux-streaming.md) by substituting the path or URL to the `--video-input` and `--video-output` command-line arguments like this:
 
 ```bash
 ./run.sh \
   -v /path/to/your/videos:/mount
   $(./autotag local_llm) \
 	python3 -m local_llm.agents.video_query --api=mlc --verbose \
-	  --model liuhaotian/llava-v1.5-7b \
+	  --model Efficient-Large-Model/VILA-2.7b \
 	  --max-new-tokens 32 \
 	  --video-input /mount/my_video.mp4 \
 	  --video-output /mount/output.mp4 \
@@ -86,5 +75,25 @@ The example above was running on a live camera, but you can also read and write 
 
 This example processes and pre-recorded video (in MP4, MKV, AVI, FLV formats with H.264/H.265 encoding), but it also can input/output live network streams like [RTP](https://github.com/dusty-nv/jetson-inference/blob/master/docs/aux-streaming.md#rtp), [RTSP](https://github.com/dusty-nv/jetson-inference/blob/master/docs/aux-streaming.md#rtsp), and [WebRTC](https://github.com/dusty-nv/jetson-inference/blob/master/docs/aux-streaming.md#webrtc) using Jetson's hardware-accelerated video codecs.
 
-<iframe width="720" height="405" src="https://www.youtube.com/embed/X-OXxPiUTuU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+### NanoDB Integration
 
+If you launch the [VideoQuery](https://github.com/dusty-nv/jetson-containers/blob/master/packages/llm/local_llm/agents/video_query.py){:target="_blank"} agent with the `--nanodb` flag along with a path to your NanoDB database, it will perform reverse-image search on the incoming feed against the database by re-using the CLIP embeddings generated by the VLM.
+
+To enable this mode, first follow the [**NanoDB tutorial**](tutorial_nanodb.md) to download, index, and test the database.  Then launch VideoQuery like this:
+
+```bash
+./run.sh $(./autotag local_llm) \
+	python3 -m local_llm.agents.video_query --api=mlc --verbose \
+	  --model Efficient-Large-Model/VILA-2.7b \
+	  --max-context-len 768 \
+	  --max-new-tokens 32 \
+	  --video-input /dev/video0 \
+	  --video-output webrtc://@:8554/output \
+	  --nanodb /data/nanodb/coco/2017
+```
+
+You can also tag incoming images and add them to the database using the panel in the web UI.
+
+<div><iframe width="500" height="280" src="https://www.youtube.com/embed/X-OXxPiUTuU" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<iframe width="500" height="280" src="https://www.youtube.com/embed/dRmAGGuupuE" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>

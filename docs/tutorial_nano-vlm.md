@@ -120,8 +120,11 @@ These models can also be used with the [Live Llava](tutorial_live-llava.md) agen
     --max-context-len 768 \
     --max-new-tokens 32 \
     --video-input /dev/video0 \
-    --video-output webrtc://@:8554/output \
-    --prompt "How many fingers am I holding up?"
+    --video-output webrtc://@:8554/output
 ```
-   
-<a href="https://youtu.be/X-OXxPiUTuU" target="_blank"><img src="https://raw.githubusercontent.com/dusty-nv/jetson-containers/docs/docs/images/live_llava.gif"></a>
+  
+<div><iframe width="500" height="280" src="https://www.youtube.com/embed/X-OXxPiUTuU" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<iframe width="500" height="280" src="https://www.youtube.com/embed/dRmAGGuupuE" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+  
+
