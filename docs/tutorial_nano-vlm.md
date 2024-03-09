@@ -2,7 +2,7 @@
 
 We saw in the previous [LLaVA](tutorial_llava.md) tutorial how to run vision-language models through tools like `text-generation-webui` and `llama.cpp`.  In a similar vein to the [SLM](tutorial_slm.md) page on Small Language Models, here we'll explore optimizing VLMs for reduced memory usage and higher performance that reaches interactive levels (like in [Liva LLava](tutorial_live-llava.md)).  These are great for fitting on Orin Nano and increasing the framerate.
 
-There are 3 model families currently supported:  [Llava](https://llava-vl.github.io/), [VILA](https://huggingface.co/Efficient-Large-Model), and [Obsidian](https://huggingface.co/NousResearch/Obsidian-3B-V0.5) (mini VLM)
+There are 3 model families currently supported:  [Llava](https://llava-vl.github.io/){:target="_blank"}, [VILA](https://github.com/Efficient-Large-Model/VILA){:target="_blank"}, and [Obsidian](https://huggingface.co/NousResearch/Obsidian-3B-V0.5){:target="_blank"} (mini VLM)
 
 ## VLM Benchmarks
 
@@ -10,7 +10,7 @@ There are 3 model families currently supported:  [Llava](https://llava-vl.github
 
 This FPS measures the end-to-end pipeline performance for continuous streaming like with [Live Llava](tutorial_live-llava.md) (on yes/no question)  
 
-<iframe width="1000px" height="260px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubhtml?gid=642302170&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+<iframe width="1000px" height="275px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubhtml?gid=642302170&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
 
 > <small>• &nbsp; These models all use [`CLIP ViT-L/14@336px`](https://huggingface.co/openai/clip-vit-large-patch14-336) for the vision encoder.</small>  
 > <small>• &nbsp; Jetson Orin Nano 8GB runs out of memory trying to run Llava-13B.</small>  
@@ -24,9 +24,9 @@ This FPS measures the end-to-end pipeline performance for continuous streaming l
         <span class="blobDarkGreen4">Jetson AGX Orin (64GB)</span>
         <span class="blobDarkGreen5">Jetson AGX Orin (32GB)</span>
         <span class="blobLightGreen3">Jetson Orin NX (16GB)</span>
-        <span class="blobLightGreen4">Jetson Orin Nano (8GB)</span><span title="Orin Nano 8GB can run Llava-7b, VILA-7b, and Obsidian-3B">⚠️</span>
+        <span class="blobLightGreen4">Jetson Orin Nano (8GB)</span><span title="Orin Nano 8GB can run VILA-2.7b, VILA-7b, Llava-7B, and Obsidian-3B">⚠️</span>
 
-    2. Running one of the following versions of [JetPack](https://developer.nvidia.com/embedded/jetpack):
+    2. Running one of the following versions of [JetPack](https://developer.nvidia.com/embedded/jetpack){:target="_blank"}:
 
         <span class="blobPink2">JetPack 6 (L4T r36.x)</span>
 
@@ -38,9 +38,9 @@ This FPS measures the end-to-end pipeline performance for continuous streaming l
     4. Supported VLM models in [`local_llm`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm#text-chat):
     
         - [`liuhaotian/llava-v1.5-7b`](https://huggingface.co/liuhaotian/llava-v1.5-7b), [`liuhaotian/llava-v1.5-13b`](https://huggingface.co/liuhaotian/llava-v1.5-13b), [`liuhaotian/llava-v1.6-vicuna-7b`](https://huggingface.co/liuhaotian/llava-v1.6-vicuna-7b), [`liuhaotian/llava-v1.6-vicuna-13b`](https://huggingface.co/liuhaotian/llava-v1.6-vicuna-13b)
-        - [`Efficient-Large-Model/VILA-7b`](https://huggingface.co/Efficient-Large-Model/VILA-7b), [`Efficient-Large-Model/VILA-13b`](https://huggingface.co/Efficient-Large-Model/VILA-13b)
+        - [`Efficient-Large-Model/VILA-2.7b`](https://huggingface.co/Efficient-Large-Model/VILA-2.7b),[`Efficient-Large-Model/VILA-7b`](https://huggingface.co/Efficient-Large-Model/VILA-7b), [`Efficient-Large-Model/VILA-13b`](https://huggingface.co/Efficient-Large-Model/VILA-13b)
         - [`NousResearch/Obsidian-3B-V0.5`](https://huggingface.co/NousResearch/Obsidian-3B-V0.5)
-        - [`Llava-7b`](https://huggingface.co/liuhaotian/llava-v1.6-vicuna-7b), [`VILA-7b`](https://huggingface.co/Efficient-Large-Model/VILA-7b), and [`Obsidian-3B`](https://huggingface.co/NousResearch/Obsidian-3B-V0.5) can be run on Orin Nano 8GB.
+        - [`VILA-2.7b`](https://huggingface.co/Efficient-Large-Model/VILA-2.7b), [`VILA-7b`](https://huggingface.co/Efficient-Large-Model/VILA-7b), [`Llava-7b`](https://huggingface.co/liuhaotian/llava-v1.6-vicuna-7b), and [`Obsidian-3B`](https://huggingface.co/NousResearch/Obsidian-3B-V0.5) can run on Orin Nano 8GB
 	   
 The optimized [`local_llm`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm) container using MLC/TVM for quantization and inference provides the highest performance.  It efficiently manages the CLIP embeddings and KV cache.  You can find the Python code for the chat program used in this example [here](https://github.com/dusty-nv/jetson-containers/blob/master/packages/llm/local_llm/__main__.py). 
 
@@ -120,8 +120,11 @@ These models can also be used with the [Live Llava](tutorial_live-llava.md) agen
     --max-context-len 768 \
     --max-new-tokens 32 \
     --video-input /dev/video0 \
-    --video-output webrtc://@:8554/output \
-    --prompt "How many fingers am I holding up?"
+    --video-output webrtc://@:8554/output
 ```
-   
-<a href="https://youtu.be/X-OXxPiUTuU" target="_blank"><img src="https://raw.githubusercontent.com/dusty-nv/jetson-containers/docs/docs/images/live_llava.gif"></a>
+  
+<div><iframe width="500" height="280" src="https://www.youtube.com/embed/X-OXxPiUTuU" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<iframe width="500" height="280" src="https://www.youtube.com/embed/dRmAGGuupuE" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+  
+

@@ -80,7 +80,7 @@ nav:
     - Text (LLM):
       - text-generation-webui: tutorial_text-generation.md 
       - llamaspeak: tutorial_llamaspeak.md
-      - Small LM (SLM) 🆕: tutorial_slm.md
+      - Small LLM (SLM) 🆕: tutorial_slm.md
     - Text + Vision (VLM):
       - Mini-GPT4: tutorial_minigpt4.md
       - LLaVA: tutorial_llava.md
