@@ -116,7 +116,7 @@ These models can also be used with the [Live Llava](tutorial_live-llava.md) agen
 ``` bash
 ./run.sh $(./autotag local_llm) \
   python3 -m local_llm.agents.video_query --api=mlc \
-    --model NousResearch/Obsidian-3B-V0.5 \
+    --model Efficient-Large-Model/VILA-2.7b \
     --max-context-len 768 \
     --max-new-tokens 32 \
     --video-input /dev/video0 \
