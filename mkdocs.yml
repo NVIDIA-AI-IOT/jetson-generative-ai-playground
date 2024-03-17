@@ -81,6 +81,7 @@ nav:
       - text-generation-webui: tutorial_text-generation.md 
       - llamaspeak: tutorial_llamaspeak.md
       - Small LLM (SLM) 🆕: tutorial_slm.md
+      - API Examples 🆕: tutorial_api-examples.md
     - Text + Vision (VLM):
       - Mini-GPT4: tutorial_minigpt4.md
       - LLaVA: tutorial_llava.md
@@ -103,7 +104,7 @@ nav:
       - AudioCraft: tutorial_audiocraft.md
       - Whisper: tutorial_whisper.md
     - Metropolis Microservices:
-      - First steps: tutorial_mmj.md
+      - First steps 🆕: tutorial_mmj.md
     # - Tools:
     #   - LangChain: tutorial_distillation.md
     - Tips:
