@@ -1,4 +1,5 @@
 ---
+title: Community Projects
 hide:
   - navigation
 ---

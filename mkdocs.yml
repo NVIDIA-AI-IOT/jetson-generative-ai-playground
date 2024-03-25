@@ -112,8 +112,9 @@ nav:
       - 🔖 SSD + Docker: tips_ssd-docker.md
       - 🔖 Memory optimization: tips_ram-optimization.md
   - Benchmarks: benchmarks.md
-  - Community Projects: community_articles.md
-  - Try: try.md
+  - Projects: community_articles.md
+  - Research Group: research.md
+  #- Try: try.md
 
 extra:
   generator: false
