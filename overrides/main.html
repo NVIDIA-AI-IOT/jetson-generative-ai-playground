@@ -1,0 +1,38 @@
+<!-- Elements added to main will be displayed on all pages -->
+{% extends "base.html" %}
+
+<!-- Announcement bar -->
+{% block announce %}
+  <style>
+    .md-announce a { color: #76b900; text-decoration: underline;}
+    .md-announce a:focus { color: hsl(82, 100%, 72%);  text-decoration: underline; }
+    .md-announce a:hover { color: hsl(82, 100%, 72%); text-decoration: underline;}
+  </style>
+    <div class="md-announce">Attend the <a href="research.html">Jetson AI Lab Research Group</a> meeting on Wednesday, 4/3 at 9am PST!</div>
+    
+{% endblock %}
+
+{% block scripts %}
+<script src="//assets.adobedtm.com/5d4962a43b79/814eb6e9b4e1/launch-4bc07f1e0b0b.min.js"></script>
+{{ super() }}
+<script>
+  window._6si = window._6si || [];
+  window._6si.push(['enableEventTracking', true]);
+  window._6si.push(['setToken', 'eb417ec30d332e34d732e2916f185311']);
+  window._6si.push(['setEndpoint', 'b.6sc.co']);
+  window._6si.push(['enableRetargeting', false]); 
+
+  window._6si.push(['enableCompanyDetails', true]);
+  window._6si.push(['setEpsilonKey', '6f578ba72568231347d1bddb7102e53695302c28']);
+
+  (function() {
+    var gd = document.createElement('script');
+    gd.type = 'text/javascript';
+    gd.async = true;
+    gd.src = '//j.6sc.co/6si.min.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gd, s);
+  })();
+</script>
+<script type="text/javascript">_satellite.pageBottom();</script>
+{% endblock %}

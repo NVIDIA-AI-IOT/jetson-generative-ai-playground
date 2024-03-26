@@ -1,0 +1,1512 @@
+<!-- Elements added to main will be displayed on all pages -->
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Showcasing generative AI projects that run on Jetson">
+      
+      
+      
+      
+        <link rel="prev" href="tutorial_live-llava.html">
+      
+      
+        <link rel="next" href="tutorial_stable-diffusion.html">
+      
+      <link rel="icon" href="images/nvidia-favicon-rgb-16x16px@2x.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.21">
+    
+    
+      
+        <title>NanoVLM 🆕 - NVIDIA Jetson Generative AI Lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.eebd395e.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=NVIDIA-NALA:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"NVIDIA-NALA";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="css/colors.css">
+    
+      <link rel="stylesheet" href="css/extra.css">
+    
+      <link rel="stylesheet" href="css/nvidia-font.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-SXH8S4Y8RW"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-SXH8S4Y8RW",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-SXH8S4Y8RW",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="nv-black-green" data-md-color-primary="nv-black-green" data-md-color-accent="nv-black-green">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#nanovlm-efficient-multimodal-pipeline" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+              </button>
+            
+            
+  <style>
+    .md-announce a { color: #76b900; text-decoration: underline;}
+    .md-announce a:focus { color: hsl(82, 100%, 72%);  text-decoration: underline; }
+    .md-announce a:hover { color: hsl(82, 100%, 72%); text-decoration: underline;}
+  </style>
+    <div class="md-announce">Attend the <a href="research.html">Jetson AI Lab Research Group</a> meeting on Wednesday, 4/3 at 9am PST!</div>
+    
+
+          </div>
+          
+            <script>var content,el=document.querySelector("[data-md-component=announce]");el&&(content=el.querySelector(".md-typeset"),__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0))</script>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="NVIDIA Jetson Generative AI Lab" class="md-header__button md-logo" aria-label="NVIDIA Jetson Generative AI Lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NVIDIA Jetson Generative AI Lab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              NanoVLM 🆕
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="nv-black-green" data-md-color-primary="nv-black-green" data-md-color-accent="nv-black-green"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+            
+          
+        </form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="index.html" class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="tutorial-intro.html" class="md-tabs__link md-tabs__link--active">
+        Tutorials
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="benchmarks.html" class="md-tabs__link">
+      Benchmarks
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="community_articles.html" class="md-tabs__link">
+      Projects
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="research.html" class="md-tabs__link">
+      Research Group
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="NVIDIA Jetson Generative AI Lab" class="md-nav__button md-logo" aria-label="NVIDIA Jetson Generative AI Lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    NVIDIA Jetson Generative AI Lab
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial-intro.html" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="hello_ai_world.html" class="md-nav__link">
+        Hello AI World
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+          Text (LLM)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Text (LLM)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_text-generation.html" class="md-nav__link">
+        text-generation-webui
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_llamaspeak.html" class="md-nav__link">
+        llamaspeak
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_slm.html" class="md-nav__link">
+        Small LLM (SLM) 🆕
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_api-examples.html" class="md-nav__link">
+        API Examples 🆕
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+          Text + Vision (VLM)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Text + Vision (VLM)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_minigpt4.html" class="md-nav__link">
+        Mini-GPT4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_llava.html" class="md-nav__link">
+        LLaVA
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_live-llava.html" class="md-nav__link">
+        Live LLaVA 🆕
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          NanoVLM 🆕
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="tutorial_nano-vlm.html" class="md-nav__link md-nav__link--active">
+        NanoVLM 🆕
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vlm-benchmarks" class="md-nav__link">
+    VLM Benchmarks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multimodal-chat" class="md-nav__link">
+    Multimodal Chat
+  </a>
+  
+    <nav class="md-nav" aria-label="Multimodal Chat">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automated-prompts" class="md-nav__link">
+    Automated Prompts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#results" class="md-nav__link">
+    Results
+  </a>
+  
+    <nav class="md-nav" aria-label="Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    JSON
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web-ui" class="md-nav__link">
+    Web UI
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#live-streaming" class="md-nav__link">
+    Live Streaming
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+          Image Generation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Image Generation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_stable-diffusion.html" class="md-nav__link">
+        Stable Diffusion
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_stable-diffusion-xl.html" class="md-nav__link">
+        Stable Diffusion XL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="vit/index.html">Vision Transformers (ViT)</a>
+          
+            <label for="__nav_2_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Vision Transformers (ViT)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vit/tutorial_efficientvit.html" class="md-nav__link">
+        EfficientViT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vit/tutorial_nanoowl.html" class="md-nav__link">
+        NanoOWL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vit/tutorial_nanosam.html" class="md-nav__link">
+        NanoSAM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vit/tutorial_sam.html" class="md-nav__link">
+        SAM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vit/tutorial_tam.html" class="md-nav__link">
+        TAM
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_7" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+          Vector Database
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          Vector Database
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_nanodb.html" class="md-nav__link">
+        NanoDB
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+          Audio
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          Audio
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_audiocraft.html" class="md-nav__link">
+        AudioCraft
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_whisper.html" class="md-nav__link">
+        Whisper
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_9" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+          Metropolis Microservices
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          Metropolis Microservices
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_mmj.html" class="md-nav__link">
+        First Steps 🆕
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_10" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+          Tips
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          Tips
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_distillation.html" class="md-nav__link">
+        📑 Knowledge Distillation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tips_ssd-docker.html" class="md-nav__link">
+        🔖 SSD + Docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tips_ram-optimization.html" class="md-nav__link">
+        🔖 Memory optimization
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="benchmarks.html" class="md-nav__link">
+        Benchmarks
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="community_articles.html" class="md-nav__link">
+        Projects
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="research.html" class="md-nav__link">
+        Research Group
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vlm-benchmarks" class="md-nav__link">
+    VLM Benchmarks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multimodal-chat" class="md-nav__link">
+    Multimodal Chat
+  </a>
+  
+    <nav class="md-nav" aria-label="Multimodal Chat">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automated-prompts" class="md-nav__link">
+    Automated Prompts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#results" class="md-nav__link">
+    Results
+  </a>
+  
+    <nav class="md-nav" aria-label="Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    JSON
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web-ui" class="md-nav__link">
+    Web UI
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#live-streaming" class="md-nav__link">
+    Live Streaming
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="nanovlm-efficient-multimodal-pipeline">NanoVLM - Efficient Multimodal Pipeline</h1>
+<p>We saw in the previous <a href="tutorial_llava.html">LLaVA</a> tutorial how to run vision-language models through tools like <code>text-generation-webui</code> and <code>llama.cpp</code>.  In a similar vein to the <a href="tutorial_slm.html">SLM</a> page on Small Language Models, here we'll explore optimizing VLMs for reduced memory usage and higher performance that reaches interactive levels (like in <a href="tutorial_live-llava.html">Liva LLava</a>).  These are great for fitting on Orin Nano and increasing the framerate.</p>
+<p>There are 3 model families currently supported:  <a href="https://llava-vl.github.io/" target="_blank">Llava</a>, <a href="https://github.com/Efficient-Large-Model/VILA" target="_blank">VILA</a>, and <a href="https://huggingface.co/NousResearch/Obsidian-3B-V0.5" target="_blank">Obsidian</a> (mini VLM)</p>
+<h2 id="vlm-benchmarks">VLM Benchmarks</h2>
+<iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubchart?oid=642317430&format=interactive"></iframe>
+
+<p>This FPS measures the end-to-end pipeline performance for continuous streaming like with <a href="tutorial_live-llava.html">Live Llava</a> (on yes/no question)  </p>
+<iframe width="1000px" height="275px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubhtml?gid=642302170&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+
+<blockquote>
+<p><small>• &nbsp; These models all use <a href="https://huggingface.co/openai/clip-vit-large-patch14-336"><code>CLIP ViT-L/14@336px</code></a> for the vision encoder.</small><br />
+<small>• &nbsp; Jetson Orin Nano 8GB runs out of memory trying to run Llava-13B.</small>  </p>
+</blockquote>
+<h2 id="multimodal-chat">Multimodal Chat</h2>
+<div class="admonition abstract">
+<p class="admonition-title">What you need</p>
+<ol>
+<li>
+<p>One of the following Jetson devices:</p>
+<p><span class="blobDarkGreen4">Jetson AGX Orin (64GB)</span>
+<span class="blobDarkGreen5">Jetson AGX Orin (32GB)</span>
+<span class="blobLightGreen3">Jetson Orin NX (16GB)</span>
+<span class="blobLightGreen4">Jetson Orin Nano (8GB)</span><span title="Orin Nano 8GB can run VILA-2.7b, VILA-7b, Llava-7B, and Obsidian-3B">⚠️</span></p>
+</li>
+<li>
+<p>Running one of the following versions of <a href="https://developer.nvidia.com/embedded/jetpack" target="_blank">JetPack</a>:</p>
+<p><span class="blobPink2">JetPack 6 (L4T r36.x)</span></p>
+</li>
+<li>
+<p>Sufficient storage space (preferably with NVMe SSD).</p>
+<ul>
+<li><code>22GB</code> for <code>local_llm</code> container image</li>
+<li>Space for models (<code>&gt;10GB</code>)</li>
+</ul>
+</li>
+<li>
+<p>Supported VLM models in <a href="https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm#text-chat"><code>local_llm</code></a>:</p>
+<ul>
+<li><a href="https://huggingface.co/liuhaotian/llava-v1.5-7b"><code>liuhaotian/llava-v1.5-7b</code></a>, <a href="https://huggingface.co/liuhaotian/llava-v1.5-13b"><code>liuhaotian/llava-v1.5-13b</code></a>, <a href="https://huggingface.co/liuhaotian/llava-v1.6-vicuna-7b"><code>liuhaotian/llava-v1.6-vicuna-7b</code></a>, <a href="https://huggingface.co/liuhaotian/llava-v1.6-vicuna-13b"><code>liuhaotian/llava-v1.6-vicuna-13b</code></a></li>
+<li><a href="https://huggingface.co/Efficient-Large-Model/VILA-2.7b"><code>Efficient-Large-Model/VILA-2.7b</code></a>,<a href="https://huggingface.co/Efficient-Large-Model/VILA-7b"><code>Efficient-Large-Model/VILA-7b</code></a>, <a href="https://huggingface.co/Efficient-Large-Model/VILA-13b"><code>Efficient-Large-Model/VILA-13b</code></a></li>
+<li><a href="https://huggingface.co/NousResearch/Obsidian-3B-V0.5"><code>NousResearch/Obsidian-3B-V0.5</code></a></li>
+<li><a href="https://huggingface.co/Efficient-Large-Model/VILA-2.7b"><code>VILA-2.7b</code></a>, <a href="https://huggingface.co/Efficient-Large-Model/VILA-7b"><code>VILA-7b</code></a>, <a href="https://huggingface.co/liuhaotian/llava-v1.6-vicuna-7b"><code>Llava-7b</code></a>, and <a href="https://huggingface.co/NousResearch/Obsidian-3B-V0.5"><code>Obsidian-3B</code></a> can run on Orin Nano 8GB</li>
+</ul>
+</li>
+</ol>
+</div>
+<p>The optimized <a href="https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm"><code>local_llm</code></a> container using MLC/TVM for quantization and inference provides the highest performance.  It efficiently manages the CLIP embeddings and KV cache.  You can find the Python code for the chat program used in this example <a href="https://github.com/dusty-nv/jetson-containers/blob/master/packages/llm/local_llm/__main__.py">here</a>. </p>
+<div class="highlight"><pre><span></span><code>./run.sh<span class="w"> </span><span class="k">$(</span>./autotag<span class="w"> </span>local_llm<span class="k">)</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3<span class="w"> </span>-m<span class="w"> </span>local_llm<span class="w"> </span>--api<span class="o">=</span>mlc<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--model<span class="w"> </span>liuhaotian/llava-v1.6-vicuna-7b<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--max-context-len<span class="w"> </span><span class="m">768</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--max-new-tokens<span class="w"> </span><span class="m">128</span>
+</code></pre></div>
+<p>This starts an interactive console-based chat with Llava, and on the first run the model will automatically be downloaded from HuggingFace and quantized using MLC and W4A16 precision (which can take some time).  See <a href="https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm#text-chat">here</a> for command-line options.</p>
+<p>You'll end up at a <code>&gt;&gt; PROMPT:</code> in which you can enter the path or URL of an image file, followed by your question about the image.  You can follow-up with multiple questions about the same image.  Llava does not understand multiple images in the same chat, so when changing images, first reset the chat history by entering <code>clear</code> or <code>reset</code> as the prompt.  VILA supports multiple images (area of active research)</p>
+<h3 id="automated-prompts">Automated Prompts</h3>
+<p>During testing, you can specify prompts on the command-line that will run sequentially:</p>
+<div class="highlight"><pre><span></span><code>./run.sh $(./autotag local_llm) \
+  python3 -m local_llm --api=mlc \
+    --model liuhaotian/llava-v1.6-vicuna-7b \
+    --max-context-len 768 \
+    --max-new-tokens 128 \
+    --prompt &#39;/data/images/hoover.jpg&#39; \
+    --prompt &#39;what does the road sign say?&#39; \
+    --prompt &#39;what kind of environment is it?&#39; \
+    --prompt &#39;reset&#39; \
+    --prompt &#39;/data/images/lake.jpg&#39; \
+    --prompt &#39;please describe the scene.&#39; \
+    --prompt &#39;are there any hazards to be aware of?&#39;
+</code></pre></div>
+<p>You can also use <a href="https://github.com/dusty-nv/jetson-containers/blob/master/data/prompts/images.json" target="_blank"><code>--prompt /data/prompts/images.json</code></a> to run the test sequence, the results of which are in the table below.</p>
+<h3 id="results">Results</h3>
+<iframe width="1325px" height="905px"  src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubhtml?gid=816702382&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+
+<p><small>• &nbsp; The model responses are with 4-bit quantization enabled, and are truncated to 128 tokens for brevity.</small><br />
+<small>• &nbsp; These chat questions and images are from <a href="https://github.com/dusty-nv/jetson-containers/blob/master/data/prompts/images.json" target="_blank"><code>/data/prompts/images.json</code></a> (found in jetson-containers)</small> </p>
+<h4 id="json">JSON</h4>
+<p>When prompted, these models can also output in constrained JSON formats (which the LLaVA authors cover in their <a href="https://arxiv.org/abs/2310.03744">LLaVA-1.5 paper</a>), and can be used to programatically query information about the image:</p>
+<div class="highlight"><pre><span></span><code>./run.sh $(./autotag local_llm) \
+  python3 -m local_llm --api=mlc \
+    --model liuhaotian/llava-v1.5-13b \
+    --prompt &#39;/data/images/hoover.jpg&#39; \
+    --prompt &#39;extract any text from the image as json&#39;
+
+{
+  &quot;sign&quot;: &quot;Hoover Dam&quot;,
+  &quot;exit&quot;: &quot;2&quot;,
+  &quot;distance&quot;: &quot;1 1/2 mile&quot;
+}
+</code></pre></div>
+<h2 id="web-ui">Web UI</h2>
+<p>To use local_llm with a web UI instead, see the <a href="https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm#voice-chat">Voice Chat</a> section of the documentation: </p>
+<p><a href="https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm#local_llm" target="_blank"><img src="https://raw.githubusercontent.com/dusty-nv/jetson-containers/docs/docs/images/llamaspeak_llava_clip.gif"></a></p>
+<h2 id="live-streaming">Live Streaming</h2>
+<p>These models can also be used with the <a href="tutorial_live-llava.html">Live Llava</a> agent for continuous streaming - just substitute the desired model name below:</p>
+<div class="highlight"><pre><span></span><code>./run.sh<span class="w"> </span><span class="k">$(</span>./autotag<span class="w"> </span>local_llm<span class="k">)</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3<span class="w"> </span>-m<span class="w"> </span>local_llm.agents.video_query<span class="w"> </span>--api<span class="o">=</span>mlc<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--model<span class="w"> </span>Efficient-Large-Model/VILA-2.7b<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--max-context-len<span class="w"> </span><span class="m">768</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--max-new-tokens<span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--video-input<span class="w"> </span>/dev/video0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--video-output<span class="w"> </span>webrtc://@:8554/output
+</code></pre></div>
+<div><iframe width="500" height="280" src="https://www.youtube.com/embed/X-OXxPiUTuU" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<iframe width="500" height="280" src="https://www.youtube.com/embed/dRmAGGuupuE" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <ul class="global-footer__links"><li><a href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/" target="_blank">Privacy Policy</a></li><li> <a href="https://www.nvidia.com/en-us/privacy-center/" target="_blank">Manage My Privacy</a> </li> <li> <a href="https://www.nvidia.com/en-us/preferences/email-preferences/" target="_blank">Do Not Sell or Share My Data</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/legal-info/" target="_blank">Legal</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/accessibility/" target="_blank">Accessibility</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/company-policies/" target="_self">Corporate Policies</a> </li> <li> <a href="https://www.nvidia.com/en-us/product-security/" target="_blank">Product Security</a> </li> <li> <a href="https://www.nvidia.com/en-us/contact/" target="_blank">Contact</a> </li> </ul><div class="global-footer__copyright">Copyright &copy; 2024 NVIDIA Corporation</div>
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.indexes", "navigation.expand", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.tabs.link", "content.code.copy", "announce.dismiss"], "search": "assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+<script src="//assets.adobedtm.com/5d4962a43b79/814eb6e9b4e1/launch-4bc07f1e0b0b.min.js"></script>
+
+      <script src="assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+    
+<script>
+  window._6si = window._6si || [];
+  window._6si.push(['enableEventTracking', true]);
+  window._6si.push(['setToken', 'eb417ec30d332e34d732e2916f185311']);
+  window._6si.push(['setEndpoint', 'b.6sc.co']);
+  window._6si.push(['enableRetargeting', false]); 
+
+  window._6si.push(['enableCompanyDetails', true]);
+  window._6si.push(['setEpsilonKey', '6f578ba72568231347d1bddb7102e53695302c28']);
+
+  (function() {
+    var gd = document.createElement('script');
+    gd.type = 'text/javascript';
+    gd.async = true;
+    gd.src = '//j.6sc.co/6si.min.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gd, s);
+  })();
+</script>
+<script type="text/javascript">_satellite.pageBottom();</script>
+
+  </body>
+</html>
