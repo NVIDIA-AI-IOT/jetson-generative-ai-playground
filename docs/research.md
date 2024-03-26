@@ -317,6 +317,56 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
+	<div class="col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://www.davesarmoury.com/" target="_blank"><img class="bio-image" src="research/images/Dave_Niewinski.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/dave-niewinski-b5691132/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			<a href="https://www.youtube.com/davesarmoury" target="_blank"><img class="bio-logo" src="research/images/youtube.png"></img></a>
+			<a href="https://github.com/dniewinski" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
+			Dave Niewinski<br/>
+			<small>
+				<a href="https://www.davesarmoury.com/" target="_blank">Dave's Armoury</a> | Waterloo, Ontario<br/>
+				(<a href="https://youtu.be/yNcKTZsHyfA" target="_blank">GLaDOS</a>, <a href="https://youtu.be/yNozb8ljpgI" target="_blank">Fetch</a>, <a href="https://youtu.be/h0uvkaR6fvo" target="_blank">Offroad La-Z-Boy</a>, <a href="https://www.youtube.com/watch?v=agUdUvgV-A8" target="_blank">KUKA Bot</a>)
+			</small>
+		</div>
+	</div>
+	<div class="col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://rebotnix.com/" target="_blank"><img class="bio-image" src="research/images/Gary_Hilgemann.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/gary-hilgemann-84423a6b/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			<a href="https://www.youtube.com/channel/UCJv_UknY5ueEjbko2M2Iv4Q" target="_blank"><img class="bio-logo" src="research/images/youtube.png"></img></a>
+			<a href="https://github.com/rebotnix" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
+			Gary Hilgemann, <a href="https://rebotnix.com/" target="_blank">REBOTNIX</a><br/>
+			<small>
+				CEO & AI Roboticist | Lünen, Germany<br/>
+				(<a href="https://rebotnix.com/gustav/" target="_blank">GUSTAV</a>, <a href="https://rebotnix.com/spike/" target="_blank">SPIKE</a>, <a href="https://rebotnix.com/visiontools/" target="_blank">VisionTools</a>, <a href="https://rebotnix.com/genai/" target="_blank">GenAI</a>)
+			</small>
+		</div>
+	</div>
+	<div class="col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://www.seeedstudio.com/tag/nvidia.html" target="_blank"><img class="bio-image" src="research/images/Elaine_Wu.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/elaine1994/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			<a href="https://www.youtube.com/channel/UCJv_UknY5ueEjbko2M2Iv4Q" target="_blank"><img class="bio-logo" src="research/images/youtube.png"></img></a>
+			<a href="https://github.com/Seeed-Projects" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
+			Elaine Wu, <a href="https://www.seeedstudio.com/tag/nvidia.html" target="_blank">Seeed Studio</a><br/>
+			<small>
+				AI & Robotics Partnerships | Shenzhen, China<br/>
+				(<a href="https://www.seeedstudio.com/Nvidia-Jetson-c-2016.html" target="_blank">reComputer</a>, <a href="https://wiki.seeedstudio.com/YOLOv8-TRT-Jetson/" target="_blank">YOLOv8</a>, <a href="https://github.com/Seeed-Projects/LocalJARVIS" target="_blank">LocalJARVIS</a>, <a href="https://wiki.seeedstudio.com/Local_Voice_Chatbot/" target="_blank">Voice Bot</a>)
+			</small>
+		</div>
+	</div>
+	<div class="col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://www.linkedin.com/in/pattydelafuente/" target="_blank"><img class="bio-image" src="research/images/Patty_Delafuente.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/pattydelafuente/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			Patty Delafuente, NVIDIA<br/>
+			<small>
+				Data Scientist & UMBC PhD Student | MD<br/>
+				(AI in Education, <a href="https://www.nvidia.com/en-us/training/teaching-kits/" target="_blank">DLI Robotics Teaching Kit</a>)
+			</small>
+		</div>
+	</div>
 </div>
 
 Anyone is welcome to join this group after contributing, and open a PR against the [site repo](https://github.com/NVIDIA-AI-IOT/jetson-generative-ai-playground){:target="_blank"} with their info 😊
