@@ -1,4 +1,4 @@
-# First steps with Metropolis Microservices for Jetson
+17# First steps with Metropolis Microservices for Jetson
     
 
 
@@ -17,28 +17,26 @@ sudo apt install nvidia-jetson-services
 
 Let's add some performance hacks that will be needed to run the demo faster and without streaming artifacts:
 
+
+* If you don't have the Orin at max performance, you can use these two commands, a reboot is needed after:
 ```
 sudo nvpmodel -m 0 
 sudo jetson_clocks
 ```
-After these two commands, a reboot is needed if your Jetson wasn't already in high-performance mode.
 
+* After these two commands, a reboot is needed if your Jetson wasn't already in high-performance mode.
+These are optional, but they fine-tune your network buffers to ensure smoother streaming by optimizing how much data can be sent and received:
 ```
 sudo sysctl -w net.core.rmem_default=2129920
 sudo sysctl -w net.core.rmem_max=10000000
 sudo sysctl -w net.core.wmem_max=2000000
-
 ```
-
-
-
-
 
 ---
 
 ### 1. Download NVIDIA CLI for Jetson
 
-Download NGC for ARM64 from: https://ngc.nvidia.com/setup/installers/cli
+Download NGC for ARM64 from the [NGC for CLI site](https://ngc.nvidia.com/setup/installers/cli): 
 ```
 unzip ngccli_arm64.zip
 chmod u+x ngc-cli/ngc
@@ -115,8 +113,9 @@ Download them from [here](https://registry.ngc.nvidia.com/orgs/e7ep4mig3lne/team
 unzip files.zip
 ```
 Ok, now, this is important to understand, there are **2 web interfaces**:
-1. The NVStream Streamer Dashboard, running in: http://localhost:31000
-2. The NVStreamer Camera Management Dashboard, running in: http://localhost:30080/vst
+
+1. The NVStream Streamer Dashboard, running in: [http://localhost:31000](http://localhost:31000)
+2. The NVStreamer Camera Management Dashboard, running in: [http://localhost:31000](http://localhost:30080/vst)
 
 So, first we need to upload the file in the Streamer interface, it looks like this:
 
