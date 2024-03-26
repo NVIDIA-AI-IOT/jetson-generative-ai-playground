@@ -11,6 +11,8 @@ Our tutorials are divided into categories roughly based on model modality, the t
 | :---------- | :----------------------------------- |
 | **[text-generation-webui](./tutorial_text-generation.md)** | Interact with a local AI assistant by running a LLM with oobabooga's text-generaton-webui |
 | **[llamaspeak](./tutorial_llamaspeak.md)** | Talk live with Llama using Riva ASR/TTS, and chat about images with Llava! |
+| **[Small LLM (SLM)](./tutorial_slm.md)** | Deploy Small Language Models (SLM) with reduced memory usage and higher throughput. |
+| **[API Examples](./tutorial_api-examples.md)** | Learn how to write Python code for doing LLM inference using popular APIs. |
 
 ### Text + Vision (VLM)
 
@@ -21,6 +23,7 @@ Give your locally running LLM an access to vision!
 | **[Mini-GPT4](./tutorial_minigpt4.md)** | [Mini-GPT4](https://minigpt-4.github.io/), an open-source model that demonstrate vision-language capabilities.|
 | **[LLaVA](./tutorial_llava.md)** | [Large Language and Vision Assistant](https://llava-vl.github.io/), multimodal model that combines a vision encoder and LLM for visual and language understanding. |
 | **[Live LLaVA](./tutorial_live-llava.md)** | Run multimodal models interactively on live video streams over a repeating set of prompts. |
+| **[NanoVLM](./tutorial_nano-vlm.md)** | Use mini vision/language models and the optimized multimodal pipeline for live streaming. |
 
 ### Image Generation
 
@@ -34,8 +37,8 @@ Give your locally running LLM an access to vision!
 |      |                     |
 | :---------- | :----------------------------------- |
 | **[EfficientVIT](./vit/tutorial_efficientvit.md)** | MIT Han Lab's [EfficientViT](https://github.com/mit-han-lab/efficientvit), Multi-Scale Linear Attention for High-Resolution Dense Prediction |
-| **[NanoSAM](./vit/tutorial_nanosam.md)** | [NanoSAM](https://github.com/NVIDIA-AI-IOT/nanosam), SAM model variant capable of running in real-time on Jetson |
 | **[NanoOWL](./vit/tutorial_nanoowl.md)** | [OWL-ViT](https://huggingface.co/docs/transformers/model_doc/owlvit) optimized to run real-time on Jetson with NVIDIA TensorRT |
+| **[NanoSAM](./vit/tutorial_nanosam.md)** | [NanoSAM](https://github.com/NVIDIA-AI-IOT/nanosam), SAM model variant capable of running in real-time on Jetson |
 | **[SAM](./vit/tutorial_sam.md)** | Meta's [SAM](https://github.com/facebookresearch/segment-anything), Segment Anything model |
 | **[TAM](./vit/tutorial_tam.md)** | [TAM](https://github.com/gaomingqi/Track-Anything), Track-Anything model, is an interactive tool for video object tracking and segmentation |
 
@@ -53,13 +56,11 @@ Give your locally running LLM an access to vision!
 | **[AudioCraft](./tutorial_audiocraft.md)** | Meta's [AudioCraft](https://github.com/facebookresearch/audiocraft), to produce high-quality audio and music |
 | **[Whisper](./tutorial_whisper.md)** | OpenAI's [Whisper](https://github.com/openai/whisper), pre-trained model for automatic speech recognition (ASR) |
 
-## Tips
+### Metropolis Microservices
 
 |      |                     |
 | :---------- | :----------------------------------- |
-| Knowledge Distillation | |
-| SSD + Docker | |
-| Memory optimization | |
+| **[First Steps](./tutorial_mmj.md)** | Get [Metropolis Microservices](https://developer.nvidia.com/metropolis-microservices) up & running on Jetson with NVStreamer and AI NVR capabilities. |
 
 
 ## About NVIDIA Jetson
