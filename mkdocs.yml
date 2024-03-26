@@ -94,18 +94,17 @@ nav:
     - Vision Transformers (ViT): 
       - vit/index.md
       - EfficientViT: vit/tutorial_efficientvit.md
-      - NanoSAM: vit/tutorial_nanosam.md
       - NanoOWL: vit/tutorial_nanoowl.md
+      - NanoSAM: vit/tutorial_nanosam.md
       - SAM: vit/tutorial_sam.md
       - TAM: vit/tutorial_tam.md
-    # - NanoOWL: tutorial_nanoowl.md
     - Vector Database:
       - NanoDB: tutorial_nanodb.md
     - Audio:
       - AudioCraft: tutorial_audiocraft.md
       - Whisper: tutorial_whisper.md
     - Metropolis Microservices:
-      - First steps 🆕: tutorial_mmj.md
+      - First Steps 🆕: tutorial_mmj.md
     # - Tools:
     #   - LangChain: tutorial_distillation.md
     - Tips:
