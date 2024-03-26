@@ -77,6 +77,7 @@ nav:
   - Home: index.md
   - Tutorials:
     - Introduction: tutorial-intro.md
+    - Hello AI World: hello_ai_world.md
     - Text (LLM):
       - text-generation-webui: tutorial_text-generation.md 
       - llamaspeak: tutorial_llamaspeak.md
