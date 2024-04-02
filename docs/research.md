@@ -49,6 +49,9 @@ New topics can be raised to the group either during the meetings or on the [foru
 
 ## Contribution Guidelines
 
+
+<img src="research/images/robots_1.jpg" style="max-height: 325px;" align="right"></img>
+
 When experiments are successful, ideally the results will be packaged in such a way that they are easily reusable for others to integrate into their own projects:
 
 * Open-source libraries & code on GitHub
@@ -63,12 +66,19 @@ Ongoing technical discussions can occur on the [Jetson Projects](https://forums.
 
 We'll aim to meet monthly or bi-weekly as a team in virtual meetings that anyone is welcome to join and speak during.  We'll discuss the latest updates and experiments that we want to explore.  Please remain courteous to others during the calls.  We'll stick around after for anyone who has questions or didn't get the chance to be heard.
 
-* Wednesday, April 3 at 9am PST (4/3/24)
+!!! abstract "Wednesday, April 3 at 9am PST (4/3/24)"
+
 	- Microsoft Teams - [Meeting Link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_YzczZmJmZmItYzRiNi00ZWU0LWFmY2MtNTc0ZmM5NzA5NDVm%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} 
 	- Meeting ID: `223 573 467 074`  
 	- Passcode: `6ybvCg` 
 	- Outlook Invite:  [`Jetson AI Lab Research Group (4324).ics`](research/invites/Jetson AI Lab Research Group (4324).ics){:target="_blank"} 
-
+	- Agenda:
+		* Intros / GTC Recap
+		* Home Assistant Integration ([forum discussion](https://forums.developer.nvidia.com/t/jetson-ai-lab-homeassistant-io-integration/288225))
+		* Controller Agent LLM ([forum discussion](https://forums.developer.nvidia.com/t/jetson-ai-lab-homeassistant-io-integration/288225))
+		* ML DevOps, Containers, Core Inferencing ([forum discussion](https://forums.developer.nvidia.com/t/jetson-ai-lab-ml-devops-containers-core-inferencing/288235))
+		* Open Q&A
+		
 The meetings will be recorded and posted so that anyone unable to attend live will be able to watch them after.
 
 ## Active Members
