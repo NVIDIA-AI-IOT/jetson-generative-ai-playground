@@ -175,7 +175,7 @@ Below are shown some of the sustaining members of the group who have been workin
 <div class="row justify-content-center">
 	<div class="col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
-			<a href="https://www.linkedin.com/in/dustin-franklin-b3aaa173/" target="_blank"><img class="bio-image" src="research/images/Dustin_Franklin.jpg"></img></a>
+			<a href="https://www.linkedin.com/in/dustin-franklin-b3aaa173/" target="_blank"><img class="bio-image" src="research/images/Dustin_Franklin.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/dustin-franklin-b3aaa173/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
 			<a href="https://www.youtube.com/@dusty-nv" target="_blank"><img class="bio-logo" src="research/images/youtube.png"></img></a>
 			<a href="https://www.github.com/dusty-nv" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
@@ -188,7 +188,7 @@ Below are shown some of the sustaining members of the group who have been workin
 	</div>
 	<div class="col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
-			<a href="https://www.hackster.io/shahizat" target="_blank"><img class="bio-image" src="research/images/Shakhizat_Nurgaliyev.jpg"></img></a>
+			<a href="https://www.hackster.io/shahizat" target="_blank"><img class="bio-image" src="research/images/Shakhizat_Nurgaliyev.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/shakhizat-nurgaliyev/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
 			<a href="https://www.hackster.io/shahizat" target="_blank"><img class="bio-logo" src="research/images/hackster.png"></img></a>
 			Nurgaliyev Shakhizat<br/>
@@ -200,7 +200,7 @@ Below are shown some of the sustaining members of the group who have been workin
 	</div>
 	<div class="col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
-			<a href="https://www.youtube.com/@kerseyfabs" target="_blank"><img class="bio-image"src="research/images/Kris_Kersey.jpg"></img></a>
+			<a href="https://www.youtube.com/@kerseyfabs" target="_blank"><img class="bio-image"src="research/images/Kris_Kersey.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/kriskersey/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
 			<a href="https://www.youtube.com/@kerseyfabs" target="_blank"><img class="bio-logo" src="research/images/youtube.png"></img></a>
 			Kris Kersey, <small>Kersey Fabrications</small><br/>
@@ -212,7 +212,7 @@ Below are shown some of the sustaining members of the group who have been workin
 	</div>
 	<div class="col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
-			<a href="https://www.linkedin.com/in/johnnycano/" target="_blank"><img class="bio-image" src="research/images/Johnny_Cano.jpg"></img></a>
+			<a href="https://www.linkedin.com/in/johnnycano/" target="_blank"><img class="bio-image" src="research/images/Johnny_Cano.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/johnnycano/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
 			<a href="https://github.com/johnnynunez" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
 			Johnny Núñez Cano<br/>
@@ -364,6 +364,54 @@ Below are shown some of the sustaining members of the group who have been workin
 			<small>
 				Data Scientist & UMBC PhD Student | MD<br/>
 				(AI in Education, <a href="https://www.nvidia.com/en-us/training/teaching-kits/" target="_blank">DLI Robotics Teaching Kit</a>)
+			</small>
+		</div>
+	</div>
+	<div class="col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://hanlab.mit.edu/songhan" target="_blank"><img class="bio-image" src="research/images/Song_Han.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/songhanmit/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			<a href="https://github.com/mit-han-lab" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
+			Song Han, <a href="https://hanlab.mit.edu/" target="_blank"">MIT HAN Lab</a><br/>
+			<small>
+				<a href="https://research.nvidia.com/person/song-han" target="_blank">NVIDIA Research</a> | Cambridge, MA<br/>
+				(<a href="https://github.com/Efficient-Large-Model" target="_blank">Efficient Large Models</a>, <a href="https://github.com/mit-han-lab/llm-awq" target="_blank">AWQ</a>, <a href="https://github.com/Efficient-Large-Model/VILA" target="_blank">VILA</a>)
+			</small>
+		</div>
+	</div>
+	<div class="col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://www.linkedin.com/in/bhughes/" target="_blank"><img class="bio-image" src="research/images/Bryan_Hughes.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/bhughes/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			<a href="https://github.com/bryanhughes" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
+			Bryan Hughes, Mimzy AI<br/>
+			<small>
+				Founder, Entrepreneur | SF Bay Area<br/>
+				(Multimodal Assistants, AI at the Edge)
+			</small>
+		</div>
+	</div>
+	<div class="col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://tqchen.com/" target="_blank"><img class="bio-image" src="research/images/Tianqi_Chen.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/tianqi-chen-679a9856/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			<a href="https://github.com/mlc-ai/mlc-llm" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
+			Tianqi Chen, <a href="https://catalyst.cs.cmu.edu/" target="_blank"">CMU Catalyst</a><br/>
+			<small>
+				<a href="https://octo.ai/" target="_blank">OctoML</a>, CTO | Seattle, WA<br/>
+				(<a href="https://llm.mlc.ai/" target="_blank">MLC</a>, <a href="https://tvm.apache.org/" target="_blank">Apache TVM</a>, <a href="https://xgboost.ai/" target="_blank">XGBoost</a>)
+			</small>
+		</div>
+	</div>
+	<div class="col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://www.linkedin.com/in/michael-gr%C3%BCner-9249562a/" target="_blank"><img class="bio-image" src="research/images/Michael_Gruner.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/michael-gr%C3%BCner-9249562a/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			<a href="https://github.com/michaelgruner" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
+			Michael Grüner, <a href="https://www.ridgerun.com/" target="_blank"">RidgeRun</a><br/>
+			<small>
+				Team Lead / Architect | Costa Rica<br/>
+				(Embedded Vision & AI, Multimedia)
 			</small>
 		</div>
 	</div>
