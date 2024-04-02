@@ -49,7 +49,6 @@ New topics can be raised to the group either during the meetings or on the [foru
 
 ## Contribution Guidelines
 
-
 <img src="research/images/robots_1.jpg" style="max-height: 325px;" align="right"></img>
 
 When experiments are successful, ideally the results will be packaged in such a way that they are easily reusable for others to integrate into their own projects:
@@ -75,7 +74,7 @@ We'll aim to meet monthly or bi-weekly as a team in virtual meetings that anyone
 	- Agenda:
 		* Intros / GTC Recap
 		* Home Assistant Integration ([forum discussion](https://forums.developer.nvidia.com/t/jetson-ai-lab-homeassistant-io-integration/288225))
-		* Controller Agent LLM ([forum discussion](https://forums.developer.nvidia.com/t/jetson-ai-lab-homeassistant-io-integration/288225))
+		* Controller Agent LLM ([forum discussion](https://forums.developer.nvidia.com/t/jetson-ai-lab-controller-agent-llm/288229))
 		* ML DevOps, Containers, Core Inferencing ([forum discussion](https://forums.developer.nvidia.com/t/jetson-ai-lab-ml-devops-containers-core-inferencing/288235))
 		* Open Q&A
 		
