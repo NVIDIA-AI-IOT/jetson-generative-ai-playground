@@ -82,7 +82,6 @@ The `local_llm` container uses the optimized MLC/TVM library for inference, like
 
 ```python
 from local_llm import LocalLM, ChatHistory, ChatTemplates
-from termcolor import cprint
 
 # load model
 model = LocalLM.from_pretrained(
@@ -117,7 +116,7 @@ while True:
     
     for token in reply:
         bot_reply.text += token
-        cprint(token, color='blue', end='', flush=True)
+        print(token, end='', flush=True)
             
     print('\n')
 
