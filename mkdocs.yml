@@ -63,6 +63,7 @@ markdown_extensions:
   - pymdownx.tilde
   - pymdownx.inlinehilite
   - pymdownx.snippets
+  - pymdownx.details
   - pymdownx.tabbed:
       alternate_style: true 
   - meta
