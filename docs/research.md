@@ -80,7 +80,7 @@ The agenda will be posted here before.  Post to the forum topic to add agenda it
 
 <div><iframe width="570" height="320" src="https://www.youtube.com/embed/7w3RHoIIkNE" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-<p>Project Kickoff</p>
+<p>Project Kickoffs:</p>
 
 <ul>
 	<li><a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-homeassistant-io-integration/288225" _target="_blank">Home Assistant Integration</a></li>
