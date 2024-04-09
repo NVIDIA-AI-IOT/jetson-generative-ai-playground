@@ -46,7 +46,7 @@ The interactive web UI supports event filters, alerts, and multimodal [vector DB
 The [VideoQuery](https://github.com/dusty-nv/jetson-containers/blob/master/packages/llm/local_llm/agents/video_query.py){:target="_blank"} agent processes an incoming camera or video feed on prompts in a closed loop with the VLM.  Navigate your browser to `https://<IP_ADDRESS>:8050` after launching it, proceed past the [SSL warning](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm#enabling-httpsssl){:target="_blank"}, and see this [demo walkthrough](https://www.youtube.com/watch?v=dRmAGGuupuE){:target="_blank"} video on using the web UI.  
 
 ```bash
-./run.sh $(./autotag local_llm) \
+jetson-containers run $(autotag local_llm) \
   python3 -m local_llm.agents.video_query --api=mlc \
     --model Efficient-Large-Model/VILA-2.7b \
     --max-context-len 768 \
@@ -64,9 +64,9 @@ This uses [`jetson_utils`](https://github.com/dusty-nv/jetson-utils) for video I
 The example above was running on a live camera, but you can also read and write a [video file or network stream](https://github.com/dusty-nv/jetson-inference/blob/master/docs/aux-streaming.md) by substituting the path or URL to the `--video-input` and `--video-output` command-line arguments like this:
 
 ```bash
-./run.sh \
+jetson-containers run \
   -v /path/to/your/videos:/mount
-  $(./autotag local_llm) \
+  $(autotag local_llm) \
     python3 -m local_llm.agents.video_query --api=mlc \
       --model Efficient-Large-Model/VILA-2.7b \
       --max-new-tokens 32 \
@@ -84,7 +84,7 @@ If you launch the [VideoQuery](https://github.com/dusty-nv/jetson-containers/blo
 To enable this mode, first follow the [**NanoDB tutorial**](tutorial_nanodb.md) to download, index, and test the database.  Then launch VideoQuery like this:
 
 ```bash
-./run.sh $(./autotag local_llm) \
+jetson-containers run $(autotag local_llm) \
   python3 -m local_llm.agents.video_query --api=mlc \
     --model Efficient-Large-Model/VILA-2.7b \
     --max-context-len 768 \

@@ -51,8 +51,8 @@ for text in streamer:
 To run this (it can be found [here](https://github.com/dusty-nv/jetson-containers/blob/master/packages/llm/transformers/test.py){:target="_blank"}), you can mount a directory containing the script or your jetson-containers directory:
 
 ```bash
-./run.sh --volume $PWD/packages/llm:/mount --workdir /mount \
-  $(./autotag l4t-text-generation) \
+jetson-containers run --volume $PWD/packages/llm:/mount --workdir /mount \
+  $(autotag l4t-text-generation) \
     python3 transformers/test.py
 ```
 
@@ -127,7 +127,7 @@ while True:
 This [example](https://github.com/dusty-nv/jetson-containers/blob/master/packages/llm/local_llm/chat/example.py){:target="_blank"} keeps an interactive chat running with text being entered from the terminal.  You can start it like this:
 
 ```python
-./run.sh $(./autotag local_llm) \
+jetson-containers run $(autotag local_llm) \
     python3 -m local_llm.chat.example
 ```
 

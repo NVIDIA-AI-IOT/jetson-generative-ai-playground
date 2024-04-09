@@ -25,9 +25,7 @@ Let's run OpenAI's [Whisper](https://github.com/openai/whisper), pre-trained mod
     
 		```bash
 		git clone https://github.com/dusty-nv/jetson-containers
-		cd jetson-containers
-		sudo apt update; sudo apt install -y python3-pip
-		pip3 install -r requirements.txt
+		bash jetson-containers/install.sh
 		``` 
 
 ## How to start
@@ -35,8 +33,7 @@ Let's run OpenAI's [Whisper](https://github.com/openai/whisper), pre-trained mod
 Use `run.sh` and `autotag` script to automatically pull or build a compatible container image.
 
 ```
-cd jetson-containers
-./run.sh $(./autotag whisper)
+jetson-containers run $(autotag whisper)
 ```
 
 The container has a default run command (`CMD`) that will automatically start the Jupyter Lab server, with SSL enabled.

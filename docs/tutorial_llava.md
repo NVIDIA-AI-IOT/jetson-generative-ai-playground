@@ -44,15 +44,13 @@ In addition to Llava, the [`local_llm`](tutorial_nano-vlm.md) pipeline supports 
     
 		```bash
 		git clone https://github.com/dusty-nv/jetson-containers
-		cd jetson-containers
-		sudo apt update; sudo apt install -y python3-pip
-		pip3 install -r requirements.txt
+		bash jetson-containers/install.sh
 		``` 
 
 ### Download Model
 
 ```
-./run.sh --workdir=/opt/text-generation-webui $(./autotag text-generation-webui) \
+jetson-containers run --workdir=/opt/text-generation-webui $(autotag text-generation-webui) \
   python3 download-model.py --output=/data/models/text-generation-webui \
     TheBloke/llava-v1.5-13B-GPTQ
 ```
@@ -60,7 +58,7 @@ In addition to Llava, the [`local_llm`](tutorial_nano-vlm.md) pipeline supports 
 ### Start Web UI with Multimodal Extension
 
 ```
-./run.sh --workdir=/opt/text-generation-webui $(./autotag text-generation-webui) \
+jetson-containers run --workdir=/opt/text-generation-webui $(autotag text-generation-webui) \
   python3 server.py --listen \
     --model-dir /data/models/text-generation-webui \
     --model TheBloke_llava-v1.5-13B-GPTQ \
@@ -102,7 +100,7 @@ This example uses the upstream [Llava repo](https://github.com/haotian-liu/LLaVA
 ### llava-v1.5-7b
 
 ```
-./run.sh $(./autotag llava) \
+jetson-containers run $(autotag llava) \
   python3 -m llava.serve.cli \
     --model-path liuhaotian/llava-v1.5-7b \
     --image-file /data/images/hoover.jpg
@@ -111,7 +109,7 @@ This example uses the upstream [Llava repo](https://github.com/haotian-liu/LLaVA
 ### llava-v1.5-13b
 
 ``` bash
-./run.sh $(./autotag llava) \
+jetson-containers run $(autotag llava) \
   python3 -m llava.serve.cli \
     --model-path liuhaotian/llava-v1.5-13b \
     --image-file /data/images/hoover.jpg
@@ -188,7 +186,7 @@ python3 -m llava.serve.model_worker \
 * [mys/ggml_llava-v1.5-13b](https://huggingface.co/mys/ggml_llava-v1.5-13b)
 
 ```bash
-./run.sh --workdir=/opt/llama.cpp/bin $(./autotag llama_cpp:gguf) \
+jetson-containers run --workdir=/opt/llama.cpp/bin $(autotag llama_cpp:gguf) \
   /bin/bash -c './llava-cli \
     --model $(huggingface-downloader mys/ggml_llava-v1.5-13b/ggml-model-q4_k.gguf) \
     --mmproj $(huggingface-downloader mys/ggml_llava-v1.5-13b/mmproj-model-f16.gguf) \
@@ -205,7 +203,7 @@ python3 -m llava.serve.model_worker \
 A lower temperature like 0.1 is recommended for better quality (`--temp 0.1`), and if you omit `--prompt` it will describe the image:
 
 ```bash
-./run.sh --workdir=/opt/llama.cpp/bin $(./autotag llama_cpp:gguf) \
+jetson-containers run --workdir=/opt/llama.cpp/bin $(autotag llama_cpp:gguf) \
   /bin/bash -c './llava-cli \
     --model $(huggingface-downloader mys/ggml_llava-v1.5-13b/ggml-model-q4_k.gguf) \
     --mmproj $(huggingface-downloader mys/ggml_llava-v1.5-13b/mmproj-model-f16.gguf) \

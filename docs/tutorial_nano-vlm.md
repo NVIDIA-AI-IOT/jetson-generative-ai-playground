@@ -46,7 +46,7 @@ The optimized [`local_llm`](https://github.com/dusty-nv/jetson-containers/tree/m
 
 
 ``` bash
-./run.sh $(./autotag local_llm) \
+jetson-containers run $(autotag local_llm) \
   python3 -m local_llm --api=mlc \
     --model liuhaotian/llava-v1.6-vicuna-7b \
     --max-context-len 768 \
@@ -62,7 +62,7 @@ You'll end up at a `>> PROMPT:` in which you can enter the path or URL of an ima
 During testing, you can specify prompts on the command-line that will run sequentially:
 
 ```
-./run.sh $(./autotag local_llm) \
+jetson-containers run $(autotag local_llm) \
   python3 -m local_llm --api=mlc \
     --model liuhaotian/llava-v1.6-vicuna-7b \
     --max-context-len 768 \
@@ -90,7 +90,7 @@ You can also use [`--prompt /data/prompts/images.json`](https://github.com/dusty
 When prompted, these models can also output in constrained JSON formats (which the LLaVA authors cover in their [LLaVA-1.5 paper](https://arxiv.org/abs/2310.03744)), and can be used to programatically query information about the image:
 
 ```
-./run.sh $(./autotag local_llm) \
+jetson-containers run $(autotag local_llm) \
   python3 -m local_llm --api=mlc \
     --model liuhaotian/llava-v1.5-13b \
     --prompt '/data/images/hoover.jpg' \
@@ -114,7 +114,7 @@ To use local_llm with a web UI instead, see the [Voice Chat](https://github.com/
 These models can also be used with the [Live Llava](tutorial_live-llava.md) agent for continuous streaming - just substitute the desired model name below:
 
 ``` bash
-./run.sh $(./autotag local_llm) \
+jetson-containers run $(autotag local_llm) \
   python3 -m local_llm.agents.video_query --api=mlc \
     --model Efficient-Large-Model/VILA-2.7b \
     --max-context-len 768 \
