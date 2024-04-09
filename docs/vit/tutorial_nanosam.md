@@ -27,18 +27,15 @@ Let's run NVIDIA's [NanoSAM](https://github.com/NVIDIA-AI-IOT/nanosam) to check 
     
 		```bash
 		git clone https://github.com/dusty-nv/jetson-containers
-		cd jetson-containers
-		sudo apt update; sudo apt install -y python3-pip
-		pip3 install -r requirements.txt
+		bash jetson-containers/install.sh
 		``` 
 
 ## How to start
 
-Use `run.sh` and `autotag` script to automatically pull or build a compatible container image.
+Use the `jetson-containers run` and `autotag` commands to automatically pull or build a compatible container image.
 
 ```
-cd jetson-containers
-./run.sh $(./autotag nanosam)
+jetson-containers run $(autotag nanosam)
 ```
 
 ## Run examples
@@ -65,7 +62,7 @@ To check on your host machine, you can copy that into `/data` directory of the c
 cp data/basic_usage_out.jpg /data/
 ```
 
-Then you can go to your host system, and find the file under the `jetson_containers`' `data` directory, like `jetson_containers/data/basic_usage_out.jpg`.
+Then you can go to your host system, and find the file under `jetson-containers/data/basic_usage_out.jpg`
 
 ## Results
 

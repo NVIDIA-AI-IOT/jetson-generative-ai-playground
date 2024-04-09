@@ -27,9 +27,7 @@ Let's run [NanoDB](https://github.com/dusty-nv/jetson-containers/blob/master/pac
     
 		```bash
 		git clone https://github.com/dusty-nv/jetson-containers
-		cd jetson-containers
-		sudo apt update; sudo apt install -y python3-pip
-		pip3 install -r requirements.txt
+		bash jetson-containers/install.sh
 		``` 
 
 ## How to start 
@@ -69,7 +67,7 @@ This allow you to skip the [indexing process](#indexing-data) in the next step, 
 If you didn't download the [NanoDB index](#download-index) for COCO from above, we need to build the index by scanning your dataset directory:
 
 ```
-./run.sh $(./autotag nanodb) \
+jetson-containers run $(autotag nanodb) \
   python3 -m nanodb \
     --scan /data/datasets/coco/2017 \
     --path /data/nanodb/coco/2017 \
@@ -98,7 +96,7 @@ You can press ++ctrl+c++ to exit. For more info about the various options availa
 Spin up the Gradio server:
 
 ```
-./run.sh $(./autotag nanodb) \
+jetson-containers run $(autotag nanodb) \
   python3 -m nanodb \
     --path /data/nanodb/coco/2017 \
     --server --port=7860

@@ -25,30 +25,25 @@ Let's run AUTOMATIC1111's [`stable-diffusion-webui`](https://github.com/AUTOMATI
 
 ## Setup a container for stable-diffusion-webui
 
-The [jetson-containers](https://github.com/dusty-nv/jetson-containers) project provides pre-built Docker images for [`stable-diffusion-webui`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/diffusion/stable-diffusion-webui).  You can clone the repo to use its utilities that will automatically pull/start the correct container for you, or you can do it [manually](https://github.com/dusty-nv/jetson-containers/tree/master/packages/diffusion/stable-diffusion-webui#user-content-run).
+The [jetson-containers](https://github.com/dusty-nv/jetson-containers){:target="_blank"} project provides pre-built Docker images for [`stable-diffusion-webui`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/diffusion/stable-diffusion-webui){:target="_blank"}.  You can clone the repo to use its utilities that will automatically pull/start the correct container for you, or you can do it [manually](https://github.com/dusty-nv/jetson-containers/tree/master/packages/diffusion/stable-diffusion-webui#user-content-run){:target="_blank"}.
 
 ```
 git clone https://github.com/dusty-nv/jetson-containers
-cd jetson-containers
-sudo apt update; sudo apt install -y python3-pip
-pip3 install -r requirements.txt
+bash jetson-containers/install.sh
 ```
 
 !!! info
 
-    **JetsonHacks** provides an informative walkthrough video on [`jetson-containers`](https://github.com/dusty-nv/jetson-containers), showcasing the usage of both the [`stable-diffusion-webui`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/diffusion/stable-diffusion-webui) and [`text-generation-webui`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/text-generation-webui) containers. You can find the complete article with detailed instructions [here](https://jetsonhacks.com/2023/09/04/use-these-jetson-docker-containers-tutorial/).
+    **JetsonHacks** provides an informative walkthrough video on jetson-containers, showcasing the usage of both the `stable-diffusion-webui` and `text-generation-webui`.  You can find the complete article with detailed instructions [here](https://jetsonhacks.com/2023/09/04/use-these-jetson-docker-containers-tutorial/).
 
     <iframe width="720" height="405" src="https://www.youtube.com/embed/HlH3QkS1F5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## How to start
 
-<small>If you are running this for the first time, go through the [pre-setup](https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md) and see the [`jetson-containers/stable-diffusion-webui`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/diffusion/stable-diffusion-webui) readme.</small>
-
-Use `run.sh` and `autotag` script to automatically pull or build a compatible container image:
+Use `jetson-containers run` and `autotag` tools to automatically pull or build a compatible container image:
 
 ```
-cd jetson-containers
-./run.sh $(./autotag stable-diffusion-webui)
+jetson-containers run $(autotag stable-diffusion-webui)
 ```
 
 The container has a default run command (`CMD`) that will automatically start the webserver like this:

@@ -42,19 +42,17 @@ Based on user interactions, the recommended models to try are [`stabilityai/stab
     
 		```bash
 		git clone https://github.com/dusty-nv/jetson-containers
-		cd jetson-containers
-		sudo apt update; sudo apt install -y python3-pip
-		pip3 install -r requirements.txt
+		bash jetson-containers/install.sh
 		```  
 		
     5. If you had previously used [`local_llm`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm){:target="_blank"} container, update it first:
     
-         - `sudo docker pull $(./autotag local_llm)`
+         - `sudo docker pull $(autotag local_llm)`
 
 The [`local_llm.chat`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm#text-chat){:target="_blank"} program will automatically download and quantize models from HuggingFace like those listed in the table above:
 
 ```bash
-./run.sh $(./autotag local_llm) \
+jetson-containers run $(autotag local_llm) \
   python3 -m local_llm.chat --api=mlc \
     --model princeton-nlp/Sheared-LLaMA-2.7B-ShareGPT
 ```
@@ -70,7 +68,7 @@ This will enter into interactive mode where you chat back and forth using the ke
 During testing, you can specify prompts on the command-line that will run sequentially:
 
 ```bash
-./run.sh $(./autotag local_llm) \
+jetson-containers run $(autotag local_llm) \
   python3 -m local_llm.chat --api=mlc \
     --model stabilityai/stablelm-zephyr-3b \
     --max-new-tokens 512 \

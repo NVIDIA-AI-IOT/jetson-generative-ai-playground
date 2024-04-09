@@ -14,7 +14,8 @@ Let's run MIT Han Lab's [EfficientViT](https://github.com/mit-han-lab/efficientv
     2. Running one of the following versions of [JetPack](https://developer.nvidia.com/embedded/jetpack):
 
         <span class="blobPink1">JetPack 5 (L4T r35.x)</span>
-
+        <span class="blobPink2">JetPack 6 (L4T r36.x)</span>
+	   
     3. Sufficient storage space (preferably with NVMe SSD).
 
         - `10.9 GB` for `efficientvit` container image
@@ -24,25 +25,20 @@ Let's run MIT Han Lab's [EfficientViT](https://github.com/mit-han-lab/efficientv
     
 		```bash
 		git clone https://github.com/dusty-nv/jetson-containers
-		cd jetson-containers
-		sudo apt update; sudo apt install -y python3-pip
-		pip3 install -r requirements.txt
+		bash jetson-containers/install.sh
 		``` 
 
 ## How to start
 
-Use `run.sh` and `autotag` script to automatically pull or build a compatible container image.
+Use the `jetson-containers run` and `autotag` commands to automatically pull or build a compatible container image.
 
 ```
-cd jetson-containers
-./run.sh $(./autotag efficientvit)
+jetson-containers run $(autotag efficientvit)
 ```
 
 ## Usage of EfficientViT
 
-The official EfficientViT repo shows the complete usage information.
-
-[https://github.com/mit-han-lab/efficientvit#usage](https://github.com/mit-han-lab/efficientvit#usage)
+The official EfficientViT repo shows the complete usage information: [`https://github.com/mit-han-lab/efficientvit#usage`](https://github.com/mit-han-lab/efficientvit#usage)
 
 ## Run example/benchmark
 
@@ -81,7 +77,7 @@ Memory consumption :  3419.68 MB
 The output image file (of the last inference result) is stored as `/data/benchmarks/efficientvit_sam_demo.png`.
 
 It is stored under `/data/` directory that is mounted from the Docker host.<br>
-So you can go back to your host machine, and check `./jetson-containers/data/benchmark/` directory.
+So you can go back to your host machine, and check `jetson-containers/data/benchmark/` directory.
 
 You should find the output like this.
 
