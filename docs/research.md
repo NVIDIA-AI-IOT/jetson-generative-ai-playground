@@ -71,8 +71,13 @@ We'll aim to meet monthly or bi-weekly as a team in virtual meetings that anyone
 	- Meeting ID: `267 767 899 278`  
 	- Outlook Invite:  [`Jetson AI Lab Research Group (41724).ics`](research/invites/Jetson AI Lab Research Group (41724).ics){:target="_blank"} 
 	- Forum Topic:  [`forums.developer.nvidia.com/t/288491`](https://forums.developer.nvidia.com/t/288491)
-		
-The agenda will be posted here before.  Post to the forum topic to add agenda items.  The meetings will be recorded so anyone unable to attend live can watch them after.
+	- Agenda:
+	    * Progress on Piper TTS & Home Assistant
+	    * JetPack 6 and container updates
+	    * EDU robot for Orin Nano
+	    * Open Q&A
+	    
+The agenda will be posted here beforehand.  Post to the forum to add agenda items.  The meetings will be recorded so anyone unable to attend live can watch them after.
 
 ## Past Meetings
 
