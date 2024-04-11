@@ -434,6 +434,52 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
+	<div class="col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://www.linkedin.com/in/jesse-flot-51b50bb9/" target="_blank"><img class="bio-image" src="research/images/Jesse_Flot.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/jesse-flot-51b50bb9/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			Jesse Flot, <a href="https://www.cmu.edu/roboticsacademy/" target="_blank"">CMU Robotics Academy</a><br/>
+			<small>
+				Co-Director | Pittsburgh, PA<br/>
+				(<a href="https://www.cmu.edu/roboticsacademy/roboticscurriculum/nvidia_curriculum/applied_ai.html" target="_blank">Applied AI & Robotics</a>, <a href="https://www.cmu.edu/roboticsacademy/roboticscurriculum/nvidia_curriculum/autonomy_foundations.html" target="_blank">Autonomy Foundations</a>)
+			</small>
+		</div>
+	</div>
+	<div class="col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://www.linkedin.com/in/pjdecarlo/" target="_blank"><img class="bio-image" src="research/images/Paul_DeCarlo.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/pjdecarlo/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			<a href="https://www.hackster.io/pjdecarlo" target="_blank"><img class="bio-logo" src="research/images/hackster.png"></img></a>
+			<a href="https://github.com/toolboc" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
+			Paul DeCarlo, <a href="https://azure.microsoft.com/en-us/solutions/iot">Microsoft</a><br/>
+			<small>
+				Professor | University of Houston<br/>
+				(<a href="https://www.hackster.io/pjdecarlo/nvidia-deepstream-integration-with-azure-iot-central-d9f834">Azure IoT</a>, <a href="https://github.com/toolboc/Intelligent-Video-Analytics-with-NVIDIA-Jetson-and-Microsoft-Azure" target="_blank">Video Analytics</a>, <a href="https://www.hackster.io/pjdecarlo/llm-based-multimodal-ai-w-azure-open-ai-nvidia-jetson-135ff2" target="_blank">Microsoft JARVIS</a>)
+			</small>
+		</div>
+	</div>
+	<div class="col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://www.linkedin.com/in/michael-hansen-9885b2105/" target="_blank"><img class="bio-image" src="research/images/Mike_Hansen.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/michael-hansen-9885b2105/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			<a href="https://github.com/synesthesiam" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
+			Mike Hansen, <a href="https://www.nabucasa.com/" target="_blank"">Nabu Casa</a><br/>
+			<small>
+				Voice Engineering Lead | Urbandale, Iowa<br/>
+				(<a href="https://www.home-assistant.io" target="_blank">Home Assistant</a>, <a href="https://github.com/rhasspy/piper" target="_blank">Piper TTS</a>, <a href="https://github.com/rhasspy/wyoming" target="_blank">Wyoming</a>)
+			</small>
+		</div>
+	</div>
+	<div class="col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://www.linkedin.com/in/lakshanthad/" target="_blank"><img class="bio-image" src="research/images/Lakshantha_Dissanayake.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/lakshanthad/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			<a href="https://github.com/lakshanthad" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
+			<small>Lakshantha Dissanayake, <a href="https://www.ultralytics.com/" target="_blank">Ultralytics</a></small><br/>
+			<small>
+				Embedded CV Engineer | Vancouver, BC<br/>
+				(<a href="https://github.com/ultralytics/ultralytics" target="_blank">YOLOv8</a>, <a href="https://docs.ultralytics.com/integrations/tensorrt/" target="_blank">TensorRT</a>, <a href="https://docs.ultralytics.com/yolov5/tutorials/running_on_jetson_nano/" target="_blank">DeepStream</a>)
+			</small>
+		</div>
+	</div>
 </div>
-
-Anyone is welcome to join this group after contributing, and open a PR against the [site repo](https://github.com/NVIDIA-AI-IOT/jetson-generative-ai-playground){:target="_blank"} with their info 😊
