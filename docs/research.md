@@ -72,9 +72,10 @@ We'll aim to meet monthly or bi-weekly as a team in virtual meetings that anyone
 	- Outlook Invite:  [`Jetson AI Lab Research Group (41724).ics`](research/invites/Jetson AI Lab Research Group (41724).ics){:target="_blank"} 
 	- Forum Topic:  [`forums.developer.nvidia.com/t/288491`](https://forums.developer.nvidia.com/t/288491)
 	- Agenda:
-	    * Progress on Piper TTS & Home Assistant
-	    * JetPack 6 and container updates
-	    * EDU robot for Orin Nano
+	    * Ollama support on Jetson (<a href="https://forums.developer.nvidia.com/t/introducing-ollama-support-for-jetson-devices/289333" target="_blank">forum thread</a>)
+	    * Progress on Piper TTS & Home Assistant (<a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-home-assistant-integration/288225" target="_blank">forum thread</a>)
+	    * JetPack 6 and container updates (<a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-ml-devops-containers-core-inferencing/288235" target="_blank">forum thread</a>)
+	    * EDU robot kit for Orin Nano
 	    * Open Q&A
 	    
 The agenda will be posted here beforehand.  Post to the forum to add agenda items.  The meetings will be recorded so anyone unable to attend live can watch them after.
@@ -88,9 +89,9 @@ The agenda will be posted here beforehand.  Post to the forum to add agenda item
 <p>Project Kickoffs:</p>
 
 <ul>
-	<li><a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-homeassistant-io-integration/288225" _target="_blank">Home Assistant Integration</a></li>
-	<li><a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-controller-agent-llm/288229" _target="_blank">Agent Controller LLM</li>
-	<li><a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-ml-devops-containers-core-inferencing/288235" _target="_blank">ML DevOps, Containers, Core Inferencing</a></li>
+	<li><a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-homeassistant-io-integration/288225" target="_blank">Home Assistant Integration</a></li>
+	<li><a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-controller-agent-llm/288229" target="_blank">Agent Controller LLM</li>
+	<li><a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-ml-devops-containers-core-inferencing/288235" target="_blank">ML DevOps, Containers, Core Inferencing</a></li>
 </ul>
 
 </details>
