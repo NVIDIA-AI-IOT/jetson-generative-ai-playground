@@ -49,17 +49,21 @@ New topics can be raised to the group either during the meetings or on the [foru
 
 ## Contribution Guidelines
 
-<img src="research/images/robots_1.jpg" style="max-height: 325px;" align="right"></img>
+<!--<img src="research/images/robots_1.jpg" style="max-height: 325px;" align="right"></img>-->
 
 When experiments are successful, ideally the results will be packaged in such a way that they are easily reusable for others to integrate into their own projects:
+
+<img src="research/images/robots_0.jpg" style="max-height: 220px; margin-bottom: 0px;" align="right">
 
 * Open-source libraries & code on GitHub
 * Models on [HuggingFace Hub](https://huggingface.co/models){:target="_blank"}
 * Containers provided by [jetson-containers](https://github.com/dusty-nv/jetson-containers){:target="_blank"}
+* Discussions on the [Jetson Projects](https://forums.developer.nvidia.com/c/agx-autonomous-machines/jetson-embedded-systems/jetson-projects/78){:target="_blank"} forum
 * Documentation / tutorials on Jetson AI Lab
 * [Hackster.io](https://www.hackster.io/){:target="_blank"} for hardware-centric builds
-
-Ongoing technical discussions can occur on the [Jetson Projects](https://forums.developer.nvidia.com/c/agx-autonomous-machines/jetson-embedded-systems/jetson-projects/78){:target="_blank"} forum (or GitHub Issues), with status updates given during the meetings.
+ 
+Ongoing technical discussions are encouraged to occur on the forums or GitHub Issues, with status updates on projects given during the meetings.
+<!--Ongoing technical discussions can occur on the [Jetson Projects](https://forums.developer.nvidia.com/c/agx-autonomous-machines/jetson-embedded-systems/jetson-projects/78){:target="_blank"} forum (or GitHub Issues), with status updates given during the meetings.-->
 
 ## Meeting Schedule
 
