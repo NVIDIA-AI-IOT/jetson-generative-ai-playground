@@ -4,7 +4,7 @@ Small Language Models (SLMs) represent a growing class of language models that h
 
 <img width="900px" src="images/slm_console.gif">
 
-This tutorial shows how to run optimized SLMs with quantization using the [`local_llm`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm){:target="_blank"} container and MLC/TVM backend.  You can run these models through tools like [`text-generation-webui`](./tutorial_text-generation.md){:target="_blank"} and llama.cpp as well, just not as fast - and since the focus of SLMs is reduced computational and memory requirements, here we'll use the most optimized path available.  Those shown below have been profiled.
+This tutorial shows how to run optimized SLMs with quantization using the [`NanoLLM`](https://dusty-nv.github.io/NanoLLM){:target="_blank"} library and MLC/TVM backend.  You can run these models through tools like [`text-generation-webui`](./tutorial_text-generation.md){:target="_blank"} and llama.cpp as well, just not as fast - and since the focus of SLMs is reduced computational and memory requirements, here we'll use the most optimized path available.  Those shown below have been profiled:
 
 ## SLM Benchmarks
 
@@ -35,7 +35,7 @@ Based on user interactions, the recommended models to try are [`stabilityai/stab
 
     3. Sufficient storage space (preferably with NVMe SSD).
 
-        - `22GB` for `local_llm` container image
+        - `22GB` for `nano_llm` container image
         - Space for models (`>5GB`)
 	
     4. Clone and setup [`jetson-containers`](https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md){:target="_blank"}:
@@ -44,16 +44,12 @@ Based on user interactions, the recommended models to try are [`stabilityai/stab
 		git clone https://github.com/dusty-nv/jetson-containers
 		bash jetson-containers/install.sh
 		```  
-		
-    5. If you had previously used [`local_llm`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm){:target="_blank"} container, update it first:
-    
-         - `sudo docker pull $(autotag local_llm)`
 
-The [`local_llm.chat`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm#text-chat){:target="_blank"} program will automatically download and quantize models from HuggingFace like those listed in the table above:
+The [`nano_llm.chat`](https://dusty-nv.github.io/NanoLLM/chat.html){:target="_blank"} program will automatically download and quantize models from HuggingFace like those listed in the table above:
 
 ```bash
-jetson-containers run $(autotag local_llm) \
-  python3 -m local_llm.chat --api=mlc \
+jetson-containers run $(autotag nano_llm) \
+  python3 -m nano_llm.chat --api=mlc \
     --model princeton-nlp/Sheared-LLaMA-2.7B-ShareGPT
 ```
 > <small>• &nbsp; For models requiring authentication, use `--env HUGGINGFACE_TOKEN=<YOUR-ACCESS-TOKEN>`</small>   
@@ -68,8 +64,8 @@ This will enter into interactive mode where you chat back and forth using the ke
 During testing, you can specify prompts on the command-line that will run sequentially:
 
 ```bash
-jetson-containers run $(autotag local_llm) \
-  python3 -m local_llm.chat --api=mlc \
+jetson-containers run $(autotag nano_llm) \
+  python3 -m nano_llm.chat --api=mlc \
     --model stabilityai/stablelm-zephyr-3b \
     --max-new-tokens 512 \
     --prompt 'hi, how are you?' \

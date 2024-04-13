@@ -13,8 +13,8 @@ It's good to know the code for generating text with LLM inference, and ancillary
 	   
     2. Running one of the following versions of [JetPack](https://developer.nvidia.com/embedded/jetpack):
 
-        <span class="blobPink2">JetPack 5 (L4T r35.x)</span>
-        <span class="blobPink2">JetPack 6 (L4T r36.x)</span>
+        <span class="blobPink2">JetPack 5 (L4T r35)</span>
+        <span class="blobPink2">JetPack 6 (L4T r36)</span>
 
     3. Sufficient storage space (preferably with NVMe SSD).
 
@@ -74,19 +74,19 @@ The [`huggingface-benchmark.py`](https://github.com/dusty-nv/jetson-containers/b
 * TheBloke/Llama-2-7B-Chat-AWQ   AVG = 11.4667 seconds, 11.2 tokens/sec  memory=4662.34 MB
 ```
 
-## local_llm
+## NanoLLM
 
-The `local_llm` container uses the optimized MLC/TVM library for inference, like on the [Benchmarks](benchmarks.md) page:
+The [`NanoLLM`](https://dusty-nv.github.io/) library uses the optimized MLC/TVM library for inference, like on the [Benchmarks](benchmarks.md) page:
 
 <a href="benchmarks.html"><img width="600px" src="overrides/images/graph_llm-text-generation.svg"/></a>
 
 ```python
-from local_llm import LocalLM, ChatHistory, ChatTemplates
+from nano_llm import NanoLLM, ChatHistory, ChatTemplates
 
 # load model
-model = LocalLM.from_pretrained(
+model = NanoLLM.from_pretrained(
     model='meta-llama/Llama-2-7b-chat-hf', 
-    quant='q4f16_ft', 
+    quantization='q4f16_ft', 
     api='mlc'
 )
 
@@ -124,11 +124,11 @@ while True:
     chat_history.kv_cache = reply.kv_cache
 ```
 
-This [example](https://github.com/dusty-nv/jetson-containers/blob/master/packages/llm/local_llm/chat/example.py){:target="_blank"} keeps an interactive chat running with text being entered from the terminal.  You can start it like this:
+This [example](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/chat/example.py){:target="_blank"} keeps an interactive chat running with text being entered from the terminal.  You can start it like this:
 
 ```python
-jetson-containers run $(autotag local_llm) \
-    python3 -m local_llm.chat.example
+jetson-containers run $(autotag nano_llm) \
+    python3 -m nano_llm.chat.example
 ```
 
 Or for easy editing from the host device, copy the source into your own script and mount it into the container with the `--volume` flag.

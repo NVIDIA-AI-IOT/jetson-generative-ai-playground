@@ -28,26 +28,26 @@ This FPS measures the end-to-end pipeline performance for continuous streaming l
 
     2. Running one of the following versions of [JetPack](https://developer.nvidia.com/embedded/jetpack){:target="_blank"}:
 
-        <span class="blobPink2">JetPack 6 (L4T r36.x)</span>
+        <span class="blobPink2">JetPack 6 (L4T r36)</span>
 
     3. Sufficient storage space (preferably with NVMe SSD).
 
-        - `22GB` for `local_llm` container image
+        - `22GB` for `nano_llm` container image
         - Space for models (`>10GB`)
 	   
-    4. Supported VLM models in [`local_llm`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm#text-chat):
+    4. Supported VLM models in [`NanoLLM`](https://dusty-nv.github.io/NanoLLM):
     
         - [`liuhaotian/llava-v1.5-7b`](https://huggingface.co/liuhaotian/llava-v1.5-7b), [`liuhaotian/llava-v1.5-13b`](https://huggingface.co/liuhaotian/llava-v1.5-13b), [`liuhaotian/llava-v1.6-vicuna-7b`](https://huggingface.co/liuhaotian/llava-v1.6-vicuna-7b), [`liuhaotian/llava-v1.6-vicuna-13b`](https://huggingface.co/liuhaotian/llava-v1.6-vicuna-13b)
         - [`Efficient-Large-Model/VILA-2.7b`](https://huggingface.co/Efficient-Large-Model/VILA-2.7b),[`Efficient-Large-Model/VILA-7b`](https://huggingface.co/Efficient-Large-Model/VILA-7b), [`Efficient-Large-Model/VILA-13b`](https://huggingface.co/Efficient-Large-Model/VILA-13b)
         - [`NousResearch/Obsidian-3B-V0.5`](https://huggingface.co/NousResearch/Obsidian-3B-V0.5)
         - [`VILA-2.7b`](https://huggingface.co/Efficient-Large-Model/VILA-2.7b), [`VILA-7b`](https://huggingface.co/Efficient-Large-Model/VILA-7b), [`Llava-7b`](https://huggingface.co/liuhaotian/llava-v1.6-vicuna-7b), and [`Obsidian-3B`](https://huggingface.co/NousResearch/Obsidian-3B-V0.5) can run on Orin Nano 8GB
 	   
-The optimized [`local_llm`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm) container using MLC/TVM for quantization and inference provides the highest performance.  It efficiently manages the CLIP embeddings and KV cache.  You can find the Python code for the chat program used in this example [here](https://github.com/dusty-nv/jetson-containers/blob/master/packages/llm/local_llm/__main__.py). 
+The optimized [`NanoLLM`](https://dusty-nv.github.io/NanoLLM) library uses MLC/TVM for quantization and inference provides the highest performance.  It efficiently manages the CLIP embeddings and KV cache.  You can find Python code for the chat program used in this example [here](https://dusty-nv.github.io/NanoLLM/chat.html). 
 
 
 ``` bash
-jetson-containers run $(autotag local_llm) \
-  python3 -m local_llm --api=mlc \
+jetson-containers run $(autotag nano_llm) \
+  python3 -m nano_llm --api=mlc \
     --model liuhaotian/llava-v1.6-vicuna-7b \
     --max-context-len 768 \
     --max-new-tokens 128
@@ -62,8 +62,8 @@ You'll end up at a `>> PROMPT:` in which you can enter the path or URL of an ima
 During testing, you can specify prompts on the command-line that will run sequentially:
 
 ```
-jetson-containers run $(autotag local_llm) \
-  python3 -m local_llm --api=mlc \
+jetson-containers run $(autotag nano_llm) \
+  python3 -m nano_llm --api=mlc \
     --model liuhaotian/llava-v1.6-vicuna-7b \
     --max-context-len 768 \
     --max-new-tokens 128 \
@@ -90,8 +90,8 @@ You can also use [`--prompt /data/prompts/images.json`](https://github.com/dusty
 When prompted, these models can also output in constrained JSON formats (which the LLaVA authors cover in their [LLaVA-1.5 paper](https://arxiv.org/abs/2310.03744)), and can be used to programatically query information about the image:
 
 ```
-jetson-containers run $(autotag local_llm) \
-  python3 -m local_llm --api=mlc \
+jetson-containers run $(autotag nano_llm) \
+  python3 -m nano_llm --api=mlc \
     --model liuhaotian/llava-v1.5-13b \
     --prompt '/data/images/hoover.jpg' \
     --prompt 'extract any text from the image as json'
@@ -105,17 +105,17 @@ jetson-containers run $(autotag local_llm) \
 
 ## Web UI
 
-To use local_llm with a web UI instead, see the [Voice Chat](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm#voice-chat) section of the documentation: 
+To use this through a web browser instead, see the [llamaspeak](./tutorial_llamaspeak.md) tutorial: 
 
-<a href="https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm#local_llm" target="_blank"><img src="https://raw.githubusercontent.com/dusty-nv/jetson-containers/docs/docs/images/llamaspeak_llava_clip.gif"></a>
+<a href="tutorial_llamaspeak.html" target="_blank"><img src="https://raw.githubusercontent.com/dusty-nv/jetson-containers/docs/docs/images/llamaspeak_llava_clip.gif" width="900px"></a>
 
 ## Live Streaming
 
 These models can also be used with the [Live Llava](tutorial_live-llava.md) agent for continuous streaming - just substitute the desired model name below:
 
 ``` bash
-jetson-containers run $(autotag local_llm) \
-  python3 -m local_llm.agents.video_query --api=mlc \
+jetson-containers run $(autotag nano_llm) \
+  python3 -m nano_llm.agents.video_query --api=mlc \
     --model Efficient-Large-Model/VILA-2.7b \
     --max-context-len 768 \
     --max-new-tokens 32 \
@@ -123,7 +123,9 @@ jetson-containers run $(autotag local_llm) \
     --video-output webrtc://@:8554/output
 ```
   
-<div><iframe width="500" height="280" src="https://www.youtube.com/embed/X-OXxPiUTuU" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+The [Live Llava](tutorial_live-llava.md) tutorial shows how to enable additional features like vector database integration, image tagging, and RAG.
+
+<div><iframe width="500" height="280" src="https://www.youtube.com/embed/8Eu6zG0eEGY" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 <iframe width="500" height="280" src="https://www.youtube.com/embed/dRmAGGuupuE" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
   

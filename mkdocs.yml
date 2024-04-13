@@ -82,13 +82,13 @@ nav:
     - Text (LLM):
       - text-generation-webui: tutorial_text-generation.md 
       - llamaspeak: tutorial_llamaspeak.md
-      - Small LLM (SLM) 🆕: tutorial_slm.md
-      - API Examples 🆕: tutorial_api-examples.md
+      - Small LLM (SLM): tutorial_slm.md
+      - API Examples: tutorial_api-examples.md
     - Text + Vision (VLM):
       - Mini-GPT4: tutorial_minigpt4.md
       - LLaVA: tutorial_llava.md
-      - Live LLaVA 🆕: tutorial_live-llava.md
-      - NanoVLM 🆕: tutorial_nano-vlm.md
+      - Live LLaVA: tutorial_live-llava.md
+      - NanoVLM: tutorial_nano-vlm.md
     - Image Generation:
       - Stable Diffusion: tutorial_stable-diffusion.md
       - Stable Diffusion XL: tutorial_stable-diffusion-xl.md
@@ -105,7 +105,7 @@ nav:
       - AudioCraft: tutorial_audiocraft.md
       - Whisper: tutorial_whisper.md
     - Metropolis Microservices:
-      - First Steps 🆕: tutorial_mmj.md
+      - First Steps: tutorial_mmj.md
     # - Tools:
     #   - LangChain: tutorial_distillation.md
     - Tips:

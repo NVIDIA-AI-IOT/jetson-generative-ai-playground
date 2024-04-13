@@ -23,7 +23,7 @@ For more data and info about running these models, see the [`SLM`](tutorial_slm.
 <iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubchart?oid=642317430&format=interactive"></iframe>
 
 This measures the end-to-end pipeline performance for continuous streaming like with [Live Llava](tutorial_live-llava.md).  
-For more data and info about running these models, see the [`NanoVLM`](tutorial_nano-vlm.md) tutorial and [`local_llm`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm) documentation.
+For more data and info about running these models, see the [`NanoVLM`](tutorial_nano-vlm.md) tutorial.
 
 ## Vision Transformers (ViT)
 
