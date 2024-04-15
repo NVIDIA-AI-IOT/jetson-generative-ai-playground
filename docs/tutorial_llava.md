@@ -5,16 +5,16 @@
 1. [Chat with Llava using `text-generation-webui`](#1-chat-with-llava-using-text-generation-webui)
 2. [Run from the terminal with `llava.serve.cli`](#2-run-from-the-terminal-with-llavaservecli)
 3. [Quantized GGUF models with `llama.cpp`](#3-quantized-gguf-models-with-llamacpp)
-4. [Optimized Multimodal Pipeline with `local_llm`](#4-optimized-multimodal-pipeline-with-local_llm)
+4. [Optimized Multimodal Pipeline with `NanoVLM`](#4-optimized-multimodal-pipeline-with-nanollm)
 
 | Llava-13B (Jetson AGX Orin)                                               | Quantization | Tokens/sec |  Memory |
 |---------------------------------------------------------------------------|:------------:|:----------:|:-------:|
 | [`text-generation-webui`](#1-chat-with-llava-using-text-generation-webui) | 4-bit (GPTQ) |     2.3    |  9.7 GB |
 | [`llava.serve.cli`](#2-run-from-the-terminal-with-llavaservecli)          |  FP16 (None) |     4.2    | 27.7 GB |
 | [`llama.cpp`](#3-quantized-gguf-models-with-llamacpp)                     | 4-bit (Q4_K) |    10.1    |  9.2 GB |
-| [`local_llm`](tutorial_nano-vlm.md)                                       | 4-bit (MLC)  |    21.1    |  8.7 GB |
+| [`NanoVLM`](tutorial_nano-vlm.md)                                         | 4-bit (MLC)  |    21.1    |  8.7 GB |
 
-In addition to Llava, the [`local_llm`](tutorial_nano-vlm.md) pipeline supports [VILA](https://huggingface.co/Efficient-Large-Model) and mini vision models that run on Orin Nano as well.
+In addition to Llava, the [`NanoVLM`](tutorial_nano-vlm.md) pipeline supports [VILA](https://huggingface.co/Efficient-Large-Model) and mini vision models that run on Orin Nano as well.
 
 ![](./images/tgwui_multimodal_llava_fish.jpg)
 
@@ -215,7 +215,7 @@ In this image, a small wooden pier extends out into a calm lake, surrounded by t
 
 You can put your own images in the mounted `jetson-containers/data` directory.  The C++ code for llava-cli can be found [here](https://github.com/ggerganov/llama.cpp/tree/master/examples/llava).  The llama-cpp-python bindings also [support Llava](https://github.com/abetlen/llama-cpp-python?tab=readme-ov-file#multi-modal-models), however they are significantly slower from Python for some reason (potentially pre-processing) 
 
-## 4. Optimized Multimodal Pipeline with `local_llm`
+## 4. Optimized Multimodal Pipeline with `NanoVLM`
 	   
 !!! abstract "What's Next"
 
