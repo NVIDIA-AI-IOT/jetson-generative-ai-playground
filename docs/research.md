@@ -212,7 +212,7 @@ Below are shown some of the sustaining members of the group who have been workin
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/dustin-franklin-b3aaa173/" target="_blank"><img class="bio-image" src="research/images/Dustin_Franklin.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/dustin-franklin-b3aaa173/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
-			<a href="https://www.youtube.com/@dusty-nv" target="_blank"><img class="bio-logo" src="research/images/youtube.png"></img></a>
+			<a href="https://www.youtube.com/playlist?list=PL5B692fm6--sdf3tQk-1kp9T65y8p-D5u" target="_blank"><img class="bio-logo" src="research/images/youtube.png"></img></a>
 			<a href="https://www.github.com/dusty-nv" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
 			Dustin Franklin, NVIDIA<br/>
 			<small>
@@ -495,6 +495,54 @@ Below are shown some of the sustaining members of the group who have been workin
 			<small>
 				Embedded CV Engineer | Vancouver, BC<br/>
 				(<a href="https://github.com/ultralytics/ultralytics" target="_blank">YOLOv8</a>, <a href="https://docs.ultralytics.com/integrations/tensorrt/" target="_blank">TensorRT</a>, <a href="https://docs.ultralytics.com/yolov5/tutorials/running_on_jetson_nano/" target="_blank">DeepStream</a>)
+			</small>
+		</div>
+	</div>
+	<div class="col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://www.ostream.com/" target="_blank"><img class="bio-image" src="research/images/Kerry_Shih.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/kerryshih/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			<a href="https://www.youtube.com/channel/UCpxVxnt4KO2AzuV_XOE-97Q" target="_blank"><img class="bio-logo" src="research/images/youtube.png"></img></a>
+			Kerry Shih, <a href="https://www.ostream.com/" target="_blank">OStream</a><br/>
+			<small>
+				Founder, CEO | Los Angeles, CA<br/>
+				(<a href="https://www.ostream.com/#/OSGenRunner" target="_blank">GenRunner</a>, <a href="https://www.genainerds.com/" target="_blank">GenAI Nerds</a>)
+			</small>
+		</div>
+	</div>
+	<div class="col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://www.ece.cmu.edu/directory/bios/Ziad%20Youssfi.html" target="_blank"><img class="bio-image" src="research/images/Ziad_Youssfi.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/ziadyoussfi/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			Ziad Youssfi, <a href="https://www.ece.cmu.edu/directory/bios/Ziad%20Youssfi.html" target="_blank">CMU</a><br/>
+			<small>
+				ECE Professor | Pittsburgh, PA<br/>
+				(ML in Robotics & Embedded Systems)
+			</small>
+		</div>
+	</div>
+	<div class="col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://www.linkedin.com/in/walterlucetti/" target="_blank"><img class="bio-image" src="research/images/Walter_Lucetti.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/walterlucetti/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			<a href="https://github.com/Myzhar" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
+			Walter Lucetti, <a href="https://www.stereolabs.com" target="_blank">Stereolabs</a><br/>
+			<small>
+				Robotics & Vision Engineer | Paris, France<br/>
+				(<a href="https://www.myzhar.com" target="_blank">MyzharBot</a>, <a href="https://github.com/stereolabs/zed-ros2-wrapper" target="_blank">ROS2</a>, <a href="https://github.com/stereolabs/zed-gstreamer" target="_blank">GStreamer</a>)
+			</small>
+		</div>
+	</div>
+	<div class="col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://rnext.it/" target="_blank"><img class="bio-image" src="research/images/Raffaello_Bonghi.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/raffaello-bonghi/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			<a href="https://github.com/rbonghi" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
+			<a href="https://www.youtube.com/@rbonghi" target="_blank"><img class="bio-logo" src="research/images/youtube.png"></img></a>
+			Raffaello Bonghi, NVIDIA<br/>
+			<small>
+				AI & Robotics Engineer | Manchester, UK<br/>
+				(<a href="https://nanosaur.ai/" target="_blank">Nanosaur</a>, <a href="https://rpanther.github.io/" target="_blank">Panther</a>, <a href="https://rnext.it/jetson_stats/" target="_blank">jetson-stats</a>)
 			</small>
 		</div>
 	</div>
