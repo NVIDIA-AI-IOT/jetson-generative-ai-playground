@@ -12,7 +12,7 @@ There are virtual [meetings](#meeting-schedule) that anyone is welcome to join, 
 
 !!! abstract "Next Meeting - 4/17"
 
-    The next team meeting is on Wednesday, April 17th at 9am PST - see the [invite](#meeting-schedule) below or click [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_YzczZmJmZmItYzRiNi00ZWU0LWFmY2MtNTc0ZmM5NzA5NDVm%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"}  to join the meeting. 
+    The next team meeting is on Wednesday, April 17th at 9am PST - see the [invite](#meeting-schedule) below or click [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MGIyYjkwMTEtNGVlMi00ZjgwLWJjM2ItY2U2ZjUzYWZmMDVk%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"}  to join the meeting. 
 
 ## Topics of Interest
 
