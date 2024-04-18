@@ -47,7 +47,7 @@ The optimized [`NanoLLM`](https://dusty-nv.github.io/NanoLLM) library uses MLC/T
 
 ``` bash
 jetson-containers run $(autotag nano_llm) \
-  python3 -m nano_llm --api=mlc \
+  python3 -m nano_llm.chat --api=mlc \
     --model liuhaotian/llava-v1.6-vicuna-7b \
     --max-context-len 768 \
     --max-new-tokens 128
@@ -63,7 +63,7 @@ During testing, you can specify prompts on the command-line that will run sequen
 
 ```
 jetson-containers run $(autotag nano_llm) \
-  python3 -m nano_llm --api=mlc \
+  python3 -m nano_llm.chat --api=mlc \
     --model liuhaotian/llava-v1.6-vicuna-7b \
     --max-context-len 768 \
     --max-new-tokens 128 \
@@ -91,7 +91,7 @@ When prompted, these models can also output in constrained JSON formats (which t
 
 ```
 jetson-containers run $(autotag nano_llm) \
-  python3 -m nano_llm --api=mlc \
+  python3 -m nano_llm.chat --api=mlc \
     --model liuhaotian/llava-v1.5-13b \
     --prompt '/data/images/hoover.jpg' \
     --prompt 'extract any text from the image as json'

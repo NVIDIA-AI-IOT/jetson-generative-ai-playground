@@ -76,9 +76,9 @@ The [`huggingface-benchmark.py`](https://github.com/dusty-nv/jetson-containers/b
 
 ## NanoLLM
 
-The [`NanoLLM`](https://dusty-nv.github.io/) library uses the optimized MLC/TVM library for inference, like on the [Benchmarks](benchmarks.md) page:
+The [`NanoLLM`](https://dusty-nv.github.io/NanoLLM) library uses the optimized MLC/TVM library for inference, like on the [Benchmarks](benchmarks.md) page:
 
-<a href="benchmarks.html"><img width="600px" src="overrides/images/graph_llm-text-generation.svg"/></a>
+<a href="benchmarks.html"><iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubchart?oid=2126319913&amp;format=interactive"></iframe></a>
 
 ```python
 from nano_llm import NanoLLM, ChatHistory, ChatTemplates
