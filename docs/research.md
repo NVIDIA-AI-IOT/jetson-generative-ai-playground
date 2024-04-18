@@ -10,9 +10,11 @@ The Jetson AI Lab Research Group is a global collective for advancing open-sourc
 
 There are virtual [meetings](#meeting-schedule) that anyone is welcome to join, offline discussion on the [Jetson Projects](https://forums.developer.nvidia.com/c/agx-autonomous-machines/jetson-embedded-systems/jetson-projects/78){:target="_blank"} forum, and guidelines for upstreaming open-source [contributions](#contribution-guidelines). 
 
-!!! abstract "Next Meeting - 4/17"
+!!! abstract "Next Meeting - 5/1"
 
-    The next team meeting is on Wednesday, April 17th at 9am PST - see the [invite](#meeting-schedule) below or click [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MGIyYjkwMTEtNGVlMi00ZjgwLWJjM2ItY2U2ZjUzYWZmMDVk%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"}  to join the meeting. 
+    The next team meeting is on Wednesday, May 1st at 9am PST.  View the [recording](#past-meetings) from the last meeting below. 
+
+<!--The next team meeting is on Wednesday, May 1st at 9am PST - see the [invite](#meeting-schedule) below or click [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MGIyYjkwMTEtNGVlMi00ZjgwLWJjM2ItY2U2ZjUzYWZmMDVk%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"}  to join the meeting.-->
 
 ## Topics of Interest
 
@@ -75,8 +77,11 @@ Ongoing technical discussions are encouraged to occur on the forums or GitHub Is
 
 We'll aim to meet monthly or bi-weekly as a team in virtual meetings that anyone is welcome to join and speak during.  We'll discuss the latest updates and experiments that we want to explore.  Please remain courteous to others during the calls.  We'll stick around after for anyone who has questions or didn't get the chance to be heard.
 
-!!! abstract "Wednesday, April 17 at 9am PST (4/17/24)"
+!!! abstract "Wednesday, May 1 at 9am PST (5/1/24)"
 
+     - Teams Invite and Agenda will be posted here.
+	
+<!--
 	- Microsoft Teams - [Meeting Link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MGIyYjkwMTEtNGVlMi00ZjgwLWJjM2ItY2U2ZjUzYWZmMDVk%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} 
 	- Meeting ID: `267 767 899 278`  
 	- Outlook Invite:  [`Jetson AI Lab Research Group (41724).ics`](research/invites/Jetson AI Lab Research Group (41724).ics){:target="_blank"} 
@@ -87,10 +92,26 @@ We'll aim to meet monthly or bi-weekly as a team in virtual meetings that anyone
 	    * JetPack 6 and container updates (<a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-ml-devops-containers-core-inferencing/288235" target="_blank">forum thread</a>)
 	    * EDU robot kit for Orin Nano
 	    * Open Q&A
+-->
 	    
-The agenda will be posted here beforehand.  Post to the forum to add agenda items.  The meetings will be recorded so anyone unable to attend live can watch them after.
+The agenda will be posted beforehand.  Post to the forum to add agenda items.  The meetings will be recorded so anyone unable to attend live can watch them after.
 
 ## Past Meetings
+
+<details open><summary>April 17, 2017</summary>
+
+<div><iframe width="570" height="320" src="https://www.youtube.com/embed/F0v0OsqGsVw" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<p>Topics Covered:</p>
+
+<ul>
+	<li><a href="https://forums.developer.nvidia.com/t/introducing-ollama-support-for-jetson-devices/289333" target="_blank">Ollama Support for Jetson Devices</li>
+	<li><a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-homeassistant-io-integration/288225" target="_blank">Home Assistant Integration</a></li>
+	<li><a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-ml-devops-containers-core-inferencing/288235/15?u=dusty_nv" target="_blank"><code>jetson-container</code> Updates</a></li>
+	<li>Upgrading JetBot with Orin Nano</a></li>
+</ul>
+
+</details>
 
 <details open><summary>April 3, 2017</summary>
 
