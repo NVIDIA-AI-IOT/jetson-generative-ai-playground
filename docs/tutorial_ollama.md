@@ -4,8 +4,8 @@
 
 <img src="https://github.com/dusty-nv/jetson-containers/blob/docs/docs/images/ollama_cli.gif?raw=true" width="750px"></img>
 
-* The `ollama` client can run outside container.
-* You can also run an Open WebUI server for web clients.
+* The `ollama` [client](#ollama-client) can run inside or outside container after starting the [server](#ollama-server).
+* You can also run an [Open WebUI server](#open-webui) for supporting web clients.
 
 ## Ollama Server
 
