@@ -10,7 +10,9 @@ Our tutorials are divided into categories roughly based on model modality, the t
 |      |                     |
 | :---------- | :----------------------------------- |
 | **[text-generation-webui](./tutorial_text-generation.md)** | Interact with a local AI assistant by running a LLM with oobabooga's text-generaton-webui |
+| **[Ollama](./tutorial_ollama.md)** | Get started effortlessly deploying GGUF models for chat and web UI |
 | **[llamaspeak](./tutorial_llamaspeak.md)** | Talk live with Llama using Riva ASR/TTS, and chat about images with Llava! |
+| **[NanoLLM](./tutorial_nano-llm.md)** | Optimized inferencing library for LLMs, multimodal agents, and speech. |
 | **[Small LLM (SLM)](./tutorial_slm.md)** | Deploy Small Language Models (SLM) with reduced memory usage and higher throughput. |
 | **[API Examples](./tutorial_api-examples.md)** | Learn how to write Python code for doing LLM inference using popular APIs. |
 

@@ -123,6 +123,8 @@ jetson-containers run $(autotag nano_llm) \
     --video-output webrtc://@:8554/output
 ```
   
+Then navigate your browser to `https://<IP_ADDRESS>:8050` after launching it with your camera.  Using Chrome or Chromium is recommended for a stable WebRTC connection, with `chrome://flags#enable-webrtc-hide-local-ips-with-mdns` disabled.
+
 The [Live Llava](tutorial_live-llava.md) tutorial shows how to enable additional features like vector database integration, image tagging, and RAG.
 
 <div><iframe width="500" height="280" src="https://www.youtube.com/embed/8Eu6zG0eEGY" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
