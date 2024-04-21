@@ -12,9 +12,9 @@ There are virtual [meetings](#meeting-schedule) that anyone is welcome to join, 
 
 !!! abstract "Next Meeting - 5/1"
 
-    The next team meeting is on Wednesday, May 1st at 9am PST.  View the [recording](#past-meetings) from the last meeting below. 
-
-<!--The next team meeting is on Wednesday, May 1st at 9am PST - see the [invite](#meeting-schedule) below or click [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MGIyYjkwMTEtNGVlMi00ZjgwLWJjM2ItY2U2ZjUzYWZmMDVk%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"}  to join the meeting.-->
+    The next team meeting is on Wednesday, May 1st at 9am PST - see the [invite](#meeting-schedule) below or click [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MWZmNmIzZjktM2UzNC00N2U0LThlMTItN2UyNDQ4Y2Q2OWEy%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"}  to join the meeting.
+    
+    <!--The next team meeting is on Wednesday, May 1st at 9am PST.  View the [recording](#past-meetings) from the last meeting below. -->
 
 ## Topics of Interest
 
@@ -79,13 +79,12 @@ We'll aim to meet monthly or bi-weekly as a team in virtual meetings that anyone
 
 !!! abstract "Wednesday, May 1 at 9am PST (5/1/24)"
 
-     - Teams Invite and Agenda will be posted here.
-	
+	- Microsoft Teams - [Meeting Link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MWZmNmIzZjktM2UzNC00N2U0LThlMTItN2UyNDQ4Y2Q2OWEy%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} 
+	- Meeting ID: `216 392 143 478`  
+	- Outlook Invite:  [`Jetson AI Lab Research Group (5124).ics`](research/invites/Jetson AI Lab Research Group (5124).ics){:target="_blank"} 
+	- Forum Topic:  [`forums.developer.nvidia.com/t/290380`](https://forums.developer.nvidia.com/t/290380)
+
 <!--
-	- Microsoft Teams - [Meeting Link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MGIyYjkwMTEtNGVlMi00ZjgwLWJjM2ItY2U2ZjUzYWZmMDVk%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} 
-	- Meeting ID: `267 767 899 278`  
-	- Outlook Invite:  [`Jetson AI Lab Research Group (41724).ics`](research/invites/Jetson AI Lab Research Group (41724).ics){:target="_blank"} 
-	- Forum Topic:  [`forums.developer.nvidia.com/t/288491`](https://forums.developer.nvidia.com/t/288491)
 	- Agenda:
 	    * Ollama support on Jetson (<a href="https://forums.developer.nvidia.com/t/introducing-ollama-support-for-jetson-devices/289333" target="_blank">forum thread</a>)
 	    * Progress on Piper TTS & Home Assistant (<a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-home-assistant-integration/288225" target="_blank">forum thread</a>)
@@ -94,7 +93,7 @@ We'll aim to meet monthly or bi-weekly as a team in virtual meetings that anyone
 	    * Open Q&A
 -->
 	    
-The agenda will be posted beforehand.  Post to the forum to add agenda items.  The meetings will be recorded so anyone unable to attend live can watch them after.
+The agenda will be listed here beforehand - post to the forum to add agenda items.  The meetings will be recorded so anyone unable to attend live can watch them after.
 
 ## Past Meetings
 
