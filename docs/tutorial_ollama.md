@@ -6,6 +6,7 @@
 
 * The `ollama` [client](#ollama-client) can run inside or outside container after starting the [server](#ollama-server).
 * You can also run an [Open WebUI server](#open-webui) for supporting web clients.
+* Supports the latest models like [Llama-3](https://ollama.com/library/llama3){:target="_blank"} and [Phi-3 Mini](https://ollama.com/library/phi3){:target="_blank"}!
 
 ## Ollama Server
 
@@ -40,10 +41,10 @@ Running either of these will start the local Ollama server instance as a daemon 
 
 ## Ollama Client
 
-Start the Ollama command-line chat client with your desired model (for example: [mistral 7b](https://ollama.com/library/mistral){:target="_blank"})
+Start the Ollama command-line chat client with your desired [model](https://ollama.com/library){:target="_blank"} (for example: `llama3`, `phi3`, `mistral`)
 
 ```
-jetson-containers run $(autotag ollama) /bin/ollama run mistral
+jetson-containers run $(autotag ollama) /bin/ollama run phi3
 ```
 
 Or you can install Ollama's [binary releases](https://github.com/ollama/ollama/releases){:target="_blank"} for arm64 (without CUDA, which only the server needs)
@@ -54,7 +55,7 @@ sudo wget https://github.com/ollama/ollama/releases/download/$(git ls-remote --r
 sudo chmod +x /bin/ollama
 
 # use the client like normal outside container
-/bin/ollama run mistral
+/bin/ollama run phi3
 ```
 
 ## Open WebUI
