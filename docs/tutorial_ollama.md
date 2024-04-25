@@ -37,7 +37,7 @@ jetson-containers run --name ollama $(autotag ollama)
 docker run --runtime nvidia --rm --network=host -v ~/ollama:/ollama -e OLLAMA_MODELS=/ollama dustynv/ollama:r36.2.0
 ```
 
-Running either of these will start the local Ollama server as a daemon in the background.  It will save the models it downloads under your `jetson-containers/data/models/ollama` directory (or another directory that you choose to mount to `/root/.ollama`)
+Running either of these will start the local Ollama server as a daemon in the background.  It will save the models it downloads under your mounted `jetson-containers/data/models/ollama` directory (or another directory that you override with `OLLAMA_MODELS`)
 
 ## Ollama Client
 
