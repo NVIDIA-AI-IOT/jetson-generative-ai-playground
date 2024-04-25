@@ -31,23 +31,27 @@
 		 
 ```
 # models cached under jetson-containers/data
-jetson-containers run --detach --name ollama $(autotag ollama)
+jetson-containers run --name ollama $(autotag ollama)
 
 # models cached under your user's home directory
-docker run --runtime nvidia -d --rm --network=host -v ~/ollama:/ollama -e OLLAMA_MODELS=/ollama dustynv/ollama:r36.2.0
+docker run --runtime nvidia --rm --network=host -v ~/ollama:/ollama -e OLLAMA_MODELS=/ollama dustynv/ollama:r36.2.0
 ```
 
-Running either of these will start the local Ollama server instance as a daemon in the background.  It will save the models it downloads under your `jetson-containers/data/models/ollama` directory (or another directory that you choose to mount to `/root/.ollama`)
+Running either of these will start the local Ollama server as a daemon in the background.  It will save the models it downloads under your `jetson-containers/data/models/ollama` directory (or another directory that you choose to mount to `/root/.ollama`)
 
 ## Ollama Client
 
 Start the Ollama command-line chat client with your desired [model](https://ollama.com/library){:target="_blank"} (for example: `llama3`, `phi3`, `mistral`)
 
 ```
+# if running inside the same container as launched above
+/bin/ollama run phi3
+
+# if launching a new container for the client in another terminal
 jetson-containers run $(autotag ollama) /bin/ollama run phi3
 ```
 
-Or you can install Ollama's [binary releases](https://github.com/ollama/ollama/releases){:target="_blank"} for arm64 (without CUDA, which only the server needs)
+Or you can install Ollama's [binaries](https://github.com/ollama/ollama/releases){:target="_blank"} for arm64 outside of container (without CUDA, which only the server needs)
 
 ```
 # download the latest ollama release for arm64 into /bin
