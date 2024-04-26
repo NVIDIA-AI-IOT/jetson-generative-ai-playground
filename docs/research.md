@@ -83,7 +83,12 @@ We'll aim to meet monthly or bi-weekly as a team in virtual meetings that anyone
 	- Meeting ID: `216 392 143 478`  
 	- Outlook Invite:  [`Jetson AI Lab Research Group (5124).ics`](research/invites/Jetson AI Lab Research Group (5124).ics){:target="_blank"} 
 	- Forum Topic:  [`forums.developer.nvidia.com/t/290380`](https://forums.developer.nvidia.com/t/290380)
-
+	- Agenda:
+	    * New model releases (Llama-3, Phi-3, Mini VLMs)
+	    * Function Calling / Self-Learning RAG
+	    * Home Assistant / Wyoming (Mieszko Syty - <a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-home-assistant-integration/288225" target="_blank">forum thread</a>)
+	    * Smart Sorting / Recycling (Alvaro Costa - <a href="https://forums.developer.nvidia.com/t/system-to-capture-consumption-data-measuring-weight-and-temperature-of-products-disposed/290402" target="_blank">forum thread</a>)
+	    * Open Q&A
 <!--
 	- Agenda:
 	    * Ollama support on Jetson (<a href="https://forums.developer.nvidia.com/t/introducing-ollama-support-for-jetson-devices/289333" target="_blank">forum thread</a>)
