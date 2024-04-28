@@ -571,4 +571,26 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
+	<div class="col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://www.linkedin.com/in/alvaro01/" target="_blank"><img class="bio-image" src="research/images/Alvaro_Costa.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/alvaro01/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			Alvaro Costa, <a href="https://www.ans.co.uk/" target="_blank">ANS Group</a><br/>
+			<small>
+				AI & Robotics Lead | Epsom, UK<br/>
+				(<a href="https://www.tekntrash.com/" target="_blank">TeknTrash</a>, <a href="https://www.youtube.com/watch?v=-L6kDVr5tfU&t=137s" target="_blank">StipraPOD</a>)
+			</small>
+		</div>
+	</div>
+    <div class="col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://www.linkedin.com/in/dvdprsn/" target="_blank"><img class="bio-image" src="research/images/David_Pearson.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/dvdprsn/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			David Pearson, <a href="https://connecttech.com/jetson/" target="_blank">ConnectTech</a><br/>
+			<small>
+				Embedded Systems Engineer | Ontario, CA<br/>
+				(Edge AI Systems, Vision/Language Models)
+			</small>
+		</div>
+	</div>
 </div>
