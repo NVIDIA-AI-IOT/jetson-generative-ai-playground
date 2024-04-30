@@ -85,7 +85,7 @@ We'll aim to meet monthly or bi-weekly as a team in virtual meetings that anyone
 	- Forum Topic:  [`forums.developer.nvidia.com/t/290380`](https://forums.developer.nvidia.com/t/290380)
 	- Agenda:
 	    * New model releases (Llama-3, Phi-3, Mini VLMs)
-	    * Function Calling / Self-Learning RAG
+	    * Function Calling / Self-Learning RAG (<a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-agent-controller-llm/288229/2" target="_blank">forum thread</a>)
 	    * Home Assistant / Wyoming (Mieszko Syty - <a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-home-assistant-integration/288225" target="_blank">forum thread</a>)
 	    * Smart Sorting / Recycling (Alvaro Costa - <a href="https://forums.developer.nvidia.com/t/system-to-capture-consumption-data-measuring-weight-and-temperature-of-products-disposed/290402" target="_blank">forum thread</a>)
 	    * Open Q&A
@@ -230,10 +230,14 @@ Below are shown some of the sustaining members of the group who have been workin
 .bio-image {
 	max-height: 355px;
 }
+
+.bio-container {
+    min-width: 355px;
+}
 </style>
 
 <div class="row justify-content-center">
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/dustin-franklin-b3aaa173/" target="_blank"><img class="bio-image" src="research/images/Dustin_Franklin.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/dustin-franklin-b3aaa173/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -246,7 +250,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.hackster.io/shahizat" target="_blank"><img class="bio-image" src="research/images/Shakhizat_Nurgaliyev.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/shakhizat-nurgaliyev/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -254,11 +258,11 @@ Below are shown some of the sustaining members of the group who have been workin
 			Nurgaliyev Shakhizat<br/>
 			<small>
 				Institute of Smart Systems and AI | Kazakhstan<br/>
-				(<a href="https://www.hackster.io/shahizat/ai-powered-application-for-the-blind-and-visually-impaired-df3f9e" target="_blank">Assistive Devices</a>, <a href="https://www.hackster.io/shahizat/vision2audio-giving-the-blind-an-understanding-through-ai-33f929" target="_blank">Vision2Audio</a>, <a href="https://www.hackster.io/shahizat/running-a-chatgpt-like-llm-llama2-on-a-nvidia-jetson-cluster-cbc7d4" target="_blank">HPEC Clusters</a>)
+				(<a href="https://www.hackster.io/shahizat/ai-powered-application-for-the-blind-and-visually-impaired-df3f9e" target="_blank">Assistive Devices</a>, <a href="https://www.hackster.io/shahizat/vision2audio-giving-the-blind-an-understanding-through-ai-33f929" target="_blank">Vision2Audio</a>, <a href="https://www.hackster.io/shahizat/running-a-chatgpt-like-llm-llama2-on-a-nvidia-jetson-cluster-cbc7d4" target="_blank">HPC</a>)
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.youtube.com/@kerseyfabs" target="_blank"><img class="bio-image"src="research/images/Kris_Kersey.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/kriskersey/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -270,7 +274,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/johnnycano/" target="_blank"><img class="bio-image" src="research/images/Johnny_Cano.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/johnnycano/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -282,7 +286,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/doruk-sonmez/" target="_blank"><img class="bio-image" src="research/images/Doruk_Sonmez.png"></img></a><br/>
 			<a href="https://www.linkedin.com/in/doruk-sonmez/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -294,7 +298,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://github.com/kingardor" target="_blank"><img class="bio-image" src="research/images/Akash_James.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/akashjames/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -307,7 +311,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/mieszkosyty/" target="_blank"><img class="bio-image" src="research/images/Mieszko_Syty.jpg" title="Hey there, I'm Mieszko Syty—your friendly neighbourhood AI/ML enthusiast, Design lover, and Front-End Engineer. With a knack for coding since I was knee-high, and a solid design foundation from the Fine Arts I bring a unique blend of creativity and tech expertise to the table.&#013;&#013;By day, I'm conquering the digital space as a Lead Front-End Engineer, orchestrating projects for News, Fin-tech, and Private Banking on a global scale. But when the sun sets, you'll find me knee-deep in ML & NLP escapades, especially in the areas of Home Automation, Personal Assistants and LLM/VLM driven apps.&#013;&#013;Oh, and did I mention I'm a Sci-Fi fan? Yep, I'm all about turning your childhood dreams into cutting-edge & edge-computing reality! So, if you're ready to embark on a journey where tech meets imagination, let's connect and make some digital magic happen!"></img></a><br/>
 			<a href="https://www.linkedin.com/in/mieszkosyty/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -319,7 +323,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>	
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://jetsonhacks.com/" target="_blank"><img class="bio-image" src="research/images/Jim_Benson.png"></img></a><br/>
 			<a href="https://www.youtube.com/@JetsonHacks" target="_blank"><img class="bio-logo" src="research/images/youtube.png"></img></a>
@@ -331,7 +335,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/chitoku-yato-01ba304/" target="_blank"><img class="bio-image" src="research/images/Chitoku_Yato.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/chitoku-yato-01ba304/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -343,7 +347,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/danasheahen/" target="_blank"><img class="bio-image" src="research/images/Dana_Sheahen.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/danasheahen/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -354,7 +358,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>	
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/sammy-ochoa/" target="_blank"><img class="bio-image" src="research/images/Sammy_Ochoa.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/sammy-ochoa/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -366,7 +370,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/john-w-213126183/" target="_blank"><img class="bio-image" src="research/images/John_Welsh.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/john-w-213126183/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -377,7 +381,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.davesarmoury.com/" target="_blank"><img class="bio-image" src="research/images/Dave_Niewinski.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/dave-niewinski-b5691132/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -390,7 +394,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://rebotnix.com/" target="_blank"><img class="bio-image" src="research/images/Gary_Hilgemann.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/gary-hilgemann-84423a6b/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -403,7 +407,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.seeedstudio.com/tag/nvidia.html" target="_blank"><img class="bio-image" src="research/images/Elaine_Wu.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/elaine1994/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -416,7 +420,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/pattydelafuente/" target="_blank"><img class="bio-image" src="research/images/Patty_Delafuente.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/pattydelafuente/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -427,7 +431,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://hanlab.mit.edu/songhan" target="_blank"><img class="bio-image" src="research/images/Song_Han.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/songhanmit/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -439,7 +443,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/bhughes/" target="_blank"><img class="bio-image" src="research/images/Bryan_Hughes.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/bhughes/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -451,7 +455,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://tqchen.com/" target="_blank"><img class="bio-image" src="research/images/Tianqi_Chen.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/tianqi-chen-679a9856/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -463,7 +467,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/michael-gr%C3%BCner-9249562a/" target="_blank"><img class="bio-image" src="research/images/Michael_Gruner.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/michael-gr%C3%BCner-9249562a/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -475,7 +479,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/jesse-flot-51b50bb9/" target="_blank"><img class="bio-image" src="research/images/Jesse_Flot.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/jesse-flot-51b50bb9/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -486,7 +490,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/pjdecarlo/" target="_blank"><img class="bio-image" src="research/images/Paul_DeCarlo.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/pjdecarlo/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -499,7 +503,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/michael-hansen-9885b2105/" target="_blank"><img class="bio-image" src="research/images/Mike_Hansen.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/michael-hansen-9885b2105/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -511,7 +515,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/lakshanthad/" target="_blank"><img class="bio-image" src="research/images/Lakshantha_Dissanayake.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/lakshanthad/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -523,7 +527,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.ostream.com/" target="_blank"><img class="bio-image" src="research/images/Kerry_Shih.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/kerryshih/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -535,7 +539,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.ece.cmu.edu/directory/bios/Ziad%20Youssfi.html" target="_blank"><img class="bio-image" src="research/images/Ziad_Youssfi.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/ziadyoussfi/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -546,7 +550,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/walterlucetti/" target="_blank"><img class="bio-image" src="research/images/Walter_Lucetti.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/walterlucetti/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -558,7 +562,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://rnext.it/" target="_blank"><img class="bio-image" src="research/images/Raffaello_Bonghi.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/raffaello-bonghi/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -571,7 +575,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/alvaro01/" target="_blank"><img class="bio-image" src="research/images/Alvaro_Costa.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/alvaro01/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -582,7 +586,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-    <div class="col-lg-4 col-sm-4">
+    <div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/dvdprsn/" target="_blank"><img class="bio-image" src="research/images/David_Pearson.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/dvdprsn/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -590,6 +594,19 @@ Below are shown some of the sustaining members of the group who have been workin
 			<small>
 				Embedded Systems Engineer | Ontario, CA<br/>
 				(Edge AI Systems, Vision/Language Models)
+			</small>
+		</div>
+	</div>
+	<div class="bio-container col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://www.linkedin.com/in/jason-seawall-65313a11/" target="_blank"><img class="bio-image" src="research/images/Jason_Seawall.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/jason-seawall-65313a11/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			<a href="https://www.youtube.com/@Numurus-NEPI" target="_blank"><img class="bio-logo" src="research/images/youtube.png"></img></a>
+			<a href="https://github.com/nepi-engine" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
+			Jason Seawall, <a href="https://numurus.com/" target="_blank">Numurus</a><br/>
+			<small>
+				CEO | Seattle, WA<br/>
+				(<a href="https://nepi.com/" target="_blank">NEPI</a>, Edge AI & Automation)
 			</small>
 		</div>
 	</div>
