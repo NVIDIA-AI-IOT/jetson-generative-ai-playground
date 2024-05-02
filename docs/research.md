@@ -10,9 +10,9 @@ The Jetson AI Lab Research Group is a global collective for advancing open-sourc
 
 There are virtual [meetings](#meeting-schedule) that anyone is welcome to join, offline discussion on the [Jetson Projects](https://forums.developer.nvidia.com/c/agx-autonomous-machines/jetson-embedded-systems/jetson-projects/78){:target="_blank"} forum, and guidelines for upstreaming open-source [contributions](#contribution-guidelines). 
 
-!!! abstract "Next Meeting - 5/1"
+!!! abstract "Next Meeting - 5/15"
 
-    The next team meeting is on Wednesday, May 1st at 9am PST - see the [invite](#meeting-schedule) below or click [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MWZmNmIzZjktM2UzNC00N2U0LThlMTItN2UyNDQ4Y2Q2OWEy%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"}  to join the meeting.
+    The next team meeting is on Wednesday, May 15 at 9am PST - see the [invite](#meeting-schedule) below or click [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZGVlZjc3MjQtNjk3MC00YWZkLTgzNzMtYzA4MDRjNWNiNWI4%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"}  to join the meeting.
     
     <!--The next team meeting is on Wednesday, May 1st at 9am PST.  View the [recording](#past-meetings) from the last meeting below. -->
 
@@ -77,24 +77,20 @@ Ongoing technical discussions are encouraged to occur on the forums or GitHub Is
 
 We'll aim to meet monthly or bi-weekly as a team in virtual meetings that anyone is welcome to join and speak during.  We'll discuss the latest updates and experiments that we want to explore.  Please remain courteous to others during the calls.  We'll stick around after for anyone who has questions or didn't get the chance to be heard.
 
-!!! abstract "Wednesday, May 1 at 9am PST (5/1/24)"
+!!! abstract "Wednesday, May 15 at 9am PST (5/1/24)"
 
-	- Microsoft Teams - [Meeting Link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MWZmNmIzZjktM2UzNC00N2U0LThlMTItN2UyNDQ4Y2Q2OWEy%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} 
-	- Meeting ID: `216 392 143 478`  
-	- Outlook Invite:  [`Jetson AI Lab Research Group (5124).ics`](research/invites/Jetson AI Lab Research Group (5124).ics){:target="_blank"} 
-	- Forum Topic:  [`forums.developer.nvidia.com/t/290380`](https://forums.developer.nvidia.com/t/290380)
+	- Microsoft Teams - [Meeting Link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZGVlZjc3MjQtNjk3MC00YWZkLTgzNzMtYzA4MDRjNWNiNWI4%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} 
+	- Meeting ID: `221 065 454 301`
+    - Passcode: `dVXWcf`	
+	- Outlook Invite:  [`Jetson AI Lab Research Group (51524).ics`](research/invites/Jetson AI Lab Research Group (51524).ics){:target="_blank"} 
+	- Forum Topic:  [`forums.developer.nvidia.com/t/291650`](https://forums.developer.nvidia.com/t/291650)
+
+<!--
 	- Agenda:
 	    * New model releases (Llama-3, Phi-3, Mini VLMs)
 	    * Function Calling / Self-Learning RAG (<a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-agent-controller-llm/288229/2" target="_blank">forum thread</a>)
 	    * Home Assistant / Wyoming (Mieszko Syty - <a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-home-assistant-integration/288225" target="_blank">forum thread</a>)
 	    * Smart Sorting / Recycling (Alvaro Costa - <a href="https://forums.developer.nvidia.com/t/system-to-capture-consumption-data-measuring-weight-and-temperature-of-products-disposed/290402" target="_blank">forum thread</a>)
-	    * Open Q&A
-<!--
-	- Agenda:
-	    * Ollama support on Jetson (<a href="https://forums.developer.nvidia.com/t/introducing-ollama-support-for-jetson-devices/289333" target="_blank">forum thread</a>)
-	    * Progress on Piper TTS & Home Assistant (<a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-home-assistant-integration/288225" target="_blank">forum thread</a>)
-	    * JetPack 6 and container updates (<a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-ml-devops-containers-core-inferencing/288235" target="_blank">forum thread</a>)
-	    * EDU robot kit for Orin Nano
 	    * Open Q&A
 -->
 	    
@@ -102,7 +98,21 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 ## Past Meetings
 
-<details open><summary>April 17, 2017</summary>
+<details open><summary>May 1, 2024</summary>
+
+<div><iframe width="570" height="320" src="https://www.youtube.com/embed/L4i5x8zzyNc" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<p>Topics Covered:</p>
+
+<ul>
+	<li><a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-agent-controller-llm/288229/2" target="_blank">Function Calling with Llama-3</li>
+	<li><a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-home-assistant-integration/288225" target="_blank">Home Assistant / Wyoming (Mieszko Syty)</a></li>
+	<li><a href="https://forums.developer.nvidia.com/t/system-to-capture-consumption-data-measuring-weight-and-temperature-of-products-disposed/290402" target="_blank">Smart Sorting / Recycling (Alvaro Costa)</a></li>
+</ul>
+
+</details>
+
+<details><summary>April 17, 2024</summary>
 
 <div><iframe width="570" height="320" src="https://www.youtube.com/embed/F0v0OsqGsVw" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -117,7 +127,7 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 </details>
 
-<details open><summary>April 3, 2017</summary>
+<details><summary>April 3, 2024</summary>
 
 <div><iframe width="570" height="320" src="https://www.youtube.com/embed/7w3RHoIIkNE" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
