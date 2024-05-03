@@ -114,7 +114,7 @@ nav:
       - 📑 Knowledge Distillation: tutorial_distillation.md
       - 🔖 SSD + Docker: tips_ssd-docker.md
       - 🔖 Memory optimization: tips_ram-optimization.md
-      - 🚅 Initial Setup Guide - Jeton Orin Nano: quickstart_jon.md
+      - 🚅 Initial Setup Guide - Jeton Orin Nano: initial_setup_jon.md
   - Benchmarks: benchmarks.md
   - Projects: community_articles.md
   - Research Group: research.md
