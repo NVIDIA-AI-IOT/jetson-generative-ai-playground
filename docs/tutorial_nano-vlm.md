@@ -6,7 +6,7 @@ There are 3 model families currently supported:  [Llava](https://llava-vl.github
 
 ## VLM Benchmarks
 
-<iframe width="801" height="496" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubchart?oid=88720541&amp;format=interactive"></iframe>
+<iframe width="719" height="446" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubchart?oid=88720541&amp;format=interactive"></iframe>
 
 This FPS measures the end-to-end pipeline performance for continuous streaming like with [Live Llava](tutorial_live-llava.md) (on yes/no question)  
 

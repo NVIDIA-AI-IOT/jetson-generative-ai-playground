@@ -20,7 +20,7 @@ For more data and info about running these models, see the [`SLM`](tutorial_slm.
 
 ## Vision Language Models (VLM)
 
-<iframe width="801" height="496" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubchart?oid=88720541&amp;format=interactive"></iframe>
+<iframe width="719" height="446" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubchart?oid=88720541&amp;format=interactive"></iframe>
 
 This measures the end-to-end pipeline performance for continuous streaming like with [Live Llava](tutorial_live-llava.md).  
 For more data and info about running these models, see the [`NanoVLM`](tutorial_nano-vlm.md) tutorial.
