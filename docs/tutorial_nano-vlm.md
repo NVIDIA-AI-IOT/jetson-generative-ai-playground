@@ -6,14 +6,11 @@ There are 3 model families currently supported:  [Llava](https://llava-vl.github
 
 ## VLM Benchmarks
 
-<iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubchart?oid=642317430&format=interactive"></iframe>
+<iframe width="801" height="496" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubchart?oid=88720541&amp;format=interactive"></iframe>
 
 This FPS measures the end-to-end pipeline performance for continuous streaming like with [Live Llava](tutorial_live-llava.md) (on yes/no question)  
 
-<iframe width="1000px" height="275px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubhtml?gid=642302170&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
-
-> <small>• &nbsp; These models all use [`CLIP ViT-L/14@336px`](https://huggingface.co/openai/clip-vit-large-patch14-336) for the vision encoder.</small>  
-> <small>• &nbsp; Jetson Orin Nano 8GB runs out of memory trying to run Llava-13B.</small>  
+<iframe width="1000px" height="325px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubhtml?gid=642302170&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
 
 ## Multimodal Chat
 	   
@@ -39,18 +36,18 @@ This FPS measures the end-to-end pipeline performance for continuous streaming l
     
         - [`liuhaotian/llava-v1.5-7b`](https://huggingface.co/liuhaotian/llava-v1.5-7b), [`liuhaotian/llava-v1.5-13b`](https://huggingface.co/liuhaotian/llava-v1.5-13b), [`liuhaotian/llava-v1.6-vicuna-7b`](https://huggingface.co/liuhaotian/llava-v1.6-vicuna-7b), [`liuhaotian/llava-v1.6-vicuna-13b`](https://huggingface.co/liuhaotian/llava-v1.6-vicuna-13b)
         - [`Efficient-Large-Model/VILA-2.7b`](https://huggingface.co/Efficient-Large-Model/VILA-2.7b),[`Efficient-Large-Model/VILA-7b`](https://huggingface.co/Efficient-Large-Model/VILA-7b), [`Efficient-Large-Model/VILA-13b`](https://huggingface.co/Efficient-Large-Model/VILA-13b)
-        - [`NousResearch/Obsidian-3B-V0.5`](https://huggingface.co/NousResearch/Obsidian-3B-V0.5)
-        - [`VILA-2.7b`](https://huggingface.co/Efficient-Large-Model/VILA-2.7b), [`VILA-7b`](https://huggingface.co/Efficient-Large-Model/VILA-7b), [`Llava-7b`](https://huggingface.co/liuhaotian/llava-v1.6-vicuna-7b), and [`Obsidian-3B`](https://huggingface.co/NousResearch/Obsidian-3B-V0.5) can run on Orin Nano 8GB
-	   
+        - [`Efficient-Large-Model/VILA1.5-3b`](https://huggingface.co/Efficient-Large-Model/VILA1.5-3b),[`Efficient-Large-Model/Llama-3-VILA1.5-8B`](https://huggingface.co/Efficient-Large-Model/Llama-3-VILA1.5-8b), [`Efficient-Large-Model/VILA1.5-13b`](https://huggingface.co/Efficient-Large-Model/VILA1.5-13b)
+        - [`VILA-2.7b`](https://huggingface.co/Efficient-Large-Model/VILA-2.7b), [`VILA1.5-3b`](https://huggingface.co/Efficient-Large-Model/VILA1.5-3b), [`VILA-7b`](https://huggingface.co/Efficient-Large-Model/VILA-7b), [`Llava-7b`](https://huggingface.co/liuhaotian/llava-v1.6-vicuna-7b), and [`Obsidian-3B`](https://huggingface.co/NousResearch/Obsidian-3B-V0.5) can run on Orin Nano 8GB
+        
 The optimized [`NanoLLM`](https://dusty-nv.github.io/NanoLLM) library uses MLC/TVM for quantization and inference provides the highest performance.  It efficiently manages the CLIP embeddings and KV cache.  You can find Python code for the chat program used in this example [here](https://dusty-nv.github.io/NanoLLM/chat.html). 
 
 
 ``` bash
 jetson-containers run $(autotag nano_llm) \
   python3 -m nano_llm.chat --api=mlc \
-    --model liuhaotian/llava-v1.6-vicuna-7b \
-    --max-context-len 768 \
-    --max-new-tokens 128
+    --model Efficient-Large-Model/VILA1.5-3b \
+    --max-context-len 256 \
+    --max-new-tokens 32
 ```
 
 This starts an interactive console-based chat with Llava, and on the first run the model will automatically be downloaded from HuggingFace and quantized using MLC and W4A16 precision (which can take some time).  See [here](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm#text-chat) for command-line options.
@@ -64,9 +61,9 @@ During testing, you can specify prompts on the command-line that will run sequen
 ```
 jetson-containers run $(autotag nano_llm) \
   python3 -m nano_llm.chat --api=mlc \
-    --model liuhaotian/llava-v1.6-vicuna-7b \
-    --max-context-len 768 \
-    --max-new-tokens 128 \
+    --model Efficient-Large-Model/VILA1.5-3b \
+    --max-context-len 256 \
+    --max-new-tokens 32 \
     --prompt '/data/images/hoover.jpg' \
     --prompt 'what does the road sign say?' \
     --prompt 'what kind of environment is it?' \
@@ -116,8 +113,8 @@ These models can also be used with the [Live Llava](tutorial_live-llava.md) agen
 ``` bash
 jetson-containers run $(autotag nano_llm) \
   python3 -m nano_llm.agents.video_query --api=mlc \
-    --model Efficient-Large-Model/VILA-2.7b \
-    --max-context-len 768 \
+    --model Efficient-Large-Model/VILA1.5-3b \
+    --max-context-len 256 \
     --max-new-tokens 32 \
     --video-input /dev/video0 \
     --video-output webrtc://@:8554/output
@@ -131,4 +128,10 @@ The [Live Llava](tutorial_live-llava.md) tutorial shows how to enable additional
 
 <iframe width="500" height="280" src="https://www.youtube.com/embed/wZq7ynbgRoE" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
   
+## Python Code
 
+For a simplified code example of doing live VLM streaming from Python, see [here](https://dusty-nv.github.io/NanoLLM/multimodal.html#code-example){:target="_blank"} in the NanoLLM docs. 
+
+<iframe width="750" height="500" src="https://dusty-nv.github.io/NanoLLM/multimodal.html#code-example" style="display: inline-block;" title="Live VLM Code Example" frameborder="0"></iframe>
+  
+  

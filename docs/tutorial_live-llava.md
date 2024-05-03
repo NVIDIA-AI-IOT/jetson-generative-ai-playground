@@ -12,6 +12,8 @@ It uses models like [LLaVA](https://llava-vl.github.io/){:target="_blank"} or [V
 
 <iframe width="720" height="405" src="https://www.youtube.com/embed/8Eu6zG0eEGY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+For benchmarks and further discussion about multimodal optimizations, see the [**NanoVLM**](tutorial_nano-vlm.md) page.
+
 ## Running the Live Llava Demo
 
 !!! abstract "What you need"
@@ -38,16 +40,17 @@ It uses models like [LLaVA](https://llava-vl.github.io/){:target="_blank"} or [V
     
         - [`liuhaotian/llava-v1.5-7b`](https://huggingface.co/liuhaotian/llava-v1.5-7b), [`liuhaotian/llava-v1.5-13b`](https://huggingface.co/liuhaotian/llava-v1.5-13b), [`liuhaotian/llava-v1.6-vicuna-7b`](https://huggingface.co/liuhaotian/llava-v1.6-vicuna-7b), [`liuhaotian/llava-v1.6-vicuna-13b`](https://huggingface.co/liuhaotian/llava-v1.6-vicuna-13b)
         - [`Efficient-Large-Model/VILA-2.7b`](https://huggingface.co/Efficient-Large-Model/VILA-2.7b),[`Efficient-Large-Model/VILA-7b`](https://huggingface.co/Efficient-Large-Model/VILA-7b), [`Efficient-Large-Model/VILA-13b`](https://huggingface.co/Efficient-Large-Model/VILA-13b)
-        - [`NousResearch/Obsidian-3B-V0.5`](https://huggingface.co/NousResearch/Obsidian-3B-V0.5)
-        - [`VILA-2.7b`](https://huggingface.co/Efficient-Large-Model/VILA-2.7b), [`VILA-7b`](https://huggingface.co/Efficient-Large-Model/VILA-7b), [`Llava-7b`](https://huggingface.co/liuhaotian/llava-v1.6-vicuna-7b), and [`Obsidian-3B`](https://huggingface.co/NousResearch/Obsidian-3B-V0.5) can run on Orin Nano 8GB
+        - [`Efficient-Large-Model/VILA1.5-3b`](https://huggingface.co/Efficient-Large-Model/VILA1.5-3b),[`Efficient-Large-Model/Llama-3-VILA1.5-8B`](https://huggingface.co/Efficient-Large-Model/Llama-3-VILA1.5-8b), [`Efficient-Large-Model/VILA1.5-13b`](https://huggingface.co/Efficient-Large-Model/VILA1.5-13b)
+        - [`VILA-2.7b`](https://huggingface.co/Efficient-Large-Model/VILA-2.7b), [`VILA1.5-3b`](https://huggingface.co/Efficient-Large-Model/VILA1.5-3b), [`VILA-7b`](https://huggingface.co/Efficient-Large-Model/VILA-7b), [`Llava-7b`](https://huggingface.co/liuhaotian/llava-v1.6-vicuna-7b), and [`Obsidian-3B`](https://huggingface.co/NousResearch/Obsidian-3B-V0.5) can run on Orin Nano 8GB
+        
 		
 The [VideoQuery](https://dusty-nv.github.io/NanoLLM/agents.html#video-query){:target="_blank"} agent applies prompts to the incoming video feed with the VLM.  Navigate your browser to `https://<IP_ADDRESS>:8050` after launching it with your camera (Chrome is recommended with `chrome://flags#enable-webrtc-hide-local-ips-with-mdns` disabled)
 
 ```bash
 jetson-containers run $(autotag nano_llm) \
   python3 -m nano_llm.agents.video_query --api=mlc \
-    --model Efficient-Large-Model/VILA-2.7b \
-    --max-context-len 768 \
+    --model Efficient-Large-Model/VILA1.5-3b \
+    --max-context-len 256 \
     --max-new-tokens 32 \
     --video-input /dev/video0 \
     --video-output webrtc://@:8554/output
@@ -66,7 +69,8 @@ jetson-containers run \
   -v /path/to/your/videos:/mount
   $(autotag nano_llm) \
     python3 -m nano_llm.agents.video_query --api=mlc \
-      --model Efficient-Large-Model/VILA-2.7b \
+      --model Efficient-Large-Model/VILA1.5-3b \
+      --max-context-len 256 \
       --max-new-tokens 32 \
       --video-input /mount/my_video.mp4 \
       --video-output /mount/output.mp4 \
@@ -84,8 +88,8 @@ To enable this mode, first follow the [**NanoDB tutorial**](tutorial_nanodb.md) 
 ```bash
 jetson-containers run $(autotag nano_llm) \
   python3 -m nano_llm.agents.video_query --api=mlc \
-    --model Efficient-Large-Model/VILA-2.7b \
-    --max-context-len 768 \
+    --model Efficient-Large-Model/VILA1.5-3b \
+    --max-context-len 256 \
     --max-new-tokens 32 \
     --video-input /dev/video0 \
     --video-output webrtc://@:8554/output \
@@ -97,3 +101,10 @@ You can also tag incoming images and add them to the database using the panel in
 <div><iframe width="500" height="280" src="https://www.youtube.com/embed/8Eu6zG0eEGY" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 <iframe width="500" height="280" src="https://www.youtube.com/embed/wZq7ynbgRoE" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+
+## Python Code
+
+For a simplified code example of doing live VLM streaming from Python, see [here](https://dusty-nv.github.io/NanoLLM/multimodal.html#code-example){:target="_blank"} in the NanoLLM docs. 
+
+<iframe width="750" height="500" src="https://dusty-nv.github.io/NanoLLM/multimodal.html#code-example" style="display: inline-block;" title="Live VLM Code Example" frameborder="0"></iframe>
+  
