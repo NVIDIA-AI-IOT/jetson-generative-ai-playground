@@ -47,7 +47,7 @@ The optimized [`NanoLLM`](https://dusty-nv.github.io/NanoLLM) library uses MLC/T
 
 ``` bash
 jetson-containers run $(autotag nano_llm) \
-  python3 -m nano_llm --api=mlc \
+  python3 -m nano_llm.chat --api=mlc \
     --model liuhaotian/llava-v1.6-vicuna-7b \
     --max-context-len 768 \
     --max-new-tokens 128
@@ -63,7 +63,7 @@ During testing, you can specify prompts on the command-line that will run sequen
 
 ```
 jetson-containers run $(autotag nano_llm) \
-  python3 -m nano_llm --api=mlc \
+  python3 -m nano_llm.chat --api=mlc \
     --model liuhaotian/llava-v1.6-vicuna-7b \
     --max-context-len 768 \
     --max-new-tokens 128 \
@@ -91,7 +91,7 @@ When prompted, these models can also output in constrained JSON formats (which t
 
 ```
 jetson-containers run $(autotag nano_llm) \
-  python3 -m nano_llm --api=mlc \
+  python3 -m nano_llm.chat --api=mlc \
     --model liuhaotian/llava-v1.5-13b \
     --prompt '/data/images/hoover.jpg' \
     --prompt 'extract any text from the image as json'
@@ -123,10 +123,12 @@ jetson-containers run $(autotag nano_llm) \
     --video-output webrtc://@:8554/output
 ```
   
+Then navigate your browser to `https://<IP_ADDRESS>:8050` after launching it with your camera.  Using Chrome or Chromium is recommended for a stable WebRTC connection, with `chrome://flags#enable-webrtc-hide-local-ips-with-mdns` disabled.
+
 The [Live Llava](tutorial_live-llava.md) tutorial shows how to enable additional features like vector database integration, image tagging, and RAG.
 
 <div><iframe width="500" height="280" src="https://www.youtube.com/embed/8Eu6zG0eEGY" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-<iframe width="500" height="280" src="https://www.youtube.com/embed/dRmAGGuupuE" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<iframe width="500" height="280" src="https://www.youtube.com/embed/wZq7ynbgRoE" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
   
 

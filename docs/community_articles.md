@@ -8,6 +8,42 @@ hide:
 
 Below, you'll find a collection of guides, tutorials, and articles contributed by the community showcasing the implementation of generative AI on the Jetson platform.
 
+## <span class="blobHackster">Hackster</span> [AI-Powered Photorealistic Talking Avatar](https://www.hackster.io/shahizat/ai-powered-photorealistic-talking-avatar-abac41){:target="_blank"} <sup><small>(4-26-2024)</small></sup>
+
+Nurgaliyev Shakhizat creates an interactive [talking avatar](https://www.hackster.io/shahizat/ai-powered-photorealistic-talking-avatar-abac41){:target="_blank"} using ASR, TTS, LLM, and Audio2Face with NVIDIA Omniverse and Unreal Engine:
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/-jgnzSlneAU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+## <span class="blobHackster">Hackster</span> [An Eye for an Item](https://www.hackster.io/ceyeber/an-eye-for-an-item-9162a7){:target="_blank"} <sup><small>(4-26-2024)</small></sup>
+
+Allen Tao builds an indoor robot with Isaac ROS that maps your home and [remembers where things are](https://www.hackster.io/ceyeber/an-eye-for-an-item-9162a7){:target="_blank"} using SLAM and NanoDB!
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/KAUH67vni74" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+## <span class="blobHackster">Hackster</span> [Escalator People Tracker](https://www.hackster.io/orgicus/escalator-people-tracker-6d00c1){:target="_blank"} <sup><small>(4-2-2024)</small></sup>
+
+George Profenza & team install local CV solution for detecting and tracking people in large retail spaces to drive [live Generative AI graphics](https://www.hackster.io/dhq/cooking-meals-with-a-local-ai-assistant-on-jetson-axg-orin-2fcb98){:target="_blank"}:
+
+<iframe title="vimeo-player" src="https://player.vimeo.com/video/877084121?h=f2d86e07d5" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+
+## <span class="blobHackster">Hackster</span> [Edge Style: Fashion Preview at the Edge](https://www.hackster.io/andrei-ciobanu2/edgestyle-fashion-preview-at-the-edge-b6d845){:target="_blank"} <sup><small>(4-1-2024)</small></sup>
+
+AI-powered app from Andrei Ciobanu shows [virtual try-ons](https://www.hackster.io/dhq/cooking-meals-with-a-local-ai-assistant-on-jetson-axg-orin-2fcb98){:target="_blank"} with customer images, enhancing retail shopping using Jetson Orin for speed and privacy:
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/kR_o9eEUHK4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+## <span class="blobHackster">Hackster</span> [Cooking meals with a local AI assistant on Jetson AXG Orin](https://www.hackster.io/dhq/cooking-meals-with-a-local-ai-assistant-on-jetson-axg-orin-2fcb98){:target="_blank"} <sup><small>(4-1-2024)</small></sup>
+
+Dimiter Kendri builds a multimodal, multi AI agent, fully local, [conversational chatbot](https://www.hackster.io/dhq/cooking-meals-with-a-local-ai-assistant-on-jetson-axg-orin-2fcb98){:target="_blank"} with multi agent research capabilities via speech queries:
+
+<iframe src="https://player.vimeo.com/video/928227995?h=28825b3214" width="640" height="341" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+## <span class="blobHackster">Hackster</span> [Realtime Language-Segment-Anything on Jetson Orin](https://www.hackster.io/lurst811/realtime-language-segment-anything-on-jetson-orin-ccf6e1){:target="_blank"} <sup><small>(3-4-2024)</small></sup>
+
+Huy Mai enables Segment Anything (SAM) with [natural language prompting](https://www.hackster.io/dhq/cooking-meals-with-a-local-ai-assistant-on-jetson-axg-orin-2fcb98){:target="_blank"} using GroundingDINO for object detection:
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/wDONdpDyCmI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ## <span class="blobGitHub">GitHub</span> [Japanese NMT Translation for Stable Diffusion](https://github.com/to-aoki/ja-tiny-sd-webui){:target="_blank"} <sup><small>(2-23-2024)</small></sup>
 
 [Toshihiko Aoki](https://github.com/to-aoki/ja-tiny-sd-webui){:target="_blank"} has created a prompt generator for [`stable-diffusion-webui`](https://www.jetson-ai-lab.com/tutorial_stable-diffusion.html){:target="_blank"} that translates Japanese queries into English using a fine-tuned GPT-2 NMT model before feeding them into Stable Diffusion.  Check out the full guide on GitHub under [`to-aoki/ja-tiny-sd-webui`](https://github.com/to-aoki/ja-tiny-sd-webui){:target="_blank"}, including the training dataset and LoRA building!

@@ -10,9 +10,11 @@ The Jetson AI Lab Research Group is a global collective for advancing open-sourc
 
 There are virtual [meetings](#meeting-schedule) that anyone is welcome to join, offline discussion on the [Jetson Projects](https://forums.developer.nvidia.com/c/agx-autonomous-machines/jetson-embedded-systems/jetson-projects/78){:target="_blank"} forum, and guidelines for upstreaming open-source [contributions](#contribution-guidelines). 
 
-!!! abstract "Next Meeting - 4/17"
+!!! abstract "Next Meeting - 5/15"
 
-    The next team meeting is on Wednesday, April 17th at 9am PST - see the [invite](#meeting-schedule) below or click [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_YzczZmJmZmItYzRiNi00ZWU0LWFmY2MtNTc0ZmM5NzA5NDVm%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"}  to join the meeting. 
+    The next team meeting is on Wednesday, May 15 at 9am PST - see the [invite](#meeting-schedule) below or click [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZGVlZjc3MjQtNjk3MC00YWZkLTgzNzMtYzA4MDRjNWNiNWI4%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"}  to join the meeting.
+    
+    <!--The next team meeting is on Wednesday, May 1st at 9am PST.  View the [recording](#past-meetings) from the last meeting below. -->
 
 ## Topics of Interest
 
@@ -75,24 +77,57 @@ Ongoing technical discussions are encouraged to occur on the forums or GitHub Is
 
 We'll aim to meet monthly or bi-weekly as a team in virtual meetings that anyone is welcome to join and speak during.  We'll discuss the latest updates and experiments that we want to explore.  Please remain courteous to others during the calls.  We'll stick around after for anyone who has questions or didn't get the chance to be heard.
 
-!!! abstract "Wednesday, April 17 at 9am PST (4/17/24)"
+!!! abstract "Wednesday, May 15 at 9am PST (5/15/24)"
 
-	- Microsoft Teams - [Meeting Link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MGIyYjkwMTEtNGVlMi00ZjgwLWJjM2ItY2U2ZjUzYWZmMDVk%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} 
-	- Meeting ID: `267 767 899 278`  
-	- Outlook Invite:  [`Jetson AI Lab Research Group (41724).ics`](research/invites/Jetson AI Lab Research Group (41724).ics){:target="_blank"} 
-	- Forum Topic:  [`forums.developer.nvidia.com/t/288491`](https://forums.developer.nvidia.com/t/288491)
+	- Microsoft Teams - [Meeting Link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZGVlZjc3MjQtNjk3MC00YWZkLTgzNzMtYzA4MDRjNWNiNWI4%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} 
+	- Meeting ID: `221 065 454 301`
+    - Passcode: `dVXWcf`	
+	- Outlook Invite:  [`Jetson AI Lab Research Group (51524).ics`](research/invites/Jetson AI Lab Research Group (51524).ics){:target="_blank"} 
+	- Forum Topic:  [`forums.developer.nvidia.com/t/291650`](https://forums.developer.nvidia.com/t/291650)
+
+<!--
 	- Agenda:
-	    * Ollama support on Jetson (<a href="https://forums.developer.nvidia.com/t/introducing-ollama-support-for-jetson-devices/289333" target="_blank">forum thread</a>)
-	    * Progress on Piper TTS & Home Assistant (<a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-home-assistant-integration/288225" target="_blank">forum thread</a>)
-	    * JetPack 6 and container updates (<a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-ml-devops-containers-core-inferencing/288235" target="_blank">forum thread</a>)
-	    * EDU robot kit for Orin Nano
+	    * New model releases (Llama-3, Phi-3, Mini VLMs)
+	    * Function Calling / Self-Learning RAG (<a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-agent-controller-llm/288229/2" target="_blank">forum thread</a>)
+	    * Home Assistant / Wyoming (Mieszko Syty - <a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-home-assistant-integration/288225" target="_blank">forum thread</a>)
+	    * Smart Sorting / Recycling (Alvaro Costa - <a href="https://forums.developer.nvidia.com/t/system-to-capture-consumption-data-measuring-weight-and-temperature-of-products-disposed/290402" target="_blank">forum thread</a>)
 	    * Open Q&A
+-->
 	    
-The agenda will be posted here beforehand.  Post to the forum to add agenda items.  The meetings will be recorded so anyone unable to attend live can watch them after.
+The agenda will be listed here beforehand - post to the forum to add agenda items.  The meetings will be recorded so anyone unable to attend live can watch them after.
 
 ## Past Meetings
 
-<details open><summary>April 3, 2017</summary>
+<details open><summary>May 1, 2024</summary>
+
+<div><iframe width="570" height="320" src="https://www.youtube.com/embed/L4i5x8zzyNc" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<p>Topics Covered:</p>
+
+<ul>
+	<li><a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-agent-controller-llm/288229/2" target="_blank">Function Calling with Llama-3</li>
+	<li><a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-home-assistant-integration/288225" target="_blank">Home Assistant / Wyoming (Mieszko Syty)</a></li>
+	<li><a href="https://forums.developer.nvidia.com/t/system-to-capture-consumption-data-measuring-weight-and-temperature-of-products-disposed/290402" target="_blank">Smart Sorting / Recycling (Alvaro Costa)</a></li>
+</ul>
+
+</details>
+
+<details><summary>April 17, 2024</summary>
+
+<div><iframe width="570" height="320" src="https://www.youtube.com/embed/F0v0OsqGsVw" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<p>Topics Covered:</p>
+
+<ul>
+	<li><a href="https://forums.developer.nvidia.com/t/introducing-ollama-support-for-jetson-devices/289333" target="_blank">Ollama Support for Jetson Devices</li>
+	<li><a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-homeassistant-io-integration/288225" target="_blank">Home Assistant Integration</a></li>
+	<li><a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-ml-devops-containers-core-inferencing/288235/15?u=dusty_nv" target="_blank"><code>jetson-container</code> Updates</a></li>
+	<li>Upgrading JetBot with Orin Nano</a></li>
+</ul>
+
+</details>
+
+<details><summary>April 3, 2024</summary>
 
 <div><iframe width="570" height="320" src="https://www.youtube.com/embed/7w3RHoIIkNE" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -205,14 +240,18 @@ Below are shown some of the sustaining members of the group who have been workin
 .bio-image {
 	max-height: 355px;
 }
+
+.bio-container {
+    min-width: 355px;
+}
 </style>
 
 <div class="row justify-content-center">
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/dustin-franklin-b3aaa173/" target="_blank"><img class="bio-image" src="research/images/Dustin_Franklin.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/dustin-franklin-b3aaa173/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
-			<a href="https://www.youtube.com/@dusty-nv" target="_blank"><img class="bio-logo" src="research/images/youtube.png"></img></a>
+			<a href="https://www.youtube.com/playlist?list=PL5B692fm6--sdf3tQk-1kp9T65y8p-D5u" target="_blank"><img class="bio-logo" src="research/images/youtube.png"></img></a>
 			<a href="https://www.github.com/dusty-nv" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
 			Dustin Franklin, NVIDIA<br/>
 			<small>
@@ -221,7 +260,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.hackster.io/shahizat" target="_blank"><img class="bio-image" src="research/images/Shakhizat_Nurgaliyev.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/shakhizat-nurgaliyev/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -229,11 +268,11 @@ Below are shown some of the sustaining members of the group who have been workin
 			Nurgaliyev Shakhizat<br/>
 			<small>
 				Institute of Smart Systems and AI | Kazakhstan<br/>
-				(<a href="https://www.hackster.io/shahizat/ai-powered-application-for-the-blind-and-visually-impaired-df3f9e" target="_blank">Assistive Devices</a>, <a href="https://www.hackster.io/shahizat/vision2audio-giving-the-blind-an-understanding-through-ai-33f929" target="_blank">Vision2Audio</a>, <a href="https://www.hackster.io/shahizat/running-a-chatgpt-like-llm-llama2-on-a-nvidia-jetson-cluster-cbc7d4" target="_blank">HPEC Clusters</a>)
+				(<a href="https://www.hackster.io/shahizat/ai-powered-application-for-the-blind-and-visually-impaired-df3f9e" target="_blank">Assistive Devices</a>, <a href="https://www.hackster.io/shahizat/vision2audio-giving-the-blind-an-understanding-through-ai-33f929" target="_blank">Vision2Audio</a>, <a href="https://www.hackster.io/shahizat/running-a-chatgpt-like-llm-llama2-on-a-nvidia-jetson-cluster-cbc7d4" target="_blank">HPC</a>)
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.youtube.com/@kerseyfabs" target="_blank"><img class="bio-image"src="research/images/Kris_Kersey.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/kriskersey/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -245,7 +284,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/johnnycano/" target="_blank"><img class="bio-image" src="research/images/Johnny_Cano.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/johnnycano/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -257,7 +296,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/doruk-sonmez/" target="_blank"><img class="bio-image" src="research/images/Doruk_Sonmez.png"></img></a><br/>
 			<a href="https://www.linkedin.com/in/doruk-sonmez/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -269,7 +308,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://github.com/kingardor" target="_blank"><img class="bio-image" src="research/images/Akash_James.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/akashjames/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -282,7 +321,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/mieszkosyty/" target="_blank"><img class="bio-image" src="research/images/Mieszko_Syty.jpg" title="Hey there, I'm Mieszko Syty—your friendly neighbourhood AI/ML enthusiast, Design lover, and Front-End Engineer. With a knack for coding since I was knee-high, and a solid design foundation from the Fine Arts I bring a unique blend of creativity and tech expertise to the table.&#013;&#013;By day, I'm conquering the digital space as a Lead Front-End Engineer, orchestrating projects for News, Fin-tech, and Private Banking on a global scale. But when the sun sets, you'll find me knee-deep in ML & NLP escapades, especially in the areas of Home Automation, Personal Assistants and LLM/VLM driven apps.&#013;&#013;Oh, and did I mention I'm a Sci-Fi fan? Yep, I'm all about turning your childhood dreams into cutting-edge & edge-computing reality! So, if you're ready to embark on a journey where tech meets imagination, let's connect and make some digital magic happen!"></img></a><br/>
 			<a href="https://www.linkedin.com/in/mieszkosyty/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -294,7 +333,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>	
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://jetsonhacks.com/" target="_blank"><img class="bio-image" src="research/images/Jim_Benson.png"></img></a><br/>
 			<a href="https://www.youtube.com/@JetsonHacks" target="_blank"><img class="bio-logo" src="research/images/youtube.png"></img></a>
@@ -306,7 +345,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/chitoku-yato-01ba304/" target="_blank"><img class="bio-image" src="research/images/Chitoku_Yato.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/chitoku-yato-01ba304/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -318,7 +357,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/danasheahen/" target="_blank"><img class="bio-image" src="research/images/Dana_Sheahen.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/danasheahen/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -329,7 +368,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>	
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/sammy-ochoa/" target="_blank"><img class="bio-image" src="research/images/Sammy_Ochoa.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/sammy-ochoa/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -341,7 +380,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/john-w-213126183/" target="_blank"><img class="bio-image" src="research/images/John_Welsh.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/john-w-213126183/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -352,7 +391,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.davesarmoury.com/" target="_blank"><img class="bio-image" src="research/images/Dave_Niewinski.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/dave-niewinski-b5691132/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -365,7 +404,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://rebotnix.com/" target="_blank"><img class="bio-image" src="research/images/Gary_Hilgemann.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/gary-hilgemann-84423a6b/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -378,7 +417,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.seeedstudio.com/tag/nvidia.html" target="_blank"><img class="bio-image" src="research/images/Elaine_Wu.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/elaine1994/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -391,7 +430,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/pattydelafuente/" target="_blank"><img class="bio-image" src="research/images/Patty_Delafuente.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/pattydelafuente/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -402,7 +441,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://hanlab.mit.edu/songhan" target="_blank"><img class="bio-image" src="research/images/Song_Han.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/songhanmit/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -414,7 +453,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/bhughes/" target="_blank"><img class="bio-image" src="research/images/Bryan_Hughes.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/bhughes/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -426,7 +465,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://tqchen.com/" target="_blank"><img class="bio-image" src="research/images/Tianqi_Chen.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/tianqi-chen-679a9856/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -438,7 +477,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/michael-gr%C3%BCner-9249562a/" target="_blank"><img class="bio-image" src="research/images/Michael_Gruner.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/michael-gr%C3%BCner-9249562a/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -450,7 +489,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/jesse-flot-51b50bb9/" target="_blank"><img class="bio-image" src="research/images/Jesse_Flot.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/jesse-flot-51b50bb9/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -461,7 +500,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/pjdecarlo/" target="_blank"><img class="bio-image" src="research/images/Paul_DeCarlo.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/pjdecarlo/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -474,7 +513,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/michael-hansen-9885b2105/" target="_blank"><img class="bio-image" src="research/images/Mike_Hansen.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/michael-hansen-9885b2105/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -486,7 +525,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			</small>
 		</div>
 	</div>
-	<div class="col-lg-4 col-sm-4">
+	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/lakshanthad/" target="_blank"><img class="bio-image" src="research/images/Lakshantha_Dissanayake.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/lakshanthad/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
@@ -495,6 +534,89 @@ Below are shown some of the sustaining members of the group who have been workin
 			<small>
 				Embedded CV Engineer | Vancouver, BC<br/>
 				(<a href="https://github.com/ultralytics/ultralytics" target="_blank">YOLOv8</a>, <a href="https://docs.ultralytics.com/integrations/tensorrt/" target="_blank">TensorRT</a>, <a href="https://docs.ultralytics.com/yolov5/tutorials/running_on_jetson_nano/" target="_blank">DeepStream</a>)
+			</small>
+		</div>
+	</div>
+	<div class="bio-container col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://www.ostream.com/" target="_blank"><img class="bio-image" src="research/images/Kerry_Shih.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/kerryshih/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			<a href="https://www.youtube.com/channel/UCpxVxnt4KO2AzuV_XOE-97Q" target="_blank"><img class="bio-logo" src="research/images/youtube.png"></img></a>
+			Kerry Shih, <a href="https://www.ostream.com/" target="_blank">OStream</a><br/>
+			<small>
+				Founder, CEO | Los Angeles, CA<br/>
+				(<a href="https://www.ostream.com/#/OSGenRunner" target="_blank">GenRunner</a>, <a href="https://www.genainerds.com/" target="_blank">GenAI Nerds</a>)
+			</small>
+		</div>
+	</div>
+	<div class="bio-container col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://www.ece.cmu.edu/directory/bios/Ziad%20Youssfi.html" target="_blank"><img class="bio-image" src="research/images/Ziad_Youssfi.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/ziadyoussfi/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			Ziad Youssfi, <a href="https://www.ece.cmu.edu/directory/bios/Ziad%20Youssfi.html" target="_blank">CMU</a><br/>
+			<small>
+				ECE Professor | Pittsburgh, PA<br/>
+				(ML in Robotics & Embedded Systems)
+			</small>
+		</div>
+	</div>
+	<div class="bio-container col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://www.linkedin.com/in/walterlucetti/" target="_blank"><img class="bio-image" src="research/images/Walter_Lucetti.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/walterlucetti/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			<a href="https://github.com/Myzhar" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
+			Walter Lucetti, <a href="https://www.stereolabs.com" target="_blank">Stereolabs</a><br/>
+			<small>
+				Robotics & Vision Engineer | Paris, France<br/>
+				(<a href="https://www.myzhar.com" target="_blank">MyzharBot</a>, <a href="https://github.com/stereolabs/zed-ros2-wrapper" target="_blank">ROS2</a>, <a href="https://github.com/stereolabs/zed-gstreamer" target="_blank">GStreamer</a>)
+			</small>
+		</div>
+	</div>
+	<div class="bio-container col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://rnext.it/" target="_blank"><img class="bio-image" src="research/images/Raffaello_Bonghi.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/raffaello-bonghi/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			<a href="https://github.com/rbonghi" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
+			<a href="https://www.youtube.com/@rbonghi" target="_blank"><img class="bio-logo" src="research/images/youtube.png"></img></a>
+			Raffaello Bonghi, NVIDIA<br/>
+			<small>
+				AI & Robotics Engineer | Manchester, UK<br/>
+				(<a href="https://nanosaur.ai/" target="_blank">Nanosaur</a>, <a href="https://rpanther.github.io/" target="_blank">Panther</a>, <a href="https://rnext.it/jetson_stats/" target="_blank">jetson-stats</a>)
+			</small>
+		</div>
+	</div>
+	<div class="bio-container col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://www.linkedin.com/in/alvaro01/" target="_blank"><img class="bio-image" src="research/images/Alvaro_Costa.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/alvaro01/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			Alvaro Costa, <a href="https://www.ans.co.uk/" target="_blank">ANS Group</a><br/>
+			<small>
+				AI & Robotics Lead | Epsom, UK<br/>
+				(<a href="https://www.tekntrash.com/" target="_blank">TeknTrash</a>, <a href="https://www.youtube.com/watch?v=-L6kDVr5tfU&t=137s" target="_blank">StipraPOD</a>)
+			</small>
+		</div>
+	</div>
+    <div class="bio-container col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://www.linkedin.com/in/dvdprsn/" target="_blank"><img class="bio-image" src="research/images/David_Pearson.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/dvdprsn/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			David Pearson, <a href="https://connecttech.com/jetson/" target="_blank">ConnectTech</a><br/>
+			<small>
+				Embedded Systems Engineer | Ontario, CA<br/>
+				(Edge AI Systems, Vision/Language Models)
+			</small>
+		</div>
+	</div>
+	<div class="bio-container col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://www.linkedin.com/in/jason-seawall-65313a11/" target="_blank"><img class="bio-image" src="research/images/Jason_Seawall.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/jason-seawall-65313a11/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			<a href="https://www.youtube.com/@Numurus-NEPI" target="_blank"><img class="bio-logo" src="research/images/youtube.png"></img></a>
+			<a href="https://github.com/nepi-engine" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
+			Jason Seawall, <a href="https://numurus.com/" target="_blank">Numurus</a><br/>
+			<small>
+				CEO | Seattle, WA<br/>
+				(<a href="https://nepi.com/" target="_blank">NEPI</a>, Edge AI & Automation)
 			</small>
 		</div>
 	</div>

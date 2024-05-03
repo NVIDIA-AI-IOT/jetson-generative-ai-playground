@@ -41,7 +41,7 @@ It uses models like [LLaVA](https://llava-vl.github.io/){:target="_blank"} or [V
         - [`NousResearch/Obsidian-3B-V0.5`](https://huggingface.co/NousResearch/Obsidian-3B-V0.5)
         - [`VILA-2.7b`](https://huggingface.co/Efficient-Large-Model/VILA-2.7b), [`VILA-7b`](https://huggingface.co/Efficient-Large-Model/VILA-7b), [`Llava-7b`](https://huggingface.co/liuhaotian/llava-v1.6-vicuna-7b), and [`Obsidian-3B`](https://huggingface.co/NousResearch/Obsidian-3B-V0.5) can run on Orin Nano 8GB
 		
-The [VideoQuery](https://dusty-nv.github.io/NanoLLM/agents.html#video-query){:target="_blank"} agent processes an incoming camera or video feed on prompts in a closed loop with the VLM.  Navigate your browser to `https://<IP_ADDRESS>:8050` after launching it, proceed past the [SSL warning](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm#enabling-httpsssl){:target="_blank"}, and see this [demo walkthrough](https://www.youtube.com/watch?v=dRmAGGuupuE){:target="_blank"} video on using the web UI.  
+The [VideoQuery](https://dusty-nv.github.io/NanoLLM/agents.html#video-query){:target="_blank"} agent applies prompts to the incoming video feed with the VLM.  Navigate your browser to `https://<IP_ADDRESS>:8050` after launching it with your camera (Chrome is recommended with `chrome://flags#enable-webrtc-hide-local-ips-with-mdns` disabled)
 
 ```bash
 jetson-containers run $(autotag nano_llm) \
@@ -53,7 +53,7 @@ jetson-containers run $(autotag nano_llm) \
     --video-output webrtc://@:8554/output
 ```
 
-<a href="https://youtu.be/dRmAGGuupuE" target="_blank"><img width="49%" style="display: inline;"  src="https://raw.githubusercontent.com/dusty-nv/jetson-containers/docs/docs/images/live_llava_horse.jpg"> <img width="49%" style="display: inline;" src="https://raw.githubusercontent.com/dusty-nv/jetson-containers/docs/docs/images/live_llava_espresso.jpg"></a>
+<a href="https://youtu.be/wZq7ynbgRoE" target="_blank"><img width="49%" style="display: inline;"  src="https://raw.githubusercontent.com/dusty-nv/jetson-containers/docs/docs/images/live_llava_horse.jpg"> <img width="49%" style="display: inline;" src="https://raw.githubusercontent.com/dusty-nv/jetson-containers/docs/docs/images/live_llava_espresso.jpg"></a>
 
 This uses [`jetson_utils`](https://github.com/dusty-nv/jetson-utils) for video I/O, and for options related to protocols and file formats, see [Camera Streaming and Multimedia](https://github.com/dusty-nv/jetson-inference/blob/master/docs/aux-streaming.md).  In the example above, it captures a V4L2 USB webcam connected to the Jetson (under the device `/dev/video0`) and outputs a WebRTC stream.
 
@@ -96,4 +96,4 @@ You can also tag incoming images and add them to the database using the panel in
 
 <div><iframe width="500" height="280" src="https://www.youtube.com/embed/8Eu6zG0eEGY" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-<iframe width="500" height="280" src="https://www.youtube.com/embed/dRmAGGuupuE" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<iframe width="500" height="280" src="https://www.youtube.com/embed/wZq7ynbgRoE" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
