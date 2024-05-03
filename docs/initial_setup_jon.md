@@ -7,7 +7,7 @@
 
 The NVIDIA® <span class="blobLightGreen4">Jetson Orin Nano™ Developer Kit</span> is a perfect kit to start your journey of local generative AI evaluation and development.
 
-This guide explains the complete flow from opening the box, flashing SD card, and the initial software setup, so that you will be ready for tutorials listed on this site.
+This guide explains the complete flow from opening the box, updating the firmware if needed, flashing the latest JetPack 6.0 GA image on SD card, and the initial software setup, so that you will be ready for tutorials listed on this site and other AI projects.
 
 
 ## Check your inventory
@@ -48,11 +48,11 @@ If you don't have them in your inventory, you want to arrange them and come back
 
 ## Overall flow
 
-??? info "Jetson Orin Nano Initial Setup Flowchart (Click to expand)"
+!!! info "Jetson Orin Nano Initial Setup Flowchart (Click to expand)"
 
     ```mermaid
     flowchart
-        A(start) --> B{1. Check<br>Manufactured after May 2024?<br>i.e. Jetson UEFI Firmware<br>newer than version 36.3}
+        A(start) --> B{1. Check<br>Manufactured after May 2024?<br>i.e. Jetson UEFI Firmware<br>newer than version 36.0}
         B --[YES] --> O[6. Flash JetPack 6.0 GA image on microSD card]
         B --[No] --> C[2. Flash JetPack 5.1.3 image on microSD card]
         C --> D[3. Reboot] --> E{{Firmware update during reboot}}
@@ -69,16 +69,16 @@ If you don't have them in your inventory, you want to arrange them and come back
         style O fill:#fee
     ```
 
-??? example "Even more detailed flowchart (for all firmware versions)"
+<!-- ??? example "Even more detailed flowchart (for all firmware versions)"
 
-    Another image.
+    Another image. -->
 
 
 ## 1. Check if Jetson UEFI Firmware version > `36.3`
 
 Your Jetson Orin Nano Developer Kit may have the latest firmware ("Jetson UEFI firmware" on QSPI-NOR flash memory) flashed at the factory.
 
-If not, we need to go through a set of procedures to upgrade to the latest firmware.
+If not, we need to go through a set of procedures to upgrade to the latest firmware. (Luckily, we can now do this all just on Jetson, meaning we don't need to use a host Ubuntu PC any more!)
 
 So let's first check the version of your Jetson UEFI Firmware.<br>
 You can take one of the following methods.
@@ -240,7 +240,7 @@ Once we know the onboard firmware is up-to-date and ready for JetPack 6, we can 
 
 2. Use Balena Etcher to flash image to SD card
 
-    Insert your microSD card into your PC's SD card slot, and use Balena Ethcer to flash the SD card with the image you just downloaded.
+    Insert your microSD card into your PC's SD card slot, and use Balena Etcher to flash the SD card with the image you just downloaded.
 
     If you don't have Balena Etcher on your PC, download from [Balena official site](https://etcher.balena.io/).
 
