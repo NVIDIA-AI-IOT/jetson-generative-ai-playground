@@ -78,7 +78,7 @@ If you don't have them in your inventory, you want to arrange them and come back
 
 Your Jetson Orin Nano Developer Kit may have the latest firmware ("Jetson UEFI firmware" on QSPI-NOR flash memory) flashed at the factory.
 
-If not, we need to go through a set of procedures to upgrade to the latest firmware. (Luckily, we can now do this all just on Jetson, meaning we don't need to use a host Ubuntu PC!)
+If not, we need to go through a set of procedures to upgrade to the latest firmware. (Luckily, we can now do this all just on Jetson, meaning we don't need to use a host Ubuntu PC any more!)
 
 So let's first check the version of your Jetson UEFI Firmware.<br>
 You can take one of the following methods.
