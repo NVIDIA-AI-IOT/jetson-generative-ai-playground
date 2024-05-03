@@ -94,9 +94,9 @@ You can take one of the following methods.
 === ":material-monitor-off: Headless"
 
     1. Connect USB to TTL Serial cable onto the following pins on `J14` "button" header of carrier board located under the Jetson module. 
-          - `RXD` (Pin 3)
-          - `TXD` (Pin 4)
-          - `GND` (Pin 7)
+          - `RXD` (Pin 3) :fontawesome-solid-arrows-left-right: Adafruit adaptor cable <span class="blobGreen">Green</span> 
+          - `TXD` (Pin 4) :fontawesome-solid-arrows-left-right: Adafruit adaptor cable <span class="blobWhite">White</span> 
+          - `GND` (Pin 7) :fontawesome-solid-arrows-left-right: Adafruit adaptor cable <span class="blobBlack">Black</span> 
         > For the detail, refer to [Jetson Orin Nano Developer Kit Carrier Board Specification](https://developer.nvidia.com/embedded/downloads#?search=Carrier%20Board%20Specification&tx=$product,jetson_orin_nano).
     1. On your PC, run your console monitor program and open the USB serial port.
     2. Power on the developer kit by plugging in the bundled DC power supply

@@ -234,6 +234,18 @@ a.nv-buy-link:hover,.load-buy-link:hover {
 	background: #FF0000; color: #fff; font-size: 0.8em; border-radius: 0.1em;  padding-left: 0.3em; padding-right: 0.3em;  margin: 0.2em; 
 }
 
+.blobGreen {
+	background: #00AA00; color: #fff; font-size: 0.8em; border-radius: 0.3em;  padding-left: 0.3em; padding-right: 0.3em;  margin: 0.2em; 
+}
+
+.blobWhite {
+	background: #EEE; color: #000; border-color: #666; border: solid 0.1em; font-size: 0.8em; border-radius: 0.3em;  padding-left: 0.3em; padding-right: 0.3em;  margin: 0.2em; 
+}
+
+.blobBlack {
+	background: #222; color: #FFF; font-size: 0.8em; border-radius: 0.3em;  padding-left: 0.3em; padding-right: 0.3em;  margin: 0.2em; 
+}
+
 .highlightYellow {
 	background: #ffc105;
     border-radius: 0.5em;  
