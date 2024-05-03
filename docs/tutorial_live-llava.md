@@ -106,5 +106,7 @@ You can also tag incoming images and add them to the database using the panel in
 
 For a simplified code example of doing live VLM streaming from Python, see [here](https://dusty-nv.github.io/NanoLLM/multimodal.html#code-example){:target="_blank"} in the NanoLLM docs. 
 
-<iframe width="750" height="500" src="https://dusty-nv.github.io/NanoLLM/multimodal.html#code-example" style="display: inline-block;" title="Live VLM Code Example" frameborder="0"></iframe>
+<iframe width="750" height="500" src="https://dusty-nv.github.io/NanoLLM/multimodal.html#code-example" title="Live VLM Code Example" frameborder="0" style="border: 2px solid #DDDDDD;" loading="lazy" sandbox="allow-scripts"></iframe>
+  
+You can use this to implement customized prompting techniques and integrate with other vision pipelines.
   
