@@ -153,12 +153,12 @@ You can take one of the following methods.
 
     ## 3. Power-on and reboot to ensure firmware gets updated to 5.0 (JetPack 5.1.3)
 
-    4. Power-on
+    1. Power-on
    
         Turn on the Jetson Orin Nano Developer Kit **with JetPack 5.1.3 SD card inserted** by plugging in the DC power supply.
 
-    5. Complete the initial software setup (`oem-config`)
-    6. Ensure firmware update is scheduled.
+    2. Complete the initial software setup (`oem-config`)
+    3. Ensure firmware update is scheduled.
     
         Once Jetson boots into Jetson Linux system, a background service automatically runs to schedule a firmware update (if needed) to be performed during the next boot-up process.
 
@@ -180,9 +180,25 @@ You can take one of the following methods.
             Main PID: 11439 (code=exited, status=0/SUCCESS)
             ```
 
+    4. Reboot
+   
+        Reboot your Jetson Orin Nano Developer Kit.
+        
+        You should see the following during the boot up process.
+        
+        === ":material-monitor: GUI"
+
+            ![](./images/fw-update-progress_monitor.jpg)
+
+        === ":material-monitor-off: CUI"
+
+            ![](./images/fw_update_4.1-to-5.0.png)
+            
+        Once done, you will boot into JetPack 5.1.3 (again), with underlying firmware updated to `5.0-35550185`.
+
     ## 4. Install and run QSPI Updater package 
 
-    3. Double-check your firmware version is up to date (`35.5.0` = JetPack 5.1.3)
+    5. Double-check your firmware version is up to date (`35.5.0` = JetPack 5.1.3)
     
         Once it reboots back into Jetson Linux system, on Jetson terminal, run the following:
         
@@ -202,7 +218,7 @@ You can take one of the following methods.
         slot: 1,             status: normal
         ```
 
-    4. Install QSPI Updater Debian package to trigger another (final) firmware update
+    6. Install QSPI Updater Debian package to trigger another (final) firmware update
    
         On Jetson terminal, run the following:
 
@@ -214,15 +230,15 @@ You can take one of the following methods.
 
     ## 5. Reboot and power-off the developer kit
 
-    5. Reboot 
+    7. Reboot 
     
         Once the QSPI update is scheduled, reboot your Jetson Orin Nano Developer Kit.
 
-    6. Observe update
+    8. Observe update
 
         You can observe the update during the boot up process.
 
-    7. Power off
+    9.  Power off
 
         Once the update is done, it reboots and tries to boot, however it will get stuck **UNLESS you change the SD card to JetPack 6 one**. 
         
