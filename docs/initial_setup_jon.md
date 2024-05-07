@@ -186,14 +186,14 @@ You can take one of the following methods.
         
         You should see the following during the boot up process.
         
-        === ":material-monitor: GUI"
+        === ":material-monitor: With monitor"
 
             ![](./images/fw-update-progress_monitor.jpg)
 
-        === ":material-monitor-off: CUI"
+        === ":material-monitor-off: Headless (serial)"
 
             ![](./images/fw_update_4.1-to-5.0.png)
-            
+
         Once done, you will boot into JetPack 5.1.3 (again), with underlying firmware updated to `5.0-35550185`.
 
     ## 4. Install and run QSPI Updater package 
