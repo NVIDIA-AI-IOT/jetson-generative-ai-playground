@@ -94,9 +94,9 @@ You can take one of the following methods.
 === ":material-monitor-off: Headless"
 
     1. Connect USB to TTL Serial cable onto the following pins on `J14` "button" header of carrier board located under the Jetson module. 
-          - `RXD` (Pin 3)
-          - `TXD` (Pin 4)
-          - `GND` (Pin 7)
+          - `RXD` (Pin 3) :fontawesome-solid-arrows-left-right: Adafruit adaptor cable <span class="blobGreen">Green</span> 
+          - `TXD` (Pin 4) :fontawesome-solid-arrows-left-right: Adafruit adaptor cable <span class="blobWhite">White</span> 
+          - `GND` (Pin 7) :fontawesome-solid-arrows-left-right: Adafruit adaptor cable <span class="blobBlack">Black</span> 
         > For the detail, refer to [Jetson Orin Nano Developer Kit Carrier Board Specification](https://developer.nvidia.com/embedded/downloads#?search=Carrier%20Board%20Specification&tx=$product,jetson_orin_nano).
     1. On your PC, run your console monitor program and open the USB serial port.
     2. Power on the developer kit by plugging in the bundled DC power supply
@@ -113,7 +113,11 @@ You can take one of the following methods.
 
 !!! warning "Attention"
 
-    Skip this section, if you found your Jetson Orin Nano Developer Kit comes with Jetson UEFI firmware version 36.3 or newer (the case of [:fontawesome-solid-forward-fast: Firmware 36.x](http://127.0.0.1:8000/initial_setup_jon.html#__tabbed_2_1)).
+    Select the appropriate tab below based on your firmware version you found in the above step.
+
+    If you found your Jetson Orin Nano needs its firmware updated to run JetPack 6, click [":material-update: Firmware < 36.0"](#__tabbed_2_2) tab, and then additional step 2 to 5 will appear for you to follow.
+
+    If you know your Jetson Orin Nano has the latest firmware, stay on [":fontawesome-solid-forward-fast: Firmware 36.x"](#__tabbed_2_1) tab, and skip to the next section ([***6. Flash JetPack 6.0 GA image onto your microSD card***](#6-flash-jetpack-60-ga-image-onto-your-microsd-card))
 
 === ":fontawesome-solid-forward-fast: Firmware 36.x"
 
@@ -149,12 +153,12 @@ You can take one of the following methods.
 
     ## 3. Power-on and reboot to ensure firmware gets updated to 5.0 (JetPack 5.1.3)
 
-    1. Power-on
+    4. Power-on
    
         Turn on the Jetson Orin Nano Developer Kit **with JetPack 5.1.3 SD card inserted** by plugging in the DC power supply.
 
-    2. Complete the initial software setup (`oem-config`)
-    3. Ensure firmware update is scheduled.
+    5. Complete the initial software setup (`oem-config`)
+    6. Ensure firmware update is scheduled.
     
         Once Jetson boots into Jetson Linux system, a background service automatically runs to schedule a firmware update (if needed) to be performed during the next boot-up process.
 
@@ -162,13 +166,18 @@ You can take one of the following methods.
 
         === ":material-monitor: GUI"
 
+            ![](./images/nvidia-l4t-bootloader-post-install-notification.png)
+
         === ":material-monitor-off: CUI"
 
             ```bash
             $ sudo systemctl status nv-l4t-bootloader-config
-            ...
-            0/SUCCESS
-            ...
+            [sudo] password for jetson: 
+            ● nv-l4t-bootloader-config.service - Configure bootloader service
+                Loaded: loaded (/etc/systemd/system/nv-l4t-bootloader-config.service; enabled; vendor preset: enabled)
+                Active: inactive (dead) since Fri 2024-05-03 13:36:13 PDT; 1min 57s ago
+                Process: 11439 ExecStart=/opt/nvidia/l4t-bootloader-config/nv-l4t-bootloader-config.sh -v (code=exited, status=0/SUCCESS)
+            Main PID: 11439 (code=exited, status=0/SUCCESS)
             ```
 
     ## 4. Install and run QSPI Updater package 
