@@ -8,7 +8,7 @@ This multimodal agent runs a vision-language model on a live camera feed or vide
 
 <a href="https://youtu.be/X-OXxPiUTuU" target="_blank"><img src="https://raw.githubusercontent.com/dusty-nv/jetson-containers/docs/docs/images/live_llava.gif"></a>
 
-It uses models like [LLaVA](https://llava-vl.github.io/){:target="_blank"} or [VILA](https://github.com/Efficient-Large-Model/VILA){:target="_blank"} (based on Llama and [CLIP](https://openai.com/research/clip)) and has been quantized with 4-bit precision to be deployed on Jetson Orin.  This runs an optimized multimodal pipeline from the [`NanoLLM`](https://dusty-nv.github.io/NanoLLM){:target="_blank"} library, including event filters and alerts, and multimodal RAG:
+It uses models like [LLaVA](https://llava-vl.github.io/){:target="_blank"} or [VILA](https://github.com/Efficient-Large-Model/VILA){:target="_blank"} (based on Llama and [CLIP](https://openai.com/research/clip){:target="_blank"}) and has been quantized with 4-bit precision to be deployed on Jetson Orin.  This runs an optimized multimodal pipeline from the [`NanoLLM`](https://dusty-nv.github.io/NanoLLM){:target="_blank"} library, including event filters and alerts, and multimodal RAG:
 
 <iframe width="720" height="405" src="https://www.youtube.com/embed/8Eu6zG0eEGY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -77,7 +77,7 @@ jetson-containers run \
       --prompt "What does the weather look like?"
 ```
 
-This example processes and pre-recorded video (in MP4, MKV, AVI, FLV formats with H.264/H.265 encoding), but it also can input/output live network streams like [RTP](https://github.com/dusty-nv/jetson-inference/blob/master/docs/aux-streaming.md#rtp), [RTSP](https://github.com/dusty-nv/jetson-inference/blob/master/docs/aux-streaming.md#rtsp), and [WebRTC](https://github.com/dusty-nv/jetson-inference/blob/master/docs/aux-streaming.md#webrtc) using Jetson's hardware-accelerated video codecs.
+This example processes and pre-recorded video (in MP4, MKV, AVI, FLV formats with H.264/H.265 encoding), but it also can input/output live network streams like [RTP](https://github.com/dusty-nv/jetson-inference/blob/master/docs/aux-streaming.md#rtp){:target="_blank"}, [RTSP](https://github.com/dusty-nv/jetson-inference/blob/master/docs/aux-streaming.md#rtsp){:target="_blank"}, and [WebRTC](https://github.com/dusty-nv/jetson-inference/blob/master/docs/aux-streaming.md#webrtc){:target="_blank"} using Jetson's hardware-accelerated video codecs.
 
 ### NanoDB Integration
 
@@ -88,15 +88,20 @@ To enable this mode, first follow the [**NanoDB tutorial**](tutorial_nanodb.md) 
 ```bash
 jetson-containers run $(autotag nano_llm) \
   python3 -m nano_llm.agents.video_query --api=mlc \
-    --model Efficient-Large-Model/VILA1.5-3b \
-    --max-context-len 256 \
+    --model Efficient-Large-Model/VILA-2.7b \
+    --max-context-len 768 \
     --max-new-tokens 32 \
     --video-input /dev/video0 \
     --video-output webrtc://@:8554/output \
     --nanodb /data/nanodb/coco/2017
 ```
 
-You can also tag incoming images and add them to the database using the panel in the web UI.
+!!! warning "NanoDB Embedding Compatability"
+
+    For NanoDB integration, you should currently load a vision/language model that uses the same `openai/clip-vit-large-patch14-336` vision encoder that NanoDB uses (like `Efficient-Large-Model/VILA-2.7b`, `liuhaotian/llava-v1.6-vicuna-7b`).  This is so that the vector database is keyed off the same embeddings that the VLM generates.  The VILA-1.5 models use fined-tuned SigLIP encoders that will require some future modifications to work with NanoDB (see [here](https://forums.developer.nvidia.com/t/live-llava-webui-dont-show-nanodb-webui/291976/3){:target="_blank"} for more info.)
+
+
+You can also tag incoming images and add them to the database using the web UI, for one-shot recognition tasks:
 
 <div><iframe width="500" height="280" src="https://www.youtube.com/embed/8Eu6zG0eEGY" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -106,7 +111,7 @@ You can also tag incoming images and add them to the database using the panel in
 
 For a simplified code example of doing live VLM streaming from Python, see [here](https://dusty-nv.github.io/NanoLLM/multimodal.html#code-example){:target="_blank"} in the NanoLLM docs. 
 
-<iframe width="750" height="500" src="https://dusty-nv.github.io/NanoLLM/multimodal.html#code-example" title="Live VLM Code Example" frameborder="0" style="border: 2px solid #DDDDDD;" loading="lazy" sandbox="allow-scripts"></iframe>
+<iframe width="750" height="500" src="https://dusty-nv.github.io/NanoLLM/multimodal.html#code-example" title="Live VLM Code Example" frameborder="0" style="border: 2px solid #DDDDDD;" loading="lazy" sandbox></iframe>
   
 You can use this to implement customized prompting techniques and integrate with other vision pipelines.
   
