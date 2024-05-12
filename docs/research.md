@@ -84,16 +84,14 @@ We'll aim to meet monthly or bi-weekly as a team in virtual meetings that anyone
     - Passcode: `dVXWcf`	
 	- Outlook Invite:  [`Jetson AI Lab Research Group (51524).ics`](research/invites/Jetson AI Lab Research Group (51524).ics){:target="_blank"} 
 	- Forum Topic:  [`forums.developer.nvidia.com/t/291650`](https://forums.developer.nvidia.com/t/291650)
-
-<!--
 	- Agenda:
-	    * New model releases (Llama-3, Phi-3, Mini VLMs)
-	    * Function Calling / Self-Learning RAG (<a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-agent-controller-llm/288229/2" target="_blank">forum thread</a>)
-	    * Home Assistant / Wyoming (Mieszko Syty - <a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-home-assistant-integration/288225" target="_blank">forum thread</a>)
-	    * Smart Sorting / Recycling (Alvaro Costa - <a href="https://forums.developer.nvidia.com/t/system-to-capture-consumption-data-measuring-weight-and-temperature-of-products-disposed/290402" target="_blank">forum thread</a>)
+	    * Updates for JetPack 6.0 GA / L4T R36.3.0
+	    * VILA-1.5 Multimodal Models (<a href="https://forums.developer.nvidia.com/t/new-vila-1-5-multimodal-vision-language-models-released-in-3b-8b-13b-40b/291784" target="_blank">forum thread</a>)
+	    * Voicecraft Container (Martin Cerven - <a href="https://github.com/dusty-nv/jetson-containers/pull/498" target="_blank">GitHub PR</a>)
+	    * JetBot / Nanosaur Updates for Orin Nano
+	    * Advanced Function Calling with <a href="https://huggingface.co/NousResearch/Hermes-2-Pro-Llama-3-8B" _target="_blank"><code>NousResearch/Hermes-2-Pro-Llama-3-8B</code></a>
 	    * Open Q&A
--->
-	    
+   
 The agenda will be listed here beforehand - post to the forum to add agenda items.  The meetings will be recorded so anyone unable to attend live can watch them after.
 
 ## Past Meetings
@@ -617,6 +615,19 @@ Below are shown some of the sustaining members of the group who have been workin
 			<small>
 				CEO | Seattle, WA<br/>
 				(<a href="https://nepi.com/" target="_blank">NEPI</a>, Edge AI & Automation)
+			</small>
+		</div>
+	</div>
+    <div class="bio-container col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://www.linkedin.com/in/martincerven/" target="_blank"><img class="bio-image" src="research/images/Martin_Cerven.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/martincerven/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			<a href="https://www.youtube.com/c/martincerven/featured" target="_blank"><img class="bio-logo" src="research/images/youtube.png"></img></a>
+			<a href="https://github.com/martincerven" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
+			Martin Cerven<br/>
+			<small>
+				AI Researcher | Germany<br/>
+				(Autonomous Robotics, Voicecraft)
 			</small>
 		</div>
 	</div>

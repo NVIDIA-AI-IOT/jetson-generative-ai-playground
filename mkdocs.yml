@@ -81,9 +81,9 @@ nav:
     - Hello AI World: hello_ai_world.md
     - Text (LLM):
       - text-generation-webui: tutorial_text-generation.md 
-      - ollama 🆕: tutorial_ollama.md
+      - ollama: tutorial_ollama.md
       - llamaspeak: tutorial_llamaspeak.md
-      - NanoLLM 🆕: tutorial_nano-llm.md
+      - NanoLLM: tutorial_nano-llm.md
       - Small LLM (SLM): tutorial_slm.md
       - API Examples: tutorial_api-examples.md
     - Text + Vision (VLM):
