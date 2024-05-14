@@ -7,7 +7,7 @@ Talk live with Llama using streaming ASR/TTS, and chat about images with Llava!
 * The [`NanoLLM`](https://dusty-nv.github.io/NanoLLM){:target="_blank"} library provides optimized inference for LLM and speech models.
 * It's recommended to run JetPack 6.0 to be able to run the latest containers.
 
-The [`WebChat`](https://dusty-nv.github.io/NanoLLM/agents.html#web-chat){:target="_blank"} agent has conversational abilities and multimodal support for chatting about images with vision/language models.
+The [`WebChat`](https://dusty-nv.github.io/NanoLLM/agents.html#web-chat){:target="_blank"} agent has responsive conversational abilities and multimodal support for chatting about images with vision/language models, including overlapping ASR/LLM/TTS generation and verbal interruptability.
 
 ## Running llamaspeak
 
@@ -49,7 +49,9 @@ This will start llamaspeak with text LLM and ASR/TTS enabled.  You can then navi
 
 <iframe width="720" height="405" src="https://www.youtube.com/embed/hswNSZTvEFE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-The [code](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/agents/web_chat.py){:target="_blank"} and [docs](https://dusty-nv.github.io/NanoLLM/agents.html#web-chat){:target="_blank"} for the `WebAgent` that runs llamaspeak can be found in the NanoLLM library.
+The [code](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/agents/web_chat.py){:target="_blank"} and [docs](https://dusty-nv.github.io/NanoLLM/agents.html#web-chat){:target="_blank"} for the `WebAgent` that runs llamaspeak can be found in the NanoLLM library.  This block diagram shows the speech pipeline with interleaved model generation, user interruption, and streaming I/O:
+
+<img src="images/llamaspeak_block_diagram.jpg">
 
 ## Multimodality
 
