@@ -88,18 +88,13 @@ To enable this mode, first follow the [**NanoDB tutorial**](tutorial_nanodb.md) 
 ```bash
 jetson-containers run $(autotag nano_llm) \
   python3 -m nano_llm.agents.video_query --api=mlc \
-    --model Efficient-Large-Model/VILA-2.7b \
-    --max-context-len 768 \
+    --model Efficient-Large-Model/VILA1.5-3b \
+    --max-context-len 256 \
     --max-new-tokens 32 \
     --video-input /dev/video0 \
     --video-output webrtc://@:8554/output \
     --nanodb /data/nanodb/coco/2017
 ```
-
-!!! warning "NanoDB Embedding Compatability"
-
-    For NanoDB integration, you should currently load a vision/language model that uses the same `openai/clip-vit-large-patch14-336` vision encoder that NanoDB uses (like `Efficient-Large-Model/VILA-2.7b`, `liuhaotian/llava-v1.6-vicuna-7b`).  This is so that the vector database is keyed off the same embeddings that the VLM generates.  The VILA-1.5 models use fined-tuned SigLIP encoders that will require some future modifications to work with NanoDB (see [here](https://forums.developer.nvidia.com/t/live-llava-webui-dont-show-nanodb-webui/291976/3){:target="_blank"} for more info.)
-
 
 You can also tag incoming images and add them to the database using the web UI, for one-shot recognition tasks:
 
