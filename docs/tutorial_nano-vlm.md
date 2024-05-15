@@ -127,6 +127,24 @@ The [Live Llava](tutorial_live-llava.md) tutorial shows how to enable additional
 <div><iframe width="500" height="280" src="https://www.youtube.com/embed/8Eu6zG0eEGY" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 <iframe width="500" height="280" src="https://www.youtube.com/embed/wZq7ynbgRoE" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+
+## Video Sequences
+
+The VILA-1.5 family of models can handle multiple images per query, enabling video summarization and temporal change detection.  By manipulating the KV cache and dropping off the last frame from the chat history, we can keep the stream rolling continuously beyond the maximum context length of the model.  The [`vision/video.py`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/vision/video.py){:target="_blank"} example shows how to use this:
+
+``` bash
+jetson-containers run $(autotag nano_llm) \
+  python3 -m nano_llm.vision.video \
+    --model Efficient-Large-Model/VILA1.5-3b \
+    --max-images 8 \
+    --max-new-tokens 48 \
+    --video-input /data/my_video.mp4 \
+    --video-output /data/my_output.mp4 \
+    --prompt 'What changes occurred in the video?'
+```
+
+<iframe width="720" height="405" src="https://www.youtube.com/embed/_7gughth8C0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
   
 ## Python Code
 
