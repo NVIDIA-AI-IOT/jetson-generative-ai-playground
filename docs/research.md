@@ -10,11 +10,11 @@ The Jetson AI Lab Research Group is a global collective for advancing open-sourc
 
 There are virtual [meetings](#meeting-schedule) that anyone is welcome to join, offline discussion on the [Jetson Projects](https://forums.developer.nvidia.com/c/agx-autonomous-machines/jetson-embedded-systems/jetson-projects/78){:target="_blank"} forum, and guidelines for upstreaming open-source [contributions](#contribution-guidelines). 
 
-!!! abstract "Next Meeting - 5/15"
+!!! abstract "Next Meeting - 5/29"
 
-    The next team meeting is on Wednesday, May 15 at 9am PST - see the [invite](#meeting-schedule) below or click [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZGVlZjc3MjQtNjk3MC00YWZkLTgzNzMtYzA4MDRjNWNiNWI4%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"}  to join the meeting.
-    
-    <!--The next team meeting is on Wednesday, May 1st at 9am PST.  View the [recording](#past-meetings) from the last meeting below. -->
+    The next team meeting is on Wednesday, May 29<sup>th</sup> at 9am PST.  View the [recording](#past-meetings) from the last meeting below. 
+
+    <!-- The next team meeting is on Wednesday, May 15 at 9am PST - see the [invite](#meeting-schedule) below or click [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZGVlZjc3MjQtNjk3MC00YWZkLTgzNzMtYzA4MDRjNWNiNWI4%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"}  to join the meeting. -->
 
 ## Topics of Interest
 
@@ -77,8 +77,10 @@ Ongoing technical discussions are encouraged to occur on the forums or GitHub Is
 
 We'll aim to meet monthly or bi-weekly as a team in virtual meetings that anyone is welcome to join and speak during.  We'll discuss the latest updates and experiments that we want to explore.  Please remain courteous to others during the calls.  We'll stick around after for anyone who has questions or didn't get the chance to be heard.
 
-!!! abstract "Wednesday, May 15 at 9am PST (5/15/24)"
+!!! abstract "Wednesday, May 29 at 9am PST (5/29/24)"
 
+    - Teams Invite link forthcoming
+<!--
 	- Microsoft Teams - [Meeting Link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZGVlZjc3MjQtNjk3MC00YWZkLTgzNzMtYzA4MDRjNWNiNWI4%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} 
 	- Meeting ID: `221 065 454 301`
     - Passcode: `dVXWcf`	
@@ -91,19 +93,36 @@ We'll aim to meet monthly or bi-weekly as a team in virtual meetings that anyone
 	    * JetBot / Nanosaur Updates for Orin Nano
 	    * Advanced Function Calling with <a href="https://huggingface.co/NousResearch/Hermes-2-Pro-Llama-3-8B" _target="_blank"><code>NousResearch/Hermes-2-Pro-Llama-3-8B</code></a>
 	    * Open Q&A
+-->
    
 The agenda will be listed here beforehand - post to the forum to add agenda items.  The meetings will be recorded so anyone unable to attend live can watch them after.
 
 ## Past Meetings
 
-<details open><summary>May 1, 2024</summary>
+<details open><summary>May 15, 2024</summary>
+
+<div><iframe width="570" height="320" src="https://www.youtube.com/embed/zoyONbiHd14" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<p>Topics Covered:</p>
+
+<ul>
+	<li><a href="https://forums.developer.nvidia.com/t/new-vila-1-5-multimodal-vision-language-models-released-in-3b-8b-13b-40b/291784" target="_blank">VILA-1.5 on Video Sequences</a></li>
+	<li>Voicecraft Container (<a href="https://github.com/dusty-nv/jetson-containers/pull/498" target="_blank">Martin Cerven</a>)</li>
+	<li>JetBot / Nanosaur Updates for Orin Nano (Chitoku Yato & Raffaello Bonghi)</li>
+	<li>Controller LLM & Advanced Function Calling (<a href="https://huggingface.co/NousResearch/Hermes-2-Pro-Llama-3-8B" _target="_blank"><code>NousResearch/Hermes-2-Pro-Llama-3-8B</code></a>)</li>
+	<li>RAG Samples with LlamaIndex (Chitoku Yato)</li>
+</ul>
+
+</details>
+
+<details><summary>May 1, 2024</summary>
 
 <div><iframe width="570" height="320" src="https://www.youtube.com/embed/L4i5x8zzyNc" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 <p>Topics Covered:</p>
 
 <ul>
-	<li><a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-agent-controller-llm/288229/2" target="_blank">Function Calling with Llama-3</li>
+	<li><a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-agent-controller-llm/288229/2" target="_blank">Function Calling with Llama-3</a></li>
 	<li><a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-home-assistant-integration/288225" target="_blank">Home Assistant / Wyoming (Mieszko Syty)</a></li>
 	<li><a href="https://forums.developer.nvidia.com/t/system-to-capture-consumption-data-measuring-weight-and-temperature-of-products-disposed/290402" target="_blank">Smart Sorting / Recycling (Alvaro Costa)</a></li>
 </ul>

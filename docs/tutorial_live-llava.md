@@ -8,11 +8,9 @@ This multimodal agent runs a vision-language model on a live camera feed or vide
 
 <a href="https://youtu.be/X-OXxPiUTuU" target="_blank"><img src="https://raw.githubusercontent.com/dusty-nv/jetson-containers/docs/docs/images/live_llava.gif"></a>
 
-It uses models like [LLaVA](https://llava-vl.github.io/){:target="_blank"} or [VILA](https://github.com/Efficient-Large-Model/VILA){:target="_blank"} (based on Llama and [CLIP](https://openai.com/research/clip){:target="_blank"}) and has been quantized with 4-bit precision to be deployed on Jetson Orin.  This runs an optimized multimodal pipeline from the [`NanoLLM`](https://dusty-nv.github.io/NanoLLM){:target="_blank"} library, including event filters and alerts, and multimodal RAG:
+It uses models like [LLaVA](https://llava-vl.github.io/){:target="_blank"} or [VILA](https://github.com/Efficient-Large-Model/VILA){:target="_blank"} and has been quantized with 4-bit precision.  This runs an optimized multimodal pipeline from the [`NanoLLM`](https://dusty-nv.github.io/NanoLLM){:target="_blank"} library, including running the CLIP/SigLIP vision encoder in TensorRT, event filters and alerts, and multimodal RAG (see the [**NanoVLM**](tutorial_nano-vlm.md) page for benchmarks)
 
-<iframe width="720" height="405" src="https://www.youtube.com/embed/8Eu6zG0eEGY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-For benchmarks and further discussion about multimodal optimizations, see the [**NanoVLM**](tutorial_nano-vlm.md) page.
+<img src="images/multimodal_agent.jpg" style="max-width: 425px">
 
 ## Running the Live Llava Demo
 
@@ -102,11 +100,30 @@ You can also tag incoming images and add them to the database using the web UI, 
 
 <iframe width="500" height="280" src="https://www.youtube.com/embed/wZq7ynbgRoE" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
+## Video VILA
+
+The VILA-1.5 family of models can understand multiple images per query, enabling video summarization, action & behavior analysis, change detection, and other temporal-based vision functions.  The [`vision/video.py`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/vision/video.py){:target="_blank"} example keeps a rolling history of frames:
+
+``` bash
+jetson-containers run $(autotag nano_llm) \
+  python3 -m nano_llm.vision.video \
+    --model Efficient-Large-Model/VILA1.5-3b \
+    --max-images 8 \
+    --max-new-tokens 48 \
+    --video-input /data/my_video.mp4 \
+    --video-output /data/my_output.mp4 \
+    --prompt 'What changes occurred in the video?'
+```
+
+<a href="https://youtu.be/_7gughth8C0" target="_blank"><img src="images/video_vila_wildfire.gif" title="Link to YouTube video of more clips (Realtime Video Vision/Language Model with VILA1.5-3b and Jetson Orin)"></a>
+
+<small>Note:  support will be added to the web UI for continuous multi-image queries on video sequences.</small>
+
 ## Python Code
 
 For a simplified code example of doing live VLM streaming from Python, see [here](https://dusty-nv.github.io/NanoLLM/multimodal.html#code-example){:target="_blank"} in the NanoLLM docs. 
 
 <iframe width="750" height="500" src="https://dusty-nv.github.io/NanoLLM/multimodal.html#code-example" title="Live VLM Code Example" frameborder="0" style="border: 2px solid #DDDDDD;" loading="lazy" sandbox></iframe>
   
-You can use this to implement customized prompting techniques and integrate with other vision pipelines.
+You can use this to implement customized prompting techniques and integrate with other vision pipelines.  This code applies the same set of prompts to the latest image from the video feed.  See [here](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/vision/video.py){:target="_blank"} for the version that does multi-image queries on video sequences.
   

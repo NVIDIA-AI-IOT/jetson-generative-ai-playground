@@ -130,7 +130,7 @@ The [Live Llava](tutorial_live-llava.md) tutorial shows how to enable additional
 
 ## Video Sequences
 
-The VILA-1.5 family of models can handle multiple images per query, enabling video summarization and temporal change detection.  By manipulating the KV cache and dropping off the last frame from the chat history, we can keep the stream rolling continuously beyond the maximum context length of the model.  The [`vision/video.py`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/vision/video.py){:target="_blank"} example shows how to use this:
+The VILA-1.5 family of models can understand multiple images per query, enabling video summarization, action & behavior analysis, change detection, and other temporal-based vision functions.  By manipulating the KV cache and dropping off the last frame from the chat history, we can keep the stream rolling continuously beyond the maximum context length of the model.  The [`vision/video.py`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/vision/video.py){:target="_blank"} example shows how to use this:
 
 ``` bash
 jetson-containers run $(autotag nano_llm) \
@@ -144,7 +144,7 @@ jetson-containers run $(autotag nano_llm) \
 ```
 
 <iframe width="720" height="405" src="https://www.youtube.com/embed/_7gughth8C0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
+<small>Note:  support will be added to the web UI for continuous multi-image queries on video sequences and is WIP.</small>
   
 ## Python Code
 
@@ -152,6 +152,6 @@ For a simplified code example of doing live VLM streaming from Python, see [here
 
 <iframe width="750" height="500" src="https://dusty-nv.github.io/NanoLLM/multimodal.html#code-example" title="Live VLM Code Example" frameborder="0" style="border: 2px solid #DDDDDD;" loading="lazy" sandbox></iframe>
   
-You can use this to implement customized prompting techniques and integrate with other vision pipelines.
+You can use this to implement customized prompting techniques and integrate with other vision pipelines.  This code applies the same set of prompts to the latest image from the video feed.  See [here](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/vision/video.py){:target="_blank"} for the version that does multi-image queries on video sequences.
 
   
