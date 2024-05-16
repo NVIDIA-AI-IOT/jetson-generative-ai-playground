@@ -104,8 +104,9 @@ nav:
     - Vector Database:
       - NanoDB: tutorial_nanodb.md
     - Audio:
-      - AudioCraft: tutorial_audiocraft.md
       - Whisper: tutorial_whisper.md
+      - AudioCraft: tutorial_audiocraft.md
+      - VoiceCraft: tutorial_voicecraft.md
     - Metropolis Microservices:
       - First Steps: tutorial_mmj.md
     # - Tools:

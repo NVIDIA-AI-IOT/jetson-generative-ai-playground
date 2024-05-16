@@ -55,8 +55,9 @@ Give your locally running LLM an access to vision!
 
 |      |                     |
 | :---------- | :----------------------------------- |
-| **[AudioCraft](./tutorial_audiocraft.md)** | Meta's [AudioCraft](https://github.com/facebookresearch/audiocraft), to produce high-quality audio and music |
 | **[Whisper](./tutorial_whisper.md)** | OpenAI's [Whisper](https://github.com/openai/whisper), pre-trained model for automatic speech recognition (ASR) |
+| **[AudioCraft](./tutorial_audiocraft.md)** | Meta's [AudioCraft](https://github.com/facebookresearch/audiocraft), to produce high-quality audio and music |
+| **[Voicecraft](./tutorial_voicecraft.md)** | [Voicecraft](https://github.com/jasonppy/VoiceCraft), Speech editing and zero shot TTS |
 
 ### Metropolis Microservices
 
