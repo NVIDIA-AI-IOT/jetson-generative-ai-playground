@@ -102,7 +102,7 @@ You can also tag incoming images and add them to the database using the web UI, 
 
 ## Video VILA
 
-The VILA-1.5 family of models can understand multiple images per query, enabling video summarization, action & behavior analysis, change detection, and other temporal-based vision functions.  The [`vision/video.py`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/vision/video.py){:target="_blank"} example keeps a rolling history of frames:
+The VILA-1.5 family of models can understand multiple images per query, enabling video search/summarization, action & behavior analysis, change detection, and other temporal-based vision functions.  The [`vision/video.py`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/vision/video.py){:target="_blank"} example keeps a rolling history of frames:
 
 ``` bash
 jetson-containers run $(autotag nano_llm) \

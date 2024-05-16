@@ -130,7 +130,7 @@ The [Live Llava](tutorial_live-llava.md) tutorial shows how to enable additional
 
 ## Video Sequences
 
-The VILA-1.5 family of models can understand multiple images per query, enabling video summarization, action & behavior analysis, change detection, and other temporal-based vision functions.  By manipulating the KV cache and dropping off the last frame from the chat history, we can keep the stream rolling continuously beyond the maximum context length of the model.  The [`vision/video.py`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/vision/video.py){:target="_blank"} example shows how to use this:
+The VILA-1.5 family of models can understand multiple images per query, enabling video search/summarization, action & behavior analysis, change detection, and other temporal-based vision functions.  By manipulating the KV cache and dropping off the last frame from the chat history, we can keep the stream rolling continuously beyond the maximum context length of the model.  The [`vision/video.py`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/vision/video.py){:target="_blank"} example shows how to use this:
 
 ``` bash
 jetson-containers run $(autotag nano_llm) \
