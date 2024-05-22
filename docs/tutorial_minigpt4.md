@@ -11,7 +11,6 @@ Give your locally running LLM an access to vision, by running [MiniGPT-4](https:
         <span class="blobDarkGreen4">Jetson AGX Orin (64GB)</span>
         <span class="blobDarkGreen5">Jetson AGX Orin (32GB)</span>
         <span class="blobLightGreen3">Jetson Orin NX (16GB)</span>
-        <span class="blobLightGreen4">Jetson Orin Nano (8GB)</span>
 
     2. Running one of the following versions of [JetPack](https://developer.nvidia.com/embedded/jetpack):
 
