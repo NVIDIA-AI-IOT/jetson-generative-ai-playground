@@ -12,9 +12,9 @@ There are virtual [meetings](#meeting-schedule) that anyone is welcome to join, 
 
 !!! abstract "Next Meeting - 5/29"
 
-    The next team meeting is on Wednesday, May 29<sup>th</sup> at 9am PST.  View the [recording](#past-meetings) from the last meeting below. 
+    The next team meeting is on Wednesday, May 29<sup>th</sup> at 9am PST - see the [invite](#meeting-schedule) below or click [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MzQ5NmRjYWEtNGY1ZC00YjE2LWJiYjQtZGYwOWM5MDZmOTAw%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"}  to join the meeting.
 
-    <!-- The next team meeting is on Wednesday, May 15 at 9am PST - see the [invite](#meeting-schedule) below or click [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZGVlZjc3MjQtNjk3MC00YWZkLTgzNzMtYzA4MDRjNWNiNWI4%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"}  to join the meeting. -->
+    <!--The next team meeting is on Wednesday, May 29<sup>th</sup> at 9am PST.  View the [recording](#past-meetings) from the last meeting below.-->
 
 ## Topics of Interest
 
@@ -79,13 +79,13 @@ We'll aim to meet monthly or bi-weekly as a team in virtual meetings that anyone
 
 !!! abstract "Wednesday, May 29 at 9am PST (5/29/24)"
 
-    - Teams Invite link forthcoming
+	- Microsoft Teams - [Meeting Link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MzQ5NmRjYWEtNGY1ZC00YjE2LWJiYjQtZGYwOWM5MDZmOTAw%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} 
+	- Meeting ID: `293 368 695 587`
+    - Passcode: `PY4P2L`	
+	- Outlook Invite:  [`Jetson AI Lab Research Group (52924).ics`](research/invites/Jetson AI Lab Research Group (52924).ics){:target="_blank"} 
+	- Forum Topic:  [`forums.developer.nvidia.com/t/293749`](https://forums.developer.nvidia.com/t/jetson-ai-lab-research-group-meeting-on-5-29/293749)
+	
 <!--
-	- Microsoft Teams - [Meeting Link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZGVlZjc3MjQtNjk3MC00YWZkLTgzNzMtYzA4MDRjNWNiNWI4%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} 
-	- Meeting ID: `221 065 454 301`
-    - Passcode: `dVXWcf`	
-	- Outlook Invite:  [`Jetson AI Lab Research Group (51524).ics`](research/invites/Jetson AI Lab Research Group (51524).ics){:target="_blank"} 
-	- Forum Topic:  [`forums.developer.nvidia.com/t/291650`](https://forums.developer.nvidia.com/t/291650)
 	- Agenda:
 	    * Updates for JetPack 6.0 GA / L4T R36.3.0
 	    * VILA-1.5 Multimodal Models (<a href="https://forums.developer.nvidia.com/t/new-vila-1-5-multimodal-vision-language-models-released-in-3b-8b-13b-40b/291784" target="_blank">forum thread</a>)
