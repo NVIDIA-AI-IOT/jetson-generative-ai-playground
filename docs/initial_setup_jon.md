@@ -139,7 +139,11 @@ You can take one of the following methods.
 
         On your PC, download JetPack 5.1.3 image for Jetson Orin Nano Developer Kit from the official [JetPack 5.1.3 page](https://developer.nvidia.com/embedded/jetpack-sdk-513) or from the below direct link button.
 
-        [Jetson Orin Nano Developer Kit<br>JetPack 5.1.3 image]([#](https://developer.nvidia.com/downloads/embedded/l4t/r35_release_v5.0/jp513-orin-nano-sd-card-image.zip)){ .md-button .md-button--primary }
+        !!! warning
+
+            NVIDIA had updated the JetPack 5.1.3 image early May, as the old version had some issue and the following process did not work.<br>So please download and use the latest image even if you had saved the image file that you downloaded before on your computer.
+
+        [Jetson Orin Nano Developer Kit<br>JetPack 5.1.3 image](https://developer.nvidia.com/downloads/embedded/l4t/r35_release_v5.0/jp513-orin-nano-sd-card-image.zip){ .md-button .md-button--primary }
 
     2. Use Balena Etcher to flash image to SD card
 
@@ -153,12 +157,12 @@ You can take one of the following methods.
 
     ## 3. Power-on and reboot to ensure firmware gets updated to 5.0 (JetPack 5.1.3)
 
-    1. Power-on
+    4. Power-on
    
         Turn on the Jetson Orin Nano Developer Kit **with JetPack 5.1.3 SD card inserted** by plugging in the DC power supply.
 
-    2. Complete the initial software setup (`oem-config`)
-    3. Ensure firmware update is scheduled.
+    5. Complete the initial software setup (`oem-config`)
+    6. Ensure firmware update is scheduled.
     
         Once Jetson boots into Jetson Linux system, a background service automatically runs to schedule a firmware update (if needed) to be performed during the next boot-up process.
 
@@ -180,7 +184,7 @@ You can take one of the following methods.
             Main PID: 11439 (code=exited, status=0/SUCCESS)
             ```
 
-    4. Reboot
+    7. Reboot
    
         Reboot your Jetson Orin Nano Developer Kit.
         
@@ -198,7 +202,7 @@ You can take one of the following methods.
 
     ## 4. Install and run QSPI Updater package 
 
-    5. Double-check your firmware version is up to date (`35.5.0` = JetPack 5.1.3)
+    8. Double-check your firmware version is up to date (`35.5.0` = JetPack 5.1.3)
     
         Once it reboots back into Jetson Linux system, on Jetson terminal, run the following:
         
@@ -218,7 +222,7 @@ You can take one of the following methods.
         slot: 1,             status: normal
         ```
 
-    6. Install QSPI Updater Debian package to trigger another (final) firmware update
+    9. Install QSPI Updater Debian package to trigger another (final) firmware update
    
         On Jetson terminal, run the following:
 
@@ -230,15 +234,15 @@ You can take one of the following methods.
 
     ## 5. Reboot and power-off the developer kit
 
-    7. Reboot 
+    10. Reboot 
     
         Once the QSPI update is scheduled, reboot your Jetson Orin Nano Developer Kit.
 
-    8. Observe update
+    11. Observe update
 
         You can observe the update during the boot up process.
 
-    9.  Power off
+    12. Power off
 
         Once the update is done, it reboots and tries to boot, however it will get stuck **UNLESS you change the SD card to JetPack 6 one**. 
         
