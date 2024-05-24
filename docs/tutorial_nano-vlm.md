@@ -6,14 +6,11 @@ There are 3 model families currently supported:  [Llava](https://llava-vl.github
 
 ## VLM Benchmarks
 
-<iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubchart?oid=642317430&format=interactive"></iframe>
+<iframe width="719" height="446" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubchart?oid=88720541&amp;format=interactive"></iframe>
 
 This FPS measures the end-to-end pipeline performance for continuous streaming like with [Live Llava](tutorial_live-llava.md) (on yes/no question)  
 
-<iframe width="1000px" height="275px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubhtml?gid=642302170&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
-
-> <small>• &nbsp; These models all use [`CLIP ViT-L/14@336px`](https://huggingface.co/openai/clip-vit-large-patch14-336) for the vision encoder.</small>  
-> <small>• &nbsp; Jetson Orin Nano 8GB runs out of memory trying to run Llava-13B.</small>  
+<iframe width="1000px" height="325px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubhtml?gid=642302170&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
 
 ## Multimodal Chat
 	   
@@ -39,18 +36,18 @@ This FPS measures the end-to-end pipeline performance for continuous streaming l
     
         - [`liuhaotian/llava-v1.5-7b`](https://huggingface.co/liuhaotian/llava-v1.5-7b), [`liuhaotian/llava-v1.5-13b`](https://huggingface.co/liuhaotian/llava-v1.5-13b), [`liuhaotian/llava-v1.6-vicuna-7b`](https://huggingface.co/liuhaotian/llava-v1.6-vicuna-7b), [`liuhaotian/llava-v1.6-vicuna-13b`](https://huggingface.co/liuhaotian/llava-v1.6-vicuna-13b)
         - [`Efficient-Large-Model/VILA-2.7b`](https://huggingface.co/Efficient-Large-Model/VILA-2.7b),[`Efficient-Large-Model/VILA-7b`](https://huggingface.co/Efficient-Large-Model/VILA-7b), [`Efficient-Large-Model/VILA-13b`](https://huggingface.co/Efficient-Large-Model/VILA-13b)
-        - [`NousResearch/Obsidian-3B-V0.5`](https://huggingface.co/NousResearch/Obsidian-3B-V0.5)
-        - [`VILA-2.7b`](https://huggingface.co/Efficient-Large-Model/VILA-2.7b), [`VILA-7b`](https://huggingface.co/Efficient-Large-Model/VILA-7b), [`Llava-7b`](https://huggingface.co/liuhaotian/llava-v1.6-vicuna-7b), and [`Obsidian-3B`](https://huggingface.co/NousResearch/Obsidian-3B-V0.5) can run on Orin Nano 8GB
-	   
+        - [`Efficient-Large-Model/VILA1.5-3b`](https://huggingface.co/Efficient-Large-Model/VILA1.5-3b),[`Efficient-Large-Model/Llama-3-VILA1.5-8B`](https://huggingface.co/Efficient-Large-Model/Llama-3-VILA1.5-8b), [`Efficient-Large-Model/VILA1.5-13b`](https://huggingface.co/Efficient-Large-Model/VILA1.5-13b)
+        - [`VILA-2.7b`](https://huggingface.co/Efficient-Large-Model/VILA-2.7b), [`VILA1.5-3b`](https://huggingface.co/Efficient-Large-Model/VILA1.5-3b), [`VILA-7b`](https://huggingface.co/Efficient-Large-Model/VILA-7b), [`Llava-7b`](https://huggingface.co/liuhaotian/llava-v1.6-vicuna-7b), and [`Obsidian-3B`](https://huggingface.co/NousResearch/Obsidian-3B-V0.5) can run on Orin Nano 8GB
+        
 The optimized [`NanoLLM`](https://dusty-nv.github.io/NanoLLM) library uses MLC/TVM for quantization and inference provides the highest performance.  It efficiently manages the CLIP embeddings and KV cache.  You can find Python code for the chat program used in this example [here](https://dusty-nv.github.io/NanoLLM/chat.html). 
 
 
 ``` bash
 jetson-containers run $(autotag nano_llm) \
-  python3 -m nano_llm --api=mlc \
-    --model liuhaotian/llava-v1.6-vicuna-7b \
-    --max-context-len 768 \
-    --max-new-tokens 128
+  python3 -m nano_llm.chat --api=mlc \
+    --model Efficient-Large-Model/VILA1.5-3b \
+    --max-context-len 256 \
+    --max-new-tokens 32
 ```
 
 This starts an interactive console-based chat with Llava, and on the first run the model will automatically be downloaded from HuggingFace and quantized using MLC and W4A16 precision (which can take some time).  See [here](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/local_llm#text-chat) for command-line options.
@@ -63,10 +60,10 @@ During testing, you can specify prompts on the command-line that will run sequen
 
 ```
 jetson-containers run $(autotag nano_llm) \
-  python3 -m nano_llm --api=mlc \
-    --model liuhaotian/llava-v1.6-vicuna-7b \
-    --max-context-len 768 \
-    --max-new-tokens 128 \
+  python3 -m nano_llm.chat --api=mlc \
+    --model Efficient-Large-Model/VILA1.5-3b \
+    --max-context-len 256 \
+    --max-new-tokens 32 \
     --prompt '/data/images/hoover.jpg' \
     --prompt 'what does the road sign say?' \
     --prompt 'what kind of environment is it?' \
@@ -91,7 +88,7 @@ When prompted, these models can also output in constrained JSON formats (which t
 
 ```
 jetson-containers run $(autotag nano_llm) \
-  python3 -m nano_llm --api=mlc \
+  python3 -m nano_llm.chat --api=mlc \
     --model liuhaotian/llava-v1.5-13b \
     --prompt '/data/images/hoover.jpg' \
     --prompt 'extract any text from the image as json'
@@ -116,17 +113,45 @@ These models can also be used with the [Live Llava](tutorial_live-llava.md) agen
 ``` bash
 jetson-containers run $(autotag nano_llm) \
   python3 -m nano_llm.agents.video_query --api=mlc \
-    --model Efficient-Large-Model/VILA-2.7b \
-    --max-context-len 768 \
+    --model Efficient-Large-Model/VILA1.5-3b \
+    --max-context-len 256 \
     --max-new-tokens 32 \
     --video-input /dev/video0 \
     --video-output webrtc://@:8554/output
 ```
   
+Then navigate your browser to `https://<IP_ADDRESS>:8050` after launching it with your camera.  Using Chrome or Chromium is recommended for a stable WebRTC connection, with `chrome://flags#enable-webrtc-hide-local-ips-with-mdns` disabled.
+
 The [Live Llava](tutorial_live-llava.md) tutorial shows how to enable additional features like vector database integration, image tagging, and RAG.
 
 <div><iframe width="500" height="280" src="https://www.youtube.com/embed/8Eu6zG0eEGY" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-<iframe width="500" height="280" src="https://www.youtube.com/embed/dRmAGGuupuE" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-  
+<iframe width="500" height="280" src="https://www.youtube.com/embed/wZq7ynbgRoE" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
+## Video Sequences
+
+The VILA-1.5 family of models can understand multiple images per query, enabling video search/summarization, action & behavior analysis, change detection, and other temporal-based vision functions.  By manipulating the KV cache and dropping off the last frame from the chat history, we can keep the stream rolling continuously beyond the maximum context length of the model.  The [`vision/video.py`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/vision/video.py){:target="_blank"} example shows how to use this:
+
+``` bash
+jetson-containers run $(autotag nano_llm) \
+  python3 -m nano_llm.vision.video \
+    --model Efficient-Large-Model/VILA1.5-3b \
+    --max-images 8 \
+    --max-new-tokens 48 \
+    --video-input /data/my_video.mp4 \
+    --video-output /data/my_output.mp4 \
+    --prompt 'What changes occurred in the video?'
+```
+
+<iframe width="720" height="405" src="https://www.youtube.com/embed/_7gughth8C0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<small>Note:  support will be added to the web UI for continuous multi-image queries on video sequences and is WIP.</small>
+  
+## Python Code
+
+For a simplified code example of doing live VLM streaming from Python, see [here](https://dusty-nv.github.io/NanoLLM/multimodal.html#code-example){:target="_blank"} in the NanoLLM docs. 
+
+<iframe width="750" height="500" src="https://dusty-nv.github.io/NanoLLM/multimodal.html#code-example" title="Live VLM Code Example" frameborder="0" style="border: 2px solid #DDDDDD;" loading="lazy" sandbox></iframe>
+  
+You can use this to implement customized prompting techniques and integrate with other vision pipelines.  This code applies the same set of prompts to the latest image from the video feed.  See [here](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/vision/video.py){:target="_blank"} for the version that does multi-image queries on video sequences.
+
+  

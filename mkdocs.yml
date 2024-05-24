@@ -1,4 +1,4 @@
-site_name: NVIDIA Jetson Generative AI Lab
+site_name: NVIDIA Jetson AI Lab
 site_url: 
 site_description: Showcasing generative AI projects that run on Jetson
 copyright: <ul class="global-footer__links"><li><a href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/" target="_blank">Privacy Policy</a></li><li> <a href="https://www.nvidia.com/en-us/privacy-center/" target="_blank">Manage My Privacy</a> </li> <li> <a href="https://www.nvidia.com/en-us/preferences/email-preferences/" target="_blank">Do Not Sell or Share My Data</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/legal-info/" target="_blank">Legal</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/accessibility/" target="_blank">Accessibility</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/company-policies/" target="_self">Corporate Policies</a> </li> <li> <a href="https://www.nvidia.com/en-us/product-security/" target="_blank">Product Security</a> </li> <li> <a href="https://www.nvidia.com/en-us/contact/" target="_blank">Contact</a> </li> </ul><div class="global-footer__copyright">Copyright &copy; 2024 NVIDIA Corporation</div>
@@ -81,7 +81,9 @@ nav:
     - Hello AI World: hello_ai_world.md
     - Text (LLM):
       - text-generation-webui: tutorial_text-generation.md 
+      - ollama: tutorial_ollama.md
       - llamaspeak: tutorial_llamaspeak.md
+      - NanoLLM: tutorial_nano-llm.md
       - Small LLM (SLM): tutorial_slm.md
       - API Examples: tutorial_api-examples.md
     - Text + Vision (VLM):
@@ -102,8 +104,9 @@ nav:
     - Vector Database:
       - NanoDB: tutorial_nanodb.md
     - Audio:
-      - AudioCraft: tutorial_audiocraft.md
       - Whisper: tutorial_whisper.md
+      - AudioCraft: tutorial_audiocraft.md
+      - VoiceCraft 🆕: tutorial_voicecraft.md
     - Metropolis Microservices:
       - First Steps: tutorial_mmj.md
     # - Tools:
@@ -112,6 +115,7 @@ nav:
       - 📑 Knowledge Distillation: tutorial_distillation.md
       - 🔖 SSD + Docker: tips_ssd-docker.md
       - 🔖 Memory optimization: tips_ram-optimization.md
+      - 🚅 Initial Setup Guide - Jeton Orin Nano 🆕: initial_setup_jon.md
   - Benchmarks: benchmarks.md
   - Projects: community_articles.md
   - Research Group: research.md

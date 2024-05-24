@@ -10,7 +10,9 @@ Our tutorials are divided into categories roughly based on model modality, the t
 |      |                     |
 | :---------- | :----------------------------------- |
 | **[text-generation-webui](./tutorial_text-generation.md)** | Interact with a local AI assistant by running a LLM with oobabooga's text-generaton-webui |
+| **[Ollama](./tutorial_ollama.md)** | Get started effortlessly deploying GGUF models for chat and web UI |
 | **[llamaspeak](./tutorial_llamaspeak.md)** | Talk live with Llama using Riva ASR/TTS, and chat about images with Llava! |
+| **[NanoLLM](./tutorial_nano-llm.md)** | Optimized inferencing library for LLMs, multimodal agents, and speech. |
 | **[Small LLM (SLM)](./tutorial_slm.md)** | Deploy Small Language Models (SLM) with reduced memory usage and higher throughput. |
 | **[API Examples](./tutorial_api-examples.md)** | Learn how to write Python code for doing LLM inference using popular APIs. |
 
@@ -53,8 +55,9 @@ Give your locally running LLM an access to vision!
 
 |      |                     |
 | :---------- | :----------------------------------- |
-| **[AudioCraft](./tutorial_audiocraft.md)** | Meta's [AudioCraft](https://github.com/facebookresearch/audiocraft), to produce high-quality audio and music |
 | **[Whisper](./tutorial_whisper.md)** | OpenAI's [Whisper](https://github.com/openai/whisper), pre-trained model for automatic speech recognition (ASR) |
+| **[AudioCraft](./tutorial_audiocraft.md)** | Meta's [AudioCraft](https://github.com/facebookresearch/audiocraft), to produce high-quality audio and music |
+| **[Voicecraft](./tutorial_voicecraft.md)** | [Voicecraft](https://github.com/jasonppy/VoiceCraft), Speech editing and zero shot TTS |
 
 ### Metropolis Microservices
 

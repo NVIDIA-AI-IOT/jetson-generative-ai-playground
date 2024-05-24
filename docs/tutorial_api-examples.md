@@ -20,7 +20,14 @@ It's good to know the code for generating text with LLM inference, and ancillary
 
         - `22GB` for `l4t-text-generation` container image
         - Space for models (`>10GB`)
-		 
+	
+    4. Clone and setup [`jetson-containers`](https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md){:target="_blank"}:
+    
+		```bash
+		git clone https://github.com/dusty-nv/jetson-containers
+		bash jetson-containers/install.sh
+		``` 
+		
 ## Transformers
 
 The HuggingFace Transformers API is the de-facto API that models are released for, often serving as the reference implementation.  It's not terribly fast, but it does have broad model support, and also supports quantization (AutoGPTQ, AWQ).  This uses streaming:
@@ -76,16 +83,16 @@ The [`huggingface-benchmark.py`](https://github.com/dusty-nv/jetson-containers/b
 
 ## NanoLLM
 
-The [`NanoLLM`](https://dusty-nv.github.io/) library uses the optimized MLC/TVM library for inference, like on the [Benchmarks](benchmarks.md) page:
+The [`NanoLLM`](https://dusty-nv.github.io/NanoLLM) library uses the optimized MLC/TVM library for inference, like on the [Benchmarks](benchmarks.md) page:
 
-<a href="benchmarks.html"><img width="600px" src="overrides/images/graph_llm-text-generation.svg"/></a>
+<a href="benchmarks.html"><iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubchart?oid=2126319913&amp;format=interactive"></iframe></a>
 
-```python
+```python title="<a href='https://dusty-nv.github.io/NanoLLM' target='_blank'>> NanoLLM Reference Documentation</a>"
 from nano_llm import NanoLLM, ChatHistory, ChatTemplates
 
 # load model
 model = NanoLLM.from_pretrained(
-    model='meta-llama/Llama-2-7b-chat-hf', 
+    model='meta-llama/Meta-Llama-3-8B-Instruct', 
     quantization='q4f16_ft', 
     api='mlc'
 )
@@ -127,10 +134,12 @@ while True:
 This [example](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/chat/example.py){:target="_blank"} keeps an interactive chat running with text being entered from the terminal.  You can start it like this:
 
 ```python
-jetson-containers run $(autotag nano_llm) \
+jetson-containers run \
+  --env HUGGINGFACE_TOKEN=hf_abc123def \
+  $(autotag nano_llm) \
     python3 -m nano_llm.chat.example
 ```
 
-Or for easy editing from the host device, copy the source into your own script and mount it into the container with the `--volume` flag.
+Or for easy editing from the host device, copy the source into your own script and mount it into the container with the `--volume` flag.  And for authenticated models, request access through HuggingFace (like with [Llama](https://huggingface.co/meta-llama){:target="_blank"}) and substitute your account's API token above.
 
  
