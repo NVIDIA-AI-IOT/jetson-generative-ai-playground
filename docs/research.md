@@ -85,15 +85,11 @@ We'll aim to meet monthly or bi-weekly as a team in virtual meetings that anyone
 	- Outlook Invite:  [`Jetson AI Lab Research Group (52924).ics`](research/invites/Jetson AI Lab Research Group (52924).ics){:target="_blank"} 
 	- Forum Topic:  [`forums.developer.nvidia.com/t/293749`](https://forums.developer.nvidia.com/t/jetson-ai-lab-research-group-meeting-on-5-29/293749)
 	
-<!--
 	- Agenda:
-	    * Updates for JetPack 6.0 GA / L4T R36.3.0
-	    * VILA-1.5 Multimodal Models (<a href="https://forums.developer.nvidia.com/t/new-vila-1-5-multimodal-vision-language-models-released-in-3b-8b-13b-40b/291784" target="_blank">forum thread</a>)
-	    * Voicecraft Container (Martin Cerven - <a href="https://github.com/dusty-nv/jetson-containers/pull/498" target="_blank">GitHub PR</a>)
-	    * JetBot / Nanosaur Updates for Orin Nano
-	    * Advanced Function Calling with <a href="https://huggingface.co/NousResearch/Hermes-2-Pro-Llama-3-8B" _target="_blank"><code>NousResearch/Hermes-2-Pro-Llama-3-8B</code></a>
+	    * OpenAI-style Tools with <a href="https://huggingface.co/NousResearch/Hermes-2-Pro-Llama-3-8B" target="_blank">NousResearch/Hermes-2-Pro-Llama-3-8B</a>
+	    * Jetson Copilot with <a href="https://github.com/dusty-nv/jetson-containers/tree/master/packages/rag/jetrag" target="_blank">jetrag</a>
+	    * <a href="https://github.com/NVIDIA-AI-IOT/whisper_trt" target="_blank">whisper_trt</a> for Orin Nano
 	    * Open Q&A
--->
    
 The agenda will be listed here beforehand - post to the forum to add agenda items.  The meetings will be recorded so anyone unable to attend live can watch them after.
 
