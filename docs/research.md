@@ -10,11 +10,9 @@ The Jetson AI Lab Research Group is a global collective for advancing open-sourc
 
 There are virtual [meetings](#meeting-schedule) that anyone is welcome to join, offline discussion on the [Jetson Projects](https://forums.developer.nvidia.com/c/agx-autonomous-machines/jetson-embedded-systems/jetson-projects/78){:target="_blank"} forum, and guidelines for upstreaming open-source [contributions](#contribution-guidelines). 
 
-!!! abstract "Next Meeting - 5/29"
-
-    The next team meeting is on Wednesday, May 29<sup>th</sup> at 9am PST - see the [invite](#meeting-schedule) below or click [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MzQ5NmRjYWEtNGY1ZC00YjE2LWJiYjQtZGYwOWM5MDZmOTAw%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"}  to join the meeting.
-
-    <!--The next team meeting is on Wednesday, May 29<sup>th</sup> at 9am PST.  View the [recording](#past-meetings) from the last meeting below.-->
+!!! abstract "Next Meeting - 6/11"
+    The next team meeting is on Tuesday, June 11<sup>th</sup> at 9am PST.  View the [recording](#past-meetings) from the last meeting below.
+    <!--The next team meeting is on Tuesday, June 11<sup>th</sup> at 9am PST - see the [invite](#meeting-schedule) below or click [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MzQ5NmRjYWEtNGY1ZC00YjE2LWJiYjQtZGYwOWM5MDZmOTAw%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"}  to join the meeting.-->
 
 ## Topics of Interest
 
@@ -77,8 +75,10 @@ Ongoing technical discussions are encouraged to occur on the forums or GitHub Is
 
 We'll aim to meet monthly or bi-weekly as a team in virtual meetings that anyone is welcome to join and speak during.  We'll discuss the latest updates and experiments that we want to explore.  Please remain courteous to others during the calls.  We'll stick around after for anyone who has questions or didn't get the chance to be heard.
 
-!!! abstract "Wednesday, May 29 at 9am PST (5/29/24)"
+!!! abstract "Tuesday June 11 at 9am PST (5/29/24)"
 
+    - Invite Forthcoming
+<!--
 	- Microsoft Teams - [Meeting Link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MzQ5NmRjYWEtNGY1ZC00YjE2LWJiYjQtZGYwOWM5MDZmOTAw%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} 
 	- Meeting ID: `293 368 695 587`
     - Passcode: `PY4P2L`	
@@ -90,12 +90,26 @@ We'll aim to meet monthly or bi-weekly as a team in virtual meetings that anyone
 	    * Jetson Copilot with <a href="https://github.com/dusty-nv/jetson-containers/tree/master/packages/rag/jetrag" target="_blank">jetrag</a>
 	    * <a href="https://github.com/NVIDIA-AI-IOT/whisper_trt" target="_blank">whisper_trt</a> for Orin Nano
 	    * Open Q&A
-   
+-->   
 The agenda will be listed here beforehand - post to the forum to add agenda items.  The meetings will be recorded so anyone unable to attend live can watch them after.
 
 ## Past Meetings
 
-<details open><summary>May 15, 2024</summary>
+<details open><summary>May 29, 2024</summary>
+
+<div><iframe width="570" height="320" src="https://www.youtube.com/embed/aq7QS9AtwE8" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<p>Topics Covered:</p>
+
+<ul>
+	<li>OpenAI-style Tools with <a href="https://huggingface.co/NousResearch/Hermes-2-Pro-Llama-3-8B" target="_blank">NousResearch/Hermes-2-Pro-Llama-3-8B</a></li>
+	<li>Jetson Copilot with <a href="https://github.com/dusty-nv/jetson-containers/tree/master/packages/rag/jetrag" _target="_blank">jetrag</a></li>
+	<li><a href="https://github.com/NVIDIA-AI-IOT/whisper_trt" _target="_blank">whisper_trt</a> for Orin Nano</li>
+</ul>
+
+</details>
+
+<details><summary>May 15, 2024</summary>
 
 <div><iframe width="570" height="320" src="https://www.youtube.com/embed/zoyONbiHd14" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -643,6 +657,18 @@ Below are shown some of the sustaining members of the group who have been workin
 			<small>
 				AI Researcher | Germany<br/>
 				(Autonomous Robotics, Voicecraft)
+			</small>
+		</div>
+	</div>
+    <div class="bio-container col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://www.linkedin.com/in/rams16592/" target="_blank"><img class="bio-image" src="research/images/Romil_Shah.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/rams16592/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			<a href="https://github.com/aws-samples/genai-at-edge" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
+			Romil Shah, Amazon<br/>
+			<small>
+				GenAI IIoT @ AWS | San Jose, CA<br/>
+				(<a href="https://github.com/aws-samples/genai-at-edge" _target="_blank"><code>aws-samples/genai-at-edge</code></a>)
 			</small>
 		</div>
 	</div>
