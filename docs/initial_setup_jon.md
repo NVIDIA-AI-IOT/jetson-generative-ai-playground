@@ -141,7 +141,7 @@ You can take one of the following methods.
 
         !!! warning
 
-            NVIDIA had updated the JetPack 5.1.3 image on 5/24/2024, as the old version had some issue and the following process did not work.<br>So please download and use the latest image even if you had saved the image file that you downloaded before on your computer.
+            NVIDIA had updated the JetPack 5.1.3 image on 5/28/2024, as the old version had some issue and the following process did not work.<br>So please download and use the latest image (the new file name is **`JP513-orin-nano-sd-card-image_b29.zip`**).
 
         [Jetson Orin Nano Developer Kit<br>JetPack 5.1.3 image](https://developer.nvidia.com/downloads/embedded/l4t/r35_release_v5.0/jp513-orin-nano-sd-card-image.zip){ .md-button .md-button--primary }
 
