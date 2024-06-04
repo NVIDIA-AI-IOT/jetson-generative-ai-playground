@@ -11,8 +11,8 @@ The Jetson AI Lab Research Group is a global collective for advancing open-sourc
 There are virtual [meetings](#meeting-schedule) that anyone is welcome to join, offline discussion on the [Jetson Projects](https://forums.developer.nvidia.com/c/agx-autonomous-machines/jetson-embedded-systems/jetson-projects/78){:target="_blank"} forum, and guidelines for upstreaming open-source [contributions](#contribution-guidelines). 
 
 !!! abstract "Next Meeting - 6/11"
-    The next team meeting is on Tuesday, June 11<sup>th</sup> at 9am PST.  View the [recording](#past-meetings) from the last meeting below.
-    <!--The next team meeting is on Tuesday, June 11<sup>th</sup> at 9am PST - see the [invite](#meeting-schedule) below or click [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MzQ5NmRjYWEtNGY1ZC00YjE2LWJiYjQtZGYwOWM5MDZmOTAw%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"}  to join the meeting.-->
+    <!--The next team meeting is on Tuesday, June 11<sup>th</sup> at 9am PST.  View the [recording](#past-meetings) from the last meeting below.-->
+    The next team meeting is on Tuesday, June 11<sup>th</sup> at 9am PST - see the [invite](#meeting-schedule) below or click [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_NTA4ZmE4MDAtYWUwMS00ZTczLWE0YWEtNTE5Y2JkNTFmOWM1%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} to join.
 
 ## Topics of Interest
 
@@ -77,12 +77,11 @@ We'll aim to meet monthly or bi-weekly as a team in virtual meetings that anyone
 
 !!! abstract "Tuesday June 11 at 9am PST (5/29/24)"
 
-    - Invite Forthcoming
+	- Microsoft Teams - [Meeting Link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_NTA4ZmE4MDAtYWUwMS00ZTczLWE0YWEtNTE5Y2JkNTFmOWM1%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} 
+	- Meeting ID: `264 770 145 196`
+    - Passcode: `Uwbdgj`	
+	- Outlook Invite:  [`Jetson AI Lab Research Group.ics`](research/invites/Jetson AI Lab Research Group.ics){:target="_blank"} 
 <!--
-	- Microsoft Teams - [Meeting Link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MzQ5NmRjYWEtNGY1ZC00YjE2LWJiYjQtZGYwOWM5MDZmOTAw%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} 
-	- Meeting ID: `293 368 695 587`
-    - Passcode: `PY4P2L`	
-	- Outlook Invite:  [`Jetson AI Lab Research Group (52924).ics`](research/invites/Jetson AI Lab Research Group (52924).ics){:target="_blank"} 
 	- Forum Topic:  [`forums.developer.nvidia.com/t/293749`](https://forums.developer.nvidia.com/t/jetson-ai-lab-research-group-meeting-on-5-29/293749)
 	
 	- Agenda:
