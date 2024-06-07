@@ -82,7 +82,7 @@ We'll aim to meet monthly or bi-weekly as a team in virtual meetings that anyone
     - Passcode: `Uwbdgj`	
 	- Outlook Invite:  [`Jetson AI Lab Research Group.ics`](research/invites/Jetson AI Lab Research Group.ics){:target="_blank"} 
 	 Agenda:
-	    * Agent Studio
+	    * Jetson Agent Studio
 	    * AWS IoT Greengrass (Romil Shah)
 	    * HomeAssistant 2024.6 release
 	    * Open Q&A
