@@ -207,7 +207,7 @@ You can take one of the following methods.
         Once it reboots back into Jetson Linux system, on Jetson terminal, run the following:
         
         ```bash
-        sudo nvbootctl dump-slots-info
+        sudo nvbootctrl dump-slots-info
         ```
         
         You should see something like the following, with the **Current version** indicating `35.5.0`.
