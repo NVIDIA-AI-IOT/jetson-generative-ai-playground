@@ -103,6 +103,9 @@ nav:
       - TAM: vit/tutorial_tam.md
     - Vector Database:
       - NanoDB: tutorial_nanodb.md
+    - RAG:
+      - LlamaIndex: tutorial_llamaindex.md
+      - Jetson Copilot 🆕: tutorial_jetson-copilot.md
     - Audio:
       - Whisper: tutorial_whisper.md
       - AudioCraft: tutorial_audiocraft.md
