@@ -81,14 +81,14 @@ We'll aim to meet monthly or bi-weekly as a team in virtual meetings that anyone
 	- Meeting ID: `264 770 145 196`
     - Passcode: `Uwbdgj`	
 	- Outlook Invite:  [`Jetson AI Lab Research Group.ics`](research/invites/Jetson AI Lab Research Group.ics){:target="_blank"} 
-	
-	<!--
-	 Agenda:
-	    * Jetson Agent Studio
-	    * AWS IoT Greengrass (Romil Shah)
-	    * HomeAssistant 2024.6 release
+    
+    - Agenda:
+	    * Agent Studio
+	    * Jetson Copilot
+	    * Jetson Platform Services
+	    * On-device Fine-tuning
 	    * Open Q&A
-	-->
+
 <!--
 	- Forum Topic:  [`forums.developer.nvidia.com/t/293749`](https://forums.developer.nvidia.com/t/jetson-ai-lab-research-group-meeting-on-5-29/293749)
 	
