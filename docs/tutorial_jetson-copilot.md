@@ -1,5 +1,7 @@
 # Tutorial - Jetson Copilot
 
+![](./images/jetson-copilot_1280x480.png)
+
 [Jetson Copilot](https://github.com/NVIDIA-AI-IOT/jetson-copilot/) is a reference application for a ***local*** AI assistant, which demonstrates;
 
 - Running open-source LLMs (large language models) on device
