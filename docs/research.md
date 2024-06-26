@@ -10,9 +10,9 @@ The Jetson AI Lab Research Group is a global collective for advancing open-sourc
 
 There are virtual [meetings](#meeting-schedule) that anyone is welcome to join, offline discussion on the [Jetson Projects](https://forums.developer.nvidia.com/c/agx-autonomous-machines/jetson-embedded-systems/jetson-projects/78){:target="_blank"} forum, and guidelines for upstreaming open-source [contributions](#contribution-guidelines). 
 
-!!! abstract "Next Meeting - 6/25"
+!!! abstract "Next Meeting - 7/9"
     <!--The next team meeting is on Tuesday, June 11<sup>th</sup> at 9am PST.  View the [recording](#past-meetings) from the last meeting below.-->
-    The next team meeting is on Tuesday, June 25<sup>th</sup> at 9am PST - see the [invite](#meeting-schedule) below or click [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_NTA4ZmE4MDAtYWUwMS00ZTczLWE0YWEtNTE5Y2JkNTFmOWM1%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} to join.
+    The next team meeting is on Tuesday, July 9<sup>th</sup> at 9am PST - see the [invite](#meeting-schedule) below or click [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_NTA4ZmE4MDAtYWUwMS00ZTczLWE0YWEtNTE5Y2JkNTFmOWM1%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} to join.
 
 ## Topics of Interest
 
@@ -75,20 +75,21 @@ Ongoing technical discussions are encouraged to occur on the forums or GitHub Is
 
 We'll aim to meet monthly or bi-weekly as a team in virtual meetings that anyone is welcome to join and speak during.  We'll discuss the latest updates and experiments that we want to explore.  Please remain courteous to others during the calls.  We'll stick around after for anyone who has questions or didn't get the chance to be heard.
 
-!!! abstract "Tuesday June 25 at 9am PST (6/25/24)"
+!!! abstract "Tuesday July 9<sup>th</sup> at 9am PST (7/9/24)"
 
 	- Microsoft Teams - [Meeting Link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_NTA4ZmE4MDAtYWUwMS00ZTczLWE0YWEtNTE5Y2JkNTFmOWM1%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} 
 	- Meeting ID: `264 770 145 196`
     - Passcode: `Uwbdgj`	
 	- Outlook Invite:  [`Jetson AI Lab Research Group.ics`](research/invites/Jetson AI Lab Research Group.ics){:target="_blank"} 
     
+    <!--
     - Agenda:
 	    * Agent Studio
 	    * Jetson Copilot
 	    * Jetson Platform Services
 	    * On-device Fine-tuning
 	    * Open Q&A
-
+    -->
 <!--
 	- Forum Topic:  [`forums.developer.nvidia.com/t/293749`](https://forums.developer.nvidia.com/t/jetson-ai-lab-research-group-meeting-on-5-29/293749)
 	
@@ -102,7 +103,22 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 ## Past Meetings
 
-<details open><summary>June 11, 2024</summary>
+<details open><summary>June 25, 2024</summary>
+
+<div><iframe width="570" height="320" src="https://www.youtube.com/embed/mIrxJiF1NiI" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<p>Topics Covered:</p>
+
+<ul>
+	<li>Function Calling in Agent Studio</li>
+	<li><a href="https://www.jetson-ai-lab.com/tutorial_jetson-copilot.html">Jetson Copilot</a> (Chitoku Yato)</li>
+    <li><a href="https://docs.nvidia.com/jetson/jps/moj-overview.html" _target="_blank">Jetson Platform Services</a> (Sammy Ochoa)</li>
+    <li><a href="https://www.hackster.io/shahizat/fine-tuning-llms-using-nvidia-jetson-agx-orin-b17c4d" _target="_blank">On-device Fine-tuning</a> (Nurgaliyev Shakhizat)</li>
+</ul>
+
+</details>
+
+<details><summary>June 11, 2024</summary>
 
 <div><iframe width="570" height="320" src="https://www.youtube.com/embed/0GV5cYKz7Rc" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -116,7 +132,7 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 </details>
 
-<details open><summary>May 29, 2024</summary>
+<details><summary>May 29, 2024</summary>
 
 <div><iframe width="570" height="320" src="https://www.youtube.com/embed/aq7QS9AtwE8" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
