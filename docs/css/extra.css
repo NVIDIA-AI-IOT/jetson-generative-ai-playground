@@ -117,3 +117,12 @@
 .md-button--primary:hover {
     background-color: var(--md-accent-fg-color--light)!important;
 }
+
+.md-typeset .tabbed-set {
+  border: 0.5px solid lightgray;
+}
+
+.md-typeset .tabbed-content {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}

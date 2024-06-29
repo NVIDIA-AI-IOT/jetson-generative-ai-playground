@@ -64,6 +64,7 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.details
+  - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true 
   - meta
@@ -79,6 +80,7 @@ nav:
   - Tutorials:
     - Introduction: tutorial-intro.md
     - Hello AI World: hello_ai_world.md
+    - Agent Studio 🆕: agent_studio.md
     - Text (LLM):
       - text-generation-webui: tutorial_text-generation.md 
       - ollama: tutorial_ollama.md
@@ -87,13 +89,9 @@ nav:
       - Small LLM (SLM): tutorial_slm.md
       - API Examples: tutorial_api-examples.md
     - Text + Vision (VLM):
-      - Mini-GPT4: tutorial_minigpt4.md
       - LLaVA: tutorial_llava.md
       - Live LLaVA: tutorial_live-llava.md
       - NanoVLM: tutorial_nano-vlm.md
-    - Image Generation:
-      - Stable Diffusion: tutorial_stable-diffusion.md
-      - Stable Diffusion XL: tutorial_stable-diffusion-xl.md
     - Vision Transformers (ViT): 
       - vit/index.md
       - EfficientViT: vit/tutorial_efficientvit.md
@@ -101,24 +99,26 @@ nav:
       - NanoSAM: vit/tutorial_nanosam.md
       - SAM: vit/tutorial_sam.md
       - TAM: vit/tutorial_tam.md
-    - Vector Database:
+    - RAG & Vector Database:
       - NanoDB: tutorial_nanodb.md
-    - RAG:
       - LlamaIndex: tutorial_llamaindex.md
       - Jetson Copilot 🆕: tutorial_jetson-copilot.md
     - Audio:
       - Whisper: tutorial_whisper.md
       - AudioCraft: tutorial_audiocraft.md
-      - VoiceCraft 🆕: tutorial_voicecraft.md
-    - Metropolis Microservices:
-      - First Steps: tutorial_mmj.md
+      - VoiceCraft: tutorial_voicecraft.md
+    - Image Generation:
+      - Stable Diffusion: tutorial_stable-diffusion.md
+      - Stable Diffusion XL: tutorial_stable-diffusion-xl.md
+    #- Metropolis Microservices:
+    #  - First Steps: tutorial_mmj.md
     # - Tools:
     #   - LangChain: tutorial_distillation.md
     - Tips:
       - 📑 Knowledge Distillation: tutorial_distillation.md
       - 🔖 SSD + Docker: tips_ssd-docker.md
       - 🔖 Memory optimization: tips_ram-optimization.md
-      - 🚅 Initial Setup Guide - Jeton Orin Nano 🆕: initial_setup_jon.md
+      - 🚅 Initial Setup Guide - Jetson Orin Nano 🆕: initial_setup_jon.md
   - Benchmarks: benchmarks.md
   - Projects: community_articles.md
   - Research Group: research.md
