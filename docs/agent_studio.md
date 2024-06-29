@@ -221,39 +221,24 @@ Below are descriptions of commonly-used components. Help text for these is extra
 
 #### Audio
             
-=== "Audio I/O"        
-
-    * [`AudioInputDevice`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/plugins/audio/audio_input.py){:target="_blank"} - USB/I2S soundcard input via PulseAudio/PyAudio (for microphone directly attached to system)
-    * [`AudioOutputDevice`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/plugins/audio/audio_output.py){:target="_blank"} - USB/I2S soundcard output via PulseAudio/PyAudio (for speakers directly attached to system)
-    * [`AudioRecorder`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/plugins/audio/audio_output.py){:target="_blank"} - save an audio stream to WAV file on the server
-    * [`WebAudioIn`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/plugins/audio/web_audio.py){:target="_blank"} - recieve audio samples streamed from the client over websockets
-    * [`WebAudioOutput`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/plugins/audio/web_audio.py){:target="_blank"} - transmit audio samples to the client over websockets
+* [`AudioInputDevice`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/plugins/audio/audio_input.py){:target="_blank"} - USB/I2S soundcard input via PulseAudio/PyAudio (for microphone directly attached to system)
+* [`AudioOutputDevice`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/plugins/audio/audio_output.py){:target="_blank"} - USB/I2S soundcard output via PulseAudio/PyAudio (for speakers directly attached to system)
+* [`AudioRecorder`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/plugins/audio/audio_output.py){:target="_blank"} - save an audio stream to WAV file on the server
+* [`WebAudioIn`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/plugins/audio/web_audio.py){:target="_blank"} - recieve audio samples streamed from the client over websockets
+* [`WebAudioOutput`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/plugins/audio/web_audio.py){:target="_blank"} - transmit audio samples to the client over websockets
 
 #### Video
             
-=== "Video I/O"        
-
-    * [`VideoSource`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/plugins/video/video_source.py){:target="_blank"} - capture images from camera device (V4L2/CSI), network stream (RTP, RTSP), video file (MP4, MKV, AVI, FLV)
-    * [`VideoOutput`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/plugins/video/video_output.py){:target="_blank"} - output H264/H265-encoded video to network stream (RTP, RTSP, WebRTC), display, or file (MP4, MKV, AVI, FLV)
-    * [`VideoOverlay`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/plugins/video/video_overlay.py){:target="_blank"} - draw text on top of video streams for HUD or OSD-style display
-    * [`RateLimit`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/plugins/video/rate_limit.py){:target="_blank"} - throttle transmission to a specified rate (can also be used with audio)
- 
-#### Video
-            
-=== "Video I/O"        
-
-    * [`VideoSource`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/plugins/video/video_source.py){:target="_blank"} - capture images from camera device (V4L2/CSI), network stream (RTP, RTSP), video file (MP4, MKV, AVI, FLV)
-    * [`VideoOutput`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/plugins/video/video_output.py){:target="_blank"} - output H264/H265-encoded video to network stream (RTP, RTSP, WebRTC), display, or file (MP4, MKV, AVI, FLV)
-    * [`VideoOverlay`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/plugins/video/video_overlay.py){:target="_blank"} - draw text on top of video streams for HUD or OSD-style display
-    * [`RateLimit`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/plugins/video/rate_limit.py){:target="_blank"} - throttle transmission to a specified rate (can also be used with audio)
+* [`VideoSource`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/plugins/video/video_source.py){:target="_blank"} - capture images from camera device (V4L2/CSI), network stream (RTP, RTSP), video file (MP4, MKV, AVI, FLV)
+* [`VideoOutput`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/plugins/video/video_output.py){:target="_blank"} - output H264/H265-encoded video to network stream (RTP, RTSP, WebRTC), display, or file (MP4, MKV, AVI, FLV)
+* [`VideoOverlay`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/plugins/video/video_overlay.py){:target="_blank"} - draw text on top of video streams for HUD or OSD-style display
+* [`RateLimit`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/plugins/video/rate_limit.py){:target="_blank"} - throttle transmission to a specified rate (can also be used with audio)
 
 #### Database
             
-=== "Database"        
-
-    * [`NanoDB`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/plugins/database/nanodb.py){:target="_blank"} - optimized in-memory multimodal vectorDB for txt2img/img2img similarity search and image tagging [[↗]](tutorial_nanodb.md)
-    * [`Deduplicate`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/plugins/database/deduplicate.py){:target="_blank"} - filter incoming text against previous entries with embedding model and cosine similarity over a timeout period
-    * [`EventFilter`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/plugins/database/event_filter.py){:target="_blank"} - look for keywords or search strings in streams of text, keeping track of the begin/end times that these occur.
+* [`NanoDB`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/plugins/database/nanodb.py){:target="_blank"} - optimized in-memory multimodal vectorDB for txt2img/img2img similarity search and image tagging [[↗]](tutorial_nanodb.md)
+* [`Deduplicate`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/plugins/database/deduplicate.py){:target="_blank"} - filter incoming text against previous entries with embedding model and cosine similarity over a timeout period
+* [`EventFilter`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/plugins/database/event_filter.py){:target="_blank"} - look for keywords or search strings in streams of text, keeping track of the begin/end times that these occur.
     
 ## Tips & Tricks
 
