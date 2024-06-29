@@ -35,7 +35,7 @@ Let's run [NanoOWL](https://github.com/NVIDIA-AI-IOT/nanoowl), [OWL-ViT](https:/
 Use the `jetson-containers run` and `autotag` commands to automatically pull or build a compatible container image.
 
 ```
-jetson-containers run $(autotag nanoowl)
+jetson-containers run --workdir /opt/nanoowl $(autotag nanoowl)
 ```
 
 ## How to run the tree prediction (live camera) example

@@ -213,7 +213,7 @@ jetson-containers run --workdir=/opt/llama.cpp/bin $(autotag llama_cpp:gguf) \
 In this image, a small wooden pier extends out into a calm lake, surrounded by tall trees and mountains. The pier seems to be the only access point to the lake. The serene scene includes a few boats scattered across the water, with one near the pier and the others further away. The overall atmosphere suggests a peaceful and tranquil setting, perfect for relaxation and enjoying nature.
 ```
 
-You can put your own images in the mounted `jetson-containers/data` directory.  The C++ code for llava-cli can be found [here](https://github.com/ggerganov/llama.cpp/tree/master/examples/llava).  The llama-cpp-python bindings also [support Llava](https://github.com/abetlen/llama-cpp-python?tab=readme-ov-file#multi-modal-models), however they are significantly slower from Python for some reason (potentially pre-processing) 
+You can put your own images in the mounted `jetson-containers/data` directory.  The C++ code for llava-cli can be found [here](https://github.com/ggerganov/llama.cpp/tree/master/examples/llava).  The llama-cpp-python bindings also [support Llava](https://github.com/abetlen/llama-cpp-python?tab=readme-ov-file#multi-modal-models), however they are slower from Python (potentially handling of the tokens) 
 
 ## 4. Optimized Multimodal Pipeline with `NanoVLM`
 	   
