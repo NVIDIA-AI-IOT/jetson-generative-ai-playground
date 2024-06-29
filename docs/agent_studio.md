@@ -70,8 +70,7 @@ This will start the server running on your device.  You can then navigate your b
 	</ul>
 </small>
 
-
-<!--<iframe width="500" height="280" src="https://www.youtube.com/embed/wZq7ynbgRoE?&autoplay=1&mute=1" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
+<iframe width="720" height="405" src="https://www.youtube.com/embed/9ozwh9EDGhU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Plugins
 
