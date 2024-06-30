@@ -1,0 +1,661 @@
+<!-- Custom HTML site displayed as the Home chapter -->
+{% extends "main.html" %}
+{% block extrahead %}
+  <script src="https://kit.fontawesome.com/1512963100.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  {{ super() }}
+{% endblock %}
+{% block tabs %}
+{{ super() }}
+<style>
+
+    .md-main {
+        flex-grow: 0
+    }
+
+    .md-main__inner {
+        display: flex;
+        height: 100%;
+    }
+
+    .tx-container {
+        padding-top: .0rem;
+        background: #EFEFEF;
+    }
+
+    .tx-hero {
+        margin: 32px 2.8rem;
+        color: var(--md-default-fg-color);
+        justify-content: center;
+    }
+
+    .tx-hero h1 {
+        line-height: 1.25;
+        margin-bottom: 1rem;
+        color: currentColor;
+        font-weight: 700
+    }
+
+    @media (min-width: 576px){ .tx-hero h1 { font-size: 28px; } }
+    @media (min-width: 720px){ .tx-hero h1 { font-size: 36px; } }
+    @media (min-width: 992px){ .tx-hero h1 { font-size: 48px; } }
+
+    .tx-hero p {
+        line-height: 1.75;
+        font-weight: 400
+    }
+
+    @media (min-width: 576px){ .tx-hero p { font-size: 18px; } }
+    @media (min-width: 720px){ .tx-hero p { font-size: 20px; } }
+    @media (min-width: 992px){ .tx-hero p { font-size: 22px; } }
+
+    .tx-hero__content {
+        padding-bottom: 1rem;
+        margin: 0 auto;
+    }
+
+    .tx-hero__image{
+        width:17rem;
+        height:17rem;
+        order:1;
+        padding-right: 2.5rem;
+    }
+
+    .tx-hero__ytvideo{
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .tx-hero .md-button {
+        margin-top: .5rem;
+        margin-right: .5rem;
+        color: var(--md-primary-fg-color);
+        border-color: var(--md-accent-fg-color);
+        text-decoration: none;
+        line-height: 1.25;
+        font-weight: 700;
+    }
+
+    @media (min-width: 576px){ .tx-hero .md-button { font-size: 14px; } }
+    @media (min-width: 720px){ .tx-hero .md-button { font-size: 16px; } }
+    @media (min-width: 992px){ .tx-hero .md-button { font-size: 18px; } }
+
+    .tx-hero .md-button:focus,
+    .tx-hero .md-button:hover {
+        background-color: rgba(255,255,255,0.5);
+        color: var(--md-primary-fg-color);
+        border-color: var(--md-primary-fg-color);
+        text-decoration: none;
+    }
+    
+    .tx-hero .md-button--primary {
+        background-color: var(--md-accent-fg-color);
+        border-width: 0;
+    }
+
+    .tx-hero .md-button--primary:focus,
+    .tx-hero .md-button--primary:hover {
+        background-color: var(--md-accent-fg-color--light);
+    }
+
+    .feature-item h2 svg {
+        height: 30px;
+        float: left;
+        margin-right: 10px;
+        transform: translateY(10%);
+    }
+
+    .top-hr {
+        margin: 28px 0px 60px;
+    }
+    @media (min-width: 576px){ .top-hr { margin: 28px 0px 60px ; } }
+    @media (min-width: 720px){ .top-hr { margin: 42px 0px 90px; } }
+    @media (min-width: 992px){ .top-hr { margin: 42px 0px 90px; } }
+    
+    .row {
+        display:-ms-flexbox;
+        display:flex;
+        -ms-flex-wrap:wrap;
+        flex-wrap:wrap;
+        /* margin-right:-15px;
+        margin-left:-15px */
+    }
+
+    .justify-content-center {
+        -ms-flex-pack:center!important;justify-content:center!important
+    }
+
+    .col-12 {
+        position: relative;
+        width: 100%;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    .col-12 {
+        -ms-flex:0 0 100%;
+        flex:0 0 100%;
+        max-width:100%
+    }
+
+    .text-center {
+        text-align: center!important;
+    }
+
+    .section-title {
+        margin-bottom: 32px;
+        line-height: 1.25;
+        font-weight: 700;
+    }
+    @media (min-width: 576px){ .section-title  { font-size: 24px; } }
+    @media (min-width: 720px){ .section-title  { font-size: 28px; } }
+    @media (min-width: 992px){ .section-title  { font-size: 36px; } }
+    
+    .section-gray {
+        background: #EFEFEF;
+    }
+
+    .col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
+        position: relative;
+        width: 100%;
+        min-height: 1px;
+        padding: 15px;
+    }
+
+    @media (min-width: 576px) {
+        .col-sm-6 {
+            -ms-flex: 0 0 50%;
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+    }
+    @media (min-width: 720px) {
+        .col-lg-3 {
+            -ms-flex: 0 0 33.333333%;
+            flex: 0 0 33.333333%;
+            max-width: 33.333333%;
+        }
+    }
+    @media (min-width: 992px) {
+        .col-lg-4 {
+            -ms-flex: 0 0 33.333333%;
+            flex: 0 0 33.333333%;
+            max-width: 33.333333%;
+        }
+        .col-lg-3 {
+            -ms-flex: 0 0 25%;
+            flex: 0 0 25%;
+            max-width: 25%;
+        }
+    }
+
+    .bg-white{background-color:#fff!important}
+    .px-4{padding-left:1.5rem!important}
+    .py-5{padding-top:3rem!important}
+    .no-padding{padding:0rem!important}
+
+    .shadow {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, .1) !important;
+        transition: .3s ease;
+        display: block !important;
+    }
+
+    .shadow:hover {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, .3) !important;
+        transition: .3s ease;
+        display: block !important;
+    }
+
+    .padding-feature-box-item{
+        padding-left: 0.8rem!important;
+        padding-right: 0.8rem!important;
+        padding-top: 0.8rem!important;
+        padding-bottom: 0.8rem!important;
+    }
+
+    .padding-graph{
+        padding-left: 0.5rem!important;
+        padding-right: 0.5rem!important;
+        padding-top: 0.5rem!important;
+        padding-bottom: 0.5rem!important;
+    }
+
+    .icon {
+        font-size: 40px;
+    }
+
+    .d-block {
+        display: block!important;
+    }
+    
+    /* .mb-3, .my-3 {
+        margin-bottom: 1rem!important;
+    } */
+    
+    .mb-0, .my-0 {
+        margin-bottom: 0!important;
+    }
+
+    .feature-item {
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
+        box-sizing: border-box;
+        padding: 0 15px;
+        word-break: break-word
+    }
+
+    h2 {
+        color: #333;
+        font-weight: 700;
+        font-size: 1.2rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: normal;
+        font-family: inherit;
+    }
+
+    .feature-box {
+        text-align: left;
+        display:flex;
+        justify-content: center!important;
+    }
+
+    .feature-box a{
+        height: 320px;
+        width: 320px;
+    }
+
+    .feature-box a i {
+        color: #76b900!important;
+        font-size: 0.6rem;
+        -webkit-transition: .4s ease-out;
+        transition: all ease-out .4s !important
+    }
+
+    .feature-box a:hover i {
+        color: #000!important;
+        transform: translate(0.5em);
+    }
+
+    .feature-box a p.feature-card-desc{
+        min-height: 80px;
+        font-size: 15px;
+        line-height: 1.667;
+        font-weight: 400;
+    }
+
+    .feature-box a .nv-teaser-text-link {
+        margin-block-start: 0em;
+        margin-block-end: 0em;
+        font-weight: 700;
+        padding-bottom: 15px !important;
+        padding-top: 0px !important;
+    }
+    @media (min-width: 576px){ .nv-teaser-text-link  { font-size: 12px; } }
+    @media (min-width: 720px){ .nv-teaser-text-link  { font-size: 14px; } }
+    @media (min-width: 992px){ .nv-teaser-text-link  { font-size: 16px; } }
+
+    .feature-box h3 {
+        color: #333;
+        line-height: 1.25;
+        font-weight: 700;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        font-family: inherit;
+        text-align: left;
+        font-size: 16px;
+    }
+    @media (min-width: 576px){ .feature-box h3 { font-size: 16px; } }
+    @media (min-width: 720px){ .feature-box h3 { font-size: 18px; } }
+    @media (min-width: 992px){ .feature-box h3 { font-size: 20px; } }
+
+    .feature-box p {
+        font-size: 0.6rem;
+        font-weight: 300;
+        line-height: 1.8em;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        color: #111;
+        margin: 0 0 10px;
+        display: block;
+        text-align: left;
+    }
+
+    @media screen and (max-width:30em) {
+        .tx-hero h1 {
+            font-size: 1.4rem
+        }
+    }
+
+    @media screen and (min-width:60em) {
+        .md-sidebar--secondary {
+            display: none
+        }
+
+        .tx-hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tx-hero__content {
+            max-width: 30rem;
+            margin-top: 3.5rem;
+            margin-bottom: 3.5rem;
+            margin-left: 1.0rem;
+            margin-right: 4.0rem;
+            align-items: center;
+        }
+    }
+
+    @media screen and (min-width:76.25em) {
+        .md-sidebar--primary {
+            display: none
+        }
+
+        .top-hr {
+            width: 100%;
+            display: flex;
+            max-width: 61rem;
+            margin-right: auto;
+            margin-left: auto;
+            padding: 0 .2rem;
+        }
+
+        .bottom-hr {
+            margin-top: 10px;
+            width: 100%;
+            display: flex;
+            max-width: 61rem;
+            margin-right: auto;
+            margin-left: auto;
+            padding: 0 .2rem;
+        }
+
+        .feature-item {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .feature-item:hover {
+            background-color: #526cfe47;
+            border-radius: 3px;
+        }
+    }
+
+    .hr {
+        border-bottom: 1px solid #eee;
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    .logos {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: row wrap;
+        margin: 0 auto;
+    }
+
+    .logos img {
+        flex: 1 1 auto;
+        padding: 25px;
+        max-height: 130px;
+        vertical-align: middle;
+    }
+
+    .hr-logos {
+        margin-top: 0;
+        margin-bottom: 30px;
+    }
+
+    .md-footer-meta__inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 1.0rem;
+    }
+
+    .md-footer-social {
+        padding-top: 20px;
+    }
+
+    .twemoji {
+        display: inline-flex;
+        height: 0.6rem;
+        vertical-align: text-top;
+    }
+</style>
+
+<!-- Main site Entry button descriptions -->
+<section class="tx-container">
+    <div class="md-grid md-typeset">
+      <div class="tx-hero">
+        <div class="tx-hero__content">
+            <h1> Generative AI at the Edge </h1>
+            <p>Bring generative AI to the world with NVIDIA<sup><small>&reg;</small></sup> Jetson&trade;</p>
+            <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | striptags }}" class="md-button md-button--primary">
+                Explore Tutorials
+            </a>
+            <a href="https://www.youtube.com/playlist?list=PL5B692fm6--sdf3tQk-1kp9T65y8p-D5u" title="YouTube Playlist" class="md-button" target="_blank">
+                <i class="fa-solid fa-video"></i>&nbsp;&nbsp;Videos
+            </a>
+            <!--
+            <a href="https://developer.nvidia.com/blog/bringing-generative-ai-to-life-with-jetson/" title="Walkthrough Blog" class="md-button" target="_blank">
+                Walkthrough
+            </a>
+            --> 
+        </div>
+        <div class="tx-hero__image">
+            <img src="./images/jetson-for-dev-ai-labs-icon-2974266-r3_ai-lab-text-generation-28.png" draggable="false">
+        </div>
+      </div>
+    </div>
+</section>
+
+<!-- feature-box -->
+<section class="section">
+    <div class="top-hr">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center">
+                <h2 class="section-title"><a href="tutorial-intro.html">Check out our tutorials</a></h2>
+            </div>
+            <!-- feature-box-item -->
+            <div class="col-lg-3 col-sm-6 mb-4 feature-box">
+                <a href="tutorial_text-generation.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height">
+                    <img src="./images/iconnv_text-generation_512x512.jpg" width="120" height="120">
+                    <h3 class="mb-3 mt-0">Text Generation</h3>
+                    <p class="feature-card-desc">Run LLM-based chat bot on Jetson</p>
+                    <p class="nv-teaser-text-link">Learn More <i class="fa-solid fa-angle-right"></i></p>
+                </a>
+            </div>
+            <div class="col-lg-3 col-sm-6 mb-4 feature-box">
+                <a href="tutorial_llava.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height" >
+                    <img src="./images/iconnv_text-vision_512x512.jpg" width="120" height="120">
+                    <h3 class="mb-3 mt-0">Text + Vision</h3>
+                    <p class="feature-card-desc">Run multimodal Vision-Language models to give your AI access to vision</p>
+                    <p class="nv-teaser-text-link">Learn More <i class="fa-solid fa-angle-right"></i></p>
+                </a>
+            </div>
+            <div class="col-lg-3 col-sm-6 mb-4 feature-box">
+                <a href="tutorial_stable-diffusion.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height" >
+                    <img src="./images/iconnv_image-generation_512x512.jpg" width="120" height="120">
+                    <h3 class="mb-3 mt-0">Image Generation</h3>
+                    <p class="feature-card-desc">Run diffusion models to generate stunning images interactively on Jetson</p>
+                    <p class="nv-teaser-text-link">Learn More <i class="fa-solid fa-angle-right"></i></p>
+                </a>
+            </div>
+            <div class="col-lg-3 col-sm-6 mb-4 feature-box">
+                <a href="tutorial_distillation.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height" >
+                    <img src="./images/iconnv_distillation_512x512.jpg" width="120" height="120">
+                    <h3 class="mb-3 mt-0">Distillation</h3>
+                    <p class="feature-card-desc">Learn a technique to bring the power of a large foundation model to Jetson
+                    <p class="nv-teaser-text-link">Learn More <i class="fa-solid fa-angle-right"></i></p>
+                </a>
+            </div>
+            <div class="col-lg-3 col-sm-6 mb-4 feature-box">
+                <a href="vit/index.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height" >
+                    <img src="./images/iconnv_nanosam_512x512.jpg" width="120" height="120">
+                    <h3 class="mb-3 mt-0">Vision Transformer (ViT)</h3>
+                    <p class="feature-card-desc">Vision Transformer examples, with models optimized to run in realtime on Jetson</p>
+                    <p class="nv-teaser-text-link">Learn More <i class="fa-solid fa-angle-right"></i></p>
+                </a>
+            </div>
+            <div class="col-lg-3 col-sm-6 mb-4 feature-box">
+                <a href="tutorial_nanodb.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height" >
+                    <img src="./images/iconnv_nanodb_512x512.jpg" width="120" height="120">
+                    <h3 class="mb-3 mt-0">NanoDB</h3>
+                    <p class="feature-card-desc">Multimodal vector database that uses embeddings for txt2img and img2img similarity search</p>
+                    <p class="nv-teaser-text-link">Learn More <i class="fa-solid fa-angle-right"></i></p>
+                </a>
+            </div>
+            <div class="col-lg-3 col-sm-6 mb-4 feature-box">
+                <a href="tutorial_whisper.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height" >
+                    <img src="./images/iconnv_audio-generation_512x512.jpg" width="120" height="120">
+                    <h3 class="mb-3 mt-0">Whisper</h3>
+                    <p class="feature-card-desc">Run OpenAI's Whisper model to transcribe audio</p>
+                    <p class="nv-teaser-text-link">Learn More <i class="fa-solid fa-angle-right"></i></p>
+                </a>
+            </div>
+            <div class="col-lg-3 col-sm-6 mb-4 feature-box">
+                <a href="tutorial_llamaspeak.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height" >
+                    <img src="./images/iconnv_llamaspeak_512x512.jpg" width="120" height="120">
+                    <h3 class="mb-3 mt-0">Llamaspeak</h3>
+                    <p class="feature-card-desc">Live interaction with Llama LLM using NVIDIA Riva AST/TTS</p>
+                    <p class="nv-teaser-text-link">Learn More <i class="fa-solid fa-angle-right"></i></p>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /feature-box -->
+
+
+<!-- feature-box -->
+<section class="section-gray">
+    <div class="top-hr">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center">
+                <h2 class="section-title"><a href="benchmarks.html">Benchmarks</a></h2>
+            </div>
+            <!-- feature-box-item -->
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <a href="benchmarks.html#large-language-models-llm" class="padding-graph bg-white shadow text-center d-block match-height" style="height: 280px;">
+                    <img src="./images/graph_llm-text-generation.svg" style="width: 100%; height: 100%; object-fit:cover"></img>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <a href="benchmarks.html#vision-language-models-vlm" class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height" style="height: 280px;">
+                    <img src="./images/graph_vlm-text-generation.svg" style="width: 100%; height: 100%; object-fit:cover"></img>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <a href="benchmarks.html#vision-transformers-vit" class="padding-graph bg-white shadow text-center d-block match-height" style="height: 280px;">
+                    <img src="./images/graph_vit-vision-transformers.svg" style="width: 100%; height: 100%; object-fit:cover"></img>
+                </a>
+            </div>
+        <a class="nv-teaser-text-link" href="benchmarks.html">Learn More <i class="fa-solid fa-angle-right"></i></a>
+        </div>
+    </div>
+</section>
+<!-- /feature-box -->
+
+
+<!-- feature-box -->
+<section class="section">
+    <div class="top-hr">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center">
+                <h2 class="section-title"><a href="community_articles.html">Community Projects</a></h2>
+            </div>
+            <!-- feature-box-item -->
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <a href="community_articles.html#daves-armoury-bringing-glados-to-life-with-robotics-and-ai-2-8-2024" class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height" width="415" height="280" target="_blank">
+                  <iframe src="https://www.youtube.com/embed/yNcKTZsHyfA" title="Bringing GLaDOS to life with Robotics and AI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" width="390" height="257" allowfullscreen></iframe>
+                  Dave's Armoury - Bringing GLaDOS to Life with Robotics and AI
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <a href="community_articles.html#hackster-ai-powered-application-for-the-blind-and-visually-impaired-12-13-2023" class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height" width="415px" height="280" target="_blank">
+                  <img src="https://hackster.imgix.net/uploads/attachments/1683310/_KUakkgQR2i.blob?auto=compress%2Cformat&w=390&h=257&fit=min" title="AI-Powered Application for the Blind and Visually Impaired"></img>
+                  Nurgaliyev Shakhizat - Vision2Audio: Blind Assistant Device
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <a href="community_articles.html#hackster-clearwater-underwater-image-enhancement-with-generative-ai-2-16-2024" class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height" width="415px" height="280" target="_blank">
+                  <img src="https://hackster.imgix.net/uploads/attachments/1685447/untitled_video_-_made_with_clipchamp_(1)_iHRjaZTew3.gif" width="390" height="257" title="ClearWater: Underwater Image Enhancement with Generative AI"></img>
+                  Vy Pham - ClearWater: Underwater Image Enhancement with Generative AI
+                </a>
+            </div>
+            <br/>
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <a href="community_articles.html#hackster-seeed-studios-local-voice-chatbot-puts-a-speech-recognizing-llama-2-llm-on-your-jetson-2-7-2024" class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height" width="415" height="280" target="_blank">
+                  <iframe src="https://www.youtube.com/embed/Nc3D-qITDoU" title="Local Voice Chatbot: Deploy Riva and Llama2 on reComputer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" width="390" height="257" allowfullscreen></iframe>
+                  Seeed Studio - Local Voice Chatbot: Deploy Riva and Llama2 on Jetson
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <a href="community_articles.html#github-japanese-nmt-translation-for-stable-diffusion-2-23-2024" class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height" width="415px" height="280" target="_blank">
+                  <img src="./images/japanese-stable-diffusion.jpg" width="390" height="257" title="Japanese NMT Translation for Stable Diffusion"></img>
+                  Toshihiko Aoki - Japanese NMT Translation for Stable Diffusion
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <a href="community_articles.html#nvidia-bringing-generative-ai-to-life-with-nvidia-jetson-11-7-2023" class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height" width="415" height="280" target="_blank">
+                  <iframe src="https://www.youtube.com/embed/6mCFzDatGGc" title="Bringing Generative AI to Life with NVIDIA Jetson" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" width="390" height="257" allowfullscreen></iframe>
+                  NVIDIA Webinar - Bringing Generative AI to Life with NVIDIA Jetson 
+                </a>
+            </div>
+        <a class="nv-teaser-text-link" href="community_articles.html">Learn More <i class="fa-solid fa-angle-right"></i></a>
+        </div>
+    </div>
+</section>
+<!-- /feature-box -->
+
+
+<script type="text/javascript">
+function nat_at_top() {
+    var navtab  = document.getElementsByClassName('md-tabs');
+    navtab[0].classList.add("topped");	
+}
+window.onload = nat_at_top; 
+window.addEventListener('scroll', function(){
+    var scroll = document.body.scrollTop || document.documentElement.scrollTop
+    var navtab  = document.getElementsByClassName('md-tabs');
+    console.log(scroll, navtab[0].offsetHeight);
+    console.log(navtab);
+    navtab[0].classList.toggle("topped", scroll < navtab[0].offsetHeight);	
+});
+</script>
+
+{% endblock %}
+{% block content %}
+
+{% endblock %}
+{% block footer %}
+<footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-grid">
+      <div class="md-copyright">
+        <div class="md-copyright__highlight">
+          <ul class="global-footer__links"><li><a href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/" target="_blank">Privacy Policy</a></li><li> <a href="https://www.nvidia.com/en-us/privacy-center/" target="_blank">Manage My Privacy</a> </li> <li> <a href="https://www.nvidia.com/en-us/preferences/email-preferences/" target="_blank">Do Not Sell or Share My Data</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/legal-info/" target="_blank">Legal</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/accessibility/" target="_blank">Accessibility</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/company-policies/" target="_self">Corporate Policies</a> </li> <li> <a href="https://www.nvidia.com/en-us/product-security/" target="_blank">Product Security</a> </li> <li> <a href="https://www.nvidia.com/en-us/contact/" target="_blank">Contact</a> </li> </ul><div class="global-footer__copyright">Copyright © 2024 NVIDIA Corporation</div>
+        </div>
+      </div>        
+    </div>
+  </div>
+</footer>
+{% endblock %}

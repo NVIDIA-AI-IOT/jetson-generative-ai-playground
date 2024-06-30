@@ -1,0 +1,327 @@
+[data-md-color-scheme="playful-purple"] {
+
+	--md-accent-fg-color--rgb: 177, 43, 255; /* #b12bff */  
+	--md-accent-fg-color--hsl: 278, 100%, 58%;
+	--md-accent-fg-color: hsl(var(--md-accent-fg-color--hsl));
+	
+	--md-accent-fg-color--dark-hsl: 278, 100%, 51%;
+	--md-accent-fg-color--dark: hsl(var(--md-accent-fg-color--dark-hsl));
+	
+	--md-accent-fg-color--light-rgb: 214, 143, 255; /* D68FFF */
+	--md-accent-fg-color--light-hsl: 278, 100%, 78%;
+	--md-accent-fg-color--light: hsla(var(--md-accent-fg-color--light-hsl), 1.0);
+	
+	--md-accent-bg-color--rgb: 255, 255, 255; /* #ffffff */
+	--md-accent-bg-color: rgb(var(--md-accent-bg-color--rgb));
+
+	--md-primary-fg-color:        hsl(210, 100%, 40%);
+	--md-primary-fg-color--light: hsl(210, 100%, 50%);
+	--md-primary-fg-color--dark:  hsl(210, 100%, 20%);
+
+	--md-mermaid-node-bg-color: #e3f5c5;
+     --md-mermaid-node-fg-color: #518000;
+	--md-default-fg-color--lightest:     #f9fff2;
+}
+
+[data-md-color-scheme="nv-black-green"] {
+
+	--md-typeset-a-color: #000000;
+
+	--md-accent-fg-color--rgb: #76b900;  
+	--md-accent-fg-color--hsl: hsl(82, 100%, 36%);
+	--md-accent-fg-color: var(--md-accent-fg-color--hsl);
+	
+	--md-accent-fg-color--dark-hsl: hsl(82, 100%, 32%);
+	--md-accent-fg-color--dark: var(--md-accent-fg-color--dark-hsl);
+	
+	--md-accent-fg-color--light-rgb: #81BF15;
+	--md-accent-fg-color--light-hsl: hsla(82, 80%, 42%, 1.0);
+	--md-accent-fg-color--light: var(--md-accent-fg-color--light-hsl);
+	
+	--md-accent-bg-color--rgb: 255, 255, 255; /* #ffffff */
+	--md-accent-bg-color: rgb(#000000);
+
+	--md-primary-fg-color:        hsl(82, 0%, 10%);
+	--md-primary-fg-color--light: hsl(82, 0%, 30%);
+	--md-primary-fg-color--dark:  hsl(82, 0%, 0%);
+
+	--md-mermaid-node-bg-color: #e3f5c5;
+    --md-mermaid-node-fg-color: #518000;
+	--md-default-fg-color--lightest:     #f9fff2;
+}
+
+a.nv-buy-link,.load-buy-link {
+    text-decoration: none;
+    background-color: #76b900;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    line-height: 24px;
+    font-family: Arial,Helvetica,Sans-Serif!important;
+    transition: all .2s ease-out;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    font-size: 1.2em;
+    padding: .625em 2em;
+}
+
+a.nv-buy-link:hover,.load-buy-link:hover {
+    background-color: #91c733;
+    color: #000;
+}
+
+.specs-container {
+    margin-top: 0.6rem;
+}
+
+.specs-container li {
+    list-style: none;
+	margin-left: 0!important;
+	padding: 0!important;
+}
+
+.specs-container ul {
+    padding: 0;
+	margin: 0
+}
+
+.specs {
+    font-weight: 400;
+    background: url(https://store.nvidia.com/jetson/store/UL-icon.d0c461d7202592cb.svg);
+    background-repeat: no-repeat;
+    background-position: 0 8px;
+    padding-left: 18px;
+    padding-bottom: 10px;
+	font-size: 16px
+}
+
+[data-md-color-scheme="nvgreen"] {
+
+	--md-primary-fg-color:        #76B900;
+	--md-primary-fg-color--light: #C5E1A5;
+	--md-primary-fg-color--dark:  #518000;
+	--md-accent-fg-color: #004D40;
+
+	--md-mermaid-node-bg-color: #e3f5c5;
+    --md-mermaid-node-fg-color: #518000;
+	--md-default-fg-color--lightest:     #f9fff2;
+}
+
+[data-md-color-scheme="slate"] {
+	
+	--md-primary-fg-color:        #76B900;
+	--md-primary-fg-color--light: #C5E1A5;
+	--md-primary-fg-color--dark:  #518000;
+	--md-accent-fg-color: #a2ff00;
+
+	--md-mermaid-node-bg-color: #518000;
+    --md-mermaid-node-fg-color: #e3f5c5;
+    --md-default-fg-color--lightest:     #384e4c;
+
+	--md-hue: 210; 
+  }
+
+.numberCircle {
+	
+	font:  Arial, sans-serif;
+
+    width: 1.5em;
+    height: 1.5em;
+    box-sizing: initial;
+	
+	display: inline-block;
+
+	background: #76B900;
+	color: #FFFFFF;
+	text-align: center;
+    border-radius: 100%;    
+
+    line-height: 1.5em;
+    box-sizing: content-box;   
+}
+
+
+.roundSquare {
+	
+	font:  Arial, sans-serif;
+
+    height: 1.25em;
+    box-sizing: initial;
+	
+	display: inline-block;
+
+	background: #004D40;
+    border: 0.1em solid #CCCCCC;
+	color: #FFFFFF;
+	text-align: center;
+    border-radius: 0.5em;    
+
+    line-height: 1.25em;
+    box-sizing: content-box;   
+
+	padding: 0.2em
+
+}
+
+.blobDarkGreen1 {
+	background: #0066467f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em
+}
+.blobDarkGreen2 {
+	background: #0085697f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em
+}
+.blobDarkGreen3 {
+	background: #00a48f7f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em
+}
+.blobDarkGreen4 {
+	background: #00c5b97f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em
+}
+.blobDarkGreen5 {
+	background: #00e6e67f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em
+}
+
+.blobLightGreen1 {
+	background: #76b9007f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em
+}
+.blobLightGreen2 {
+	background: #7fc33a7f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em
+}
+.blobLightGreen3 {
+	background: #95d6767f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em
+}
+.blobLightGreen4 {
+	background: #b1e8a97f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em
+}
+.blobLightGreen5 {
+	background: #d5f8d87f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em
+}
+
+.blobPink1 {
+	background: #ec84d07f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em
+}
+.blobPink2 {
+	background: #fe8fbe7f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em
+}
+.blobPink3 {
+	background: #ff9fb27f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em; 
+}
+
+.blobGitHub {
+	background: #394657; color: #fff; font-size: 0.8em; border-radius: 0.1em;  padding-left: 0.3em; padding-right: 0.3em;  margin: 0.2em; 
+}
+
+.blobJetsonHacks {
+	background: #394657; color: #fff; font-size: 0.8em; border-radius: 0.1em;  padding-left: 0.3em; padding-right: 0.3em;  margin: 0.2em; 
+}
+
+.blobDavesArmoury {
+	background: #f7b700; color: #fff; font-size: 0.8em; border-radius: 0.1em;  padding-left: 0.3em; padding-right: 0.3em;  margin: 0.2em; 
+}
+
+.blobHackster {
+	background: #2e9fe6; color: #fff; font-size: 0.8em; border-radius: 0.1em;  padding-left: 0.3em; padding-right: 0.3em;  margin: 0.2em; 
+}
+
+.blobMedium {
+	background: #292929; color: #fff; font-size: 0.8em; border-radius: 0.1em;  padding-left: 0.3em; padding-right: 0.3em;  margin: 0.2em; 
+}
+
+.blobNvidia {
+	background: #76b900; color: #fff; font-size: 0.8em; border-radius: 0.1em;  padding-left: 0.3em; padding-right: 0.3em;  margin: 0.2em; 
+}
+
+.blobYouTube {
+	background: #FF0000; color: #fff; font-size: 0.8em; border-radius: 0.1em;  padding-left: 0.3em; padding-right: 0.3em;  margin: 0.2em; 
+}
+
+.blobGreen {
+	background: #00AA00; color: #fff; font-size: 0.8em; border-radius: 0.3em;  padding-left: 0.3em; padding-right: 0.3em;  margin: 0.2em; 
+}
+
+.blobWhite {
+	background: #EEE; color: #000; border-color: #666; border: solid 0.1em; font-size: 0.8em; border-radius: 0.3em;  padding-left: 0.3em; padding-right: 0.3em;  margin: 0.2em; 
+}
+
+.blobBlack {
+	background: #222; color: #FFF; font-size: 0.8em; border-radius: 0.3em;  padding-left: 0.3em; padding-right: 0.3em;  margin: 0.2em; 
+}
+
+.highlightYellow {
+	background: #ffc105;
+    border-radius: 0.5em;  
+	padding: 0.2em
+}
+
+.highlightGreen {
+	background: #00c753;
+    border-radius: 0.5em;  
+	padding: 0.2em
+}
+
+.highlightGray {
+	background: #DDDDDD;
+    border-radius: 0.5em;  
+	padding: 0.2em;
+	color: #333333;
+}
+
+.center50 {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+}
+
+.right {
+	clear: none;
+	float: right;
+	width: 50%;
+	padding: 0rem 0.5rem 0rem 0.5rem ;
+}
+
+.left {
+	clear: none;
+	float: left;
+	width: 50%;
+	padding: 0rem 0.5rem 0rem 0.5rem ;
+}
+
+.right40 {
+	clear: none;
+	float: right;
+	width: 40%;
+	padding: 0rem 0.5rem 0rem 1.5rem ;
+}
+
+.left40 {
+	clear: none;
+	float: left;
+	width: 40%;
+	padding: 0rem 1.5rem 0rem 0.5rem ;
+}
+
+.dmark {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.dmark .dmarkpopup {
+    visibility: hidden;
+    width: 400px;
+    background-color: #DDDDDD;
+    color: #fff;
+    text-align: center;
+    border-radius: 12px;
+    padding: 15px;
+    margin: 5px;
+	box-shadow: 5px 5px 15px #004D40;
+    position: absolute;
+    z-index: 1;
+}
+
+.dmark:hover .dmarkpopup {
+    visibility: visible;
+}
+
+.md-footer__inner { display: none }
