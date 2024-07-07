@@ -81,15 +81,11 @@ We'll aim to meet monthly or bi-weekly as a team in virtual meetings that anyone
 	- Meeting ID: `264 770 145 196`
     - Passcode: `Uwbdgj`	
 	- Outlook Invite:  [`Jetson AI Lab Research Group.ics`](research/invites/Jetson AI Lab Research Group.ics){:target="_blank"} 
-    
-    <!--
     - Agenda:
-	    * Agent Studio
-	    * Jetson Copilot
-	    * Jetson Platform Services
-	    * On-device Fine-tuning
+	    * OpenVLA on Open X-Embodiment
+	    * Holoscan, Grammars (Nigel Nelson)
+	    * LLaMa-Factory (Seeed Studio)
 	    * Open Q&A
-    -->
 <!--
 	- Forum Topic:  [`forums.developer.nvidia.com/t/293749`](https://forums.developer.nvidia.com/t/jetson-ai-lab-research-group-meeting-on-5-29/293749)
 	
@@ -112,8 +108,8 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 <ul>
 	<li>Function Calling in Agent Studio</li>
 	<li><a href="https://www.jetson-ai-lab.com/tutorial_jetson-copilot.html">Jetson Copilot</a> (Chitoku Yato)</li>
-    <li><a href="https://docs.nvidia.com/jetson/jps/moj-overview.html" _target="_blank">Jetson Platform Services</a> (Sammy Ochoa)</li>
-    <li><a href="https://www.hackster.io/shahizat/fine-tuning-llms-using-nvidia-jetson-agx-orin-b17c4d" _target="_blank">On-device Fine-tuning</a> (Nurgaliyev Shakhizat)</li>
+    <li><a href="https://docs.nvidia.com/jetson/jps/moj-overview.html" target="_blank">Jetson Platform Services</a> (Sammy Ochoa)</li>
+    <li><a href="https://www.hackster.io/shahizat/fine-tuning-llms-using-nvidia-jetson-agx-orin-b17c4d" target="_blank">On-device Fine-tuning</a> (Nurgaliyev Shakhizat)</li>
 </ul>
 
 </details>
@@ -140,8 +136,8 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 <ul>
 	<li>OpenAI-style Tools with <a href="https://huggingface.co/NousResearch/Hermes-2-Pro-Llama-3-8B" target="_blank">NousResearch/Hermes-2-Pro-Llama-3-8B</a></li>
-	<li>Jetson Copilot with <a href="https://github.com/dusty-nv/jetson-containers/tree/master/packages/rag/jetrag" _target="_blank">jetrag</a></li>
-	<li><a href="https://github.com/NVIDIA-AI-IOT/whisper_trt" _target="_blank">whisper_trt</a> for Orin Nano</li>
+	<li>Jetson Copilot with <a href="https://github.com/dusty-nv/jetson-containers/tree/master/packages/rag/jetrag" target="_blank">jetrag</a></li>
+	<li><a href="https://github.com/NVIDIA-AI-IOT/whisper_trt" target="_blank">whisper_trt</a> for Orin Nano</li>
 </ul>
 
 </details>
@@ -156,7 +152,7 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 	<li><a href="https://forums.developer.nvidia.com/t/new-vila-1-5-multimodal-vision-language-models-released-in-3b-8b-13b-40b/291784" target="_blank">VILA-1.5 on Video Sequences</a></li>
 	<li>Voicecraft Container (<a href="https://github.com/dusty-nv/jetson-containers/pull/498" target="_blank">Martin Cerven</a>)</li>
 	<li>JetBot / Nanosaur Updates for Orin Nano (Chitoku Yato & Raffaello Bonghi)</li>
-	<li>Controller LLM & Advanced Function Calling (<a href="https://huggingface.co/NousResearch/Hermes-2-Pro-Llama-3-8B" _target="_blank"><code>NousResearch/Hermes-2-Pro-Llama-3-8B</code></a>)</li>
+	<li>Controller LLM & Advanced Function Calling (<a href="https://huggingface.co/NousResearch/Hermes-2-Pro-Llama-3-8B" target="_blank"><code>NousResearch/Hermes-2-Pro-Llama-3-8B</code></a>)</li>
 	<li>RAG Samples with LlamaIndex (Chitoku Yato)</li>
 </ul>
 
@@ -205,7 +201,7 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 </details>
 		
-## Active Members
+## Team Members
 
 Below are shown some of the sustaining members of the group who have been working on generative AI in edge computing:
 
@@ -705,7 +701,20 @@ Below are shown some of the sustaining members of the group who have been workin
 			Romil Shah, Amazon<br/>
 			<small>
 				GenAI IIoT @ AWS | San Jose, CA<br/>
-				(<a href="https://github.com/aws-samples/genai-at-edge" _target="_blank"><code>aws-samples/genai-at-edge</code></a>)
+				(<a href="https://github.com/aws-samples/genai-at-edge" target="_blank"><code>aws-samples/genai-at-edge</code></a>)
+			</small>
+		</div>
+	</div>
+	<div class="bio-container col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://www.linkedin.com/in/kabilan-kb/" target="_blank"><img class="bio-image" src="research/images/Kabilan_Kb.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/kabilan-kb/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			<a href="https://www.youtube.com/@kabilankb2003" target="_blank"><img class="bio-logo" src="research/images/youtube.png"></img></a>
+			<a href="https://github.com/kabilan2003" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
+			Kabilan Kb, Roboticist<br/>
+			<small>
+				NVIDIA DLI Ambassador | Tamil Nadu, IN<br/>
+				(<a href="https://medium.com/@kabilankb2003" target="_blank">ROS2 Tutorials</a>, <a href="https://blogs.nvidia.com/blog/kabilan-kb-autonomous-wheelchair/" target="_blank">Autonomous Wheelchair</a>)
 			</small>
 		</div>
 	</div>
