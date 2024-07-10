@@ -102,7 +102,7 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 ## Past Meetings
 
-<details open><summary>June 9, 2024</summary>
+<details open><summary>July 9, 2024</summary>
 
 <div><iframe width="570" height="320" src="https://www.youtube.com/embed/Ngaq2WCDlZM" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
