@@ -8,7 +8,7 @@ Let's run [Ultralytics](https://www.ultralytics.com) YOLOv8 on Jetson with [NVID
 
 !!! abstract "What you need"
 
-    1. One of the following Jetson:
+    1. One of the following Jetson devices:
 
         <span class="blobDarkGreen4">Jetson AGX Orin (64GB)</span>
         <span class="blobDarkGreen5">Jetson AGX Orin (32GB)</span>
@@ -77,7 +77,7 @@ The YOLOv8n model in PyTorch format is converted to TensorRT to run inference wi
 
 !!! Note
 
-    Visit the [Export page](https://docs.ultralytics.com/modes/export) to access additional arguments when exporting models to different model formats. Note that the default arguments require inference using fixed image dimensions when `dynamic=False`.
+    Visit the [Export page](https://docs.ultralytics.com/modes/export) to access additional arguments when exporting models to different model formats. Note that the default arguments require inference using fixed image dimensions when `dynamic=False`. To change the input source for inference, please refer to [Model Prediction](https://docs.ultralytics.com/modes/predict/#inference-sources) page. 
 
 ## Further reading
 
