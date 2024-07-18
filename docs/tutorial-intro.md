@@ -65,6 +65,12 @@ Give your locally running LLM an access to vision!
 | :---------- | :----------------------------------- |
 | **[First Steps](./tutorial_mmj.md)** | Get [Metropolis Microservices](https://developer.nvidia.com/metropolis-microservices) up & running on Jetson with NVStreamer and AI NVR capabilities. |
 
+### Computer Vision
+
+|      |                     |
+| :---------- | :----------------------------------- |
+| **[Ultralytics](./tutorial_ultralytics.md)** | Run [Ultralytics](https://www.ultralytics.com) YOLOv8 on Jetson with NVIDIA TensorRT. |
+
 
 ## About NVIDIA Jetson
 

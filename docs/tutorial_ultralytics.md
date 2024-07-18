@@ -2,7 +2,7 @@
 
 Let's run [Ultralytics](https://www.ultralytics.com) YOLOv8 on Jetson with [NVIDIA TensorRT](https://developer.nvidia.com/tensorrt).
 
-YOLOv8 is built on cutting-edge advancements in deep learning and computer vision, offering unparalleled performance in terms of speed and accuracy. Its streamlined design makes it suitable for various applications and easily adaptable to different hardware platforms, from edge devices to cloud APIs.
+[Ultralytics](https://github.com/ultralytics/ultralytics) YOLOv8 is a cutting-edge, state-of-the-art (SOTA) model that builds upon the success of previous YOLO versions and introduces new features and improvements to further boost performance and flexibility. YOLOv8 is designed to be fast, accurate, and easy to use, making it an excellent choice for a wide range of object detection and tracking, instance segmentation, image classification and pose estimation tasks.
 
 ![](https://github.com/NVIDIA-AI-IOT/nanoowl/raw/main/assets/jetson_person_2x.gif)
 
@@ -30,13 +30,15 @@ Execute the below commands according to the JetPack version to pull the correspo
     === "JetPack 4"
 
         ```bash
-        t=ultralytics/ultralytics:latest-jetson-jetpack4 && sudo docker pull $t && sudo docker run -it --ipc=host --runtime=nvidia $t
+        t=ultralytics/ultralytics:latest-jetson-jetpack4
+        sudo docker pull $t && sudo docker run -it --ipc=host --runtime=nvidia $t
         ```
 
     === "JetPack 5"
 
         ```bash
-        t=ultralytics/ultralytics:latest-jetson-jetpack5 && sudo docker pull $t && sudo docker run -it --ipc=host --runtime=nvidia $t
+        t=ultralytics/ultralytics:latest-jetson-jetpack5
+        sudo docker pull $t && sudo docker run -it --ipc=host --runtime=nvidia $t
         ```
 
 ## Convert model to TensorRT and run inference
@@ -75,8 +77,31 @@ The YOLOv8n model in PyTorch format is converted to TensorRT to run inference wi
 
 !!! Note
 
-    Visit the [Export page](https://docs.ultralytics.com/modes/export) to access additional arguments when exporting models to different model formats
+    Visit the [Export page](https://docs.ultralytics.com/modes/export) to access additional arguments when exporting models to different model formats. Note that the default arguments require inference using fixed image dimensions when `dynamic=False`.
 
 ## Further reading
 
-To learn more, visit a [more comprehensive guide on running Ultralytics YOLOv8 on NVIDIA Jetson](https://docs.ultralytics.com/guides/nvidia-jetson) including benchmarks!
+To learn more, visit our [comprehensive guide on running Ultralytics YOLOv8 on NVIDIA Jetson](https://docs.ultralytics.com/guides/nvidia-jetson) including benchmarks!
+
+!!! Note
+
+    Ultralytics YOLOv8 models are offered under `AGPL-3.0 License` which is an [OSI-approved](https://opensource.org/license) open-source license and is ideal for students and enthusiasts, promoting open collaboration and knowledge sharing. See the [LICENSE](https://github.com/ultralytics/ultralytics/blob/main/LICENSE) file for more details.
+
+## Follow Ultralytics to stay updated!
+
+<div align="center">
+  <br>
+  <a href="https://github.com/ultralytics"><img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-github.png" width="3%" alt="Ultralytics GitHub"></a>
+  <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="3%" alt="space">
+  <a href="https://www.linkedin.com/company/ultralytics/"><img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-linkedin.png" width="3%" alt="Ultralytics LinkedIn"></a>
+  <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="3%" alt="space">
+  <a href="https://twitter.com/ultralytics"><img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-twitter.png" width="3%" alt="Ultralytics Twitter"></a>
+  <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="3%" alt="space">
+  <a href="https://youtube.com/ultralytics?sub_confirmation=1"><img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-youtube.png" width="3%" alt="Ultralytics YouTube"></a>
+  <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="3%" alt="space">
+  <a href="https://www.tiktok.com/@ultralytics"><img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-tiktok.png" width="3%" alt="Ultralytics TikTok"></a>
+  <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="3%" alt="space">
+  <a href="https://ultralytics.com/bilibili"><img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-bilibili.png" width="3%" alt="Ultralytics BiliBili"></a>
+  <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="3%" alt="space">
+  <a href="https://ultralytics.com/discord"><img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-discord.png" width="3%" alt="Ultralytics Discord"></a>
+</div>
