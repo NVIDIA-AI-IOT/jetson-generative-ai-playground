@@ -1,4 +1,4 @@
-# Tutorial - Ultralytics
+# Tutorial - Ultralytics YOLOv8
 
 Let's run [Ultralytics](https://www.ultralytics.com) YOLOv8 on Jetson with [NVIDIA TensorRT](https://developer.nvidia.com/tensorrt).
 
