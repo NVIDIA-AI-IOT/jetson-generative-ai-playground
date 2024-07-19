@@ -4,7 +4,9 @@ Let's run [Ultralytics](https://www.ultralytics.com) YOLOv8 on Jetson with [NVID
 
 [Ultralytics](https://github.com/ultralytics/ultralytics) YOLOv8 is a cutting-edge, state-of-the-art (SOTA) model that builds upon the success of previous YOLO versions and introduces new features and improvements to further boost performance and flexibility. YOLOv8 is designed to be fast, accurate, and easy to use, making it an excellent choice for a wide range of object detection and tracking, instance segmentation, image classification and pose estimation tasks.
 
-![](https://github.com/NVIDIA-AI-IOT/nanoowl/raw/main/assets/jetson_person_2x.gif)
+<div style="text-align: center;">
+  <img width="1024" src="./images/YOLOv8-tasks.png" alt="Ultralytics YOLO supported tasks">
+</div>
 
 !!! abstract "What you need"
 
@@ -74,6 +76,10 @@ The YOLOv8n model in PyTorch format is converted to TensorRT to run inference wi
         # Run inference with the exported model
         yolo predict model=yolov8n.engine source='https://ultralytics.com/images/bus.jpg'
         ```
+
+<div style="text-align: center;">
+  <img src="./images/YOLOv8-inference.gif" width="700px">
+</div>
 
 !!! Note
 
