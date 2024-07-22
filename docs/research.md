@@ -84,7 +84,7 @@ We'll aim to meet monthly or bi-weekly as a team in virtual meetings that anyone
     - Agenda:
 	    * OpenVLA on [MimicGen](https://mimicgen.github.io/){:target="_blank"} 
 	    * [Phi-3 Vision via ONNX](https://techcommunity.microsoft.com/t5/educator-developer-blog/running-phi-3-vision-via-onnx-on-jetson-platform/ba-p/4195041){:target="_blank"} (Jambo Chen)
-	    * [OStream GenRunner](https://www.ostream.com/#/OSGenRunner){:target="_blank"} - GAPI (Kerry Shih)
+	    * [OStream GenRunner](https://genainerds.com/#/Gapi){:target="_blank"} - GAPI (Kerry Shih)
 	    * Open Q&A
 <!--
 	- Forum Topic:  [`forums.developer.nvidia.com/t/293749`](https://forums.developer.nvidia.com/t/jetson-ai-lab-research-group-meeting-on-5-29/293749)
