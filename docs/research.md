@@ -107,6 +107,7 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 <p>Topics Covered:</p>
 
 <ul>
+    <li><a href="https://huggingface.co/blog/llama31" target="_blank">Llama-3</a> Function & Specs</a></li>
 	<li>OpenVLA with <a href="https://mimicgen.github.io/" target="_blank">MimicGen</a></li>
 	<li><a href="https://techcommunity.microsoft.com/t5/educator-developer-blog/running-phi-3-vision-via-onnx-on-jetson-platform/ba-p/4195041" target="_blank">Phi-3 Vision via ONNX</a> (Jambo Chen)</li>
     <li><a href="https://genainerds.com/#/Gapi" target="_blank">OStream GenRunner</a> (Kerry Shih)</li>
