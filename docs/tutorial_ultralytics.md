@@ -77,9 +77,10 @@ The YOLOv8n model in PyTorch format is converted to TensorRT to run inference wi
         yolo predict model=yolov8n.engine source='https://ultralytics.com/images/bus.jpg'
         ```
 
-<div style="text-align: center;">
-  <img src="./images/YOLOv8-inference.gif" width="700px">
-</div>
+|                   Manufacturing                   |                        Sports                        |                   Wildlife                    |
+| :-----------------------------------------------: | :--------------------------------------------------: | :-----------------------------------------: |
+| ![Vehicle Spare Parts Detection](images/YOLOv8-car.gif) | ![Football Player Detection](images/YOLOv8-football.gif) | ![Tiger-pose](images/YOLOv8-tiger.gif) |
+|           Vehicle Spare Parts Detection           |              Football Player Detection               |            Tiger pose Detection            |
 
 !!! Note
 
