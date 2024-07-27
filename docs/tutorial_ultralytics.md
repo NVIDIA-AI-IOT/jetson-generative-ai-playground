@@ -20,8 +20,9 @@ Let's run [Ultralytics](https://www.ultralytics.com) YOLOv8 on Jetson with [NVID
 
     2. Running one of the following versions of [JetPack](https://developer.nvidia.com/embedded/jetpack):
 
-        <span class="blobPink2">JetPack 4 (L4T r32.x)</span>
-        <span class="blobPink1">JetPack 5 (L4T r35.x)</span>
+        <span class="blobPink1">JetPack 4 (L4T r32.x)</span>
+        <span class="blobPink2">JetPack 5 (L4T r35.x)</span>
+        <span class="blobPink3">JetPack 6 (L4T r36.x)</span>
 
 ## How to start
 
@@ -40,6 +41,13 @@ Execute the below commands according to the JetPack version to pull the correspo
 
         ```bash
         t=ultralytics/ultralytics:latest-jetson-jetpack5
+        sudo docker pull $t && sudo docker run -it --ipc=host --runtime=nvidia $t
+        ```
+
+    === "JetPack 6"
+
+        ```bash
+        t=ultralytics/ultralytics:latest-jetson-jetpack6
         sudo docker pull $t && sudo docker run -it --ipc=host --runtime=nvidia $t
         ```
 
