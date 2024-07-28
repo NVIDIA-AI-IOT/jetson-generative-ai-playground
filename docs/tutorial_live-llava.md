@@ -96,10 +96,6 @@ jetson-containers run $(autotag nano_llm) \
 
 You can also tag incoming images and add them to the database using the web UI, for one-shot recognition tasks:
 
-<div><iframe width="500" height="280" src="https://www.youtube.com/embed/8Eu6zG0eEGY" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-<iframe width="500" height="280" src="https://www.youtube.com/embed/wZq7ynbgRoE" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-
 ## Video VILA
 
 The VILA-1.5 family of models can understand multiple images per query, enabling video search/summarization, action & behavior analysis, change detection, and other temporal-based vision functions.  The [`vision/video.py`](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/vision/video.py){:target="_blank"} example keeps a rolling history of frames:
@@ -117,8 +113,6 @@ jetson-containers run $(autotag nano_llm) \
 
 <a href="https://youtu.be/_7gughth8C0" target="_blank"><img src="images/video_vila_wildfire.gif" title="Link to YouTube video of more clips (Realtime Video Vision/Language Model with VILA1.5-3b and Jetson Orin)"></a>
 
-<small>Note:  support will be added to the web UI for continuous multi-image queries on video sequences.</small>
-
 ## Python Code
 
 For a simplified code example of doing live VLM streaming from Python, see [here](https://dusty-nv.github.io/NanoLLM/multimodal.html#code-example){:target="_blank"} in the NanoLLM docs. 
@@ -127,3 +121,8 @@ For a simplified code example of doing live VLM streaming from Python, see [here
   
 You can use this to implement customized prompting techniques and integrate with other vision pipelines.  This code applies the same set of prompts to the latest image from the video feed.  See [here](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/vision/video.py){:target="_blank"} for the version that does multi-image queries on video sequences.
   
+## Walkthrough Videos
+
+<div><iframe width="500" height="280" src="https://www.youtube.com/embed/wZq7ynbgRoE" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="500" height="280" src="https://www.youtube.com/embed/8Eu6zG0eEGY" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+

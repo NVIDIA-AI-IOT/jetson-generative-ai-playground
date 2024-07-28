@@ -152,6 +152,8 @@ Below are descriptions of commonly-used components. Help text for these is extra
           * <text>
           * <text>
           * <text> 
+          
+    These most recent inputs are used in newest to oldest order from a LIFO queue.
     ```
 
 === "UserPrompt"
