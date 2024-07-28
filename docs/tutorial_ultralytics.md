@@ -28,28 +28,26 @@ Let's run [Ultralytics](https://www.ultralytics.com) YOLOv8 on Jetson with [NVID
 
 Execute the below commands according to the JetPack version to pull the corresponding Docker container and run on Jetson.
 
-!!! Setup
+=== "JetPack 4"
 
-    === "JetPack 4"
+    ```bash
+    t=ultralytics/ultralytics:latest-jetson-jetpack4
+    sudo docker pull $t && sudo docker run -it --ipc=host --runtime=nvidia $t
+    ```
 
-        ```bash
-        t=ultralytics/ultralytics:latest-jetson-jetpack4
-        sudo docker pull $t && sudo docker run -it --ipc=host --runtime=nvidia $t
-        ```
+=== "JetPack 5"
 
-    === "JetPack 5"
+    ```bash
+    t=ultralytics/ultralytics:latest-jetson-jetpack5
+    sudo docker pull $t && sudo docker run -it --ipc=host --runtime=nvidia $t
+    ```
 
-        ```bash
-        t=ultralytics/ultralytics:latest-jetson-jetpack5
-        sudo docker pull $t && sudo docker run -it --ipc=host --runtime=nvidia $t
-        ```
+=== "JetPack 6"
 
-    === "JetPack 6"
-
-        ```bash
-        t=ultralytics/ultralytics:latest-jetson-jetpack6
-        sudo docker pull $t && sudo docker run -it --ipc=host --runtime=nvidia $t
-        ```
+    ```bash
+    t=ultralytics/ultralytics:latest-jetson-jetpack6
+    sudo docker pull $t && sudo docker run -it --ipc=host --runtime=nvidia $t
+    ```
 
 ## Convert model to TensorRT and run inference
 
@@ -94,6 +92,43 @@ The YOLOv8n model in PyTorch format is converted to TensorRT to run inference wi
 
     Visit the [Export page](https://docs.ultralytics.com/modes/export) to access additional arguments when exporting models to different model formats. Note that the default arguments require inference using fixed image dimensions when `dynamic=False`. To change the input source for inference, please refer to [Model Prediction](https://docs.ultralytics.com/modes/predict/#inference-sources) page. 
 
+## Benchmarks
+
+Benchmarks of the YOLOv8 variants with TensorRT were run by [Seeed Studio](https://www.seeedstudio.com/blog/2023/03/30/yolov8-performance-benchmarks-on-nvidia-jetson-devices/) on their [reComputer](https://www.seeedstudio.com/nvidia-jetson.html) systems:
+
+<img src="https://www.seeedstudio.com/blog/wp-content/uploads/2023/03/image-26-1030x611.png" width="100%">
+
+=== "Xavier NX 8GB"
+
+    | Model   | PyTorch | FP32 | FP16 | INT8 |
+    |---------|:-------:|:----:|:----:|:----:|
+    | YOLOv8n |    32   |  63  |  120 |  167 |
+    | YOLOv8s |    25   |  26  |  69  |  112 |
+    | YOLOv8m |    11   |  11  |  33  |  56  |
+    | YOLOv8l |    6    |   6  |  20  |  38  |
+    
+=== "Orin NX 8GB"
+
+    | Model   | PyTorch | FP32 | FP16 | INT8 |
+    |---------|:-------:|:----:|:----:|:----:|
+    | YOLOv8n |    56   |  115 |  204 |  256 |
+    | YOLOv8s |    53   |  67  |  128 |  196 |
+    | YOLOv8m |    26   |  31  |  63  |  93  |
+    | YOLOv8l |    16   |  20  |  42  |  69  |
+ 
+=== "AGX Orin 32GB"
+
+    | Model   | PyTorch | FP32 | FP16 | INT8 |
+    |---------|:-------:|:----:|:----:|:----:|
+    | YOLOv8n |    77   |  192 |  323 |  385 |
+    | YOLOv8s |    67   |  119 |  213 |  303 |
+    | YOLOv8m |    40   |  56  |  105 |  145 |
+    | YOLOv8l |    27   |  38  | 73.5 |  114 |
+
+
+* FP32/FP16/INT8 with TensorRT (frames per second)
+* Original post with the benchmarks are found [here](https://www.seeedstudio.com/blog/2023/03/30/yolov8-performance-benchmarks-on-nvidia-jetson-devices/)
+       
 ## Further reading
 
 To learn more, visit our [comprehensive guide on running Ultralytics YOLOv8 on NVIDIA Jetson](https://docs.ultralytics.com/guides/nvidia-jetson) including benchmarks!
