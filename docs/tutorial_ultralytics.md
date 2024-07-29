@@ -96,7 +96,7 @@ The YOLOv8n model in PyTorch format is converted to TensorRT to run inference wi
 
 Benchmarks of the YOLOv8 variants with TensorRT were run by [Seeed Studio](https://www.seeedstudio.com/blog/2023/03/30/yolov8-performance-benchmarks-on-nvidia-jetson-devices/) on their [reComputer](https://www.seeedstudio.com/nvidia-jetson.html) systems:
 
-<img src="https://www.seeedstudio.com/blog/wp-content/uploads/2023/03/image-26-1030x611.png" width="100%">
+<img src="./images/YOLOv8-benchmarks.png" width="100%">
 
 === "Xavier NX 8GB"
 
