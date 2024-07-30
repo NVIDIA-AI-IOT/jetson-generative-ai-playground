@@ -94,7 +94,7 @@ The YOLOv8n model in PyTorch format is converted to TensorRT to run inference wi
 
 ## Benchmarks
 
-Benchmarks of the YOLOv8 variants with TensorRT were run by [Seeed Studio](https://www.seeedstudio.com/blog/2023/03/30/yolov8-performance-benchmarks-on-nvidia-jetson-devices/) on their [reComputer](https://www.seeedstudio.com/nvidia-jetson.html) systems:
+Benchmarks of the YOLOv8 variants with TensorRT were run by [Seeed Studio](https://www.seeedstudio.com/blog/2023/03/30/yolov8-performance-benchmarks-on-nvidia-jetson-devices/) on their [reComputer](https://www.seeedstudio.com/tag/nvidia.html) systems:
 
 <img src="./images/YOLOv8-benchmarks.png" width="100%">
 
@@ -136,6 +136,75 @@ To learn more, visit our [comprehensive guide on running Ultralytics YOLOv8 on N
 !!! Note
 
     Ultralytics YOLOv8 models are offered under `AGPL-3.0 License` which is an [OSI-approved](https://opensource.org/license) open-source license and is ideal for students and enthusiasts, promoting open collaboration and knowledge sharing. See the [LICENSE](https://github.com/ultralytics/ultralytics/blob/main/LICENSE) file for more details.
+
+## Run Ultralytics YOLO with One-Click on NVIDIA Jetson Orin
+One-click quick deployment of plug-and-play Ultralytics YOLOv8 for all task models with a web UI and HTTP API interface on Nvidia Jetson Orin devices.
+### **Key Features**:
+
+1. **One-Click Deployment and Plug-and-Play**: Quickly deploy all YOLOv8 task models on Nvidia Jetson Orin devices.
+2. **Comprehensive Task Support**: Enables object detection, segmentation, human pose estimation, and classification.
+3. **Versatile Input Options**: Supports uploading local videos, images, and using a webcam.
+4. **TensorRT Model Conversion**: Allows one-click conversion of models to TensorRT.
+5. **Web UI Access**: Easy access via [`http://127.0.0.1:5001`](http://127.0.0.1:5001) on the local machine or within the same LAN.
+6. **HTTP API Interface**: Added HTTP API at [`http://127.0.0.1:5001/results`](http://127.0.0.1:5001/results) to display detection data results.
+7. **Python Script Support**: Provides an additional Python script to read YOLOv8 detection data within Docker.
+
+
+### Quickstart ⚡
+
+#### Modify Docker Daemon Configuration (Optional)
+To enhance the experience of quickly loading models in Docker, you need to add the following content to the `/etc/docker/daemon.json` file:
+
+```json
+{
+  "default-runtime": "nvidia",
+  "runtimes": {
+    "nvidia": {
+      "path": "nvidia-container-runtime",
+      "runtimeArgs": []
+    }
+  },
+  "storage-driver": "overlay2",
+  "data-root": "/var/lib/docker",
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "100m",
+    "max-file": "3"
+  },
+  "no-new-privileges": true,
+  "experimental": false
+}
+```
+
+After modifying the `daemon.json` file, you need to restart the Docker service to apply the configuration:
+
+```sh
+sudo systemctl restart docker
+```
+
+#### Installation via PyPI (Recommended) 🐍
+1. Install the package:
+    ```sh
+    pip install jetson-examples
+    ```
+
+2. Restart your reComputer:
+    ```sh
+    sudo reboot
+    ```
+
+3. Run Ultralytics YOLO on Jetson with one command:
+    ```sh
+    reComputer run ultralytics-yolo
+    ```
+4. Enter [`http://127.0.0.1:5001`](http://127.0.0.1:5001) or `http://device_ip:5001` in your browser to access the Web UI.
+    <p align="center">
+      <img src="images/ultralytics_yolo_webui_by_seeedstudio.gif" alt="ultralytics_yolo_webui_by_seeedstudio.gif">
+    </p>
+
+
+
+
 
 ## Follow Ultralytics to stay updated!
 
