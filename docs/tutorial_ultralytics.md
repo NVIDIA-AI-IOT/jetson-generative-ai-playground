@@ -137,7 +137,7 @@ To learn more, visit our [comprehensive guide on running Ultralytics YOLOv8 on N
 
     Ultralytics YOLOv8 models are offered under `AGPL-3.0 License` which is an [OSI-approved](https://opensource.org/license) open-source license and is ideal for students and enthusiasts, promoting open collaboration and knowledge sharing. See the [LICENSE](https://github.com/ultralytics/ultralytics/blob/main/LICENSE) file for more details.
 
-## Run Ultralytics YOLO with One-Click on NVIDIA Jetson Orin
+## One-Click Run Ultralytics YOLO on Jetson Orin - by Seeed Studio jetson-examples
 One-click quick deployment of plug-and-play Ultralytics YOLOv8 for all task models with a web UI and HTTP API interface on Nvidia Jetson Orin devices.
 ### **Key Features**:
 
