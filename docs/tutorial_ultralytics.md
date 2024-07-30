@@ -203,7 +203,7 @@ sudo systemctl restart docker
     </p>
 
 
-
+For more details, please read: [Jetson-Example: Run Ultralytics YOLO Platform Service on NVIDIA Jetson Orin ](https://github.com/Seeed-Projects/jetson-examples/blob/main/reComputer/scripts/ultralytics-yolo/README.md).
 
 
 ## Follow Ultralytics to stay updated!
