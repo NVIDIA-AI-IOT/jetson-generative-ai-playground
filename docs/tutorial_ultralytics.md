@@ -138,51 +138,8 @@ To learn more, visit our [comprehensive guide on running Ultralytics YOLOv8 on N
     Ultralytics YOLOv8 models are offered under `AGPL-3.0 License` which is an [OSI-approved](https://opensource.org/license) open-source license and is ideal for students and enthusiasts, promoting open collaboration and knowledge sharing. See the [LICENSE](https://github.com/ultralytics/ultralytics/blob/main/LICENSE) file for more details.
 
 ## One-Click Run Ultralytics YOLO on Jetson Orin - by Seeed Studio jetson-examples
-One-click quick deployment of plug-and-play Ultralytics YOLOv8 for all task models with a web UI and HTTP API interface on Nvidia Jetson Orin devices.
-### **Key Features**:
-
-1. **One-Click Deployment and Plug-and-Play**: Quickly deploy all YOLOv8 task models on Nvidia Jetson Orin devices.
-2. **Comprehensive Task Support**: Enables object detection, segmentation, human pose estimation, and classification.
-3. **Versatile Input Options**: Supports uploading local videos, images, and using a webcam.
-4. **TensorRT Model Conversion**: Allows one-click conversion of models to TensorRT.
-5. **Web UI Access**: Easy access via [`http://127.0.0.1:5001`](http://127.0.0.1:5001) on the local machine or within the same LAN.
-6. **HTTP API Interface**: Added HTTP API at [`http://127.0.0.1:5001/results`](http://127.0.0.1:5001/results) to display detection data results.
-7. **Python Script Support**: Provides an additional Python script to read YOLOv8 detection data within Docker.
-
 
 ### Quickstart ⚡
-
-#### Modify Docker Daemon Configuration (Optional)
-To enhance the experience of quickly loading models in Docker, you need to add the following content to the `/etc/docker/daemon.json` file:
-
-```json
-{
-  "default-runtime": "nvidia",
-  "runtimes": {
-    "nvidia": {
-      "path": "nvidia-container-runtime",
-      "runtimeArgs": []
-    }
-  },
-  "storage-driver": "overlay2",
-  "data-root": "/var/lib/docker",
-  "log-driver": "json-file",
-  "log-opts": {
-    "max-size": "100m",
-    "max-file": "3"
-  },
-  "no-new-privileges": true,
-  "experimental": false
-}
-```
-
-After modifying the `daemon.json` file, you need to restart the Docker service to apply the configuration:
-
-```sh
-sudo systemctl restart docker
-```
-
-#### Installation via PyPI (Recommended) 🐍
 1. Install the package:
     ```sh
     pip install jetson-examples
