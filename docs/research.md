@@ -10,9 +10,9 @@ The Jetson AI Lab Research Group is a global collective for advancing open-sourc
 
 There are virtual [meetings](#meeting-schedule) that anyone is welcome to join, offline discussion on the [Jetson Projects](https://forums.developer.nvidia.com/c/agx-autonomous-machines/jetson-embedded-systems/jetson-projects/78){:target="_blank"} forum, and guidelines for upstreaming open-source [contributions](#contribution-guidelines). 
 
-!!! abstract "Next Meeting - 7/9"
+!!! abstract "Next Meeting - 8/6"
     <!--The next team meeting is on Tuesday, June 11<sup>th</sup> at 9am PST.  View the [recording](#past-meetings) from the last meeting below.-->
-    The next team meeting is on Tuesday, July 9<sup>th</sup> at 9am PST - see the [invite](#meeting-schedule) below or click [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_NTA4ZmE4MDAtYWUwMS00ZTczLWE0YWEtNTE5Y2JkNTFmOWM1%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} to join.
+    The next team meeting is on Tuesday, August 6<sup>th</sup> at 9am PST - see the [invite](#meeting-schedule) below or click [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_NTA4ZmE4MDAtYWUwMS00ZTczLWE0YWEtNTE5Y2JkNTFmOWM1%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} to join the meeting in progress.
 
 ## Topics of Interest
 
@@ -75,22 +75,19 @@ Ongoing technical discussions are encouraged to occur on the forums or GitHub Is
 
 We'll aim to meet monthly or bi-weekly as a team in virtual meetings that anyone is welcome to join and speak during.  We'll discuss the latest updates and experiments that we want to explore.  Please remain courteous to others during the calls.  We'll stick around after for anyone who has questions or didn't get the chance to be heard.
 
-!!! abstract "Tuesday July 9<sup>th</sup> at 9am PST (7/9/24)"
+!!! abstract "Tuesday August 6<sup>th</sup> at 9am PST (8/6/24)"
 
 	- Microsoft Teams - [Meeting Link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_NTA4ZmE4MDAtYWUwMS00ZTczLWE0YWEtNTE5Y2JkNTFmOWM1%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} 
 	- Meeting ID: `264 770 145 196`
     - Passcode: `Uwbdgj`	
 	- Outlook Invite:  [`Jetson AI Lab Research Group.ics`](research/invites/Jetson AI Lab Research Group.ics){:target="_blank"} 
-    
-    <!--
-    - Agenda:
-	    * Agent Studio
-	    * Jetson Copilot
-	    * Jetson Platform Services
-	    * On-device Fine-tuning
-	    * Open Q&A
-    -->
 <!--
+    - Agenda:
+	    * OpenVLA on [MimicGen](https://mimicgen.github.io/){:target="_blank"} 
+	    * [Phi-3 Vision via ONNX](https://techcommunity.microsoft.com/t5/educator-developer-blog/running-phi-3-vision-via-onnx-on-jetson-platform/ba-p/4195041){:target="_blank"} (Jambo Chen)
+	    * [OStream GenRunner](https://genainerds.com/#/Gapi){:target="_blank"} - GAPI (Kerry Shih)
+	    * Open Q&A
+
 	- Forum Topic:  [`forums.developer.nvidia.com/t/293749`](https://forums.developer.nvidia.com/t/jetson-ai-lab-research-group-meeting-on-5-29/293749)
 	
 	- Agenda:
@@ -103,7 +100,37 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 ## Past Meetings
 
-<details open><summary>June 25, 2024</summary>
+<details open><summary>August 6, 2024</summary>
+
+<div><iframe width="570" height="320" src="https://www.youtube.com/embed/pURku7OAWuo" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<p>Topics Covered:</p>
+
+<ul>
+    <li><a href="https://huggingface.co/blog/llama31" target="_blank">Llama-3</a> Function & Specs</a></li>
+	<li>OpenVLA with <a href="https://mimicgen.github.io/" target="_blank">MimicGen</a></li>
+	<li><a href="https://techcommunity.microsoft.com/t5/educator-developer-blog/running-phi-3-vision-via-onnx-on-jetson-platform/ba-p/4195041" target="_blank">Phi-3 Vision via ONNX</a> (Jambo Chen)</li>
+    <li><a href="https://genainerds.com/#/Gapi" target="_blank">OStream GenRunner</a> (Kerry Shih)</li>
+</ul>
+
+</details>
+
+<details><summary>July 9, 2024</summary>
+
+<div><iframe width="570" height="320" src="https://www.youtube.com/embed/Ngaq2WCDlZM" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<p>Topics Covered:</p>
+
+<ul>
+	<li>OpenVLA Quantization (<a href="https://openvla.github.io/" target="_blank">openvla.github.io</a>)</li>
+	<li>visualnav-transformer (<a href="https://github.com/robodhruv/visualnav-transformer" target="_blank">robodhruv/visualnav-transformer</a>)</li>
+    <li>Florence-2, Holoscan, Grammars (Nigel Nelson, <a href="https://github.com/nvidia-holoscan/holohub/tree/main/applications/florence-2-vision" target="_blank">florence-2-vision</a>)</li>
+    <li>LLaMa-Factory (<a href="https://github.com/hiyouga/LLaMA-Factory" target="_blank">hiyouga/LLaMA-Factory</a>)</li>
+</ul>
+
+</details>
+
+<details><summary>June 25, 2024</summary>
 
 <div><iframe width="570" height="320" src="https://www.youtube.com/embed/mIrxJiF1NiI" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -112,8 +139,8 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 <ul>
 	<li>Function Calling in Agent Studio</li>
 	<li><a href="https://www.jetson-ai-lab.com/tutorial_jetson-copilot.html">Jetson Copilot</a> (Chitoku Yato)</li>
-    <li><a href="https://docs.nvidia.com/jetson/jps/moj-overview.html" _target="_blank">Jetson Platform Services</a> (Sammy Ochoa)</li>
-    <li><a href="https://www.hackster.io/shahizat/fine-tuning-llms-using-nvidia-jetson-agx-orin-b17c4d" _target="_blank">On-device Fine-tuning</a> (Nurgaliyev Shakhizat)</li>
+    <li><a href="https://docs.nvidia.com/jetson/jps/moj-overview.html" target="_blank">Jetson Platform Services</a> (Sammy Ochoa)</li>
+    <li><a href="https://www.hackster.io/shahizat/fine-tuning-llms-using-nvidia-jetson-agx-orin-b17c4d" target="_blank">On-device Fine-tuning</a> (Nurgaliyev Shakhizat)</li>
 </ul>
 
 </details>
@@ -140,8 +167,8 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 <ul>
 	<li>OpenAI-style Tools with <a href="https://huggingface.co/NousResearch/Hermes-2-Pro-Llama-3-8B" target="_blank">NousResearch/Hermes-2-Pro-Llama-3-8B</a></li>
-	<li>Jetson Copilot with <a href="https://github.com/dusty-nv/jetson-containers/tree/master/packages/rag/jetrag" _target="_blank">jetrag</a></li>
-	<li><a href="https://github.com/NVIDIA-AI-IOT/whisper_trt" _target="_blank">whisper_trt</a> for Orin Nano</li>
+	<li>Jetson Copilot with <a href="https://github.com/dusty-nv/jetson-containers/tree/master/packages/rag/jetrag" target="_blank">jetrag</a></li>
+	<li><a href="https://github.com/NVIDIA-AI-IOT/whisper_trt" target="_blank">whisper_trt</a> for Orin Nano</li>
 </ul>
 
 </details>
@@ -156,7 +183,7 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 	<li><a href="https://forums.developer.nvidia.com/t/new-vila-1-5-multimodal-vision-language-models-released-in-3b-8b-13b-40b/291784" target="_blank">VILA-1.5 on Video Sequences</a></li>
 	<li>Voicecraft Container (<a href="https://github.com/dusty-nv/jetson-containers/pull/498" target="_blank">Martin Cerven</a>)</li>
 	<li>JetBot / Nanosaur Updates for Orin Nano (Chitoku Yato & Raffaello Bonghi)</li>
-	<li>Controller LLM & Advanced Function Calling (<a href="https://huggingface.co/NousResearch/Hermes-2-Pro-Llama-3-8B" _target="_blank"><code>NousResearch/Hermes-2-Pro-Llama-3-8B</code></a>)</li>
+	<li>Controller LLM & Advanced Function Calling (<a href="https://huggingface.co/NousResearch/Hermes-2-Pro-Llama-3-8B" target="_blank"><code>NousResearch/Hermes-2-Pro-Llama-3-8B</code></a>)</li>
 	<li>RAG Samples with LlamaIndex (Chitoku Yato)</li>
 </ul>
 
@@ -205,7 +232,7 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 </details>
 		
-## Active Members
+## Team Members
 
 Below are shown some of the sustaining members of the group who have been working on generative AI in edge computing:
 
@@ -705,7 +732,20 @@ Below are shown some of the sustaining members of the group who have been workin
 			Romil Shah, Amazon<br/>
 			<small>
 				GenAI IIoT @ AWS | San Jose, CA<br/>
-				(<a href="https://github.com/aws-samples/genai-at-edge" _target="_blank"><code>aws-samples/genai-at-edge</code></a>)
+				(<a href="https://github.com/aws-samples/genai-at-edge" target="_blank"><code>aws-samples/genai-at-edge</code></a>)
+			</small>
+		</div>
+	</div>
+	<div class="bio-container col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://www.linkedin.com/in/kabilan-kb/" target="_blank"><img class="bio-image" src="research/images/Kabilan_Kb.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/kabilan-kb/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			<a href="https://www.youtube.com/@kabilankb2003" target="_blank"><img class="bio-logo" src="research/images/youtube.png"></img></a>
+			<a href="https://github.com/kabilan2003" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
+			Kabilan Kb, Roboticist<br/>
+			<small>
+				NVIDIA DLI Ambassador | Tamil Nadu, IN<br/>
+				(<a href="https://medium.com/@kabilankb2003" target="_blank">ROS2 Tutorials</a>, <a href="https://blogs.nvidia.com/blog/kabilan-kb-autonomous-wheelchair/" target="_blank">Autonomous Wheelchair</a>)
 			</small>
 		</div>
 	</div>

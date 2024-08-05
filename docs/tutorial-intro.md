@@ -34,7 +34,7 @@ Give your locally running LLM an access to vision!
 | **[Stable Diffusion](./tutorial_stable-diffusion.md)** | Run AUTOMATIC1111's [`stable-diffusion-webui`](https://github.com/AUTOMATIC1111/stable-diffusion-webui) to generate images from prompts |
 | **[Stable Diffusion XL](./tutorial_stable-diffusion-xl.md)** | A newer ensemble pipeline consisting of a base model and refiner that results in significantly enhanced and detailed image generation capabilities.|
 
-### Vision Transformers (ViT)
+### Vision Transformers & CV
 
 |      |                     |
 | :---------- | :----------------------------------- |
@@ -43,13 +43,15 @@ Give your locally running LLM an access to vision!
 | **[NanoSAM](./vit/tutorial_nanosam.md)** | [NanoSAM](https://github.com/NVIDIA-AI-IOT/nanosam), SAM model variant capable of running in real-time on Jetson |
 | **[SAM](./vit/tutorial_sam.md)** | Meta's [SAM](https://github.com/facebookresearch/segment-anything), Segment Anything model |
 | **[TAM](./vit/tutorial_tam.md)** | [TAM](https://github.com/gaomingqi/Track-Anything), Track-Anything model, is an interactive tool for video object tracking and segmentation |
+| **[Ultralytics YOLOv8](./tutorial_ultralytics.md)** | Run [Ultralytics](https://www.ultralytics.com) YOLOv8 on Jetson with NVIDIA TensorRT. |
 
-### Vector Database
+### RAG & Vector Database
 
 |      |                     |
 | :---------- | :----------------------------------- |
 | **[NanoDB](./tutorial_nanodb.md)** | Interactive demo to witness the impact of Vector Database that handles multimodal data |
-
+| **[LlamaIndex](./tutorial_llamaindex.md)** | Realize RAG (Retrieval Augmented Generation) so that an LLM can work with your documents |
+| **[LlamaIndex](./tutorial_jetson-copilot.md)** | Reference application for building your own local AI assistants using LLM, RAG, and VectorDB |
 
 ### Audio
 
@@ -57,13 +59,7 @@ Give your locally running LLM an access to vision!
 | :---------- | :----------------------------------- |
 | **[Whisper](./tutorial_whisper.md)** | OpenAI's [Whisper](https://github.com/openai/whisper), pre-trained model for automatic speech recognition (ASR) |
 | **[AudioCraft](./tutorial_audiocraft.md)** | Meta's [AudioCraft](https://github.com/facebookresearch/audiocraft), to produce high-quality audio and music |
-| **[Voicecraft](./tutorial_voicecraft.md)** | [Voicecraft](https://github.com/jasonppy/VoiceCraft), Speech editing and zero shot TTS |
-
-### Metropolis Microservices
-
-|      |                     |
-| :---------- | :----------------------------------- |
-| **[First Steps](./tutorial_mmj.md)** | Get [Metropolis Microservices](https://developer.nvidia.com/metropolis-microservices) up & running on Jetson with NVStreamer and AI NVR capabilities. |
+| **[Voicecraft](./tutorial_voicecraft.md)** | Interactive speech editing and zero shot TTS |
 
 
 ## About NVIDIA Jetson
