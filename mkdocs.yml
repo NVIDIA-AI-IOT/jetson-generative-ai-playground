@@ -92,13 +92,14 @@ nav:
       - LLaVA: tutorial_llava.md
       - Live LLaVA: tutorial_live-llava.md
       - NanoVLM: tutorial_nano-vlm.md
-    - Vision Transformers (ViT): 
+    - Vision Transformers & CV: 
       - vit/index.md
       - EfficientViT: vit/tutorial_efficientvit.md
       - NanoOWL: vit/tutorial_nanoowl.md
       - NanoSAM: vit/tutorial_nanosam.md
       - SAM: vit/tutorial_sam.md
       - TAM: vit/tutorial_tam.md
+      - Ultralytics YOLOv8 🆕: tutorial_ultralytics.md
     - RAG & Vector Database:
       - NanoDB: tutorial_nanodb.md
       - LlamaIndex: tutorial_llamaindex.md
@@ -118,7 +119,7 @@ nav:
       - 📑 Knowledge Distillation: tutorial_distillation.md
       - 🔖 SSD + Docker: tips_ssd-docker.md
       - 🔖 Memory optimization: tips_ram-optimization.md
-      - 🚅 Initial Setup Guide - Jetson Orin Nano 🆕: initial_setup_jon.md
+      - 🚅 Initial Setup Guide - Jetson Orin Nano: initial_setup_jon.md
   - Benchmarks: benchmarks.md
   - Projects: community_articles.md
   - Research Group: research.md

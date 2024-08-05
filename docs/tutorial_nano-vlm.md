@@ -144,8 +144,7 @@ jetson-containers run $(autotag nano_llm) \
 ```
 
 <iframe width="720" height="405" src="https://www.youtube.com/embed/_7gughth8C0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-<small>Note:  support will be added to the web UI for continuous multi-image queries on video sequences and is WIP.</small>
-  
+
 ## Python Code
 
 For a simplified code example of doing live VLM streaming from Python, see [here](https://dusty-nv.github.io/NanoLLM/multimodal.html#code-example){:target="_blank"} in the NanoLLM docs. 
