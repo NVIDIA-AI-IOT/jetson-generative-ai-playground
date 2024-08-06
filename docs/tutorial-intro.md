@@ -62,6 +62,12 @@ Give your locally running LLM an access to vision!
 | **[Voicecraft](./tutorial_voicecraft.md)** | Interactive speech editing and zero shot TTS |
 
 
+## NVIDIA SDKs
+|      |                     |
+| :---------- | :----------------------------------- |
+| **[Holoscan SDK](./tutorial_holoscan.md)** | Use the [Holoscan-SDK](https://github.com/nvidia-holoscan/holoscan-sdk) to run high-throughput, low-latency edge AI pipelines |
+
+
 ## About NVIDIA Jetson
 
 !!! note
