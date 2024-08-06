@@ -80,7 +80,7 @@ nav:
   - Tutorials:
     - Introduction: tutorial-intro.md
     - Hello AI World: hello_ai_world.md
-    - Agent Studio 🆕: agent_studio.md
+    - Agent Studio: agent_studio.md
     - Text (LLM):
       - text-generation-webui: tutorial_text-generation.md 
       - ollama: tutorial_ollama.md
@@ -103,7 +103,7 @@ nav:
     - RAG & Vector Database:
       - NanoDB: tutorial_nanodb.md
       - LlamaIndex: tutorial_llamaindex.md
-      - Jetson Copilot 🆕: tutorial_jetson-copilot.md
+      - Jetson Copilot: tutorial_jetson-copilot.md
     - Audio:
       - Whisper: tutorial_whisper.md
       - AudioCraft: tutorial_audiocraft.md
@@ -112,7 +112,7 @@ nav:
       - Stable Diffusion: tutorial_stable-diffusion.md
       - Stable Diffusion XL: tutorial_stable-diffusion-xl.md
     - NVIDIA SDKs:
-      - Holoscan SDK: tutorial_holoscan.md
+      - Holoscan SDK 🆕: tutorial_holoscan.md
     #- Metropolis Microservices:
     #  - First Steps: tutorial_mmj.md
     # - Tools:
