@@ -61,6 +61,11 @@ Give your locally running LLM an access to vision!
 | **[AudioCraft](./tutorial_audiocraft.md)** | Meta's [AudioCraft](https://github.com/facebookresearch/audiocraft), to produce high-quality audio and music |
 | **[Voicecraft](./tutorial_voicecraft.md)** | Interactive speech editing and zero shot TTS |
 
+### Gapi / API Integrations
+|      |                     |
+| :---------- | :----------------------------------- |
+| **[Workflows](./tutorial_gapi_workflows.md)** | Integrating generative AI into real world environments |
+| **[Micro Services](./tutorial_gapi_microservices.md)** | Wrapping models and code to participate in systems |
 
 ## About NVIDIA Jetson
 

@@ -630,13 +630,13 @@ Below are shown some of the sustaining members of the group who have been workin
 	</div>
 	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
-			<a href="https://www.ostream.com/" target="_blank"><img class="bio-image" src="research/images/Kerry_Shih.jpg"></img></a><br/>
-			<a href="https://www.linkedin.com/in/kerryshih/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			<a href="https://www.linkedin.com/in/kerryshih" target="_blank"><img class="bio-image" src="research/images/kerryshih.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/kerryshih" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
 			<a href="https://www.youtube.com/channel/UCpxVxnt4KO2AzuV_XOE-97Q" target="_blank"><img class="bio-logo" src="research/images/youtube.png"></img></a>
-			Kerry Shih, <a href="https://www.ostream.com/" target="_blank">OStream</a><br/>
+			Kerry Shih, <a href="https://GenAINerds.com/" target="_blank">GenAI Nerds</a><br/>
 			<small>
 				Founder, CEO | Los Angeles, CA<br/>
-				(<a href="https://www.ostream.com/#/OSGenRunner" target="_blank">GenRunner</a>, <a href="https://www.genainerds.com/" target="_blank">GenAI Nerds</a>)
+				(<a href="https://GenAINerds.com/#/Gapi" target="_blank">Gapi</a>
 			</small>
 		</div>
 	</div>
@@ -750,3 +750,4 @@ Below are shown some of the sustaining members of the group who have been workin
 		</div>
 	</div>
 </div>
+

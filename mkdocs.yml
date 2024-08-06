@@ -111,6 +111,9 @@ nav:
     - Image Generation:
       - Stable Diffusion: tutorial_stable-diffusion.md
       - Stable Diffusion XL: tutorial_stable-diffusion-xl.md
+    - Gapi / API Integrations:
+      - Workflows 🆕: tutorial_gapi_workflows.md
+      - Micro Services 🆕: tutorial_gapi_microservices.md
     #- Metropolis Microservices:
     #  - First Steps: tutorial_mmj.md
     # - Tools:
