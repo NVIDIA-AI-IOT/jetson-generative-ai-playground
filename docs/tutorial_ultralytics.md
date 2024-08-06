@@ -107,7 +107,7 @@ Benchmarks of the YOLOv8 variants with TensorRT were run by [Seeed Studio](https
     | YOLOv8m |    11   |  11  |  33  |  56  |
     | YOLOv8l |    6    |   6  |  20  |  38  |
     
-=== "Orin NX 8GB"
+=== "Orin NX 16GB"
 
     | Model   | PyTorch | FP32 | FP16 | INT8 |
     |---------|:-------:|:----:|:----:|:----:|
