@@ -111,6 +111,8 @@ nav:
     - Image Generation:
       - Stable Diffusion: tutorial_stable-diffusion.md
       - Stable Diffusion XL: tutorial_stable-diffusion-xl.md
+    - NVIDIA SDKs:
+      - Holoscan SDK: tutorial_holoscan.md
     #- Metropolis Microservices:
     #  - First Steps: tutorial_mmj.md
     # - Tools:
