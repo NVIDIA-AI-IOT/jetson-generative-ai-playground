@@ -22,7 +22,6 @@ Give your locally running LLM an access to vision!
 
 |      |                     |
 | :---------- | :----------------------------------- |
-| **[Mini-GPT4](./tutorial_minigpt4.md)** | [Mini-GPT4](https://minigpt-4.github.io/), an open-source model that demonstrate vision-language capabilities.|
 | **[LLaVA](./tutorial_llava.md)** | [Large Language and Vision Assistant](https://llava-vl.github.io/), multimodal model that combines a vision encoder and LLM for visual and language understanding. |
 | **[Live LLaVA](./tutorial_live-llava.md)** | Run multimodal models interactively on live video streams over a repeating set of prompts. |
 | **[NanoVLM](./tutorial_nano-vlm.md)** | Use mini vision/language models and the optimized multimodal pipeline for live streaming. |
@@ -61,12 +60,16 @@ Give your locally running LLM an access to vision!
 | **[AudioCraft](./tutorial_audiocraft.md)** | Meta's [AudioCraft](https://github.com/facebookresearch/audiocraft), to produce high-quality audio and music |
 | **[Voicecraft](./tutorial_voicecraft.md)** | Interactive speech editing and zero shot TTS |
 
-
-## NVIDIA SDKs
+### NVIDIA SDKs
 |      |                     |
 | :---------- | :----------------------------------- |
 | **[Holoscan SDK](./tutorial_holoscan.md)** | Use the [Holoscan-SDK](https://github.com/nvidia-holoscan/holoscan-sdk) to run high-throughput, low-latency edge AI pipelines |
 
+### Gapi / API Integrations
+|      |                     |
+| :---------- | :----------------------------------- |
+| **[Workflows](./tutorial_gapi_workflows.md)** | Integrating generative AI into real world environments |
+| **[Micro Services](./tutorial_gapi_microservices.md)** | Wrapping models and code to participate in systems |
 
 ## About NVIDIA Jetson
 
