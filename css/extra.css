@@ -1,0 +1,128 @@
+.md-header {
+    background: #FFFFFF
+}
+
+.md-logo {
+    display: none!important;
+}
+
+.md-icon {
+    color: black;
+} 
+
+.md-header__title {
+    color: #000000;
+    margin-left: 0.6rem!important;
+}
+
+.md-tabs {
+    background: #000000
+}
+
+.md-nav__link--active {
+    font-weight: 900;
+}
+
+/* Bigger width for md-content for main text */
+.md-grid {
+    max-width: 90%; /* or 100%, if you want to stretch to full-width */
+  }
+
+.md-banner__inner {
+    font-size: .7rem;
+    margin: 0.2rem auto;
+    margin-top: 0.2rem;
+    margin-right: auto;
+    margin-bottom: 0.2rem;
+    margin-left: auto;
+    padding: 0 0.8rem;
+}
+
+.md-typeset a {
+    text-decoration: underline;
+    text-decoration-color: var(--md-accent-fg-color);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.3125em;
+}
+
+.md-typeset a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--md-primary-fg-color);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.3125em;
+}
+
+.global-footer__links{
+    clear: both;
+    list-style-type: none!important;
+    margin: 0 0 4px!important;
+    padding: 0;
+}
+
+.global-footer__links>li{
+    display: inline-block;
+    margin-left: 5px!important;
+    margin-right: 5px!important;
+    margin-bottom: 0px!important;
+    padding-right: 10px;
+    position: relative;
+}
+
+.global-footer__links>li:last-child:after {
+    display: none
+}
+
+.global-footer__links>li>a {
+    color: #666;
+    display: inline-block;
+    font-size: 1pc;
+    font-weight: 100;
+    line-height: 24px;
+    text-decoration: none;
+}
+
+.global-footer__links>li:after{
+    background: #666;
+    content: " ";
+    height: 14px;
+    position: absolute;
+    right: 0;
+    top: 5px;
+    width: 1px;
+}
+
+.global-footer__copyright{
+    clear: both;
+    color: #666;
+    font-size: 9pt;
+    line-height: 1pc;
+}
+
+.md-button {
+    margin-top: .5rem!important;
+    margin-right: .5rem!important;
+    color: var(--md-primary-fg-color)!important;
+    border-color: var(--md-accent-fg-color)!important;
+    text-decoration: none!important;
+    line-height: 1.25!important;
+    font-weight: 700!important;
+}
+
+.md-button--primary {
+    background-color: var(--md-accent-fg-color)!important;
+    border-width: 0!important;
+}
+
+.md-button--primary:focus,
+.md-button--primary:hover {
+    background-color: var(--md-accent-fg-color--light)!important;
+}
+
+.md-typeset .tabbed-set {
+  border: 0.5px solid lightgray;
+}
+
+.md-typeset .tabbed-content {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
