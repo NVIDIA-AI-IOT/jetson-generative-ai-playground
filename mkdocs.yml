@@ -92,18 +92,23 @@ nav:
       - LLaVA: tutorial_llava.md
       - Live LLaVA: tutorial_live-llava.md
       - NanoVLM: tutorial_nano-vlm.md
-    - Vision Transformers & CV: 
+    - Vision Transformers (ViT): 
       - vit/index.md
       - EfficientViT: vit/tutorial_efficientvit.md
       - NanoOWL: vit/tutorial_nanoowl.md
       - NanoSAM: vit/tutorial_nanosam.md
       - SAM: vit/tutorial_sam.md
       - TAM: vit/tutorial_tam.md
-      - Ultralytics YOLOv8 🆕: tutorial_ultralytics.md
     - RAG & Vector Database:
       - NanoDB: tutorial_nanodb.md
       - LlamaIndex: tutorial_llamaindex.md
       - Jetson Copilot: tutorial_jetson-copilot.md
+    - API Integrations 🆕:
+      - ROS2 Nodes: ros.md
+      - Holoscan SDK: tutorial_holoscan.md
+      - Gapi Workflows: tutorial_gapi_workflows.md
+      - Gapi Micro Services: tutorial_gapi_microservices.md
+      - Ultralytics YOLOv8: tutorial_ultralytics.md
     - Audio:
       - Whisper: tutorial_whisper.md
       - AudioCraft: tutorial_audiocraft.md
@@ -111,11 +116,6 @@ nav:
     - Image Generation:
       - Stable Diffusion: tutorial_stable-diffusion.md
       - Stable Diffusion XL: tutorial_stable-diffusion-xl.md
-    - NVIDIA SDKs:
-      - Holoscan SDK 🆕: tutorial_holoscan.md
-    - Gapi / API Integrations:
-      - Workflows 🆕: tutorial_gapi_workflows.md
-      - Micro Services 🆕: tutorial_gapi_microservices.md
     #- Metropolis Microservices:
     #  - First Steps: tutorial_mmj.md
     # - Tools:
