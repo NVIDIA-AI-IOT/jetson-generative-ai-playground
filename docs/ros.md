@@ -81,17 +81,15 @@ To build your own ROS2 node using LLM or VLM, first create a ROS 2 workspace and
 We will create the launch folder, as well as the camera_input.launch.py and your-node-name_py.py files in later steps. 
 
 
-###**Editing the setup.py file**
+### Editing the Setup
 
-Let’s begin by editing the setup.py file. 
-
-At the top of the file, add 
+Let’s begin by editing the `setup.py` file. At the top of the file, add 
 
 ```
 from glob import glob 
 ```
 
-In the setup method, find the data_files=[] line, and make sure it looks like this: 
+In the setup method, find the `data_files=[]` line, and make sure it looks like this: 
 
 ```
 data_files=[
@@ -127,7 +125,7 @@ entry_points={
 *All done for this file!*
 
 
-###**Creating and writing in the your-node-name_py.py file**
+### Creating the Node
 
 Inside your package, under the folder that shares your package's name and contains the ```__init__.py``` file, create a file named after your node. For NanoLLM, this file would be called ```nano_llm_py.py```. 
 
@@ -242,7 +240,7 @@ Lastly, edit the generate method under the ```GENERATE OUTPUT``` comment to incl
 *All done for this file!*
 
 
-###**Creating and writing in the camera_input.launch.py file** 
+### Creating the Launch File 
 
 Inside your package, create the launch folder. Create your launch file inside of it. 
 
@@ -254,7 +252,7 @@ touch camera_input.launch.py
 
 You can edit this file externally, and it will update within the container. Paste the following code into the empty file. 
 
-```
+```python
 from launch import LaunchDescription
 from launch_ros.actions import Node
 from launch.substitutions import LaunchConfiguration
