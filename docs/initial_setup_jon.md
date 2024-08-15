@@ -265,7 +265,7 @@ Once we know the onboard firmware is up-to-date and ready for JetPack 6, we can 
 
     On your PC, download JetPack 6.0 GA image for Jetson Orin Nano Developer Kit from the official [JetPack 6.0 page](https://developer.nvidia.com/embedded/jetpack-sdk-60) or from the below direct link button.
 
-    [Jetson Orin Nano Developer Kit<br>JetPack 6.0 GA image]([#](https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v3.0/jp60-orin-nano-sd-card-image.zip)){ .md-button .md-button--primary }
+    [Jetson Orin Nano Developer Kit<br>JetPack 6.0 GA image](https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v3.0/jp60-orin-nano-sd-card-image.zip){ .md-button .md-button--primary }
 
 2. Use Balena Etcher to flash image to SD card
 
