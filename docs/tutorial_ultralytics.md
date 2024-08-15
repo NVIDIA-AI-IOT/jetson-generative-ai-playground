@@ -94,7 +94,7 @@ The YOLOv8n model in PyTorch format is converted to TensorRT to run inference wi
 
 ## Benchmarks
 
-Benchmarks of the YOLOv8 variants with TensorRT were run by [Seeed Studio](https://www.seeedstudio.com/blog/2023/03/30/yolov8-performance-benchmarks-on-nvidia-jetson-devices/) on their [reComputer](https://www.seeedstudio.com/nvidia-jetson.html) systems:
+Benchmarks of the YOLOv8 variants with TensorRT were run by [Seeed Studio](https://www.seeedstudio.com/blog/2023/03/30/yolov8-performance-benchmarks-on-nvidia-jetson-devices/) on their [reComputer](https://www.seeedstudio.com/tag/nvidia.html) systems:
 
 <img src="./images/YOLOv8-benchmarks.png" width="100%">
 
@@ -107,7 +107,7 @@ Benchmarks of the YOLOv8 variants with TensorRT were run by [Seeed Studio](https
     | YOLOv8m |    11   |  11  |  33  |  56  |
     | YOLOv8l |    6    |   6  |  20  |  38  |
     
-=== "Orin NX 8GB"
+=== "Orin NX 16GB"
 
     | Model   | PyTorch | FP32 | FP16 | INT8 |
     |---------|:-------:|:----:|:----:|:----:|
@@ -136,6 +136,32 @@ To learn more, visit our [comprehensive guide on running Ultralytics YOLOv8 on N
 !!! Note
 
     Ultralytics YOLOv8 models are offered under `AGPL-3.0 License` which is an [OSI-approved](https://opensource.org/license) open-source license and is ideal for students and enthusiasts, promoting open collaboration and knowledge sharing. See the [LICENSE](https://github.com/ultralytics/ultralytics/blob/main/LICENSE) file for more details.
+
+## One-Click Run Ultralytics YOLO on Jetson Orin - by Seeed Studio [jetson-examples](https://github.com/Seeed-Projects/jetson-examples)
+
+### Quickstart ⚡
+1. Install the package:
+    ```sh
+    pip install jetson-examples
+    ```
+
+2. Restart your reComputer:
+    ```sh
+    sudo reboot
+    ```
+
+3. Run Ultralytics YOLO on Jetson with one command:
+    ```sh
+    reComputer run ultralytics-yolo
+    ```
+4. Enter [`http://127.0.0.1:5001`](http://127.0.0.1:5001) or `http://device_ip:5001` in your browser to access the Web UI.
+    <p align="center">
+      <img src="images/ultralytics_yolo_webui_by_seeedstudio.gif" alt="ultralytics_yolo_webui_by_seeedstudio.gif">
+    </p>
+
+
+For more details, please read: [Jetson-Example: Run Ultralytics YOLO Platform Service on NVIDIA Jetson Orin ](https://github.com/Seeed-Projects/jetson-examples/blob/main/reComputer/scripts/ultralytics-yolo/README.md).
+
 
 ## Follow Ultralytics to stay updated!
 

@@ -22,19 +22,11 @@ Give your locally running LLM an access to vision!
 
 |      |                     |
 | :---------- | :----------------------------------- |
-| **[Mini-GPT4](./tutorial_minigpt4.md)** | [Mini-GPT4](https://minigpt-4.github.io/), an open-source model that demonstrate vision-language capabilities.|
 | **[LLaVA](./tutorial_llava.md)** | [Large Language and Vision Assistant](https://llava-vl.github.io/), multimodal model that combines a vision encoder and LLM for visual and language understanding. |
 | **[Live LLaVA](./tutorial_live-llava.md)** | Run multimodal models interactively on live video streams over a repeating set of prompts. |
 | **[NanoVLM](./tutorial_nano-vlm.md)** | Use mini vision/language models and the optimized multimodal pipeline for live streaming. |
 
-### Image Generation
-
-|      |                     |
-| :---------- | :----------------------------------- |
-| **[Stable Diffusion](./tutorial_stable-diffusion.md)** | Run AUTOMATIC1111's [`stable-diffusion-webui`](https://github.com/AUTOMATIC1111/stable-diffusion-webui) to generate images from prompts |
-| **[Stable Diffusion XL](./tutorial_stable-diffusion-xl.md)** | A newer ensemble pipeline consisting of a base model and refiner that results in significantly enhanced and detailed image generation capabilities.|
-
-### Vision Transformers & CV
+### Vision Transformers
 
 |      |                     |
 | :---------- | :----------------------------------- |
@@ -43,7 +35,6 @@ Give your locally running LLM an access to vision!
 | **[NanoSAM](./vit/tutorial_nanosam.md)** | [NanoSAM](https://github.com/NVIDIA-AI-IOT/nanosam), SAM model variant capable of running in real-time on Jetson |
 | **[SAM](./vit/tutorial_sam.md)** | Meta's [SAM](https://github.com/facebookresearch/segment-anything), Segment Anything model |
 | **[TAM](./vit/tutorial_tam.md)** | [TAM](https://github.com/gaomingqi/Track-Anything), Track-Anything model, is an interactive tool for video object tracking and segmentation |
-| **[Ultralytics YOLOv8](./tutorial_ultralytics.md)** | Run [Ultralytics](https://www.ultralytics.com) YOLOv8 on Jetson with NVIDIA TensorRT. |
 
 ### RAG & Vector Database
 
@@ -53,6 +44,16 @@ Give your locally running LLM an access to vision!
 | **[LlamaIndex](./tutorial_llamaindex.md)** | Realize RAG (Retrieval Augmented Generation) so that an LLM can work with your documents |
 | **[LlamaIndex](./tutorial_jetson-copilot.md)** | Reference application for building your own local AI assistants using LLM, RAG, and VectorDB |
 
+
+### API Integrations
+|      |                     |
+| :---------- | :----------------------------------- |
+| **[ROS2 Nodes](./ros.md)** | Optimized LLM and VLM provided as [ROS2 nodes](./ros.md) for robotics |
+| **[Holoscan SDK](./tutorial_holoscan.md)** | Use the [Holoscan-SDK](https://github.com/nvidia-holoscan/holoscan-sdk) to run high-throughput, low-latency edge AI pipelines |
+| **[Gapi Workflows](./tutorial_gapi_workflows.md)** | Integrating generative AI into real world environments |
+| **[Gapi Micro Services](./tutorial_gapi_microservices.md)** | Wrapping models and code to participate in systems |
+| **[Ultralytics YOLOv8](./tutorial_ultralytics.md)** | Run [Ultralytics](https://www.ultralytics.com) YOLOv8 on Jetson with NVIDIA TensorRT. |
+
 ### Audio
 
 |      |                     |
@@ -61,6 +62,12 @@ Give your locally running LLM an access to vision!
 | **[AudioCraft](./tutorial_audiocraft.md)** | Meta's [AudioCraft](https://github.com/facebookresearch/audiocraft), to produce high-quality audio and music |
 | **[Voicecraft](./tutorial_voicecraft.md)** | Interactive speech editing and zero shot TTS |
 
+### Image Generation
+
+|      |                     |
+| :---------- | :----------------------------------- |
+| **[Stable Diffusion](./tutorial_stable-diffusion.md)** | Run AUTOMATIC1111's [`stable-diffusion-webui`](https://github.com/AUTOMATIC1111/stable-diffusion-webui) to generate images from prompts |
+| **[Stable Diffusion XL](./tutorial_stable-diffusion-xl.md)** | A newer ensemble pipeline consisting of a base model and refiner that results in significantly enhanced and detailed image generation capabilities.|
 
 ## About NVIDIA Jetson
 
