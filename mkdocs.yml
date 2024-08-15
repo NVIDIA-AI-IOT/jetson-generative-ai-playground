@@ -99,6 +99,10 @@ nav:
       - NanoSAM: vit/tutorial_nanosam.md
       - SAM: vit/tutorial_sam.md
       - TAM: vit/tutorial_tam.md
+    - 🎨 Image Generation:
+      - Flux & ComfyUI: tutorial_comfyui_flux.md
+      - Stable Diffusion: tutorial_stable-diffusion.md
+      - Stable Diffusion XL: tutorial_stable-diffusion-xl.md
     - 🗄️ RAG & Vector Database:
       - NanoDB: tutorial_nanodb.md
       - LlamaIndex: tutorial_llamaindex.md
@@ -113,10 +117,6 @@ nav:
       - Whisper: tutorial_whisper.md
       - AudioCraft: tutorial_audiocraft.md
       - VoiceCraft: tutorial_voicecraft.md
-    - 🎨 Image Generation:
-      - Flux & ComfyUI: tutorial_comfyui_flux.md
-      - Stable Diffusion: tutorial_stable-diffusion.md
-      - Stable Diffusion XL: tutorial_stable-diffusion-xl.md
     #- Metropolis Microservices:
     #  - First Steps: tutorial_mmj.md
     # - Tools:
