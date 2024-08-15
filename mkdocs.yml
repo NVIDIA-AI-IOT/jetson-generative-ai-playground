@@ -106,6 +106,7 @@ nav:
     - API Integrations 🆕:
       - ROS2 Nodes: ros.md
       - Holoscan SDK: tutorial_holoscan.md
+      - Jetson Platform Services: tutorial_jps.md
       - Gapi Workflows: tutorial_gapi_workflows.md
       - Gapi Micro Services: tutorial_gapi_microservices.md
       - Ultralytics YOLOv8: tutorial_ultralytics.md
