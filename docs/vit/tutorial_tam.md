@@ -24,18 +24,15 @@ Let's run [`TAM`](https://github.com/gaomingqi/Track-Anything) to perform Segmen
     
 		```bash
 		git clone https://github.com/dusty-nv/jetson-containers
-		cd jetson-containers
-		sudo apt update; sudo apt install -y python3-pip
-		pip3 install -r requirements.txt
+		bash jetson-containers/install.sh
 		``` 
 
 ## How to start
 
-Use `run.sh` and `autotag` script to automatically pull or build a compatible container image.
+Use the `jetson-containers run` and `autotag` commands to automatically pull or build a compatible container image.
 
 ```
-cd jetson-containers
-./run.sh $(./autotag tam)
+jetson-containers run $(autotag tam)
 ```
 
 The container has a default run command (`CMD`) that will automatically start TAM's web server.
@@ -88,5 +85,5 @@ mv E2FGVI-HQ-CVPR22.pth ./data/models/tam/
 And you can try running the TAM container.
 
 ```
-./run.sh $(./autotag tam)
+jetson-containers run $(autotag tam)
 ```

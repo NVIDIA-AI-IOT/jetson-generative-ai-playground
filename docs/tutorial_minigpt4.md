@@ -11,7 +11,6 @@ Give your locally running LLM an access to vision, by running [MiniGPT-4](https:
         <span class="blobDarkGreen4">Jetson AGX Orin (64GB)</span>
         <span class="blobDarkGreen5">Jetson AGX Orin (32GB)</span>
         <span class="blobLightGreen3">Jetson Orin NX (16GB)</span>
-        <span class="blobLightGreen4">Jetson Orin Nano (8GB)</span>
 
     2. Running one of the following versions of [JetPack](https://developer.nvidia.com/embedded/jetpack):
 
@@ -27,9 +26,7 @@ Give your locally running LLM an access to vision, by running [MiniGPT-4](https:
     
 		```bash
 		git clone https://github.com/dusty-nv/jetson-containers
-		cd jetson-containers
-		sudo apt update; sudo apt install -y python3-pip
-		pip3 install -r requirements.txt
+		bash jetson-containers/install.sh
 		``` 
 		
 ## Start `minigpt4` container with models
@@ -37,8 +34,7 @@ Give your locally running LLM an access to vision, by running [MiniGPT-4](https:
 To start the MiniGPT4 container and webserver with the recommended models, run this command:
 
 ```
-cd jetson-containers
-./run.sh $(./autotag minigpt4) /bin/bash -c 'cd /opt/minigpt4.cpp/minigpt4 && python3 webui.py \
+jetson-containers run $(autotag minigpt4) /bin/bash -c 'cd /opt/minigpt4.cpp/minigpt4 && python3 webui.py \
   $(huggingface-downloader --type=dataset maknee/minigpt4-13b-ggml/minigpt4-13B-f16.bin) \
   $(huggingface-downloader --type=dataset maknee/ggml-vicuna-v0-quantized/ggml-vicuna-13B-v0-q5_k.bin)'
 ```

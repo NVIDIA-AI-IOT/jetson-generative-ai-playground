@@ -27,9 +27,7 @@ Let's run Meta's [`SAM`](https://github.com/facebookresearch/segment-anything) o
     
 		```bash
 		git clone https://github.com/dusty-nv/jetson-containers
-		cd jetson-containers
-		sudo apt update; sudo apt install -y python3-pip
-		pip3 install -r requirements.txt
+		bash jetson-containers/install.sh
 		``` 
 		
     [^1]: The biggest `vit_h` (2.4GB) model may not ran due to OOM, but `vit_l` (1.1GB) runs on Jetson Orin Nano.
@@ -37,11 +35,10 @@ Let's run Meta's [`SAM`](https://github.com/facebookresearch/segment-anything) o
 
 ## How to start
 
-Use `run.sh` and `autotag` script to automatically pull or build a compatible container image.
+Use the `jetson-containers run` and `autotag` commands to automatically pull or build a compatible container image.
 
 ```
-cd jetson-containers
-./run.sh $(./autotag sam)
+jetson-containers run $(autotag sam)
 ```
 
 The container has a default run command (`CMD`) that will automatically start the Jupyter Lab server.

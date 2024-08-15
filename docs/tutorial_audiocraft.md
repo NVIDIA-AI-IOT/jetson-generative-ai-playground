@@ -23,9 +23,7 @@ Let's run Meta's [AudioCraft](https://github.com/facebookresearch/audiocraft), t
     
 		```bash
 		git clone https://github.com/dusty-nv/jetson-containers
-		cd jetson-containers
-		sudo apt update; sudo apt install -y python3-pip
-		pip3 install -r requirements.txt
+		bash jetson-containers/install.sh
 		``` 
 
 ## How to start
@@ -33,8 +31,7 @@ Let's run Meta's [AudioCraft](https://github.com/facebookresearch/audiocraft), t
 Use `run.sh` and `autotag` script to automatically pull or build a compatible container image.
 
 ```
-cd jetson-containers
-./run.sh $(./autotag audiocraft)
+jetson-containers run $(autotag audiocraft)
 ```
 
 The container has a default run command (`CMD`) that will automatically start the Jupyter Lab server.
@@ -53,12 +50,14 @@ On Jupyter Lab navigation pane on the left, double-click `demos` folder.
 
 ### AudioGen demo
 
-For "**Text-conditional Generation**", you should get something like this.
+<!-- For "**Text-conditional Generation**", you should get something like this.
 
 <audio controls>
   <source src="./assets/subway.wav" type="audio/wav">
 Your browser does not support the audio element.
-</audio>
+</audio> -->
+
+Run cells with ```Shift + Enter```, first one will download models, which can take some time.
 
 !!! info
 
@@ -68,13 +67,30 @@ Your browser does not support the audio element.
     Error caught was: No module named 'triton'
     ```
 
-!!! warning
+<!-- !!! warning
 
-    When running the 5-th cell of `audiogen_demo.ipynb`, you may run into "**Failed to load audio**" RuntimeError.
+    When running the 5-th cell of `audiogen_demo.ipynb`, you may run into "**Failed to load audio**" RuntimeError. -->
 
-### MusicGen demo
+In the *Audio Continuation* cells, you can generate continuation based on text, while in *Text-conditional Generation* you can generate audio based just on text descriptions.
 
-For "**Text-conditional Generation**", you should get something like this.
+You can also use your own audio as prompt, and use text descriptions to generate continuation:
+```
+prompt_waveform, prompt_sr = torchaudio.load("../assets/sirens_and_a_humming_engine_approach_and_pass.mp3") # you can upload your own audio
+prompt_duration = 2
+prompt_waveform = prompt_waveform[..., :int(prompt_duration * prompt_sr)]
+output = model.generate_continuation(prompt_waveform.expand(3, -1, -1), prompt_sample_rate=prompt_sr,descriptions=[
+        'Subway train blowing its horn',   # text descriptions for continuation
+        'Horse neighing furiously',
+        'Cat hissing'
+], progress=True)
+display_audio(output, sample_rate=16000)
+```
+
+### MusicGen and MAGNeT demos
+
+The two other jupyter notebooks are similar to AuidioGen, where you can generate continuation or generate audio, while using models trained to generate music.
+
+<!-- For "**Text-conditional Generation**", you should get something like this.
 
 <audio controls>
   <source src="./assets/80s-pop.wav" type="audio/wav">
@@ -83,4 +99,4 @@ Your browser does not support the audio element.
 
 !!! warning
 
-    When running the 5-th cell of `musicgen_demo.ipynb`, you may run into "**Failed to load audio**" RuntimeError.
+    When running the 5-th cell of `musicgen_demo.ipynb`, you may run into "**Failed to load audio**" RuntimeError. -->

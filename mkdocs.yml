@@ -1,4 +1,4 @@
-site_name: NVIDIA Jetson Generative AI Lab
+site_name: NVIDIA Jetson AI Lab
 site_url: 
 site_description: Showcasing generative AI projects that run on Jetson
 copyright: <ul class="global-footer__links"><li><a href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/" target="_blank">Privacy Policy</a></li><li> <a href="https://www.nvidia.com/en-us/privacy-center/" target="_blank">Manage My Privacy</a> </li> <li> <a href="https://www.nvidia.com/en-us/preferences/email-preferences/" target="_blank">Do Not Sell or Share My Data</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/legal-info/" target="_blank">Legal</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/accessibility/" target="_blank">Accessibility</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/company-policies/" target="_self">Corporate Policies</a> </li> <li> <a href="https://www.nvidia.com/en-us/product-security/" target="_blank">Product Security</a> </li> <li> <a href="https://www.nvidia.com/en-us/contact/" target="_blank">Contact</a> </li> </ul><div class="global-footer__copyright">Copyright &copy; 2024 NVIDIA Corporation</div>
@@ -63,6 +63,8 @@ markdown_extensions:
   - pymdownx.tilde
   - pymdownx.inlinehilite
   - pymdownx.snippets
+  - pymdownx.details
+  - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true 
   - meta
@@ -77,42 +79,56 @@ nav:
   - Home: index.md
   - Tutorials:
     - Introduction: tutorial-intro.md
+    - Hello AI World: hello_ai_world.md
+    - Agent Studio: agent_studio.md
     - Text (LLM):
       - text-generation-webui: tutorial_text-generation.md 
+      - ollama: tutorial_ollama.md
       - llamaspeak: tutorial_llamaspeak.md
-      - Small LLM (SLM) 🆕: tutorial_slm.md
+      - NanoLLM: tutorial_nano-llm.md
+      - Small LLM (SLM): tutorial_slm.md
+      - API Examples: tutorial_api-examples.md
     - Text + Vision (VLM):
-      - Mini-GPT4: tutorial_minigpt4.md
       - LLaVA: tutorial_llava.md
-      - Live LLaVA 🆕: tutorial_live-llava.md
-      - NanoVLM 🆕: tutorial_nano-vlm.md
-    - Image Generation:
-      - Stable Diffusion: tutorial_stable-diffusion.md
-      - Stable Diffusion XL: tutorial_stable-diffusion-xl.md
+      - Live LLaVA: tutorial_live-llava.md
+      - NanoVLM: tutorial_nano-vlm.md
     - Vision Transformers (ViT): 
       - vit/index.md
       - EfficientViT: vit/tutorial_efficientvit.md
-      - NanoSAM: vit/tutorial_nanosam.md
       - NanoOWL: vit/tutorial_nanoowl.md
+      - NanoSAM: vit/tutorial_nanosam.md
       - SAM: vit/tutorial_sam.md
       - TAM: vit/tutorial_tam.md
-    # - NanoOWL: tutorial_nanoowl.md
-    - Vector Database:
+    - RAG & Vector Database:
       - NanoDB: tutorial_nanodb.md
+      - LlamaIndex: tutorial_llamaindex.md
+      - Jetson Copilot: tutorial_jetson-copilot.md
+    - API Integrations 🆕:
+      - ROS2 Nodes: ros.md
+      - Holoscan SDK: tutorial_holoscan.md
+      - Gapi Workflows: tutorial_gapi_workflows.md
+      - Gapi Micro Services: tutorial_gapi_microservices.md
+      - Ultralytics YOLOv8: tutorial_ultralytics.md
     - Audio:
-      - AudioCraft: tutorial_audiocraft.md
       - Whisper: tutorial_whisper.md
-    - Metropolis Microservices:
-      - First steps: tutorial_mmj.md
+      - AudioCraft: tutorial_audiocraft.md
+      - VoiceCraft: tutorial_voicecraft.md
+    - Image Generation:
+      - Stable Diffusion: tutorial_stable-diffusion.md
+      - Stable Diffusion XL: tutorial_stable-diffusion-xl.md
+    #- Metropolis Microservices:
+    #  - First Steps: tutorial_mmj.md
     # - Tools:
     #   - LangChain: tutorial_distillation.md
     - Tips:
       - 📑 Knowledge Distillation: tutorial_distillation.md
       - 🔖 SSD + Docker: tips_ssd-docker.md
       - 🔖 Memory optimization: tips_ram-optimization.md
+      - 🚅 Initial Setup Guide - Jetson Orin Nano: initial_setup_jon.md
   - Benchmarks: benchmarks.md
-  - Community Projects: community_articles.md
-  - Try: try.md
+  - Projects: community_articles.md
+  - Research Group: research.md
+  #- Try: try.md
 
 extra:
   generator: false

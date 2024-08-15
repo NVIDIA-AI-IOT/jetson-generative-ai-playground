@@ -27,18 +27,15 @@ Let's run [NanoOWL](https://github.com/NVIDIA-AI-IOT/nanoowl), [OWL-ViT](https:/
     
 		```bash
 		git clone https://github.com/dusty-nv/jetson-containers
-		cd jetson-containers
-		sudo apt update; sudo apt install -y python3-pip
-		pip3 install -r requirements.txt
+		bash jetson-containers/install.sh
 		``` 
 
 ## How to start
 
-Use `run.sh` and `autotag` script to automatically pull or build a compatible container image.
+Use the `jetson-containers run` and `autotag` commands to automatically pull or build a compatible container image.
 
 ```
-cd jetson-containers
-./run.sh $(./autotag nanoowl)
+jetson-containers run --workdir /opt/nanoowl $(autotag nanoowl)
 ```
 
 ## How to run the tree prediction (live camera) example

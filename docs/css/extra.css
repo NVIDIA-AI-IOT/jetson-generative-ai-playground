@@ -97,3 +97,32 @@
     font-size: 9pt;
     line-height: 1pc;
 }
+
+.md-button {
+    margin-top: .5rem!important;
+    margin-right: .5rem!important;
+    color: var(--md-primary-fg-color)!important;
+    border-color: var(--md-accent-fg-color)!important;
+    text-decoration: none!important;
+    line-height: 1.25!important;
+    font-weight: 700!important;
+}
+
+.md-button--primary {
+    background-color: var(--md-accent-fg-color)!important;
+    border-width: 0!important;
+}
+
+.md-button--primary:focus,
+.md-button--primary:hover {
+    background-color: var(--md-accent-fg-color--light)!important;
+}
+
+.md-typeset .tabbed-set {
+  border: 0.5px solid lightgray;
+}
+
+.md-typeset .tabbed-content {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}

@@ -5,16 +5,16 @@
 1. [Chat with Llava using `text-generation-webui`](#1-chat-with-llava-using-text-generation-webui)
 2. [Run from the terminal with `llava.serve.cli`](#2-run-from-the-terminal-with-llavaservecli)
 3. [Quantized GGUF models with `llama.cpp`](#3-quantized-gguf-models-with-llamacpp)
-4. [Optimized Multimodal Pipeline with `local_llm`](#4-optimized-multimodal-pipeline-with-local_llm)
+4. [Optimized Multimodal Pipeline with `NanoVLM`](#4-optimized-multimodal-pipeline-with-nanollm)
 
 | Llava-13B (Jetson AGX Orin)                                               | Quantization | Tokens/sec |  Memory |
 |---------------------------------------------------------------------------|:------------:|:----------:|:-------:|
 | [`text-generation-webui`](#1-chat-with-llava-using-text-generation-webui) | 4-bit (GPTQ) |     2.3    |  9.7 GB |
 | [`llava.serve.cli`](#2-run-from-the-terminal-with-llavaservecli)          |  FP16 (None) |     4.2    | 27.7 GB |
 | [`llama.cpp`](#3-quantized-gguf-models-with-llamacpp)                     | 4-bit (Q4_K) |    10.1    |  9.2 GB |
-| [`local_llm`](tutorial_nano-vlm.md)                                       | 4-bit (MLC)  |    21.1    |  8.7 GB |
+| [`NanoVLM`](tutorial_nano-vlm.md)                                         | 4-bit (MLC)  |    21.1    |  8.7 GB |
 
-In addition to Llava, the [`local_llm`](tutorial_nano-vlm.md) pipeline supports [VILA](https://huggingface.co/Efficient-Large-Model) and mini vision models that run on Orin Nano as well.
+In addition to Llava, the [`NanoVLM`](tutorial_nano-vlm.md) pipeline supports [VILA](https://huggingface.co/Efficient-Large-Model) and mini vision models that run on Orin Nano as well.
 
 ![](./images/tgwui_multimodal_llava_fish.jpg)
 
@@ -44,15 +44,13 @@ In addition to Llava, the [`local_llm`](tutorial_nano-vlm.md) pipeline supports 
     
 		```bash
 		git clone https://github.com/dusty-nv/jetson-containers
-		cd jetson-containers
-		sudo apt update; sudo apt install -y python3-pip
-		pip3 install -r requirements.txt
+		bash jetson-containers/install.sh
 		``` 
 
 ### Download Model
 
 ```
-./run.sh --workdir=/opt/text-generation-webui $(./autotag text-generation-webui) \
+jetson-containers run --workdir=/opt/text-generation-webui $(autotag text-generation-webui) \
   python3 download-model.py --output=/data/models/text-generation-webui \
     TheBloke/llava-v1.5-13B-GPTQ
 ```
@@ -60,7 +58,7 @@ In addition to Llava, the [`local_llm`](tutorial_nano-vlm.md) pipeline supports 
 ### Start Web UI with Multimodal Extension
 
 ```
-./run.sh --workdir=/opt/text-generation-webui $(./autotag text-generation-webui) \
+jetson-containers run --workdir=/opt/text-generation-webui $(autotag text-generation-webui) \
   python3 server.py --listen \
     --model-dir /data/models/text-generation-webui \
     --model TheBloke_llava-v1.5-13B-GPTQ \
@@ -102,7 +100,7 @@ This example uses the upstream [Llava repo](https://github.com/haotian-liu/LLaVA
 ### llava-v1.5-7b
 
 ```
-./run.sh $(./autotag llava) \
+jetson-containers run $(autotag llava) \
   python3 -m llava.serve.cli \
     --model-path liuhaotian/llava-v1.5-7b \
     --image-file /data/images/hoover.jpg
@@ -111,7 +109,7 @@ This example uses the upstream [Llava repo](https://github.com/haotian-liu/LLaVA
 ### llava-v1.5-13b
 
 ``` bash
-./run.sh $(./autotag llava) \
+jetson-containers run $(autotag llava) \
   python3 -m llava.serve.cli \
     --model-path liuhaotian/llava-v1.5-13b \
     --image-file /data/images/hoover.jpg
@@ -188,7 +186,7 @@ python3 -m llava.serve.model_worker \
 * [mys/ggml_llava-v1.5-13b](https://huggingface.co/mys/ggml_llava-v1.5-13b)
 
 ```bash
-./run.sh --workdir=/opt/llama.cpp/bin $(./autotag llama_cpp:gguf) \
+jetson-containers run --workdir=/opt/llama.cpp/bin $(autotag llama_cpp:gguf) \
   /bin/bash -c './llava-cli \
     --model $(huggingface-downloader mys/ggml_llava-v1.5-13b/ggml-model-q4_k.gguf) \
     --mmproj $(huggingface-downloader mys/ggml_llava-v1.5-13b/mmproj-model-f16.gguf) \
@@ -205,7 +203,7 @@ python3 -m llava.serve.model_worker \
 A lower temperature like 0.1 is recommended for better quality (`--temp 0.1`), and if you omit `--prompt` it will describe the image:
 
 ```bash
-./run.sh --workdir=/opt/llama.cpp/bin $(./autotag llama_cpp:gguf) \
+jetson-containers run --workdir=/opt/llama.cpp/bin $(autotag llama_cpp:gguf) \
   /bin/bash -c './llava-cli \
     --model $(huggingface-downloader mys/ggml_llava-v1.5-13b/ggml-model-q4_k.gguf) \
     --mmproj $(huggingface-downloader mys/ggml_llava-v1.5-13b/mmproj-model-f16.gguf) \
@@ -215,9 +213,9 @@ A lower temperature like 0.1 is recommended for better quality (`--temp 0.1`), a
 In this image, a small wooden pier extends out into a calm lake, surrounded by tall trees and mountains. The pier seems to be the only access point to the lake. The serene scene includes a few boats scattered across the water, with one near the pier and the others further away. The overall atmosphere suggests a peaceful and tranquil setting, perfect for relaxation and enjoying nature.
 ```
 
-You can put your own images in the mounted `jetson-containers/data` directory.  The C++ code for llava-cli can be found [here](https://github.com/ggerganov/llama.cpp/tree/master/examples/llava).  The llama-cpp-python bindings also [support Llava](https://github.com/abetlen/llama-cpp-python?tab=readme-ov-file#multi-modal-models), however they are significantly slower from Python for some reason (potentially pre-processing) 
+You can put your own images in the mounted `jetson-containers/data` directory.  The C++ code for llava-cli can be found [here](https://github.com/ggerganov/llama.cpp/tree/master/examples/llava).  The llama-cpp-python bindings also [support Llava](https://github.com/abetlen/llama-cpp-python?tab=readme-ov-file#multi-modal-models), however they are slower from Python (potentially handling of the tokens) 
 
-## 4. Optimized Multimodal Pipeline with `local_llm`
+## 4. Optimized Multimodal Pipeline with `NanoVLM`
 	   
 !!! abstract "What's Next"
 
