@@ -36,6 +36,24 @@ Give your locally running LLM an access to vision!
 | **[SAM](./vit/tutorial_sam.md)** | Meta's [SAM](https://github.com/facebookresearch/segment-anything), Segment Anything model |
 | **[TAM](./vit/tutorial_tam.md)** | [TAM](https://github.com/gaomingqi/Track-Anything), Track-Anything model, is an interactive tool for video object tracking and segmentation |
 
+### Image Generation
+
+|      |                     |
+| :---------- | :----------------------------------- |
+| **[Flux + ComfyUI](./tutorial_comfyui_flux.md)** | Set up and run the ComfyUI with Flux model for image generation on Jetson Orin. |
+| **[Stable Diffusion](./tutorial_stable-diffusion.md)** | Run AUTOMATIC1111's [`stable-diffusion-webui`](https://github.com/AUTOMATIC1111/stable-diffusion-webui) to generate images from prompts |
+| **[Stable Diffusion XL](./tutorial_stable-diffusion-xl.md)** | A newer ensemble pipeline consisting of a base model and refiner that results in significantly enhanced and detailed image generation capabilities. |
+
+
+### Audio
+
+|      |                     |
+| :---------- | :----------------------------------- |
+| **[Whisper](./tutorial_whisper.md)** | OpenAI's [Whisper](https://github.com/openai/whisper), pre-trained model for automatic speech recognition (ASR) |
+| **[AudioCraft](./tutorial_audiocraft.md)** | Meta's [AudioCraft](https://github.com/facebookresearch/audiocraft), to produce high-quality audio and music |
+| **[Voicecraft](./tutorial_voicecraft.md)** | Interactive speech editing and zero shot TTS |
+
+
 ### RAG & Vector Database
 
 |      |                     |
@@ -53,21 +71,6 @@ Give your locally running LLM an access to vision!
 | **[Gapi Workflows](./tutorial_gapi_workflows.md)** | Integrating generative AI into real world environments |
 | **[Gapi Micro Services](./tutorial_gapi_microservices.md)** | Wrapping models and code to participate in systems |
 | **[Ultralytics YOLOv8](./tutorial_ultralytics.md)** | Run [Ultralytics](https://www.ultralytics.com) YOLOv8 on Jetson with NVIDIA TensorRT. |
-
-### Audio
-
-|      |                     |
-| :---------- | :----------------------------------- |
-| **[Whisper](./tutorial_whisper.md)** | OpenAI's [Whisper](https://github.com/openai/whisper), pre-trained model for automatic speech recognition (ASR) |
-| **[AudioCraft](./tutorial_audiocraft.md)** | Meta's [AudioCraft](https://github.com/facebookresearch/audiocraft), to produce high-quality audio and music |
-| **[Voicecraft](./tutorial_voicecraft.md)** | Interactive speech editing and zero shot TTS |
-
-### Image Generation
-
-|      |                     |
-| :---------- | :----------------------------------- |
-| **[Stable Diffusion](./tutorial_stable-diffusion.md)** | Run AUTOMATIC1111's [`stable-diffusion-webui`](https://github.com/AUTOMATIC1111/stable-diffusion-webui) to generate images from prompts |
-| **[Stable Diffusion XL](./tutorial_stable-diffusion-xl.md)** | A newer ensemble pipeline consisting of a base model and refiner that results in significantly enhanced and detailed image generation capabilities.|
 
 ## About NVIDIA Jetson
 
