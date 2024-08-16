@@ -103,7 +103,7 @@ nav:
       - NanoDB: tutorial_nanodb.md
       - LlamaIndex: tutorial_llamaindex.md
       - Jetson Copilot: tutorial_jetson-copilot.md
-    - API Integrations 🆕:
+    - SDK Integrations 🆕:
       - ROS2 Nodes: ros.md
       - Holoscan SDK: tutorial_holoscan.md
       - Jetson Platform Services: tutorial_jps.md
