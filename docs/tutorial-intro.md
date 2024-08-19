@@ -68,6 +68,7 @@ Give your locally running LLM an access to vision!
 | :---------- | :----------------------------------- |
 | **[ROS2 Nodes](./ros.md)** | Optimized LLM and VLM provided as [ROS2 nodes](./ros.md) for robotics |
 | **[Holoscan SDK](./tutorial_holoscan.md)** | Use the [Holoscan-SDK](https://github.com/nvidia-holoscan/holoscan-sdk) to run high-throughput, low-latency edge AI pipelines |
+| **[Jetson Platform Services](./tutorial_jps.md)** | Quickly build microservice driven vision applications with [Jetson Platform Services](https://developer.nvidia.com/embedded/jetpack/jetson-platform-services-get-started) |
 | **[Gapi Workflows](./tutorial_gapi_workflows.md)** | Integrating generative AI into real world environments |
 | **[Gapi Micro Services](./tutorial_gapi_microservices.md)** | Wrapping models and code to participate in systems |
 | **[Ultralytics YOLOv8](./tutorial_ultralytics.md)** | Run [Ultralytics](https://www.ultralytics.com) YOLOv8 on Jetson with NVIDIA TensorRT. |
