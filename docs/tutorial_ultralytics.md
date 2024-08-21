@@ -1,5 +1,16 @@
 # Tutorial - Ultralytics YOLOv8
 
+<div style="background-color: #e1ff25; padding: 10px; text-align: center; font-size: 1.2em;">
+   <div>
+      Explore the new frontier of vision AI at Ultralytics YOLO Vision. 
+      <a href="https://www.ultralytics.com/events/yolovision" style="color: #d32f2f; font-weight: bold; text-decoration: underline;">Register now</a>
+   </div>
+</div>
+
+<div style="text-align: center;">
+  <img src="./images/YOLOVision.png" alt="YOLO Vision">
+</div>
+
 Let's run [Ultralytics](https://www.ultralytics.com) YOLOv8 on Jetson with [NVIDIA TensorRT](https://developer.nvidia.com/tensorrt).
 
 [Ultralytics](https://github.com/ultralytics/ultralytics) YOLOv8 is a cutting-edge, state-of-the-art (SOTA) model that builds upon the success of previous YOLO versions and introduces new features and improvements to further boost performance and flexibility. YOLOv8 is designed to be fast, accurate, and easy to use, making it an excellent choice for a wide range of object detection and tracking, instance segmentation, image classification and pose estimation tasks.
