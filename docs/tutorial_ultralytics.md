@@ -1,15 +1,6 @@
 # Tutorial - Ultralytics YOLOv8
 
-<div style="background-color: #e1ff25; padding: 10px; text-align: center; font-size: 1.2em;">
-   <div>
-      Explore the new frontier of vision AI at Ultralytics YOLO Vision. 
-      <a href="https://www.ultralytics.com/events/yolovision" style="color: #d32f2f; font-weight: bold; text-decoration: underline;">Register now</a>
-   </div>
-</div>
-
-<div style="text-align: center;">
-  <img src="./images/YOLOVision.png" alt="YOLO Vision">
-</div>
+<a href="https://www.ultralytics.com/events/yolovision"><img src="./images/YOLOVision.png" alt="YOLO Vision"></a>
 
 Let's run [Ultralytics](https://www.ultralytics.com) YOLOv8 on Jetson with [NVIDIA TensorRT](https://developer.nvidia.com/tensorrt).
 
