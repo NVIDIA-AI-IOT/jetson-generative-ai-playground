@@ -67,6 +67,8 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true 
+  - pymdownx.tasklist:
+      custom_checkbox: true
   - meta
   - footnotes
 
@@ -92,6 +94,7 @@ nav:
       - LLaVA: tutorial_llava.md
       - Live LLaVA: tutorial_live-llava.md
       - NanoVLM: tutorial_nano-vlm.md
+      - OpenVLA 🆕: openvla.md
     - Vision Transformers (ViT): 
       - vit/index.md
       - EfficientViT: vit/tutorial_efficientvit.md
