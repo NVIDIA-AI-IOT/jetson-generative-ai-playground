@@ -82,3 +82,47 @@ You can also load JSON files containing prompt sequences, like with [`--prompt /
 <small>• &nbsp; The model responses are with 4-bit quantization, and are truncated to 256 tokens for brevity.</small>  
 <small>• &nbsp; These chat questions are from [`/data/prompts/qa.json`](https://github.com/dusty-nv/jetson-containers/blob/master/data/prompts/qa.json){:target="_blank"} (found in jetson-containers)</small> 
 
+### Nemotron Mini
+
+[`Nemotron-Mini-4B-Instruct`](https://huggingface.co/nvidia/Nemotron-Mini-4B-Instruct) is a 4B SLM tuned for chat, RAG, and function calling and is based on [Minitron-4B](https://huggingface.co/nvidia/Minitron-4B-Base) (pruned and distilled from [Nemotron4 15B](https://arxiv.org/abs/2402.16819))
+
+It is supported in HuggingFace Transformers and llama.cpp.  Here's an example of running a local OpenAI-compatible server with 4-bit quantized GGUF:
+
+```bash
+jetson-containers run $(autotag llama_cpp) \
+  llama-server \
+    --hf-repo Obenlia/Nemotron-Mini-4B-Instruct-Q4_K_M-GGUF \
+    --hf-file nemotron-mini-4b-instruct-q4_k_m.gguf \
+    --gpu-layers 34 \
+    --seed 42 \
+    --host 0.0.0.0 \
+    --port 8080
+```
+
+For a quick test, you can navigate your browser to `http://JETSON_IP:8080`, connect other clients like [Open WebUI](https://github.com/open-webui/open-webui), or have your application send requests to the server's OpenAI chat completion endpoints (i.e. from [openai-python](https://github.com/openai/openai-python), REST, JavaScript, ect)
+
+<img src="images/nemotron_llamacpp_gguf.jpg" style="max-width: 600px">
+
+You can more easily see the performance with the `llama-cli` tool:
+
+```bash
+jetson-containers run $(autotag llama_cpp) \
+  llama-cli \
+    --hf-repo Obenlia/Nemotron-Mini-4B-Instruct-Q4_K_M-GGUF \
+    --hf-file nemotron-mini-4b-instruct-q4_k_m.gguf \
+    --gpu-layers 34 \
+    --seed 42 \
+    --ignore-eos \
+    -n 128 \
+    -p "The meaning to life and the universe is"
+```
+
+``` title="Jetson AGX Orin"
+llama_print_timings:        load time =    1408.27 ms
+llama_print_timings:      sample time =      70.05 ms /   128 runs   (    0.55 ms per token,  1827.32 tokens per second)
+llama_print_timings: prompt eval time =     120.08 ms /     9 tokens (   13.34 ms per token,    74.95 tokens per second)
+llama_print_timings:        eval time =    3303.93 ms /   127 runs   (   26.02 ms per token,    38.44 tokens per second)
+llama_print_timings:       total time =    3597.17 ms /   136 tokens
+```
+
+The model can also be previewed in the cloud at [build.nvidia.com](https://build.nvidia.com/nvidia/nemotron-mini-4b-instruct) (example client requests for OpenAI API are also found there)
