@@ -81,7 +81,7 @@ nav:
   - Home: index.md
   - Tutorials:
     - Introduction: tutorial-intro.md
-    - Agent Studio: agent_studio.md
+    - Agent Studio: agents/agent_studio.md
     - Audio:
       - AudioCraft: audio/tutorial_audiocraft.md
       - VoiceCraft: audio/tutorial_voicecraft.md
