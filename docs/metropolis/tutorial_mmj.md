@@ -6,7 +6,7 @@ NVIDIA [Metropolis Microservices for Jetson](https://developer.nvidia.com/blog/a
 
 Perfect for both newcomers and experts, this tutorial provides straightforward steps to kick-start your edge AI projects. Whether you're a student or an ecosystem partner working on a use case, this guide offers a straightforward start for every skill level.
 
-![android2](./images/mmj_tutorial.gif)
+![android2](../images/mmj_tutorial.gif)
 
 ### 0. Install NVIDIA Jetson Services:
 
@@ -121,7 +121,7 @@ So, first we need to upload the file in the Streamer interface, it looks like th
 
 ---
 
-![image1](./images/mmj_streamer.png)
+![image1](../images/mmj_streamer.png)
 
 ---
 
@@ -138,7 +138,7 @@ Now jump to the Camera Management Dashboard (http://localhost:30080/vst), it loo
 
 ---
 
-![image2](./images/mmj_vst.png)
+![image2](../images/mmj_vst.png)
 
 ---
 
@@ -151,7 +151,7 @@ Finally, click in the **Live Streams** option of the left menu, and you should b
 
 ---
 
-![video1](./images/mmj_livestream.gif)
+![video1](../images/mmj_livestream.gif)
 
 ---
 
@@ -169,7 +169,7 @@ Then go to **rtsp://[JETSON_IP]:8555/ds-test** using VLC like this:
 
 ---
 
-![video2](./images/mmj_vlc.gif)
+![video2](../images/mmj_vlc.gif)
 
 
 ---
@@ -179,7 +179,7 @@ Then go to **rtsp://[JETSON_IP]:8555/ds-test** using VLC like this:
  
 There is an Android app that allows you to track events and create areas of interest to monitor, you can find it on Google Play as AI NVR.
 
-<img width="400px" src="./images/mmj_android.jpg">
+<img width="400px" src="../images/mmj_android.jpg">
 
 ---
 
@@ -191,7 +191,7 @@ Here is a quick walkthough where you can see how to:
 - Add new areas of interest
 - Add tripwire to track the flux and direction of events
 
-![android2](./images/mmj_app.gif)
+![android2](../images/mmj_app.gif)
 
 
 ---

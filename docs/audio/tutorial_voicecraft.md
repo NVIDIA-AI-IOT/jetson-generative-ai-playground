@@ -51,7 +51,7 @@ VoiceCraft repo comes with Gradio demo app.
 5. Now you can edit the sentence, or use TTS. Click Run to generate output.
 
 
-![](./images/voicecraft_load_models.png)
+![](../images/voicecraft_load_models.png)
 
 
 !!! warning

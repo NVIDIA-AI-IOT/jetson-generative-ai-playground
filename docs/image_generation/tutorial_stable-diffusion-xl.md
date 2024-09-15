@@ -2,7 +2,7 @@
 
 [Stable Diffusion XL](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0) is a newer ensemble pipeline consisting of a base model and refiner that results in significantly enhanced and detailed image generation capabilities.  All told, SDXL 1.0 has 6.6 billion model parameters, in comparison to 0.98 billion for the original SD 1.5 model.
 
-![a robot searching a database for images, nvidia green colors](./images/stable-diffusion-xl-robot-terminal.jpg)
+![a robot searching a database for images, nvidia green colors](../images/stable-diffusion-xl-robot-terminal.jpg)
 
 !!! abstract "What you need"
 
@@ -46,11 +46,11 @@ wget -P $MODEL_DIR https://huggingface.co/stabilityai/stable-diffusion-xl-refine
 
 After the models have finished downloading, click the 🔄 button to refresh the model list in the web UI.  Select `sd_xl_base_1.0.safetensors` from the **Stable Diffusion checkpoint** drop-down:
 
-![](./images/stable-diffusion-xl-model-select.jpg)
+![](../images/stable-diffusion-xl-model-select.jpg)
 
 Then under the **Generation** tab, expand the **Refiner** section, and select `sd_xl_refiner_1.0.safetensors` from the drop-down:
 
-![](./images/stable-diffusion-xl-refiner-settings.jpg)
+![](../images/stable-diffusion-xl-refiner-settings.jpg)
 
 Guidance on other relevant settings:
 
@@ -64,26 +64,26 @@ When you get a good image, remember to save your random seed and settings so you
 
 ## Results
 
-![](./images/stable-diffusion-xl-robot-generation.jpg)
+![](../images/stable-diffusion-xl-robot-generation.jpg)
 
 !!! tip ""
 
-    ![](./images/stable-diffusion-xl-robot-mountain.jpg)<br/>
+    ![](../images/stable-diffusion-xl-robot-mountain.jpg)<br/>
     *photograph of a friendly robot alongside a person climbing a mountain* (seed 1576166644, steps 25, switch @ 0.8, cfg scale 15)
     
 !!! tip ""
 
-    ![](./images/stable-diffusion-xl-kids-workshop.jpg)<br/>
+    ![](../images/stable-diffusion-xl-kids-workshop.jpg)<br/>
     *a girl and a boy building a friendly robot in their basement workshop* (seed 642273464, steps 25, switch @ 0.9, cfg scale 7)
 
 !!! tip ""
 
-    ![](./images/stable-diffusion-xl-tokyo-gardens.jpg)<br/>
+    ![](../images/stable-diffusion-xl-tokyo-gardens.jpg)<br/>
     *small friendly robots playing games with people, in a futuristic Tokyo central park gardens with cherry blossoms and water, coy fish swimming in the water, sunshine* (seed 642273464, steps 40, switch @ 0.8, cfg scale 7)
 
 !!! tip ""
 
-    ![](./images/stable-diffusion-xl-central-park.jpg)<br/>
+    ![](../images/stable-diffusion-xl-central-park.jpg)<br/>
     *small friendly robots playing games with people in a futuristic New York City Central Park in autumn, water* (seed 642273464, steps 25, switch @ 0.8, cfg scale 7)
         
 !!! tip ""

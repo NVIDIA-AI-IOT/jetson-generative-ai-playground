@@ -43,4 +43,4 @@ Open your browser and access `http://<IP_ADDRESS>:8888`.
 
 You can follow along `LlamaIndex_Local-Models_L4T.ipynb` (which is based on the official LlamaIndex [tutorial](https://docs.llamaindex.ai/en/stable/getting_started/starter_example_local/)). 
 
-![](./images/llamaindex_sample-l4t-notebook.png)
+![](../images/llamaindex_sample-l4t-notebook.png)

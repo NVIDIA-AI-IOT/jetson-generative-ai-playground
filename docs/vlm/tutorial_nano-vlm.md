@@ -102,7 +102,7 @@ jetson-containers run $(autotag nano_llm) \
 
 ## Web UI
 
-To use this through a web browser instead, see the [llamaspeak](./tutorial_llamaspeak.md) tutorial: 
+To use this through a web browser instead, see the [llamaspeak](../tutorial_llamaspeak.md) tutorial: 
 
 <a href="tutorial_llamaspeak.html" target="_blank"><img src="https://raw.githubusercontent.com/dusty-nv/jetson-containers/docs/docs/images/llamaspeak_llava_clip.gif" width="900px"></a>
 

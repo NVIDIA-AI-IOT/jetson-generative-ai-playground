@@ -2,7 +2,7 @@
 
 Give your locally running LLM an access to vision, by running [MiniGPT-4](https://minigpt-4.github.io/) on Jetson!
 
-![](./images/minigpt4_gleaners.gif)
+![](../images/minigpt4_gleaners.gif)
 
 !!! abstract "What you need"
 
@@ -43,5 +43,5 @@ Then, open your web browser and access `http://<IP_ADDRESS>:7860`.
 
 ## Results
 
-![](./images/minigpt4_gleaners.gif)
+![](../images/minigpt4_gleaners.gif)
 

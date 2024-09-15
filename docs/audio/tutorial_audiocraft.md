@@ -46,14 +46,14 @@ AudioCraft repo comes with demo Jupyter notebooks.
 
 On Jupyter Lab navigation pane on the left, double-click `demos` folder. 
 
-![](./images/audiocraft_jupyterlab_demo.png)
+![](../images/audiocraft_jupyterlab_demo.png)
 
 ### AudioGen demo
 
 <!-- For "**Text-conditional Generation**", you should get something like this.
 
 <audio controls>
-  <source src="./assets/subway.wav" type="audio/wav">
+  <source src="../assets/subway.wav" type="audio/wav">
 Your browser does not support the audio element.
 </audio> -->
 
@@ -75,7 +75,7 @@ In the *Audio Continuation* cells, you can generate continuation based on text, 
 
 You can also use your own audio as prompt, and use text descriptions to generate continuation:
 ```
-prompt_waveform, prompt_sr = torchaudio.load("../assets/sirens_and_a_humming_engine_approach_and_pass.mp3") # you can upload your own audio
+prompt_waveform, prompt_sr = torchaudio.load(".../assets/sirens_and_a_humming_engine_approach_and_pass.mp3") # you can upload your own audio
 prompt_duration = 2
 prompt_waveform = prompt_waveform[..., :int(prompt_duration * prompt_sr)]
 output = model.generate_continuation(prompt_waveform.expand(3, -1, -1), prompt_sample_rate=prompt_sr,descriptions=[
@@ -93,7 +93,7 @@ The two other jupyter notebooks are similar to AuidioGen, where you can generate
 <!-- For "**Text-conditional Generation**", you should get something like this.
 
 <audio controls>
-  <source src="./assets/80s-pop.wav" type="audio/wav">
+  <source src="../assets/80s-pop.wav" type="audio/wav">
 Your browser does not support the audio element.
 </audio>
 

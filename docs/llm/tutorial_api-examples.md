@@ -70,8 +70,8 @@ We use the `l4t-text-generation` container because it includes the quantization 
 The [`huggingface-benchmark.py`](https://github.com/dusty-nv/jetson-containers/blob/master/packages/llm/transformers/huggingface-benchmark.py){:target="_blank"} script will benchmark the models:
 
 ```bash
-./run.sh --volume $PWD/packages/llm/transformers:/mount --workdir /mount \
-  $(./autotag l4t-text-generation) \
+../run.sh --volume $PWD/packages/llm/transformers:/mount --workdir /mount \
+  $(../autotag l4t-text-generation) \
     python3 huggingface-benchmark.py --model meta-llama/Llama-2-7b-chat-hf
 ```
 

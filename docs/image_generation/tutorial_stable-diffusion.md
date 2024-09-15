@@ -2,7 +2,7 @@
 
 Let's run AUTOMATIC1111's [`stable-diffusion-webui`](https://github.com/AUTOMATIC1111/stable-diffusion-webui) on NVIDIA Jetson to generate images from our prompts!
 
-![](./images/stable-diffusion-webui_green-web.gif)
+![](../images/stable-diffusion-webui_green-web.gif)
 
 !!! abstract "What you need"
 
@@ -63,9 +63,9 @@ Open your browser and access `http://<IP_ADDRESS>:7860`
 
 ## Results / Output Examples
 
-![](./images/stable-diffusion-webui_green-web.gif)
+![](../images/stable-diffusion-webui_green-web.gif)
 
-![](./images/stable-diffusion_space-ferret.png)
+![](../images/stable-diffusion_space-ferret.png)
 
 ## Stable Diffusion XL
 

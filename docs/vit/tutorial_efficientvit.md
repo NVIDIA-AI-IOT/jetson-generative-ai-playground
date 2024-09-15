@@ -60,7 +60,7 @@ wget https://huggingface.co/han-cai/efficientvit-sam/resolve/main/l2.pt
 
 ```
 cd /opt/efficientvit
-python3 ./benchmark.py
+python3 ../benchmark.py
 ```
 
 At the end you should see a summary like the following.
@@ -81,4 +81,4 @@ So you can go back to your host machine, and check `jetson-containers/data/bench
 
 You should find the output like this.
 
-![](../images/efficientvit_sam_demo.png)
+![](.../images/efficientvit_sam_demo.png)

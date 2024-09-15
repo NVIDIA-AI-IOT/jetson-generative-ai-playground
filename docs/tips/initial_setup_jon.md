@@ -1,6 +1,6 @@
 # Initial Setup Guide for Jetson Orin Nano Developer Kit
 
-![](./images/NVIDIA-JetsonOrin-3QTR-Front-Left_800px.png){ width="300"  align=right}
+![](../images/NVIDIA-JetsonOrin-3QTR-Front-Left_800px.png){ width="300"  align=right}
 
 !!! note
     This guide is to supplement the official [**Jetson Orin Nano Developer Kit Getting Started Guide**](https://developer.nvidia.com/embedded/learn/get-started-jetson-orin-nano-devkit).
@@ -153,7 +153,7 @@ You can take one of the following methods.
 
     3. Insert the flashed microSD card into the slot on Jetson module
    
-        ![](./images/jetson-orin-nano-dev-kit-sd-slot.png){ width="360" }
+        ![](../images/jetson-orin-nano-dev-kit-sd-slot.png){ width="360" }
 
     ## 3. Power-on and reboot to ensure firmware gets updated to 5.0 (JetPack 5.1.3)
 
@@ -170,7 +170,7 @@ You can take one of the following methods.
 
         === ":material-monitor: GUI"
 
-            ![](./images/nvidia-l4t-bootloader-post-install-notification.png)
+            ![](../images/nvidia-l4t-bootloader-post-install-notification.png)
 
         === ":material-monitor-off: CUI"
 
@@ -192,11 +192,11 @@ You can take one of the following methods.
         
         === ":material-monitor: With monitor"
 
-            ![](./images/fw-update-progress_monitor.jpg)
+            ![](../images/fw-update-progress_monitor.jpg)
 
         === ":material-monitor-off: Headless (serial)"
 
-            ![](./images/fw_update_4.1-to-5.0.png)
+            ![](../images/fw_update_4.1-to-5.0.png)
 
         Once done, you will boot into JetPack 5.1.3 (again), with underlying firmware updated to `5.0-35550185`.
 
@@ -280,7 +280,7 @@ Once we know the onboard firmware is up-to-date and ready for JetPack 6, we can 
 
 1. Insert the **JetPack 6** microSD card into the slot on Jetson module
    
-    ![](./images/jetson-orin-nano-dev-kit-sd-slot.png){ width="360" }
+    ![](../images/jetson-orin-nano-dev-kit-sd-slot.png){ width="360" }
 
 2. Power-on by plugging the DC power supply
 
@@ -294,4 +294,4 @@ Your Jetson Orin Nano Developer Kit is set up with JetPack 6 SD card and you are
 
 ### NVMe SSD installation
 
-Take a look at [this page](./tips_ssd-docker.md) for installing NVMe SSD and setting up Docker with it.
+Take a look at [this page](../tips_ssd-docker.md) for installing NVMe SSD and setting up Docker with it.

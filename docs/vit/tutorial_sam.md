@@ -2,7 +2,7 @@
 
 Let's run Meta's [`SAM`](https://github.com/facebookresearch/segment-anything) on NVIDIA Jetson.
 
-![](../images/sam_notebook.png)
+![](.../images/sam_notebook.png)
 
 !!! abstract "What you need"
 
@@ -61,4 +61,4 @@ Then go through executing all the cells below **Set-up**.
 
 ## Results
 
-![](../images/sam_notebook.png)
+![](.../images/sam_notebook.png)

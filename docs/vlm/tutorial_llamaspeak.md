@@ -66,7 +66,7 @@ jetson-containers run $(autotag nano_llm) \
 
 <iframe width="720" height="405" src="https://www.youtube.com/embed/UOjqF3YCGkY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-For more info about the supported vision/language models, see the [NanoVLM](./tutorial_nano-vlm.md){:target="_blank"} page.
+For more info about the supported vision/language models, see the [NanoVLM](../tutorial_nano-vlm.md){:target="_blank"} page.
 
 ## Function Calling
 

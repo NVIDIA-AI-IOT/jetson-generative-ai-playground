@@ -51,7 +51,7 @@ jetson-containers run --workdir /opt/nanoowl $(autotag nanoowl)
 2. Launch the demo
     ```bash
     cd examples/tree_demo
-    python3 tree_demo.py ../../data/owl_image_encoder_patch32.engine
+    python3 tree_demo.py .../.../data/owl_image_encoder_patch32.engine
     ```
 
     !!! info
@@ -75,4 +75,4 @@ jetson-containers run --workdir /opt/nanoowl $(autotag nanoowl)
 
 ### Result
 
-![](../images/nanoowl_chrome_window.png)
+![](.../images/nanoowl_chrome_window.png)

@@ -4,7 +4,7 @@ Hey there, fellow developer! 👋 I'm excited to share with you our latest proje
 
 In this tutorial, I'm going to walk you through every step needed to get Flux up and running on your Jetson Orin, even if you've just flashed your system. Follow along, and you should have no trouble getting everything set up. And hey, if something doesn't work out, reach out to me—I’ll keep this guide updated to make sure it's always on point.
 
-![Alt text](./images/flux5.png)
+![Alt text](../images/flux5.png)
 
 So, let's dive in and get Flux running on your Jetson!
 
@@ -15,7 +15,7 @@ First things first, you'll need to install Miniconda on your Jetson Orin and cre
 ```sh
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh
 chmod +x Miniconda3-latest-Linux-aarch64.sh
-./Miniconda3-latest-Linux-aarch64.sh
+../Miniconda3-latest-Linux-aarch64.sh
 
 conda update conda
 
@@ -127,7 +127,7 @@ python main.py
 
 Great! Now that you’ve got ComfyUI up and running, let's load the workflow to start using the Flux model. 
 
-* Download the workflow file using [this link](./assets/workflow_agx_orin_4steps.json). And load it from the ComfyUI interface.
+* Download the workflow file using [this link](../assets/workflow_agx_orin_4steps.json). And load it from the ComfyUI interface.
 * You’ll need to download the Flux Schnell model `flux1-schnell.safetensors` and vae `ae.safetensors` from [Hugging Face](https://huggingface.co/black-forest-labs/FLUX.1-schnell/tree/main) and place the model in the `models/unet` folder and vae in `models/vae` within ComfyUI.
 * Download `clip_l.safetensors` and `t5xxl_fp8_e4m3fn.safetensors` from [Stability's Hugging Face](https://huggingface.co/stabilityai/stable-diffusion-3-medium/tree/main/text_encoders) and place them inside `models/clip` folder.
 
@@ -139,13 +139,13 @@ Happy generating! 🎉
 **ASIER** 🚀
 
 *Some examples:* 
-![Alt text](./images/flux2.png)
+![Alt text](../images/flux2.png)
 
 
-![Alt text](./images/flux1.png)
-![Alt text](./images/flux0.png)
-![Alt text](./images/flux3.png)
-![Alt text](./images/flux4.png)
+![Alt text](../images/flux1.png)
+![Alt text](../images/flux0.png)
+![Alt text](../images/flux3.png)
+![Alt text](../images/flux4.png)
 
 
 

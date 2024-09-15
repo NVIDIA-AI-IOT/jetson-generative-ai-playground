@@ -2,7 +2,7 @@
 
 Interact with a local AI assistant by running a LLM with oobabooga's [`text-generaton-webui`](https://github.com/oobabooga/text-generation-webui) on NVIDIA Jetson!
 
-![](./images/text-generation-webui_sf-trip.gif)
+![](../images/text-generation-webui_sf-trip.gif)
 
 !!! abstract "What you need"
 
@@ -64,7 +64,7 @@ Open your browser and access `http://<IP_ADDRESS>:7860`.
 See the [oobabooga documentation](https://github.com/oobabooga/text-generation-webui/tree/main#downloading-models) for instructions for downloading models - either from within the web UI, or using [`download-model.py`](https://github.com/oobabooga/text-generation-webui/blob/main/download-model.py)
 
 ```bash
-jetson-containers run --workdir=/opt/text-generation-webui $(./autotag text-generation-webui) /bin/bash -c \
+jetson-containers run --workdir=/opt/text-generation-webui $(../autotag text-generation-webui) /bin/bash -c \
   'python3 download-model.py --output=/data/models/text-generation-webui TheBloke/Llama-2-7b-Chat-GPTQ'
 ```
 
@@ -85,13 +85,13 @@ You can download a single model file for a particular quantization, like `*.Q4_K
 | [`TheBloke/LLaMA-30b-GGUF`](https://huggingface.co/TheBloke/LLaMA-30b-GGUF)     | `llama-30b.Q4_K_S.gguf`   |    19,045   |
 | [`TheBloke/Llama-2-70B-chat-GGUF`](https://huggingface.co/TheBloke/Llama-2-70b-Chat-GGUF) | `llama-2-70b-chat.Q4_K_M.gguf` |    37,655   |
 
-![](./images/tgwui_model-download-animation.gif)
+![](../images/tgwui_model-download-animation.gif)
 
 !!! info
 
     ### Model selection for Jetson Orin Nano
 
-    <span class="blobLightGreen4">Jetson Orin Nano Developer Kit</span> has only 8GB RAM for both CPU (system) and GPU, so you need to pick a model that fits in the RAM size - see the [Model Size](#model-size-tested) section below.  The 7B models with 4-bit quantization are the ones to use on Jetson Orin Nano.  Make sure you go through the [RAM optimization](./tips_ram-optimization.md) steps before attempting to load such model on Jetson Orin Nano.
+    <span class="blobLightGreen4">Jetson Orin Nano Developer Kit</span> has only 8GB RAM for both CPU (system) and GPU, so you need to pick a model that fits in the RAM size - see the [Model Size](#model-size-tested) section below.  The 7B models with 4-bit quantization are the ones to use on Jetson Orin Nano.  Make sure you go through the [RAM optimization](../tips_ram-optimization.md) steps before attempting to load such model on Jetson Orin Nano.
 
 ## Load a model
 
@@ -118,7 +118,7 @@ Then change back to the **Chat** tab, and under the mode section, make sure **In
 
 ## Results
 
-![](./images/text-generation-webui_sf-trip.gif)
+![](../images/text-generation-webui_sf-trip.gif)
 
 ## Things to do with your LLM
 

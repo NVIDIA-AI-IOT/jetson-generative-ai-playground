@@ -64,7 +64,7 @@ Copy and Run the Steps:
 mkdir ~/gapiData && cd ~/gapiData
 curl -L https://raw.githubusercontent.com/genai-nerds/Gapi/main/gapiConfigs.zip -o gapiConfigs.zip
 unzip -q gapiConfigs.zip
-docker run -d --name gapi --network host -v ~/gapiData:/opt/gapi/vdata genainerds/gapi:arm64 /bin/bash -c "cd /opt/gapi/bin && ./startGapi.sh"
+docker run -d --name gapi --network host -v ~/gapiData:/opt/gapi/vdata genainerds/gapi:arm64 /bin/bash -c "cd /opt/gapi/bin && ../startGapi.sh"
 echo "You may need to hit Enter now. Afterwards the Docker container 'gapi' should be running"
 ```
 
@@ -139,7 +139,7 @@ Gapi Server becomes most useful when leveraging them so please follow the How To
 * Text to Speech
 * Img to Text
 
-!!! admonition "Complete the Setup: [How To Run and/or Create Micro Services](./tutorial_gapi_microservices.md)"
+!!! admonition "Complete the Setup: [How To Run and/or Create Micro Services](../tutorial_gapi_microservices.md)"
 
 ## **Support / Contribute**
 

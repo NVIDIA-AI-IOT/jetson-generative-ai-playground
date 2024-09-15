@@ -4,7 +4,7 @@ Small Language Models (SLMs) represent a growing class of language models that h
 
 <img width="900px" src="images/slm_console.gif">
 
-This tutorial shows how to run optimized SLMs with quantization using the [`NanoLLM`](https://dusty-nv.github.io/NanoLLM){:target="_blank"} library and MLC/TVM backend.  You can run these models through tools like [`text-generation-webui`](./tutorial_text-generation.md){:target="_blank"} and llama.cpp as well, just not as fast - and since the focus of SLMs is reduced computational and memory requirements, here we'll use the most optimized path available.  Those shown below have been profiled:
+This tutorial shows how to run optimized SLMs with quantization using the [`NanoLLM`](https://dusty-nv.github.io/NanoLLM){:target="_blank"} library and MLC/TVM backend.  You can run these models through tools like [`text-generation-webui`](../tutorial_text-generation.md){:target="_blank"} and llama.cpp as well, just not as fast - and since the focus of SLMs is reduced computational and memory requirements, here we'll use the most optimized path available.  Those shown below have been profiled:
 
 ## SLM Benchmarks
 

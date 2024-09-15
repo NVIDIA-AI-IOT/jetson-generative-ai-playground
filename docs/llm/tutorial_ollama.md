@@ -74,4 +74,4 @@ You can then navigate your browser to `http://JETSON_IP:8080`, and create a fake
 
 <img src="https://raw.githubusercontent.com/dusty-nv/jetson-containers/docs/docs/images/ollama_open_webui.jpg" width="800px"></img>
 
-Ollama uses llama.cpp for inference, which various API benchmarks and comparisons are provided for on the [Llava](./tutorial_llava.md){:target="_blank"} page.  It gets roughly half of peak performance versus the faster APIs like [NanoLLM](./tutorial_nano-llm.md), but is generally considered fast enough for text chat.  
+Ollama uses llama.cpp for inference, which various API benchmarks and comparisons are provided for on the [Llava](../tutorial_llava.md){:target="_blank"} page.  It gets roughly half of peak performance versus the faster APIs like [NanoLLM](../tutorial_nano-llm.md), but is generally considered fast enough for text chat.  

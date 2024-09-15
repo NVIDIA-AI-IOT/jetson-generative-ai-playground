@@ -1,13 +1,13 @@
 # Tutorial - Ultralytics YOLOv8
 
-<a href="https://www.ultralytics.com/events/yolovision"><img src="./images/YOLOVision.png" alt="YOLO Vision"></a>
+<a href="https://www.ultralytics.com/events/yolovision"><img src="../images/YOLOVision.png" alt="YOLO Vision"></a>
 
 Let's run [Ultralytics](https://www.ultralytics.com) YOLOv8 on Jetson with [NVIDIA TensorRT](https://developer.nvidia.com/tensorrt).
 
 [Ultralytics](https://github.com/ultralytics/ultralytics) YOLOv8 is a cutting-edge, state-of-the-art (SOTA) model that builds upon the success of previous YOLO versions and introduces new features and improvements to further boost performance and flexibility. YOLOv8 is designed to be fast, accurate, and easy to use, making it an excellent choice for a wide range of object detection and tracking, instance segmentation, image classification and pose estimation tasks.
 
 <div style="text-align: center;">
-  <img width="1024" src="./images/YOLOv8-tasks.png" alt="Ultralytics YOLO supported tasks">
+  <img width="1024" src="../images/YOLOv8-tasks.png" alt="Ultralytics YOLO supported tasks">
 </div>
 
 !!! abstract "What you need"
@@ -98,7 +98,7 @@ The YOLOv8n model in PyTorch format is converted to TensorRT to run inference wi
 
 Benchmarks of the YOLOv8 variants with TensorRT were run by [Seeed Studio](https://www.seeedstudio.com/blog/2023/03/30/yolov8-performance-benchmarks-on-nvidia-jetson-devices/) on their [reComputer](https://www.seeedstudio.com/tag/nvidia.html) systems:
 
-<img src="./images/YOLOv8-benchmarks.png" width="100%">
+<img src="../images/YOLOv8-benchmarks.png" width="100%">
 
 === "Xavier NX 8GB"
 

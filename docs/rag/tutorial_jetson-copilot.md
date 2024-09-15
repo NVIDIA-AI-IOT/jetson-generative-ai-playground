@@ -1,6 +1,6 @@
 # Tutorial - Jetson Copilot
 
-![](./images/jetson-copilot_1280x480.png)
+![](../images/jetson-copilot_1280x480.png)
 
 [Jetson Copilot](https://github.com/NVIDIA-AI-IOT/jetson-copilot/) is a reference application for a ***local*** AI assistant, which demonstrates;
 
@@ -38,7 +38,7 @@ If this is your first time to run Jetson Copilot on your Jetson, first run `setu
 ```bash
 git clone https://github.com/NVIDIA-AI-IOT/jetson-copilot/
 cd jetson-copilot
-./setup_environment.sh
+../setup_environment.sh
 ```
 
 It will install the following, if not yet.
@@ -50,7 +50,7 @@ It will install the following, if not yet.
 
 ```bash
 cd jetson-copilot
-./launch_jetson_copilot.sh
+../launch_jetson_copilot.sh
 ```
 
 <iframe width="960" height="540" src="https://www.youtube.com/embed/bKkg7PwbxFM?si=Idd4pvEbRaqhEVO3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -127,13 +127,13 @@ Now back on the web UI, open the side bar, toggle on "Use RAG", then click on "*
 Give a name for the Index you are to build. (e.g. "JON Carrier Board")<br>
 Type in the field and hit `Enter` key, then it will check and show what path will be created for your index.
 
-> ![alt text](./images/index_name_checked.png)
+> ![alt text](../images/index_name_checked.png)
 
 And then from the drop select box under "**Local documents**", select the directory you created and saved your documents in. (e.g. `/opt/jetson_copilot/Documents/Jetson-Orin-Nano`).
 
 It will show the summary of files found in the selected directory.
 
-> ![alt text](./images/local_documents_selected.png)
+> ![alt text](../images/local_documents_selected.png)
 
 If you want to rather only or additionally supply URLs for the online docuemnts to be ingested, fill the text area with one URL per a line.<br>
 You can skip this if you are building your index only based on your local documents.
@@ -168,7 +168,7 @@ In case you make more fundamental changes, you can also manually run streamlit a
 
 ```
 cd jetson-copilot
-./launch_dev.sh
+../launch_dev.sh
 ```
 
 Once in container;

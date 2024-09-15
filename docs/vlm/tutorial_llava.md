@@ -16,7 +16,7 @@
 
 In addition to Llava, the [`NanoVLM`](tutorial_nano-vlm.md) pipeline supports [VILA](https://huggingface.co/Efficient-Large-Model) and mini vision models that run on Orin Nano as well.
 
-![](./images/tgwui_multimodal_llava_fish.jpg)
+![](../images/tgwui_multimodal_llava_fish.jpg)
 
 ## 1. Chat with Llava using `text-generation-webui`
 
@@ -124,7 +124,7 @@ jetson-containers run $(autotag llava) \
 #### Terminal 1 : Controller
 
 ```
-./run.sh $(./autotag llava) 
+../run.sh $(../autotag llava) 
 ```
 
 Inside the container, launch a controller (`llava.serve.controller`).
@@ -187,7 +187,7 @@ python3 -m llava.serve.model_worker \
 
 ```bash
 jetson-containers run --workdir=/opt/llama.cpp/bin $(autotag llama_cpp:gguf) \
-  /bin/bash -c './llava-cli \
+  /bin/bash -c '../llava-cli \
     --model $(huggingface-downloader mys/ggml_llava-v1.5-13b/ggml-model-q4_k.gguf) \
     --mmproj $(huggingface-downloader mys/ggml_llava-v1.5-13b/mmproj-model-f16.gguf) \
     --n-gpu-layers 999 \
@@ -204,7 +204,7 @@ A lower temperature like 0.1 is recommended for better quality (`--temp 0.1`), a
 
 ```bash
 jetson-containers run --workdir=/opt/llama.cpp/bin $(autotag llama_cpp:gguf) \
-  /bin/bash -c './llava-cli \
+  /bin/bash -c '../llava-cli \
     --model $(huggingface-downloader mys/ggml_llava-v1.5-13b/ggml-model-q4_k.gguf) \
     --mmproj $(huggingface-downloader mys/ggml_llava-v1.5-13b/mmproj-model-f16.gguf) \
     --n-gpu-layers 999 \

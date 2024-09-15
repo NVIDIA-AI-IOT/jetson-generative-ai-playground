@@ -49,11 +49,11 @@ Open your browser and access `https://<IP_ADDRESS>:8888`.
 
 You will see a warning message like this.
 
-![](./images/Chrome_ERR_CERT.png){: style="width:50%"}
+![](../images/Chrome_ERR_CERT.png){: style="width:50%"}
 
 Press "**Advanced**" button and then click on "**Proceed to <IP_ADDRESS> (unsafe)**" link to proceed to the Jupyter Lab web interface.
 
-![](./images/Chrome_ERR_CERT_after_advanced.png){: style="width:50%"}
+![](../images/Chrome_ERR_CERT_after_advanced.png){: style="width:50%"}
 
 > The default password for Jupyter Lab is `nvidia`.
 
@@ -63,7 +63,7 @@ Whisper repo comes with demo Jupyter notebooks, which you can find under `/noteb
 
 `jetson-containers` also adds one convenient notebook (`record-and-transcribe.ipynb`) to record your audio sample on Jupyter notebook in order to run transcribe on your recorded audio. 
 
-![](./images/whisper_jupyterlab_notebooks.png)
+![](../images/whisper_jupyterlab_notebooks.png)
 
 ### `record-and-transcribe.ipynb`
 
@@ -71,22 +71,22 @@ This notebook is to let you record your own audio sample using your PC's microph
 
 It uses Jupyter notebook/lab's `ipywebrtc` extension to record an audio sample on your web browser.
 
-![](./images/whisper_ipywebrtc_widget.png)
+![](../images/whisper_ipywebrtc_widget.png)
 
 !!! attention
 
     When you click the ⏺ botton, your web browser may show a pop-up to ask you to allow it to use your microphone. Be sure to allow the access.
 
-    ![](./images/whisper_microphone_access.png)
+    ![](../images/whisper_microphone_access.png)
 
     ??? info "Final check"
     
         Once done, if you click on the "**⚠ Not secure**" part in the URL bar, you should see something like this.
 
-        ![](./images/whisper_web_setting.png)
+        ![](../images/whisper_web_setting.png)
 
 #### Result
 
 Once you go through all the steps, you should see the transcribe result in text like this.
 
-![](./images/whisper_transcribe_result.png)
+![](../images/whisper_transcribe_result.png)
