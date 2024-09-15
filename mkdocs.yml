@@ -81,60 +81,59 @@ nav:
   - Home: index.md
   - Tutorials:
     - Introduction: tutorial-intro.md
-    - Hello AI World: hello_ai_world.md
     - Agent Studio: agent_studio.md
+    - Audio:
+      - AudioCraft: audio/tutorial_audiocraft.md
+      - VoiceCraft: audio/tutorial_voicecraft.md
+      - Whisper: audio/tutorial_whisper.md
+    - Graphics:
+      - NerfStudio: graphics/tutorial_nerf.md
+    - Image Generation:
+      - Flux & ComfyUI 🆕: image_generation/tutorial_comfyui_flux.md
+      - Stable Diffusion: image_generation/tutorial_stable-diffusion.md
+      - Stable Diffusion XL: image_generation/tutorial_stable-diffusion-xl.md
+    - Robotics:
+      - Crossformer: robotics/tutorial_crossformer.md
+      - Lerobot: robotics/tutorial_lerobot.md
+      - Octo: robotics/tutorial_octo.md
+    - RAG & Vector Database:
+      - Jetson Copilot: rag/tutorial_jetson-copilot.md
+      - LlamaIndex: rag/tutorial_llamaindex.md
+      - NanoDB: rag/tutorial_nanodb.md
     - Text (LLM):
-      - text-generation-webui: tutorial_text-generation.md 
-      - ollama: tutorial_ollama.md
-      - llamaspeak: tutorial_llamaspeak.md
-      - NanoLLM: tutorial_nano-llm.md
-      - Small LLM (SLM): tutorial_slm.md
-      - API Examples: tutorial_api-examples.md
+      - API Examples: llm/tutorial_api-examples.md
+      - llamaspeak: llm/tutorial_llamaspeak.md
+      - NanoLLM: llm/tutorial_nano-llm.md
+      - ollama: llm/tutorial_ollama.md
+      - Small LLM (SLM): llm/tutorial_slm.md
+      - text-generation-webui: llm/tutorial_text-generation.md 
     - Text + Vision (VLM):
-      - LLaVA: tutorial_llava.md
-      - Live LLaVA: tutorial_live-llava.md
-      - NanoVLM: tutorial_nano-vlm.md
-      - OpenVLA 🆕: openvla.md
+      - LLaVA: vlm/tutorial_llava.md
+      - Live LLaVA: vlm/tutorial_live-llava.md
+      - NanoVLM: vlm/tutorial_nano-vlm.md
+      - OpenVLA 🆕: vlm/openvla.md
     - Vision Transformers (ViT): 
-      - vit/index.md
       - EfficientViT: vit/tutorial_efficientvit.md
       - NanoOWL: vit/tutorial_nanoowl.md
       - NanoSAM: vit/tutorial_nanosam.md
       - SAM: vit/tutorial_sam.md
       - TAM: vit/tutorial_tam.md
-    - Image Generation:
-      - Flux & ComfyUI 🆕: tutorial_comfyui_flux.md
-      - Stable Diffusion: tutorial_stable-diffusion.md
-      - Stable Diffusion XL: tutorial_stable-diffusion-xl.md
-    - RAG & Vector Database:
-      - NanoDB: tutorial_nanodb.md
-      - LlamaIndex: tutorial_llamaindex.md
-      - Jetson Copilot: tutorial_jetson-copilot.md
+      - vit/index.md
     - SDK Integrations 🆕:
-      - ROS2 Nodes: ros.md
-      - Holoscan SDK: tutorial_holoscan.md
-      - Jetson Platform Services: tutorial_jps.md
-      - Gapi Workflows: tutorial_gapi_workflows.md
-      - Gapi Micro Services: tutorial_gapi_microservices.md
-      - Ultralytics YOLOv8: tutorial_ultralytics.md
-    - Audio:
-      - Whisper: tutorial_whisper.md
-      - AudioCraft: tutorial_audiocraft.md
-      - VoiceCraft: tutorial_voicecraft.md
-    #- Metropolis Microservices:
-    #  - First Steps: tutorial_mmj.md
-    # - Tools:
-    #   - LangChain: tutorial_distillation.md
+      - Gapi Micro Services: sdks/tutorial_gapi_microservices.md
+      - Gapi Workflows: sdks/tutorial_gapi_workflows.md
+      - Holoscan SDK: sdks/tutorial_holoscan.md
+      - Jetson Platform Services: sdks/tutorial_jps.md
+      - ROS2 Nodes: sdks/ros.md
+      - Ultralytics YOLOv8: sdks/tutorial_ultralytics.md
     - Tips:
-      - 📑 Knowledge Distillation: tutorial_distillation.md
-      - 🔖 SSD + Docker: tips_ssd-docker.md
-      - 🔖 Memory optimization: tips_ram-optimization.md
-      - 🚅 Initial Setup Guide - Jetson Orin Nano: initial_setup_jon.md
-  - Benchmarks: benchmarks.md
-  - Projects: community_articles.md
+      - 🔖 Memory optimization: tips/tips_ram-optimization.md
+      - 🔖 SSD + Docker: tips/tips_ssd-docker.md
+      - 📑 Knowledge Distillation: tips/tutorial_distillation.md
+      - 🚅 Initial Setup Guide - Jetson Orin Nano: tips/initial_setup_jon.md
+  - Benchmarks: benchmarks/benchmarks.md
+  - Projects: community_projects/community_articles.md
   - Research Group: research.md
-  #- Try: try.md
-
 extra:
   generator: false
   analytics:

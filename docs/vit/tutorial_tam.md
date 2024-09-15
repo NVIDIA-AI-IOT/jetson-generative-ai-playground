@@ -1,4 +1,4 @@
-# Tutorial - SAM (Segment Anything)
+# Tutorial - TAM (Track Anything)
 
 Let's run [`TAM`](https://github.com/gaomingqi/Track-Anything) to perform Segment Anything on videos on NVIDIA Jetson.
 
