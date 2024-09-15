@@ -69,3 +69,5 @@ ns-train fruit_nerf --data /datasets/FruitNeRF_Synthetic/01_apple_tree_1024x1024
 ```
 
 ![fruit_nerf.png](../images/fruit_nerf.png)
+
+**Johnny** 🚀
