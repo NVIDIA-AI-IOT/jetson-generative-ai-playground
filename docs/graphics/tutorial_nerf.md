@@ -32,7 +32,7 @@ ns-download-data nerfstudio --capture-name=poster
 # Train model
 ns-train nerfacto --data data/nerfstudio/poster
 ```
-![first_nerf.png](.../images/first_nerf.png)
+![first_nerf.png](../images/first_nerf.png)
 
 # FruitNerf
 
@@ -50,6 +50,7 @@ To train a NeRF model, you need to prepare a dataset of images and corresponding
 
 Download synthetic data or real from [datasets](https://zenodo.org/records/10869455)
 ```bash
+mkdir -p /data/
 wget https://zenodo.org/records/10869455/files/FruitNeRF_Real.zip
 unzip FruitNeRF_Real.zip
 # or
@@ -58,5 +59,13 @@ unzip FruitNeRF_Synthetic.zip
 ```
 
 ## Usage of FruitNeRF
+```bash
+jetson-containers run -v /data/:/datasets/ $(autotag fruitnerf)
+```
 
-jetson-containers run -v /data/:/datasets $(autotag nerfstudio)
+## Training your model with FruitNeRF
+```bash 
+ns-train fruit_nerf --data /datasets/FruitNeRF_Synthetic/01_apple_tree_1024x1024_#300 --output-dir /datasets/FruitNeRF_Synthetic/01_apple_tree_1024x1024_#300
+```
+
+![fruit_nerf.png](../images/fruit_nerf.png)
