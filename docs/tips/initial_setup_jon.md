@@ -22,7 +22,7 @@ If you don't have them in your inventory, you want to arrange them and come back
     - :material-checkbox-blank-outline: microSD card (64GB or bigger) 
     - :material-checkbox-blank-outline: NVMe SSD (Optional, but highly recommended for following tutorials on this site)
 
-    <img src="images/microsd_64gb.png" style="max-width:120px;">  <img src="images/ssd_nvme_1tb.png" style="max-width:540px;">
+    <img src="../images/microsd_64gb.png" style="max-width:120px;">  <img src="../images/ssd_nvme_1tb.png" style="max-width:540px;">
 
     ### Mean to access terminal
 
@@ -36,7 +36,7 @@ If you don't have them in your inventory, you want to arrange them and come back
 
 !!! info "What you find in the box"
 
-    <img src="images/jetson-orin-nano-dev-kit-sd-slot.png" style="max-width:256px;" align="right">
+    <img src="../images/jetson-orin-nano-dev-kit-sd-slot.png" style="max-width:256px;" align="right">
 
     ### :material-checkbox-marked-outline: Jetson Orin Nano Developer Kit
 
@@ -149,7 +149,7 @@ You can take one of the following methods.
 
         If you don't have Balena Etcher on your PC, download from [Balena official site](https://etcher.balena.io/).
 
-        ![alt text](images/balena_etcher.png){ width="360" }
+        ![alt text](../images/balena_etcher.png){ width="360" }
 
     3. Insert the flashed microSD card into the slot on Jetson module
    

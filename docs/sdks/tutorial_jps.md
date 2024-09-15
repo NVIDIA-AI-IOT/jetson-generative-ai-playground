@@ -2,7 +2,7 @@
 
 Jetson Plaform Services (JPS) provide a platform to simplify development, deployment and management of Edge AI applications on NVIDIA Jetson. JPS is a modular & extensible architecture for developers to distill large complex applications into smaller modular microservice with APIs to integrate into other apps & services. At its core are a collection of AI services leveraging generative AI, deep learning, and analytics, which provide state of the art capabilities including video analytics, video understanding and summarization, text based prompting, zero shot detection and spatio temporal analysis of object movement. 
 
-![VLM Workflow](images/jps_vlm_workflow.gif)
+![VLM Workflow](../images/jps_vlm_workflow.gif)
 *VLM Alert Workflow built with JPS*
 
 !!! abstract "What you need"
@@ -30,7 +30,7 @@ To get started with Jetson Platform Services, follow the quickstart guide to ins
 
 The reference workflows demonstrate how to use the microservices provided in JPS to build full end to end systems on your Jetson. 
 
-![JPS VLM Workflow](images/jps_vlm_workflow.png)
+![JPS VLM Workflow](../images/jps_vlm_workflow.png)
 *VLM Alert Workflow Architecture*
 
 View the links below to learn more about Jetson Platform Services:  

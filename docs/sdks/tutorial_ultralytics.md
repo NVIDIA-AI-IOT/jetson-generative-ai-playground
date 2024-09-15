@@ -85,10 +85,10 @@ The YOLOv8n model in PyTorch format is converted to TensorRT to run inference wi
         yolo predict model=yolov8n.engine source='https://ultralytics.com/images/bus.jpg'
         ```
 
-|                   Manufacturing                   |                        Sports                        |                   Wildlife                    |
-| :-----------------------------------------------: | :--------------------------------------------------: | :-----------------------------------------: |
-| ![Vehicle Spare Parts Detection](images/YOLOv8-car.gif) | ![Football Player Detection](images/YOLOv8-football.gif) | ![Tiger-pose](images/YOLOv8-tiger.gif) |
-|           Vehicle Spare Parts Detection           |              Football Player Detection               |            Tiger pose Detection            |
+|                   Manufacturing                   |                        Sports                        |                 Wildlife                  |
+| :-----------------------------------------------: | :--------------------------------------------------: |:-----------------------------------------:|
+| ![Vehicle Spare Parts Detection](../images/YOLOv8-car.gif) | ![Football Player Detection](../images/YOLOv8-football.gif) | ![Tiger-pose](../images/YOLOv8-tiger.gif) |
+|           Vehicle Spare Parts Detection           |              Football Player Detection               |           Tiger pose Detection            |
 
 !!! Note
 
@@ -158,7 +158,7 @@ To learn more, visit our [comprehensive guide on running Ultralytics YOLOv8 on N
     ```
 4. Enter [`http://127.0.0.1:5001`](http://127.0.0.1:5001) or `http://device_ip:5001` in your browser to access the Web UI.
     <p align="center">
-      <img src="images/ultralytics_yolo_webui_by_seeedstudio.gif" alt="ultralytics_yolo_webui_by_seeedstudio.gif">
+      <img src="../images/ultralytics_yolo_webui_by_seeedstudio.gif" alt="ultralytics_yolo_webui_by_seeedstudio.gif">
     </p>
 
 

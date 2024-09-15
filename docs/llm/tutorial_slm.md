@@ -2,7 +2,7 @@
 
 Small Language Models (SLMs) represent a growing class of language models that have <7B parameters - for example [StableLM](https://stability.ai/news/stable-lm-3b-sustainable-high-performance-language-models-smart-devices){:target="_blank"}, [Phi-2](https://www.microsoft.com/en-us/research/blog/phi-2-the-surprising-power-of-small-language-models/){:target="_blank"}, and [Gemma-2B](https://blog.google/technology/developers/gemma-open-models/){:target="_blank"}.  Their smaller memory footprint and faster performance make them good candidates for deploying on Jetson Orin Nano.  Some are very capable with abilities at a similar level as the larger models, having been trained on high-quality curated datasets.
 
-<img width="900px" src="images/slm_console.gif">
+<img width="900px" src="../images/slm_console.gif">
 
 This tutorial shows how to run optimized SLMs with quantization using the [`NanoLLM`](https://dusty-nv.github.io/NanoLLM){:target="_blank"} library and MLC/TVM backend.  You can run these models through tools like [`text-generation-webui`](../tutorial_text-generation.md){:target="_blank"} and llama.cpp as well, just not as fast - and since the focus of SLMs is reduced computational and memory requirements, here we'll use the most optimized path available.  Those shown below have been profiled:
 
@@ -57,7 +57,7 @@ jetson-containers run $(autotag nano_llm) \
 
 This will enter into interactive mode where you chat back and forth using the keyboard (entering `reset` will clear the chat history)  
 
-<img width="900px" src="images/slm_console_2.gif">
+<img width="900px" src="../images/slm_console_2.gif">
 
 ### Automated Prompts
 
@@ -99,7 +99,7 @@ jetson-containers run $(autotag llama_cpp) \
 
 For a quick test, you can navigate your browser to `http://JETSON_IP:8080`, connect other clients like [Open WebUI](https://github.com/open-webui/open-webui), or have applications send requests to your server's OpenAI chat completion endpoints (i.e. from [openai-python](https://github.com/openai/openai-python), REST, JavaScript, ect)
 
-<img src="images/nemotron_llamacpp_webui.jpg" style="max-width: 600px">
+<img src="../images/nemotron_llamacpp_webui.jpg" style="max-width: 600px">
 
 You can more easily see the performance with the `llama-cli` tool:
 

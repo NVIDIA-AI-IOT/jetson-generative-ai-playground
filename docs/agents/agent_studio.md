@@ -3,7 +3,7 @@
 Rapidly design and experiment with creating your own automation agents, personal assistants, and edge AI systems in an interactive sandbox for connecting multimodal LLMs, speech and vision transformers, vector databases, prompt templating, and function calling to live sensors and I/O.  Optimized for deployment onboard Jetson with on-device compute, low-latency streaming, and unified memory.
 
 <video controls autoplay muted style="max-width: 900px">
-    <source src="images/agent_studio.mp4" type="video/mp4">
+    <source src="../images/agent_studio.mp4" type="video/mp4">
 </video>
 
 <table>
@@ -191,7 +191,7 @@ Below are descriptions of commonly-used components. Help text for these is extra
         
     The Whisper plugin is designed to be used in a pipeline with the VAD Filter to reduce erroneous output from background noise:
     
-    <img src="images/agent_studio_whisper.jpg" style="max-width: 750px">
+    <img src="../images/agent_studio_whisper.jpg" style="max-width: 750px">
     
 === "Piper TTS"
 
@@ -210,7 +210,7 @@ Below are descriptions of commonly-used components. Help text for these is extra
         
     This PiperTTS preset is available, which uses RateLimit to stream the output at 1x realtime factor (so it can be muted later)
     
-    <img src="images/agent_studio_piper.jpg" style="max-width: 550px">
+    <img src="../images/agent_studio_piper.jpg" style="max-width: 550px">
     
 === "VAD Filter"
 

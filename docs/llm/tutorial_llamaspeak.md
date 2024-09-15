@@ -51,7 +51,7 @@ This will start llamaspeak with text LLM and ASR/TTS enabled.  You can then navi
 
 The [code](https://github.com/dusty-nv/NanoLLM/blob/main/nano_llm/agents/web_chat.py){:target="_blank"} and [docs](https://dusty-nv.github.io/NanoLLM/agents.html#web-chat){:target="_blank"} for the `WebAgent` that runs llamaspeak can be found in the NanoLLM library.  This block diagram shows the speech pipeline with interleaved model generation, user interruption, and streaming I/O:
 
-<img src="images/llamaspeak_block_diagram.jpg">
+<img src="../images/llamaspeak_block_diagram.jpg">
 
 ## Multimodality
 

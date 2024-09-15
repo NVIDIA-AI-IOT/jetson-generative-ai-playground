@@ -4,7 +4,7 @@
 
 <a href="https://dusty-nv.github.io/NanoLLM" target="_blank"><img src="../images/nano_llm_docs.jpg" style="max-width: 50%; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);"></img></a>
 <video controls autoplay muted style="max-width: 75%">
-    <source src="images/agent_studio.mp4" type="video/mp4">
+    <source src="../images/agent_studio.mp4" type="video/mp4">
 </video>
 
 It provides <a href="tutorial_api-examples.html#nanollm" target="_blank">similar APIs</a> to HuggingFace, backed by highly-optimized inference libraries and quantization tools:
