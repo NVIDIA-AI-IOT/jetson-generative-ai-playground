@@ -88,13 +88,16 @@ nav:
       - Whisper: audio/tutorial_whisper.md
     - Graphics:
       - NerfStudio: graphics/tutorial_nerf.md
+      - MambaVision: graphics/tutorial_mambavision.md
+      - VideoMambaSuite: graphics/tutorial_videomambasuite.md
     - Image Generation:
+      - AI Toolkit: image_generation/tutorial_aitoolkit.md
       - Flux & ComfyUI 🆕: image_generation/tutorial_comfyui_flux.md
       - Stable Diffusion: image_generation/tutorial_stable-diffusion.md
       - Stable Diffusion XL: image_generation/tutorial_stable-diffusion-xl.md
     - Robotics:
-      - Crossformer: robotics/tutorial_crossformer.md
       - Lerobot: robotics/tutorial_lerobot.md
+      - Crossformer: robotics/tutorial_crossformer.md
       - Octo: robotics/tutorial_octo.md
     - RAG & Vector Database:
       - Jetson Copilot: rag/tutorial_jetson-copilot.md
@@ -112,6 +115,7 @@ nav:
       - Live LLaVA: vlm/tutorial_live-llava.md
       - NanoVLM: vlm/tutorial_nano-vlm.md
       - OpenVLA 🆕: vlm/openvla.md
+      - Cobra: vlm/tutorial_cobra.md
     - Vision Transformers (ViT): 
       - EfficientViT: vit/tutorial_efficientvit.md
       - NanoOWL: vit/tutorial_nanoowl.md
