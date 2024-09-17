@@ -1,4 +1,4 @@
-# ROS2 Nodes
+# ROS2 Nodes for Generative AI
 
 The [`ros2_nanollm`](https://github.com/NVIDIA-AI-IOT/ros2_nanollm) package provides ROS2 nodes for running optimized LLM's and VLM's locally inside a container.  These are built on [NanoLLM](tutorial_nano-llm.md) and ROS2 Humble for deploying generative AI models onboard your robot with Jetson.
 

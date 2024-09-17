@@ -67,6 +67,8 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true 
+  - pymdownx.tasklist:
+      custom_checkbox: true
   - meta
   - footnotes
 
@@ -99,13 +101,22 @@ nav:
       - NanoSAM: vit/tutorial_nanosam.md
       - SAM: vit/tutorial_sam.md
       - TAM: vit/tutorial_tam.md
+    - Robotics & Embodiment:
+      - LeRobot 🆕: lerobot.md
+      - ROS2 Nodes: ros.md
+      - OpenVLA: openvla.md
+    - Image Generation:
+      - Flux & ComfyUI: tutorial_comfyui_flux.md
+      - Stable Diffusion: tutorial_stable-diffusion.md
+      - Stable Diffusion XL: tutorial_stable-diffusion-xl.md
+      - nerfstudio 🆕: nerf.md
     - RAG & Vector Database:
       - NanoDB: tutorial_nanodb.md
       - LlamaIndex: tutorial_llamaindex.md
       - Jetson Copilot: tutorial_jetson-copilot.md
-    - API Integrations 🆕:
-      - ROS2 Nodes: ros.md
+    - SDK Integrations:
       - Holoscan SDK: tutorial_holoscan.md
+      - Jetson Platform Services: tutorial_jps.md
       - Gapi Workflows: tutorial_gapi_workflows.md
       - Gapi Micro Services: tutorial_gapi_microservices.md
       - Ultralytics YOLOv8: tutorial_ultralytics.md
@@ -113,9 +124,6 @@ nav:
       - Whisper: tutorial_whisper.md
       - AudioCraft: tutorial_audiocraft.md
       - VoiceCraft: tutorial_voicecraft.md
-    - Image Generation:
-      - Stable Diffusion: tutorial_stable-diffusion.md
-      - Stable Diffusion XL: tutorial_stable-diffusion-xl.md
     #- Metropolis Microservices:
     #  - First Steps: tutorial_mmj.md
     # - Tools:
