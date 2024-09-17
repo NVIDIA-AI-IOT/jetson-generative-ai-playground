@@ -94,7 +94,6 @@ nav:
       - LLaVA: tutorial_llava.md
       - Live LLaVA: tutorial_live-llava.md
       - NanoVLM: tutorial_nano-vlm.md
-      - OpenVLA 🆕: openvla.md
     - Vision Transformers (ViT): 
       - vit/index.md
       - EfficientViT: vit/tutorial_efficientvit.md
@@ -102,16 +101,20 @@ nav:
       - NanoSAM: vit/tutorial_nanosam.md
       - SAM: vit/tutorial_sam.md
       - TAM: vit/tutorial_tam.md
+    - Robotics & Embodiment:
+      - LeRobot 🆕: lerobot.md
+      - ROS2 Nodes: ros.md
+      - OpenVLA: openvla.md
     - Image Generation:
-      - Flux & ComfyUI 🆕: tutorial_comfyui_flux.md
+      - Flux & ComfyUI: tutorial_comfyui_flux.md
       - Stable Diffusion: tutorial_stable-diffusion.md
       - Stable Diffusion XL: tutorial_stable-diffusion-xl.md
+      - nerfstudio 🆕: nerf.md
     - RAG & Vector Database:
       - NanoDB: tutorial_nanodb.md
       - LlamaIndex: tutorial_llamaindex.md
       - Jetson Copilot: tutorial_jetson-copilot.md
-    - SDK Integrations 🆕:
-      - ROS2 Nodes: ros.md
+    - SDK Integrations:
       - Holoscan SDK: tutorial_holoscan.md
       - Jetson Platform Services: tutorial_jps.md
       - Gapi Workflows: tutorial_gapi_workflows.md
