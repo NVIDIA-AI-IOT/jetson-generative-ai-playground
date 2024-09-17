@@ -47,6 +47,8 @@ jetson-containers run -w /opt/lerobot $(autotag lerobot) \
     --episode-index 0
 ```
 
+<img src="images/lerobot_push.jpg" style="max-width:500px;">
+
 ## Evaluate a Pretrained Diffusion Policy
 
 This will download and run a pre-trained [diffusion model](https://huggingface.co/lerobot/diffusion_pusht) on the [PushT](https://github.com/huggingface/gym-pusht) environment <sup>[[↗]](https://github.com/huggingface/lerobot/?tab=readme-ov-file#evaluate-a-pretrained-policy)</sup>
@@ -58,8 +60,6 @@ jetson-containers run -w /opt/lerobot $(autotag lerobot) \
     eval.n_episodes=10 \
     eval.batch_size=10
 ```
-
-<img src="images/lerobot_push.jpg" style="max-width:500px;">
 
 ## Train your own ACT Policy
 
