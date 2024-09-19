@@ -10,9 +10,9 @@ The Jetson AI Lab Research Group is a global collective for advancing open-sourc
 
 There are virtual [meetings](#meeting-schedule) that anyone is welcome to join, offline discussion on the [Jetson Projects](https://forums.developer.nvidia.com/c/agx-autonomous-machines/jetson-embedded-systems/jetson-projects/78){:target="_blank"} forum, and guidelines for upstreaming open-source [contributions](#contribution-guidelines). 
 
-!!! abstract "Next Meeting - 9/17"
+!!! abstract "Next Meeting - 10/1"
     <!--The next team meeting is on Tuesday, June 11<sup>th</sup> at 9am PST.  View the [recording](#past-meetings) from the last meeting below.-->
-    The next team meeting is on Tuesday, September 17<sup>th</sup> at 9am PST - see the [invite](#meeting-schedule) below or click [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_NTA4ZmE4MDAtYWUwMS00ZTczLWE0YWEtNTE5Y2JkNTFmOWM1%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} to join the meeting in progress.
+    The next team meeting is on Tuesday, October 1<sup>st</sup> at 9am PST - see the [invite](#meeting-schedule) below or click [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_NTA4ZmE4MDAtYWUwMS00ZTczLWE0YWEtNTE5Y2JkNTFmOWM1%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} to join the meeting in progress.
 
 ## Topics of Interest
 
@@ -75,7 +75,7 @@ Ongoing technical discussions are encouraged to occur on the forums or GitHub Is
 
 We'll aim to meet monthly or bi-weekly as a team in virtual meetings that anyone is welcome to join and speak during.  We'll discuss the latest updates and experiments that we want to explore.  Please remain courteous to others during the calls.  We'll stick around after for anyone who has questions or didn't get the chance to be heard.
 
-!!! abstract "Tuesday September 17<sup>th</sup> at 9am PST (9/17/24)"
+!!! abstract "Tuesday October 1<sup>st</sup> at 9am PST (10/1/24)"
 
 	- Microsoft Teams - [Meeting Link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_NTA4ZmE4MDAtYWUwMS00ZTczLWE0YWEtNTE5Y2JkNTFmOWM1%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} 
 	- Meeting ID: `264 770 145 196`
@@ -100,7 +100,21 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 ## Past Meetings
 
-<details open><summary>September 3, 2024</summary>
+<details open><summary>September 17, 2024</summary>
+
+<div><iframe width="750" height="420" src="https://www.youtube.com/embed/Gys_AUOYZ4c" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<p>Topics Covered:</p>
+
+<ul>
+    <li><a href="https://github.com/nasa-jpl/rosa" target="_blank">NASA JPL - ROSA</a> (Rob Royce & Shehryar Khattak)</li>
+    <li><a href="https://www.jetson-ai-lab.com/lerobot.html" target="_blank">LeRobot Walkthrough</a> (Chitoku Yato)</li>
+	<li><a href="https://medium.com/@kabilankb2003/building-a-multimodal-ai-agent-integrating-vision-language-models-in-nvidia-isaac-sim-with-jetson-20592d4ef6c5" target="_blank">VLM Agent in Isaac Sim/ROS</a> (Kabilan Kb)</li>
+</ul>
+
+</details>
+
+<details><summary>September 3, 2024</summary>
 
 <div><iframe width="750" height="420" src="https://www.youtube.com/embed/r1i3QQrRnfI" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
