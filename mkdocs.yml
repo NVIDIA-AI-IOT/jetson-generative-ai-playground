@@ -20,7 +20,7 @@ theme:
 
   features:
       - navigation.indexes
-      # - navigation.expand
+      - navigation.expand
       - navigation.tabs
       - navigation.tabs.sticky
       # - navigation.sections

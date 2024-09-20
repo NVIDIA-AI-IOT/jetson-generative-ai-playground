@@ -29,9 +29,9 @@ jobs:
   run: |
     mkdocs build
       # Custom step to modify HTML files
-- name: Modify HTML files
+- name: Duplicate the generated site dir with postprocessing
   run: |
-    scripts/selectively_collapse_nav_sections.sh
+    python ./scripts/duplicate_site_with_postprocess.py ./site ./site_postprocessed
 - name: Deploy to GitHub Pages
   run: |
     # Initialize gh-pages branch if it doesn't exist
@@ -42,7 +42,7 @@ jobs:
     git checkout gh-pages || git checkout --orphan gh-pages
     
     # Copy the site content into the current directory
-    rsync -av --delete ./site/ ./
+    rsync -av --delete ./site_postprocessed/ ./
     
     # Commit and push the changes
     git add .

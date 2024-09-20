@@ -26,9 +26,16 @@ sudo docker pull squidfunk/mkdocs-material
 docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material
 ```
 
+### Test the post-processing
+
+```bash
+docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material build
+python ./scripts/duplicate_site_with_postprocess.py ./site ./site_postprocessed
+livereload ./site_postprocessed
+```
+
+## Troubleshooting
+
 > If you get "docker: Got permission denied while trying to connect to the Docker daemon socket at ..." error, 
 > issue `sudo usermod -aG docker $USER; newgrp docker` to get around with the issue.
 
-## How to also publish on GitHub
-
-(to be documented)
