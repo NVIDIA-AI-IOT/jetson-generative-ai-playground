@@ -32,7 +32,7 @@ jobs:
             # Custom step to modify HTML files
       - name: Duplicate the generated site dir with postprocessing
         run: |
-          python ./scripts/duplicate_site_with_postprocess.py ./site ./site_postprocessed
+          python ./scripts/duplicate_site_with_postprocess.py ./site ../site_postprocessed
       - name: Deploy to GitHub Pages
         run: |
           # Initialize gh-pages branch if it doesn't exist
@@ -45,8 +45,8 @@ jobs:
           git status
           
           # Copy the site content into the current directory
-          rsync -av --delete ./site_postprocessed/ ./ || [[ $? -eq 23 ]]
-          
+          cp -r ../site_postprocessed/* .
+
           # Commit and push the changes
           git add .
           git commit -m "Automated deployment with custom HTML edits" # TODO: Anyway to retain nad insert the original commit hash that trigger this CI?
