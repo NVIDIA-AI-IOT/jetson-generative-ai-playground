@@ -24,6 +24,8 @@ jobs:
             mkdocs-material-
       - run: pip install mkdocs-material
       - run: pip install mkdocs-redirects
+      - run: pip install beautifulsoup4
+      - run: pip install lxml
       - name: Build the MkDocs site
         run: |
           mkdocs build
