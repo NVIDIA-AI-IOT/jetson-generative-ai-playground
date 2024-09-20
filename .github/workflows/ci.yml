@@ -40,12 +40,12 @@ jobs:
           git config --global user.email "actions@github.com"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
           git fetch origin gh-pages
-          git checkout --orphan gh-pages
+          git checkout gh-pages || git checkout --orphan gh-pages
           ls -lh
           git status
           
           # Copy the site content into the current directory
-          rsync -av --ignore-errors --delete ./site_postprocessed/ ./
+          rsync -av --delete ./site_postprocessed/ ./ || [[ $? -eq 23 ]]
           
           # Commit and push the changes
           git add .
