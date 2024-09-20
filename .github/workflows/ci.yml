@@ -24,27 +24,26 @@ jobs:
             mkdocs-material-
       - run: pip install mkdocs-material
       - run: pip install mkdocs-redirects
-      
-- name: Build the MkDocs site
-  run: |
-    mkdocs build
-      # Custom step to modify HTML files
-- name: Duplicate the generated site dir with postprocessing
-  run: |
-    python ./scripts/duplicate_site_with_postprocess.py ./site ./site_postprocessed
-- name: Deploy to GitHub Pages
-  run: |
-    # Initialize gh-pages branch if it doesn't exist
-    git config --global user.name "GitHub Actions"
-    git config --global user.email "actions@github.com"
-    git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-    git fetch origin gh-pages
-    git checkout gh-pages || git checkout --orphan gh-pages
-    
-    # Copy the site content into the current directory
-    rsync -av --delete ./site_postprocessed/ ./
-    
-    # Commit and push the changes
-    git add .
-    git commit -m "Automated deployment with custom HTML edits" # TODO: Anyway to retain nad insert the original commit hash that trigger this CI?
-    git push origin gh-pages --force
+      - name: Build the MkDocs site
+        run: |
+          mkdocs build
+            # Custom step to modify HTML files
+      - name: Duplicate the generated site dir with postprocessing
+        run: |
+          python ./scripts/duplicate_site_with_postprocess.py ./site ./site_postprocessed
+      - name: Deploy to GitHub Pages
+        run: |
+          # Initialize gh-pages branch if it doesn't exist
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          git fetch origin gh-pages
+          git checkout gh-pages || git checkout --orphan gh-pages
+          
+          # Copy the site content into the current directory
+          rsync -av --delete ./site_postprocessed/ ./
+          
+          # Commit and push the changes
+          git add .
+          git commit -m "Automated deployment with custom HTML edits" # TODO: Anyway to retain nad insert the original commit hash that trigger this CI?
+          git push origin gh-pages --force
