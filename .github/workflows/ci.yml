@@ -43,7 +43,7 @@ jobs:
           git checkout gh-pages || git checkout --orphan gh-pages
           
           # Copy the site content into the current directory
-          rsync -av --delete ./site_postprocessed/ ./
+          rsync -av --ignore-errors --delete ./site_postprocessed/ ./
           
           # Commit and push the changes
           git add .
