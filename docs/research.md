@@ -137,8 +137,8 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 <ul>
     <li><a href="https://www.jetson-ai-lab.com/ros.html" target="_blank">GenAI ROS Nodes for VLM</a> (Khannah Shaltiel)</li>
-	<li><a href="https://github.com/kabilan2003/NVIDIA-Isaac-Sim-and-Isaac-ROS-Integration-on-Jetson-Orin-Nano" target="_blank">Isaac Sim and Orin Nano with Hardware-in-the-Loop</a> (Asier Arranz)</li>
-	<li><a href="https://www.miruml.com/" target="_blank">Miru Edge Deployment Infrastructure</a> (Lakshantha Dissanayake)</li>
+	<li><a href="https://github.com/kabilan2003/NVIDIA-Isaac-Sim-and-Isaac-ROS-Integration-on-Jetson-Orin-Nano" target="_blank">Isaac Sim and Orin Nano with Hardware-in-the-Loop</a> (Kabilan Kb)</li>
+	<li><a href="https://www.miruml.com/" target="_blank">Miru Edge Deployment Infrastructure</a> (Vedant Nair)</li>
 </ul>
 
 </details>
