@@ -125,3 +125,20 @@ llama_print_timings:       total time =    3597.17 ms /   136 tokens
 ```
 
 The model can also be previewed at [build.nvidia.com](https://build.nvidia.com/nvidia/nemotron-mini-4b-instruct) (example client requests for OpenAI API are also there)
+
+## Llama 3.2
+
+Meta has released multilingual 1B and 3B SLMs in the latest additions to the Llama family with [`Llama-3.2-1B`](https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct) and [`Llama-3.2-3B`](https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct).  These can be run with INT4 quantization using the latest [MLC](https://llm.mlc.ai/docs/) container for Jetson (`dustynv/mlc:0.1.2-r36.3.0`).  After having requested access to the models from [Meta](https://huggingface.co/meta-llama) with your HuggingFace API key, you can download, quantize, and benchmark them with these commands:
+
+```bash
+HUGGINGFACE_KEY=YOUR_API_KEY \
+MLC_VERSION=0.1.2 \
+ jetson-containers/packages/llm/mlc/benchmark.sh \
+   meta-llama/Llama-3.2-1B
+```
+
+* `Llama-3.2-1B` &nbsp; Jetson Orin Nano 54.8 tokens/sec, Jetson AGX Orin 163.9 tokens/sec
+* `Llama-3.2-3B` &nbsp; Jetson Orin Nano 27.7 tokens/sec, Jetson AGX Orin 80.4 tokens/sec
+
+The Llama-3.2 SLMs use the same core Llama architecture as previous Llama releases (except `tie_word_embeddings=True`), so it is already supported with quantization and full performance on edge devices.  Thanks to Meta for continuing to advance open generative AI models with Llama.
+
