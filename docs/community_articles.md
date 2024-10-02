@@ -8,6 +8,13 @@ hide:
 
 Below, you'll find a collection of guides, tutorials, and articles contributed by the community showcasing the implementation of generative AI on the Jetson platform.
 
+
+## <span class="blobGitHub">GitHub</span> [Jetbot Voice-Activated Copilot Tools with ROS2, RIVA, and NanoLLM](https://www.youtube.com/watch?v=SqDqO-KfWUs){:target="_blank"} <sup><small>(9-21-2024)</small></sup>
+
+[Jen Hung Ho](https://forums.developer.nvidia.com/t/jetbot-voice-activated-copilot-tools-with-nvidia-riva-and-nanollm-container-for-ros2-robot-version-2-0/307490){:target="_blank"} created ROS2 nodes for ASR/TTS and LLM/VLM on Jetson that can can be used to control JetBot, including customizable voice commands and the execution of advanced actions.  Check it out on GitHub under [`Jen-Hung-Ho/ros2_jetbot_tools`](https://github.com/Jen-Hung-Ho/ros2_jetbot_tools){:target="_blank"} and [`Jen-Hung-Ho/ros2_jetbot_voice`](https://github.com/Jen-Hung-Ho/ros2_jetbot_voice){:target="_blank"} and on the forums [here](https://forums.developer.nvidia.com/t/jetbot-voice-activated-copilot-tools-with-nvidia-riva-and-nanollm-container-for-ros2-robot-version-2-0/307490){:target="_blank"}.
+
+<iframe width="288" height="512" src="https://www.youtube.com/embed/SynIj1pxzdQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ## <span class="blobHackster">Hackster</span> [AI-Powered Photorealistic Talking Avatar](https://www.hackster.io/shahizat/ai-powered-photorealistic-talking-avatar-abac41){:target="_blank"} <sup><small>(4-26-2024)</small></sup>
 
 Nurgaliyev Shakhizat creates an interactive [talking avatar](https://www.hackster.io/shahizat/ai-powered-photorealistic-talking-avatar-abac41){:target="_blank"} using ASR, TTS, LLM, and Audio2Face with NVIDIA Omniverse and Unreal Engine:
@@ -52,12 +59,6 @@ Huy Mai enables Segment Anything (SAM) with [natural language prompting](https:/
 	<source src="https://github.com/to-aoki/ja-tiny-sd-webui/assets/47078021/38677e7a-2c81-4546-b53e-f084d5692205">
 	Your browser does not support the video tag.
 </video>
-
-## <span class="blobGitHub">GitHub</span> [JetBot Voice to Action Tools: Empowering Your ROS2 Robot with Voice Control](https://www.youtube.com/watch?v=SynIj1pxzdQ){:target="_blank"} <sup><small>(2-17-2024)</small></sup>
-
-[Jen Hung Ho](https://forums.developer.nvidia.com/t/jetbot-voice-to-action-tools-with-jetson-asr-deep-learning-interface-library-for-ros2-robot/283130){:target="_blank"} created ROS2 nodes for ASR/TTS on Jetson Nano that can can be used to control JetBot, including customizable voice commands and the execution of advanced actions.  Check it out on GitHub under [`Jen-Hung-Ho/ros2_jetbot_tools`](https://github.com/Jen-Hung-Ho/ros2_jetbot_tools){:target="_blank"} and [`Jen-Hung-Ho/ros2_jetbot_voice`](https://github.com/Jen-Hung-Ho/ros2_jetbot_voice){:target="_blank"} and on the forums [here](https://forums.developer.nvidia.com/t/jetbot-voice-to-action-tools-with-jetson-asr-deep-learning-interface-library-for-ros2-robot/283130){:target="_blank"}.
-
-<iframe width="288" height="512" src="https://www.youtube.com/embed/SynIj1pxzdQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## <span class="blobHackster">Hackster</span> [ClearWater: Underwater Image Enhancement with Generative AI](https://www.hackster.io/vpvypham1994/clearwater-underwater-image-enhancement-with-generative-a-i-8f7aff){:target="_blank"} <sup><small>(2-16-2024)</small></sup>
 
