@@ -88,12 +88,13 @@ nav:
       - ollama: tutorial_ollama.md
       - llamaspeak: tutorial_llamaspeak.md
       - NanoLLM: tutorial_nano-llm.md
-      - Small LLM (SLM): tutorial_slm.md
+      - Small LLM (SLM) 🆕: tutorial_slm.md
       - API Examples: tutorial_api-examples.md
     - Text + Vision (VLM):
       - LLaVA: tutorial_llava.md
       - Live LLaVA: tutorial_live-llava.md
       - NanoVLM: tutorial_nano-vlm.md
+      - Llama 3.2 Vision 🆕: llama_vlm.md
     - Vision Transformers (ViT): 
       - vit/index.md
       - EfficientViT: vit/tutorial_efficientvit.md
@@ -109,7 +110,7 @@ nav:
       - Flux & ComfyUI: tutorial_comfyui_flux.md
       - Stable Diffusion: tutorial_stable-diffusion.md
       - Stable Diffusion XL: tutorial_stable-diffusion-xl.md
-      - nerfstudio 🆕: nerf.md
+      - nerfstudio: nerf.md
     - RAG & Vector Database:
       - NanoDB: tutorial_nanodb.md
       - LlamaIndex: tutorial_llamaindex.md
