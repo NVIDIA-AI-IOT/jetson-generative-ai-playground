@@ -30,7 +30,10 @@ docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material
 
 ```bash
 docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material build
-python ./scripts/duplicate_site_with_postprocess.py ./site ./site_postprocessed
+pip install beautifulsoup4
+pip install lxml
+python3 ./scripts/duplicate_site_with_postprocess.py ./site ./site_postprocessed
+sudo apt install python3-livereload
 livereload ./site_postprocessed
 ```
 
