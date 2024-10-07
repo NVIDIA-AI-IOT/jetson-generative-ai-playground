@@ -3,7 +3,7 @@ import sys
 from bs4 import BeautifulSoup
 
 # Specify the section name exactly as spelled in mkdocs.yml file
-sections_to_keep_open = ["Text (LLM)", "Text + Vision (VLM)", "Vision Transformers (ViT)"]
+sections_to_keep_open = ["Text (LLM)", "Text + Vision (VLM)", "Vision Transformers (ViT)", "Robotics & Embodiment"]
 
 # Function to process each HTML file
 def postprocess_html_file(src_file_path, dest_file_path):
