@@ -1,0 +1,42 @@
+<!-- Elements added to main will be displayed on all pages -->
+{% extends "base.html" %}
+
+<!-- Announcement bar -->
+{#
+{% block announce %}
+  <style>
+    .md-announce a { color: #76b900; text-decoration: underline;}
+    .md-announce a:focus { color: hsl(82, 100%, 72%);  text-decoration: underline; }
+    .md-announce a:hover { color: hsl(82, 100%, 72%); text-decoration: underline;}
+  </style>
+    <div class="md-announce">Check out the new <a href="tutorial_jetson-copilot.html">Jetson Copilot</a> and <a href="agent_studio.html">Agent Studio</a> tools for building your own bots!</div>
+    <!--<div class="md-announce">The next research group meeting is on <a href="research.html#meeting-schedule">May 15th</a> at 9am PT! Catch up on the <a href="research.html#past-meetings">recordings</a> of the recent meetings.</div>-->
+    <!--<div class="md-announce">Congratulations to all the winners and participants of the <a href="https://blogs.nvidia.com/blog/glados-robot-hackster/" target="_blank">Hackster.io AI Innovation Challenge!</a></div>-->
+    <!--<div class="md-announce">Microsoft's open <a href="https://blogs.nvidia.com/blog/microsoft-open-phi-3-mini-language-models/" target="_blank">Phi-3 Mini</a> language models are out!  Try them today on Jetson with <a href="tutorial_ollama.html">ollama</a>.</div>-->
+    
+{% endblock %}
+#}
+{% block scripts %}
+<script src="//assets.adobedtm.com/5d4962a43b79/814eb6e9b4e1/launch-4bc07f1e0b0b.min.js"></script>
+{{ super() }}
+<script>
+  window._6si = window._6si || [];
+  window._6si.push(['enableEventTracking', true]);
+  window._6si.push(['setToken', 'eb417ec30d332e34d732e2916f185311']);
+  window._6si.push(['setEndpoint', 'b.6sc.co']);
+  window._6si.push(['enableRetargeting', false]); 
+
+  window._6si.push(['enableCompanyDetails', true]);
+  window._6si.push(['setEpsilonKey', '6f578ba72568231347d1bddb7102e53695302c28']);
+
+  (function() {
+    var gd = document.createElement('script');
+    gd.type = 'text/javascript';
+    gd.async = true;
+    gd.src = '//j.6sc.co/6si.min.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gd, s);
+  })();
+</script>
+<script type="text/javascript">_satellite.pageBottom();</script>
+{% endblock %}
