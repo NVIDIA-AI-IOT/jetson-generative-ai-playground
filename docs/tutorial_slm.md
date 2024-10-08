@@ -8,9 +8,9 @@ This tutorial shows how to run optimized SLMs with quantization using the [`Nano
 
 ## SLM Benchmarks
 
-<iframe width="916" height="507" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubchart?oid=1746097360&format=interactive"></iframe>
+![](./svgs/SLM%20Text%20Generation%20Rate.svg)
 
-<iframe width="1325px" height="350px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubhtml?gid=921468602&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+![alt text](images/Small%20Language%20Models%20(4-bit%20Quantization).png)
 
 > <small>• &nbsp; The HuggingFace [Open LLM Leaderboard](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard){:target="_blank"} is a collection of multitask benchmarks including reasoning & comprehension, math, coding, history, geography, ect.</small>  
 > <small>• &nbsp; The model's memory footprint includes 4-bit weights and KV cache at full context length (factor in extra for process overhead, library code, ect)</small>  
@@ -77,7 +77,7 @@ You can also load JSON files containing prompt sequences, like with [`--prompt /
 
 ### Results
 
-<iframe width="1325px" height="650px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubhtml?gid=1801223941&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+<iframe width="1325px" height="650px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR2KXuZnOuaUyhau4hyP39ZusJvGrg8Z_cIcA-XUfem1OOZx9nCMzxl_T8GVj4-xdl-n6LS8nlukopZ/pubhtml?gid=538585753&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
  
 <small>• &nbsp; The model responses are with 4-bit quantization, and are truncated to 256 tokens for brevity.</small>  
 <small>• &nbsp; These chat questions are from [`/data/prompts/qa.json`](https://github.com/dusty-nv/jetson-containers/blob/master/data/prompts/qa.json){:target="_blank"} (found in jetson-containers)</small> 
