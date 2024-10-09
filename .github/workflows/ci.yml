@@ -22,6 +22,43 @@ jobs:
           path: .cache
           restore-keys: |
             mkdocs-material-
-      - run: pip install mkdocs-material
-      - run: pip install mkdocs-redirects
-      - run: mkdocs gh-deploy --force
+         
+      - name: Install dependencies
+        run: |   
+          pip install mkdocs-material
+          pip install mkdocs-redirects
+          pip install beautifulsoup4
+          pip install lxml
+
+      - name: Get mkdocs-material version
+        run: |
+          MKDOCS_MATERIAL_VERSION=$(pip show mkdocs-material | grep Version | cut -d ' ' -f 2)
+          echo "MKDOCS_MATERIAL_VERSION=$MKDOCS_MATERIAL_VERSION" >> $GITHUB_ENV
+
+      - name: Build the MkDocs site
+        run: |
+          mkdocs build
+            # Custom step to modify HTML files
+
+      - name: Duplicate the generated site dir with postprocessing
+        run: |
+          python ./scripts/duplicate_site_with_postprocess.py ./site ../site_postprocessed
+
+      - name: Deploy to GitHub Pages
+        run: |
+          # Initialize gh-pages branch if it doesn't exist
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          git fetch origin gh-pages
+          git checkout gh-pages || git checkout --orphan gh-pages
+          ls -lh
+          git status
+          
+          # Copy the site content into the current directory
+          cp -r ../site_postprocessed/* .
+
+          # Commit and push the changes
+          git add .
+          git commit -m "Deployed ${GITHUB_SHA} with mkdocs-material v${{ env.MKDOCS_MATERIAL_VERSION }} and HTML post-processing"
+          git push origin gh-pages --force
