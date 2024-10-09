@@ -1,2104 +1,982 @@
 <!-- Elements added to main will be displayed on all pages -->
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-        <meta name="description" content="Showcasing generative AI projects that run on Jetson">
-      
-      
-      
-      
-        <link rel="prev" href="lerobot.html">
-      
-      
-        <link rel="next" href="openvla.html">
-      
-      
-      <link rel="icon" href="images/nvidia-favicon-rgb-16x16px@2x.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
-    
-    
-      
-        <title>ROS2 Nodes - NVIDIA Jetson AI Lab</title>
-      
-    
-    
-      <link rel="stylesheet" href="assets/stylesheets/main.8c3ca2c6.min.css">
-      
-        
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
-      
-      
-
-
-    
-    
-      
-    
-    
-      
-        
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=NVIDIA-NALA:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"NVIDIA-NALA";--md-code-font:"Roboto Mono"}</style>
-      
-    
-    
-      <link rel="stylesheet" href="css/colors.css">
-    
-      <link rel="stylesheet" href="css/extra.css">
-    
-      <link rel="stylesheet" href="css/nvidia-font.css">
-    
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-    
-      
-  
-
-
-  
-  
-
-<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SXH8S4Y8RW"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SXH8S4Y8RW",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SXH8S4Y8RW",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
-  
-    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
-  
-
-    
-    
-    
-  </head>
-  
-  
-    
-    
-      
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="nv-black-green" data-md-color-primary="nv-black-green" data-md-color-accent="nv-black-green">
-  
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#ros2-nodes-for-generative-ai" class="md-skip">
-          Skip to content
-        </a>
-      
-    </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-    
-      
-
-  
-
-<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="index.html" title="NVIDIA Jetson AI Lab" class="md-header__button md-logo" aria-label="NVIDIA Jetson AI Lab" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
-
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="Showcasing generative AI projects that run on Jetson" name="description"/>
+  <link href="lerobot.html" rel="prev"/>
+  <link href="openvla.html" rel="next"/>
+  <link href="images/nvidia-favicon-rgb-16x16px@2x.png" rel="icon"/>
+  <meta content="mkdocs-1.6.1, mkdocs-material-9.5.39" name="generator"/>
+  <title>
+   ROS2 Nodes - NVIDIA Jetson AI Lab
+  </title>
+  <link href="assets/stylesheets/main.8c3ca2c6.min.css" rel="stylesheet"/>
+  <link href="assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css?family=NVIDIA-NALA:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+  <style>
+   :root{--md-text-font:"NVIDIA-NALA";--md-code-font:"Roboto Mono"}
+  </style>
+  <link href="css/colors.css" rel="stylesheet"/>
+  <link href="css/extra.css" rel="stylesheet"/>
+  <link href="css/nvidia-font.css" rel="stylesheet"/>
+  <script>
+   __md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}
+  </script>
+  <script id="__analytics">
+   function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SXH8S4Y8RW"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SXH8S4Y8RW",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SXH8S4Y8RW",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}
+  </script>
+  <script>
+   "undefined"!=typeof __md_analytics&&__md_analytics()
+  </script>
+ </head>
+ <body data-md-color-accent="nv-black-green" data-md-color-primary="nv-black-green" data-md-color-scheme="nv-black-green" dir="ltr">
+  <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+  <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+  <label class="md-overlay" for="__drawer">
+  </label>
+  <div data-md-component="skip">
+   <a class="md-skip" href="#ros2-nodes-for-generative-ai">
+    Skip to content
+   </a>
+  </div>
+  <div data-md-component="announce">
+  </div>
+  <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+   <nav aria-label="Header" class="md-header__inner md-grid">
+    <a aria-label="NVIDIA Jetson AI Lab" class="md-header__button md-logo" data-md-component="logo" href="index.html" title="NVIDIA Jetson AI Lab">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54">
+      </path>
+     </svg>
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z">
+      </path>
+     </svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
-            NVIDIA Jetson AI Lab
-          </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
-            
-              ROS2 Nodes
-            
-          </span>
-        </div>
+     <div class="md-header__ellipsis">
+      <div class="md-header__topic">
+       <span class="md-ellipsis">
+        NVIDIA Jetson AI Lab
+       </span>
       </div>
+      <div class="md-header__topic" data-md-component="header-topic">
+       <span class="md-ellipsis">
+        ROS2 Nodes
+       </span>
+      </div>
+     </div>
     </div>
-    
-      
-        <form class="md-header__option" data-md-component="palette">
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="nv-black-green" data-md-color-primary="nv-black-green" data-md-color-accent="nv-black-green"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
-    
-  
-</form>
-      
-    
-    
-      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
-    
-    
-    
-      <label class="md-header__button md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-        </button>
-      </nav>
-      
+    <form class="md-header__option" data-md-component="palette">
+     <input aria-hidden="true" class="md-option" data-md-color-accent="nv-black-green" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="nv-black-green" data-md-color-scheme="nv-black-green" id="__palette_0" name="__palette" type="radio"/>
     </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+    <script>
+     var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}
+    </script>
+    <label class="md-header__button md-icon" for="__search">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5">
+      </path>
+     </svg>
+    </label>
+    <div class="md-search" data-md-component="search" role="dialog">
+     <label class="md-search__overlay" for="__search">
+     </label>
+     <div class="md-search__inner" role="search">
+      <form class="md-search__form" name="search">
+       <input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+       <label class="md-search__icon md-icon" for="__search">
+        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5">
+         </path>
+        </svg>
+        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z">
+         </path>
+        </svg>
+       </label>
+       <nav aria-label="Search" class="md-search__options">
+        <button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+         <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+          </path>
+         </svg>
+        </button>
+       </nav>
+      </form>
+      <div class="md-search__output">
+       <div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
         <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
+         <div class="md-search-result__meta">
+          Initializing search
+         </div>
+         <ol class="md-search-result__list" role="presentation">
+         </ol>
         </div>
+       </div>
       </div>
+     </div>
     </div>
-  </div>
-</div>
-    
-    
-  </nav>
-  
-    
-      
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="index.html" class="md-tabs__link">
-        
-  
-    
-  
-  Home
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-    
-  
-  
-    
-    
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="tutorial-intro.html" class="md-tabs__link">
-          
-  
-    
-  
-  Tutorials
-
-        </a>
+   </nav>
+   <nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+    <div class="md-grid">
+     <ul class="md-tabs__list">
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="index.html">
+        Home
+       </a>
       </li>
-    
-  
-
-      
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="benchmarks.html" class="md-tabs__link">
-        
-  
-    
-  
-  Benchmarks
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="community_articles.html" class="md-tabs__link">
-        
-  
-    
-  
-  Projects
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="research.html" class="md-tabs__link">
-        
-  
-    
-  
-  Research Group
-
-      </a>
-    </li>
-  
-
-      
-    </ul>
-  </div>
-</nav>
-    
-  
-</header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-
-  
-
-
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href="index.html" title="NVIDIA Jetson AI Lab" class="md-nav__button md-logo" aria-label="NVIDIA Jetson AI Lab" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
-
-    </a>
-    NVIDIA Jetson AI Lab
-  </label>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="index.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Home
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-        
-        
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
-            
-  
-  <span class="md-ellipsis">
-    Tutorials
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            Tutorials
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial-intro.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Introduction
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="hello_ai_world.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Hello AI World
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="agent_studio.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Agent Studio
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Text (LLM)
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4">
-            <span class="md-nav__icon md-icon"></span>
-            Text (LLM)
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_text-generation.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    text-generation-webui
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_ollama.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ollama
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_llamaspeak.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    llamaspeak
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_nano-llm.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    NanoLLM
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_slm.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Small LLM (SLM) 🆕
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_api-examples.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    API Examples
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Text + Vision (VLM)
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_5">
-            <span class="md-nav__icon md-icon"></span>
-            Text + Vision (VLM)
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_llava.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    LLaVA
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_live-llava.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Live LLaVA
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_nano-vlm.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    NanoVLM
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="llama_vlm.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Llama 3.2 Vision 🆕
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_6" >
-        
-          
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="vit/index.html" class="md-nav__link ">
-              
-  
-  <span class="md-ellipsis">
-    Vision Transformers (ViT)
-  </span>
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
+      <li class="md-tabs__item md-tabs__item--active">
+       <a class="md-tabs__link" href="tutorial-intro.html">
+        Tutorials
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="benchmarks.html">
+        Benchmarks
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="community_articles.html">
+        Projects
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="research.html">
+        Research Group
+       </a>
+      </li>
+     </ul>
+    </div>
+   </nav>
+  </header>
+  <div class="md-container" data-md-component="container">
+   <main class="md-main" data-md-component="main">
+    <div class="md-main__inner md-grid">
+     <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+         <label class="md-nav__title" for="__drawer">
+          <a aria-label="NVIDIA Jetson AI Lab" class="md-nav__button md-logo" data-md-component="logo" href="index.html" title="NVIDIA Jetson AI Lab">
+           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54">
+            </path>
+           </svg>
+          </a>
+          NVIDIA Jetson AI Lab
+         </label>
+         <ul class="md-nav__list" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="index.html">
+            <span class="md-ellipsis">
+             Home
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+           <input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            <span class="md-ellipsis">
+             Tutorials
+            </span>
+            <span class="md-nav__icon md-icon">
+            </span>
+           </label>
+           <nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+            <label class="md-nav__title" for="__nav_2">
+             <span class="md-nav__icon md-icon">
+             </span>
+             Tutorials
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="tutorial-intro.html">
+               <span class="md-ellipsis">
+                Introduction
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="hello_ai_world.html">
+               <span class="md-ellipsis">
+                Hello AI World
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="agent_studio.html">
+               <span class="md-ellipsis">
+                Agent Studio
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2_4" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+               <span class="md-ellipsis">
+                Text (LLM)
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
               </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_6">
-            <span class="md-nav__icon md-icon"></span>
-            Vision Transformers (ViT)
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="vit/tutorial_efficientvit.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    EfficientViT
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="vit/tutorial_nanoowl.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    NanoOWL
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="vit/tutorial_nanosam.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    NanoSAM
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="vit/tutorial_sam.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    SAM
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="vit/tutorial_tam.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    TAM
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Robotics & Embodiment
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2_7">
-            <span class="md-nav__icon md-icon"></span>
-            Robotics & Embodiment
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="lerobot.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    LeRobot 🆕
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    ROS2 Nodes
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="ros.html" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    ROS2 Nodes
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#running-the-live-demo" class="md-nav__link">
-    <span class="md-ellipsis">
-      Running the Live Demo
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-your-own-ros-nodes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Build your own ROS Nodes
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Build your own ROS Nodes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#editing-the-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      Editing the Setup
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#creating-the-node" class="md-nav__link">
-    <span class="md-ellipsis">
-      Creating the Node
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#creating-the-launch-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      Creating the Launch File
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="openvla.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    OpenVLA
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Image Generation
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_8">
-            <span class="md-nav__icon md-icon"></span>
-            Image Generation
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_comfyui_flux.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Flux & ComfyUI
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_stable-diffusion.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Stable Diffusion
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_stable-diffusion-xl.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Stable Diffusion XL
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="nerf.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    nerfstudio
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_9" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    RAG & Vector Database
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_9">
-            <span class="md-nav__icon md-icon"></span>
-            RAG & Vector Database
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_nanodb.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    NanoDB
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_llamaindex.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    LlamaIndex
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_jetson-copilot.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Jetson Copilot
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_10" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    SDK Integrations
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_10">
-            <span class="md-nav__icon md-icon"></span>
-            SDK Integrations
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_holoscan.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Holoscan SDK
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_jps.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Jetson Platform Services
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_gapi_workflows.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Gapi Workflows
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_gapi_microservices.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Gapi Micro Services
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_ultralytics.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Ultralytics YOLOv8
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_11" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Audio
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_11">
-            <span class="md-nav__icon md-icon"></span>
-            Audio
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_whisper.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Whisper
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_audiocraft.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    AudioCraft
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_voicecraft.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    VoiceCraft
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_12" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Tips
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_12">
-            <span class="md-nav__icon md-icon"></span>
-            Tips
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_distillation.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    📑 Knowledge Distillation
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tips_ssd-docker.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    🔖 SSD + Docker
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tips_ram-optimization.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    🔖 Memory optimization
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="initial_setup_jon.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    🚅 Initial Setup Guide - Jetson Orin Nano
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="benchmarks.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Benchmarks
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="community_articles.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Projects
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="research.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Research Group
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-  </ul>
-</nav>
-                  </div>
-                </div>
+              <nav aria-expanded="false" aria-labelledby="__nav_2_4_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_4">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Text (LLM)
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_text-generation.html">
+                  <span class="md-ellipsis">
+                   text-generation-webui
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_ollama.html">
+                  <span class="md-ellipsis">
+                   ollama
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_llamaspeak.html">
+                  <span class="md-ellipsis">
+                   llamaspeak
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_nano-llm.html">
+                  <span class="md-ellipsis">
+                   NanoLLM
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_slm.html">
+                  <span class="md-ellipsis">
+                   Small LLM (SLM) 🆕
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_api-examples.html">
+                  <span class="md-ellipsis">
+                   API Examples
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2_5" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+               <span class="md-ellipsis">
+                Text + Vision (VLM)
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_2_5_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_5">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Text + Vision (VLM)
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_llava.html">
+                  <span class="md-ellipsis">
+                   LLaVA
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_live-llava.html">
+                  <span class="md-ellipsis">
+                   Live LLaVA
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_nano-vlm.html">
+                  <span class="md-ellipsis">
+                   NanoVLM
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="llama_vlm.html">
+                  <span class="md-ellipsis">
+                   Llama 3.2 Vision 🆕
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2_6" type="checkbox"/>
+              <div class="md-nav__link md-nav__container">
+               <a class="md-nav__link" href="vit/index.html">
+                <span class="md-ellipsis">
+                 Vision Transformers (ViT)
+                </span>
+               </a>
+               <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon">
+                </span>
+               </label>
               </div>
-            
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#running-the-live-demo" class="md-nav__link">
-    <span class="md-ellipsis">
-      Running the Live Demo
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-your-own-ros-nodes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Build your own ROS Nodes
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Build your own ROS Nodes">
-      <ul class="md-nav__list">
-        
+              <nav aria-expanded="false" aria-labelledby="__nav_2_6_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_6">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Vision Transformers (ViT)
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="vit/tutorial_efficientvit.html">
+                  <span class="md-ellipsis">
+                   EfficientViT
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="vit/tutorial_nanoowl.html">
+                  <span class="md-ellipsis">
+                   NanoOWL
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="vit/tutorial_nanosam.html">
+                  <span class="md-ellipsis">
+                   NanoSAM
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="vit/tutorial_sam.html">
+                  <span class="md-ellipsis">
+                   SAM
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="vit/tutorial_tam.html">
+                  <span class="md-ellipsis">
+                   TAM
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+              <input checked="" class="md-nav__toggle md-toggle" id="__nav_2_7" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+               <span class="md-ellipsis">
+                Robotics &amp; Embodiment
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="true" aria-labelledby="__nav_2_7_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_7">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Robotics &amp; Embodiment
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="lerobot.html">
+                  <span class="md-ellipsis">
+                   LeRobot 🆕
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item md-nav__item--active">
+                 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+                 <label class="md-nav__link md-nav__link--active" for="__toc">
+                  <span class="md-ellipsis">
+                   ROS2 Nodes
+                  </span>
+                  <span class="md-nav__icon md-icon">
+                  </span>
+                 </label>
+                 <a class="md-nav__link md-nav__link--active" href="ros.html">
+                  <span class="md-ellipsis">
+                   ROS2 Nodes
+                  </span>
+                 </a>
+                 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+                  <label class="md-nav__title" for="__toc">
+                   <span class="md-nav__icon md-icon">
+                   </span>
+                   Table of contents
+                  </label>
+                  <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#running-the-live-demo">
+                     <span class="md-ellipsis">
+                      Running the Live Demo
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#build-your-own-ros-nodes">
+                     <span class="md-ellipsis">
+                      Build your own ROS Nodes
+                     </span>
+                    </a>
+                    <nav aria-label="Build your own ROS Nodes" class="md-nav">
+                     <ul class="md-nav__list">
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#editing-the-setup">
+                        <span class="md-ellipsis">
+                         Editing the Setup
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#creating-the-node">
+                        <span class="md-ellipsis">
+                         Creating the Node
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#creating-the-launch-file">
+                        <span class="md-ellipsis">
+                         Creating the Launch File
+                        </span>
+                       </a>
+                      </li>
+                     </ul>
+                    </nav>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="openvla.html">
+                  <span class="md-ellipsis">
+                   OpenVLA
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" id="__nav_2_8" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+               <span class="md-ellipsis">
+                Image Generation
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_2_8_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_8">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Image Generation
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_comfyui_flux.html">
+                  <span class="md-ellipsis">
+                   Flux &amp; ComfyUI
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_stable-diffusion.html">
+                  <span class="md-ellipsis">
+                   Stable Diffusion
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_stable-diffusion-xl.html">
+                  <span class="md-ellipsis">
+                   Stable Diffusion XL
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="nerf.html">
+                  <span class="md-ellipsis">
+                   nerfstudio
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" id="__nav_2_9" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+               <span class="md-ellipsis">
+                RAG &amp; Vector Database
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_2_9_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_9">
+                <span class="md-nav__icon md-icon">
+                </span>
+                RAG &amp; Vector Database
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_nanodb.html">
+                  <span class="md-ellipsis">
+                   NanoDB
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_llamaindex.html">
+                  <span class="md-ellipsis">
+                   LlamaIndex
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_jetson-copilot.html">
+                  <span class="md-ellipsis">
+                   Jetson Copilot
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" id="__nav_2_10" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+               <span class="md-ellipsis">
+                SDK Integrations
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_2_10_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_10">
+                <span class="md-nav__icon md-icon">
+                </span>
+                SDK Integrations
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_holoscan.html">
+                  <span class="md-ellipsis">
+                   Holoscan SDK
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_jps.html">
+                  <span class="md-ellipsis">
+                   Jetson Platform Services
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_gapi_workflows.html">
+                  <span class="md-ellipsis">
+                   Gapi Workflows
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_gapi_microservices.html">
+                  <span class="md-ellipsis">
+                   Gapi Micro Services
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_ultralytics.html">
+                  <span class="md-ellipsis">
+                   Ultralytics YOLOv8
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" id="__nav_2_11" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+               <span class="md-ellipsis">
+                Audio
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_2_11_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_11">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Audio
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_whisper.html">
+                  <span class="md-ellipsis">
+                   Whisper
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_audiocraft.html">
+                  <span class="md-ellipsis">
+                   AudioCraft
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_voicecraft.html">
+                  <span class="md-ellipsis">
+                   VoiceCraft
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" id="__nav_2_12" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+               <span class="md-ellipsis">
+                Tips
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_2_12_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_12">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Tips
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_distillation.html">
+                  <span class="md-ellipsis">
+                   📑 Knowledge Distillation
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tips_ssd-docker.html">
+                  <span class="md-ellipsis">
+                   🔖 SSD + Docker
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tips_ram-optimization.html">
+                  <span class="md-ellipsis">
+                   🔖 Memory optimization
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="initial_setup_jon.html">
+                  <span class="md-ellipsis">
+                   🚅 Initial Setup Guide - Jetson Orin Nano
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+            </ul>
+           </nav>
+          </li>
           <li class="md-nav__item">
-  <a href="#editing-the-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      Editing the Setup
-    </span>
-  </a>
-  
-</li>
-        
+           <a class="md-nav__link" href="benchmarks.html">
+            <span class="md-ellipsis">
+             Benchmarks
+            </span>
+           </a>
+          </li>
           <li class="md-nav__item">
-  <a href="#creating-the-node" class="md-nav__link">
-    <span class="md-ellipsis">
-      Creating the Node
-    </span>
-  </a>
-  
-</li>
-        
+           <a class="md-nav__link" href="community_articles.html">
+            <span class="md-ellipsis">
+             Projects
+            </span>
+           </a>
+          </li>
           <li class="md-nav__item">
-  <a href="#creating-the-launch-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      Creating the Launch File
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          
-            <div class="md-content" data-md-component="content">
-              <article class="md-content__inner md-typeset">
-                
-                  
-
-
-<h1 id="ros2-nodes-for-generative-ai">ROS2 Nodes for Generative AI</h1>
-<p>The <a href="https://github.com/NVIDIA-AI-IOT/ros2_nanollm"><code>ros2_nanollm</code></a> package provides ROS2 nodes for running optimized LLM's and VLM's locally inside a container.  These are built on <a href="tutorial_nano-llm.html">NanoLLM</a> and ROS2 Humble for deploying generative AI models onboard your robot with Jetson.</p>
-<p><img alt="" src="https://github.com/NVIDIA-AI-IOT/ros2_nanollm/raw/main/assets/sample.gif" /></p>
-<div class="admonition abstract">
-<p class="admonition-title">What you need</p>
-<ol>
-<li>
-<p>One of the following Jetson devices:</p>
-<p><span class="blobDarkGreen4">Jetson AGX Orin (64GB)</span>
-<span class="blobDarkGreen5">Jetson AGX Orin (32GB)</span>
-<span class="blobLightGreen3">Jetson Orin NX (16GB)</span>
-<span class="blobLightGreen4">Jetson Orin Nano (8GB)</span><span title="Orin Nano 8GB can run Llava-7b, VILA-7b, and Obsidian-3B">⚠️</span></p>
-</li>
-<li>
-<p>Running one of the following versions of <a href="https://developer.nvidia.com/embedded/jetpack">JetPack</a>:</p>
-<p><span class="blobPink2">JetPack 5 (L4T r35.x)</span>
-<span class="blobPink2">JetPack 6 (L4T r36.x)</span></p>
-</li>
-<li>
-<p>Sufficient storage space (preferably with NVMe SSD).</p>
-<ul>
-<li><code>22GB</code> for <code>nano_llm:humble</code> container image</li>
-<li>Space for models (<code>&gt;10GB</code>)</li>
-</ul>
-</li>
-<li>
-<p>Clone and setup <a href="https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md" target="_blank"><code>jetson-containers</code></a>:</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dusty-nv/jetson-containers
+           <a class="md-nav__link" href="research.html">
+            <span class="md-ellipsis">
+             Research Group
+            </span>
+           </a>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+         <label class="md-nav__title" for="__toc">
+          <span class="md-nav__icon md-icon">
+          </span>
+          Table of contents
+         </label>
+         <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#running-the-live-demo">
+            <span class="md-ellipsis">
+             Running the Live Demo
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#build-your-own-ros-nodes">
+            <span class="md-ellipsis">
+             Build your own ROS Nodes
+            </span>
+           </a>
+           <nav aria-label="Build your own ROS Nodes" class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#editing-the-setup">
+               <span class="md-ellipsis">
+                Editing the Setup
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#creating-the-node">
+               <span class="md-ellipsis">
+                Creating the Node
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#creating-the-launch-file">
+               <span class="md-ellipsis">
+                Creating the Launch File
+               </span>
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-content" data-md-component="content">
+      <article class="md-content__inner md-typeset">
+       <h1 id="ros2-nodes-for-generative-ai">
+        ROS2 Nodes for Generative AI
+       </h1>
+       <p>
+        The
+        <a href="https://github.com/NVIDIA-AI-IOT/ros2_nanollm">
+         <code>
+          ros2_nanollm
+         </code>
+        </a>
+        package provides ROS2 nodes for running optimized LLM's and VLM's locally inside a container.  These are built on
+        <a href="tutorial_nano-llm.html">
+         NanoLLM
+        </a>
+        and ROS2 Humble for deploying generative AI models onboard your robot with Jetson.
+       </p>
+       <p>
+        <img alt="" src="https://github.com/NVIDIA-AI-IOT/ros2_nanollm/raw/main/assets/sample.gif"/>
+       </p>
+       <div class="admonition abstract">
+        <p class="admonition-title">
+         What you need
+        </p>
+        <ol>
+         <li>
+          <p>
+           One of the following Jetson devices:
+          </p>
+          <p>
+           <span class="blobDarkGreen4">
+            Jetson AGX Orin (64GB)
+           </span>
+           <span class="blobDarkGreen5">
+            Jetson AGX Orin (32GB)
+           </span>
+           <span class="blobLightGreen3">
+            Jetson Orin NX (16GB)
+           </span>
+           <span class="blobLightGreen4">
+            Jetson Orin Nano (8GB)
+           </span>
+           <span title="Orin Nano 8GB can run Llava-7b, VILA-7b, and Obsidian-3B">
+            ⚠️
+           </span>
+          </p>
+         </li>
+         <li>
+          <p>
+           Running one of the following versions of
+           <a href="https://developer.nvidia.com/embedded/jetpack">
+            JetPack
+           </a>
+           :
+          </p>
+          <p>
+           <span class="blobPink2">
+            JetPack 5 (L4T r35.x)
+           </span>
+           <span class="blobPink2">
+            JetPack 6 (L4T r36.x)
+           </span>
+          </p>
+         </li>
+         <li>
+          <p>
+           Sufficient storage space (preferably with NVMe SSD).
+          </p>
+          <ul>
+           <li>
+            <code>
+             22GB
+            </code>
+            for
+            <code>
+             nano_llm:humble
+            </code>
+            container image
+           </li>
+           <li>
+            Space for models (
+            <code>
+             &gt;10GB
+            </code>
+            )
+           </li>
+          </ul>
+         </li>
+         <li>
+          <p>
+           Clone and setup
+           <a href="https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md" target="_blank">
+            <code>
+             jetson-containers
+            </code>
+           </a>
+           :
+          </p>
+          <div class="highlight">
+           <pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dusty-nv/jetson-containers
 bash<span class="w"> </span>jetson-containers/install.sh
-</code></pre></div>
-</li>
-</ol>
-</div>
-<h2 id="running-the-live-demo">Running the Live Demo</h2>
-<div class="admonition abstract">
-<p class="admonition-title">Recommended</p>
-<p>Before you start, please review <a href="https://www.jetson-ai-lab.com/tutorial_nano-vlm.html">NanoVLM</a> and <a href="https://www.jetson-ai-lab.com/tutorial_live-llava.html">Live LLaVa</a> demos.  For primary documentation, view <a href="https://github.com/NVIDIA-AI-IOT/ros2_nanollm">ROS2 NanoLLM</a>.</p>
-</div>
-<ol>
-<li>
-<p>Ensure you have a camera device connected</p>
-<div class="highlight"><pre><span></span><code>ls /dev/video*
-</code></pre></div>
-</li>
-<li>
-<p>Use the <code>jetson-containers run</code> and <code>autotag</code> commands to automatically pull or build a compatible container image. </p>
-<div class="highlight"><pre><span></span><code>jetson-containers run $(autotag nano_llm:humble) \
+</code></pre>
+          </div>
+         </li>
+        </ol>
+       </div>
+       <h2 id="running-the-live-demo">
+        Running the Live Demo
+       </h2>
+       <div class="admonition abstract">
+        <p class="admonition-title">
+         Recommended
+        </p>
+        <p>
+         Before you start, please review
+         <a href="https://www.jetson-ai-lab.com/tutorial_nano-vlm.html">
+          NanoVLM
+         </a>
+         and
+         <a href="https://www.jetson-ai-lab.com/tutorial_live-llava.html">
+          Live LLaVa
+         </a>
+         demos.  For primary documentation, view
+         <a href="https://github.com/NVIDIA-AI-IOT/ros2_nanollm">
+          ROS2 NanoLLM
+         </a>
+         .
+        </p>
+       </div>
+       <ol>
+        <li>
+         <p>
+          Ensure you have a camera device connected
+         </p>
+         <div class="highlight">
+          <pre><span></span><code>ls /dev/video*
+</code></pre>
+         </div>
+        </li>
+        <li>
+         <p>
+          Use the
+          <code>
+           jetson-containers run
+          </code>
+          and
+          <code>
+           autotag
+          </code>
+          commands to automatically pull or build a compatible container image.
+         </p>
+         <div class="highlight">
+          <pre><span></span><code>jetson-containers run $(autotag nano_llm:humble) \
     ros2 launch ros2_nanollm camera_input_example.launch.py
-</code></pre></div>
-<p>This command will start the launch file of the container. </p>
-</li>
-</ol>
-<p>By default this will load the <a href="https://huggingface.co/Efficient-Large-Model/Llama-3-VILA1.5-8b"><code>Efficient-Large-Model/Llama-3-VILA1.5-8B</code></a> VLM and publish the image captions and overlay to topics that can be subscribed to by your other nodes, or visualized with RViz or Foxglove.  Refer to the <a href="https://github.com/NVIDIA-AI-IOT/ros2_nanollm"><code>ros2_nanollm</code></a> repo for documentation on the input/output topics that are exposed.</p>
-<h2 id="build-your-own-ros-nodes">Build your own ROS Nodes</h2>
-<p>To build your own ROS2 node using LLM or VLM, first create a ROS 2 workspace and package in a directory mounted to the container (following the <a href="https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html">ROS 2 Humble Documentation</a>).  Your src folder should then look like this: </p>
-<pre><code>    └── src    
+</code></pre>
+         </div>
+         <p>
+          This command will start the launch file of the container.
+         </p>
+        </li>
+       </ol>
+       <p>
+        By default this will load the
+        <a href="https://huggingface.co/Efficient-Large-Model/Llama-3-VILA1.5-8b">
+         <code>
+          Efficient-Large-Model/Llama-3-VILA1.5-8B
+         </code>
+        </a>
+        VLM and publish the image captions and overlay to topics that can be subscribed to by your other nodes, or visualized with RViz or Foxglove.  Refer to the
+        <a href="https://github.com/NVIDIA-AI-IOT/ros2_nanollm">
+         <code>
+          ros2_nanollm
+         </code>
+        </a>
+        repo for documentation on the input/output topics that are exposed.
+       </p>
+       <h2 id="build-your-own-ros-nodes">
+        Build your own ROS Nodes
+       </h2>
+       <p>
+        To build your own ROS2 node using LLM or VLM, first create a ROS 2 workspace and package in a directory mounted to the container (following the
+        <a href="https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html">
+         ROS 2 Humble Documentation
+        </a>
+        ).  Your src folder should then look like this:
+       </p>
+       <pre><code>    └── src    
         └── your-package-name
             ├── launch     
                     └── camera_input.launch.py
@@ -2116,39 +994,92 @@ bash<span class="w"> </span>jetson-containers/install.sh
             ├── setup.py
             └── README.md
 </code></pre>
-<p>We will create the launch folder, as well as the camera_input.launch.py and your-node-name_py.py files in later steps. </p>
-<h3 id="editing-the-setup">Editing the Setup</h3>
-<p>Let’s begin by editing the <code>setup.py</code> file. At the top of the file, add </p>
-<div class="highlight"><pre><span></span><code>from glob import glob 
-</code></pre></div>
-<p>In the setup method, find the <code>data_files=[]</code> line, and make sure it looks like this: </p>
-<div class="highlight"><pre><span></span><code>data_files=[
-       (&#39;share/ament_index/resource_index/packages&#39;,
-           [&#39;resource/&#39; + package_name]),
-       (&#39;share/&#39; + package_name, [&#39;package.xml&#39;]),
-   (&#39;share/&#39; + package_name, glob(&#39;launch/*.launch.py&#39;)),
+       <p>
+        We will create the launch folder, as well as the camera_input.launch.py and your-node-name_py.py files in later steps.
+       </p>
+       <h3 id="editing-the-setup">
+        Editing the Setup
+       </h3>
+       <p>
+        Let’s begin by editing the
+        <code>
+         setup.py
+        </code>
+        file. At the top of the file, add
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>from glob import glob 
+</code></pre>
+       </div>
+       <p>
+        In the setup method, find the
+        <code>
+         data_files=[]
+        </code>
+        line, and make sure it looks like this:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>data_files=[
+       ('share/ament_index/resource_index/packages',
+           ['resource/' + package_name]),
+       ('share/' + package_name, ['package.xml']),
+   ('share/' + package_name, glob('launch/*.launch.py')),
    ],
-</code></pre></div>
-<p>Edit the maintainer line with your name. Edit the maintainer email to your email. Edit the description line to describe your package. </p>
-<div class="highlight"><pre><span></span><code>maintainer=&#39;kshaltiel&#39;, 
-maintainter_email=&#39;kshaltiel@nvidia.com&#39;, 
-description=&#39;YOUR DESCRIPTION&#39;,  
-</code></pre></div>
-<p>Find the <code>console_scripts</code> line in the entry_points method. Edit the inside to be: </p>
-<div class="highlight"><pre><span></span><code>&#39;your-node-name_py = your-package-name.your-node-name_py:main&#39;
-</code></pre></div>
-<p>For example: 
-<div class="highlight"><pre><span></span><code>entry_points={
-       &#39;console_scripts&#39;: [
-       &#39;nano_llm_py = ros2_nanollm.nano_llm_py:main&#39;
+</code></pre>
+       </div>
+       <p>
+        Edit the maintainer line with your name. Edit the maintainer email to your email. Edit the description line to describe your package.
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>maintainer='kshaltiel', 
+maintainter_email='kshaltiel@nvidia.com', 
+description='YOUR DESCRIPTION',  
+</code></pre>
+       </div>
+       <p>
+        Find the
+        <code>
+         console_scripts
+        </code>
+        line in the entry_points method. Edit the inside to be:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>'your-node-name_py = your-package-name.your-node-name_py:main'
+</code></pre>
+       </div>
+       <p>
+        For example:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>entry_points={
+       'console_scripts': [
+       'nano_llm_py = ros2_nanollm.nano_llm_py:main'
        ],
    },
-</code></pre></div>
-<em>All done for this file!</em></p>
-<h3 id="creating-the-node">Creating the Node</h3>
-<p>Inside your package, under the folder that shares your package's name and contains the <code>__init__.py</code> file, create a file named after your node. For NanoLLM, this file would be called <code>nano_llm_py.py</code>. </p>
-<p>Paste the following code into the empty file: </p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">rclpy</span> 
+</code></pre>
+       </div>
+       <em>
+        All done for this file!
+       </em>
+       <h3 id="creating-the-node">
+        Creating the Node
+       </h3>
+       <p>
+        Inside your package, under the folder that shares your package's name and contains the
+        <code>
+         __init__.py
+        </code>
+        file, create a file named after your node. For NanoLLM, this file would be called
+        <code>
+         nano_llm_py.py
+        </code>
+        .
+       </p>
+       <p>
+        Paste the following code into the empty file:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><span class="kn">import</span> <span class="nn">rclpy</span> 
 <span class="kn">from</span> <span class="nn">std_msgs.msg</span> <span class="kn">import</span> <span class="n">String</span>
 <span class="kn">from</span> <span class="nn">sensor_msgs.msg</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="kn">from</span> <span class="nn">cv_bridge</span> <span class="kn">import</span> <span class="n">CvBridge</span>
@@ -2158,16 +1089,16 @@ description=&#39;YOUR DESCRIPTION&#39;,
 <span class="k">class</span> <span class="nc">Your_Model_Subscriber</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;your_model_subscriber&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">'your_model_subscriber'</span><span class="p">)</span>
 
         <span class="c1">#EDIT PARAMETERS HERE </span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">declare_parameter</span><span class="p">(</span><span class="s1">&#39;param1&#39;</span><span class="p">,</span> <span class="s2">&quot;param1_value&quot;</span><span class="p">)</span> 
-        <span class="bp">self</span><span class="o">.</span><span class="n">declare_parameter</span><span class="p">(</span><span class="s1">&#39;param2&#39;</span><span class="p">,</span> <span class="s2">&quot;param2_value&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">declare_parameter</span><span class="p">(</span><span class="s1">'param1'</span><span class="p">,</span> <span class="s2">"param1_value"</span><span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">declare_parameter</span><span class="p">(</span><span class="s1">'param2'</span><span class="p">,</span> <span class="s2">"param2_value"</span><span class="p">)</span>
 
         <span class="c1"># Subscriber for input query</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">query_subscription</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span>
             <span class="n">String</span><span class="p">,</span>
-            <span class="s1">&#39;input_query&#39;</span><span class="p">,</span>
+            <span class="s1">'input_query'</span><span class="p">,</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">query_listener_callback</span><span class="p">,</span>
             <span class="mi">10</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">query_subscription</span>  <span class="c1"># prevent unused variable warning</span>
@@ -2175,7 +1106,7 @@ description=&#39;YOUR DESCRIPTION&#39;,
         <span class="c1"># Subscriber for input image</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">image_subscription</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span>
             <span class="n">Image</span><span class="p">,</span>
-            <span class="s1">&#39;input_image&#39;</span><span class="p">,</span>
+            <span class="s1">'input_image'</span><span class="p">,</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">image_listener_callback</span><span class="p">,</span>
             <span class="mi">10</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">image_subscription</span>  <span class="c1"># prevent unused variable warning</span>
@@ -2184,14 +1115,14 @@ description=&#39;YOUR DESCRIPTION&#39;,
         <span class="bp">self</span><span class="o">.</span><span class="n">cv_br</span> <span class="o">=</span> <span class="n">CvBridge</span><span class="p">()</span> 
 
         <span class="c1">#LOAD THE MODEL</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">INSERT_MODEL</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;PATH-TO-MODEL&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">INSERT_MODEL</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">"PATH-TO-MODEL"</span><span class="p">)</span>
 
         <span class="c1">#chatHistory var </span>
         <span class="bp">self</span><span class="o">.</span><span class="n">chat_history</span> <span class="o">=</span> <span class="n">ChatHistory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
 
         <span class="c1">##  PUBLISHER</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">output_publisher</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;Describe the image.&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_publisher</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="s1">'output'</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="s2">"Describe the image."</span>
 
     <span class="k">def</span> <span class="nf">query_listener_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">data</span>
@@ -2200,17 +1131,17 @@ description=&#39;YOUR DESCRIPTION&#39;,
         <span class="n">input_query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span>
 
         <span class="c1"># call model with input_query and input_image </span>
-        <span class="n">cv_img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cv_br</span><span class="o">.</span><span class="n">imgmsg_to_cv2</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;rgb8&#39;</span><span class="p">)</span>
+        <span class="n">cv_img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cv_br</span><span class="o">.</span><span class="n">imgmsg_to_cv2</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">'rgb8'</span><span class="p">)</span>
         <span class="n">PIL_img</span> <span class="o">=</span> <span class="n">im</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">cv_img</span><span class="p">)</span>
 
         <span class="c1"># Parsing input text prompt</span>
-        <span class="n">prompt</span> <span class="o">=</span> <span class="n">input_query</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;][()&quot;</span><span class="p">)</span>
-        <span class="n">text</span> <span class="o">=</span> <span class="n">prompt</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Your query: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">text</span><span class="p">)</span> <span class="c1">#prints the query</span>
+        <span class="n">prompt</span> <span class="o">=</span> <span class="n">input_query</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">"][()"</span><span class="p">)</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">prompt</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">','</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'Your query: </span><span class="si">%s</span><span class="s1">'</span> <span class="o">%</span> <span class="n">text</span><span class="p">)</span> <span class="c1">#prints the query</span>
 
         <span class="c1">#chat history </span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">chat_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="n">PIL_img</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">chat_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="n">prompt</span><span class="p">,</span> <span class="n">use_cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">chat_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'user'</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="n">PIL_img</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">chat_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'user'</span><span class="p">,</span> <span class="n">prompt</span><span class="p">,</span> <span class="n">use_cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="n">embedding</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">chat_history</span><span class="o">.</span><span class="n">embed_chat</span><span class="p">()</span>
 
     <span class="c1">#GENERATE OUTPUT</span>
@@ -2225,7 +1156,7 @@ description=&#39;YOUR DESCRIPTION&#39;,
         <span class="n">output_msg</span> <span class="o">=</span> <span class="n">String</span><span class="p">()</span>
         <span class="n">output_msg</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">output</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">output_publisher</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">output_msg</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Published output: </span><span class="si">{</span><span class="n">output</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Published output: </span><span class="si">{</span><span class="n">output</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
@@ -2240,22 +1171,60 @@ description=&#39;YOUR DESCRIPTION&#39;,
     <span class="n">nano_llm_subscriber</span><span class="o">.</span><span class="n">destroy_node</span><span class="p">()</span>
     <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
-</code></pre></div>
-<p>Edit the import statement at the top of the file to import the necessary modules from the model. </p>
-<p>Next, edit the class name and name inside the <code>__init__()</code> function to reflect the model that will be used. </p>
-<p>Find the comment that reads <code>#EDIT PARAMETERS HERE</code>. Declare all parameters except for the model name following the format in the file. Under the <code>#LOAD THE MODEL</code> comment, include the path to the model. </p>
-<p>Lastly, edit the generate method under the <code>GENERATE OUTPUT</code> comment to include any additional parameters. </p>
-<p><em>All done for this file!</em></p>
-<h3 id="creating-the-launch-file">Creating the Launch File</h3>
-<p>Inside your package, create the launch folder. Create your launch file inside of it. </p>
-<div class="highlight"><pre><span></span><code>mkdir launch
+</code></pre>
+       </div>
+       <p>
+        Edit the import statement at the top of the file to import the necessary modules from the model.
+       </p>
+       <p>
+        Next, edit the class name and name inside the
+        <code>
+         __init__()
+        </code>
+        function to reflect the model that will be used.
+       </p>
+       <p>
+        Find the comment that reads
+        <code>
+         #EDIT PARAMETERS HERE
+        </code>
+        . Declare all parameters except for the model name following the format in the file. Under the
+        <code>
+         #LOAD THE MODEL
+        </code>
+        comment, include the path to the model.
+       </p>
+       <p>
+        Lastly, edit the generate method under the
+        <code>
+         GENERATE OUTPUT
+        </code>
+        comment to include any additional parameters.
+       </p>
+       <p>
+        <em>
+         All done for this file!
+        </em>
+       </p>
+       <h3 id="creating-the-launch-file">
+        Creating the Launch File
+       </h3>
+       <p>
+        Inside your package, create the launch folder. Create your launch file inside of it.
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>mkdir launch
 cd launch 
 touch camera_input.launch.py
-</code></pre></div>
-<p>You can edit this file externally, and it will update within the container. Paste the following code into the empty file. </p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">launch</span> <span class="kn">import</span> <span class="n">LaunchDescription</span>
+</code></pre>
+       </div>
+       <p>
+        You can edit this file externally, and it will update within the container. Paste the following code into the empty file.
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><span class="kn">from</span> <span class="nn">launch</span> <span class="kn">import</span> <span class="n">LaunchDescription</span>
 <span class="kn">from</span> <span class="nn">launch_ros.actions</span> <span class="kn">import</span> <span class="n">Node</span>
 <span class="kn">from</span> <span class="nn">launch.substitutions</span> <span class="kn">import</span> <span class="n">LaunchConfiguration</span>
 <span class="kn">from</span> <span class="nn">launch.actions</span> <span class="kn">import</span> <span class="n">DeclareLaunchArgument</span>
@@ -2263,129 +1232,187 @@ touch camera_input.launch.py
 <span class="k">def</span> <span class="nf">generate_launch_description</span><span class="p">():</span>
     <span class="n">launch_args</span> <span class="o">=</span> <span class="p">[</span>
         <span class="n">DeclareLaunchArgument</span><span class="p">(</span> 
-            <span class="s1">&#39;param1&#39;</span><span class="p">,</span>
-            <span class="n">default_value</span><span class="o">=</span><span class="s1">&#39;param1_default&#39;</span><span class="p">,</span>
-            <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Description of param1&#39;</span><span class="p">),</span>
+            <span class="s1">'param1'</span><span class="p">,</span>
+            <span class="n">default_value</span><span class="o">=</span><span class="s1">'param1_default'</span><span class="p">,</span>
+            <span class="n">description</span><span class="o">=</span><span class="s1">'Description of param1'</span><span class="p">),</span>
         <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
-            <span class="s1">&#39;param2&#39;</span><span class="p">,</span>
-            <span class="n">default_value</span><span class="o">=</span><span class="s1">&#39;param2_default&#39;</span><span class="p">,</span>
-            <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Description of param2&#39;</span><span class="p">),</span>
+            <span class="s1">'param2'</span><span class="p">,</span>
+            <span class="n">default_value</span><span class="o">=</span><span class="s1">'param2_default'</span><span class="p">,</span>
+            <span class="n">description</span><span class="o">=</span><span class="s1">'Description of param2'</span><span class="p">),</span>
     <span class="p">]</span>
 
 
     <span class="c1">#Your model parameters </span>
-    <span class="n">param1</span> <span class="o">=</span> <span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">&#39;param1&#39;</span><span class="p">)</span>
-    <span class="n">param2</span> <span class="o">=</span> <span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">&#39;param2&#39;</span><span class="p">)</span>
+    <span class="n">param1</span> <span class="o">=</span> <span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">'param1'</span><span class="p">)</span>
+    <span class="n">param2</span> <span class="o">=</span> <span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">'param2'</span><span class="p">)</span>
 
     <span class="c1">#camera node for camera input</span>
     <span class="n">cam2image_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span>
-            <span class="n">package</span><span class="o">=</span><span class="s1">&#39;image_tools&#39;</span><span class="p">,</span>
-            <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;cam2image&#39;</span><span class="p">,</span>
-            <span class="n">remappings</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="s1">&#39;input_image&#39;</span><span class="p">)],</span>
+            <span class="n">package</span><span class="o">=</span><span class="s1">'image_tools'</span><span class="p">,</span>
+            <span class="n">executable</span><span class="o">=</span><span class="s1">'cam2image'</span><span class="p">,</span>
+            <span class="n">remappings</span><span class="o">=</span><span class="p">[(</span><span class="s1">'image'</span><span class="p">,</span> <span class="s1">'input_image'</span><span class="p">)],</span>
     <span class="p">)</span>
 
     <span class="c1">#model node</span>
     <span class="n">model_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span>
-            <span class="n">package</span><span class="o">=</span><span class="s1">&#39;your-package-name&#39;</span><span class="p">,</span> <span class="c1">#make sure your package is named this</span>
-            <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;your-node-name_py&#39;</span><span class="p">,</span> 
+            <span class="n">package</span><span class="o">=</span><span class="s1">'your-package-name'</span><span class="p">,</span> <span class="c1">#make sure your package is named this</span>
+            <span class="n">executable</span><span class="o">=</span><span class="s1">'your-node-name_py'</span><span class="p">,</span> 
             <span class="n">parameters</span><span class="o">=</span><span class="p">[{</span>
-                <span class="s1">&#39;param1&#39;</span><span class="p">:</span> <span class="n">param1</span><span class="p">,</span> 
-                <span class="s1">&#39;param2&#39;</span><span class="p">:</span> <span class="n">param2</span><span class="p">,</span>
+                <span class="s1">'param1'</span><span class="p">:</span> <span class="n">param1</span><span class="p">,</span> 
+                <span class="s1">'param2'</span><span class="p">:</span> <span class="n">param2</span><span class="p">,</span>
             <span class="p">}]</span>
     <span class="p">)</span>
 
     <span class="n">final_launch_description</span> <span class="o">=</span> <span class="n">launch_args</span> <span class="o">+</span> <span class="p">[</span><span class="n">cam2image_node</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">model_node</span><span class="p">]</span>
 
     <span class="k">return</span> <span class="n">LaunchDescription</span><span class="p">(</span><span class="n">final_launch_description</span><span class="p">)</span>
-</code></pre></div>
-<p>Find the required parameters for your model. You can view this by looking at the <a href="https://dusty-nv.github.io/NanoLLM/models.html#model-api">Model API</a> for your specific model and taking note to how the model is called. For example, NanoLLM retrieves models through the following: </p>
-<div class="highlight"><pre><span></span><code>model = NanoLLM.from_pretrained(
-   &quot;meta-llama/Llama-3-8b-hf&quot;,  # HuggingFace repo/model name, or path to HF model checkpoint
-   api=&#39;mlc&#39;,                   # supported APIs are: mlc, awq, hf
-   quantization=&#39;q4f16_ft&#39;      # q4f16_ft, q4f16_1, q8f16_0 for MLC, or path to AWQ weights
+</code></pre>
+       </div>
+       <p>
+        Find the required parameters for your model. You can view this by looking at the
+        <a href="https://dusty-nv.github.io/NanoLLM/models.html#model-api">
+         Model API
+        </a>
+        for your specific model and taking note to how the model is called. For example, NanoLLM retrieves models through the following:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>model = NanoLLM.from_pretrained(
+   "meta-llama/Llama-3-8b-hf",  # HuggingFace repo/model name, or path to HF model checkpoint
+   api='mlc',                   # supported APIs are: mlc, awq, hf
+   quantization='q4f16_ft'      # q4f16_ft, q4f16_1, q8f16_0 for MLC, or path to AWQ weights
 )
-</code></pre></div>
-<p>The parameters for NanoLLM would be the model name, api, and quantization. </p>
-<p>In the <code>generate_launch_description</code> function, edit the <code>DeclareLaunchArgument</code> to accomodate for all parameters except the model name. For NanoLLM, this would look like: </p>
-<div class="highlight"><pre><span></span><code>def generate_launch_description():
+</code></pre>
+       </div>
+       <p>
+        The parameters for NanoLLM would be the model name, api, and quantization.
+       </p>
+       <p>
+        In the
+        <code>
+         generate_launch_description
+        </code>
+        function, edit the
+        <code>
+         DeclareLaunchArgument
+        </code>
+        to accomodate for all parameters except the model name. For NanoLLM, this would look like:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>def generate_launch_description():
     launch_args = [
         DeclareLaunchArgument( 
-            &#39;api&#39;,
-            default_value=&#39;mlc&#39;,
-            description=&#39;The model backend to use&#39;),
+            'api',
+            default_value='mlc',
+            description='The model backend to use'),
         DeclareLaunchArgument(
-            &#39;quantization&#39;,
-            default_value=&#39;q4f16_ft&#39;,
-            description=&#39;The quantization method to use&#39;),
+            'quantization',
+            default_value='q4f16_ft',
+            description='The quantization method to use'),
     ]
-</code></pre></div>
-<p>Then edit the lines under <code>#Your model Parameters</code> to match the parameters of your model, again excluding the model name. Lastly, fill in the code under the <code>#model node</code> comment with your package name, the name of your node file, and all of your parameters, this time including the model. </p>
-<p><em>All done for this file!</em></p>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-                
-              </article>
-            </div>
-          
-          
-  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
-
-<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
-        </div>
-        
-          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
-  Back to top
-</button>
-        
-      </main>
-      
-        <footer class="md-footer">
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
+</code></pre>
+       </div>
+       <p>
+        Then edit the lines under
+        <code>
+         #Your model Parameters
+        </code>
+        to match the parameters of your model, again excluding the model name. Lastly, fill in the code under the
+        <code>
+         #model node
+        </code>
+        comment with your package name, the name of your node file, and all of your parameters, this time including the model.
+       </p>
+       <p>
+        <em>
+         All done for this file!
+        </em>
+       </p>
+      </article>
+     </div>
+     <script>
+      var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}
+     </script>
+     <script>
+      var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))
+     </script>
+    </div>
+    <button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z">
+      </path>
+     </svg>
+     Back to top
+    </button>
+   </main>
+   <footer class="md-footer">
+    <div class="md-footer-meta md-typeset">
+     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
-  
-    <div class="md-copyright__highlight">
-      <ul class="global-footer__links"><li><a href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/" target="_blank">Privacy Policy</a></li><li> <a href="https://www.nvidia.com/en-us/privacy-center/" target="_blank">Manage My Privacy</a> </li> <li> <a href="https://www.nvidia.com/en-us/preferences/email-preferences/" target="_blank">Do Not Sell or Share My Data</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/legal-info/" target="_blank">Legal</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/accessibility/" target="_blank">Accessibility</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/company-policies/" target="_self">Corporate Policies</a> </li> <li> <a href="https://www.nvidia.com/en-us/product-security/" target="_blank">Product Security</a> </li> <li> <a href="https://www.nvidia.com/en-us/contact/" target="_blank">Contact</a> </li> </ul><div class="global-footer__copyright">Copyright &copy; 2024 NVIDIA Corporation</div>
+       <div class="md-copyright__highlight">
+        <ul class="global-footer__links">
+         <li>
+          <a href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/" target="_blank">
+           Privacy Policy
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/privacy-center/" target="_blank">
+           Manage My Privacy
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/preferences/email-preferences/" target="_blank">
+           Do Not Sell or Share My Data
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/about-nvidia/legal-info/" target="_blank">
+           Legal
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/about-nvidia/accessibility/" target="_blank">
+           Accessibility
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/about-nvidia/company-policies/" target="_self">
+           Corporate Policies
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/product-security/" target="_blank">
+           Product Security
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/contact/" target="_blank">
+           Contact
+          </a>
+         </li>
+        </ul>
+        <div class="global-footer__copyright">
+         Copyright © 2024 NVIDIA Corporation
+        </div>
+       </div>
+      </div>
+     </div>
     </div>
-  
-  
-</div>
-      
-    </div>
+   </footer>
   </div>
-</footer>
-      
-    </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
-    </div>
-    
-    
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.indexes", "navigation.expand", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.tabs.link", "content.code.copy", "announce.dismiss"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
-    
-    
-<script src="//assets.adobedtm.com/5d4962a43b79/814eb6e9b4e1/launch-4bc07f1e0b0b.min.js"></script>
-
-      <script src="assets/javascripts/bundle.525ec568.min.js"></script>
-      
-    
-<script>
-  window._6si = window._6si || [];
+  <div class="md-dialog" data-md-component="dialog">
+   <div class="md-dialog__inner md-typeset">
+   </div>
+  </div>
+  <script id="__config" type="application/json">
+   {"base": ".", "features": ["navigation.indexes", "navigation.expand", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.tabs.link", "content.code.copy", "announce.dismiss"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}
+  </script>
+  <script src="//assets.adobedtm.com/5d4962a43b79/814eb6e9b4e1/launch-4bc07f1e0b0b.min.js">
+  </script>
+  <script src="assets/javascripts/bundle.525ec568.min.js">
+  </script>
+  <script>
+   window._6si = window._6si || [];
   window._6si.push(['enableEventTracking', true]);
   window._6si.push(['setToken', 'eb417ec30d332e34d732e2916f185311']);
   window._6si.push(['setEndpoint', 'b.6sc.co']);
@@ -2402,8 +1429,9 @@ touch camera_input.launch.py
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(gd, s);
   })();
-</script>
-<script type="text/javascript">_satellite.pageBottom();</script>
-
-  </body>
+  </script>
+  <script type="text/javascript">
+   _satellite.pageBottom();
+  </script>
+ </body>
 </html>
