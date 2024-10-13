@@ -22,9 +22,10 @@ Give your locally running LLM an access to vision!
 
 |      |                     |
 | :---------- | :----------------------------------- |
-| **[LLaVA](./tutorial_llava.md)** | [Large Language and Vision Assistant](https://llava-vl.github.io/), multimodal model that combines a vision encoder and LLM for visual and language understanding. |
+| **[LLaVA](./tutorial_llava.md)** | Different ways to run [LLaVa](https://llava-vl.github.io/) vision/language model on Jetson for visual understanding. |
 | **[Live LLaVA](./tutorial_live-llava.md)** | Run multimodal models interactively on live video streams over a repeating set of prompts. |
 | **[NanoVLM](./tutorial_nano-vlm.md)** | Use mini vision/language models and the optimized multimodal pipeline for live streaming. |
+| **[Llama 3.2 Vision](./llama_vlm.md)** | Run Meta's multimodal Llama-3.2-11B-Vision model on Orin with HuggingFace Transformers. |
 
 ### Vision Transformers
 
@@ -42,7 +43,8 @@ Give your locally running LLM an access to vision!
 | :---------- | :----------------------------------- |
 | **[Flux + ComfyUI](./tutorial_comfyui_flux.md)** | Set up and run the ComfyUI with Flux model for image generation on Jetson Orin. |
 | **[Stable Diffusion](./tutorial_stable-diffusion.md)** | Run AUTOMATIC1111's [`stable-diffusion-webui`](https://github.com/AUTOMATIC1111/stable-diffusion-webui) to generate images from prompts |
-| **[Stable Diffusion XL](./tutorial_stable-diffusion-xl.md)** | A newer ensemble pipeline consisting of a base model and refiner that results in significantly enhanced and detailed image generation capabilities. |
+| **[SDXL](./tutorial_stable-diffusion-xl.md)** | Ensemble pipeline consisting of a base model and refiner with enhanced image generation. |
+| **[nerfstudio](./nerf.md)** | Experience neural reconstruction and rendering with nerfstudio and onboard training. |
 
 
 ### Audio

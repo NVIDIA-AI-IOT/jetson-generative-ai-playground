@@ -2,7 +2,7 @@
 
 !!! abstract "Recommended"
 
-    Follow the chat-based [LLaVA](tutorial_llava.md) and [NanoVLM](tutorial_nano-vlm.md) tutorials to familiarize yourself with vision/language models and test the models first.
+    Follow the [NanoVLM](tutorial_nano-vlm.md) tutorial first to familiarize yourself with vision/language models, and see [Agent Studio](agent_studio.md) for in interactive pipeline editor built from live VLMs.
     
 This multimodal agent runs a vision-language model on a live camera feed or video stream, repeatedly applying the same prompts to it:
 
@@ -54,7 +54,7 @@ jetson-containers run $(autotag nano_llm) \
     --video-output webrtc://@:8554/output
 ```
 
-<a href="https://youtu.be/wZq7ynbgRoE" target="_blank"><img width="49%" style="display: inline;"  src="https://raw.githubusercontent.com/dusty-nv/jetson-containers/docs/docs/images/live_llava_horse.jpg"> <img width="49%" style="display: inline;" src="https://raw.githubusercontent.com/dusty-nv/jetson-containers/docs/docs/images/live_llava_espresso.jpg"></a>
+<!--<a href="https://youtu.be/wZq7ynbgRoE" target="_blank"><img width="49%" style="display: inline;"  src="https://raw.githubusercontent.com/dusty-nv/jetson-containers/docs/docs/images/live_llava_horse.jpg"> <img width="49%" style="display: inline;" src="https://raw.githubusercontent.com/dusty-nv/jetson-containers/docs/docs/images/live_llava_espresso.jpg"></a>-->
 
 This uses [`jetson_utils`](https://github.com/dusty-nv/jetson-utils) for video I/O, and for options related to protocols and file formats, see [Camera Streaming and Multimedia](https://github.com/dusty-nv/jetson-inference/blob/master/docs/aux-streaming.md).  In the example above, it captures a V4L2 USB webcam connected to the Jetson (under the device `/dev/video0`) and outputs a WebRTC stream.
 

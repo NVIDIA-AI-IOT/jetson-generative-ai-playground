@@ -6,11 +6,11 @@ There are 3 model families currently supported:  [Llava](https://llava-vl.github
 
 ## VLM Benchmarks
 
-<iframe width="719" height="446" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubchart?oid=88720541&amp;format=interactive"></iframe>
+<img src="images/nano_vlm_benchmarks.svg">
 
 This FPS measures the end-to-end pipeline performance for continuous streaming like with [Live Llava](tutorial_live-llava.md) (on yes/no question)  
 
-<iframe width="1000px" height="325px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubhtml?gid=642302170&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+<iframe width="1000px" height="325px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR0o4iAkwm4vRnDy2LdlSNhGf9sn7zzAf4RN7oLOLUSnTyLO5x94BrN8tq_uChRzQR-fSHNYmkZwO8v/pubhtml?gid=642302170&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
 
 ## Multimodal Chat
 	   
@@ -77,7 +77,7 @@ You can also use [`--prompt /data/prompts/images.json`](https://github.com/dusty
 
 ### Results
 
-<iframe width="1325px" height="905px"  src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTJ9lFqOIZSfrdnS_0sa2WahzLbpbAbBCTlS049jpOchMCum1hIk-wE_lcNAmLkrZd0OQrI9IkKBfGp/pubhtml?gid=816702382&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+<iframe width="1325px" height="905px"  src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR0o4iAkwm4vRnDy2LdlSNhGf9sn7zzAf4RN7oLOLUSnTyLO5x94BrN8tq_uChRzQR-fSHNYmkZwO8v/pubhtml?gid=816702382&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
 
 <small>• &nbsp; The model responses are with 4-bit quantization enabled, and are truncated to 128 tokens for brevity.</small>  
 <small>• &nbsp; These chat questions and images are from [`/data/prompts/images.json`](https://github.com/dusty-nv/jetson-containers/blob/master/data/prompts/images.json){:target="_blank"} (found in jetson-containers)</small> 
