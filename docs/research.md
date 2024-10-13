@@ -102,7 +102,7 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 <details open><summary>October 1, 2024</summary>
 
-<div><iframe width="750" height="420" src="https://www.youtube.com/embed/HfJR3NwsM4M" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<div><iframe width="750" height="420" src="https://www.youtube.com/embed/HfJR3NwsM4M" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Topics Covered:</p>
 
