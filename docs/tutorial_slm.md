@@ -10,7 +10,7 @@ This tutorial shows how to run optimized SLMs with quantization using the [`Nano
 
 ![](./svgs/SLM%20Text%20Generation%20Rate.svg)
 
-![alt text](images/Small%20Language%20Models%20(4-bit%20Quantization).png)
+<iframe width="1125px" height="350px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR0o4iAkwm4vRnDy2LdlSNhGf9sn7zzAf4RN7oLOLUSnTyLO5x94BrN8tq_uChRzQR-fSHNYmkZwO8v/pubhtml?gid=921468602&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
 
 > <small>• &nbsp; The HuggingFace [Open LLM Leaderboard](https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard){:target="_blank"} is a collection of multitask benchmarks including reasoning & comprehension, math, coding, history, geography, ect.</small>  
 > <small>• &nbsp; The model's memory footprint includes 4-bit weights and KV cache at full context length (factor in extra for process overhead, library code, ect)</small>  

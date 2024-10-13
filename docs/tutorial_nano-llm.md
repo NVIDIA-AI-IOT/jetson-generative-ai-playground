@@ -73,6 +73,7 @@ Here's an index of the various tutorials & examples using NanoLLM on Jetson AI L
 | **[Live LLaVA](./tutorial_live-llava.md){:target="_blank"}** | Realtime live-streaming vision/language models on recurring prompts. |
 | **[Nano VLM](./tutorial_nano-vlm.md){:target="_blank"}** | Efficient multimodal pipeline with one-shot image tagging and RAG support. |
 | **[Agent Studio](./agent_studio.md){:target="_blank"}** | Rapidly design and experiment with creating your own automation agents. |
+| **[OpenVLA](./openvla.md){:target="_blank"}** | Robot learning with Vision/Language Action models and manipulation in simulator. |
 
 <div><iframe width="500" height="280" src="https://www.youtube.com/embed/UOjqF3YCGkY" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 <iframe width="500" height="280" src="https://www.youtube.com/embed/wZq7ynbgRoE" style="display: inline-block;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

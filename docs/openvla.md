@@ -10,10 +10,10 @@
     ✅ On-device training with LoRA's on Jetson AGX Orin and full fine-tuning on A100/H100 instances  
     ✅ 85% accuracy on an example block-stacking task with domain randomization  
     ✅ Sample datasets and test models for reproducing results  
-    🟩 sim2real with Isaac Sim and ROS2 integration  
+    <!--🟩 sim2real with Isaac Sim and ROS2 integration  
     🟩 Multi-frame/multi-camera image inputs with prior state  
     🟩 Action windowing across multiple frames for larger timesteps  
-    🟩 Similar test model for UGV rover along with onboard sim environment
+    🟩 Similar test model for UGV rover along with onboard sim environment-->
 
     Thank you to OpenVLA, Open X-Embodiment, MimicGen, Robosuite and many others with related work for sharing their promising research, models, and tools for advancing physical AI and robotics.
   
