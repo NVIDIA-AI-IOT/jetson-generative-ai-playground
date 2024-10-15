@@ -17,7 +17,7 @@ Let's run HuggingFace [`LeRobot`](https://github.com/huggingface/lerobot/) to tr
 	   
     2. Running one of the following versions of [JetPack](https://developer.nvidia.com/embedded/jetpack):
 
-        <span class="blobPink2">JetPack 6 (L4T r36.x)</span>
+        <span class="blobPink2">JetPack 6 GA (L4T r36.3)</span> <span class="blobPink1">JetPack 6.1 (L4T r36.4)</span>
 
     3. Sufficient storage space (preferably with NVMe SSD).
 
@@ -353,13 +353,14 @@ Follow the [official document's section](https://github.com/huggingface/lerobot/
       --robot-path lerobot/configs/robot/koch.yaml \
       --fps 30 \
       --root data \
-      --repo-id ${HF_USER}/koch_test_01 \
-      --tags tutorial \
+      --repo-id ${HF_USER}/eval_koch_test_01 \
+      --tags tutorial eval \
       --warmup-time-s 5 \
       --episode-time-s 30 \
       --reset-time-s 30 \
       --num-episodes 10 \
-      -p outputs/train/act_koch_test/checkpoints/last/pretrained_model
+      -p outputs/train/act_koch_test/checkpoints/last/pretrained_model \
+      --run-compute-stats 0
     ```
 
 !!! tip "Tip for **Visualize evaluation afterwards**"
