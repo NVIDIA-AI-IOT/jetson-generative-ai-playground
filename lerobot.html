@@ -1064,7 +1064,10 @@
           </p>
           <p>
            <span class="blobPink2">
-            JetPack 6 (L4T r36.x)
+            JetPack 6 GA (L4T r36.3)
+           </span>
+           <span class="blobPink1">
+            JetPack 6.1 (L4T r36.4)
            </span>
           </p>
          </li>
@@ -1815,13 +1818,14 @@ python<span class="w"> </span>lerobot/scripts/control_robot.py<span class="w"> <
 <span class="w">  </span>--robot-path<span class="w"> </span>lerobot/configs/robot/koch.yaml<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--fps<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--root<span class="w"> </span>data<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--repo-id<span class="w"> </span><span class="si">${</span><span class="nv">HF_USER</span><span class="si">}</span>/koch_test_01<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--tags<span class="w"> </span>tutorial<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--repo-id<span class="w"> </span><span class="si">${</span><span class="nv">HF_USER</span><span class="si">}</span>/eval_koch_test_01<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tags<span class="w"> </span>tutorial<span class="w"> </span><span class="nb">eval</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--warmup-time-s<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--episode-time-s<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--reset-time-s<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--num-episodes<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-p<span class="w"> </span>outputs/train/act_koch_test/checkpoints/last/pretrained_model
+<span class="w">  </span>-p<span class="w"> </span>outputs/train/act_koch_test/checkpoints/last/pretrained_model<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--run-compute-stats<span class="w"> </span><span class="m">0</span>
 </code></pre>
         </div>
        </div>
