@@ -2,9 +2,7 @@
 
 Let's run HuggingFace [`LeRobot`](https://github.com/huggingface/lerobot/) to train Transformer-based [action diffusion](https://diffusion-policy.cs.columbia.edu/) policies and [ACT](https://github.com/tonyzhaozh/act) onboard NVIDIA Jetson.  These models learn to predict actions for a particular task from visual inputs and prior trajectories, typically collected during teleoperation or in simulation.
 
-<video controls autoplay muted style="max-width: 640px">
-    <source src="https://github.com/user-attachments/assets/1ec6e4f0-0f85-4a8a-85c0-f70019f3405b" type="video/mp4">
-</video>
+![alt text](images/lerobot_jetson_rig.png)
 
 !!! abstract "What you need"
 
@@ -43,6 +41,8 @@ This section gives the guide on how you can work through the LeRobot official ex
     `lerobot` is designed to show camera view in windows and playback TTS audio while capturing dataset, so it is more convenient to setup your Jetson with its monitor (and speakers) attached to Jetson.d
 
 ### a. Check `jetson-container`'s location 
+
+![alt text](images/lerobot_jetson_ssd.png){: style="height:240px;" align=right} 
 
 Through out the course of all the workflows of `lerobot`, we will be generating a lot of data, especially for capturing dataset.
 
@@ -180,6 +180,8 @@ lrwxrwxrwx 1 root root         7 Sep 24 16:13 /dev/ttyACM_kochleader -> ttyACM1
 
 ### e. (Optional) CSI cameras
 
+![alt text](images/lerobot_csi_camera.png){: style="height:240px;" align=right} 
+
 If you plan to use CSI cameras (not USB webcams) for data capture, you will use the new `--csi2webcam` options of `jetson-containers`, which exposes V4L2loopback devices that performs like USB webcams (MJPEG) for CSI cameras using Jetson's hardware JPEG encoder.
 
 This feature require some packages to be installed.
@@ -291,6 +293,25 @@ Follow the [official document's section](https://github.com/huggingface/lerobot/
 
 !!! tip
 
+    Following commands are registered in Bash history inside the `lerobot` container.
+
+    ```bash
+    wandb login
+    export HF_USER=
+    python lerobot/scripts/control_robot.py record \
+      --robot-path lerobot/configs/robot/koch.yaml \
+      --fps 30 \
+      --root data \
+      --repo-id ${HF_USER}/koch_test_$(date +%Y%m%d_%H%M%S) \
+      --tags tutorial \
+      --warmup-time-s 5 \
+      --episode-time-s 30 \
+      --reset-time-s 30 \
+      --num-episodes 10
+    ```
+
+!!! tip
+
     If you plan to perfom training on a different machine, `scp` the dataset directory.
 
     === "To another Jetson"
@@ -312,22 +333,17 @@ You should operate on ther container's terminal.
 Follow the [official document's section](https://github.com/huggingface/lerobot/blob/main/examples/7_get_started_with_real_robot.md#4-train-a-policy-on-your-data).
 
 !!! tip
-
-    Following commands are registered in Bash history inside the `lerobot` container.
-
+    
     ```bash
     wandb login
-    export HF_USER=
-    python lerobot/scripts/control_robot.py record \
-      --robot-path lerobot/configs/robot/koch.yaml \
-      --fps 30 \
-      --root data \
-      --repo-id ${HF_USER}/koch_test_$(date +%Y%m%d_%H%M%S) \
-      --tags tutorial \
-      --warmup-time-s 5 \
-      --episode-time-s 30 \
-      --reset-time-s 30 \
-      --num-episodes 10
+    DATA_DIR=data python lerobot/scripts/train.py \
+        dataset_repo_id=${HF_USER}/koch_test \
+        policy=act_koch_real \
+        env=koch_real \
+        hydra.run.dir=outputs/train/act_koch_test \
+        hydra.job.name=act_koch_test \
+        device=cuda \
+        wandb.enable=true
     ```
 
 !!! tip
