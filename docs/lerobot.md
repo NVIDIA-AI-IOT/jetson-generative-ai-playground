@@ -387,6 +387,8 @@ Follow the [official document's section](https://github.com/huggingface/lerobot/
       --repo-id ${HF_USER}/eval_koch_test
     ```
 
+![alt text](images/lerobot_visuzalize_dataset_html.png)
+
 If everything goes well, you should see 
 
 <video controls autoplay muted style="max-width: 960px">
