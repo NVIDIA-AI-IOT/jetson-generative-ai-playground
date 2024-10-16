@@ -102,7 +102,7 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 <details open><summary>October 15, 2024</summary>
 
-<div><iframe width="750" height="420" src="https://www.youtube.com/embed/Dpe48AVKc4c" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<div><iframe width="850" height="476" src="https://www.youtube.com/embed/Dpe48AVKc4c" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Topics Covered:</p>
 
@@ -115,7 +115,7 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 <details><summary>October 1, 2024</summary>
 
-<div><iframe width="750" height="420" src="https://www.youtube.com/embed/HfJR3NwsM4M" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<div><iframe width="850" height="476" src="https://www.youtube.com/embed/HfJR3NwsM4M" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Topics Covered:</p>
 
@@ -128,7 +128,7 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 <details><summary>September 17, 2024</summary>
 
-<div><iframe width="750" height="420" src="https://www.youtube.com/embed/Gys_AUOYZ4c" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<div><iframe width="850" height="476" src="https://www.youtube.com/embed/Gys_AUOYZ4c" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Topics Covered:</p>
 
@@ -142,7 +142,7 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 <details><summary>September 3, 2024</summary>
 
-<div><iframe width="750" height="420" src="https://www.youtube.com/embed/r1i3QQrRnfI" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<div><iframe width="850" height="476" src="https://www.youtube.com/embed/r1i3QQrRnfI" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Topics Covered:</p>
 
@@ -157,7 +157,7 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 <details><summary>August 20, 2024</summary>
 
-<div><iframe width="750" height="420" src="https://www.youtube.com/embed/WOv_GymDDNs" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<div><iframe width="850" height="476" src="https://www.youtube.com/embed/WOv_GymDDNs" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Topics Covered:</p>
 
@@ -171,7 +171,7 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 <details><summary>August 6, 2024</summary>
 
-<div><iframe width="750" height="420" src="https://www.youtube.com/embed/W1o-9MZQYMA" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<div><iframe width="850" height="476" src="https://www.youtube.com/embed/W1o-9MZQYMA" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Topics Covered:</p>
 
@@ -185,7 +185,7 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 <details><summary>July 23, 2024</summary>
 
-<div><iframe width="750" height="420" src="https://www.youtube.com/embed/pURku7OAWuo" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<div><iframe width="850" height="476" src="https://www.youtube.com/embed/pURku7OAWuo" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Topics Covered:</p>
 
@@ -200,7 +200,7 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 <details><summary>July 9, 2024</summary>
 
-<div><iframe width="750" height="420" src="https://www.youtube.com/embed/Ngaq2WCDlZM" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<div><iframe width="850" height="476" src="https://www.youtube.com/embed/Ngaq2WCDlZM" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Topics Covered:</p>
 
@@ -215,7 +215,7 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 <details><summary>June 25, 2024</summary>
 
-<div><iframe width="750" height="420" src="https://www.youtube.com/embed/mIrxJiF1NiI" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<div><iframe width="850" height="476" src="https://www.youtube.com/embed/mIrxJiF1NiI" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Topics Covered:</p>
 
@@ -230,7 +230,7 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 <details><summary>June 11, 2024</summary>
 
-<div><iframe width="750" height="420" src="https://www.youtube.com/embed/0GV5cYKz7Rc" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<div><iframe width="850" height="476" src="https://www.youtube.com/embed/0GV5cYKz7Rc" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Topics Covered:</p>
 
@@ -244,7 +244,7 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 <details><summary>May 29, 2024</summary>
 
-<div><iframe width="750" height="420" src="https://www.youtube.com/embed/aq7QS9AtwE8" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<div><iframe width="850" height="476" src="https://www.youtube.com/embed/aq7QS9AtwE8" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Topics Covered:</p>
 
@@ -258,7 +258,7 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 <details><summary>May 15, 2024</summary>
 
-<div><iframe width="750" height="420" src="https://www.youtube.com/embed/zoyONbiHd14" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<div><iframe width="850" height="476" src="https://www.youtube.com/embed/zoyONbiHd14" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Topics Covered:</p>
 
@@ -274,7 +274,7 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 <details><summary>May 1, 2024</summary>
 
-<div><iframe width="750" height="420" src="https://www.youtube.com/embed/L4i5x8zzyNc" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<div><iframe width="850" height="476" src="https://www.youtube.com/embed/L4i5x8zzyNc" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Topics Covered:</p>
 
@@ -288,7 +288,7 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 <details><summary>April 17, 2024</summary>
 
-<div><iframe width="750" height="420" src="https://www.youtube.com/embed/F0v0OsqGsVw" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<div><iframe width="850" height="476" src="https://www.youtube.com/embed/F0v0OsqGsVw" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Topics Covered:</p>
 
@@ -303,7 +303,7 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 <details><summary>April 3, 2024</summary>
 
-<div><iframe width="750" height="420" src="https://www.youtube.com/embed/7w3RHoIIkNE" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<div><iframe width="850" height="476" src="https://www.youtube.com/embed/7w3RHoIIkNE" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Project Kickoffs:</p>
 
