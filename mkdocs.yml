@@ -90,6 +90,7 @@ nav:
       - ollama: tutorial_ollama.md
       - llamaspeak: tutorial_llamaspeak.md
       - NanoLLM: tutorial_nano-llm.md
+      - TensorRT-LLM  🆕: tensorrt_llm.md
       - Small LLM (SLM): tutorial_slm.md
       - API Examples: tutorial_api-examples.md
     - Text + Vision (VLM):
@@ -105,7 +106,7 @@ nav:
       - SAM: vit/tutorial_sam.md
       - TAM: vit/tutorial_tam.md
     - Robotics & Embodiment:
-      - LeRobot 🆕: lerobot.md
+      - LeRobot: lerobot.md
       - ROS2 Nodes: ros.md
       - OpenVLA: openvla.md
     - Image Generation:
