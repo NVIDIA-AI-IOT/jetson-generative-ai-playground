@@ -37,8 +37,8 @@ You can find the steps for converting Llama to TensorRT-LLM under [`examples/lla
 jetson-containers run \
   -e HUGGINGFACE_TOKEN=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 \
   -e FORCE_BUILD=on \
-    cu126/tensorrt_llm:0.12-r36.4.0 \
-      /opt/TensorRT-LLM/llama.sh
+  dustynv/tensorrt_llm:0.12-r36.4.0 \
+    /opt/TensorRT-LLM/llama.sh
 ```
 
 There are many such conversion procedures outlined in the TensorRT-LLM examples for different model architectures.  
@@ -51,7 +51,7 @@ This will start the TensorRT-LLM container with the server and model that you bu
 
 ```
 jetson-containers run \
-  cu126/tensorrt_llm:0.12-r36.4.0 \
+  dustynv/tensorrt_llm:0.12-r36.4.0 \
   python3 /opt/TensorRT-LLM/examples/apps/openai_server.py \
     /data/models/tensorrt_llm/Llama-2-7b-chat-hf-gptq
 ```
@@ -74,7 +74,7 @@ Or the code included with [openai_client.py](https://github.com/NVIDIA/TensorRT-
 ```
 jetson-containers run \
   --workdir /opt/TensorRT-LLM/examples/apps \
-  cu126/tensorrt_llm:0.12-r36.4.0 \
+  dustynv/tensorrt_llm:0.12-r36.4.0 \
     python3 openai_client.py --prompt "Where is New York?" --api chat
 ```
 
