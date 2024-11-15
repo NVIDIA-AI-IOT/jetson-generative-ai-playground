@@ -874,8 +874,8 @@ bash<span class="w"> </span>jetson-containers/install.sh
         <pre><span></span><code>jetson-containers<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-e<span class="w"> </span><span class="nv">HUGGINGFACE_TOKEN</span><span class="o">=</span>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<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-e<span class="w"> </span><span class="nv">FORCE_BUILD</span><span class="o">=</span>on<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>cu126/tensorrt_llm:0.12-r36.4.0<span class="w"> </span><span class="se">\</span>
-<span class="w">      </span>/opt/TensorRT-LLM/llama.sh
+<span class="w">  </span>dustynv/tensorrt_llm:0.12-r36.4.0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>/opt/TensorRT-LLM/llama.sh
 </code></pre>
        </div>
        <p>
@@ -900,7 +900,7 @@ bash<span class="w"> </span>jetson-containers/install.sh
        </p>
        <div class="highlight">
         <pre><span></span><code>jetson-containers run \
-  cu126/tensorrt_llm:0.12-r36.4.0 \
+  dustynv/tensorrt_llm:0.12-r36.4.0 \
   python3 /opt/TensorRT-LLM/examples/apps/openai_server.py \
     /data/models/tensorrt_llm/Llama-2-7b-chat-hf-gptq
 </code></pre>
@@ -939,7 +939,7 @@ bash<span class="w"> </span>jetson-containers/install.sh
        <div class="highlight">
         <pre><span></span><code>jetson-containers run \
   --workdir /opt/TensorRT-LLM/examples/apps \
-  cu126/tensorrt_llm:0.12-r36.4.0 \
+  dustynv/tensorrt_llm:0.12-r36.4.0 \
     python3 openai_client.py --prompt "Where is New York?" --api chat
 </code></pre>
        </div>
