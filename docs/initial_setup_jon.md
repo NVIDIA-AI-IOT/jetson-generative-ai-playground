@@ -48,17 +48,17 @@ If you don't have them in your inventory, you want to arrange them and come back
 
 ## Overall flow
 
-!!! info "Jetson Orin Nano Initial Setup Flowchart (Click to expand)"
+!!! info "Jetson Orin Nano Initial Setup Flowchart"
 
     ```mermaid
     flowchart
-        A(start) --> B{1. Check<br>Manufactured after May 2024?<br>i.e. Jetson UEFI Firmware<br>newer than version 36.0}
-        B --[YES] --> O[6. Flash JetPack 6.0 GA image on microSD card]
-        B --[No] --> C[2. Flash JetPack 5.1.3 image on microSD card]
-        C --> D[3. Reboot] --> E{{Firmware update during reboot}}
-        E --> F[4. Run QSPI updater] --> G[5. Reboot] --> H{{Firmware update during reboot}}
+        A(start) --> B{1️⃣ Check<br>Manufactured after May 2024?<br>i.e. Jetson UEFI Firmware<br>newer than version 36.0}
+        B --[YES] --> O[6️⃣ Flash JetPack 6.0 GA image on microSD card]
+        B --[No] --> C[2️⃣ Flash JetPack 5.1.3 image on microSD card]
+        C --> D[3️⃣ Reboot] --> E{{Firmware update during reboot}}
+        E --> F[4️⃣ Run QSPI updater] --> G[5️⃣ Reboot] --> H{{Firmware update during reboot}}
         H --> O
-        O --> P(7. Start developing on JetPack 6.0) 
+        O --> P(7️⃣ Start developing on JetPack 6.0) 
 
         style C fill:#fee
         style D fill:#DEE,stroke:#333
