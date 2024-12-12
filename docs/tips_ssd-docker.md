@@ -114,9 +114,9 @@ We are going to show how you can install SSD on your Jetson, and set it up for D
     sudo apt install -y nvidia-container
     ```
 
-    !!! info "JetPack 6.0 DP users"
+    !!! info "JetPack 6.x users"
 
-        If you flash  **Jetson Linux (L4T) R36.2** (JetPack 6.0 DP) on your Jetson using SDK Manager, and install `nvidia-container` using `apt`, on JetPack 6.0 it no longer automatically installs Docker.
+        If you flash  **Jetson Linux (L4T) R36.x (JetPack 6.x) on your Jetson using SDK Manager, and install `nvidia-container` using `apt`, on JetPack 6.x it no longer automatically installs Docker.
 
         Therefore, you need to run the following to manually install Docker and set it up.
 
