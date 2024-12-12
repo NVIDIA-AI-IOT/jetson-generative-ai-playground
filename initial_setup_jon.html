@@ -733,9 +733,9 @@
                     </a>
                    </li>
                    <li class="md-nav__item">
-                    <a class="md-nav__link" href="#360-upgrade-the-jetson-uefi-firmware-to-36x">
+                    <a class="md-nav__link" href="#determine-qspi-update-is-necessary-or-not">
                      <span class="md-ellipsis">
-                      [&lt; 36.0] Upgrade the Jetson UEFI firmware to 36.x
+                      Determine QSPI update is necessary or not
                      </span>
                     </a>
                    </li>
@@ -768,16 +768,16 @@
                     </a>
                    </li>
                    <li class="md-nav__item">
-                    <a class="md-nav__link" href="#6-boot-with-jetpack-61-sd-card">
+                    <a class="md-nav__link" href="#6-boot-with-jetpack-6x-sd-card">
                      <span class="md-ellipsis">
-                      6️⃣ Boot with JetPack 6.1 SD card
+                      6️⃣ Boot with JetPack 6.x SD card
                      </span>
                     </a>
                    </li>
                    <li class="md-nav__item">
-                    <a class="md-nav__link" href="#7-start-developing-on-jetpack-61">
+                    <a class="md-nav__link" href="#7-start-developing-on-jetpack-6x">
                      <span class="md-ellipsis">
-                      7️⃣ Start developing on JetPack 6.1
+                      7️⃣ Start developing on JetPack 6.x
                      </span>
                     </a>
                    </li>
@@ -909,9 +909,9 @@
            </a>
           </li>
           <li class="md-nav__item">
-           <a class="md-nav__link" href="#360-upgrade-the-jetson-uefi-firmware-to-36x">
+           <a class="md-nav__link" href="#determine-qspi-update-is-necessary-or-not">
             <span class="md-ellipsis">
-             [&lt; 36.0] Upgrade the Jetson UEFI firmware to 36.x
+             Determine QSPI update is necessary or not
             </span>
            </a>
           </li>
@@ -944,16 +944,16 @@
            </a>
           </li>
           <li class="md-nav__item">
-           <a class="md-nav__link" href="#6-boot-with-jetpack-61-sd-card">
+           <a class="md-nav__link" href="#6-boot-with-jetpack-6x-sd-card">
             <span class="md-ellipsis">
-             6️⃣ Boot with JetPack 6.1 SD card
+             6️⃣ Boot with JetPack 6.x SD card
             </span>
            </a>
           </li>
           <li class="md-nav__item">
-           <a class="md-nav__link" href="#7-start-developing-on-jetpack-61">
+           <a class="md-nav__link" href="#7-start-developing-on-jetpack-6x">
             <span class="md-ellipsis">
-             7️⃣ Start developing on JetPack 6.1
+             7️⃣ Start developing on JetPack 6.x
             </span>
            </a>
           </li>
@@ -1144,12 +1144,12 @@
         </p>
         <pre class="mermaid"><code>flowchart
     A(start) --&gt; B{1️⃣ Check if Jetson UEFI Firmware&lt;br&gt;is newer than version 36.0}
-    B --[YES] --&gt; O[6️⃣ Boot with JetPack 6.1 SD card]
-    B --[No] --&gt; C[2️⃣ Boot with JetPack 5.1.3 SD card&lt;br&gt;to schedule firmware update ]
+    B --[YES] --&gt; O[6️⃣ Flash JetPack 6.x image on microSD card]
+    B --[No] --&gt; C[2️⃣ Flash JetPack 5.1.3 image on microSD card]
     C --&gt; D[3️⃣ Reboot] --&gt; E{{Firmware update during reboot}}
-    E --&gt; F[4️⃣ Run QSPI updater] --&gt; G[5️⃣ Reboot] --&gt; H{{QSPI update during reboot}}
+    E --&gt; F[4️⃣ Run QSPI updater] --&gt; G[5️⃣ Reboot] --&gt; H{{Firmware update during reboot}}
     H --&gt; O
-    O --&gt; P(7️⃣ Enjoy the Super performance) 
+    O --&gt; P(7️⃣ Start developing on JetPack 6.x) 
 
     style C fill:#fee
     style D fill:#DEE,stroke:#333
@@ -1330,10 +1330,10 @@
           <blockquote>
            <p>
             You could skip to
-            <a href="#6-flash-jetpack-60-ga-image-onto-your-microsd-card">
+            <a href="#6-boot-with-jetpack-6x-sd-card">
              <strong>
               <em>
-               6. Flash JetPack 6.1 image onto your microSD card
+               6️⃣ Boot with JetPack 6.x SD card
               </em>
              </strong>
             </a>
@@ -1343,8 +1343,8 @@
          </div>
         </div>
        </div>
-       <h2 id="360-upgrade-the-jetson-uefi-firmware-to-36x">
-        [&lt; 36.0] Upgrade the Jetson UEFI firmware to 36.x
+       <h2 id="determine-qspi-update-is-necessary-or-not">
+        Determine QSPI update is necessary or not
        </h2>
        <div class="admonition warning">
         <p class="admonition-title">
@@ -1354,7 +1354,7 @@
          Select the appropriate tab below based on your firmware version you found in the above step.
         </p>
         <p>
-         If you found your Jetson Orin Nano needs its firmware updated to run JetPack 6, click
+         If you found your Jetson Orin Nano needs its firmware updated to run JetPack 6.x, click
          <a href="#__tabbed_2_2">
           "
           <span class="twemoji">
@@ -1381,10 +1381,10 @@
           Firmware 36.x"
          </a>
          tab, and skip to the next section (
-         <a href="#6-boot-with-jetpack-61-sd-card">
+         <a href="#6-boot-with-jetpack-6x-sd-card">
           <strong>
            <em>
-            6️⃣ Boot with JetPack 6.1 SD card
+            6️⃣ Boot with JetPack 6.x SD card
            </em>
           </strong>
          </a>
@@ -1417,14 +1417,16 @@
         </div>
         <div class="tabbed-content">
          <div class="tabbed-block">
-          <blockquote>
-           <p>
-            Your Jetson Orin Nano needs its firmware updated in order to make JetPack 6 SD card work.
-           </p>
-           <p>
-            Perform the following steps (2 to 5).
-           </p>
-          </blockquote>
+          <p>
+           Your Jetson Orin Nano
+           <strong>
+            needs
+           </strong>
+           its firmware updated in order to make JetPack 6.x SD card work.
+          </p>
+          <p>
+           Perform the following steps (2 to 5).
+          </p>
           <h2 id="2-boot-with-jetpack-513-sd-card-to-schedule-firmware-update">
            2️⃣ Boot with JetPack 5.1.3 SD card to schedule firmware update
           </h2>
@@ -1780,7 +1782,7 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
             <p>
              Once the update is done, it reboots and tries to boot, however it will get stuck
              <strong>
-              UNLESS you change the SD card which has JetPack 6.x
+              UNLESS you change the SD card to JetPack 6.x one
              </strong>
              .
             </p>
@@ -1795,7 +1797,7 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
               This part may look very confusing as neither the attached monitor nor the debug UART shows any explicit message on what action to take next.
              </p>
              <p>
-              What is going on here is that the Jetson's firmware (inside the QSPI-NOR flash memory) is now updated, ready for the JetPack 6 SD card, however it is now incompatible with JetPack 5.1.3 SD card left in the Jetson module's slot, so after the reboot it gets stuck in the boot process.
+              What is going on here is that the Jetson's firmware (inside the QSPI-NOR flash memory) is now updated, ready for the JetPack 6.x SD card, however it is now incompatible with JetPack 5.1.3 SD card left in the Jetson module's slot, so after the reboot it gets stuck in the boot process.
              </p>
              <p>
               So there is no issue with this boot halt (or endless rebooting).
@@ -1813,10 +1815,10 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
            </p>
            <p>
             Skip to the next section (
-            <a href="#6-boot-with-jetpack-61-sd-card">
+            <a href="#6-boot-with-jetpack-6x-sd-card">
              <strong>
               <em>
-               6️⃣ Boot with JetPack 6.1 SD card
+               6️⃣ Boot with JetPack 6.x SD card
               </em>
              </strong>
             </a>
@@ -1826,8 +1828,8 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
          </div>
         </div>
        </div>
-       <h2 id="6-boot-with-jetpack-61-sd-card">
-        6️⃣ Boot with JetPack 6.1 SD card
+       <h2 id="6-boot-with-jetpack-6x-sd-card">
+        6️⃣ Boot with JetPack 6.x SD card
        </h2>
        <p>
         Once we know the onboard firmware is up-to-date and ready for JetPack 6.x, we can boot Jetson Orin Nano Developer Kit with a microSD card for JetPack 6.
@@ -1838,9 +1840,9 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
           Download SD card image on to your PC
          </p>
          <p>
-          On your PC, download JetPack 6.1 image for Jetson Orin Nano Developer Kit from the official
-          <a href="https://developer.nvidia.com/embedded/jetpack-sdk-61">
-           JetPack 6.1 page
+          On your PC, download the latest JetPack 6.x image for Jetson Orin Nano Developer Kit from the official
+          <a href="https://developer.nvidia.com/embedded/jetpack">
+           JetPack page
           </a>
           or from the below direct link button.
          </p>
@@ -1874,7 +1876,7 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
          <p>
           Insert the
           <strong>
-           JetPack 6.1
+           JetPack 6.x
           </strong>
           microSD card into the slot on Jetson module
          </p>
@@ -1897,8 +1899,8 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
          </p>
         </li>
        </ol>
-       <h2 id="7-start-developing-on-jetpack-61">
-        7️⃣ Start developing on JetPack 6.1
+       <h2 id="7-start-developing-on-jetpack-6x">
+        7️⃣ Start developing on JetPack 6.x
        </h2>
        <p>
         🎊
@@ -1906,7 +1908,7 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
          Congratulations!
         </strong>
         <br/>
-        Your Jetson Orin Nano Developer Kit is set up with JetPack 6.1 SD card and you are ready to develop on JetPack 6.1.
+        Your Jetson Orin Nano Developer Kit is set up with JetPack 6.x SD card and you are ready to develop on JetPack 6.x.
        </p>
        <h2 id="next-step">
         Next step
