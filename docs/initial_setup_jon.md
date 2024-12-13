@@ -53,12 +53,12 @@ If you don't have them in your inventory, you want to arrange them and return to
     ```mermaid
     flowchart
         A(start) --> B{1️⃣ Check if Jetson UEFI Firmware<br>is newer than version 36.0}
-        B --[YES] --> O[6️⃣ Boot with JetPack 6.1 SD card]
-        B --[No] --> C[2️⃣ Boot with JetPack 5.1.3 SD card<br>to schedule firmware update ]
+        B --[YES] --> O[6️⃣ Flash JetPack 6.x image on microSD card]
+        B --[No] --> C[2️⃣ Flash JetPack 5.1.3 image on microSD card]
         C --> D[3️⃣ Reboot] --> E{{Firmware update during reboot}}
-        E --> F[4️⃣ Run QSPI updater] --> G[5️⃣ Reboot] --> H{{QSPI update during reboot}}
+        E --> F[4️⃣ Run QSPI updater] --> G[5️⃣ Reboot] --> H{{Firmware update during reboot}}
         H --> O
-        O --> P(7️⃣ Enjoy the Super performance) 
+        O --> P(7️⃣ Start developing on JetPack 6.x) 
 
         style C fill:#fee
         style D fill:#DEE,stroke:#333
@@ -106,24 +106,23 @@ You can take one of the following methods.
    
 === "😁I'm feeling lucky"
 
-    > You could skip to [***6. Flash JetPack 6.1 image onto your microSD card***](#6-flash-jetpack-60-ga-image-onto-your-microsd-card), and try your luck to see if your Jetson just boots your Jetson Orin Nano Developer Kit up to the initial software set up (OEM-config).
+    > You could skip to [***6️⃣ Boot with JetPack 6.x SD card***](#6-boot-with-jetpack-6x-sd-card), and try your luck to see if your Jetson just boots your Jetson Orin Nano Developer Kit up to the initial software set up (OEM-config).
 
-
-## [< 36.0] Upgrade the Jetson UEFI firmware to 36.x
+## Determine QSPI update is necessary or not
 
 !!! warning "Attention"
 
     Select the appropriate tab below based on your firmware version you found in the above step.
 
-    If you found your Jetson Orin Nano needs its firmware updated to run JetPack 6, click [":material-update: Firmware < 36.0"](#__tabbed_2_2) tab, and then additional step 2 to 5 will appear for you to follow.
+    If you found your Jetson Orin Nano needs its firmware updated to run JetPack 6.x, click [":material-update: Firmware < 36.0"](#__tabbed_2_2) tab, and then additional step 2 to 5 will appear for you to follow.
 
-    If you know your Jetson Orin Nano has the latest firmware, stay on [":fontawesome-solid-forward-fast: Firmware 36.x"](#__tabbed_2_1) tab, and skip to the next section ([***6️⃣ Boot with JetPack 6.1 SD card***](#6-boot-with-jetpack-61-sd-card))
+    If you know your Jetson Orin Nano has the latest firmware, stay on [":fontawesome-solid-forward-fast: Firmware 36.x"](#__tabbed_2_1) tab, and skip to the next section ([***6️⃣ Boot with JetPack 6.x SD card***](#6-boot-with-jetpack-6x-sd-card))
 
 === ":material-update: Firmware < 36.0"
 
-    > Your Jetson Orin Nano needs its firmware updated in order to make JetPack 6 SD card work.
-    >
-    > Perform the following steps (2 to 5).
+    Your Jetson Orin Nano **needs** its firmware updated in order to make JetPack 6.x SD card work.
+        
+    Perform the following steps (2 to 5).
 
     ## 2️⃣ Boot with JetPack 5.1.3 SD card to schedule firmware update
 
@@ -254,7 +253,7 @@ You can take one of the following methods.
 
     3. Power off
 
-        Once the update is done, it reboots and tries to boot, however it will get stuck **UNLESS you change the SD card which has JetPack 6.x**. 
+        Once the update is done, it reboots and tries to boot, however it will get stuck **UNLESS you change the SD card to JetPack 6.x one**. 
         
         Therefore you should just power off the developer kit simply by disconnecting the DC power supply.
 
@@ -262,7 +261,7 @@ You can take one of the following methods.
 
             This part may look very confusing as neither the attached monitor nor the debug UART shows any explicit message on what action to take next.
 
-            What is going on here is that the Jetson's firmware (inside the QSPI-NOR flash memory) is now updated, ready for the JetPack 6 SD card, however it is now incompatible with JetPack 5.1.3 SD card left in the Jetson module's slot, so after the reboot it gets stuck in the boot process.
+            What is going on here is that the Jetson's firmware (inside the QSPI-NOR flash memory) is now updated, ready for the JetPack 6.x SD card, however it is now incompatible with JetPack 5.1.3 SD card left in the Jetson module's slot, so after the reboot it gets stuck in the boot process.
 
             So there is no issue with this boot halt (or endless rebooting). <br>
             Simply power off the device and insert the new SD card.
@@ -271,15 +270,16 @@ You can take one of the following methods.
 
     > Your Jetson Orin Nano has the latest firmware that is ready for JetPack 6.x SD card.
 
-    > Skip to the next section ([***6️⃣ Boot with JetPack 6.1 SD card***](#6-boot-with-jetpack-61-sd-card))
+    > Skip to the next section ([***6️⃣ Boot with JetPack 6.x SD card***](#6-boot-with-jetpack-6x-sd-card))
 
-## 6️⃣ Boot with JetPack 6.1 SD card
+
+## 6️⃣ Boot with JetPack 6.x SD card
 
 Once we know the onboard firmware is up-to-date and ready for JetPack 6.x, we can boot Jetson Orin Nano Developer Kit with a microSD card for JetPack 6.
 
 1. Download SD card image on to your PC
 
-    On your PC, download JetPack 6.1 image for Jetson Orin Nano Developer Kit from the official [JetPack 6.1 page](https://developer.nvidia.com/embedded/jetpack-sdk-61) or from the below direct link button.
+    On your PC, download the latest JetPack 6.x image for Jetson Orin Nano Developer Kit from the official [JetPack page](https://developer.nvidia.com/embedded/jetpack) or from the below direct link button.
 
     [Jetson Orin Nano Developer Kit<br>JetPack 6.1 image](https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v4.0/jp61-orin-nano-sd-card-image.zip){ .md-button .md-button--primary }
 
@@ -291,7 +291,7 @@ Once we know the onboard firmware is up-to-date and ready for JetPack 6.x, we ca
 
     ![alt text](images/balena_etcher.png){ width="540" }
 
-3. Insert the **JetPack 6.1** microSD card into the slot on Jetson module
+3. Insert the **JetPack 6.x** microSD card into the slot on Jetson module
    
     ![](./images/jetson-orin-nano-dev-kit-sd-slot.png){ width="360" }
 
@@ -299,10 +299,10 @@ Once we know the onboard firmware is up-to-date and ready for JetPack 6.x, we ca
 
 5. Complete the initial software setup (`oem-config`)
 
-## 7️⃣ Start developing on JetPack 6.1
+## 7️⃣ Start developing on JetPack 6.x
 
 🎊 **Congratulations!** <br>
-Your Jetson Orin Nano Developer Kit is set up with JetPack 6.1 SD card and you are ready to develop on JetPack 6.1.
+Your Jetson Orin Nano Developer Kit is set up with JetPack 6.x SD card and you are ready to develop on JetPack 6.x.
 
 ## Next step
 
