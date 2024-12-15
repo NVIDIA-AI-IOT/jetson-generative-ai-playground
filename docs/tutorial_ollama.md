@@ -1,6 +1,10 @@
 # Tutorial - Ollama
 
-[Ollama](https://github.com/ollama/ollama){:target="_blank"} is a popular LLM tool that's easy to get started with, and includes a built-in [model library](https://ollama.com/library){:target="_blank"} of pre-quantized weights that will automatically be downloaded and run using llama.cpp underneath for inference.  The [ollama container](https://github.com/dusty-nv/jetson-containers/tree/dev/packages/llm/ollama){:target="_blank"} was compiled with CUDA support.
+[Ollama](https://ollama.com){:target="_blank"} is a popular open-source tool that allows users to easily run a large language models (LLMs) locally on their own computer, serving as an accessible entry point to LLMs for many.
+
+It now offers out-of-the-box support for the Jetson platform with CUDA support, enabling Jetson users to seamlessly install Ollama with a single command and start using it immediately.
+
+In this tutorial, we introduce two installation methods: (1) the default native installation using the official Ollama installer, and (2) the Docker container method, which allows users to avoid making changes to their existing system.
 
 <img src="https://github.com/dusty-nv/jetson-containers/blob/docs/docs/images/ollama_cli.gif?raw=true" width="750px"></img>
 
@@ -29,6 +33,15 @@
         - `7GB` for `ollama` container image
         - Space for models (`>5GB`)
 		 
+
+## (1) Native Install
+
+```bash
+curl -fsSL https://ollama.com/install.sh | sh 
+```
+
+## (2) Docker container for `ollama` using `jetson-containers`
+
 ```
 # models cached under jetson-containers/data
 jetson-containers run --name ollama $(autotag ollama)
@@ -38,8 +51,6 @@ docker run --runtime nvidia --rm --network=host -v ~/ollama:/ollama -e OLLAMA_MO
 ```
 
 Running either of these will start the local Ollama server as a daemon in the background.  It will save the models it downloads under your mounted `jetson-containers/data/models/ollama` directory (or another directory that you override with `OLLAMA_MODELS`)
-
-## Ollama Client
 
 Start the Ollama command-line chat client with your desired [model](https://ollama.com/library){:target="_blank"} (for example: `llama3`, `phi3`, `mistral`)
 

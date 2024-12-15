@@ -87,7 +87,8 @@ nav:
     - Agent Studio: agent_studio.md
     - Text (LLM):
       - text-generation-webui: tutorial_text-generation.md 
-      - ollama: tutorial_ollama.md
+      - Ollama: tutorial_ollama.md
+      - Open WebUI: tutorial_openwebui.md
       - llamaspeak: tutorial_llamaspeak.md
       - NanoLLM: tutorial_nano-llm.md
       - Small LLM (SLM): tutorial_slm.md
