@@ -6,11 +6,11 @@
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="Showcasing generative AI projects that run on Jetson" name="description"/>
   <link href="tutorial_text-generation.html" rel="prev"/>
-  <link href="tutorial_llamaspeak.html" rel="next"/>
+  <link href="tutorial_openwebui.html" rel="next"/>
   <link href="images/nvidia-favicon-rgb-16x16px@2x.png" rel="icon"/>
   <meta content="mkdocs-1.6.1, mkdocs-material-9.5.48" name="generator"/>
   <title>
-   ollama - NVIDIA Jetson AI Lab
+   Ollama - NVIDIA Jetson AI Lab
   </title>
   <link href="assets/stylesheets/main.6f8fc17f.min.css" rel="stylesheet"/>
   <link href="assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
@@ -67,7 +67,7 @@
       </div>
       <div class="md-header__topic" data-md-component="header-topic">
        <span class="md-ellipsis">
-        ollama
+        Ollama
        </span>
       </div>
      </div>
@@ -243,14 +243,14 @@
                  <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
                  <label class="md-nav__link md-nav__link--active" for="__toc">
                   <span class="md-ellipsis">
-                   ollama
+                   Ollama
                   </span>
                   <span class="md-nav__icon md-icon">
                   </span>
                  </label>
                  <a class="md-nav__link md-nav__link--active" href="tutorial_ollama.html">
                   <span class="md-ellipsis">
-                   ollama
+                   Ollama
                   </span>
                  </a>
                  <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
@@ -268,9 +268,16 @@
                     </a>
                    </li>
                    <li class="md-nav__item">
-                    <a class="md-nav__link" href="#ollama-client">
+                    <a class="md-nav__link" href="#1-native-install">
                      <span class="md-ellipsis">
-                      Ollama Client
+                      (1) Native Install
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#2-docker-container-for-ollama-using-jetson-containers">
+                     <span class="md-ellipsis">
+                      (2) Docker container for ollama using jetson-containers
                      </span>
                     </a>
                    </li>
@@ -283,6 +290,13 @@
                    </li>
                   </ul>
                  </nav>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_openwebui.html">
+                  <span class="md-ellipsis">
+                   Open WebUI
+                  </span>
+                 </a>
                 </li>
                 <li class="md-nav__item">
                  <a class="md-nav__link" href="tutorial_llamaspeak.html">
@@ -742,9 +756,16 @@
            </a>
           </li>
           <li class="md-nav__item">
-           <a class="md-nav__link" href="#ollama-client">
+           <a class="md-nav__link" href="#1-native-install">
             <span class="md-ellipsis">
-             Ollama Client
+             (1) Native Install
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#2-docker-container-for-ollama-using-jetson-containers">
+            <span class="md-ellipsis">
+             (2) Docker container for ollama using jetson-containers
             </span>
            </a>
           </li>
@@ -766,18 +787,16 @@
         Tutorial - Ollama
        </h1>
        <p>
-        <a href="https://github.com/ollama/ollama" target="_blank">
+        <a href="https://ollama.com" target="_blank">
          Ollama
         </a>
-        is a popular LLM tool that's easy to get started with, and includes a built-in
-        <a href="https://ollama.com/library" target="_blank">
-         model library
-        </a>
-        of pre-quantized weights that will automatically be downloaded and run using llama.cpp underneath for inference.  The
-        <a href="https://github.com/dusty-nv/jetson-containers/tree/dev/packages/llm/ollama" target="_blank">
-         ollama container
-        </a>
-        was compiled with CUDA support.
+        is a popular open-source tool that allows users to easily run a large language models (LLMs) locally on their own computer, serving as an accessible entry point to LLMs for many.
+       </p>
+       <p>
+        It now offers out-of-the-box support for the Jetson platform with CUDA support, enabling Jetson users to seamlessly install Ollama with a single command and start using it immediately.
+       </p>
+       <p>
+        In this tutorial, we introduce two installation methods: (1) the default native installation using the official Ollama installer, and (2) the Docker container method, which allows users to avoid making changes to their existing system.
        </p>
        <p>
         <img src="https://github.com/dusty-nv/jetson-containers/blob/docs/docs/images/ollama_cli.gif?raw=true" width="750px"/>
@@ -886,6 +905,23 @@
          </li>
         </ol>
        </div>
+       <h2 id="1-native-install">
+        (1) Native Install
+       </h2>
+       <div class="highlight">
+        <pre><span></span><code>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://ollama.com/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>
+</code></pre>
+       </div>
+       <h2 id="2-docker-container-for-ollama-using-jetson-containers">
+        (2) Docker container for
+        <code>
+         ollama
+        </code>
+        using
+        <code>
+         jetson-containers
+        </code>
+       </h2>
        <div class="highlight">
         <pre><span></span><code># models cached under jetson-containers/data
 jetson-containers run --name ollama $(autotag ollama)
@@ -905,9 +941,6 @@ docker run --runtime nvidia --rm --network=host -v ~/ollama:/ollama -e OLLAMA_MO
         </code>
         )
        </p>
-       <h2 id="ollama-client">
-        Ollama Client
-       </h2>
        <p>
         Start the Ollama command-line chat client with your desired
         <a href="https://ollama.com/library" target="_blank">
