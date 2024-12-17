@@ -106,6 +106,7 @@ nav:
       - NanoSAM: vit/tutorial_nanosam.md
       - SAM: vit/tutorial_sam.md
       - TAM: vit/tutorial_tam.md
+      - 📑 Knowledge Distillation: tutorial_distillation.md
     - Robotics & Embodiment:
       - LeRobot: lerobot.md
       - ROS2 Nodes: ros.md
@@ -133,11 +134,10 @@ nav:
     #  - First Steps: tutorial_mmj.md
     # - Tools:
     #   - LangChain: tutorial_distillation.md
-    - Tips:
-      - 📑 Knowledge Distillation: tutorial_distillation.md
+    - Jetson Orin Nano Guide:
+      - 🚀 Initial Setup Guide - Jetson Orin Nano: initial_setup_jon.md
       - 🔖 SSD + Docker: tips_ssd-docker.md
       - 🔖 Memory optimization: tips_ram-optimization.md
-      - 🚅 Initial Setup Guide - Jetson Orin Nano: initial_setup_jon.md
   - Benchmarks: benchmarks.md
   - Projects: community_articles.md
   - Research Group: research.md
