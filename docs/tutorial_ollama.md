@@ -36,8 +36,28 @@ In this tutorial, we introduce two installation methods: (1) the default native 
 
 ## (1) Native Install
 
+Ollama's official installer already support Jetson and can easily install CUDA-supporting Ollama.
+
 ```bash
 curl -fsSL https://ollama.com/install.sh | sh 
+```
+
+![](./images/ollama-official-installer.png)
+
+It create a service to run `ollama serve` on start up, so you can start using `ollama` command right away.
+
+### Example: Ollama usage
+
+```bash
+ollama
+```
+
+![alt text](images/ollama-usage.png)
+
+### Example: run a model on CLI
+
+```bash
+ollama run llama3.2:3b
 ```
 
 ## (2) Docker container for `ollama` using `jetson-containers`
