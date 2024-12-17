@@ -7,7 +7,7 @@
 
 The NVIDIA® <span class="blobLightGreen4">Jetson Orin Nano™ Developer Kit</span> is a perfect kit to start your journey of local generative AI evaluation and development.
 
-With the December 2024 software update, this advanced edge computer delivers up to 70% more performance, making it an even more powerful platform for the era of generative AI.
+With the December 2024 software update (**JetPack 6.1 (rev.1)**), this advanced edge computer delivers up to 70% more performance, making it an even more powerful platform for the era of generative AI.
 
 This guide explains the complete flow from opening the box, updating the firmware if needed, flashing the latest JetPack 6.1 (rev. 1) image on SD card, and the initial software setup, so that you will be ready for tutorials listed on this site and other AI projects.
 
