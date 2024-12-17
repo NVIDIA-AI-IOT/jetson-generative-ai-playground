@@ -7,7 +7,9 @@
 
 The NVIDIA® <span class="blobLightGreen4">Jetson Orin Nano™ Developer Kit</span> is a perfect kit to start your journey of local generative AI evaluation and development.
 
-This guide explains the complete flow from opening the box, updating the firmware if needed, flashing the latest JetPack 6.1 image on SD card, and the initial software setup, so that you will be ready for tutorials listed on this site and other AI projects.
+With the December 2024 software update, this advanced edge computer delivers up to 70% more performance, making it an even more powerful platform for the era of generative AI.
+
+This guide explains the complete flow from opening the box, updating the firmware if needed, flashing the latest JetPack 6.1 (rev. 1) image on SD card, and the initial software setup, so that you will be ready for tutorials listed on this site and other AI projects.
 
 
 ## Check your inventory
@@ -58,7 +60,8 @@ If you don't have them in your inventory, you want to arrange them and return to
         C --> D[3️⃣ Reboot] --> E{{Firmware update during reboot}}
         E --> F[4️⃣ Run QSPI updater] --> G[5️⃣ Reboot] --> H{{Firmware update during reboot}}
         H --> O
-        O --> P(7️⃣ Start developing on JetPack 6.x) 
+        O --> Q(7️⃣ Unlock super performance) 
+        Q --> P(8️⃣ Start developing on JetPack 6.x) 
 
         style C fill:#fee
         style D fill:#DEE,stroke:#333
@@ -67,6 +70,7 @@ If you don't have them in your inventory, you want to arrange them and return to
         style E stroke-width:2px,stroke-dasharray: 5 5
         style H stroke-width:2px,stroke-dasharray: 5 5
         style O fill:#fee
+        style Q stroke-width:4px
     ```
 
 <!-- ??? example "Even more detailed flowchart (for all firmware versions)"
@@ -281,7 +285,7 @@ Once we know the onboard firmware is up-to-date and ready for JetPack 6.x, we ca
 
     On your PC, download the latest JetPack 6.x image for Jetson Orin Nano Developer Kit from the official [JetPack page](https://developer.nvidia.com/embedded/jetpack) or from the below direct link button.
 
-    [Jetson Orin Nano Developer Kit<br>JetPack 6.1 image](https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v4.0/jp61-orin-nano-sd-card-image.zip){ .md-button .md-button--primary }
+    [Jetson Orin Nano Developer Kit<br>JetPack 6.1 (rev. 1) image](https://developer.nvidia.com/downloads/embedded/L4T/r36_Release_v4.0/jp61-rev1-orin-nano-sd-card-image.zip){ .md-button .md-button--primary }
 
 2. Use Balena Etcher to flash image to SD card
 
@@ -299,7 +303,28 @@ Once we know the onboard firmware is up-to-date and ready for JetPack 6.x, we ca
 
 5. Complete the initial software setup (`oem-config`)
 
-## 7️⃣ Start developing on JetPack 6.x
+## 7️⃣ Unlock Super Performance
+
+!!! warning "Attention"
+
+    If your Jetson Orin Developer Kit was previously running **JetPack 6.0** or **JetPack 6.1**, execute the following command after the final login and reboot your device. This ensures that the **MAXN** performance mode becomes available on your system.
+
+    ```bash
+    sudo rm -rf /etc/nvpmodel.conf
+    ```
+
+### Switch to MAXN mode
+
+Note that the default power mode is **15W**. <br>
+To switch to the new power mode and unlock the increased performance, follow below steps:
+
+1. Click on the current power mode (**15W**) by clicking the NVIDIA icon on the right side of the Ubuntu desktop’s top bar.
+2. Select **Power mode** from the menu.
+3. Choose **MAXN** to enable maximum performance.
+
+![alt text](images/jons_power-mode-to-maxn.png)
+
+## 8️⃣ Start developing on JetPack 6.x
 
 🎊 **Congratulations!** <br>
 Your Jetson Orin Nano Developer Kit is set up with JetPack 6.x SD card and you are ready to develop on JetPack 6.x.
