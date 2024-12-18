@@ -43,6 +43,45 @@
    </a>
   </div>
   <div data-md-component="announce">
+   <aside class="md-banner">
+    <div class="md-banner__inner md-grid md-typeset">
+     <button aria-label="Don't show this again" class="md-banner__button md-icon">
+      <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+       <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+       </path>
+      </svg>
+     </button>
+     <style>
+      .md-announce a { color: #76b900; text-decoration: underline;}
+    .md-announce a:focus { color: hsl(82, 100%, 72%);  text-decoration: underline; }
+    .md-announce a:hover { color: hsl(82, 100%, 72%); text-decoration: underline;}
+     </style>
+     <div class="md-announce">
+      ⛄❄️
+      <b>
+       Jetson Orin Nano Super
+      </b>
+      now available for $249
+      <span style="opacity: 0.875">
+       (up to 1.7X gains through
+       <a href="https://developer.nvidia.com/embedded/jetpack">
+        JetPack
+       </a>
+       update, see our
+       <a href="https://developer.nvidia.com/blog/nvidia-jetson-orin-nano-developer-kit-gets-a-super-boost/?ncid=so-othe-293081-vt48" target="_blank">
+        blog
+       </a>
+       for more info)
+      </span>
+     </div>
+     <!--<div class="md-announce">The next research group meeting is on <a href="research.html#meeting-schedule">May 15th</a> at 9am PT! Catch up on the <a href="research.html#past-meetings">recordings</a> of the recent meetings.</div>-->
+     <!--<div class="md-announce">Congratulations to all the winners and participants of the <a href="https://blogs.nvidia.com/blog/glados-robot-hackster/" target="_blank">Hackster.io AI Innovation Challenge!</a></div>-->
+     <!--<div class="md-announce">Microsoft's open <a href="https://blogs.nvidia.com/blog/microsoft-open-phi-3-mini-language-models/" target="_blank">Phi-3 Mini</a> language models are out!  Try them today on Jetson with <a href="tutorial_ollama.html">ollama</a>.</div>-->
+    </div>
+    <script>
+     var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}
+    </script>
+   </aside>
   </div>
   <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
    <nav aria-label="Header" class="md-header__inner md-grid">
@@ -689,51 +728,16 @@
             </label>
             <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
              <li class="md-nav__item">
-              <a class="md-nav__link" href="#large-language-models-llm">
+              <a class="md-nav__link" href="#jetson-orin-nano-super">
                <span class="md-ellipsis">
-                Large Language Models (LLM)
+                Jetson Orin Nano Super
                </span>
               </a>
              </li>
              <li class="md-nav__item">
-              <a class="md-nav__link" href="#small-language-models-slm">
+              <a class="md-nav__link" href="#jetson-agx-orin">
                <span class="md-ellipsis">
-                Small Language Models (SLM)
-               </span>
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#vision-language-models-vlm">
-               <span class="md-ellipsis">
-                Vision Language Models (VLM)
-               </span>
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#vision-transformers-vit">
-               <span class="md-ellipsis">
-                Vision Transformers (ViT)
-               </span>
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#stable-diffusion">
-               <span class="md-ellipsis">
-                Stable Diffusion
-               </span>
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#riva">
-               <span class="md-ellipsis">
-                Riva
-               </span>
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#vector-database">
-               <span class="md-ellipsis">
-                Vector Database
+                Jetson AGX Orin
                </span>
               </a>
              </li>
@@ -770,51 +774,16 @@
          </label>
          <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
           <li class="md-nav__item">
-           <a class="md-nav__link" href="#large-language-models-llm">
+           <a class="md-nav__link" href="#jetson-orin-nano-super">
             <span class="md-ellipsis">
-             Large Language Models (LLM)
+             Jetson Orin Nano Super
             </span>
            </a>
           </li>
           <li class="md-nav__item">
-           <a class="md-nav__link" href="#small-language-models-slm">
+           <a class="md-nav__link" href="#jetson-agx-orin">
             <span class="md-ellipsis">
-             Small Language Models (SLM)
-            </span>
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#vision-language-models-vlm">
-            <span class="md-ellipsis">
-             Vision Language Models (VLM)
-            </span>
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#vision-transformers-vit">
-            <span class="md-ellipsis">
-             Vision Transformers (ViT)
-            </span>
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#stable-diffusion">
-            <span class="md-ellipsis">
-             Stable Diffusion
-            </span>
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#riva">
-            <span class="md-ellipsis">
-             Riva
-            </span>
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#vector-database">
-            <span class="md-ellipsis">
-             Vector Database
+             Jetson AGX Orin
             </span>
            </a>
           </li>
@@ -828,124 +797,576 @@
        <h1 id="benchmarks">
         Benchmarks
        </h1>
-       <h2 id="large-language-models-llm">
-        Large Language Models (LLM)
-       </h2>
-       <p>
-        <img alt="" src="svgs/LLM%20Text%20Generation%20Rate.svg"/>
-       </p>
-       <p>
-        For running LLM benchmarks, see the
-        <a href="https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/mlc">
-         <code>
-          MLC
-         </code>
-        </a>
-        container documentation.
-       </p>
-       <h2 id="small-language-models-slm">
-        Small Language Models (SLM)
-       </h2>
-       <p>
-        <img alt="" src="svgs/SLM%20Text%20Generation%20Rate.svg"/>
-       </p>
-       <p>
-        Small language models are generally defined as having fewer than 7B parameters
-        <em>
-         (Llama-7B shown for reference)
-        </em>
-        <br/>
-        For more data and info about running these models, see the
-        <a href="tutorial_slm.html">
-         <code>
-          SLM
-         </code>
-        </a>
-        tutorial and
-        <a href="https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/mlc">
-         <code>
-          MLC
-         </code>
-        </a>
-        container documentation.
-       </p>
-       <h2 id="vision-language-models-vlm">
-        Vision Language Models (VLM)
-       </h2>
-       <p>
-        <img alt="" src="svgs/Multimodal%20Streaming%20Rate.svg"/>
-       </p>
-       <p>
-        This measures the end-to-end pipeline performance for continuous streaming like with
-        <a href="tutorial_live-llava.html">
-         Live Llava
-        </a>
-        .
-        <br/>
-        For more data and info about running these models, see the
-        <a href="tutorial_nano-vlm.html">
-         <code>
-          NanoVLM
-         </code>
-        </a>
-        tutorial.
-       </p>
-       <h2 id="vision-transformers-vit">
-        Vision Transformers (ViT)
-       </h2>
-       <p>
-        <img alt="" src="svgs/Vision%20Transformers.svg"/>
-       </p>
-       <p>
-        VIT performance data from
-        <a href="https://github.com/mit-han-lab/efficientvit#imagenet">
-         [1]
-        </a>
-        <a href="https://github.com/NVIDIA-AI-IOT/nanoowl#performance">
-         [2]
-        </a>
-        <a href="https://github.com/NVIDIA-AI-IOT/nanosam#performance">
-         [3]
-        </a>
-       </p>
-       <h2 id="stable-diffusion">
-        Stable Diffusion
-       </h2>
-       <p>
-        <img alt="" src="svgs/Stable%20Diffusion.svg"/>
-       </p>
-       <h2 id="riva">
-        Riva
-       </h2>
-       <p>
-        <img alt="" src="svgs/Riva%20Streaming%20ASR_TTS.svg"/>
-       </p>
-       <p>
-        For running Riva benchmarks, see
-        <a href="https://docs.nvidia.com/deeplearning/riva/user-guide/docs/asr/asr-performance.html">
-         ASR Performance
-        </a>
-        and
-        <a href="https://docs.nvidia.com/deeplearning/riva/user-guide/docs/tts/tts-performance.html">
-         TTS Performance
-        </a>
-        .
-       </p>
-       <h2 id="vector-database">
-        Vector Database
-       </h2>
-       <p>
-        <img alt="" src="svgs/Vector%20Database%20Retrieval.svg"/>
-       </p>
-       <p>
-        For running vector database benchmarks, see the
-        <a href="https://github.com/dusty-nv/jetson-containers/tree/master/packages/vectordb/nanodb">
-         <code>
-          NanoDB
-         </code>
-        </a>
-        container documentation.
-       </p>
+       <div class="admonition admonition">
+        <p class="admonition-title">
+         WIP - Updating Results
+        </p>
+        <p>
+         Below is recent data from the Jetson Orin Nano Super benchmarks - see
+         <a href="https://developer.nvidia.com/blog/nvidia-jetson-orin-nano-developer-kit-gets-a-super-boost/?ncid=so-othe-293081-vt48">
+          here
+         </a>
+         for more info.
+        </p>
+        <p>
+         Currently in the process of collating these across AGX Orin and Orin NX - for now, the previous results are archived
+         <a href="#large-language-models-llm">
+          below
+         </a>
+         .
+        </p>
+       </div>
+       <h4 id="jetson-orin-nano-super">
+        Jetson Orin Nano Super
+       </h4>
+       <div class="tabbed-set tabbed-alternate" data-tabs="1:3">
+        <input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"/>
+        <input id="__tabbed_1_2" name="__tabbed_1" type="radio"/>
+        <input id="__tabbed_1_3" name="__tabbed_1" type="radio"/>
+        <div class="tabbed-labels">
+         <label for="__tabbed_1_1">
+          LLM / SLM
+         </label>
+         <label for="__tabbed_1_2">
+          Vision / Language Models
+         </label>
+         <label for="__tabbed_1_3">
+          Vision Transformers
+         </label>
+        </div>
+        <div class="tabbed-content">
+         <div class="tabbed-block">
+          <p>
+           <img src="https://developer-blogs.nvidia.com/wp-content/uploads/2024/12/Figure-1.-LLM-performance-boost-on-Jetson-Orin-Nano-Super-Developer-Kit.png"/>
+          </p>
+          <table>
+           <thead>
+            <tr>
+             <th>
+              Model
+             </th>
+             <th style="text-align: center;">
+              Jetson Orin Nano (original)
+             </th>
+             <th style="text-align: center;">
+              Jetson Orin Nano Super
+             </th>
+             <th style="text-align: center;">
+              Perf Gain (X)
+             </th>
+            </tr>
+           </thead>
+           <tbody>
+            <tr>
+             <td>
+              Llama 3.1 8B
+             </td>
+             <td style="text-align: center;">
+              14
+             </td>
+             <td style="text-align: center;">
+              19.14
+             </td>
+             <td style="text-align: center;">
+              1.37
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Llama 3.2 3B
+             </td>
+             <td style="text-align: center;">
+              27.7
+             </td>
+             <td style="text-align: center;">
+              43.07
+             </td>
+             <td style="text-align: center;">
+              1.55
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Qwen2.5 7B
+             </td>
+             <td style="text-align: center;">
+              14.2
+             </td>
+             <td style="text-align: center;">
+              21.75
+             </td>
+             <td style="text-align: center;">
+              1.53
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Gemma 2 2B
+             </td>
+             <td style="text-align: center;">
+              21.5
+             </td>
+             <td style="text-align: center;">
+              34.97
+             </td>
+             <td style="text-align: center;">
+              1.63
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Gemma 2 9B
+             </td>
+             <td style="text-align: center;">
+              7.2
+             </td>
+             <td style="text-align: center;">
+              9.21
+             </td>
+             <td style="text-align: center;">
+              1.28
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Phi 3.5 3B
+             </td>
+             <td style="text-align: center;">
+              24.7
+             </td>
+             <td style="text-align: center;">
+              38.1
+             </td>
+             <td style="text-align: center;">
+              1.54
+             </td>
+            </tr>
+            <tr>
+             <td>
+              SmolLM2
+             </td>
+             <td style="text-align: center;">
+              41
+             </td>
+             <td style="text-align: center;">
+              64.5
+             </td>
+             <td style="text-align: center;">
+              1.57
+             </td>
+            </tr>
+           </tbody>
+          </table>
+          <p>
+           For running these benchmarks, this
+           <a href="https://github.com/dusty-nv/jetson-containers/blob/master/packages/llm/mlc/benchmark.sh">
+            script
+           </a>
+           will launch a series of containers that download/build/run the models with MLC and INT4 quantization.
+          </p>
+          <div class="highlight">
+           <pre><span></span><code>git clone https://github.com/dusty-nv/jetson-containers
+bash jetson-containers/install.sh
+bash jetson-containers/packages/llm/mlc/benchmarks.sh
+</code></pre>
+          </div>
+         </div>
+         <div class="tabbed-block">
+          <p>
+           <img src="https://developer-blogs.nvidia.com/wp-content/uploads/2024/12/vision-language-models.png"/>
+          </p>
+          <table>
+           <thead>
+            <tr>
+             <th>
+              Model
+             </th>
+             <th style="text-align: center;">
+              Jetson Orin Nano (original)
+             </th>
+             <th style="text-align: center;">
+              Jetson Orin Nano Super
+             </th>
+             <th style="text-align: center;">
+              Perf Gain (X)
+             </th>
+            </tr>
+           </thead>
+           <tbody>
+            <tr>
+             <td>
+              VILA 1.5 3B
+             </td>
+             <td style="text-align: center;">
+              0.7
+             </td>
+             <td style="text-align: center;">
+              1.06
+             </td>
+             <td style="text-align: center;">
+              1.51
+             </td>
+            </tr>
+            <tr>
+             <td>
+              VILA 1.5 8B
+             </td>
+             <td style="text-align: center;">
+              0.574
+             </td>
+             <td style="text-align: center;">
+              0.83
+             </td>
+             <td style="text-align: center;">
+              1.45
+             </td>
+            </tr>
+            <tr>
+             <td>
+              LLAVA 1.6 7B
+             </td>
+             <td style="text-align: center;">
+              0.412
+             </td>
+             <td style="text-align: center;">
+              0.57
+             </td>
+             <td style="text-align: center;">
+              1.38
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Qwen2 VL 2B
+             </td>
+             <td style="text-align: center;">
+              2.8
+             </td>
+             <td style="text-align: center;">
+              4.4
+             </td>
+             <td style="text-align: center;">
+              1.57
+             </td>
+            </tr>
+            <tr>
+             <td>
+              InternVL2.5 4B
+             </td>
+             <td style="text-align: center;">
+              2.5
+             </td>
+             <td style="text-align: center;">
+              5.1
+             </td>
+             <td style="text-align: center;">
+              2.04
+             </td>
+            </tr>
+            <tr>
+             <td>
+              PaliGemma2 3B
+             </td>
+             <td style="text-align: center;">
+              13.7
+             </td>
+             <td style="text-align: center;">
+              21.6
+             </td>
+             <td style="text-align: center;">
+              1.58
+             </td>
+            </tr>
+            <tr>
+             <td>
+              SmolVLM 2B
+             </td>
+             <td style="text-align: center;">
+              8.1
+             </td>
+             <td style="text-align: center;">
+              12.9
+             </td>
+             <td style="text-align: center;">
+              1.59
+             </td>
+            </tr>
+           </tbody>
+          </table>
+         </div>
+         <div class="tabbed-block">
+          <p>
+           <img src="https://developer-blogs.nvidia.com/wp-content/uploads/2024/12/vision-transformers.png"/>
+          </p>
+          <table>
+           <thead>
+            <tr>
+             <th>
+              Model
+             </th>
+             <th style="text-align: center;">
+              Jetson Orin Nano (original)
+             </th>
+             <th style="text-align: center;">
+              Jetson Orin Nano Super
+             </th>
+             <th style="text-align: center;">
+              Perf Gain (X)
+             </th>
+            </tr>
+           </thead>
+           <tbody>
+            <tr>
+             <td>
+              clip-vit-base-patch32
+             </td>
+             <td style="text-align: center;">
+              196
+             </td>
+             <td style="text-align: center;">
+              314
+             </td>
+             <td style="text-align: center;">
+              1.60
+             </td>
+            </tr>
+            <tr>
+             <td>
+              clip-vit-base-patch16
+             </td>
+             <td style="text-align: center;">
+              95
+             </td>
+             <td style="text-align: center;">
+              161
+             </td>
+             <td style="text-align: center;">
+              1.69
+             </td>
+            </tr>
+            <tr>
+             <td>
+              DINOv2-base-patch14
+             </td>
+             <td style="text-align: center;">
+              75
+             </td>
+             <td style="text-align: center;">
+              126
+             </td>
+             <td style="text-align: center;">
+              1.68
+             </td>
+            </tr>
+            <tr>
+             <td>
+              SAM2 base
+             </td>
+             <td style="text-align: center;">
+              4.42
+             </td>
+             <td style="text-align: center;">
+              6.34
+             </td>
+             <td style="text-align: center;">
+              1.43
+             </td>
+            </tr>
+            <tr>
+             <td>
+              Grounding DINO
+             </td>
+             <td style="text-align: center;">
+              4.11
+             </td>
+             <td style="text-align: center;">
+              6.23
+             </td>
+             <td style="text-align: center;">
+              1.52
+             </td>
+            </tr>
+            <tr>
+             <td>
+              vit-base-patch16-224
+             </td>
+             <td style="text-align: center;">
+              98
+             </td>
+             <td style="text-align: center;">
+              158
+             </td>
+             <td style="text-align: center;">
+              1.61
+             </td>
+            </tr>
+            <tr>
+             <td>
+              vit-base-patch32-224
+             </td>
+             <td style="text-align: center;">
+              171
+             </td>
+             <td style="text-align: center;">
+              273
+             </td>
+             <td style="text-align: center;">
+              1.60
+             </td>
+            </tr>
+           </tbody>
+          </table>
+         </div>
+        </div>
+       </div>
+       <h4 id="jetson-agx-orin">
+        Jetson AGX Orin
+       </h4>
+       <div class="tabbed-set tabbed-alternate" data-tabs="2:7">
+        <input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"/>
+        <input id="__tabbed_2_2" name="__tabbed_2" type="radio"/>
+        <input id="__tabbed_2_3" name="__tabbed_2" type="radio"/>
+        <input id="__tabbed_2_4" name="__tabbed_2" type="radio"/>
+        <input id="__tabbed_2_5" name="__tabbed_2" type="radio"/>
+        <input id="__tabbed_2_6" name="__tabbed_2" type="radio"/>
+        <input id="__tabbed_2_7" name="__tabbed_2" type="radio"/>
+        <div class="tabbed-labels">
+         <label for="__tabbed_2_1">
+          Large Language Models (LLM)
+         </label>
+         <label for="__tabbed_2_2">
+          Small Language Models (SLM)
+         </label>
+         <label for="__tabbed_2_3">
+          Vision Language Models (VLM)
+         </label>
+         <label for="__tabbed_2_4">
+          Vision Transformers (ViT)
+         </label>
+         <label for="__tabbed_2_5">
+          Stable Diffusion
+         </label>
+         <label for="__tabbed_2_6">
+          Riva
+         </label>
+         <label for="__tabbed_2_7">
+          Vector Database
+         </label>
+        </div>
+        <div class="tabbed-content">
+         <div class="tabbed-block">
+          <p>
+           <img alt="" src="svgs/LLM%20Text%20Generation%20Rate.svg"/>
+          </p>
+          <p>
+           For running LLM benchmarks, see the
+           <a href="https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/mlc">
+            <code>
+             MLC
+            </code>
+           </a>
+           container documentation.
+          </p>
+         </div>
+         <div class="tabbed-block">
+          <p>
+           <img alt="" src="svgs/SLM%20Text%20Generation%20Rate.svg"/>
+          </p>
+          <p>
+           Small language models are generally defined as having fewer than 7B parameters
+           <em>
+            (Llama-7B shown for reference)
+           </em>
+           <br/>
+           For more data and info about running these models, see the
+           <a href="tutorial_slm.html">
+            <code>
+             SLM
+            </code>
+           </a>
+           tutorial and
+           <a href="https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/mlc">
+            <code>
+             MLC
+            </code>
+           </a>
+           container documentation.
+          </p>
+         </div>
+         <div class="tabbed-block">
+          <p>
+           <img alt="" src="svgs/Multimodal%20Streaming%20Rate.svg"/>
+          </p>
+          <p>
+           This measures the end-to-end pipeline performance for continuous streaming like with
+           <a href="tutorial_live-llava.html">
+            Live Llava
+           </a>
+           .
+           <br/>
+           For more data and info about running these models, see the
+           <a href="tutorial_nano-vlm.html">
+            <code>
+             NanoVLM
+            </code>
+           </a>
+           tutorial.
+          </p>
+         </div>
+         <div class="tabbed-block">
+          <p>
+           <img alt="" src="svgs/Vision%20Transformers.svg"/>
+          </p>
+          <p>
+           VIT performance data from
+           <a href="https://github.com/mit-han-lab/efficientvit#imagenet">
+            [1]
+           </a>
+           <a href="https://github.com/NVIDIA-AI-IOT/nanoowl#performance">
+            [2]
+           </a>
+           <a href="https://github.com/NVIDIA-AI-IOT/nanosam#performance">
+            [3]
+           </a>
+          </p>
+         </div>
+         <div class="tabbed-block">
+          <p>
+           <img alt="" src="svgs/Stable%20Diffusion.svg"/>
+          </p>
+         </div>
+         <div class="tabbed-block">
+          <p>
+           <img alt="" src="svgs/Riva%20Streaming%20ASR_TTS.svg"/>
+          </p>
+          <p>
+           For running Riva benchmarks, see
+           <a href="https://docs.nvidia.com/deeplearning/riva/user-guide/docs/asr/asr-performance.html">
+            ASR Performance
+           </a>
+           and
+           <a href="https://docs.nvidia.com/deeplearning/riva/user-guide/docs/tts/tts-performance.html">
+            TTS Performance
+           </a>
+           .
+          </p>
+         </div>
+         <div class="tabbed-block">
+          <p>
+           <img alt="" src="svgs/Vector%20Database%20Retrieval.svg"/>
+          </p>
+          <p>
+           For running vector database benchmarks, see the
+           <a href="https://github.com/dusty-nv/jetson-containers/tree/master/packages/vectordb/nanodb">
+            <code>
+             NanoDB
+            </code>
+           </a>
+           container documentation.
+          </p>
+         </div>
+        </div>
+       </div>
       </article>
      </div>
      <script>
