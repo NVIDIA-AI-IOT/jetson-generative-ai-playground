@@ -5,11 +5,7 @@ hide:
 
 # Benchmarks
 
-!!! admonition "WIP - Updating Results"
-
-    Below is recent data from the Jetson Orin Nano Super benchmarks - see [here](https://developer.nvidia.com/blog/nvidia-jetson-orin-nano-developer-kit-gets-a-super-boost/?ncid=so-othe-293081-vt48) for more info.  
-
-    Currently in the process of collating these across AGX Orin and Orin NX - for now, the previous results are archived [below](#large-language-models-llm).
+Below are AI inferencing benchmarks for [Jetson Orin Nano Super](https://developer.nvidia.com/blog/nvidia-jetson-orin-nano-developer-kit-gets-a-super-boost/?ncid=so-othe-293081-vt48) and [Jetson AGX Orin](#jetson-agx-orin).
 
 #### Jetson Orin Nano Super
 
