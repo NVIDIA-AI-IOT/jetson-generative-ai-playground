@@ -1228,10 +1228,10 @@ jetson-containers<span class="w"> </span>run<span class="w"> </span><span class=
         <span class="filename">
          Custom Plugin
         </span>
-        <pre><span></span><code><span class="kn">from</span> <span class="nn">nano_llm</span> <span class="kn">import</span> <span class="n">Plugin</span>
+        <pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">nano_llm</span><span class="w"> </span><span class="kn">import</span> <span class="n">Plugin</span>
 
-<span class="k">class</span> <span class="nc">TextFilter</span><span class="p">(</span><span class="n">Plugin</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">search</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">'bad word'</span><span class="p">,</span> <span class="n">replace</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">'censored'</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TextFilter</span><span class="p">(</span><span class="n">Plugin</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">search</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">'bad word'</span><span class="p">,</span> <span class="n">replace</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">'censored'</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        A simple plugin performing text replacement.  Write docs because they're extracted for the UI,</span>
 <span class="sd">        and for the tool descriptions that go to the bot for function calling (and use the type hints)        </span>
@@ -1245,7 +1245,7 @@ jetson-containers<span class="w"> </span>run<span class="w"> </span><span class=
         <span class="c1"># set these attributes and register them as configurable</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_parameters</span><span class="p">(</span><span class="n">search</span><span class="o">=</span><span class="n">search</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="n">replace</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">""" Substitute the text, and the return value will be sent to the plugins connected to this. """</span>
         <span class="k">return</span> <span class="nb">input</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">search</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">replace</span><span class="p">)</span>
 </code></pre>

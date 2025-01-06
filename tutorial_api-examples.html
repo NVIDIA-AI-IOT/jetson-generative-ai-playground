@@ -915,8 +915,8 @@ bash<span class="w"> </span>jetson-containers/install.sh
         The HuggingFace Transformers API is the de-facto API that models are released for, often serving as the reference implementation.  It's not terribly fast, but it does have broad model support, and also supports quantization (AutoGPTQ, AWQ).  This uses streaming:
        </p>
        <div class="highlight">
-        <pre><span></span><code><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoModelForCausalLM</span><span class="p">,</span> <span class="n">AutoTokenizer</span><span class="p">,</span> <span class="n">TextIteratorStreamer</span>
-<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span>
+        <pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutoModelForCausalLM</span><span class="p">,</span> <span class="n">AutoTokenizer</span><span class="p">,</span> <span class="n">TextIteratorStreamer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">threading</span><span class="w"> </span><span class="kn">import</span> <span class="n">Thread</span>
 
 <span class="n">model_name</span><span class="o">=</span><span class="s1">'meta-llama/Llama-2-7b-chat-hf'</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForCausalLM</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">device_map</span><span class="o">=</span><span class="s1">'cuda'</span><span class="p">)</span>
@@ -1012,7 +1012,7 @@ bash<span class="w"> </span>jetson-containers/install.sh
           &gt; NanoLLM Reference Documentation
          </a>
         </span>
-        <pre><span></span><code><span class="kn">from</span> <span class="nn">nano_llm</span> <span class="kn">import</span> <span class="n">NanoLLM</span><span class="p">,</span> <span class="n">ChatHistory</span><span class="p">,</span> <span class="n">ChatTemplates</span>
+        <pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">nano_llm</span><span class="w"> </span><span class="kn">import</span> <span class="n">NanoLLM</span><span class="p">,</span> <span class="n">ChatHistory</span><span class="p">,</span> <span class="n">ChatTemplates</span>
 
 <span class="c1"># load model</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">NanoLLM</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>

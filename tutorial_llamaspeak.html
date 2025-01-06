@@ -1014,16 +1014,16 @@
         decorator and adding the API description's to the system prompt:
        </p>
        <div class="highlight">
-        <pre><span></span><code><span class="kn">from</span> <span class="nn">nano_llm</span> <span class="kn">import</span> <span class="n">NanoLLM</span><span class="p">,</span> <span class="n">ChatHistory</span><span class="p">,</span> <span class="n">BotFunctions</span><span class="p">,</span> <span class="n">bot_function</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+        <pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">nano_llm</span><span class="w"> </span><span class="kn">import</span> <span class="n">NanoLLM</span><span class="p">,</span> <span class="n">ChatHistory</span><span class="p">,</span> <span class="n">BotFunctions</span><span class="p">,</span> <span class="n">bot_function</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
 
 <span class="nd">@bot_function</span>
-<span class="k">def</span> <span class="nf">DATE</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">DATE</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">""" Returns the current date. """</span>
     <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"%A, %B %-m %Y"</span><span class="p">)</span>
 
 <span class="nd">@bot_function</span>
-<span class="k">def</span> <span class="nf">TIME</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">TIME</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">""" Returns the current time. """</span>
     <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"%-I:%M %p"</span><span class="p">)</span>
 

@@ -1132,16 +1132,16 @@ description='YOUR DESCRIPTION',
         Paste the following code into the empty file:
        </p>
        <div class="highlight">
-        <pre><span></span><code><span class="kn">import</span> <span class="nn">rclpy</span> 
-<span class="kn">from</span> <span class="nn">std_msgs.msg</span> <span class="kn">import</span> <span class="n">String</span>
-<span class="kn">from</span> <span class="nn">sensor_msgs.msg</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="kn">from</span> <span class="nn">cv_bridge</span> <span class="kn">import</span> <span class="n">CvBridge</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span> <span class="k">as</span> <span class="n">im</span>
-<span class="kn">from</span> <span class="nn">MODEL_NAME</span> <span class="kn">import</span> <span class="n">NECESSARY_MODULES</span>
+        <pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">std_msgs.msg</span><span class="w"> </span><span class="kn">import</span> <span class="n">String</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sensor_msgs.msg</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cv_bridge</span><span class="w"> </span><span class="kn">import</span> <span class="n">CvBridge</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span> <span class="k">as</span> <span class="n">im</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">MODEL_NAME</span><span class="w"> </span><span class="kn">import</span> <span class="n">NECESSARY_MODULES</span>
 
-<span class="k">class</span> <span class="nc">Your_Model_Subscriber</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Your_Model_Subscriber</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">'your_model_subscriber'</span><span class="p">)</span>
 
         <span class="c1">#EDIT PARAMETERS HERE </span>
@@ -1177,10 +1177,10 @@ description='YOUR DESCRIPTION',
         <span class="bp">self</span><span class="o">.</span><span class="n">output_publisher</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="s1">'output'</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="s2">"Describe the image."</span>
 
-    <span class="k">def</span> <span class="nf">query_listener_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">query_listener_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">query</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">data</span>
 
-    <span class="k">def</span> <span class="nf">image_listener_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span> 
+    <span class="k">def</span><span class="w"> </span><span class="nf">image_listener_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span> 
         <span class="n">input_query</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">query</span>
 
         <span class="c1"># call model with input_query and input_image </span>
@@ -1211,7 +1211,7 @@ description='YOUR DESCRIPTION',
         <span class="bp">self</span><span class="o">.</span><span class="n">output_publisher</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">output_msg</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Published output: </span><span class="si">{</span><span class="n">output</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 
     <span class="n">your_model_subscriber</span> <span class="o">=</span> <span class="n">Your_Model_Subscriber</span><span class="p">()</span>
@@ -1277,12 +1277,12 @@ touch camera_input.launch.py
         You can edit this file externally, and it will update within the container. Paste the following code into the empty file.
        </p>
        <div class="highlight">
-        <pre><span></span><code><span class="kn">from</span> <span class="nn">launch</span> <span class="kn">import</span> <span class="n">LaunchDescription</span>
-<span class="kn">from</span> <span class="nn">launch_ros.actions</span> <span class="kn">import</span> <span class="n">Node</span>
-<span class="kn">from</span> <span class="nn">launch.substitutions</span> <span class="kn">import</span> <span class="n">LaunchConfiguration</span>
-<span class="kn">from</span> <span class="nn">launch.actions</span> <span class="kn">import</span> <span class="n">DeclareLaunchArgument</span>
+        <pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">launch</span><span class="w"> </span><span class="kn">import</span> <span class="n">LaunchDescription</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">launch_ros.actions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">launch.substitutions</span><span class="w"> </span><span class="kn">import</span> <span class="n">LaunchConfiguration</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">launch.actions</span><span class="w"> </span><span class="kn">import</span> <span class="n">DeclareLaunchArgument</span>
 
-<span class="k">def</span> <span class="nf">generate_launch_description</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_launch_description</span><span class="p">():</span>
     <span class="n">launch_args</span> <span class="o">=</span> <span class="p">[</span>
         <span class="n">DeclareLaunchArgument</span><span class="p">(</span> 
             <span class="s1">'param1'</span><span class="p">,</span>
