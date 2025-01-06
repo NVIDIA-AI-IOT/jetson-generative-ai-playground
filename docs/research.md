@@ -106,11 +106,11 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 	<div><br>Due to a backlog of editing/posting the previous meetings, here is a link containing the raw footage:<br>
 
-	<ul><li><code><a href="https://drive.google.com/drive/folders/18BC7o32jorx_LzZXx5wW0Io_nf1ZwO6X?usp=sharing" target="_blank">https://drive.google.com/drive/folders/18BC7o32jorx_LzZXx5wW0Io_nf1ZwO6X?usp=sharing</a></code><br></li></ul>
+	<ul><li><code><a href="https://drive.google.com/drive/folders/18BC7o32jorx_LzZXx5wW0Io_nf1ZwO6X?usp=sharing" target="_blank">https://drive.google.com/drive/folders/18BC7o32jorx_LzZXx5wW0Io_nf1ZwO6X?usp=sharing</a></code><br></li></ul></div>
 
 </details>
 
-<details open><summary>November 12, 2024</summary>
+<!--<details open><summary>November 12, 2024</summary>
 
 <div><iframe width="850" height="476" src="https://www.youtube.com/embed/3QxRUdgnbJw" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
@@ -121,9 +121,9 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
     <li><a href="https://medium.com/@kabilankb2003" target="_blank">Kaya sim2real Agents</a> (Kabilan Kb, <a href="https://www.nvidia.com/en-us/training/instructor-directory/bio/?instructorId=0038Z00003UGyF9QAL">DLI Instructor</a>)</li>
 </ul>
 
-</details>
+</details>-->
 
-<details open><summary>October 29, 2024</summary>
+<!--<details open><summary>October 29, 2024</summary>
 
 <div><iframe width="850" height="476" src="https://www.youtube.com/embed/-C43j2HgQdY" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
@@ -134,7 +134,8 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
     <li><a href="https://oasisproject.net/" target="_blank">The OASIS Project: A Technical Brief</a> (Kris Kersey, Kersey Fabrications)</li>
 </ul>
 
-</details>
+</details>-->
+
 
 <details><summary>October 15, 2024</summary>
 
