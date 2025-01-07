@@ -34,7 +34,33 @@ If you don't have them in your inventory, you want to arrange them and return to
     - :material-checkbox-blank-outline: DisplayPort to HDMI cable and HDMI capable monitor (or TV) and a USB keyboard
     - :material-checkbox-blank-outline: [USB to TTL Serial cable :octicons-link-external-16:](https://www.adafruit.com/product/954) (Advanced)
 
-## Open the box
+!!! danger ""
+
+    ## 🛸 Alternative method : SDK Manager
+
+    In case you have an x86 PC running Ubuntu 22.04 or 20.04, then you can flash your Jetson Orin Nano Developer Kit with the latest firmware and JetPack all at once using **NVIDIA SDK Manager**.
+
+    Also, if you wish to not use a microSD card but rather use a large NVMe SSD for the OS and data, then you need to use SDK Manager to flash the latest JetPack on the NVMe SSD.
+
+    ```mermaid
+    flowchart LR
+        A(start) --> B{Want to ditch microSD<br>and only use NVMe SSD?}
+        B --[YES] --> S[🛸 SDK Manager method]
+        B --[No] --> C{Have x86 PC running<br> Ubuntu 22.04/20.04?}
+        C --[YES] --> S
+        C --[No] --> U[🚀 microSD-only method]
+
+        style S stroke-width:3px, fill:#f3e9f2,stroke:#b544c4
+        style U stroke-width:3px, fill:#d2e9e5,stroke:#0e7a71
+    ```
+
+    Click the button below to jump to a page that explains the alternative setup method using SDK Manager if you want to set your Jetson Orin Nano Developer Kit with an NVMe SSD or just want to flash all at once with your Ubuntu PC.
+    
+    [🛸 SDK Manager method](./initial_setup_jon_sdkm.md){ .md-button .md-button--darkpurple }
+
+    Otherwise, continue reading on this page for the microSD-only setup method.
+
+<!-- ## Open the box
 
 !!! info "What you find in the box"
 
@@ -46,19 +72,19 @@ If you don't have them in your inventory, you want to arrange them and return to
 
     It is designed to use a **microSD** card as the primary storage, thus the module (that has a big black heat sink with a fan) has a microSD card slot at the bottom side of the module.
 
-    ### :material-checkbox-marked-outline: 19V DC power supply
+    ### :material-checkbox-marked-outline: 19V DC power supply -->
 
-## Overall flow
+## Overall flow (microSD-only method)
 
-!!! info "Jetson Orin Nano Initial Setup Flowchart"
+!!! info "Jetson Orin Nano Initial Setup Flowchart (microSD-only method)"
 
     ```mermaid
     flowchart
         A(start) --> B{1️⃣ Check if Jetson UEFI Firmware<br>is newer than version 36.0}
         B --[YES] --> O[6️⃣ Flash JetPack 6.x image on microSD card]
-        B --[No] --> C[2️⃣ Flash JetPack 5.1.3 image on microSD card]
+        B --[No] --> C[2️⃣ Boot with JetPack 5.1.3 microSD card<br>to schedule firmware update]
         C --> D[3️⃣ Reboot] --> E{{Firmware update during reboot}}
-        E --> F[4️⃣ Run QSPI updater] --> G[5️⃣ Reboot] --> H{{Firmware update during reboot}}
+        E --> F[4️⃣ Run QSPI updater] --> G[5️⃣ Reboot] --> H{{QSPI update during reboot}}
         H --> O
         O --> Q(7️⃣ Unlock super performance) 
         Q --> P(8️⃣ Start developing on JetPack 6.x) 

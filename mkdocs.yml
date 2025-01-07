@@ -135,7 +135,8 @@ nav:
     # - Tools:
     #   - LangChain: tutorial_distillation.md
     - Jetson Orin Nano Guide:
-      - 🚀 Initial Setup Guide: initial_setup_jon.md
+      - 🚀 Initial Setup Guide - Jetson Orin Nano: initial_setup_jon.md
+      - 🛸 Initial Setup (SDK Manager method): initial_setup_jon_sdkm.md
       - 🔖 SSD + Docker: tips_ssd-docker.md
       - 🔖 Memory optimization: tips_ram-optimization.md
   - Benchmarks: benchmarks.md
