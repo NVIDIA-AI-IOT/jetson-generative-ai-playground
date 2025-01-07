@@ -6,11 +6,11 @@
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="Showcasing generative AI projects that run on Jetson" name="description"/>
   <link href="tutorial_voicecraft.html" rel="prev"/>
-  <link href="tips_ssd-docker.html" rel="next"/>
+  <link href="initial_setup_jon_sdkm.html" rel="next"/>
   <link href="images/nvidia-favicon-rgb-16x16px@2x.png" rel="icon"/>
   <meta content="mkdocs-1.6.1, mkdocs-material-9.5.49" name="generator"/>
   <title>
-   🚀 Initial Setup Guide - NVIDIA Jetson AI Lab
+   🚀 Initial Setup Guide - Jetson Orin Nano - NVIDIA Jetson AI Lab
   </title>
   <link href="assets/stylesheets/main.6f8fc17f.min.css" rel="stylesheet"/>
   <link href="assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
@@ -106,7 +106,7 @@
       </div>
       <div class="md-header__topic" data-md-component="header-topic">
        <span class="md-ellipsis">
-        🚀 Initial Setup Guide
+        🚀 Initial Setup Guide - Jetson Orin Nano
        </span>
       </div>
      </div>
@@ -683,14 +683,14 @@
                  <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
                  <label class="md-nav__link md-nav__link--active" for="__toc">
                   <span class="md-ellipsis">
-                   🚀 Initial Setup Guide
+                   🚀 Initial Setup Guide - Jetson Orin Nano
                   </span>
                   <span class="md-nav__icon md-icon">
                   </span>
                  </label>
                  <a class="md-nav__link md-nav__link--active" href="initial_setup_jon.html">
                   <span class="md-ellipsis">
-                   🚀 Initial Setup Guide
+                   🚀 Initial Setup Guide - Jetson Orin Nano
                   </span>
                  </a>
                  <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
@@ -726,34 +726,16 @@
                     </nav>
                    </li>
                    <li class="md-nav__item">
-                    <a class="md-nav__link" href="#open-the-box">
+                    <a class="md-nav__link" href="#alternative-method-sdk-manager">
                      <span class="md-ellipsis">
-                      Open the box
+                      🛸 Alternative method : SDK Manager
                      </span>
                     </a>
-                    <nav aria-label="Open the box" class="md-nav">
-                     <ul class="md-nav__list">
-                      <li class="md-nav__item">
-                       <a class="md-nav__link" href="#jetson-orin-nano-developer-kit">
-                        <span class="md-ellipsis">
-                         Jetson Orin Nano Developer Kit
-                        </span>
-                       </a>
-                      </li>
-                      <li class="md-nav__item">
-                       <a class="md-nav__link" href="#19v-dc-power-supply">
-                        <span class="md-ellipsis">
-                         19V DC power supply
-                        </span>
-                       </a>
-                      </li>
-                     </ul>
-                    </nav>
                    </li>
                    <li class="md-nav__item">
-                    <a class="md-nav__link" href="#overall-flow">
+                    <a class="md-nav__link" href="#overall-flow-microsd-only-method">
                      <span class="md-ellipsis">
-                      Overall flow
+                      Overall flow (microSD-only method)
                      </span>
                     </a>
                    </li>
@@ -853,6 +835,13 @@
                  </nav>
                 </li>
                 <li class="md-nav__item">
+                 <a class="md-nav__link" href="initial_setup_jon_sdkm.html">
+                  <span class="md-ellipsis">
+                   🛸 Initial Setup (SDK Manager method)
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
                  <a class="md-nav__link" href="tips_ssd-docker.html">
                   <span class="md-ellipsis">
                    🔖 SSD + Docker
@@ -934,34 +923,16 @@
            </nav>
           </li>
           <li class="md-nav__item">
-           <a class="md-nav__link" href="#open-the-box">
+           <a class="md-nav__link" href="#alternative-method-sdk-manager">
             <span class="md-ellipsis">
-             Open the box
+             🛸 Alternative method : SDK Manager
             </span>
            </a>
-           <nav aria-label="Open the box" class="md-nav">
-            <ul class="md-nav__list">
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#jetson-orin-nano-developer-kit">
-               <span class="md-ellipsis">
-                Jetson Orin Nano Developer Kit
-               </span>
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#19v-dc-power-supply">
-               <span class="md-ellipsis">
-                19V DC power supply
-               </span>
-              </a>
-             </li>
-            </ul>
-           </nav>
           </li>
           <li class="md-nav__item">
-           <a class="md-nav__link" href="#overall-flow">
+           <a class="md-nav__link" href="#overall-flow-microsd-only-method">
             <span class="md-ellipsis">
-             Overall flow
+             Overall flow (microSD-only method)
             </span>
            </a>
           </li>
@@ -1185,58 +1156,67 @@
          </li>
         </ul>
        </div>
-       <h2 id="open-the-box">
-        Open the box
-       </h2>
-       <div class="admonition info">
-        <p class="admonition-title">
-         What you find in the box
-        </p>
+       <div class="admonition danger">
+        <h2 id="alternative-method-sdk-manager">
+         🛸 Alternative method : SDK Manager
+        </h2>
         <p>
-         <img align="right" src="images/jetson-orin-nano-dev-kit-sd-slot.png" style="max-width:256px;"/>
-        </p>
-        <h3 id="jetson-orin-nano-developer-kit">
-         <span class="twemoji">
-          <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-           <path d="M19 19H5V5h10V3H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-8h-2m-11.09-.92L6.5 11.5 11 16 21 6l-1.41-1.42L11 13.17z">
-           </path>
-          </svg>
-         </span>
-         Jetson Orin Nano Developer Kit
-        </h3>
-        <p>
-         The Jetson Orin Nano Developer Kit consists of Jetson Orin Nano module (enlarged SO-DIMM form factor), and the reference carrier board.
-        </p>
-        <p>
-         It is designed to use a
+         In case you have an x86 PC running Ubuntu 22.04 or 20.04, then you can flash your Jetson Orin Nano Developer Kit with the latest firmware and JetPack all at once using
          <strong>
-          microSD
+          NVIDIA SDK Manager
          </strong>
-         card as the primary storage, thus the module (that has a big black heat sink with a fan) has a microSD card slot at the bottom side of the module.
+         .
         </p>
-        <h3 id="19v-dc-power-supply">
-         <span class="twemoji">
-          <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-           <path d="M19 19H5V5h10V3H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-8h-2m-11.09-.92L6.5 11.5 11 16 21 6l-1.41-1.42L11 13.17z">
-           </path>
-          </svg>
-         </span>
-         19V DC power supply
-        </h3>
+        <p>
+         Also, if you wish to not use a microSD card but rather use a large NVMe SSD for the OS and data, then you need to use SDK Manager to flash the latest JetPack on the NVMe SSD.
+        </p>
+        <pre class="mermaid"><code>flowchart LR
+    A(start) --&gt; B{Want to ditch microSD&lt;br&gt;and only use NVMe SSD?}
+    B --[YES] --&gt; S[🛸 SDK Manager method]
+    B --[No] --&gt; C{Have x86 PC running&lt;br&gt; Ubuntu 22.04/20.04?}
+    C --[YES] --&gt; S
+    C --[No] --&gt; U[🚀 microSD-only method]
+
+    style S stroke-width:3px, fill:#f3e9f2,stroke:#b544c4
+    style U stroke-width:3px, fill:#d2e9e5,stroke:#0e7a71</code></pre>
+        <p>
+         Click the button below to jump to a page that explains the alternative setup method using SDK Manager if you want to set your Jetson Orin Nano Developer Kit with an NVMe SSD or just want to flash all at once with your Ubuntu PC.
+        </p>
+        <p>
+         <a class="md-button md-button--darkpurple" href="initial_setup_jon_sdkm.html">
+          🛸 SDK Manager method
+         </a>
+        </p>
+        <p>
+         Otherwise, continue reading on this page for the microSD-only setup method.
+        </p>
        </div>
-       <h2 id="overall-flow">
-        Overall flow
+       <!-- ## Open the box
+
+!!! info "What you find in the box"
+
+    <img src="images/jetson-orin-nano-dev-kit-sd-slot.png" style="max-width:256px;" align="right">
+
+    ### :material-checkbox-marked-outline: Jetson Orin Nano Developer Kit
+
+    The Jetson Orin Nano Developer Kit consists of Jetson Orin Nano module (enlarged SO-DIMM form factor), and the reference carrier board.
+
+    It is designed to use a **microSD** card as the primary storage, thus the module (that has a big black heat sink with a fan) has a microSD card slot at the bottom side of the module.
+
+    ### :material-checkbox-marked-outline: 19V DC power supply -->
+       <h2 id="overall-flow-microsd-only-method">
+        Overall flow (microSD-only method)
        </h2>
        <div class="admonition info">
         <p class="admonition-title">
-         Jetson Orin Nano Initial Setup Flowchart
+         Jetson Orin Nano Initial Setup Flowchart (microSD-only method)
         </p>
         <pre class="mermaid"><code>flowchart
     A(start) --&gt; B{1️⃣ Check if Jetson UEFI Firmware&lt;br&gt;is newer than version 36.0}
     B --[YES] --&gt; O[6️⃣ Flash JetPack 6.x image on microSD card]
-    B --[No] --&gt; C[2️⃣ Flash JetPack 5.1.3 image on microSD card]
+    B --[No] --&gt; C[2️⃣ Boot with JetPack 5.1.3 microSD card&lt;br&gt;to schedule firmware update]
     C --&gt; D[3️⃣ Reboot] --&gt; E{{Firmware update during reboot}}
-    E --&gt; F[4️⃣ Run QSPI updater] --&gt; G[5️⃣ Reboot] --&gt; H{{Firmware update during reboot}}
+    E --&gt; F[4️⃣ Run QSPI updater] --&gt; G[5️⃣ Reboot] --&gt; H{{QSPI update during reboot}}
     H --&gt; O
     O --&gt; Q(7️⃣ Unlock super performance) 
     Q --&gt; P(8️⃣ Start developing on JetPack 6.x) 

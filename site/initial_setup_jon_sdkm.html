@@ -1,0 +1,2671 @@
+<!-- Elements added to main will be displayed on all pages -->
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Showcasing generative AI projects that run on Jetson">
+      
+      
+      
+      
+        <link rel="prev" href="initial_setup_jon.html">
+      
+      
+        <link rel="next" href="tips_ssd-docker.html">
+      
+      
+      <link rel="icon" href="images/nvidia-favicon-rgb-16x16px@2x.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>🛸 Initial Setup (SDK Manager method) - NVIDIA Jetson AI Lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=NVIDIA-NALA:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"NVIDIA-NALA";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="css/colors.css">
+    
+      <link rel="stylesheet" href="css/extra.css">
+    
+      <link rel="stylesheet" href="css/nvidia-font.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SXH8S4Y8RW"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SXH8S4Y8RW",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SXH8S4Y8RW",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="nv-black-green" data-md-color-primary="nv-black-green" data-md-color-accent="nv-black-green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#initial-setup-using-sdk-manager" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            
+            
+  <style>
+    .md-announce a { color: #76b900; text-decoration: underline;}
+    .md-announce a:focus { color: hsl(82, 100%, 72%);  text-decoration: underline; }
+    .md-announce a:hover { color: hsl(82, 100%, 72%); text-decoration: underline;}
+  </style>
+    <div class="md-announce">⛄❄️ <b>Jetson Orin Nano Super</b> now available for $249 &nbsp;<span style="opacity: 0.875">(upgrade your Orin Nano with <a href="https://developer.nvidia.com/embedded/jetpack">JetPack</a> for up to 1.7X performance - see our <a href="https://developer.nvidia.com/blog/nvidia-jetson-orin-nano-developer-kit-gets-a-super-boost/?ncid=so-othe-293081-vt48" target="_blank">blog</a> for more info)</span></div>
+    <!--<div class="md-announce">The next research group meeting is on <a href="research.html#meeting-schedule">May 15th</a> at 9am PT! Catch up on the <a href="research.html#past-meetings">recordings</a> of the recent meetings.</div>-->
+    <!--<div class="md-announce">Congratulations to all the winners and participants of the <a href="https://blogs.nvidia.com/blog/glados-robot-hackster/" target="_blank">Hackster.io AI Innovation Challenge!</a></div>-->
+    <!--<div class="md-announce">Microsoft's open <a href="https://blogs.nvidia.com/blog/microsoft-open-phi-3-mini-language-models/" target="_blank">Phi-3 Mini</a> language models are out!  Try them today on Jetson with <a href="tutorial_ollama.html">ollama</a>.</div>-->
+    
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="NVIDIA Jetson AI Lab" class="md-header__button md-logo" aria-label="NVIDIA Jetson AI Lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NVIDIA Jetson AI Lab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              🛸 Initial Setup (SDK Manager method)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="nv-black-green" data-md-color-primary="nv-black-green" data-md-color-accent="nv-black-green"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="index.html" class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="tutorial-intro.html" class="md-tabs__link">
+          
+  
+    
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="benchmarks.html" class="md-tabs__link">
+        
+  
+    
+  
+  Benchmarks
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="community_articles.html" class="md-tabs__link">
+        
+  
+    
+  
+  Projects
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="research.html" class="md-tabs__link">
+        
+  
+    
+  
+  Research Group
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="NVIDIA Jetson AI Lab" class="md-nav__button md-logo" aria-label="NVIDIA Jetson AI Lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    NVIDIA Jetson AI Lab
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial-intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="hello_ai_world.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hello AI World
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="agent_studio.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Agent Studio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Text (LLM)
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Text (LLM)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_text-generation.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    text-generation-webui
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_ollama.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ollama
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_openwebui.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Open WebUI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_llamaspeak.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    llamaspeak
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_nano-llm.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NanoLLM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tensorrt_llm.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TensorRT-LLM  🆕
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_slm.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Small LLM (SLM)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_api-examples.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Examples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Text + Vision (VLM)
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Text + Vision (VLM)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_llava.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LLaVA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_live-llava.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Live LLaVA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_nano-vlm.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NanoVLM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="llama_vlm.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Llama 3.2 Vision
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="vit/index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Vision Transformers (ViT)
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Vision Transformers (ViT)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vit/tutorial_efficientvit.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EfficientViT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vit/tutorial_nanoowl.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NanoOWL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vit/tutorial_nanosam.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NanoSAM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vit/tutorial_sam.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SAM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vit/tutorial_tam.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TAM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_distillation.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    📑 Knowledge Distillation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Robotics & Embodiment
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            Robotics & Embodiment
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="lerobot.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LeRobot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ros.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ROS2 Nodes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="openvla.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OpenVLA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Image Generation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            Image Generation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_comfyui_flux.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flux & ComfyUI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_stable-diffusion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stable Diffusion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_stable-diffusion-xl.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stable Diffusion XL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="nerf.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nerfstudio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    RAG & Vector Database
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            RAG & Vector Database
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_nanodb.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NanoDB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_llamaindex.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LlamaIndex
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_jetson-copilot.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jetson Copilot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    SDK Integrations
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            SDK Integrations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_holoscan.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Holoscan SDK
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_jps.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jetson Platform Services
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_gapi_workflows.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gapi Workflows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_gapi_microservices.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gapi Micro Services
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_ultralytics.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ultralytics YOLOv8
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Audio
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            Audio
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_whisper.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Whisper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_audiocraft.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AudioCraft
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_voicecraft.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VoiceCraft
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_12" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Jetson Orin Nano Guide
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            Jetson Orin Nano Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="initial_setup_jon.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    🚀 Initial Setup Guide - Jetson Orin Nano
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    🛸 Initial Setup (SDK Manager method)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="initial_setup_jon_sdkm.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    🛸 Initial Setup (SDK Manager method)
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#check-your-toolbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check your toolbox
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Check your toolbox">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#host-pc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Host PC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flashing-supply" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flashing supply
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mean-to-access-terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mean to access terminal
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#default-method-microsd-card-only-setup-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Default method : microSD card only setup method
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overall-flow-sdk-manager-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overall flow (SDK Manager method)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0-install-sdk-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      0️⃣ Install SDK Manager
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-connect-the-target-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      1️⃣ Connect the Target Hardware
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-select-software-components-to-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      2️⃣ Select Software Components to Install]
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-download-on-host-pc" class="md-nav__link">
+    <span class="md-ellipsis">
+      3️⃣ Download on Host PC
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-flash" class="md-nav__link">
+    <span class="md-ellipsis">
+      4️⃣ Flash
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-boot-and-initial-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      5️⃣ Boot and Initial Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5️⃣ Boot and Initial Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#switch-to-maxn-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Switch to MAXN mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next step
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tips_ssd-docker.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    🔖 SSD + Docker
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tips_ram-optimization.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    🔖 Memory optimization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="benchmarks.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Benchmarks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="community_articles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Projects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="research.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Research Group
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#check-your-toolbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check your toolbox
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Check your toolbox">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#host-pc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Host PC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flashing-supply" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flashing supply
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mean-to-access-terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mean to access terminal
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#default-method-microsd-card-only-setup-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Default method : microSD card only setup method
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overall-flow-sdk-manager-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overall flow (SDK Manager method)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0-install-sdk-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      0️⃣ Install SDK Manager
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-connect-the-target-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      1️⃣ Connect the Target Hardware
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-select-software-components-to-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      2️⃣ Select Software Components to Install]
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-download-on-host-pc" class="md-nav__link">
+    <span class="md-ellipsis">
+      3️⃣ Download on Host PC
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-flash" class="md-nav__link">
+    <span class="md-ellipsis">
+      4️⃣ Flash
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-boot-and-initial-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      5️⃣ Boot and Initial Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5️⃣ Boot and Initial Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#switch-to-maxn-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Switch to MAXN mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next step
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="initial-setup-using-sdk-manager">🛸 Initial Setup using SDK Manager</h1>
+<p><img align="right" alt="" src="images/m48-workstation-256px-blk.png" width="256" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This guide is to supplement the official <a href="https://developer.nvidia.com/embedded/learn/get-started-jetson-orin-nano-devkit"><strong>Jetson Orin Nano Developer Kit Getting Started Guide</strong></a>.</p>
+</div>
+<p>The NVIDIA® <span class="blobLightGreen4">Jetson Orin Nano™ Developer Kit</span> is a perfect kit to start your journey of local generative AI evaluation and development.</p>
+<p>This guide explains the <strong>alternative method</strong> for setting up Jetson Orin Nano Developer Kit by flashing both the latest firmware (QSPI image) and the latest JetPack all at once, using a host x86 PC.</p>
+<h2 id="check-your-toolbox">Check your toolbox</h2>
+<p>The following item is needed or highly desired for flashing your Jetson Orin Nano Developer Kit using your host PC.</p>
+<p>If you don't have them, check the <a href="initial_setup_jon.html">default microSD-only setup instruction</a> or you want to arrange them first then return to this guide once they are available. </p>
+<div class="admonition warning">
+<p class="admonition-title">What not come in the box - What you need/want to prepare</p>
+<h3 id="host-pc">Host PC</h3>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m0 16H5V5h14zm-2-2H7V7h10z"/></svg></span> x86 PC running <strong>Ubuntu 22.04</strong> or <strong>Ubuntu 20.04</strong></li>
+</ul>
+<blockquote>
+<p><img alt="alt text" src="images/sdkm_host_os_compatibility_matrix.png" />
+Source: <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2m6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.75.75 0 0 1-1.042-.018.75.75 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1"/></svg></span> <a href="https://developer.nvidia.com/sdk-manager#host_os_comp_matrix">NVIDIA SDK Manager <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.59 7.41 7 6l6 6-6 6-1.41-1.41L10.17 12zm6 0L13 6l6 6-6 6-1.41-1.41L16.17 12z"/></svg></span> Host Operating System Compatibility Matrix</a></p>
+</blockquote>
+<h3 id="storage">Storage</h3>
+<p>Either of the following.</p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m0 2v14H5V5z"/></svg></span> microSD card (64GB or bigger) </li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m0 2v14H5V5z"/></svg></span> NVMe SSD (Recommended for better performance)</li>
+</ul>
+<p><img src="images/microsd_64gb.png" style="max-width:120px;">  <img src="images/ssd_nvme_1tb.png" style="max-width:540px;"></p>
+<h3 id="flashing-supply">Flashing supply</h3>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m0 2v14H5V5z"/></svg></span> USB cable (USB-C plug for Jetson Orin Nano Developer Kit side, other end depends on your PC)</li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m0 2v14H5V5z"/></svg></span> jumper pin (or metal paper clip)</li>
+</ul>
+<h3 id="mean-to-access-terminal">Mean to access terminal</h3>
+<p>You need either of the following set:</p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m0 2v14H5V5z"/></svg></span> DisplayPort cable,  DisplayPort capable monitor and a USB keyboard</li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m0 2v14H5V5z"/></svg></span> DisplayPort to HDMI cable and HDMI capable monitor (or TV) and a USB keyboard</li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m0 2v14H5V5z"/></svg></span> <a href="https://www.adafruit.com/product/954">USB to TTL Serial cable <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2m6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.75.75 0 0 1-1.042-.018.75.75 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1"/></svg></span></a> (Advanced)</li>
+</ul>
+</div>
+<div class="admonition danger">
+<h2 id="default-method-microsd-card-only-setup-method">🚀 Default method : microSD card only setup method</h2>
+<p>In case you <strong>do NOT</strong> have an x86 PC running Ubuntu 22.04 or 20.04, you can fall back to the default "microSD card only" setup method that does not require any host PC.</p>
+<p>The decision process can look like this.</p>
+<pre class="mermaid"><code>flowchart LR
+    A(start) --&gt; B{Want to ditch microSD&lt;br&gt;and only use NVMe SSD?}
+    B --[YES] --&gt; S[🛸 SDK Manager method]
+    B --[No] --&gt; C{Have x86 PC running&lt;br&gt; Ubuntu 22.04/20.04?}
+    C --[YES] --&gt; S
+    C --[No] --&gt; U[🚀 microSD-only method]
+
+    style S stroke-width:3px, fill:#f3e9f2,stroke:#b544c4
+    style U stroke-width:3px, fill:#d2e9e5,stroke:#0e7a71</code></pre>
+<p>Click the button below to jump to the default setup page.</p>
+<p><a class="md-button md-button--darkgreen" href="initial_setup_jon.html">🚀 microSD-only method</a></p>
+<p>Otherwise, continue reading on this page for the SDK Manager method.</p>
+</div>
+<h2 id="overall-flow-sdk-manager-method">Overall flow (SDK Manager method)</h2>
+<div class="admonition info">
+<p class="admonition-title">Jetson Orin Nano Initial Setup Flowchart (microSD-only method)</p>
+<pre class="mermaid"><code>flowchart
+    A(start) --&gt; B[0️⃣ Install SDK Manager]
+    B --&gt; C[1️⃣ Connect Target Hardware] 
+    C --&gt; D[2️⃣ Select Software Components to Install]
+    D --&gt; E[3️⃣ Download on Host PC]
+    E --&gt; F[4️⃣ Flash]
+    F --&gt; G[5️⃣ Boot and initial setup]
+    G --&gt; P(👍 Start developing on JetPack 6.x) </code></pre>
+</div>
+<h2 id="0-install-sdk-manager">0️⃣ Install SDK Manager</h2>
+<div class="admonition info">
+<p class="admonition-title">Reference</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2m6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.75.75 0 0 1-1.042-.018.75.75 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1"/></svg></span> <a href="https://docs.nvidia.com/sdk-manager/" target="_blank">NVIDIA SDK Manager Documentation</a> : <br> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.59 7.41 7 6l6 6-6 6-1.41-1.41L10.17 12zm6 0L13 6l6 6-6 6-1.41-1.41L16.17 12z"/></svg></span> <strong>Download and Install</strong> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.59 7.41 7 6l6 6-6 6-1.41-1.41L10.17 12zm6 0L13 6l6 6-6 6-1.41-1.41L16.17 12z"/></svg></span> <a href="https://docs.nvidia.com/sdk-manager/download-run-sdkm/index.html" target="_blank">Download and Run SDK Manager</a></p>
+</div>
+<p>On your Ubuntu 22.04 / 20.04 PC, open a terminal and execute the following command.</p>
+<p>Select the tab that matches your Ubuntu version.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.61.455a3.41 3.41 0 0 0-3.41 3.41 3.41 3.41 0 0 0 3.41 3.41 3.41 3.41 0 0 0 3.41-3.41 3.41 3.41 0 0 0-3.41-3.41M12.92.8C8.923.777 5.137 2.941 3.148 6.451a5 5 0 0 1 .26-.007 4.9 4.9 0 0 1 2.585.737A8.32 8.32 0 0 1 12.688 3.6 4.94 4.94 0 0 1 13.723.834 11 11 0 0 0 12.92.8m9.226 4.994a4.9 4.9 0 0 1-1.918 2.246 8.36 8.36 0 0 1-.273 8.303 4.9 4.9 0 0 1 1.632 2.54 11.16 11.16 0 0 0 .559-13.089M3.41 7.932A3.41 3.41 0 0 0 0 11.342a3.41 3.41 0 0 0 3.41 3.409 3.41 3.41 0 0 0 3.41-3.41 3.41 3.41 0 0 0-3.41-3.41zm2.027 7.866a4.9 4.9 0 0 1-2.915.358 11.1 11.1 0 0 0 7.991 6.698 11.2 11.2 0 0 0 2.422.249 4.88 4.88 0 0 1-.999-2.85 9 9 0 0 1-.836-.136 8.3 8.3 0 0 1-5.663-4.32zm11.405.928a3.41 3.41 0 0 0-3.41 3.41 3.41 3.41 0 0 0 3.41 3.41 3.41 3.41 0 0 0 3.41-3.41 3.41 3.41 0 0 0-3.41-3.41"/></svg></span> Ubuntu 22.04</label><label for="__tabbed_1_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.61.455a3.41 3.41 0 0 0-3.41 3.41 3.41 3.41 0 0 0 3.41 3.41 3.41 3.41 0 0 0 3.41-3.41 3.41 3.41 0 0 0-3.41-3.41M12.92.8C8.923.777 5.137 2.941 3.148 6.451a5 5 0 0 1 .26-.007 4.9 4.9 0 0 1 2.585.737A8.32 8.32 0 0 1 12.688 3.6 4.94 4.94 0 0 1 13.723.834 11 11 0 0 0 12.92.8m9.226 4.994a4.9 4.9 0 0 1-1.918 2.246 8.36 8.36 0 0 1-.273 8.303 4.9 4.9 0 0 1 1.632 2.54 11.16 11.16 0 0 0 .559-13.089M3.41 7.932A3.41 3.41 0 0 0 0 11.342a3.41 3.41 0 0 0 3.41 3.409 3.41 3.41 0 0 0 3.41-3.41 3.41 3.41 0 0 0-3.41-3.41zm2.027 7.866a4.9 4.9 0 0 1-2.915.358 11.1 11.1 0 0 0 7.991 6.698 11.2 11.2 0 0 0 2.422.249 4.88 4.88 0 0 1-.999-2.85 9 9 0 0 1-.836-.136 8.3 8.3 0 0 1-5.663-4.32zm11.405.928a3.41 3.41 0 0 0-3.41 3.41 3.41 3.41 0 0 0 3.41 3.41 3.41 3.41 0 0 0 3.41-3.41 3.41 3.41 0 0 0-3.41-3.41"/></svg></span> Ubuntu 20.04</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
+sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>cuda-keyring_1.1-1_all.deb
+sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+sudo<span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>sdkmanager
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-keyring_1.1-1_all.deb
+sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>cuda-keyring_1.1-1_all.deb
+sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+sudo<span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>sdkmanager
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Then launch SDK Manager with the following command.</p>
+<div class="highlight"><pre><span></span><code>sdkmanager
+</code></pre></div>
+<details class="note">
+<summary>First time using SDK Manager</summary>
+<p>When using SDK Manager for the first time, log in with your NVIDIA Developer credentials.</p>
+<p>Remember to tick the checkbox for "<strong>Stay logged in</strong>" and click "<strong>LOGIN</strong>" button.</p>
+<p><img alt="login" src="images/Screenshot%20from%202025-01-06%2021-47-12.png" width="480" /></p>
+<p>A browser window opens. Input your email address that is registered as NVIDIA Developer.</p>
+<p><img alt="browser window" src="images/Screenshot%20from%202025-01-06%2021-47-49.png" width="480" /></p>
+<p>Two factor authentication prompt may pop up.</p>
+<p><img alt="Security Challenge" src="images/Screenshot%20from%202025-01-06%2021-49-53.png" width="480" /></p>
+<p>Once authenticated, the browser windows opens back the SDK Manager app window.</p>
+<p><img alt="browser window redirecting to sdk manager" src="images/Screenshot%20from%202025-01-06%2021-50-00.png" width="480" /></p>
+<p>SDK Manager continues to log you in.</p>
+<p><img alt="SDK Manager logging you in..." src="images/Screenshot%20from%202025-01-06%2021-50-07.png" width="480" /></p>
+</details>
+<p>SDK Manager launched and the login completed.</p>
+<p><img alt="SDK Manager after logging in" src="images/Screenshot%20from%202025-01-06%2021-50-11.png" /></p>
+<h2 id="1-connect-the-target-hardware">1️⃣ Connect the Target Hardware</h2>
+<p>Once SDK Manager is launched, connect your Jetson developer kit to your Ubuntu PC and power it on in Forced Recovery mode.</p>
+<ol>
+<li>
+<p>Connect your Jetson Orin Nano Developer Kit to your PC with a USB cable.<br>Note that the USB cable goes into the USB-C port of the carrier board of the developer kit.</p>
+</li>
+<li>
+<p>While shorting <code>pin 9</code> and <code>pin 10</code> of <code>J14</code> header located below the Jetson module using a jumper pin, insert the DC power supply plug into the DC jack of the carrier board to power it on.</p>
+<p><img alt="alt text" src="images/jon_carrier_board_topview.png" width="640" /></p>
+<p>You can use a paper clip like a photo below as well. </p>
+<p><img alt="Jumpering pins" src="images/jon_jumper.png" width="640" /></p>
+</li>
+<li>
+<p>Select "<strong>Jetson Orin Nano [8GB developer kit version]</strong>" and hit "<strong>OK</strong>"</p>
+<p><img alt="alt text" src="images/Screenshot%20from%202025-01-06%2021-50-49.png" width="480" /></p>
+</li>
+<li>
+<p>Uncheck "<strong>Host Machine</strong>" and it should now look like this</p>
+<p><img alt="alt text" src="images/Screenshot%20from%202025-01-06%2021-54-47.png" /></p>
+</li>
+<li>
+<p>Click "<strong>Continue</strong>" button to proceed to the next step.</p>
+</li>
+</ol>
+<h2 id="2-select-software-components-to-install">2️⃣ Select Software Components to Install]</h2>
+<ol>
+<li>
+<p>Leave the only "<strong>Jetson Linux</strong>" component checked, and uncheck everything.</p>
+<p><img alt="alt text" src="images/Screenshot%20from%202025-01-06%2021-58-45.png" /></p>
+</li>
+<li>
+<p>Remember to also check "<strong>I accept the terms and conditions of the license agreements</strong>".</p>
+</li>
+<li>
+<p>Click "<strong>Continue</strong>" button to proceed to the next step.</p>
+</li>
+<li>
+<p>It will prompt for the <code>sudo</code> command password.</p>
+<p><img alt="alt text" src="images/Screenshot%20from%202025-01-06%2021-58-52.png" width="480" /></p>
+</li>
+</ol>
+<h2 id="3-download-on-host-pc">3️⃣ Download on Host PC</h2>
+<ol>
+<li>
+<p>It will start downloading the "BSP" package and "RootFS" package.</p>
+<p><img alt="alt text" src="images/Screenshot%20from%202025-01-06%2021-59-14.png" /></p>
+</li>
+<li>
+<p>Once downloads are complete, it will untar the package and start generating the images to flash in the background.</p>
+<p><img alt="alt text" src="images/Screenshot%20from%202025-01-06%2022-03-29.png" /></p>
+</li>
+<li>
+<p>Once images are ready, SDK it will open the prompt for flashing.</p>
+<p><img alt="alt text" src="images/Screenshot%20from%202025-01-06%2022-05-36.png" /></p>
+</li>
+</ol>
+<h2 id="4-flash">4️⃣ Flash</h2>
+<ol>
+<li>
+<p>On the flashing prompt, select "<strong>Runtime</strong>" for "OEM Configuration".</p>
+<p><img alt="alt text" src="images/sdkm_flash_runtime_sdcard.png" width="480" /></p>
+</li>
+<li>
+<p>On the flashing prompt, select "<strong>NVMe</strong>" if you want to flash Jetson Linux (BSP) to NVMe SSD. </p>
+<p><img alt="alt text" src="images/Screenshot%20from%202025-01-06%2022-05-42.png" width="480" /></p>
+</li>
+<li>
+<p>Click "Flash" and the prompt popup will change like this.</p>
+<p><img alt="alt text" src="images/Screenshot%20from%202025-01-06%2022-05-52.png" width="480" /></p>
+</li>
+<li>
+<p>Flash progress.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Details</label><label for="__tabbed_2_2">Terminals</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="alt text" src="images/Screenshot%20from%202025-01-06%2022-06-24.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="alt text" src="images/Screenshot%20from%202025-01-06%2022-06-29.png" /></p>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Flash successfully completes.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Details</label><label for="__tabbed_3_2">Terminals</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="alt text" src="images/Screenshot%20from%202025-01-06%2022-21-30.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="alt text" src="images/Screenshot%20from%202025-01-06%2022-21-36.png" /></p>
+</div>
+</div>
+</div>
+</li>
+</ol>
+<h2 id="5-boot-and-initial-setup">5️⃣ Boot and Initial Setup</h2>
+<ol>
+<li>
+<p>If still plugged, remove the jumper from header (that was used to put it in Forced Recovery mode)</p>
+</li>
+<li>
+<p>Connect the DisplayPort cable or adapter and USB keyboard and mouse to Jetson Orin Nano Developer Kit, or hook up the USB to TTL Serial cable.</p>
+</li>
+<li>
+<p>Unplug the power supply and put back in to power cycle.</p>
+</li>
+<li>
+<p>Jetson should now boot into the Jetson Linux (BSP) of your selected JetPack version from the storage of your choice.</p>
+</li>
+<li>
+<p>Complete the initial software setup (<code>oem-config</code>)</p>
+</li>
+</ol>
+<h3 id="switch-to-maxn-mode">Switch to MAXN mode</h3>
+<p>Note that the default power mode is <strong>15W</strong>. <br>
+To switch to the new power mode and unlock the increased performance, follow below steps:</p>
+<ol>
+<li>Click on the current power mode (<strong>15W</strong>) by clicking the NVIDIA icon on the right side of the Ubuntu desktop’s top bar.</li>
+<li>Select <strong>Power mode</strong> from the menu.</li>
+<li>Choose <strong>MAXN</strong> to enable maximum performance.</li>
+</ol>
+<p><img alt="alt text" src="images/jons_power-mode-to-maxn.png" /></p>
+<p>🎊 <strong>Congratulations!</strong> <br>
+Your Jetson Orin Nano Developer Kit is set up with JetPack 6.x image and you are ready to develop on JetPack 6.x.</p>
+<h2 id="next-step">Next step</h2>
+<p>Check <a href="tips_ssd-docker.html">this page</a> for "SSD" and/or "Docker" set up.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <ul class="global-footer__links"><li><a href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/" target="_blank">Privacy Policy</a></li><li> <a href="https://www.nvidia.com/en-us/privacy-center/" target="_blank">Manage My Privacy</a> </li> <li> <a href="https://www.nvidia.com/en-us/preferences/email-preferences/" target="_blank">Do Not Sell or Share My Data</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/legal-info/" target="_blank">Legal</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/accessibility/" target="_blank">Accessibility</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/company-policies/" target="_self">Corporate Policies</a> </li> <li> <a href="https://www.nvidia.com/en-us/product-security/" target="_blank">Product Security</a> </li> <li> <a href="https://www.nvidia.com/en-us/contact/" target="_blank">Contact</a> </li> </ul><div class="global-footer__copyright">Copyright &copy; 2024 NVIDIA Corporation</div>
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.indexes", "navigation.expand", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.tabs.link", "content.code.copy", "announce.dismiss"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+<!-- OneTrust Cookies Consent Notice start for www.jetson-ai-lab.com -->
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"  type="text/javascript" charset="UTF-8" data-domain-script="018e2d65-efdf-7071-b793-f15ccf25c234" ></script>
+<script type="text/javascript">
+function OptanonWrapper() {        
+        var event = new Event('bannerLoaded');
+        window.dispatchEvent(event);
+    }
+</script>
+<!-- OneTrust Cookies Consent Notice end for www.jetson-ai-lab.com -->
+
+ <script type="text/javascript" src="https://images.nvidia.com/aem-dam/Solutions/ot-js/ot-custom.js"></script>
+<script src="//assets.adobedtm.com/5d4962a43b79/814eb6e9b4e1/launch-4bc07f1e0b0b.min.js"></script>
+
+      <script src="assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+    
+<script>
+  window._6si = window._6si || [];
+  window._6si.push(['enableEventTracking', true]);
+  window._6si.push(['setToken', 'eb417ec30d332e34d732e2916f185311']);
+  window._6si.push(['setEndpoint', 'b.6sc.co']);
+  window._6si.push(['enableRetargeting', false]); 
+
+  window._6si.push(['enableCompanyDetails', true]);
+  window._6si.push(['setEpsilonKey', '6f578ba72568231347d1bddb7102e53695302c28']);
+
+  (function() {
+    var gd = document.createElement('script');
+    gd.type = 'text/javascript';
+    gd.async = true;
+    gd.src = '//j.6sc.co/6si.min.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gd, s);
+  })();
+</script>
+<script type="text/javascript">_satellite.pageBottom();</script>
+
+  </body>
+</html>
