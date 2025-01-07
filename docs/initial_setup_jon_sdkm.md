@@ -1,30 +1,38 @@
-# Initial Setup Guide for Jetson Orin Nano Developer Kit
+# 🛸 Initial Setup using SDK Manager 
 
-![](./images/NVIDIA-JetsonOrin-3QTR-Front-Left_800px.png){ width="300"  align=right}
+![](./images/m48-workstation-256px-blk.png){ width="256"  align=right}
 
 !!! note
     This guide is to supplement the official [**Jetson Orin Nano Developer Kit Getting Started Guide**](https://developer.nvidia.com/embedded/learn/get-started-jetson-orin-nano-devkit).
 
 The NVIDIA® <span class="blobLightGreen4">Jetson Orin Nano™ Developer Kit</span> is a perfect kit to start your journey of local generative AI evaluation and development.
 
-With the December 2024 software update (**JetPack 6.1 (rev.1)**), this advanced edge computer delivers up to 70% more performance, making it an even more powerful platform for the era of generative AI.
+This guide explains the alternative setup method of flashing Jetson Orin Nano Developer Kit with both the latest firmware (QSPI image) and the latest JetPack all at once using a host x86 PC.
 
-This guide explains the complete flow from opening the box, updating the firmware if needed, flashing the latest JetPack 6.1 (rev. 1) image on SD card, and the initial software setup, so that you will be ready for tutorials listed on this site and other AI projects.
+## Check your toolbox
 
-
-## Check your inventory
-
-The following item is needed or highly desired to set up your Jetson Orin Nano Developer Kit.<br>
-If you don't have them in your inventory, you want to arrange them and return to this guide once they are available.
+The following item is needed or highly desired flash your Jetson Orin Nano Developer Kit using your host PC.<br>
+If you don't have them, check the [default microSD-only setup instruction](./initial_setup_jon.md) or you want to arrange them first then return to this guide once they are available. 
 
 !!! warning "What not come in the box - What you need/want to prepare"   
 
+    ### Host PC
+
+    - :material-checkbox-intermediate: x86 PC running **Ubuntu 22.04** or **Ubuntu 20.04**
+
     ### Storage
     
+    Either of the following.
+
     - :material-checkbox-blank-outline: microSD card (64GB or bigger) 
-    - :material-checkbox-blank-outline: NVMe SSD (Optional, but highly recommended for following tutorials on this site)
+    - :material-checkbox-blank-outline: NVMe SSD (Recommended for better performance)
 
     <img src="images/microsd_64gb.png" style="max-width:120px;">  <img src="images/ssd_nvme_1tb.png" style="max-width:540px;">
+
+    ### Flashing supply
+
+    - :material-checkbox-blank-outline: USB cable (USB-C plug for Jetson Orin Nano Developer Kit side, other end depends on your PC)
+    - :material-checkbox-blank-outline: jumper pin (or metal paper clip)
 
     ### Mean to access terminal
 
@@ -36,45 +44,33 @@ If you don't have them in your inventory, you want to arrange them and return to
 
 !!! danger ""
 
-    ## 🛸 Alternative method : SDK Manager
+    ## 🚀 Default method : microSD card only setup method
 
-    In case you have an x86 PC running Ubuntu 22.04 or 20.04, then you can flash your Jetson Orin Nano Developer Kit with the latest firmware and JetPack all at once using **NVIDIA SDK Manager**.
+    In case you **do NOT** have an x86 PC running Ubuntu 22.04 or 20.04, you can fall back to the default "microSD card only" setup method that does not require any host PC.
 
-    Also, if you wish to not use a microSD card but rather use a large NVMe SSD for the OS and data, then you need to use SDK Manager to flash the latest JetPack on the NVMe SSD.
+    The decision process can look like this.
 
     ```mermaid
-    flowchart LR
-        A(start) --> B{Want to ditch microSD<br>and only use NVMe SSD?}
-        B --[YES] --> S[🛸 SDK Manager method]
-        B --[No] --> C{Have x86 PC running<br> Ubuntu 22.04/20.04?}
-        C --[YES] --> S
-        C --[No] --> U[🚀 microSD-only method]
+    flowchart
+        A(start) --> B[0️⃣ Install SDK Manager]
+        B --> C[1️⃣ Select Target Hardware] 
+        C --> D[2️⃣ Select Software Component(s) to Install]
+        D --> E[3️⃣ Download on Host PC]
+        E --> F[4️⃣ Flash]
+
 
         style S stroke-width:3px, fill:#f3e9f2,stroke:#b544c4
         style U stroke-width:3px, fill:#d2e9e5,stroke:#0e7a71
     ```
 
-    Click the button below to jump to a page that explains the alternative setup method using SDK Manager if you want to set your Jetson Orin Nano Developer Kit with an NVMe SSD or just want to flash all at once with your Ubuntu PC.
-    
-    [🛸 SDK Manager method](./initial_setup_jon_sdkm.md){ .md-button .md-button--darkpurple }
+    Click the button below to jump to the default setup page.
 
-    Otherwise, continue reading on this page for the microSD-only setup method.
+    [🚀 microSD-only method](./initial_setup_jon.md){ .md-button .md-button--darkgreen }
 
-<!-- ## Open the box
+    Otherwise, continue reading on this page for the SDK Manager method.
 
-!!! info "What you find in the box"
 
-    <img src="images/jetson-orin-nano-dev-kit-sd-slot.png" style="max-width:256px;" align="right">
-
-    ### :material-checkbox-marked-outline: Jetson Orin Nano Developer Kit
-
-    The Jetson Orin Nano Developer Kit consists of Jetson Orin Nano module (enlarged SO-DIMM form factor), and the reference carrier board.
-
-    It is designed to use a **microSD** card as the primary storage, thus the module (that has a big black heat sink with a fan) has a microSD card slot at the bottom side of the module.
-
-    ### :material-checkbox-marked-outline: 19V DC power supply -->
-
-## Overall flow (microSD-only method)
+## Overall flow (SDK Manager method)
 
 !!! info "Jetson Orin Nano Initial Setup Flowchart (microSD-only method)"
 
@@ -86,8 +82,7 @@ If you don't have them in your inventory, you want to arrange them and return to
         C --> D[3️⃣ Reboot] --> E{{Firmware update during reboot}}
         E --> F[4️⃣ Run QSPI updater] --> G[5️⃣ Reboot] --> H{{QSPI update during reboot}}
         H --> O
-        O --> Q(7️⃣ Unlock super performance) 
-        Q --> P(8️⃣ Start developing on JetPack 6.x) 
+        O --> P(7️⃣ Start developing on JetPack 6.x) 
 
         style C fill:#fee
         style D fill:#DEE,stroke:#333
@@ -96,7 +91,6 @@ If you don't have them in your inventory, you want to arrange them and return to
         style E stroke-width:2px,stroke-dasharray: 5 5
         style H stroke-width:2px,stroke-dasharray: 5 5
         style O fill:#fee
-        style Q stroke-width:4px
     ```
 
 <!-- ??? example "Even more detailed flowchart (for all firmware versions)"
@@ -311,7 +305,7 @@ Once we know the onboard firmware is up-to-date and ready for JetPack 6.x, we ca
 
     On your PC, download the latest JetPack 6.x image for Jetson Orin Nano Developer Kit from the official [JetPack page](https://developer.nvidia.com/embedded/jetpack) or from the below direct link button.
 
-    [Jetson Orin Nano Developer Kit<br>JetPack 6.1 (rev. 1) image](https://developer.nvidia.com/downloads/embedded/L4T/r36_Release_v4.0/jp61-rev1-orin-nano-sd-card-image.zip){ .md-button .md-button--primary }
+    [Jetson Orin Nano Developer Kit<br>JetPack 6.1 image](https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v4.0/jp61-orin-nano-sd-card-image.zip){ .md-button .md-button--primary }
 
 2. Use Balena Etcher to flash image to SD card
 
@@ -329,28 +323,7 @@ Once we know the onboard firmware is up-to-date and ready for JetPack 6.x, we ca
 
 5. Complete the initial software setup (`oem-config`)
 
-## 7️⃣ Unlock Super Performance
-
-!!! warning "Attention"
-
-    If your Jetson Orin Developer Kit was previously running **JetPack 6.0** or **JetPack 6.1**, execute the following command after the final login and reboot your device. This ensures that the **MAXN** performance mode becomes available on your system.
-
-    ```bash
-    sudo rm -rf /etc/nvpmodel.conf
-    ```
-
-### Switch to MAXN mode
-
-Note that the default power mode is **15W**. <br>
-To switch to the new power mode and unlock the increased performance, follow below steps:
-
-1. Click on the current power mode (**15W**) by clicking the NVIDIA icon on the right side of the Ubuntu desktop’s top bar.
-2. Select **Power mode** from the menu.
-3. Choose **MAXN** to enable maximum performance.
-
-![alt text](images/jons_power-mode-to-maxn.png)
-
-## 8️⃣ Start developing on JetPack 6.x
+## 7️⃣ Start developing on JetPack 6.x
 
 🎊 **Congratulations!** <br>
 Your Jetson Orin Nano Developer Kit is set up with JetPack 6.x SD card and you are ready to develop on JetPack 6.x.

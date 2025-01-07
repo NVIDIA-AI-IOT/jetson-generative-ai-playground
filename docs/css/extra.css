@@ -118,6 +118,39 @@
     background-color: var(--md-accent-fg-color--light)!important;
 }
 
+.md-button--darkblue {
+    border-color: #01587d!important;
+    background-color: #c1dfe6!important;
+    border-width: 3px!important;
+    line-height: 2!important;
+}
+
+.md-button--darkpurple {
+    border-color: #b544c4!important;
+    background-color: #f3e9f2!important;
+    border-width: 3px!important;
+    line-height: 2!important;
+    font-size: 1.2em!important;
+}
+
+.md-button--darkpurple:focus,
+.md-button--darkpurple:hover {
+    background-color: #ffcafa!important;
+}
+
+.md-button--darkgreen {
+    border-color: #0e7a71!important;
+    background-color: #d2e9e5!important;
+    border-width: 3px!important;
+    line-height: 2!important;
+    font-size: 1.2em!important;
+}
+
+.md-button--darkgreen:focus,
+.md-button--darkgreen:hover {
+    background-color: #82dbcc!important;
+}
+
 .md-typeset .tabbed-set {
   border: 0.5px solid lightgray;
 }
