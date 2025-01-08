@@ -10,11 +10,11 @@ The Jetson AI Lab Research Group is a global collective for advancing open-sourc
 
 There are virtual [meetings](#meeting-schedule) that anyone is welcome to join, offline discussion on the [Jetson Projects](https://forums.developer.nvidia.com/c/agx-autonomous-machines/jetson-embedded-systems/jetson-projects/78){:target="_blank"} forum, and guidelines for upstreaming open-source [contributions](#contribution-guidelines). 
 
-!!! abstract "Next Meeting - 1/7"
+!!! abstract "Next Meeting - 1/21"
     <!--The next team meeting is on Tuesday, June 11<sup>th</sup> at 9am PST.  View the [recording](#past-meetings) from the last meeting below.-->
-    With holiday schedules soon taking effect, we will reconvene in 2025 - thank you everyone for an amazing year!<br/><br/>
-	In the meantime, enjoy the time with your families, and feel welcome to keep in touch through the forums, Discord, or LinkedIn.</br><br/>
-	The next team meeting is on Tuesday, January 7<sup>th</sup> at 9am PST - see the [invite](#meeting-schedule) below or click [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_NTA4ZmE4MDAtYWUwMS00ZTczLWE0YWEtNTE5Y2JkNTFmOWM1%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} to join the meeting in progress.
+    <!--With holiday schedules soon taking effect, we will reconvene in 2025 - thank you everyone for an amazing year!<br/><br/>
+	In the meantime, enjoy the time with your families, and feel welcome to keep in touch through the forums, Discord, or LinkedIn.</br><br/>-->
+	The next team meeting is on Tuesday, January 21<sup>st</sup> at 9am PST - see the [invite](#meeting-schedule) below or click [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_NTA4ZmE4MDAtYWUwMS00ZTczLWE0YWEtNTE5Y2JkNTFmOWM1%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} to join the meeting in progress.
 
 ## Topics of Interest
 
@@ -77,7 +77,7 @@ Ongoing technical discussions are encouraged to occur on the forums or GitHub Is
 
 We'll aim to meet monthly or bi-weekly as a team in virtual meetings that anyone is welcome to join and speak during.  We'll discuss the latest updates and experiments that we want to explore.  Please remain courteous to others during the calls.  We'll stick around after for anyone who has questions or didn't get the chance to be heard.
 
-!!! abstract "Tuesday January 7<sup>th</sup> at 9am PST (1/7/24)"
+!!! abstract "Tuesday January 21<sup>st</sup> at 9am PST (1/21/24)"
 
 	- Microsoft Teams - [Meeting Link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_NTA4ZmE4MDAtYWUwMS00ZTczLWE0YWEtNTE5Y2JkNTFmOWM1%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} 
 	- Meeting ID: `264 770 145 196`
@@ -104,7 +104,7 @@ The agenda will be listed here beforehand - post to the forum to add agenda item
 
 <details open><summary>Recordings Archive</summary>
 
-	<div><br>Due to a backlog of editing/posting the previous meetings, here is a link containing the raw footage:<br>
+	<div><br>The meeting recordings are stored on Google Drive here:<br>
 
 	<ul><li><code><a href="https://drive.google.com/drive/folders/18BC7o32jorx_LzZXx5wW0Io_nf1ZwO6X?usp=sharing" target="_blank">https://drive.google.com/drive/folders/18BC7o32jorx_LzZXx5wW0Io_nf1ZwO6X?usp=sharing</a></code><br></li></ul></div>
 
