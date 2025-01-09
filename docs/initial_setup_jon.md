@@ -104,7 +104,7 @@ If you don't have them in your inventory, you want to arrange them and return to
     Another image. -->
 
 
-## 1️⃣ Check if Jetson UEFI Firmware version > `36.3`
+## 1️⃣ Check if Jetson UEFI Firmware version > `36.0`
 
 Your Jetson Orin Nano Developer Kit may have the latest firmware ("Jetson UEFI firmware" on QSPI-NOR flash memory) flashed at the factory.
 
@@ -120,6 +120,9 @@ You can take one of the following methods.
     3. Repeatedly press ++esc++ key on the keyboard, especially after NVIDIA logo boot splash screen first appears on the monitor
     4. You should see UEFI setup menu screen
     5. Check the third line from the top (below "Not specified"), which should be the version number of Jetson UEFI firmware
+
+    > Below image shows that this Jetson Orin Nano Developer Kit unit has the old UEFI firmware, indicating that the unit first needs its firmware/QSPI updated in order to run JetPack 6.x. 
+    ![computer screen showing UEFI menu](images/vlcsnap-2025-01-09-15h00m32s319.png){ width="960" }
 
 === ":material-monitor-off: Headless"
 
