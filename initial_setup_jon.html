@@ -724,7 +724,7 @@
                    <li class="md-nav__item">
                     <a class="md-nav__link" href="#3-reboot-and-observe-firmware-update-to-50">
                      <span class="md-ellipsis">
-                      3️⃣ Reboot and observe firmware update (to 5.0)
+                      3️⃣ Reboot and observe firmware update to 5.0
                      </span>
                     </a>
                    </li>
@@ -750,12 +750,19 @@
                     </a>
                    </li>
                    <li class="md-nav__item">
-                    <a class="md-nav__link" href="#7-unlock-super-performance">
+                    <a class="md-nav__link" href="#7-reboot-and-observe-firmware-update-to-3642">
                      <span class="md-ellipsis">
-                      7️⃣ Unlock Super Performance
+                      7️⃣ Reboot and observe firmware update to 36.4.2
                      </span>
                     </a>
-                    <nav aria-label="7️⃣ Unlock Super Performance" class="md-nav">
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#8-unlock-super-performance">
+                     <span class="md-ellipsis">
+                      8️⃣ Unlock Super Performance
+                     </span>
+                    </a>
+                    <nav aria-label="8️⃣ Unlock Super Performance" class="md-nav">
                      <ul class="md-nav__list">
                       <li class="md-nav__item">
                        <a class="md-nav__link" href="#switch-to-maxn-mode">
@@ -921,7 +928,7 @@
           <li class="md-nav__item">
            <a class="md-nav__link" href="#3-reboot-and-observe-firmware-update-to-50">
             <span class="md-ellipsis">
-             3️⃣ Reboot and observe firmware update (to 5.0)
+             3️⃣ Reboot and observe firmware update to 5.0
             </span>
            </a>
           </li>
@@ -947,12 +954,19 @@
            </a>
           </li>
           <li class="md-nav__item">
-           <a class="md-nav__link" href="#7-unlock-super-performance">
+           <a class="md-nav__link" href="#7-reboot-and-observe-firmware-update-to-3642">
             <span class="md-ellipsis">
-             7️⃣ Unlock Super Performance
+             7️⃣ Reboot and observe firmware update to 36.4.2
             </span>
            </a>
-           <nav aria-label="7️⃣ Unlock Super Performance" class="md-nav">
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#8-unlock-super-performance">
+            <span class="md-ellipsis">
+             8️⃣ Unlock Super Performance
+            </span>
+           </a>
+           <nav aria-label="8️⃣ Unlock Super Performance" class="md-nav">
             <ul class="md-nav__list">
              <li class="md-nav__item">
               <a class="md-nav__link" href="#switch-to-maxn-mode">
@@ -1174,22 +1188,27 @@
         </p>
         <pre class="mermaid"><code>flowchart
     A(start) --&gt; B{1️⃣ Check if Jetson UEFI Firmware&lt;br&gt;is newer than version 36.0}
-    B --[YES] --&gt; O[6️⃣ Flash JetPack 6.x image on microSD card]
+    B --[YES] --&gt; O[6️⃣ Boot with JetPack 6.1 rev.1 microSD card&lt;br&gt; to schedule firmware update]
     B --[No] --&gt; C[2️⃣ Boot with JetPack 5.1.3 microSD card&lt;br&gt;to schedule firmware update]
-    C --&gt; D[3️⃣ Reboot] --&gt; E{{Firmware update during reboot}}
-    E --&gt; F[4️⃣ Run QSPI updater] --&gt; G[5️⃣ Reboot] --&gt; H{{QSPI update during reboot}}
+    C --&gt; D[3️⃣ Reboot] --&gt; E{{Firmware update to 5.0 during reboot}}
+    E --&gt; F[4️⃣ Run QSPI updater] --&gt; G[5️⃣ Reboot] --&gt; H{{QSPI update during reboot - Firmware 36.4.0}}
     H --&gt; O
-    O --&gt; Q(7️⃣ Unlock super performance) 
-    Q --&gt; P(8️⃣ Start developing on JetPack 6.x) 
+    O --&gt; P[7️⃣ Reboot]
+    P --&gt; Q{{Firmware update to 36.4.2 during reboot}}
+    Q --&gt; R[8️⃣ Unlock super performance] 
+    R --&gt; S(👍 Start developing on JetPack 6.x) 
+
 
     style C fill:#fee
     style D fill:#DEE,stroke:#333
-    style G fill:#DEE,stroke:#333
-    style F stroke-width:4px
     style E stroke-width:2px,stroke-dasharray: 5 5
+    style F stroke-width:4px
+    style G fill:#DEE,stroke:#333
     style H stroke-width:2px,stroke-dasharray: 5 5
     style O fill:#fee
-    style Q stroke-width:4px</code></pre>
+    style P fill:#DEE,stroke:#333
+    style Q stroke-width:2px,stroke-dasharray: 5 5
+    style R fill:#f2d5ff</code></pre>
        </div>
        <!-- ??? example "Even more detailed flowchart (for all firmware versions)"
 
@@ -1611,11 +1630,10 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
            </li>
           </ol>
           <h2 id="3-reboot-and-observe-firmware-update-to-50">
-           3️⃣ Reboot and observe firmware update (to
+           3️⃣ Reboot and observe firmware update to
            <code>
             5.0
            </code>
-           )
           </h2>
           <ol>
            <li>
@@ -1707,7 +1725,7 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
              <div class="tabbed-content">
               <div class="tabbed-block">
                <p>
-                <img alt="" src="images/fw-update-progress_monitor.jpg"/>
+                <img alt="" src="images/fw-update_from_3-0.JPG"/>
                </p>
               </div>
               <div class="tabbed-block">
@@ -1937,8 +1955,121 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
          </p>
         </li>
        </ol>
-       <h2 id="7-unlock-super-performance">
-        7️⃣ Unlock Super Performance
+       <h2 id="7-reboot-and-observe-firmware-update-to-3642">
+        7️⃣ Reboot and observe firmware update to
+        <code>
+         36.4.2
+        </code>
+       </h2>
+       <ol>
+        <li>
+         <p>
+          Reboot your Jetson Orin Nano Developer Kit on JetPack 6.1 (rev.1) SD card to trigger another firmware update (to
+          <code>
+           36.4.2
+          </code>
+          ).
+         </p>
+         <div class="tabbed-set tabbed-alternate" data-tabs="6:2">
+          <input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio"/>
+          <input id="__tabbed_6_2" name="__tabbed_6" type="radio"/>
+          <div class="tabbed-labels">
+           <label for="__tabbed_6_1">
+            <span class="twemoji">
+             <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 16H3V4h18m0-2H3c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h7v2H8v2h8v-2h-2v-2h7a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2">
+              </path>
+             </svg>
+            </span>
+            GUI
+           </label>
+           <label for="__tabbed_6_2">
+            <span class="twemoji">
+             <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 18v2h2v2H8v-2h2v-2H3a2 2 0 0 1-2-2V4L0 3l1.41-1.42 20.75 20.76-1.41 1.41L15 18zM3 16h10L3 6zM21 2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-.34l-2-2H21V4H6.66l-2-2z">
+              </path>
+             </svg>
+            </span>
+            CUI
+           </label>
+          </div>
+          <div class="tabbed-content">
+           <div class="tabbed-block">
+            <p>
+             On the Ubuntu desktop click the power icon (
+             <span class="twemoji">
+              <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+               <path d="m16.56 5.44-1.45 1.45A5.97 5.97 0 0 1 18 12a6 6 0 0 1-6 6 6 6 0 0 1-6-6c0-2.17 1.16-4.06 2.88-5.12L7.44 5.44A7.96 7.96 0 0 0 4 12a8 8 0 0 0 8 8 8 8 0 0 0 8-8c0-2.72-1.36-5.12-3.44-6.56M13 3h-2v10h2">
+               </path>
+              </svg>
+             </span>
+             ) and select "
+             <strong>
+              Restart...
+             </strong>
+             ".
+            </p>
+           </div>
+           <div class="tabbed-block">
+            <div class="highlight">
+             <pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>reboot
+</code></pre>
+            </div>
+           </div>
+          </div>
+         </div>
+        </li>
+        <li>
+         <p>
+          Observe firmware update
+         </p>
+         <p>
+          You should see the following during the boot up process.
+         </p>
+         <div class="tabbed-set tabbed-alternate" data-tabs="7:2">
+          <input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio"/>
+          <input id="__tabbed_7_2" name="__tabbed_7" type="radio"/>
+          <div class="tabbed-labels">
+           <label for="__tabbed_7_1">
+            <span class="twemoji">
+             <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 16H3V4h18m0-2H3c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h7v2H8v2h8v-2h-2v-2h7a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2">
+              </path>
+             </svg>
+            </span>
+            With monitor
+           </label>
+           <label for="__tabbed_7_2">
+            <span class="twemoji">
+             <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 18v2h2v2H8v-2h2v-2H3a2 2 0 0 1-2-2V4L0 3l1.41-1.42 20.75 20.76-1.41 1.41L15 18zM3 16h10L3 6zM21 2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-.34l-2-2H21V4H6.66l-2-2z">
+              </path>
+             </svg>
+            </span>
+            Headless (serial)
+           </label>
+          </div>
+          <div class="tabbed-content">
+           <div class="tabbed-block">
+            <p>
+             <img alt="alt text" src="images/fw-update_from_36-3-0.JPG" width="800"/>
+            </p>
+           </div>
+           <div class="tabbed-block">
+           </div>
+          </div>
+         </div>
+        </li>
+       </ol>
+       <p>
+        Once done, you will boot into JetPack 6.1 (rev.1) again, with underlying firmware updated to
+        <code>
+         36.4.2
+        </code>
+        , which unlock the Super performance.
+       </p>
+       <h2 id="8-unlock-super-performance">
+        8️⃣ Unlock Super Performance
        </h2>
        <div class="admonition warning">
         <p class="admonition-title">
