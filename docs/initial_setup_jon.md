@@ -81,22 +81,27 @@ If you don't have them in your inventory, you want to arrange them and return to
     ```mermaid
     flowchart
         A(start) --> B{1️⃣ Check if Jetson UEFI Firmware<br>is newer than version 36.0}
-        B --[YES] --> O[6️⃣ Flash JetPack 6.x image on microSD card]
+        B --[YES] --> O[6️⃣ Boot with JetPack 6.1 rev.1 microSD card<br> to schedule firmware update]
         B --[No] --> C[2️⃣ Boot with JetPack 5.1.3 microSD card<br>to schedule firmware update]
-        C --> D[3️⃣ Reboot] --> E{{Firmware update during reboot}}
-        E --> F[4️⃣ Run QSPI updater] --> G[5️⃣ Reboot] --> H{{QSPI update during reboot}}
+        C --> D[3️⃣ Reboot] --> E{{Firmware update to 5.0 during reboot}}
+        E --> F[4️⃣ Run QSPI updater] --> G[5️⃣ Reboot] --> H{{QSPI update during reboot - Firmware 36.4.0}}
         H --> O
-        O --> Q(7️⃣ Unlock super performance) 
-        Q --> P(8️⃣ Start developing on JetPack 6.x) 
+        O --> P[7️⃣ Reboot]
+        P --> Q{{Firmware update to 36.4.2 during reboot}}
+        Q --> R[8️⃣ Unlock super performance] 
+        R --> S(👍 Start developing on JetPack 6.x) 
+        
 
         style C fill:#fee
         style D fill:#DEE,stroke:#333
-        style G fill:#DEE,stroke:#333
-        style F stroke-width:4px
         style E stroke-width:2px,stroke-dasharray: 5 5
+        style F stroke-width:4px
+        style G fill:#DEE,stroke:#333
         style H stroke-width:2px,stroke-dasharray: 5 5
         style O fill:#fee
-        style Q stroke-width:4px
+        style P fill:#DEE,stroke:#333
+        style Q stroke-width:2px,stroke-dasharray: 5 5
+        style R fill:#f2d5ff
     ```
 
 <!-- ??? example "Even more detailed flowchart (for all firmware versions)"
@@ -208,7 +213,7 @@ You can take one of the following methods.
             Main PID: 11439 (code=exited, status=0/SUCCESS)
             ```
 
-    ## 3️⃣ Reboot and observe firmware update (to `5.0`)
+    ## 3️⃣ Reboot and observe firmware update to `5.0`
 
     1. Reboot
    
@@ -230,7 +235,7 @@ You can take one of the following methods.
         
         === ":material-monitor: With monitor"
 
-            ![](./images/fw-update-progress_monitor.jpg)
+            ![](./images/fw-update_from_3-0.JPG)
 
         === ":material-monitor-off: Headless (serial)"
 
@@ -332,7 +337,33 @@ Once we know the onboard firmware is up-to-date and ready for JetPack 6.x, we ca
 
 5. Complete the initial software setup (`oem-config`)
 
-## 7️⃣ Unlock Super Performance
+## 7️⃣ Reboot and observe firmware update to `36.4.2`
+
+1. Reboot your Jetson Orin Nano Developer Kit on JetPack 6.1 (rev.1) SD card to trigger another firmware update (to `36.4.2`).
+
+    === ":material-monitor: GUI"
+
+        On the Ubuntu desktop click the power icon (:material-power:) and select "**Restart...**".
+
+    === ":material-monitor-off: CUI"
+
+        ```bash
+        $ sudo reboot
+        ```
+
+2. Observe firmware update
+
+    You should see the following during the boot up process.
+
+    === ":material-monitor: With monitor"
+
+        ![alt text](images/fw-update_from_36-3-0.JPG){ width="800" }
+
+    === ":material-monitor-off: Headless (serial)"
+
+Once done, you will boot into JetPack 6.1 (rev.1) again, with underlying firmware updated to `36.4.2`, which unlock the Super performance.
+
+## 8️⃣ Unlock Super Performance
 
 !!! warning "Attention"
 
