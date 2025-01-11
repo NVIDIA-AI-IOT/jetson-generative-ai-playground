@@ -103,10 +103,13 @@ If you don't have them in your inventory, you want to arrange them and return to
         style Q stroke-width:2px,stroke-dasharray: 5 5
         style R fill:#f2d5ff
     ```
+Note that it will undergo a total of **three (3)** reboot cycles.
 
-<!-- ??? example "Even more detailed flowchart (for all firmware versions)"
+### Walk-through Video
 
-    Another image. -->
+??? info "Click here to expand and watch video"
+
+    <iframe width="960" height="480" src="https://www.youtube.com/embed/7-U_zGUwAPQ?si=_BumnsGFGWm5Bpjz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 ## 1️⃣ Check if Jetson UEFI Firmware version > `36.0`
@@ -144,7 +147,18 @@ You can take one of the following methods.
    
 === "😁I'm feeling lucky"
 
-    > You could skip to [***6️⃣ Boot with JetPack 6.x SD card***](#6-boot-with-jetpack-6x-sd-card), and try your luck to see if your Jetson just boots your Jetson Orin Nano Developer Kit up to the initial software set up (OEM-config).
+    You could skip to [***6️⃣ Boot with JetPack 6.x SD card***](#6-boot-with-jetpack-6x-sd-card), and try your luck to see if your Jetson just boots your Jetson Orin Nano Developer Kit up to the initial software set up (OEM-config).
+
+    If you don't see the Ubuntu desktop in 3 minutes (remain in the black screen), you know the unit has the old UEFI firmware.
+
+    !!! warning
+        
+        Do not leave in black screen state for too long.
+
+        There is a chance that accumulated boot failures may trigger the L4T launcher to always boot into recovery kernel.
+
+        If this happens, even switching to the proper JetPack 5.1.3 SD card image, it won't boot from the SD card, until we manually change the L4T launcher setting.
+        
 
 ## Determine QSPI update is necessary or not
 
@@ -191,6 +205,15 @@ You can take one of the following methods.
         Turn on the Jetson Orin Nano Developer Kit **with JetPack 5.1.3 SD card inserted** by plugging in the DC power supply.
 
     5. Complete the initial software setup (`oem-config`)
+
+        !!! info
+
+            There is a chance that JetPack 5.1.3 SD card does not show any desktop UI on the attached display (the display remains black).
+
+            It would still schedule the UEFI firmware update in the background, so when you power cycle the unit, most likely it will perform the firmware update on the next boot up.
+
+            So if this happens, skip to the next step (3️⃣-2).
+
     6. Ensure firmware update is scheduled.
     
         Once Jetson boots into Jetson Linux system, a background service automatically runs to schedule a firmware update (if needed) to be performed during the next boot-up process.
@@ -277,7 +300,7 @@ You can take one of the following methods.
         sudo apt-get install nvidia-l4t-jetson-orin-nano-qspi-updater
         ```
 
-        Installing the `nvidia-l4t-jetson-orin-nano-qspi-updater` automatically runs its script to schedule another (final) firmware update to be performed during the next boot process, so that the firmware is ready for JetPack 6.x.
+        Installing the `nvidia-l4t-jetson-orin-nano-qspi-updater` automatically runs its script to schedule the entire QSPI update to be performed during the next boot process, so that the firmware is ready for JetPack 6.x.
 
     ## 5️⃣ Reboot, observe QSPI update, and power off
 
@@ -337,9 +360,41 @@ Once we know the onboard firmware is up-to-date and ready for JetPack 6.x, we ca
 
 5. Complete the initial software setup (`oem-config`)
 
+6. Ensure firmware update is scheduled.
+
+    JetPack 6.1 (rev 1) SD card will automatically schedule another firmware/bootloader update in the next (3rd and final) reboot cycle.
+
+    === ":material-monitor: GUI"
+
+        ![](./images/nvidia-l4t-bootloader-post-install-notification.png)
+
+    === ":material-monitor-off: CUI"
+
+        ```bash
+        $ sudo systemctl status nv-l4t-bootloader-config
+        [sudo] password for jetson: 
+        ● nv-l4t-bootloader-config.service - Configure bootloader service
+            Loaded: loaded (/etc/systemd/system/nv-l4t-bootloader-config.service; enabled; vendor preset: enabled)
+            Active: inactive (dead) since Fri 2024-05-03 13:36:13 PDT; 1min 57s ago
+            Process: 11439 ExecStart=/opt/nvidia/l4t-bootloader-config/nv-l4t-bootloader-config.sh -v (code=exited, status=0/SUCCESS)
+        Main PID: 11439 (code=exited, status=0/SUCCESS)
+        ```
+
 ## 7️⃣ Reboot and observe firmware update to `36.4.2`
 
-1. Reboot your Jetson Orin Nano Developer Kit on JetPack 6.1 (rev.1) SD card to trigger another firmware update (to `36.4.2`).
+1. Delete old power profile
+
+    !!! warning "Attention"
+
+        If your Jetson Orin Developer Kit was previously running **JetPack 6.0** or **JetPack 6.1**, execute the following command after the final login and reboot your device. This ensures that the **MAXN** performance mode becomes available on your system.
+
+    We need to delete the old power config in preparation for Super config introduction.
+
+    ```bash
+    sudo rm -rf /etc/nvpmodel.conf
+    ```
+
+2. Reboot your Jetson Orin Nano Developer Kit on JetPack 6.1 (rev.1) SD card to trigger the final firmware update (to `36.4.2`).
 
     === ":material-monitor: GUI"
 
@@ -351,7 +406,7 @@ Once we know the onboard firmware is up-to-date and ready for JetPack 6.x, we ca
         $ sudo reboot
         ```
 
-2. Observe firmware update
+3. Observe firmware update
 
     You should see the following during the boot up process.
 
@@ -361,7 +416,7 @@ Once we know the onboard firmware is up-to-date and ready for JetPack 6.x, we ca
 
     === ":material-monitor-off: Headless (serial)"
 
-Once done, you will boot into JetPack 6.1 (rev.1) again, with underlying firmware updated to `36.4.2`, which unlock the Super performance.
+Once done, you will boot into JetPack 6.1 (rev.1) again, with the underlying firmware updated to `36.4.2`, which unlock the Super performance.
 
 ## 8️⃣ Unlock Super Performance
 
