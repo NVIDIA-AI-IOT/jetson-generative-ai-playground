@@ -699,6 +699,17 @@
                       Overall flow (microSD-only method)
                      </span>
                     </a>
+                    <nav aria-label="Overall flow (microSD-only method)" class="md-nav">
+                     <ul class="md-nav__list">
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#walk-through-video">
+                        <span class="md-ellipsis">
+                         Walk-through Video
+                        </span>
+                       </a>
+                      </li>
+                     </ul>
+                    </nav>
                    </li>
                    <li class="md-nav__item">
                     <a class="md-nav__link" href="#1-check-if-jetson-uefi-firmware-version-360">
@@ -903,6 +914,17 @@
              Overall flow (microSD-only method)
             </span>
            </a>
+           <nav aria-label="Overall flow (microSD-only method)" class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#walk-through-video">
+               <span class="md-ellipsis">
+                Walk-through Video
+               </span>
+              </a>
+             </li>
+            </ul>
+           </nav>
           </li>
           <li class="md-nav__item">
            <a class="md-nav__link" href="#1-check-if-jetson-uefi-firmware-version-360">
@@ -1210,9 +1232,25 @@
     style Q stroke-width:2px,stroke-dasharray: 5 5
     style R fill:#f2d5ff</code></pre>
        </div>
-       <!-- ??? example "Even more detailed flowchart (for all firmware versions)"
-
-    Another image. -->
+       <p>
+        Note that it will undergo a total of
+        <strong>
+         three (3)
+        </strong>
+        reboot cycles.
+       </p>
+       <h3 id="walk-through-video">
+        Walk-through Video
+       </h3>
+       <details class="info">
+        <summary>
+         Click here to expand and watch video
+        </summary>
+        <p>
+         <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="480" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/7-U_zGUwAPQ?si=_BumnsGFGWm5Bpjz" title="YouTube video player" width="960">
+         </iframe>
+        </p>
+       </details>
        <h2 id="1-check-if-jetson-uefi-firmware-version-360">
         1️⃣ Check if Jetson UEFI Firmware version &gt;
         <code>
@@ -1384,19 +1422,34 @@
           </ol>
          </div>
          <div class="tabbed-block">
-          <blockquote>
-           <p>
-            You could skip to
-            <a href="#6-boot-with-jetpack-6x-sd-card">
-             <strong>
-              <em>
-               6️⃣ Boot with JetPack 6.x SD card
-              </em>
-             </strong>
-            </a>
-            , and try your luck to see if your Jetson just boots your Jetson Orin Nano Developer Kit up to the initial software set up (OEM-config).
+          <p>
+           You could skip to
+           <a href="#6-boot-with-jetpack-6x-sd-card">
+            <strong>
+             <em>
+              6️⃣ Boot with JetPack 6.x SD card
+             </em>
+            </strong>
+           </a>
+           , and try your luck to see if your Jetson just boots your Jetson Orin Nano Developer Kit up to the initial software set up (OEM-config).
+          </p>
+          <p>
+           If you don't see the Ubuntu desktop in 3 minutes (remain in the black screen), you know the unit has the old UEFI firmware.
+          </p>
+          <div class="admonition warning">
+           <p class="admonition-title">
+            Warning
            </p>
-          </blockquote>
+           <p>
+            Do not leave in black screen state for too long.
+           </p>
+           <p>
+            There is a chance that accumulated boot failures may trigger the L4T launcher to always boot into recovery kernel.
+           </p>
+           <p>
+            If this happens, even switching to the proper JetPack 5.1.3 SD card image, it won't boot from the SD card, until we manually change the L4T launcher setting.
+           </p>
+          </div>
          </div>
         </div>
        </div>
@@ -1573,6 +1626,20 @@
              </code>
              )
             </p>
+            <div class="admonition info">
+             <p class="admonition-title">
+              Info
+             </p>
+             <p>
+              There is a chance that JetPack 5.1.3 SD card does not show any desktop UI on the attached display (the display remains black).
+             </p>
+             <p>
+              It would still schedule the UEFI firmware update in the background, so when you power cycle the unit, most likely it will perform the firmware update on the next boot up.
+             </p>
+             <p>
+              So if this happens, skip to the next step (3️⃣-2).
+             </p>
+            </div>
            </li>
            <li>
             <p>
@@ -1807,7 +1874,7 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
              <code>
               nvidia-l4t-jetson-orin-nano-qspi-updater
              </code>
-             automatically runs its script to schedule another (final) firmware update to be performed during the next boot process, so that the firmware is ready for JetPack 6.x.
+             automatically runs its script to schedule the entire QSPI update to be performed during the next boot process, so that the firmware is ready for JetPack 6.x.
             </p>
            </li>
           </ol>
@@ -1954,21 +2021,12 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
           )
          </p>
         </li>
-       </ol>
-       <h2 id="7-reboot-and-observe-firmware-update-to-3642">
-        7️⃣ Reboot and observe firmware update to
-        <code>
-         36.4.2
-        </code>
-       </h2>
-       <ol>
         <li>
          <p>
-          Reboot your Jetson Orin Nano Developer Kit on JetPack 6.1 (rev.1) SD card to trigger another firmware update (to
-          <code>
-           36.4.2
-          </code>
-          ).
+          Ensure firmware update is scheduled.
+         </p>
+         <p>
+          JetPack 6.1 (rev 1) SD card will automatically schedule another firmware/bootloader update in the next (3rd and final) reboot cycle.
          </p>
          <div class="tabbed-set tabbed-alternate" data-tabs="6:2">
           <input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio"/>
@@ -1984,6 +2042,98 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
             GUI
            </label>
            <label for="__tabbed_6_2">
+            <span class="twemoji">
+             <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 18v2h2v2H8v-2h2v-2H3a2 2 0 0 1-2-2V4L0 3l1.41-1.42 20.75 20.76-1.41 1.41L15 18zM3 16h10L3 6zM21 2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-.34l-2-2H21V4H6.66l-2-2z">
+              </path>
+             </svg>
+            </span>
+            CUI
+           </label>
+          </div>
+          <div class="tabbed-content">
+           <div class="tabbed-block">
+            <p>
+             <img alt="" src="images/nvidia-l4t-bootloader-post-install-notification.png"/>
+            </p>
+           </div>
+           <div class="tabbed-block">
+            <div class="highlight">
+             <pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>nv-l4t-bootloader-config
+<span class="o">[</span>sudo<span class="o">]</span><span class="w"> </span>password<span class="w"> </span><span class="k">for</span><span class="w"> </span>jetson:<span class="w"> </span>
+●<span class="w"> </span>nv-l4t-bootloader-config.service<span class="w"> </span>-<span class="w"> </span>Configure<span class="w"> </span>bootloader<span class="w"> </span>service
+<span class="w">    </span>Loaded:<span class="w"> </span>loaded<span class="w"> </span><span class="o">(</span>/etc/systemd/system/nv-l4t-bootloader-config.service<span class="p">;</span><span class="w"> </span>enabled<span class="p">;</span><span class="w"> </span>vendor<span class="w"> </span>preset:<span class="w"> </span>enabled<span class="o">)</span>
+<span class="w">    </span>Active:<span class="w"> </span>inactive<span class="w"> </span><span class="o">(</span>dead<span class="o">)</span><span class="w"> </span>since<span class="w"> </span>Fri<span class="w"> </span><span class="m">2024</span>-05-03<span class="w"> </span><span class="m">13</span>:36:13<span class="w"> </span>PDT<span class="p">;</span><span class="w"> </span>1min<span class="w"> </span>57s<span class="w"> </span>ago
+<span class="w">    </span>Process:<span class="w"> </span><span class="m">11439</span><span class="w"> </span><span class="nv">ExecStart</span><span class="o">=</span>/opt/nvidia/l4t-bootloader-config/nv-l4t-bootloader-config.sh<span class="w"> </span>-v<span class="w"> </span><span class="o">(</span><span class="nv">code</span><span class="o">=</span>exited,<span class="w"> </span><span class="nv">status</span><span class="o">=</span><span class="m">0</span>/SUCCESS<span class="o">)</span>
+Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</span><span class="w"> </span><span class="o">(</span><span class="nv">code</span><span class="o">=</span>exited,<span class="w"> </span><span class="nv">status</span><span class="o">=</span><span class="m">0</span>/SUCCESS<span class="o">)</span>
+</code></pre>
+            </div>
+           </div>
+          </div>
+         </div>
+        </li>
+       </ol>
+       <h2 id="7-reboot-and-observe-firmware-update-to-3642">
+        7️⃣ Reboot and observe firmware update to
+        <code>
+         36.4.2
+        </code>
+       </h2>
+       <ol>
+        <li>
+         <p>
+          Delete old power profile
+         </p>
+         <div class="admonition warning">
+          <p class="admonition-title">
+           Attention
+          </p>
+          <p>
+           If your Jetson Orin Developer Kit was previously running
+           <strong>
+            JetPack 6.0
+           </strong>
+           or
+           <strong>
+            JetPack 6.1
+           </strong>
+           , execute the following command after the final login and reboot your device. This ensures that the
+           <strong>
+            MAXN
+           </strong>
+           performance mode becomes available on your system.
+          </p>
+         </div>
+         <p>
+          We need to delete the old power config in preparation for Super config introduction.
+         </p>
+         <div class="highlight">
+          <pre><span></span><code>sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/etc/nvpmodel.conf
+</code></pre>
+         </div>
+        </li>
+        <li>
+         <p>
+          Reboot your Jetson Orin Nano Developer Kit on JetPack 6.1 (rev.1) SD card to trigger the final firmware update (to
+          <code>
+           36.4.2
+          </code>
+          ).
+         </p>
+         <div class="tabbed-set tabbed-alternate" data-tabs="7:2">
+          <input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio"/>
+          <input id="__tabbed_7_2" name="__tabbed_7" type="radio"/>
+          <div class="tabbed-labels">
+           <label for="__tabbed_7_1">
+            <span class="twemoji">
+             <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 16H3V4h18m0-2H3c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h7v2H8v2h8v-2h-2v-2h7a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2">
+              </path>
+             </svg>
+            </span>
+            GUI
+           </label>
+           <label for="__tabbed_7_2">
             <span class="twemoji">
              <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M14 18v2h2v2H8v-2h2v-2H3a2 2 0 0 1-2-2V4L0 3l1.41-1.42 20.75 20.76-1.41 1.41L15 18zM3 16h10L3 6zM21 2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-.34l-2-2H21V4H6.66l-2-2z">
@@ -2026,11 +2176,11 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
          <p>
           You should see the following during the boot up process.
          </p>
-         <div class="tabbed-set tabbed-alternate" data-tabs="7:2">
-          <input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio"/>
-          <input id="__tabbed_7_2" name="__tabbed_7" type="radio"/>
+         <div class="tabbed-set tabbed-alternate" data-tabs="8:2">
+          <input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio"/>
+          <input id="__tabbed_8_2" name="__tabbed_8" type="radio"/>
           <div class="tabbed-labels">
-           <label for="__tabbed_7_1">
+           <label for="__tabbed_8_1">
             <span class="twemoji">
              <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M21 16H3V4h18m0-2H3c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h7v2H8v2h8v-2h-2v-2h7a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2">
@@ -2039,7 +2189,7 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
             </span>
             With monitor
            </label>
-           <label for="__tabbed_7_2">
+           <label for="__tabbed_8_2">
             <span class="twemoji">
              <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M14 18v2h2v2H8v-2h2v-2H3a2 2 0 0 1-2-2V4L0 3l1.41-1.42 20.75 20.76-1.41 1.41L15 18zM3 16h10L3 6zM21 2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-.34l-2-2H21V4H6.66l-2-2z">
@@ -2062,7 +2212,7 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
         </li>
        </ol>
        <p>
-        Once done, you will boot into JetPack 6.1 (rev.1) again, with underlying firmware updated to
+        Once done, you will boot into JetPack 6.1 (rev.1) again, with the underlying firmware updated to
         <code>
          36.4.2
         </code>
