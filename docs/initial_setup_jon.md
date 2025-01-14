@@ -147,17 +147,21 @@ You can take one of the following methods.
    
 === "😁I'm feeling lucky"
 
-    You could skip to [***6️⃣ Boot with JetPack 6.x SD card***](#6-boot-with-jetpack-6x-sd-card), and try your luck to see if your Jetson just boots your Jetson Orin Nano Developer Kit up to the initial software set up (OEM-config).
-
-    If you don't see the Ubuntu desktop in 3 minutes (remain in the black screen), you know the unit has the old UEFI firmware.
-
-    !!! warning
+    !!! danger "Warning"
         
-        Do not leave in black screen state for too long.
+        <B>Avoid leaving the device in a black screen state for extended periods or attempting to boot repeatedly with an SD card containing an incompatible JetPack version.</B>
 
         There is a chance that accumulated boot failures may trigger the L4T launcher to always boot into recovery kernel.
 
-        If this happens, even switching to the proper JetPack 5.1.3 SD card image, it won't boot from the SD card, until we manually change the L4T launcher setting.
+        If this happens, even after switching to the proper JetPack 5.1.3 SD card, it won't boot from the SD card until we manually change the L4T Launcher setting.
+
+    Although we don't recommend for the above stated reason, you could skip to [***6️⃣ Boot with JetPack 6.x SD card***](#6-boot-with-jetpack-6x-sd-card), and try your luck to see if your Jetson just boots with the JetPack 6.x SD card.
+
+    If the Ubuntu desktop does not appear within 3 minutes and the screen remains black (as shown below), it indicates that the unit is running an older UEFI firmware version that is incompatible with the JetPack 6.x SD card.
+
+    ![alt text](images/uefi_interactive_shell.png){ width="640" }
+
+    Turn the unit off, and skip to the next section ([2️⃣ Boot with JetPack 5.1.3 SD card to schedule firmware update](#2-boot-with-jetpack-513-sd-card-to-schedule-firmware-update)).
         
 
 ## Determine QSPI update is necessary or not
