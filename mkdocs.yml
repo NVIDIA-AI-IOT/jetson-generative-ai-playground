@@ -112,6 +112,7 @@ nav:
       - ROS2 Nodes: ros.md
       - OpenVLA: openvla.md
     - Image Generation:
+      - Cosmos: cosmos.md
       - Flux & ComfyUI: tutorial_comfyui_flux.md
       - Stable Diffusion: tutorial_stable-diffusion.md
       - Stable Diffusion XL: tutorial_stable-diffusion-xl.md
