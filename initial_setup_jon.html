@@ -1422,8 +1422,24 @@
           </ol>
          </div>
          <div class="tabbed-block">
+          <div class="admonition danger">
+           <p class="admonition-title">
+            Warning
+           </p>
+           <p>
+            <b>
+             Avoid leaving the device in a black screen state for extended periods or attempting to boot repeatedly with an SD card containing an incompatible JetPack version.
+            </b>
+           </p>
+           <p>
+            There is a chance that accumulated boot failures may trigger the L4T launcher to always boot into recovery kernel.
+           </p>
+           <p>
+            If this happens, even after switching to the proper JetPack 5.1.3 SD card, it won't boot from the SD card until we manually change the L4T Launcher setting.
+           </p>
+          </div>
           <p>
-           You could skip to
+           Although we don't recommend for the above stated reason, you could skip to
            <a href="#6-boot-with-jetpack-6x-sd-card">
             <strong>
              <em>
@@ -1431,25 +1447,21 @@
              </em>
             </strong>
            </a>
-           , and try your luck to see if your Jetson just boots your Jetson Orin Nano Developer Kit up to the initial software set up (OEM-config).
+           , and try your luck to see if your Jetson just boots with the JetPack 6.x SD card.
           </p>
           <p>
-           If you don't see the Ubuntu desktop in 3 minutes (remain in the black screen), you know the unit has the old UEFI firmware.
+           If the Ubuntu desktop does not appear within 3 minutes and the screen remains black (as shown below), it indicates that the unit is running an older UEFI firmware version that is incompatible with the JetPack 6.x SD card.
           </p>
-          <div class="admonition warning">
-           <p class="admonition-title">
-            Warning
-           </p>
-           <p>
-            Do not leave in black screen state for too long.
-           </p>
-           <p>
-            There is a chance that accumulated boot failures may trigger the L4T launcher to always boot into recovery kernel.
-           </p>
-           <p>
-            If this happens, even switching to the proper JetPack 5.1.3 SD card image, it won't boot from the SD card, until we manually change the L4T launcher setting.
-           </p>
-          </div>
+          <p>
+           <img alt="alt text" src="images/uefi_interactive_shell.png" width="640"/>
+          </p>
+          <p>
+           Turn the unit off, and skip to the next section (
+           <a href="#2-boot-with-jetpack-513-sd-card-to-schedule-firmware-update">
+            2️⃣ Boot with JetPack 5.1.3 SD card to schedule firmware update
+           </a>
+           ).
+          </p>
          </div>
         </div>
        </div>
