@@ -83,15 +83,18 @@ nav:
   - Home: index.md
   - Tutorials:
     - Introduction: tutorial-intro.md
-    - Hello AI World: hello_ai_world.md
-    - Agent Studio: agent_studio.md
+    - Jetson Orin Nano Guide:
+      - 🚀 Initial Setup Guide - Jetson Orin Nano: initial_setup_jon.md
+      - 🛸 Initial Setup (SDK Manager method): initial_setup_jon_sdkm.md
+      - 🔖 SSD + Docker: tips_ssd-docker.md
+      - 🔖 Memory optimization: tips_ram-optimization.md
     - Text (LLM):
       - text-generation-webui: tutorial_text-generation.md 
       - Ollama: tutorial_ollama.md
       - Open WebUI: tutorial_openwebui.md
       - llamaspeak: tutorial_llamaspeak.md
       - NanoLLM: tutorial_nano-llm.md
-      - TensorRT-LLM  🆕: tensorrt_llm.md
+      - TensorRT-LLM: tensorrt_llm.md
       - Small LLM (SLM): tutorial_slm.md
       - API Examples: tutorial_api-examples.md
     - Text + Vision (VLM):
@@ -99,6 +102,7 @@ nav:
       - Live LLaVA: tutorial_live-llava.md
       - NanoVLM: tutorial_nano-vlm.md
       - Llama 3.2 Vision: llama_vlm.md
+      - Agent Studio: agent_studio.md
     - Vision Transformers (ViT): 
       - vit/index.md
       - EfficientViT: vit/tutorial_efficientvit.md
@@ -108,11 +112,11 @@ nav:
       - TAM: vit/tutorial_tam.md
       - 📑 Knowledge Distillation: tutorial_distillation.md
     - Robotics & Embodiment:
+      - Cosmos 🆕: cosmos.md
       - LeRobot: lerobot.md
       - ROS2 Nodes: ros.md
       - OpenVLA: openvla.md
     - Image Generation:
-      - Cosmos: cosmos.md
       - Flux & ComfyUI: tutorial_comfyui_flux.md
       - Stable Diffusion: tutorial_stable-diffusion.md
       - Stable Diffusion XL: tutorial_stable-diffusion-xl.md
@@ -135,11 +139,6 @@ nav:
     #  - First Steps: tutorial_mmj.md
     # - Tools:
     #   - LangChain: tutorial_distillation.md
-    - Jetson Orin Nano Guide:
-      - 🚀 Initial Setup Guide - Jetson Orin Nano: initial_setup_jon.md
-      - 🛸 Initial Setup (SDK Manager method): initial_setup_jon_sdkm.md
-      - 🔖 SSD + Docker: tips_ssd-docker.md
-      - 🔖 Memory optimization: tips_ram-optimization.md
   - Benchmarks: benchmarks.md
   - Projects: community_articles.md
   - Research Group: research.md
