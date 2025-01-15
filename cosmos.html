@@ -5,12 +5,12 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="Showcasing generative AI projects that run on Jetson" name="description"/>
-  <link href="openvla.html" rel="prev"/>
-  <link href="tutorial_comfyui_flux.html" rel="next"/>
+  <link href="tutorial_distillation.html" rel="prev"/>
+  <link href="lerobot.html" rel="next"/>
   <link href="images/nvidia-favicon-rgb-16x16px@2x.png" rel="icon"/>
   <meta content="mkdocs-1.6.1, mkdocs-material-9.5.49" name="generator"/>
   <title>
-   Cosmos - NVIDIA Jetson AI Lab
+   Cosmos 🆕 - NVIDIA Jetson AI Lab
   </title>
   <link href="assets/stylesheets/main.6f8fc17f.min.css" rel="stylesheet"/>
   <link href="assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
@@ -67,7 +67,7 @@
       </div>
       <div class="md-header__topic" data-md-component="header-topic">
        <span class="md-ellipsis">
-        Cosmos
+        Cosmos 🆕
        </span>
       </div>
      </div>
@@ -202,31 +202,64 @@
                </span>
               </a>
              </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="hello_ai_world.html">
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" id="__nav_2_2" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
                <span class="md-ellipsis">
-                Hello AI World
+                Jetson Orin Nano Guide
                </span>
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="agent_studio.html">
-               <span class="md-ellipsis">
-                Agent Studio
+               <span class="md-nav__icon md-icon">
                </span>
-              </a>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_2_2_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_2">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Jetson Orin Nano Guide
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="initial_setup_jon.html">
+                  <span class="md-ellipsis">
+                   🚀 Initial Setup Guide - Jetson Orin Nano
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="initial_setup_jon_sdkm.html">
+                  <span class="md-ellipsis">
+                   🛸 Initial Setup (SDK Manager method)
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tips_ssd-docker.html">
+                  <span class="md-ellipsis">
+                   🔖 SSD + Docker
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tips_ram-optimization.html">
+                  <span class="md-ellipsis">
+                   🔖 Memory optimization
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
              </li>
              <li class="md-nav__item md-nav__item--nested">
-              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2_4" type="checkbox"/>
-              <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2_3" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
                <span class="md-ellipsis">
                 Text (LLM)
                </span>
                <span class="md-nav__icon md-icon">
                </span>
               </label>
-              <nav aria-expanded="false" aria-labelledby="__nav_2_4_label" class="md-nav" data-md-level="2">
-               <label class="md-nav__title" for="__nav_2_4">
+              <nav aria-expanded="false" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_3">
                 <span class="md-nav__icon md-icon">
                 </span>
                 Text (LLM)
@@ -270,7 +303,7 @@
                 <li class="md-nav__item">
                  <a class="md-nav__link" href="tensorrt_llm.html">
                   <span class="md-ellipsis">
-                   TensorRT-LLM  🆕
+                   TensorRT-LLM
                   </span>
                  </a>
                 </li>
@@ -292,16 +325,16 @@
               </nav>
              </li>
              <li class="md-nav__item md-nav__item--nested">
-              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2_5" type="checkbox"/>
-              <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2_4" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
                <span class="md-ellipsis">
                 Text + Vision (VLM)
                </span>
                <span class="md-nav__icon md-icon">
                </span>
               </label>
-              <nav aria-expanded="false" aria-labelledby="__nav_2_5_label" class="md-nav" data-md-level="2">
-               <label class="md-nav__title" for="__nav_2_5">
+              <nav aria-expanded="false" aria-labelledby="__nav_2_4_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_4">
                 <span class="md-nav__icon md-icon">
                 </span>
                 Text + Vision (VLM)
@@ -335,24 +368,31 @@
                   </span>
                  </a>
                 </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="agent_studio.html">
+                  <span class="md-ellipsis">
+                   Agent Studio
+                  </span>
+                 </a>
+                </li>
                </ul>
               </nav>
              </li>
              <li class="md-nav__item md-nav__item--nested">
-              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2_6" type="checkbox"/>
+              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2_5" type="checkbox"/>
               <div class="md-nav__link md-nav__container">
                <a class="md-nav__link" href="vit/index.html">
                 <span class="md-ellipsis">
                  Vision Transformers (ViT)
                 </span>
                </a>
-               <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+               <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon">
                 </span>
                </label>
               </div>
-              <nav aria-expanded="false" aria-labelledby="__nav_2_6_label" class="md-nav" data-md-level="2">
-               <label class="md-nav__title" for="__nav_2_6">
+              <nav aria-expanded="false" aria-labelledby="__nav_2_5_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_5">
                 <span class="md-nav__icon md-icon">
                 </span>
                 Vision Transformers (ViT)
@@ -403,74 +443,34 @@
                </ul>
               </nav>
              </li>
-             <li class="md-nav__item md-nav__item--nested">
-              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2_7" type="checkbox"/>
-              <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
-               <span class="md-ellipsis">
-                Robotics &amp; Embodiment
-               </span>
-               <span class="md-nav__icon md-icon">
-               </span>
-              </label>
-              <nav aria-expanded="false" aria-labelledby="__nav_2_7_label" class="md-nav" data-md-level="2">
-               <label class="md-nav__title" for="__nav_2_7">
-                <span class="md-nav__icon md-icon">
-                </span>
-                Robotics &amp; Embodiment
-               </label>
-               <ul class="md-nav__list" data-md-scrollfix="">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="lerobot.html">
-                  <span class="md-ellipsis">
-                   LeRobot
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="ros.html">
-                  <span class="md-ellipsis">
-                   ROS2 Nodes
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="openvla.html">
-                  <span class="md-ellipsis">
-                   OpenVLA
-                  </span>
-                 </a>
-                </li>
-               </ul>
-              </nav>
-             </li>
              <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-              <input checked="" class="md-nav__toggle md-toggle" id="__nav_2_8" type="checkbox"/>
-              <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+              <input checked="" class="md-nav__toggle md-toggle" id="__nav_2_6" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
                <span class="md-ellipsis">
-                Image Generation
+                Robotics &amp; Embodiment
                </span>
                <span class="md-nav__icon md-icon">
                </span>
               </label>
-              <nav aria-expanded="true" aria-labelledby="__nav_2_8_label" class="md-nav" data-md-level="2">
-               <label class="md-nav__title" for="__nav_2_8">
+              <nav aria-expanded="true" aria-labelledby="__nav_2_6_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_6">
                 <span class="md-nav__icon md-icon">
                 </span>
-                Image Generation
+                Robotics &amp; Embodiment
                </label>
                <ul class="md-nav__list" data-md-scrollfix="">
                 <li class="md-nav__item md-nav__item--active">
                  <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
                  <label class="md-nav__link md-nav__link--active" for="__toc">
                   <span class="md-ellipsis">
-                   Cosmos
+                   Cosmos 🆕
                   </span>
                   <span class="md-nav__icon md-icon">
                   </span>
                  </label>
                  <a class="md-nav__link md-nav__link--active" href="cosmos.html">
                   <span class="md-ellipsis">
-                   Cosmos
+                   Cosmos 🆕
                   </span>
                  </a>
                  <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
@@ -497,6 +497,46 @@
                   </ul>
                  </nav>
                 </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="lerobot.html">
+                  <span class="md-ellipsis">
+                   LeRobot
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="ros.html">
+                  <span class="md-ellipsis">
+                   ROS2 Nodes
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="openvla.html">
+                  <span class="md-ellipsis">
+                   OpenVLA
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" id="__nav_2_7" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+               <span class="md-ellipsis">
+                Image Generation
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_2_7_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_7">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Image Generation
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
                 <li class="md-nav__item">
                  <a class="md-nav__link" href="tutorial_comfyui_flux.html">
                   <span class="md-ellipsis">
@@ -529,16 +569,16 @@
               </nav>
              </li>
              <li class="md-nav__item md-nav__item--nested">
-              <input class="md-nav__toggle md-toggle" id="__nav_2_9" type="checkbox"/>
-              <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+              <input class="md-nav__toggle md-toggle" id="__nav_2_8" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
                <span class="md-ellipsis">
                 RAG &amp; Vector Database
                </span>
                <span class="md-nav__icon md-icon">
                </span>
               </label>
-              <nav aria-expanded="false" aria-labelledby="__nav_2_9_label" class="md-nav" data-md-level="2">
-               <label class="md-nav__title" for="__nav_2_9">
+              <nav aria-expanded="false" aria-labelledby="__nav_2_8_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_8">
                 <span class="md-nav__icon md-icon">
                 </span>
                 RAG &amp; Vector Database
@@ -569,16 +609,16 @@
               </nav>
              </li>
              <li class="md-nav__item md-nav__item--nested">
-              <input class="md-nav__toggle md-toggle" id="__nav_2_10" type="checkbox"/>
-              <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+              <input class="md-nav__toggle md-toggle" id="__nav_2_9" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
                <span class="md-ellipsis">
                 SDK Integrations
                </span>
                <span class="md-nav__icon md-icon">
                </span>
               </label>
-              <nav aria-expanded="false" aria-labelledby="__nav_2_10_label" class="md-nav" data-md-level="2">
-               <label class="md-nav__title" for="__nav_2_10">
+              <nav aria-expanded="false" aria-labelledby="__nav_2_9_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_9">
                 <span class="md-nav__icon md-icon">
                 </span>
                 SDK Integrations
@@ -623,16 +663,16 @@
               </nav>
              </li>
              <li class="md-nav__item md-nav__item--nested">
-              <input class="md-nav__toggle md-toggle" id="__nav_2_11" type="checkbox"/>
-              <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+              <input class="md-nav__toggle md-toggle" id="__nav_2_10" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
                <span class="md-ellipsis">
                 Audio
                </span>
                <span class="md-nav__icon md-icon">
                </span>
               </label>
-              <nav aria-expanded="false" aria-labelledby="__nav_2_11_label" class="md-nav" data-md-level="2">
-               <label class="md-nav__title" for="__nav_2_11">
+              <nav aria-expanded="false" aria-labelledby="__nav_2_10_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_2_10">
                 <span class="md-nav__icon md-icon">
                 </span>
                 Audio
@@ -656,53 +696,6 @@
                  <a class="md-nav__link" href="tutorial_voicecraft.html">
                   <span class="md-ellipsis">
                    VoiceCraft
-                  </span>
-                 </a>
-                </li>
-               </ul>
-              </nav>
-             </li>
-             <li class="md-nav__item md-nav__item--nested">
-              <input class="md-nav__toggle md-toggle" id="__nav_2_12" type="checkbox"/>
-              <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
-               <span class="md-ellipsis">
-                Jetson Orin Nano Guide
-               </span>
-               <span class="md-nav__icon md-icon">
-               </span>
-              </label>
-              <nav aria-expanded="false" aria-labelledby="__nav_2_12_label" class="md-nav" data-md-level="2">
-               <label class="md-nav__title" for="__nav_2_12">
-                <span class="md-nav__icon md-icon">
-                </span>
-                Jetson Orin Nano Guide
-               </label>
-               <ul class="md-nav__list" data-md-scrollfix="">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="initial_setup_jon.html">
-                  <span class="md-ellipsis">
-                   🚀 Initial Setup Guide - Jetson Orin Nano
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="initial_setup_jon_sdkm.html">
-                  <span class="md-ellipsis">
-                   🛸 Initial Setup (SDK Manager method)
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tips_ssd-docker.html">
-                  <span class="md-ellipsis">
-                   🔖 SSD + Docker
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tips_ram-optimization.html">
-                  <span class="md-ellipsis">
-                   🔖 Memory optimization
                   </span>
                  </a>
                 </li>
