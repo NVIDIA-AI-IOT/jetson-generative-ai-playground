@@ -339,9 +339,9 @@
                     </a>
                    </li>
                    <li class="md-nav__item">
-                    <a class="md-nav__link" href="#7-reboot-and-observe-firmware-update-to-3642">
+                    <a class="md-nav__link" href="#7-reboot-and-observe-firmware-update-to-3643">
                      <span class="md-ellipsis">
-                      7️⃣ Reboot and observe firmware update to 36.4.2
+                      7️⃣ Reboot and observe firmware update to 36.4.3
                      </span>
                     </a>
                    </li>
@@ -364,9 +364,9 @@
                     </nav>
                    </li>
                    <li class="md-nav__item">
-                    <a class="md-nav__link" href="#8-start-developing-on-jetpack-6x">
+                    <a class="md-nav__link" href="#start-developing-on-jetpack-62">
                      <span class="md-ellipsis">
-                      8️⃣ Start developing on JetPack 6.x
+                      👍 Start developing on JetPack 6.2
                      </span>
                     </a>
                    </li>
@@ -976,9 +976,9 @@
            </a>
           </li>
           <li class="md-nav__item">
-           <a class="md-nav__link" href="#7-reboot-and-observe-firmware-update-to-3642">
+           <a class="md-nav__link" href="#7-reboot-and-observe-firmware-update-to-3643">
             <span class="md-ellipsis">
-             7️⃣ Reboot and observe firmware update to 36.4.2
+             7️⃣ Reboot and observe firmware update to 36.4.3
             </span>
            </a>
           </li>
@@ -1001,9 +1001,9 @@
            </nav>
           </li>
           <li class="md-nav__item">
-           <a class="md-nav__link" href="#8-start-developing-on-jetpack-6x">
+           <a class="md-nav__link" href="#start-developing-on-jetpack-62">
             <span class="md-ellipsis">
-             8️⃣ Start developing on JetPack 6.x
+             👍 Start developing on JetPack 6.2
             </span>
            </a>
           </li>
@@ -1060,14 +1060,14 @@
         is a perfect kit to start your journey of local generative AI evaluation and development.
        </p>
        <p>
-        With the December 2024 software update (
-        <strong>
-         JetPack 6.1 (rev.1)
-        </strong>
-        ), this advanced edge computer delivers up to 70% more performance, making it an even more powerful platform for the era of generative AI.
+        With the December 2024 software update (JetPack 6.1 (rev.1)), this advanced edge computer delivers up to 70% more performance, making it an even more powerful platform for the era of generative AI.
        </p>
        <p>
-        This guide explains the complete flow from opening the box, updating the firmware if needed, flashing the latest JetPack 6.1 (rev. 1) image on SD card, and the initial software setup, so that you will be ready for tutorials listed on this site and other AI projects.
+        This guide explains the complete flow from opening the box, updating the firmware if needed, flashing the latest
+        <strong>
+         JetPack 6.2
+        </strong>
+        image on SD card, and the initial software setup, so that you will be ready for tutorials listed on this site and other AI projects.
        </p>
        <h2 id="check-your-inventory">
         Check your inventory
@@ -1210,15 +1210,15 @@
         </p>
         <pre class="mermaid"><code>flowchart
     A(start) --&gt; B{1️⃣ Check if Jetson UEFI Firmware&lt;br&gt;is newer than version 36.0}
-    B --[YES] --&gt; O[6️⃣ Boot with JetPack 6.1 rev.1 microSD card&lt;br&gt; to schedule firmware update]
+    B --[YES] --&gt; O[6️⃣ Boot with JetPack 6.2 microSD card&lt;br&gt; to schedule firmware update]
     B --[No] --&gt; C[2️⃣ Boot with JetPack 5.1.3 microSD card&lt;br&gt;to schedule firmware update]
     C --&gt; D[3️⃣ Reboot] --&gt; E{{Firmware update to 5.0 during reboot}}
     E --&gt; F[4️⃣ Run QSPI updater] --&gt; G[5️⃣ Reboot] --&gt; H{{QSPI update during reboot - Firmware 36.4.0}}
     H --&gt; O
     O --&gt; P[7️⃣ Reboot]
-    P --&gt; Q{{Firmware update to 36.4.2 during reboot}}
+    P --&gt; Q{{Firmware update to 36.4.3 during reboot}}
     Q --&gt; R[8️⃣ Unlock super performance] 
-    R --&gt; S(👍 Start developing on JetPack 6.x) 
+    R --&gt; S(👍 Start developing on JetPack 6.2) 
 
 
     style C fill:#fee
@@ -1967,7 +1967,7 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
         6️⃣ Boot with JetPack 6.x SD card
        </h2>
        <p>
-        Once we know the onboard firmware is up-to-date and ready for JetPack 6.x, we can boot Jetson Orin Nano Developer Kit with a microSD card for JetPack 6.
+        Once we know the onboard firmware is up-to-date and ready for JetPack 6.x, we can boot Jetson Orin Nano Developer Kit with a microSD card for JetPack 6.2.
        </p>
        <ol>
         <li>
@@ -1982,10 +1982,10 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
           or from the below direct link button.
          </p>
          <p>
-          <a class="md-button md-button--primary" href="https://developer.nvidia.com/downloads/embedded/L4T/r36_Release_v4.0/jp61-rev1-orin-nano-sd-card-image.zip">
+          <a class="md-button md-button--primary" href="https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v4.3/jp62-orin-nano-sd-card-image.zip">
            Jetson Orin Nano Developer Kit
            <br/>
-           JetPack 6.1 (rev. 1) image
+           JetPack 6.2
           </a>
          </p>
         </li>
@@ -2011,7 +2011,7 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
          <p>
           Insert the
           <strong>
-           JetPack 6.x
+           JetPack 6.2
           </strong>
           microSD card into the slot on Jetson module
          </p>
@@ -2038,7 +2038,7 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
           Ensure firmware update is scheduled.
          </p>
          <p>
-          JetPack 6.1 (rev 1) SD card will automatically schedule another firmware/bootloader update in the next (3rd and final) reboot cycle.
+          JetPack 6.2 SD card will automatically schedule another firmware/bootloader update in the next (3rd and final) reboot cycle.
          </p>
          <div class="tabbed-set tabbed-alternate" data-tabs="6:2">
           <input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio"/>
@@ -2085,45 +2085,13 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
          </div>
         </li>
        </ol>
-       <h2 id="7-reboot-and-observe-firmware-update-to-3642">
+       <h2 id="7-reboot-and-observe-firmware-update-to-3643">
         7️⃣ Reboot and observe firmware update to
         <code>
-         36.4.2
+         36.4.3
         </code>
        </h2>
        <ol>
-        <li>
-         <p>
-          Delete old power profile
-         </p>
-         <div class="admonition warning">
-          <p class="admonition-title">
-           Attention
-          </p>
-          <p>
-           If your Jetson Orin Developer Kit was previously running
-           <strong>
-            JetPack 6.0
-           </strong>
-           or
-           <strong>
-            JetPack 6.1
-           </strong>
-           , execute the following command after the final login and reboot your device. This ensures that the
-           <strong>
-            MAXN
-           </strong>
-           performance mode becomes available on your system.
-          </p>
-         </div>
-         <p>
-          We need to delete the old power config in preparation for Super config introduction.
-         </p>
-         <div class="highlight">
-          <pre><span></span><code>sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/etc/nvpmodel.conf
-</code></pre>
-         </div>
-        </li>
         <li>
          <p>
           Reboot your Jetson Orin Nano Developer Kit on JetPack 6.1 (rev.1) SD card to trigger the final firmware update (to
@@ -2238,15 +2206,16 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
          Attention
         </p>
         <p>
-         If your Jetson Orin Developer Kit was previously running
+         If your are booting with
          <strong>
-          JetPack 6.0
+          <em>
+           JetPack 6.1 (rev.1)
+          </em>
          </strong>
-         or
-         <strong>
-          JetPack 6.1
-         </strong>
-         , execute the following command after the final login and reboot your device. This ensures that the
+         SD card instead of JetPack 6.2 SD card, you may need to execute the following command after the final login and reboot your device.
+        </p>
+        <p>
+         This ensures that the
          <strong>
           MAXN
          </strong>
@@ -2261,19 +2230,23 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
         Switch to MAXN mode
        </h3>
        <p>
-        Note that the default power mode is
+        Note that the default power mode on JetPack 6.2 on Jetson Orin Nano Developer Kit is
         <strong>
-         15W
+         25W
         </strong>
         .
         <br/>
-        To switch to the new power mode and unlock the increased performance, follow below steps:
+        To switch to the
+        <strong>
+         MAXN SUPER
+        </strong>
+        mode and unlock the unregulated performance, follow below steps:
        </p>
        <ol>
         <li>
          Click on the current power mode (
          <strong>
-          15W
+          25W
          </strong>
          ) by clicking the NVIDIA icon on the right side of the Ubuntu desktop’s top bar.
         </li>
@@ -2287,16 +2260,16 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
         <li>
          Choose
          <strong>
-          MAXN
+          MAXN SUPER
          </strong>
          to enable maximum performance.
         </li>
        </ol>
        <p>
-        <img alt="alt text" src="images/jons_power-mode-to-maxn.png"/>
+        <img alt="alt text" src="images/jons_power-mode-to-maxn-super.png"/>
        </p>
-       <h2 id="8-start-developing-on-jetpack-6x">
-        8️⃣ Start developing on JetPack 6.x
+       <h2 id="start-developing-on-jetpack-62">
+        👍 Start developing on JetPack 6.2
        </h2>
        <p>
         🎊
@@ -2304,7 +2277,7 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
          Congratulations!
         </strong>
         <br/>
-        Your Jetson Orin Nano Developer Kit is set up with JetPack 6.x SD card and you are ready to develop on JetPack 6.x.
+        Your Jetson Orin Nano Developer Kit is set up with JetPack 6.2 and you are ready to develop on JetPack 6.2.
        </p>
        <h2 id="next-step">
         Next step
