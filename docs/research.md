@@ -800,10 +800,10 @@ Below are shown some of the sustaining members of the group who have been workin
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/alvaro01/" target="_blank"><img class="bio-image" src="research/images/Alvaro_Costa.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/alvaro01/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
-			Alvaro Costa, <a href="https://www.ans.co.uk/" target="_blank">ANS Group</a><br/>
+			Alvaro Costa, <a href="https://www.tekntrash.com/" target="_blank">TeknTrash</a><br/>
 			<small>
-				AI & Robotics Lead | Epsom, UK<br/>
-				(<a href="https://www.tekntrash.com/" target="_blank">TeknTrash</a>, <a href="https://www.youtube.com/watch?v=-L6kDVr5tfU&t=137s" target="_blank">StipraPOD</a>)
+				CEO & Founder | Epsom, UK<br/>
+				(<a href="https://huggingface.co/datasets/TeknTrash/Stipra" target="_blank">Stipra Dataset</a>, Industrial Automation)
 			</small>
 		</div>
 	</div>
