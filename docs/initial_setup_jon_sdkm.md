@@ -85,7 +85,7 @@ If you don't have them, check the [default microSD-only setup instruction](./ini
         D --> E[3️⃣ Download on Host PC]
         E --> F[4️⃣ Flash]
         F --> G[5️⃣ Boot and initial setup]
-        G --> P(👍 Start developing on JetPack 6.x) 
+        G --> P(👍 Start developing on JetPack 6.2) 
     ```
 
 
@@ -249,20 +249,20 @@ Once SDK Manager is launched, connect your Jetson developer kit to your Ubuntu P
 
 5. Complete the initial software setup (`oem-config`)
 
-### Switch to MAXN mode
+### Switch to MAXN SUPER mode
 
-Note that the default power mode is **15W**. <br>
-To switch to the new power mode and unlock the increased performance, follow below steps:
+Note that the default power mode on JetPack 6.2 on Jetson Orin Nano Developer Kit is **25W**. <br>
+To switch to the **MAXN SUPER** mode and unlock the unregulated performance, follow below steps:
 
-1. Click on the current power mode (**15W**) by clicking the NVIDIA icon on the right side of the Ubuntu desktop’s top bar.
+1. Click on the current power mode (**25W**) by clicking the NVIDIA icon on the right side of the Ubuntu desktop’s top bar.
 2. Select **Power mode** from the menu.
-3. Choose **MAXN** to enable maximum performance.
+3. Choose **MAXN SUPER** to enable maximum performance.
 
-![alt text](images/jons_power-mode-to-maxn.png)
+![alt text](images/jons_power-mode-to-maxn-super.png)
 
 🎊 **Congratulations!** <br>
-Your Jetson Orin Nano Developer Kit is set up with JetPack 6.x image and you are ready to develop on JetPack 6.x.
+Your Jetson Orin Nano Developer Kit is set up with JetPack 6.2 image and you are ready to develop on JetPack 6.2.
 
 ## Next step
 
-Check [this page](./tips_ssd-docker.md) for "SSD" and/or "Docker" set up.
+Check [this page](./tips_ssd-docker.md) for "SSD" (if you flashed on microSD) and/or "Docker" set up.

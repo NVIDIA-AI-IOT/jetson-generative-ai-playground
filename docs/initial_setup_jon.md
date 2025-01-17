@@ -422,7 +422,7 @@ Once done, you will boot into JetPack 6.1 (rev.1) again, with the underlying fir
     sudo rm -rf /etc/nvpmodel.conf
     ```
 
-### Switch to MAXN mode
+### Switch to MAXN SUPER mode
 
 Note that the default power mode on JetPack 6.2 on Jetson Orin Nano Developer Kit is **25W**. <br>
 To switch to the **MAXN SUPER** mode and unlock the unregulated performance, follow below steps:
