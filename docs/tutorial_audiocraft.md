@@ -14,7 +14,7 @@ Let's run Meta's [AudioCraft](https://github.com/facebookresearch/audiocraft), t
 
         <span class="blobPink1">JetPack 5 (L4T r35.x)</span>
 
-    3. Sufficient storage space (preferably with NVMe SSD).
+    3. <span class="markedYellow">NVMe SSD **highly recommended**</span> for storage speed and space
 
         - `10.7 GB` for `audiocraft` container image
         - Space for checkpoints

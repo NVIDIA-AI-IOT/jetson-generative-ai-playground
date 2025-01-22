@@ -16,7 +16,7 @@ It's good to know the code for generating text with LLM inference, and ancillary
         <span class="blobPink2">JetPack 5 (L4T r35)</span>
         <span class="blobPink2">JetPack 6 (L4T r36)</span>
 
-    3. Sufficient storage space (preferably with NVMe SSD).
+    3. <span class="markedYellow">NVMe SSD **highly recommended**</span> for storage speed and space
 
         - `22GB` for `l4t-text-generation` container image
         - Space for models (`>10GB`)

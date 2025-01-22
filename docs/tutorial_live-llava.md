@@ -27,7 +27,7 @@ It uses models like [LLaVA](https://llava-vl.github.io/){:target="_blank"} or [V
 
         <span class="blobPink2">JetPack 6 (L4T r36.x)</span>
 
-    3. Sufficient storage space (preferably with NVMe SSD).
+    3. <span class="markedYellow">NVMe SSD **highly recommended**</span> for storage speed and space
 
         - `22GB` for `nano_llm` container image
         - Space for models (`>10GB`)

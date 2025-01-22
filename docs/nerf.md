@@ -19,7 +19,7 @@
 
         <span class="blobPink2">JetPack 6 (L4T r36.x)</span>
 
-    3. Sufficient storage space (preferably with NVMe SSD).
+    3. <span class="markedYellow">NVMe SSD **highly recommended**</span> for storage speed and space
 
         - `17.6GB` for [`nerfstudio`](https://hub.docker.com/r/dustynv/nerfstudio) container image
         - Space for models and datasets (`>5GB`)

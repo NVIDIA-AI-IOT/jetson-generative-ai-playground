@@ -17,7 +17,7 @@ Let's run HuggingFace [`LeRobot`](https://github.com/huggingface/lerobot/) to tr
 
         <span class="blobPink2">JetPack 6 GA (L4T r36.3)</span> <span class="blobPink1">JetPack 6.1 (L4T r36.4)</span>
 
-    3. Sufficient storage space (preferably with NVMe SSD).
+    3. <span class="markedYellow">NVMe SSD **highly recommended**</span> for storage speed and space
 
         - `16.5GB` for [`lerobot`](https://hub.docker.com/r/dustynv/lerobot) container image
         - Space for models (`>2GB`)

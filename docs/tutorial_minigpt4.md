@@ -17,7 +17,7 @@ Give your locally running LLM an access to vision, by running [MiniGPT-4](https:
         <span class="blobPink1">JetPack 5 (L4T r35.x)</span>
         <span class="blobPink2">JetPack 6 (L4T r36.x)</span>
 
-    3. Sufficient storage space (preferably with NVMe SSD).
+    3. <span class="markedYellow">NVMe SSD **highly recommended**</span> for storage speed and space
 
         - `5.8GB` for container image
         - Space for [pre-quantized MiniGPT-4 model](https://github.com/Maknee/minigpt4.cpp/tree/master#3-obtaining-the-model)

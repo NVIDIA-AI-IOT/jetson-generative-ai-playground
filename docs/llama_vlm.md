@@ -20,7 +20,7 @@ While quantization and optimization efforts are underway, we have started with r
 
         <span class="blobPink2">JetPack 6 (L4T r36)</span>
 
-    3. Sufficient storage space (preferably with NVMe SSD).
+    3. <span class="markedYellow">NVMe SSD **highly recommended**</span> for storage speed and space
 
         - `12.8GB` for `llama-vision` container image
         - Space for models (`>25GB`)
