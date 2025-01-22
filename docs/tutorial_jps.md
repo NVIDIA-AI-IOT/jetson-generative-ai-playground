@@ -18,7 +18,7 @@ Jetson Plaform Services (JPS) provide a platform to simplify development, deploy
 
         <span class="blobPink2">JetPack 6 (L4T r36.x)</span>
 	   
-    3. Sufficient storage space (preferably with NVMe SSD).
+    3. <span class="markedYellow">NVMe SSD **highly recommended**</span> for storage speed and space
 
 To get started with Jetson Platform Services, follow the quickstart guide to install and setup JPS. Then explore the reference workflows to learn how to use DeepStream, Analytics, Generative AI and more with JPS:
 

@@ -24,7 +24,7 @@ inference scripts and generate videos.
 
         <span class="blobPink2">JetPack 6 (L4T r36.x)</span>
 
-    3. Sufficient storage space (preferably with NVMe SSD).
+    3. <span class="markedYellow">NVMe SSD **highly recommended**</span> for storage speed and space
 
         - `12.26GB` for [`cosmos`](https://hub.docker.com/r/dustynv/cosmos) container image
         - Space for models and datasets (`>50GB`)

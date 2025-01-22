@@ -20,7 +20,7 @@
         <span class="blobPink1">JetPack 5 (L4T r35.x)</span>
         <span class="blobPink2">JetPack 6 (L4T r36.x)</span>
 
-    3. Sufficient storage space (preferably with NVMe SSD).
+    3. <span class="markedYellow">NVMe SSD **highly recommended**</span> for storage speed and space
 
         - `6 GB` for `jetrag` container image
         - About `4 GB` for downloading some default models (`llama3` and `mxbai-embed-large`)

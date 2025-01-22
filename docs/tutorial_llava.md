@@ -33,7 +33,7 @@ In addition to Llava, the [`NanoVLM`](tutorial_nano-vlm.md) pipeline supports [V
         <span class="blobPink1">JetPack 5 (L4T r35.x)</span>
         <span class="blobPink2">JetPack 6 (L4T r36.x)</span>
 
-    3. Sufficient storage space (preferably with NVMe SSD).
+    3. <span class="markedYellow">NVMe SSD **highly recommended**</span> for storage speed and space
 
         - `6.2GB` for `text-generation-webui` container image
         - Space for models
@@ -90,7 +90,7 @@ Go to **Chat** tab, drag and drop an image into the **Drop Image Here** area, an
         <span class="blobPink1">JetPack 5 (L4T r35.x)</span>
         <span class="blobPink2">JetPack 6 (L4T r36.x)</span>
 
-    3. Sufficient storage space (preferably with NVMe SSD).
+    3. <span class="markedYellow">NVMe SSD **highly recommended**</span> for storage speed and space
 
         - `6.1GB` for `llava` container
         - `14GB` for Llava-7B (or `26GB` for Llava-13B)

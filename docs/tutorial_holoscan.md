@@ -25,7 +25,7 @@ So, let's walk through how to run the Surgical Tool Tracking example application
 
         <span class="blobPink2">JetPack 6 (L4T r36.x)</span>
 	   
-    3. Sufficient storage space (preferably with NVMe SSD).
+    3. <span class="markedYellow">NVMe SSD **highly recommended**</span> for storage speed and space
 
         - `13.7 GB` for `efficientvit` container image
         - `850 Mb` for Tool Tracking ONNX model + example video
