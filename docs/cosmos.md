@@ -16,7 +16,7 @@ inference scripts and generate videos.
 
     1. One of the following Jetson devices:
 
-        <span class="blobDarkGreen4">Jetson Thor (XGB)</span>
+        <span class="blobFaintedGreen3">Jetson Thor (XGB)</span>
         <span class="blobDarkGreen4">Jetson AGX Orin (64GB)</span>
         <span class="blobDarkGreen5">Jetson AGX Orin (32GB)</span>
 
