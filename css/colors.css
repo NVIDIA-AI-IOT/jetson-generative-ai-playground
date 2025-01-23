@@ -179,6 +179,9 @@ a.nv-buy-link:hover,.load-buy-link:hover {
 .blobDarkGreen5 {
 	background: #00e6e67f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em
 }
+.blobFaintedGreen3 {
+	background: #869a977f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em; color: #e5e5e5;
+}
 
 .blobLightGreen1 {
 	background: #76b9007f;  border-radius: 0.5em;  padding: 0.2em;  margin: 0.2em
