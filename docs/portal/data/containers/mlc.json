@@ -1,0 +1,10 @@
+{
+  "mlc:r36": {
+    "name": "dustynv/mlc:0.19.2-r36.4.0",
+    "container_image": "dustynv/mlc:0.19.2-r36.4.0",
+    "container_cmd": "$OPTIONS $IMAGE sudonim serve $ARGS",
+    "container_options": "-it --rm --pull=always",
+    "server_host": "0.0.0.0:9000",
+    "tags": ["container", "mlc", "l4t-r36"]
+  }
+}

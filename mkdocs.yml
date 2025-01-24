@@ -81,6 +81,7 @@ extra_css:
 
 nav:
   - Home: index.md
+  - Models: models.md
   - Tutorials:
     - Introduction: tutorial-intro.md
     - Jetson Orin Nano Guide:
