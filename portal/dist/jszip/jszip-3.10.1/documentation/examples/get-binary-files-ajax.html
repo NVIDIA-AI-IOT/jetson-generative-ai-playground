@@ -1,0 +1,122 @@
+<html>
+ <body>
+  <p>
+   ---
+title: "Get a file with an ajax call"
+layout: default
+section: example
+---
+  </p>
+  <h3>
+   With JSZipUtils
+  </h3>
+  Note: JSZipUtils is a library available
+  <a href="https://github.com/stuk/jszip-utils">
+   here
+  </a>
+  .
+  <ul class="nav nav-tabs" role="tablist">
+   <li class="active" role="presentation">
+    <a aria-controls="jszip-utils-result" data-toggle="tab" href="#jszip-utils-result" role="tab">
+     result
+    </a>
+   </li>
+   <li role="presentation">
+    <a aria-controls="jszip-utils-js" data-toggle="tab" href="#jszip-utils-js" role="tab">
+     js code
+    </a>
+   </li>
+   <li role="presentation">
+    <a aria-controls="jszip-utils-html" data-toggle="tab" href="#jszip-utils-html" role="tab">
+     html code
+    </a>
+   </li>
+  </ul>
+  <div class="tab-content">
+   <div class="tab-pane active" id="jszip-utils-result" role="tabpanel">
+    <div class="show-example">
+     {% include_relative get-binary-files-ajax.inc/jszip_utils.html %}
+    </div>
+   </div>
+   <div class="tab-pane" id="jszip-utils-js" role="tabpanel">
+    {% highlight js %}
+{% include_relative get-binary-files-ajax.inc/jszip_utils.js %}
+{% endhighlight %}
+   </div>
+   <div class="tab-pane" id="jszip-utils-html" role="tabpanel">
+    {% highlight html %}
+{% include_relative get-binary-files-ajax.inc/jszip_utils.html %}
+{% endhighlight %}
+   </div>
+  </div>
+  <h3>
+   With the Fetch API
+  </h3>
+  Note: the
+  <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">
+   Fetch API
+  </a>
+  is a new javascript API which may not be available everywhere.
+  <ul class="nav nav-tabs" role="tablist">
+   <li class="active" role="presentation">
+    <a aria-controls="fetch-api-result" data-toggle="tab" href="#fetch-api-result" role="tab">
+     js code
+    </a>
+   </li>
+   <li role="presentation">
+    <a aria-controls="fetch-api-js" data-toggle="tab" href="#fetch-api-js" role="tab">
+     js code
+    </a>
+   </li>
+   <li role="presentation">
+    <a aria-controls="fetch-api-html" data-toggle="tab" href="#fetch-api-html" role="tab">
+     html code
+    </a>
+   </li>
+  </ul>
+  <div class="tab-content">
+   <div class="tab-pane active" id="fetch-api-result" role="tabpanel">
+    <div class="show-example">
+     {% include_relative get-binary-files-ajax.inc/fetch_api.html %}
+    </div>
+   </div>
+   <div class="tab-pane" id="fetch-api-js" role="tabpanel">
+    {% highlight js %}
+{% include_relative get-binary-files-ajax.inc/fetch_api.js %}
+{% endhighlight %}
+   </div>
+   <div class="tab-pane" id="fetch-api-html" role="tabpanel">
+    {% highlight html %}
+{% include_relative get-binary-files-ajax.inc/fetch_api.html %}
+{% endhighlight %}
+   </div>
+  </div>
+  <script type="text/javascript">
+   (function () {
+
+  //=========================
+  // JSZipUtils
+  //=========================
+  (function () {
+      {% include_relative get-binary-files-ajax.inc/jszip_utils.js %}
+  })();
+
+  //=========================
+  // Fetch API
+  //=========================
+  (function () {
+    var elt = document.getElementById('fetch');
+    if(typeof window.fetch === "function") {
+      {% include_relative get-binary-files-ajax.inc/fetch_api.js %}
+    } else {
+        $("#fetch").append($("<p>", {
+            "class": "alert alert-danger",
+            text: "This browser doesn't support the Fetch API."
+        }));
+    }
+  })();
+
+})();
+  </script>
+ </body>
+</html>

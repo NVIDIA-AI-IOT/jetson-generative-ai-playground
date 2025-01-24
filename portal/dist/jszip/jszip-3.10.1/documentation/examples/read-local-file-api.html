@@ -1,0 +1,59 @@
+<html>
+ <body>
+  <p>
+   ---
+title: "Reading a local file with the File API"
+layout: default
+section: example
+---
+  </p>
+  <ul class="nav nav-tabs" role="tablist">
+   <li class="active" role="presentation">
+    <a aria-controls="load-result" data-toggle="tab" href="#load-result" role="tab">
+     result
+    </a>
+   </li>
+   <li role="presentation">
+    <a aria-controls="load-js" data-toggle="tab" href="#load-js" role="tab">
+     js code
+    </a>
+   </li>
+   <li role="presentation">
+    <a aria-controls="load-html" data-toggle="tab" href="#load-html" role="tab">
+     html code
+    </a>
+   </li>
+  </ul>
+  <div class="tab-content">
+   <div class="tab-pane active" id="load-result" role="tabpanel">
+    <div class="show-example">
+     {% include_relative read-local-file-api.inc/read.html %}
+    </div>
+   </div>
+   <div class="tab-pane" id="load-js" role="tabpanel">
+    {% highlight js %}
+{% include_relative read-local-file-api.inc/read.js %}
+{% endhighlight %}
+   </div>
+   <div class="tab-pane" id="load-html" role="tabpanel">
+    {% highlight html %}
+{% include_relative read-local-file-api.inc/read.html %}
+{% endhighlight %}
+   </div>
+  </div>
+  <div class="alert alert-danger hidden" id="error_block">
+   You will need a recent browser to use this demo :(
+  </div>
+  <script type="text/javascript">
+   (function () {
+  if (!window.FileReader || !window.ArrayBuffer) {
+    $("#error_block").removeClass("hidden").addClass("show");
+    return;
+  }
+
+{% include_relative read-local-file-api.inc/read.js %}
+
+})();
+  </script>
+ </body>
+</html>
