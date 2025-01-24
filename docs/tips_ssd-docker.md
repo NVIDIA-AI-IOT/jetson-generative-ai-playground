@@ -227,7 +227,7 @@ Now that the SSD is installed and available on your device, you can use the extr
 2. \[Terminal 2\] Next, open a new terminal and start Docker pull.
 
     ```bash
-    docker pull nvcr.io/nvidia/l4t-base:r35.2.1
+    docker pull ubuntu:22.04
     ```
 
 3. \[Terminal 1\] Observe that the disk usage on `/ssd` goes up as the container image is downloaded and extracted.
@@ -235,7 +235,7 @@ Now that the SSD is installed and available on your device, you can use the extr
     ```bash
     ~$ docker image ls
     REPOSITORY                  TAG       IMAGE ID       CREATED        SIZE
-    nvcr.io/nvidia/l4t-base     r35.2.1   dc07eb476a1d   7 months ago   713MB
+    ubuntu                      22.04     981912c48e9a   4 months ago   69.2MB
     ```
 
 ## Final Verification
