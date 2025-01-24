@@ -15,8 +15,10 @@ There are virtual [meetings](#meeting-schedule) that anyone is welcome to join, 
     <!--With holiday schedules soon taking effect, we will reconvene in 2025 - thank you everyone for an amazing year!<br/><br/>
 	In the meantime, enjoy the time with your families, and feel welcome to keep in touch through the forums, Discord, or LinkedIn.</br><br/>-->
 	We are starting to hold weekly meetings on a rotation between 9am PST and 9pm PST to accommodate more time zones. The next meetings are on:</br></br>
-	  * Tuesday, January 28<sup>th</sup> at 9pm PST</br>
-	  * Tuesday, February 4<sup>th</sup> at 9am PST</br>
+      <tr>
+        <td>• Tuesday, January 28<sup>th</sup> at 9pm PST</td><br/>
+        <td>• Tuesday, February 4<sup>th</sup> at 9am PST</td><br/>
+      </tr>
 	  
 	See the [invite](#meeting-schedule) below and join the [Discord](https://discord.gg/BmqNSK4886){:target="_blank"} server to get involved in the community.
 
