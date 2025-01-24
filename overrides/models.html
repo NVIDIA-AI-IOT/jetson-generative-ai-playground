@@ -1,0 +1,97 @@
+<!-- Custom HTML site displayed as the Home chapter -->
+<html>
+ <body>
+  <p>
+   {% extends "main.html" %}
+{% block extrahead %}
+  {{ super() }}
+   <style>
+    body {
+      background-color: #efefef;
+    }
+   </style>
+   <script type="module">
+    import { GraphTags, SearchBar } from '/portal/nanolab.js';
+
+    const GRAPH_TAGS = '/portal/data/index.json';
+
+    window.onload = () => {
+      GraphTags.load(GRAPH_TAGS).then(db => {
+        var searchBar = new SearchBar({
+          db: db,
+          tags: ['models'],
+          parent: '.root-container'
+        });
+        console.log("Window done loading");
+      });
+    };
+   </script>
+   {% endblock %}
+{% block tabs %}
+{{ super() }}s
+{% endblock %}
+{% block content %}
+  </p>
+  <div class="root-container flex-column" data-style-theme="nv-green">
+   <!-- dynamic content gets inserted here -->
+  </div>
+  {% endblock %}
+{% block footer %}
+  <footer class="md-footer">
+   <div class="md-footer-meta md-typeset">
+    <div class="md-grid">
+     <div class="md-copyright">
+      <div class="md-copyright__highlight">
+       <ul class="global-footer__links">
+        <li>
+         <a href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/" target="_blank">
+          Privacy Policy
+         </a>
+        </li>
+        <li>
+         <a href="https://www.nvidia.com/en-us/privacy-center/" target="_blank">
+          Manage My Privacy
+         </a>
+        </li>
+        <li>
+         <a href="https://www.nvidia.com/en-us/preferences/email-preferences/" target="_blank">
+          Do Not Sell or Share My Data
+         </a>
+        </li>
+        <li>
+         <a href="https://www.nvidia.com/en-us/about-nvidia/legal-info/" target="_blank">
+          Legal
+         </a>
+        </li>
+        <li>
+         <a href="https://www.nvidia.com/en-us/about-nvidia/accessibility/" target="_blank">
+          Accessibility
+         </a>
+        </li>
+        <li>
+         <a href="https://www.nvidia.com/en-us/about-nvidia/company-policies/" target="_self">
+          Corporate Policies
+         </a>
+        </li>
+        <li>
+         <a href="https://www.nvidia.com/en-us/product-security/" target="_blank">
+          Product Security
+         </a>
+        </li>
+        <li>
+         <a href="https://www.nvidia.com/en-us/contact/" target="_blank">
+          Contact
+         </a>
+        </li>
+       </ul>
+       <div class="global-footer__copyright">
+        Copyright © 2024 NVIDIA Corporation
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </footer>
+  {% endblock %}
+ </body>
+</html>

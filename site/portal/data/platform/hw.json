@@ -1,0 +1,21 @@
+{
+  "jetson": {
+    "name": "Jetson",
+    "tags": []
+  },
+  "orin-nano": {
+    "name": "Orin Nano",
+    "tags": ["jetson"],
+    "pin": true
+  },
+  "orin-nx": {
+    "name": "Orin NX",
+    "tags": ["jetson"],
+    "pin": true
+  },
+  "agx-orin": {
+    "name": "AGX Orin",
+    "tags": ["jetson"],
+    "pin": true
+  }
+}

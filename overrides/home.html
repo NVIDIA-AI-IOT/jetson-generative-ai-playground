@@ -108,6 +108,8 @@
     .tx-hero .md-button {
         margin-top: .5rem;
         margin-right: .5rem;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
         color: var(--md-primary-fg-color);
         border-color: var(--md-accent-fg-color);
         text-decoration: none;
@@ -129,6 +131,7 @@
     
     .tx-hero .md-button--primary {
         background-color: var(--md-accent-fg-color);
+        border-color: var(--md-accent-fg-color);
         border-width: 0;
     }
 
@@ -487,14 +490,17 @@
        </sup>
        Jetson™
       </p>
-      <a class="md-button md-button--primary" href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | striptags }}">
+      <a class="md-button md-button--primary" href="{{ page.next_page.url | url }}" style="padding-top: 0.7rem; padding-bottom: 0.7rem;" title="{{ page.next_page.title | striptags }}">
        Explore Tutorials
       </a>
-      <a class="md-button" href="https://www.youtube.com/playlist?list=PL5B692fm6--sdf3tQk-1kp9T65y8p-D5u" target="_blank" title="YouTube Playlist">
-       <i class="fa-solid fa-video">
+      <a class="md-button" href="https://discord.gg/BmqNSK4886" style="padding-top: 0.6rem; padding-bottom: 0.6rem;" target="_blank" title="Join Discord">
+       <i class="bi bi-discord">
        </i>
-       Videos
+       Discord
       </a>
+      <!--<a href="https://www.youtube.com/playlist?list=PL5B692fm6--sdf3tQk-1kp9T65y8p-D5u" title="YouTube Playlist" class="md-button" target="_blank">
+                <i class="fa-solid fa-video"></i>&nbsp;&nbsp;Videos
+            </a>-->
       <!--
             <a href="https://developer.nvidia.com/blog/bringing-generative-ai-to-life-with-jetson/" title="Walkthrough Blog" class="md-button" target="_blank">
                 Walkthrough

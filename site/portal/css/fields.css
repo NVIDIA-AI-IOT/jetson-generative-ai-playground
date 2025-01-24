@@ -1,0 +1,50 @@
+/**
+ * Styles for the property editor and input fields
+ */
+.property-field {
+  font-size: 90%;
+  font-family: monospace;
+  color: rgba(0,0,0,0.7);
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(0,0,0,.2);
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.property-field:hover {
+  background: rgba(255,255,255,0.35);
+}
+
+.property-field:focus-visible {
+  background: rgba(255,255,255,0.4);
+}
+
+.property-table {
+  width: 100%;
+}
+
+/*.property-table tr {
+  margin-bottom: 20px;
+}*/
+
+.property-table td {
+  padding: 0px 7px 4px 0px;
+}
+
+input[type=text].property-field {
+  padding: 3px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+input[type=number].property-field {
+  width: 100px;
+}
+
+select.property-field {
+  width: 100%;
+}
+
+#hf_token-control {
+  width: 99%;
+}
