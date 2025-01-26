@@ -14,13 +14,13 @@ There are virtual [meetings](#meeting-schedule) that anyone is welcome to join, 
     <!--The next team meeting is on Tuesday, June 11<sup>th</sup> at 9am PST.  View the [recording](#past-meetings) from the last meeting below.-->
     <!--With holiday schedules soon taking effect, we will reconvene in 2025 - thank you everyone for an amazing year!<br/><br/>
 	In the meantime, enjoy the time with your families, and feel welcome to keep in touch through the forums, Discord, or LinkedIn.</br><br/>-->
-	We are starting to hold weekly meetings on a rotation between 9am PST and 9pm PST to accommodate more time zones. The next meetings are on:</br></br>
-      <tr>
-        <td>• Tuesday, January 28<sup>th</sup> at 9pm PST</td><br/>
-        <td>• Tuesday, February 4<sup>th</sup> at 9am PST</td><br/>
-      </tr>
+	We are starting to hold weekly meetings on a rotation between 9am PST and 9pm PST to accommodate more time zones. The next meetings are on:
+      <ul>
+        <li><a href="#meeting-schedule">Tuesday, January 28<sup>th</sup> at 9pm PST</a></li>
+        <li><a href="#meeting-schedule">Tuesday, February 4<sup>th</sup> at 9am PST</a></li>
+      </ul>
 	  
-	See the [invite](#meeting-schedule) below and join the [Discord](https://discord.gg/BmqNSK4886){:target="_blank"} server to get involved in the community.
+	Download the [calendar invites](#meeting-schedule) below and join the [Discord](https://discord.gg/BmqNSK4886){:target="_blank"} server to stay involved and receive the latest updates.
 
 ## Topics of Interest
 
@@ -53,8 +53,6 @@ These are some initial research topics for us to discuss and investigate. This l
   </tr>
 </table>
 
-New topics can be raised to the group either during the meetings or on the [forums](https://forums.developer.nvidia.com/c/agx-autonomous-machines/jetson-embedded-systems/jetson-projects/78){:target="_blank"} (people are welcome to work on whatever they want of course)
-
 ## Contribution Guidelines
 
 <!--<img src="research/images/robots_1.jpg" style="max-height: 325px;" align="right"></img>-->
@@ -77,7 +75,7 @@ When experiments are successful, ideally the results will be packaged in such a 
 	</span>
 </div>
 
-Ongoing technical discussions are encouraged to occur on the forums or GitHub Issues, with status updates on projects given during the meetings.
+Ongoing technical discussions are encouraged to occur on the forums, Discord, or GitHub Issues, with status updates on projects given during the meetings.
 
 ## Meeting Schedule
 
@@ -88,7 +86,7 @@ We'll aim to weekly or bi-weekly on a rotating schedule in virtual meetings that
 	- Microsoft Teams - [Meeting Link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_NTA4ZmE4MDAtYWUwMS00ZTczLWE0YWEtNTE5Y2JkNTFmOWM1%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} 
 	- Meeting ID: `264 770 145 196`
     - Passcode: `Uwbdgj`	
-	- Outlook Invite:  [`Jetson AI Lab Research Group.ics`](research/invites/Jetson AI Lab Research Group.ics){:target="_blank"} 
+	- Outlook Invite:  [`Jetson AI Lab Research Group (PM).ics`](research/invites/Jetson AI Lab Research Group (PM).ics){:target="_blank"} 
 	
 !!! abstract "Tuesday February 4<sup>th</sup> at 9am PST (2/4/24)"
 
