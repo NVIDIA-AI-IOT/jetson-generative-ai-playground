@@ -244,7 +244,7 @@ export function PythonGenerator({db, key, env}) {
 
 client = OpenAI(
   base_url = 'http://${env.server_host}/v1',
-  api_key = "none"
+  api_key = '*' # not enforced
 )
 
 chat = [{
@@ -253,7 +253,7 @@ chat = [{
 }]
 
 completion = client.chat.completions.create(
-  model=\'${env.model_name}\',
+  model=\'*\', # not enforced
   messages=chat,${GenerationConfig({db: db, key:key, env:env})}
   stream=True
 )
@@ -284,12 +284,12 @@ export function JavascriptGenerator({db, key, env}) {
 
 const openai = new OpenAI({
   baseURL: 'http://${env.server_host}/v1',
-  apiKey: 'none',
+  apiKey: '*', // not enforced 
 })
 
 async function main() {
   const completion = await openai.chat.completions.create({
-    model: \'${env.model_name}\',
+    model: \'*\', // not enforced
     messages: [{
       'role': 'user',
       'content': "${TEST_PROMPT}"
@@ -325,7 +325,7 @@ export function CurlGenerator({db, key, env}) {
   -H "Content-Type: application/json" \\
   -H "Authorization: Bearer none" \\
   -d '{
-    "model": "${env.model_name}",
+    "model": "*",
     "messages": [{"role":"user","content":"${TEST_PROMPT}"}],${GenerationConfig({db: db, key:key, env:env, indent: 4, assign: ': ', quote: '\"'})}
     "stream": true                
   }'
@@ -345,8 +345,8 @@ export function CurlGenerator({db, key, env}) {
  * Generation parameters
  */
 export function GenerationConfig({db, key, env, quote='', assign='=', indent=2}) {
-  env.temperature ??= 0.2;
-  env.top_p = 0.7;
+  env.temperature ??= key.includes('deepseek') ? 0.6 : 0.2;
+  env.top_p ??= key.includes('deepseek') ? 0.95 : 0.7;
 
   const params = {
     'temperature': 'temperature',

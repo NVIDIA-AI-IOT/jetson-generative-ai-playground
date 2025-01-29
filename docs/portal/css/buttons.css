@@ -146,10 +146,10 @@
 .btn-absolute {
   position: absolute;
   text-shadow: 2px 2px 3px rgb(0,0,0,.4);
-  top: 18px;
+  top: 15px;
   right: 475px;
   z-index: 999;
-  font-size: 190%;
+  font-size: 160%;
   opacity: 0.75;
 }
 

@@ -30,6 +30,13 @@
   background-position-y: 0px, -31px;
 }
 
+.deepseek-header {
+  background-image: url('/portal/data/models/images/headers/deepseek.svg'), linear-gradient(175deg, hsl(218.8, 21.2%, 50.3%) 0%, hsl(219.1, 70.4%, 42.4%) 100%); 
+  background-size: 50%, 100%; 
+  background-position-y: 50px, 0px;
+  background-position-x: 475px, 0px;
+}
+
 .qwen-header {
   --gradient-blue-purple: linear-gradient(100deg, hsl(218.8, 21.2%, 47.3%) 0%, rgb(90, 66, 156) 54%, rgba(63, 82, 166, 0) 70%);
   --gradient-orange-purple: linear-gradient(100deg, hsl(36.4, 69%, 53.1%) 0%, rgb(90, 66, 156) 54%, rgba(63, 82, 166, 0) 70%);

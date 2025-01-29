@@ -1,0 +1,26 @@
+{
+  "deepseek-r1-distill": {
+    "name": "DeepSeek R1",
+    "header": "deepseek-header",
+    "url": "hf.co/deepseek-ai/DeepSeek-R1-Distill",
+    "tags": ["llm"],
+    "links": {
+      "deepseek": {
+        "name": "DeepSeek",
+        "url": "https://www.deepseek.com/"
+      }
+    }
+  },
+  "-llama-8b": {
+    "name": " Llama-8B",
+    "tags": ["orin-all"],
+    "chat_template": "deepseek_r1_llama",
+    "max_context_len": {"placeholder": 131072},
+    "prefill_chunk": {"placeholder": 8192}
+  },
+  "-qwen-7b": {
+    "name": " Qwen-7B",
+    "tags": ["orin-all"],
+    "chat_template": "deepseek_r1_qwen"
+  }
+}
