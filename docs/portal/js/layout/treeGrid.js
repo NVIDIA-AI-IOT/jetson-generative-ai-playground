@@ -21,9 +21,9 @@ export function TreeGrid(x) {
  */
 export function TreeGridHeader(x) {
   return `
-    <div>
-      <h1>${x.name}</h1>
-      <div class="flex flex-row flex-wrap">
+    <div style="white-space: nowrap;">
+      <h1 style="margin-bottom: 15px;">${x.name}</h1>
+      <div class="flex flex-row" style="overflow-x: scroll; padding-bottom: 45px;">
         ${x.data}
       </div>
     </div>`;

@@ -17,5 +17,8 @@
     "name": "AGX Orin",
     "tags": ["jetson"],
     "pin": true
+  },
+  "orin": {
+    "tags": ["agx-orin", "orin-nx", "orin-nano"]
   }
 }

@@ -8,6 +8,10 @@
   font-size: medium;
 }
 
+.select2-container--default {
+  flex-grow: 1;
+}
+
 /* select2: dark theme
 .select2-container--default .select2-selection--multiple, .select2-results {
   color: #222222;

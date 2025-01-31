@@ -24,14 +24,14 @@
     "title": "Qwen-2.5-7B ❯ MLC q4f16_ft ❯ JetPack 6.1+",
     "url": "hf.co/dusty-nv/Qwen2.5-7B-Instruct-q4f16_ft-MLC",
     "quantization": "q4f16_ft",
-    "tags": ["qwen-2.5-7b", "mlc:r36", "agx-orin", "orin-nx", "orin-nano"]
+    "tags": ["qwen-2.5-7b", "mlc:jp6", "agx-orin", "orin-nx", "orin-nano"]
   },
   "qwen-2.5-7b-instruct-q4f16_1-mlc": {
     "name": "qwen/qwen2.5-1.5b-instruct-q4f16_1",
     "title": "Qwen-2.5-7B ❯ MLC q4f16_1 ❯ JetPack 6.1+",
     "url": "hf.co/mlc-ai/Qwen2.5-7B-Instruct-q4f16_1-MLC",
     "quantization": "q4f16_1",
-    "tags": ["qwen-2.5-7b", "mlc:r36", "agx-orin", "orin-nx", "orin-nano"]
+    "tags": ["qwen-2.5-7b", "mlc:jp6", "agx-orin", "orin-nx", "orin-nano"]
   },
   "qwen-2.5-7b-instruct-q4m-gguf": {
     "name": "bartowski/Qwen2.5-7B-Instruct-GGUF",
@@ -41,7 +41,7 @@
     "tokenizer": "pcuenq/Llama-3.2-1B-Instruct-tokenizer",
     "max_context_len": 2048,
     "prefill_chunk": 1024,
-    "tags": ["qwen-2.5-7b", "llama_cpp:r36", "agx-orin", "orin-nx", "orin-nano"]
+    "tags": ["qwen-2.5-7b", "llama_cpp:jp6", "agx-orin", "orin-nx", "orin-nano"]
   },
   "qwen-2.5-7b-instruct-q5m-gguf": {
     "name": "bartowski/Qwen2.5-7B-Instruct-GGUF",
@@ -51,7 +51,7 @@
     "tokenizer": "pcuenq/Llama-3.2-1B-Instruct-tokenizer",
     "max_context_len": 2048,
     "prefill_chunk": 1024,
-    "tags": ["qwen-2.5-7b", "llama_cpp:r36", "agx-orin", "orin-nx", "orin-nano"]
+    "tags": ["qwen-2.5-7b", "llama_cpp:jp6", "agx-orin", "orin-nx", "orin-nano"]
   },
   "qwen-2.5-7b-instruct-q6k-gguf": {
     "name": "bartowski/Qwen2.5-7B-Instruct-GGUF",
@@ -61,6 +61,6 @@
     "tokenizer": "pcuenq/Llama-3.2-1B-Instruct-tokenizer",
     "max_context_len": 2048,
     "prefill_chunk": 1024,
-    "tags": ["qwen-2.5-7b", "llama_cpp:r36", "agx-orin", "orin-nx", "orin-nano"]
+    "tags": ["qwen-2.5-7b", "llama_cpp:jp6", "agx-orin", "orin-nx", "orin-nano"]
   }
 }

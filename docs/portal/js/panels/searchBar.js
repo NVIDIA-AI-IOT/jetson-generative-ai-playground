@@ -2,7 +2,7 @@
 import { 
   GraphTags, TreeGrid, TreeList, ToggleSwitch, 
   ConfigEditor, htmlToNode, exists, ZipGenerator,
-  as_element, is_string, is_list, len,
+  SideBar, as_element, is_string, is_list, len,
 } from '../nanolab.js';
 
 /*
@@ -127,29 +127,23 @@ export class SearchBar {
           ${gateSwitch.html()}
           ${layoutSwitch.html()}
         </div>
-        <div id="${this.id}-card-container">
+        <div id="${this.id}-results-area" class="flex flex-row" style="margin-top: 15px;">
+          <div id="${this.id}-card-container" style="overflow-x: scroll;">
+          </div>
+          <div class="vertical-divider">
+          </div>
         </div>
-        ${this.createInfoPanel()};
       </div>
     `;
 
     this.node = htmlToNode(html);
     this.parent.appendChild(this.node);
 
-    $(`#${this.id}-help-container`).draggable();
+    this.node.querySelector(`#${this.id}-results-area`).appendChild(
+      SideBar({id: `${this.id}-sidebar`})
+    )
 
-    this.node.querySelector(`#${this.id}-download-set`)
-      .addEventListener('click', (evt) => {
-      console.log("Preparing current selection for download");  
-      ZipGenerator({db: this.db, keys: this.results ?? Object.keys(this.db)});
-    });
-
-    this.node.querySelector(`#${this.id}-download-all`)
-      .addEventListener('click', () => {
-      console.log("Preparing all items for download");  
-      ZipGenerator({db: this.db, keys: this.results ?? Object.keys(this.db)});
-      //ZipGenerator({db: this.db, keys: Object.keys(this.db)});
-    });
+    //$(`#${this.id}-help-container`).draggable();
 
     gateSwitch.toggled((gate) => self.refresh({gate: gate}));
     //layoutSwitch.toggled((layout) => self.refresh({layout: layout}));
@@ -178,36 +172,6 @@ export class SearchBar {
   }
 
   /*
-   * Create help / info panel (as HTML)
-   */
-  createInfoPanel() {
-    const html = `
-     <div id="${this.id}-help-container" class="flex flex-column help-container">
-          <div class="help-container-header"><div><b><i class="bi bi-nvidia" style="font-size: 120%; color: rgba(255,255,255,0.7);"></i></b>&nbsp; Device Configuration</div></div>
-          <div class="help-container-body">
-            <div>
-              Deploy open AI/ML microservices and models optimized with quantization for local serving via OpenAI endpoints.<br/><br/>
-              This generates <span class="monospace" style="font-size: 95%">docker-compose</span> stacks that launch 
-              <span class="monospace" style="font-size: 95%"><a href="https://github.com/dusty-nv/jetson-containers" target="_blank">jetson-containers</a></span> 
-              along with benchmarks & prompt templates for Python, JavaScript, and Bash.<br/><br/>
-              The page uses a serverless graph DB, and you can download the stacks from your query as a .zip to your Jetson
-            </div>
-            <div style="margin: 15px 5px">
-              <button id="${this.id}-download-set" class="btn-green btn-sm" title="Download the set of docker-compose templates and scripts corresponding to your selection from the search query.">
-              <i class="bi bi-cloud-download" style="font-size: 120%; font-weight: 600; margin-right: 5px;"></i>Download Set</button>
-              <button id="${this.id}-download-all" class="btn-green btn-sm" title="Download all the templates from every model and service currently available in the index.">
-              <i class="bi bi-cloud-download" style="font-size: 120%; font-weight: 600; margin-right: 5px;"></i>Download All</button>
-            </div>
-            We'll continue populating more models, services, and interactive elements to the site.  Find us on <a href="https://discord.gg/vpmNaT46" target="_blank">Discord</a> to get involved.
-            <br/><br/>Warm thanks to our partners, researchers, and contributors in the field! <span style="font-size: 135%">🤗 🤖</span> 
-          </div>
-        </div>
-    `;
-
-    return html;
-  }
-
-  /*
    * Generate the templated html and add elements to the dom
    */
   refresh({keys, tags, gate, layout}={}) {
@@ -231,7 +195,7 @@ export class SearchBar {
     card_container.empty(); 
 
     // generate dynamic content
-    let html = `<div style="margin-top: 15px;">`;
+    let html = `<div>`;
 
     html += this.db.treeReduce({
       func: this.layouts[this.layout],
@@ -239,27 +203,6 @@ export class SearchBar {
     });
 
     html += `</div>`;
-
-    /*html += `
-      <div class="code-container" id="${this.id}-code-container">
-        <div class="flex flex-row">
-          <div class="btn-group">
-            <input type="radio" id="toggle-on" name="toggle" checked>
-            <label for="toggle-on">docker run</label>
-            <input type="radio" id="toggle-off" name="toggle">
-            <label for="toggle-off">docker compose</label>
-            <input type="radio" id="toggle-three" name="toggle">
-            <label for="toggle-three">Benchmarks</label>
-          </div>
-
-          <div class="btn-copy" id="${this.id}-btn-copy">
-            <i class="bi bi-copy" title="Copy to clipboard"></i>
-          </div>
-        </div>
-        <div class="code-block">
-          abc123
-        </div>
-      </div>`;*/
 
     card_container.html(html);
 
@@ -269,10 +212,6 @@ export class SearchBar {
         key: evt.target.dataset.model,
       });
     });
-    
-    /*for( let button of node.getElementsByClassName("btn-open-model") ) {
-      button.addEventListener('click', this.onModelOpen.bind(this));
-    }*/
   }
 
   /*
@@ -285,4 +224,14 @@ export class SearchBar {
     this.node.remove();
     this.node = null;
   }
+
+  /*
+   * Download archive
+   */
+  download(group='all') {
+    console.log("Preparing current selection for download"); 
+    ZipGenerator({db: this.db, keys: this.results ?? Object.keys(this.db)});
+    //ZipGenerator({db: this.db, keys: Object.keys(this.db)});
+  }
+  
 }
