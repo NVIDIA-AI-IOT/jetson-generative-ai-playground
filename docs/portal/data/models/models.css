@@ -8,6 +8,10 @@
   height: 160px;
  }
 
+ .llama-header {
+  padding-top: 20px;
+}
+
 .llama-pilot-header {
   background-image: linear-gradient(270deg, rgba(63, 82, 166, 0) 32%, rgb(66, 122, 156) 49%, hsl(105.3, 14.2%, 46.3%) 100%),
                     /*linear-gradient(90deg, rgba(205,205,205,0) 48%, rgba(205,205,205,1) 49%, rgba(205,205,205,0) 65%),*/
@@ -32,9 +36,9 @@
 
 .deepseek-header {
   background-image: url('/portal/data/models/images/headers/deepseek.svg'), linear-gradient(175deg, hsl(218.8, 21.2%, 50.3%) 0%, hsl(219.1, 70.4%, 42.4%) 100%); 
-  background-size: 50%, 100%; 
+  background-size: 47%, 100%; 
   background-position-y: 50px, 0px;
-  background-position-x: 475px, 0px;
+  background-position-x: 510px, 0px;
 }
 
 .qwen-header {

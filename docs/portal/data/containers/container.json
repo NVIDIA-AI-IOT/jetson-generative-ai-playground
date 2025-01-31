@@ -5,6 +5,7 @@
     "container_options": null,
     "container_image": null,
     "container_cmd": null,
+    "auto_update": null,
     "CUDA_VISIBLE_DEVICES": "all"
   },
   "container_image": {
@@ -21,6 +22,12 @@
     "name": "Docker Run Cmd",
     "tags": ["string"],
     "help": "Template that builds the 'docker run' command from $OPTIONS $IMAGE $ARGS\nYou can change the startup command or arguments with this."
+  },
+  "auto_update": {
+    "name": "Auto Update",
+    "tags": ["string"],
+    "options": ["on", "off"],
+    "help": "When set to 'on', will automatically pull the latest container on start-up."
   },
   "server_host": {
     "name": "Server IP / Port",

@@ -18,7 +18,7 @@
     "tags": ["jetson"],
     "pin": true
   },
-  "orin-all": {
+  "orin": {
     "tags": ["agx-orin", "orin-nx", "orin-nano"]
   }
 }

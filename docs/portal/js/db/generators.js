@@ -2,7 +2,10 @@
  * Templates that generate docker service configs, code examples, docs, ect.
  * for launching containers, jobs, or initiating workflow actions.
  */ 
-import {exists, wrapLines, is_list, is_string, nonempty} from '../nanolab.js';
+import {
+  exists, wrapLines, is_list, is_string, 
+  nonempty, make_url
+} from '../nanolab.js';
 
 
 /* 
@@ -14,8 +17,7 @@ export function ModelGenerator(args) {
   EnvGenerator(args);
   DockerGenerator(args);
   PythonGenerator(args);
-  JavascriptGenerator(args);
-  CurlGenerator(args);
+  //JavascriptGenerator(args);
 
   if( !exists(ValidatePages(args)) ) {
     console.log(`Failed to generate valid pages`, args);
@@ -75,6 +77,10 @@ export function DockerGenerator({db, key, env}) {
     opt += '--network host ';
   }
 
+  if( !exists(env.auto_update) || env.auto_update != 'off' ) {
+    opt += `--pull always -e DOCKER_PULL=on `;
+  }
+
   if( exists(env.hf_token) ) {
     const tr = env.hf_token.trim();
     if( tr.length > 0 ) {
@@ -88,8 +94,7 @@ export function DockerGenerator({db, key, env}) {
     if( tr.length > 0 ) {
       var cache_dir = `-v ${tr}:/root/.cache `;
       var hf_hub_dir = `-e HF_HUB_CACHE=/root/.cache/huggingface `;
-      opt += cache_dir;
-      opt += hf_hub_dir;
+      opt += hf_hub_dir + cache_dir;
     }
   }
 
@@ -118,6 +123,11 @@ export function DockerGenerator({db, key, env}) {
   if( exists(env.prefill_chunk) ) {
     args += ` \\
       --prefill-chunk ${env.prefill_chunk}`;
+  }
+
+  if( exists(env.chat_template) ) {
+    args += ` \\
+      --chat-template ${env.chat_template}`;
   }
 
   if( exists(server_url) ) {
@@ -154,15 +164,18 @@ export function DockerGenerator({db, key, env}) {
   }*/
 
   env.pages.docker_run = {
-    name: 'docker_run',
+    name: 'docker run',
     lang: 'shell',
-    code: cmd
+    code: cmd,
+    header: '# Run this on your Jetson to prepare the model and\n# start chat.completion server. Then run curl to test.'
   };
+
+  CurlGenerator({db:db, key:key, env:env})
 
   var compose = composerize(env.pages.docker_run.code, null, 'latest', 2); // this gets imported globally by nanolab.js
   compose = compose.substring(compose.indexOf("\n") + 1); // first line from composerize is an unwanted name
   compose = `# Save as compose.yml and run 'docker compose up'\n` +
-    `# For benchmarking, use:  docker compose --profile perf_bench up\n` + 
+    `# To benchmark: docker compose --profile perf_bench up\n` + 
     (model_api === 'llama.cpp' ? '# With llama.cpp backend, you may encounter request ack/response errors (these can safely be ignored during the benchmark)\n' : '') 
     + compose;
 
@@ -188,7 +201,7 @@ export function DockerGenerator({db, key, env}) {
   let perf_cmd = `docker run -it --rm --network=host `;
   
   //const model_dir = get_model_cache(env);
-  const perf_container = 'dustynv/mlc:0.19.2-r36.4.0'; // env.container_image
+  const perf_container = 'dustynv/mlc:r36.4.0'; // env.container_image
 
   perf_cmd += `${exists(cache_dir) ? cache_dir : ''} `;
   perf_cmd += `${exists(hf_hub_dir) ? hf_hub_dir : ''} `;
@@ -240,8 +253,8 @@ export function PythonGenerator({db, key, env}) {
         `\n  max_tokens=${env.max_context_len},` : ``;
 
   const code = 
-`from openai import OpenAI
-
+`# Run 'pip install openai' before running this.
+# It can be run outside container, or from LAN.
 client = OpenAI(
   base_url = 'http://${env.server_host}/v1',
   api_key = '*' # not enforced
@@ -334,7 +347,8 @@ export function CurlGenerator({db, key, env}) {
   env.pages.curl = {
     name: 'curl',
     lang: 'shell',
-    code: code
+    code: code,
+    header: '# This is a quick test that LLM server is working.\n# Run this in another terminal (can be tricky to read)'
   };
 
   return env;

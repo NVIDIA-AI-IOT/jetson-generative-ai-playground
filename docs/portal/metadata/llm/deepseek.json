@@ -3,6 +3,8 @@
     "name": "DeepSeek R1",
     "header": "deepseek-header",
     "url": "hf.co/deepseek-ai/DeepSeek-R1-Distill",
+    "max_context_len": {"placeholder": 131072},
+    "prefill_chunk": {"placeholder": 8192},
     "tags": ["llm"],
     "links": {
       "deepseek": {
@@ -11,16 +13,29 @@
       }
     }
   },
-  "-llama-8b": {
-    "name": " Llama-8B",
-    "tags": ["orin-all"],
-    "chat_template": "deepseek_r1_llama",
-    "max_context_len": {"placeholder": 131072},
-    "prefill_chunk": {"placeholder": 8192}
+  "-qwen-1.5b": {
+    "name": " Qwen-1.5B",
+    "tags": ["deepseek-r1-distill", "orin"],
+    "chat_template": "deepseek_r1_qwen"
   },
   "-qwen-7b": {
     "name": " Qwen-7B",
-    "tags": ["orin-all"],
+    "tags": ["deepseek-r1-distill", "orin"],
     "chat_template": "deepseek_r1_qwen"
+  },
+  "-llama-8b": {
+    "name": " Llama-8B",
+    "tags": ["deepseek-r1-distill", "orin"],
+    "chat_template": "deepseek_r1_llama"
+  },
+  "-qwen-32b": {
+    "name": " Qwen-32B",
+    "tags": ["deepseek-r1-distill", "agx-orin"],
+    "chat_template": "deepseek_r1_qwen"
+  },
+  "-llama-70b": {
+    "name": " Llama-70B",
+    "tags": ["deepseek-r1-distill", "agx-orin"],
+    "chat_template": "deepseek_r1_llama"
   }
 }

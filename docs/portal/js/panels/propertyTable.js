@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { 
-  PropertyField, PropertyLabel, htmlToNode, as_element, exists
+  PropertyField, PropertyLabel, htmlToNode, 
+  as_element, make_url, exists
 } from '../nanolab.js';
 
 
@@ -66,7 +67,7 @@ export class PropertyTable {
         key: key, 
         property: field_key
       }));
-      html += `<tr><td style="white-space: nowrap;">${PropertyLabel(field)}</td><td style="width: 99%;">${PropertyField(field)}</td></tr>`;
+      html += `<tr><td style="white-space: nowrap; vertical-align: center;">${PropertyLabel(field)}</td><td style="width: 99%;">${PropertyField(field)}</td></tr>`;
     }
 
     this.node.innerHTML = html;
@@ -110,9 +111,7 @@ export class PropertyTable {
   }
 
   updateURL({id,url}) {
-    if( !url.startsWith('http') && !url.startsWith('www') )
-      url = 'http://' + url;
-
+    url = make_url(url);
     let link = this.node.querySelector(`#${id}-link`);
     link.href = url;
     link.title = url;

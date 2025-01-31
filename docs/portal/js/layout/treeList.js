@@ -22,7 +22,7 @@ export function TreeList(x) {
 export function TreeListHeader(x) {
   return `
     <div>
-      <h1>${x.name}</h1>
+      <h1 style="margin-bottom: 15px;">${x.name}</h1>
       <div class="flex flex-column">
         ${x.data}
       </div>
