@@ -9,8 +9,23 @@
     "max_batch_size": 1,
     "max_context_len": null,
     "prefill_chunk": null,
+    "chat_template": null,
     "hf_token": null,
-    "cache_dir": "~/.cache",
-    "property_order": ["url", "container_image", "quantization", "max_batch_size"]
+    "cache_dir": "/mnt/nvme/cache",
+    "property_order": [
+      "url", 
+      "container_image", 
+      "quantization", 
+      "max_batch_size", 
+      "max_context_len", 
+      "prefill_chunk", 
+      "chat_template",
+      "hf_token",
+      "cache_dir",
+      "container_cmd",
+      "container_options",
+      "server_host",
+      "auto_update"
+    ]
   }
 }

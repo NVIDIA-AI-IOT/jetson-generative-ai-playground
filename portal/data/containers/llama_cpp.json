@@ -3,11 +3,11 @@
     "name": "dustynv/llama_cpp:0.3.5-r35.4.1",
     "tags": ["container", "llama_cpp", "l4t-r35"]
   },
-  "llama_cpp:r36": {
-    "name": "dustynv/llama_cpp:0.3.6-r36.4.0",
-    "container_image": "dustynv/llama_cpp:0.3.6-r36.4.0",
+  "llama_cpp:jp6": {
+    "name": "dustynv/llama_cpp:r36.4.0",
+    "container_image": "dustynv/llama_cpp:r36.4.0",
     "container_cmd": "$OPTIONS $IMAGE sudonim serve $ARGS",
-    "container_options": "-it --rm --pull=always",
+    "container_options": "-it --rm",
     "server_host": "0.0.0.0:9000",
     "tags": ["container", "llama_cpp", "l4t-r36"]
   }

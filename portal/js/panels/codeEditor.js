@@ -82,12 +82,14 @@ export class CodeEditor {
       if( exists(pageNode) )
         pageNode.remove();
 
+      const codePage = (exists(tab.header) ? tab.header + '\n' : '') + tab.code;
+
       pageNode = htmlToNode(
         `<div class="code-container full-height hidden" id="${ids.page}">` +
         `<pre><div class="absolute z-top" style="right: 20px;">` +
-        `<i id="${ids.copy}" class="bi bi-copy btn-float ml-5" title="Copy to clipboard"></i>` +
-        `<i id="${ids.download}" class="bi bi-arrow-down-square btn-float" title="Download code"></i></div>` +
-        `<code class="language-${tab.lang} full-height" style="scroll-padding-left: 20px;">${tab.code}</code></pre></div>`
+        `<i id="${ids.download}" class="bi bi-arrow-down-square btn-float" title="Download code"></i>` +
+        `<i id="${ids.copy}" class="bi bi-copy btn-float ml-5" title="Copy to clipboard"></i></div>` +
+        `<code class="language-${tab.lang} full-height" style="scroll-padding-left: 20px;">${codePage}</code></pre></div>`
       );
 
       Prism.highlightAllUnder(pageNode);

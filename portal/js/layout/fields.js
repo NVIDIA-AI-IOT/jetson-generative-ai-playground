@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { 
-  exists, nonempty
+  exists, nonempty, is_string
 } from '../nanolab.js';
 
 
@@ -38,7 +38,7 @@ export function PropertyField({
 
   /* <label for="${id}" class="form-label">${field.name}</label> */
 
-  if( type_key === 'enum' ) {
+  if( type_key === 'enum' || 'options' in field ) {
     let multiple_html = multiple ? 'multiple="multiple"' : '';
 
       /*var options = param['options'];
@@ -51,19 +51,32 @@ export function PropertyField({
       var options = param['suggestions'];
       select2_args[id] = {tags: true, placeholder: 'enter'}; //tags: true, placeholder: 'enter'};
     }*/
-    
-    html += `<select id="${id}" class="property-field" ${data} ${multiple_html} ${title}>\n`;
-    
-    for( let child_key of children ) {
-      if( child_key == value )
+
+    const use_options = nonempty(field.options);
+    const options = use_options ? field.options : children;
+
+    let opt_html = '';
+    let opt_max_len = 0;
+    let opt_styles = 'property-field';
+
+    if( nonempty(field.styles) ) {
+      if( is_string(field.styles) )
+        field.styles = [field.styles];
+      opt_styles += ' ' + field.styles.join(' ');
+    }
+
+    for( let opt_key of options ) {
+      if( opt_key == value )
         var selected = ` selected="selected"`;
       else
         var selected = '';
-
-      html += `  <option value="${child_key}" ${selected}>${db.index[child_key].name}</option>\n`;
+      const opt_name = use_options ? opt_key : db.index[opt_key].name;
+      opt_max_len = Math.max(opt_max_len, opt_name.length);
+      opt_html += `  <option value="${opt_key}" ${selected}>${opt_name}</option>\n`;
     }
     
-    html += `</select>\n`;
+    html += `<select id="${id}" class="${opt_styles}" ${data} ${multiple_html} ${title}>\n`;
+    html += opt_html + `</select>\n`;
   }
   /*else if( 'suggestions' in param ) {
     const list_id = `${id}_list`;
@@ -111,7 +124,7 @@ export function PropertyLabel({
   let title = exists(db.flat[key].help) ? `title="${db.flat[key].help}"` : ``;
 
   let html = `
-    <label for="${id}" class="form-label" ${title}>${db.flat[key].name}</label>
+    <label for="${id}" class="form-label property-label" ${title}>${db.flat[key].name}</label>
   `;
       
   // https://stackoverflow.com/questions/3060055/link-in-input-text-field

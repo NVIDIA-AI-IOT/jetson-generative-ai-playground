@@ -14,6 +14,12 @@
     "tags": ["number"],
     "help": "The maximum number of input tokens that can be prefilled into the KV cache at once. Longer prompts are prefilled in multiple batches.\nReduce this from the model's default to decrease memory usage."
   },
+  "chat_template": {
+    "name": "Chat Template",
+    "tags": ["string"],
+    "placeholder": "<default>",
+    "help": "Manually set the model's conversation template.  Normally this will be attempted to be determined automatically, but in some cases needs set and is specific to runtime APIs and model types."
+  },
   "tensor_parallel": {
     "name": "Tensor Parallel",
     "tags": ["number"],
