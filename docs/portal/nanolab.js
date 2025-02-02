@@ -13,21 +13,7 @@ import './dist/FileSaver/FileSaver.js';
 import './dist/jszip/jszip.js';
 
 if( exists(document) ) { // browser mode
-  include(
-    './css/themes.css',
-    './dist/select2/select2.css',
-    './dist/bootstrap-icons/bootstrap-icons.css',
-    './dist/prism/prism.nvidia.css',
-    './css/styles.css',
-    './css/flex.css', 
-    './css/card.css', 
-    './css/code.css',
-    './css/fields.css',
-    './css/buttons.css', 
-    './css/select.css',
-    './css/modal.css',
-    './data/models/models.css'
-  );
+  include('./dist/nanolab.css');
 }
 
 // export package modules

@@ -123,14 +123,24 @@ export class SearchBar {
       help: 'Grid or list layout'
     });
 
+    const sidebarSwitch = new ToggleSwitch({
+      id: `${this.id}-sidebar-switch`, 
+      value: 'visible', 
+      states: ['visible', 'hidden'], 
+      labels: ['', ''],
+      classes: [
+        ['bi', 'bi bi-chevron-left'], 
+        ['bi', 'bi bi-chevron-right']
+      ],
+      help: 'Show/hide the sidebar'
+    });
+
     html += `</select>
           ${gateSwitch.html()}
-          ${layoutSwitch.html()}
+          ${sidebarSwitch.html()}
         </div>
         <div id="${this.id}-results-area" class="flex flex-row" style="margin-top: 15px;">
           <div id="${this.id}-card-container" style="overflow-x: scroll;">
-          </div>
-          <div class="vertical-divider">
           </div>
         </div>
       </div>
@@ -139,14 +149,17 @@ export class SearchBar {
     this.node = htmlToNode(html);
     this.parent.appendChild(this.node);
 
-    this.node.querySelector(`#${this.id}-results-area`).appendChild(
-      SideBar({id: `${this.id}-sidebar`})
-    )
+    const sidebar = SideBar({id: `${this.id}-sidebar`, searchBar: this});
+    this.node.querySelector(`#${this.id}-results-area`).appendChild(sidebar);
 
-    //$(`#${this.id}-help-container`).draggable();
+    sidebarSwitch.toggled((state) => {
+      const result = sidebar.classList.toggle('hidden');
+      console.log(`Toggled sidebar to ${state} (${result})`);
+    });
 
     gateSwitch.toggled((gate) => self.refresh({gate: gate}));
     //layoutSwitch.toggled((layout) => self.refresh({layout: layout}));
+
 
     $(`#${select2_id}`).select2({
       allowClear: true,
@@ -233,5 +246,5 @@ export class SearchBar {
     ZipGenerator({db: this.db, keys: this.results ?? Object.keys(this.db)});
     //ZipGenerator({db: this.db, keys: Object.keys(this.db)});
   }
-  
+
 }
