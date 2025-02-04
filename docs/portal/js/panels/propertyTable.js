@@ -12,7 +12,7 @@ import {
 export class PropertyTable {
   /*
    * Args:
-   *   db (GraphTags) -- The previously loaded graph DB containing the index.
+   *   db (GraphDB) -- The previously loaded graph DB containing the index.
    *   key (str) -- The resource/model/service to use from the registry index.
    *   show (bool) -- Display the launcher dialog upon create (default=true)
    */

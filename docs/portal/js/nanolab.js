@@ -1,12 +1,13 @@
 #!/usr/bin/env node
+
+/* these migrated to python/bundle.py */
 export * from './utils/html.js';
 export * from './utils/include.js';
 export * from './utils/path.js';
 export * from './utils/time.js';
 export * from './utils/types.js';
 
-export * from './db/graphTags.js';
-export * from './db/generators.js';
+export * from './graphDB.js';
 
 export * from './layout/buttons.js';
 export * from './layout/fields.js';
@@ -21,3 +22,5 @@ export * from './panels/configEditor.js';
 export * from './panels/propertyTable.js';
 export * from './panels/sideBar.js';
 export * from './panels/searchBar.js';
+
+export * from '../dist/resolvers.js';

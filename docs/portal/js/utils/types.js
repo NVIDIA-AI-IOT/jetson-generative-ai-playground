@@ -14,12 +14,23 @@ export function len(x) {
     return Object.keys(x).length;
 }
 
-export function nonempty(x) {
-  return len(x) > 0;
+export function nonempty(x, key) {
+  if( exists(key) ) { // key is optional
+    if( key in x )
+      x = key;
+    else
+      return false;
+  }
+  if( !exists(x) )
+    return false;
+  else if( is_number(x) || is_bool(x) )
+    return true;
+  else
+    return len(x) > 0;
 }
 
-export function is_empty(x) {
-  return !nonempty(x);
+export function is_empty(x, key) {
+  return !nonempty(x, key);
 }
 
 export function is_string(x) {
@@ -27,6 +38,18 @@ export function is_string(x) {
     return true;
   else
     return false;
+}
+
+export function is_bool(x) {
+  return typeof value === 'boolean';
+}
+
+export function is_number(x) {
+  return typeof value === 'number';
+}
+
+export function is_function(x) {
+  return (x instanceof Function);
 }
 
 export function is_dict(x) {
@@ -52,3 +75,31 @@ export function as_element(x) {
 
   return x;
 }
+
+/* 
+ * Recursively deep clone an object (sharing unserializable objects like functions) 
+ * This is used to work around errors you get errors using structuredClone()
+ */
+export function deep_copy(obj) {
+  /*try {
+    return structuredClone(obj);
+  } catch (error) {*/
+    //let clone = obj.getClass().getDeclaredConstructor().newInstance();
+
+  if( is_list(obj) )
+    var clone = [];
+  else if( is_dict(obj) )
+    var clone = {};
+  else
+    return obj;  
+  
+  for( const k in obj ) {
+    clone[k] = deep_copy(obj[k]);  
+  }
+
+  return clone;
+}
+
+export function toTitleCase(x) {
+  return x.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+};

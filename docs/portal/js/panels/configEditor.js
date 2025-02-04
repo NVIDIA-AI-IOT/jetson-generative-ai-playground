@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { 
-  PropertyTable, CodeEditor, ModelGenerator, ModalDialog, 
+  PropertyTable, CodeEditor, ModalDialog, 
   htmlToNode, escapeHTML, exists, nonempty, is_dict,
 } from '../nanolab.js';
 
@@ -11,7 +11,7 @@ import {
 export class ConfigEditor {
   /*
    * Args:
-   *   db (GraphTags) -- The previously loaded graph DB containing the index.
+   *   db (GraphDB) -- The previously loaded graph DB containing the index.
    *   key (str) -- The resource/model/service to use from the registry index.
    *   show (bool) -- Display the launcher dialog upon create (default=true)
    */
@@ -25,19 +25,19 @@ export class ConfigEditor {
     if( !(this.key in this.db.index) )
       throw new Error(`could not find '${this.key}' trying to open editor`);
 
+    let env = this.db.resolve(this.key);
+    const self = this;
+
     // generate children ID's from parent ID
     this.ids = {};
 
     for( const k of ['container', 'header-ext', 'preset-menu', 'dialog', 'property_table', 'property_panel', 'code_panel', 'code_editor'])
       this.ids[k.replace('-','_')] = `${this.id}-${k}`;
 
-    console.log(`[Property Editor] opening ID='${this.id} with children IDs:`, this.ids);
+    console.log(`[Property Editor] opening key '${key}'`);
 
     // get flattened objects and headers (optional)
-    const obj = this.db.flat[this.key];
-    const self = this;
-
-    this.header_class = obj.header;
+    this.header_class = env.header;
     this.has_header = exists(this.header_class);
     this.children = this.db.children[this.key];
     this.menu = this.createMenu();
@@ -72,7 +72,7 @@ export class ConfigEditor {
 
     this.dialog = new ModalDialog({
       id: this.ids.dialog, 
-      title: exists(obj.title) ? obj.title : obj.name, 
+      title: exists(env.title) ? env.title : env.name, 
       body: this.body,
       menu: this.menu,
       header: this.has_header ? `<div id="${this.ids.header_ext}" style="width: 45%;"></div>` : '',
@@ -80,11 +80,13 @@ export class ConfigEditor {
     });
     
     // select from child instances
-    if( this.children.length > 0 )
+    if( this.children.length > 0 ) {
       this.key = this.children[0];
-
+      env = this.db.resolve(this.key);
+    }
+    
     // populate dynamic components
-    this.refresh();
+    this.refresh(this.key, env);
 
     // it would seem it automatically shows by default
     /*if( show ?? true ) {
@@ -126,27 +128,28 @@ export class ConfigEditor {
   /*
    * update dynamic elements on selection changes
    */
-  refresh(key) {
+  refresh(key, env) {
     if( exists(key) )
       this.key = key;
 
     key ??= this.key;
 
-    const obj = this.db.flat[key];
+    if( !exists(env) )
+      env = this.db.resolve(key);
 
     if( this.has_header ) {
       let header = '';
 
-      if( nonempty(obj.links) ) {
+      if( nonempty(env.links) ) {
         header += '<div style="margin-left: 10px">';
-        for( const link_name in obj.links ) {
-          const link = obj.links[link_name];
+        for( const link_name in env.links ) {
+          const link = env.links[link_name];
           header += `<a href="${link.url}" title="${link.url}" class="btn-oval" target="_blank">${link.name}</a>`;
         }
         header += '</div>';
       }
 
-      if( nonempty(obj.stats) ) {
+      if( nonempty(env.stats) ) {
         header += `<table 
             class="tag-oval monospace" 
             style="min-width: 255px; border: 1px solid rgba(255,255,255,0.1);" 
@@ -155,8 +158,8 @@ export class ConfigEditor {
         
         let row = '';
 
-        for( const stat_key in obj.stats ) {
-          const stats = obj.stats[stat_key];
+        for( const stat_key in env.stats ) {
+          const stats = env.stats[stat_key];
           
           if( is_dict(stats) ) {
             var type = Object.keys(stats)[0];
@@ -183,10 +186,17 @@ export class ConfigEditor {
     }
 
     this.properties.refresh(key);
-    this.updateCode(key);
+    this.updateCode(key, env);
   }
 
-  updateCode(key) {
-    this.code.refresh(ModelGenerator({db: this.db, key: key ?? this.key}).pages);
+  updateCode(key, env) {
+    key ??= this.key;
+
+    if( !exists(env) )
+      env = this.db.resolve(key);
+
+    //this.code.refresh(ModelGenerator({db: this.db, key: key ?? this.key}).pages);
+
+    console.log(`Resolved ${key}`, env);
   }
 }

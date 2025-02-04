@@ -18,7 +18,8 @@ export function dirname(x, levels=1) {
 }
 
 export function package_root() {
-  return dirname(import.meta.url, 3);
+  console.log('PACKAGE ROOT', import.meta.url, dirname(import.meta.url, 2));
+  return dirname(import.meta.url, 2);
 }
 
 export function file_extension(x) {

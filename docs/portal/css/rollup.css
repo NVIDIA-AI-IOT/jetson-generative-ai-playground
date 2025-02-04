@@ -63,12 +63,14 @@
 }
 
 .rollup-container.hidden_body .rollup-container-header:hover {
-  background-color: hsl(120, 1%, 64%);
+  color: rgb(250,250,250);
+  background-color:hsl(82, 100%, 32%);
+  /*background-color: hsl(120, 1%, 64%);*/
 }
 
-.rollup-container.hidden_body .rollup-container-title:hover {
+/*.rollup-container.hidden_body .rollup-container-title:hover {
   color: rgb(250,250,250);
-}
+}*/
 
 .root-container {
   scrollbar-color: rgb(255,255,255,0.8);

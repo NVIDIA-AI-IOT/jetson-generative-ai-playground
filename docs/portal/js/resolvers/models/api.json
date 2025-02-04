@@ -1,0 +1,35 @@
+{
+  "models": {
+    "name": "Models",
+    "tags": []
+  },
+  "api": {
+    "name": "Runtime API",
+    "tags": "enum",
+    "help": "The runtime library or container to use for inferencing."
+  },
+  "mlc": {
+    "name": "MLC",
+    "tags": "api",
+    "links": {
+      "mlc": {
+        "name": "MLC",
+        "url": "https://llm.mlc.ai/"
+      }
+    }
+  },
+  "awq": {
+    "name": "AWQ TinyChat",
+    "tags": "api"
+  },
+  "llama_cpp": {
+    "name": "llama.cpp",
+    "tags": "api",
+    "links": {
+      "llama_cpp": {
+        "name": "llama.cpp",
+        "url": "https://github.com/ggerganov/llama.cpp"
+      }
+    }
+  }
+}

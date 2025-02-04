@@ -1,0 +1,36 @@
+{
+  "property": {
+    "name": "property",
+    "tags": []
+  },
+  "number": {
+    "name": "number",
+    "tags": ["property"]
+  },
+  "enum": {
+    "name": "enum",
+    "tags": ["property"]
+  },
+  "bool": {
+    "name": "bool",
+    "tags": ["property"]
+  },
+  "string": {
+    "name": "string",
+    "tags": ["property"]
+  },
+  "path": {
+    "name": "Path",
+    "tags": ["string"],
+    "help": "A local path on the server."
+  },
+  "url": {
+    "name": "Path or URL",
+    "tags": ["string"],
+    "help": "URL of the model repo or local path on the server.\nIf needed, the model will be downloaded to the cache directory and quantized.\nThis location may also refer to model weights that have already been quantized."
+  },
+  "passkey": {
+    "name": "Password, API Key, or Access Token",
+    "tags": ["string"]
+  }
+}

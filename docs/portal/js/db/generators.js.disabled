@@ -175,7 +175,8 @@ export function DockerGenerator({db, key, env}) {
   var compose = composerize(env.pages.docker_run.code, null, 'latest', 2); // this gets imported globally by nanolab.js
   compose = compose.substring(compose.indexOf("\n") + 1); // first line from composerize is an unwanted name
   compose = `# Save as compose.yml and run 'docker compose up'\n` +
-    `# To benchmark: docker compose --profile perf_bench up\n` + 
+    `# Benchmark:  docker compose --profile perf-bench up\n` + 
+    `# Open WebUI: docker compose --profile open-webui up\n` + 
     (model_api === 'llama.cpp' ? '# With llama.cpp backend, you may encounter request ack/response errors (these can safely be ignored during the benchmark)\n' : '') 
     + compose;
 
@@ -195,13 +196,13 @@ export function DockerGenerator({db, key, env}) {
   //
   // Generate alternate docker-compose profiles that support additional tasks/workflows:  
   //
-  //    --profile perf_bench
-  //    --profile acc_bench
+  //    --profile perf-bench
+  //    --profile open-webui
   //
+  let profiles = [];
   let perf_cmd = `docker run -it --rm --network=host `;
   
-  //const model_dir = get_model_cache(env);
-  const perf_container = 'dustynv/mlc:r36.4.0'; // env.container_image
+  const perf_container = 'dustynv/mlc:r36.4.0';
 
   perf_cmd += `${exists(cache_dir) ? cache_dir : ''} `;
   perf_cmd += `${exists(hf_hub_dir) ? hf_hub_dir : ''} `;
@@ -215,28 +216,57 @@ export function DockerGenerator({db, key, env}) {
   if( 'tokenizer' in env )
     perf_cmd += `--tokenizer ${env.tokenizer} `;
 
-  var perf_compose = composerize(perf_cmd, null, 'latest', 2);
+  profiles.push(DockerComposeProfile({
+    profile_name: 'perf-bench',
+    docker_run: perf_cmd  
+  }));
 
-  for( let n=0; n < 3; n++ )
-    perf_compose = perf_compose.substring(perf_compose.indexOf("\n") + 1);
+  //
+  // open-webui
+  //
+  let profile_cmd = `docker run -it --rm --network=host `; 
 
-  const perf_pre = `  perf_bench:\n    profiles:\n      - perf_bench\n` +
-    `    depends_on:\n      llm_server:\n        condition: service_healthy\n`;
+  profile_cmd += `--name open-webui`;
+  profile_cmd += `${exists(hf_token) ? hf_token : ''} `;
+  profile_cmd += `-e ENABLE_OPENAI_API=True `;
+  profile_cmd += `-e ENABLE_OLLAMA_API=False `;
+  profile_cmd += `-e OPENAI_API_BASE_URL='${exists(server_url) ? server_url : "http://0.0.0.0:9000/"}v1' `;
+  profile_cmd += `-e OPENAI_API_KEY=foo `;
 
-  //console.log('PERF CMD', perf_cmd);
-  //console.log(`PERF_COMPOSE\n${perf_compose}\nPERF_PRE\n${perf_pre}`);
+  if( exists(env.cache_dir) ) {
+    const tr = env.cache_dir.trim();
+    if( tr.length > 0 )
+      profile_cmd += `-v ${tr}/open-webui:/app/backend/data `;
+  }
 
-  let code = env.pages.docker_compose.code;
+  profile_cmd += `ghcr.io/open-webui/open-webui:main`;
+
+  profiles.push(DockerComposeProfile({
+    profile_name: 'open-webui',
+    docker_run: profile_cmd 
+  }));
+
+  let code = env.pages.docker_compose.code + '\n' + profiles.join('\n');
 
   code = code.replace('  mlc:', '  llm_server:');
   code = code.replace('  llama_cpp:', '  llm_server:');
   code = code.replace('  tensorrt_llm:', '  llm_server:');
   code = code.replace('  vllm:', '  llm_server:');
 
-  env.pages.docker_compose.code = 
-    code + '\n' + perf_pre + perf_compose;
-
+  env.pages.docker_compose.code = code;
   return env;
+}
+
+export function DockerComposeProfile({profile_name, docker_run, depends='llm_server'}) {
+  let comp = composerize(docker_run, null, 'latest', 2);
+
+  for( let n=0; n < 3; n++ )
+    comp = comp.substring(comp.indexOf("\n") + 1);
+
+  const comp_pre = `  ${profile_name}:\n    profiles:\n      - ${profile_name}\n` +
+    `    depends_on:\n      ${depends}:\n        condition: service_healthy\n`;
+
+  return comp_pre + comp;
 }
 
 const TEST_PROMPT = "Why did the LLM cross the road?";

@@ -1,7 +1,7 @@
 /*
  * Module loader / init (todo: minimize)
  */
-import { exists, include } from "./js/nanolab.js";
+import { exists, include } from "./dist/nanolab.js";
 
 // global side-effect imports
 import './dist/jquery/jquery-3.7.1.min.js';
@@ -17,4 +17,5 @@ if( exists(document) ) { // browser mode
 }
 
 // export package modules
-export * from "./js/nanolab.js";
+export * from "./dist/nanolab.js";
+//export * from "./js/nanolab.js";

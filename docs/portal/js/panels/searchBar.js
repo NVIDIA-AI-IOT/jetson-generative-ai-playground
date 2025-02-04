@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { 
-  GraphTags, TreeGrid, TreeList, ToggleSwitch, 
+  GraphDB, TreeGrid, TreeList, ToggleSwitch, 
   ConfigEditor, htmlToNode, exists, ZipGenerator,
   SideBar, as_element, is_string, is_list, len,
 } from '../nanolab.js';
@@ -139,8 +139,8 @@ export class SearchBar {
           ${gateSwitch.html()}
           ${sidebarSwitch.html()}
         </div>
-        <div id="${this.id}-results-area" class="flex flex-row" style="margin-top: 15px;">
-          <div id="${this.id}-card-container" style="overflow-x: scroll;">
+        <div id="${this.id}-results-area" class="search-results-area">
+          <div id="${this.id}-results-container" class="search-results-container">
           </div>
         </div>
       </div>
@@ -204,7 +204,7 @@ export class SearchBar {
     console.log(`[SearchBar] Updating layout with ${len(keys)} results`, keys);
 
     // reset dynamic cards
-    let card_container = $(`#${this.id}-card-container`);
+    let card_container = $(`#${this.id}-results-container`);
     card_container.empty(); 
 
     // generate dynamic content

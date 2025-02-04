@@ -10,12 +10,12 @@
   </style>
 
   <script type="module">
-    import { GraphTags, SearchBar } from '/portal/nanolab.js';
+    import { GraphDB, SearchBar } from '/portal/nanolab.js';
 
     const GRAPH_TAGS = '/portal/dist/db.json';
 
     window.onload = () => {
-      GraphTags.load(GRAPH_TAGS).then(db => {
+      GraphDB.load(GRAPH_TAGS).then(db => {
         var searchBar = new SearchBar({
           db: db,
           tags: ['models'],

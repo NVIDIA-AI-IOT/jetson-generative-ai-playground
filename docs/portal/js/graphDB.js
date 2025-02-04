@@ -33,6 +33,9 @@
  *     },
  *   }
  * 
+ * These can also be in javascript to attach resolver functions for generating dynamic content.
+ * See the resolvers/ directory for the metadata and templates that actually make up the graph.
+ * 
  * The graph is mapped from this index to flattened sets of parents, children, and fields
  * that get composed from each tag's ancestors and descendants.  These mappings are cached
  * to accelerate lookups on the client and can be accessed via these records in the database:
@@ -64,13 +67,47 @@ import {
  } from "../nanolab.js";
 
 
-export class GraphTags {
+export function Resolver(env)  { return GraphDB.Resolver(env); }
+export function Resolvers(env) { return GraphDB.Resolvers(env); }
+
+
+export class GraphDB {
+
+  // Set of types defined in code
+  static RESOLVERS = {};
+
+  /*
+   * Register a resolver function or static resource
+   */
+  static Resolver(env) {
+    
+    env = GraphDB.sanitize(env);
+    console.log(`[GraphDB]  Registering Resolver:  ${env.key}`, env);
+
+    if( env.key in GraphDB.RESOLVERS )
+      throw new Error(`Resolver key ${env.key} is already used in the GraphDB`);
+
+    GraphDB.RESOLVERS[env.key] = env;
+    return env;
+  }
+
+  /*
+   * Register multiple resolvers (a dict, where each key is another resolver)
+   */
+  static Resolvers(envs) {
+    for( const key in envs ) {
+      envs[key].key ??= key;
+      GraphDB.Resolver(envs[key]);
+    }
+    return envs;
+  }
+
   /*
    * Create database instance from the index of tags, either provided as a dict
-   * or having been loaded from json (see `TagDB.load` to load from file)
+   * or having been loaded from json (see `GraphDB.load` to load from file)
    */
   constructor(index) {
-      this.index = this.sanitize(index);
+      this.index = GraphDB.sanitize_index(Object.assign({}, GraphDB.RESOLVERS, index));
       this.flat = this.flatten();
       this.props = this.typed();
       [
@@ -86,13 +123,13 @@ export class GraphTags {
    */
   static async load(url) {
     // https://www.geeksforgeeks.org/how-to-convert-an-onload-promise-into-async-await/
-    console.log(`[GraphTags] fetching index from ${url}`);
+    console.log(`[GraphDB] fetching index from ${url}`);
     const response = await fetch(url);
     if (!response.ok)
-      throw new Error(`GraphTags failed to fetch index from ${url}`);
+      throw new Error(`GraphDB failed to fetch index from ${url}`);
     const index = await response.json();
-    console.log(`[GraphTags] loaded ${url} (${Object.keys(index).length} records)`);
-    return new GraphTags(index);
+    console.log(`[GraphDB] loaded ${url} (${Object.keys(index).length} records)`);
+    return new GraphDB(index);
   }
 
   /*
@@ -106,7 +143,7 @@ export class GraphTags {
     args.results ??= (args.select == '*') ? {} : [];
 
     if( args.from === '*' ) { // aggegrated results over all records
-      console.group('[GraphTags] Evaluate Query');
+      console.group('[GraphDB] Evaluate Query');
       console.log('QUERY', args);
       for( const id in this.index ) {
         args.from = id;
@@ -122,7 +159,7 @@ export class GraphTags {
       else if( args.select === 'keys' )
         args.results.push(args.from);
       else
-        throw new Error(`[GraphTags] query invalid 'select' argument '${args.select}' ('*' or 'keys' are supported)`);
+        throw new Error(`[GraphDB] query invalid 'select' argument '${args.select}' ('*' or 'keys' are supported)`);
     }
 
     return args.results;
@@ -135,12 +172,12 @@ export class GraphTags {
    */
   eval(args={}) {
     if( !exists(args.where) || !exists(args.in) ) {
-      console.warning(`[GraphTags] query missing WHERE or IN selectors (defaulting to include records)`, args);
+      console.warning(`[GraphDB] query missing WHERE or IN selectors (defaulting to include records)`, args);
       return true;
     }
 
     if( !exists(args.from) || !(args.from in this.index) ) {
-      console.warning(`[GraphTags] query FROM selector '${args.from}' was missing from the index`, args);
+      console.warning(`[GraphDB] query FROM selector '${args.from}' was missing from the index`, args);
       return false;
     }
 
@@ -149,7 +186,7 @@ export class GraphTags {
     else if( args.where in this.flat[args.from] )
       var where = this.flat[args.from][args.where];
     else {
-      console.warning(`[GraphTags] query WHERE selector '${args.where}' was missing from the index`, args);
+      console.warning(`[GraphDB] query WHERE selector '${args.where}' was missing from the index`, args);
       return false;
     }
     
@@ -174,7 +211,7 @@ export class GraphTags {
         }
       }
       else {
-        throw new Error(`[GraphTags] query had invalid value for IN selector '${tag}'`);
+        throw new Error(`[GraphDB] query had invalid value for IN selector '${tag}'`);
       }
     }
     return true; // default filter passthrough
@@ -190,7 +227,7 @@ export class GraphTags {
     }
     else { // passed a dict
       if( !exists(func.func) )
-        throw new Error(`[GraphTags] treeReduce() requires 'func' callback (was ${func})`);
+        throw new Error(`[GraphDB] treeReduce() requires 'func' callback (was ${func})`);
       var key = func.key ?? this.roots;
       var data = '';
       var depth = func.depth ?? 0;
@@ -249,7 +286,7 @@ export class GraphTags {
    */
   walk(args) {
     if( !exists(args.key) || !exists(args.func) ) {
-      console.error(`[GraphTags] walk() requires 'key' and 'func' arguments`, args);
+      console.error(`[GraphDB] walk() requires 'key' and 'func' arguments`, args);
       return;
     }
     if( is_string(args.key) ) {
@@ -278,6 +315,38 @@ export class GraphTags {
   }
 
   /*
+   * Return a copy of the fully-evaluated object, including any templating
+   * or resolver functions recursively applied that fetch or generate content.
+   */
+  resolve(key) {
+    let env = {db: this, key: key, properties: {}};
+  
+    console.log('RESOLVE', key, this.props[key]);
+
+    if( nonempty(this.props[key]) ) {
+      for( const field_key of this.props[key] ) {
+        env.properties[field_key] = this.flatten({key: key, property: field_key});
+        env[field_key] = env.properties[field_key].value;
+        console.log(`RESOLVE set ${key}.${field_key} = ${env[field_key]}`);
+      }
+    }
+  
+    for( const field_key in this.flat[key] ) {
+      if( !exists(env[field_key]) )
+        env[field_key] = this.flat[key][field_key];
+    }
+  
+    /*for( const field_key in env ) {
+      if( field_key in env.properties && 'func' in env.properties[field_key] )
+        env[field_key] = env.properties[field_key]['func'](env);
+    }*/
+
+    // using the little cleaner key led to issues with it not lining up with filesystems
+    //env.model_name ??= get_model_name(env.url) ?? key; // key; 
+    return env;
+  }
+
+  /*
    * Return an index where the tag lists include all parent tags
    * in the heirarchy, up to and including the maximum tree depth.
    * 
@@ -291,9 +360,10 @@ export class GraphTags {
     const depth = args.depth;
     const property = args.property;
 
-    var output = args.output ?? {tags: []};
-    
     if( exists(key) ) { // flatten just one in particular
+      let output = args.output ?? {key: key, tags: []};
+      //console.log(`FLATTEN(key=${key}, property=${property}, output=`, output);
+  
       if( exists(depth) )
         depth -= 1;
 
@@ -303,7 +373,7 @@ export class GraphTags {
       }
 
       if( exists(property) ) { // return just this key's property
-        output = structuredClone(this.flat[property]);
+        output = deep_copy(this.flat[property]);
         const ancestors = this.ancestors[key].reverse().concat([key]);
         for( const ancestor of ancestors ) {
           if( !(property in this.flat[ancestor]) )
@@ -311,14 +381,40 @@ export class GraphTags {
           let prop_dict = this.flat[ancestor][property];
           if( !(is_dict(prop_dict)) )
             prop_dict = {value: prop_dict};
+          //const prev_key = output.key;
+          const prev_value = output.value;
           Object.assign(output, prop_dict); // inherit values up the tree
+          if( exists(prev_value) && !exists(output.value) )
+            output.value = prev_value; // restore nulls
+          //output.key = prev_key;
         }
         return output;
       }
 
+      //output.key = key;
+      
       for( const var_key in this.index[key] ) { // add properties from this key
-        if( !(var_key in output) )
-          output[var_key] = this.index[key][var_key];
+        if( var_key === 'tags' || var_key === 'key' )
+          continue; // tags get handled recursively after properties are filled
+
+        const value = this.index[key][var_key];
+        const unique = ['key', 'name', 'title', 'url', 'help', 'last_modified', 'created_at'];
+
+        if( is_empty(output, var_key) && nonempty(value) ) {
+          //console.log(`INHERITING_EMPTY key=${key}.${var_key} => `, value);
+          output[var_key] = deep_copy(value);
+        }
+        else if( is_dict(value) ) {
+          //console.log(`ASSIGNING DICT key=${key}.${var_key}`, output[var_key], value);
+          Object.assign(output[var_key], value);  
+        }
+        else if( is_list(value) ) {
+          output[var_key] = output[var_key].concat(value);
+        }
+        /*else if( nonempty(value) && !unique.includes(var_key) ) {
+          //console.log(`INHERITING_OVERWRITE key=${key}.${var_key} prev_value=${output[var_key]} => `, value);
+          output[var_key] = value;
+        }*/
       }
 
       for( const key_tag of this.index[key].tags ) { // add tags from this key
@@ -334,8 +430,8 @@ export class GraphTags {
     else { // flatten all resources in the index
       let flat = {};
 
-      for( let key in this.index ) {
-        flat[key] = this.flatten({depth: depth, key: key});
+      for( const k in this.index ) {
+        flat[k] = this.flatten({depth: depth, key: k});
       }
 
       return flat;
@@ -360,8 +456,8 @@ export class GraphTags {
     for( const key of keys )
       closure_up(key);
 
-    console.group(`[GraphTags] Closure with ${keys}`);
-    const graph = new GraphTags(index);
+    console.group(`[GraphDB] Closure with ${keys}`);
+    const graph = new GraphDB(index);
     console.groupEnd();
     return graph;
   }
@@ -447,30 +543,58 @@ export class GraphTags {
     return [parents, children, ancestors, descendants, roots];
   }
 
-  /**
+  /*
    * Check for missing entries and malformed keys
    */
-  sanitize(index) {
+  static sanitize(obj, key) {
+
+    if( !exists(obj.key) ) {
+      if( exists(key) )
+        obj.key = key;
+      else if( exists(obj.func) )
+        obj.key = obj.func.name;
+      else if( exists(obj.name) )
+        obj.key = obj.name.toLowerCase().replace(' ', '-');
+      else
+        throw new Error(`Object was missing key, name, and function - it needs at least one (${obj}, ${key})`);
+    }
+
+    if( exists(key) && key != obj.key )
+      throw new Error(`Mismatch between provided key and object's key:  ${key}  ${obj.key}  (${obj})`);
+
+    key = obj.key;
+
+    if( !exists(obj.name) )
+      obj.name = toTitleCase(key.replace('-', ' ').replace('_', ' '));
+
+    if( !exists(obj.tags) )
+      obj.tags = [];
+    else if( is_string(obj.tags) )
+      obj.tags = [obj.tags];
+
+    return obj;
+  }
+
+  /*
+   * Validate all items in the index
+   */
+  static sanitize_index(index) {
     for( let key in index ) {
       let obj = index[key];
-      if( is_string(obj) )
-        obj = [obj];
-      if( is_list(obj) )
-        obj = {name: key, tags: obj};
-      if( !('name' in obj) )
-        obj.name = key;
-      if( !('tags' in obj) )
-        obj.tags = [];
-      index[key] = obj;
+
+      if( is_string(obj) || is_list(obj) )
+        throw new Error(`Invalid graph object with key '${key}' (${obj}) - all root-level definitions should be dicts`);
+
+      index[key] = GraphDB.sanitize(obj, key);
     }
     return index;
   }
 
-  /**
+  /*
    * Log info about the database to the console
    */
   log() {
-    console.group(`[GraphTags] Topology Map (${Object.keys(this.index).length} nodes)`);
+    console.group(`[GraphDB] Topology Map (${Object.keys(this.index).length} nodes)`);
     console.log('INDEX', this.index);
     console.log('FLAT', this.flat);
     console.log('PARENTS', this.parents);

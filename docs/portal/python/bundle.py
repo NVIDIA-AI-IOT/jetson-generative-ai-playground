@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 import os
+import time
 import json
 import argparse
 
 from pathlib import Path
+from datetime import datetime
 from pprint import pprint, pformat
 
 ROOT=Path(__file__).parents[1]
@@ -26,6 +28,14 @@ CSS=[
     '$ROOT/css/models.css'
 ]
 
+def deployment_files(root: str=None, **kwargs):
+    return {
+        'css': [x.replace('$ROOT', root) for x in CSS],
+        'db': globber(os.path.join(root, 'js/resolvers'), ext='.json'),
+        'js': globber(os.path.join(root, 'js/'), ext='.js', blacklist='nanolab.js')
+    }
+
+
 def cli_arguments():
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
@@ -33,12 +43,15 @@ def cli_arguments():
 
     parser.add_argument('--data', type=str, default='$ROOT/data')
     parser.add_argument('--css', type=str, default='$ROOT/dist/nanolab.css')
+    parser.add_argument('--js', type=str, default='$ROOT/dist/nanolab.js')
     parser.add_argument('--db', type=str, default='$ROOT/dist/db.json')
-
+    
     parser.add_argument('--skip-db', action='store_true')
+    parser.add_argument('--skip-js', action='store_true')
     parser.add_argument('--skip-css', action='store_true')
 
     parser.add_argument('--json-indent', type=int, default=2)
+    parser.add_argument('--watch', action='store_true')
 
     return parser.parse_args()
 
@@ -47,16 +60,15 @@ def format_header(title, sep='#', width=85):
     return f"\n{sep * width}\n{sep * 2} {title}\n{sep * width}\n"
 
 
-def concat_css(css: str=None, root: str=None, **kwargs):
-    abs = [x.replace('$ROOT', root) for x in CSS]
+def concat_css(css: str=None, root: str=None, files=None, **kwargs):
     css = css.replace('$ROOT', root)
 
     print(format_header(f"Concat CSS => {css}"))
-    print(f"{pformat(abs, indent=2)}\n")
+    print(f"{pformat(files, indent=2)}\n")
 
     txt = ''
 
-    for idx, path in enumerate(abs):
+    for idx, path in enumerate(files):
         with open(path, 'r') as file:
             begin = f"/* BEGIN: {CSS[idx]} */"
             end = f"/* END: {CSS[idx]} */"
@@ -69,7 +81,7 @@ def concat_css(css: str=None, root: str=None, **kwargs):
     return txt
 
 
-def glob_json(dirs):
+def globber(dirs, ext='.json', blacklist=[]):
     files = []
 
     if isinstance(dirs, str):
@@ -79,16 +91,57 @@ def glob_json(dirs):
         path = Path(path)
 
     if path.is_dir():
-        subdirs = path.rglob('*.json')
+        subdirs = path.rglob(f'*{ext}')
 
         for s in subdirs:
-            if s.parent != path:
+            if s.name not in blacklist: #s.parent != path:
                 files.append(s)
 
-    elif path.is_file() and path.suffix == '.json':
+    elif path.is_file() and path.suffix == ext:
         files.append(str(path))
 
     return files
+
+
+def merge_js(root: str=None, js: str=None, files=None, **kwargs):
+    print(f"Found {len(files)} javascript files to bundle:\n\n{pformat(files, indent=2)}\n")
+
+    bundle = ''
+
+    for file in files:
+        with open(file, 'r') as f:
+            lines = f.readlines()
+
+        bundle += f"\n/* BEGIN: {file} */\n"
+        importing = False
+  
+        for x in lines:
+            if not x:
+                continue
+
+            if x[0] == '#':
+                bundle += '/* ' + x + ' */'
+            elif x.startswith('import'):
+                if ';' in x:
+                    bundle += '/* ' + x + ' */'
+                else:
+                    importing = True
+                    bundle += '/* ' + x
+            elif importing and ';' in x:
+                importing = False
+                bundle += x + ' */'
+            else:
+                bundle += x
+
+        bundle += f"\n/* END: {file} */\n"
+
+    dst_path = js.replace('$ROOT', root)
+    print(f"Writing {len(bundle)} bytes to:   {dst_path}")
+
+    with open(dst_path, 'w') as f:
+        f.write(bundle)
+
+    return bundle
 
 
 def merge_json(src, dst={}):
@@ -101,16 +154,13 @@ def merge_json(src, dst={}):
     return dst
 
 
-def merge_db(db: str=None, root: str=None, data: str=None, json_indent: int=2, **kwargs):
+def merge_db(db: str=None, root: str=None, json_indent: int=2, files=None, **kwargs):
     db = db.replace('$ROOT', root)
-    data = data.replace(f'$ROOT', root)
 
     print(format_header(f'Merging GraphDB => {db}'))
-          
-    files = glob_json(data)
-    index = {}
+    print(f"Found {len(files)} json files to bundle:\n\n{pformat(files, indent=2)}\n")
 
-    print(f"Found {len(files)} json files under {data}:\n\n{pformat(files, indent=2)}\n")
+    index = {}
 
     for file in files:
         merge_json(file, index)
@@ -121,14 +171,44 @@ def merge_db(db: str=None, root: str=None, data: str=None, json_indent: int=2, *
     print(f"\nWrote {len(index.keys())} entries from {len(files)} files to:\n  {db}\n")
    
 
-if __name__ == "__main__":
+def deploy(skip_css=False, skip_db=False, skip_js=False, files=None, **kwargs):
+    if not skip_css:
+        concat_css(**kwargs, files=files['css'])
 
+    if not skip_db:
+        merge_db(**kwargs, files=files['db'])
+
+    if not skip_js:
+        merge_js(**kwargs, files=files['js'])
+
+    print(f'Refreshed deployment at:  {datetime.now().strftime("%H:%M:%S")}')
+        
+def main():
     args = cli_arguments()
+    files = deployment_files(**vars(args))
+    times = {}
 
-    if not args.skip_css:
-        concat_css(**vars(args))
+    if not args.watch:
+        return deploy(**vars(args), files=files)
 
-    if not args.skip_db:
-        merge_db(**vars(args))
+    while True:
+        changed = False
+
+        for x, xf in files.items():
+            for file in xf:
+                last_updated = os.stat(file).st_mtime
+                if file not in times or times[file] != last_updated:
+                    changed = True
+                    times[file] = last_updated
+                    print(f"\nFILE CHANGED  {file} ({last_updated})")
+                
+
+        if changed:
+            deploy(**vars(args), files=files)
+
+        time.sleep(1.5)
+
+if __name__ == "__main__":
+    main()
     
     
