@@ -14,11 +14,10 @@ export class PropertyTable {
    * Args:
    *   db (GraphDB) -- The previously loaded graph DB containing the index.
    *   key (str) -- The resource/model/service to use from the registry index.
-   *   show (bool) -- Display the launcher dialog upon create (default=true)
    */
-  constructor({db, key, id, parent}) {
+  constructor({db, key, env, id, parent}) {
     this.db = db;
-    this.key = key;
+    this.key = key ?? env.key;
     this.id = id ?? `${key}-property-table`;
 
     this.events = {};
@@ -28,7 +27,7 @@ export class PropertyTable {
     if( !(this.key in this.db.index) )
       throw new Error(`could not find '${this.key}' trying to open property editor`);
 
-    this.refresh();
+    this.refresh(this.key, env);
   }
 
   /*
@@ -42,31 +41,45 @@ export class PropertyTable {
   /*
    * update dynamic elements on selection changes
    */
-  refresh(key) {
+  refresh(key, env) {
     if( exists(key) )
       this.key = key;
+    else if( exists(env) )
+      this.key = key = env.key;
 
     key ??= this.key;
+    env ??= this.db.resolve(key);
 
     let html = '';
-    let fields = this.db.flat[key].property_order ?? [];
+    let fields = env.property_order ?? [];
 
-    for( const field_key of this.db.props[key] ) {
+    for( const field_key in env.properties ) {
       if( !fields.includes(field_key) )
         fields.push(field_key);
     }
 
     for( const field_key of fields ) {
+      if( is_empty(env.properties, field_key) ) {
+        console.warn(`[Property Editor] Missing property '${field_key}' in '${env.key}'  (skipping...)`);
+        continue;
+      }
+
+      if( env.properties[field_key].hidden )
+        continue;
+
       const field = Object.assign({
         db: this.db,
         key: field_key,
-        value: this.db.flat[key][field_key],
+        value: env[field_key],
         id: `${field_key}-control`,
       }, 
-      this.db.flatten({
+      env.properties[field_key]);
+      /*this.db.flatten({
         key: key, 
         property: field_key
-      }));
+      }));*/
+      //console.log(field);
+      
       html += `<tr><td style="white-space: nowrap; vertical-align: center;">${PropertyLabel(field)}</td><td style="width: 99%;">${PropertyField(field)}</td></tr>`;
     }
 
@@ -92,10 +105,13 @@ export class PropertyTable {
 
   setProperty(args={}) {
     const id = args.target.id;
-    const value = args.target.value;
+    let value = args.target.value;
     const event_key = args.target.dataset.key;
 
     console.log(`[Property Editor] Value of ${event_key} (id=${id}) for ${this.key} changed to '${value}'`);
+
+    if( this.db.ancestors[event_key].includes('number') ) 
+      value = Number(value);
 
     this.db.flat[this.key][event_key] = value;
     

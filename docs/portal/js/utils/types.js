@@ -94,7 +94,10 @@ export function deep_copy(obj) {
     return obj;  
   
   for( const k in obj ) {
-    clone[k] = deep_copy(obj[k]);  
+    if( is_string(k) && k === 'db' )
+      clone[k] = obj[k];
+    else
+      clone[k] = deep_copy(obj[k]);  
   }
 
   return clone;

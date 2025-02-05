@@ -5,23 +5,27 @@ export function docker_run(env) {
   //if( !(key in db.ancestors) || !db.ancestors[key].includes('container') )
   //  return;
 
-  const opt = wrapLines(docker_options(env)) + ' \\\n ';
+  const opt = wrapLines(env.docker_options) + ' \\\n ';
 
   const image = `${env.docker_image} \\\n   `; 
-  const args = docker_args(env);
+  const exec = `${env.docker_cmd} \\\n   `;
+   
+  let args = docker_args(env);
 
   let cmd = env.docker_run
     .trim()
     .replace('$OPTIONS', '${OPTIONS}')
     .replace('$IMAGE', '${IMAGE}')
+    .replace('$COMMAND', '${COMMAND}')
     .replace('$ARGS', '${ARGS}');
 
   if( !cmd.endsWith('${ARGS}') )
     args += ` \\\n      `;  // line break for user args
 
-  cmd = `docker run ${cmd}`
+  cmd = cmd
     .replace('${OPTIONS}', opt)
     .replace('${IMAGE}', image)
+    .replace('${COMMAND}', exec)
     .replace('${ARGS}', args)
     .replace('\\ ', '\\')
     .replace('  \\', ' \\');  
@@ -32,10 +36,10 @@ export function docker_run(env) {
 Resolver({
   func: docker_run,
   name: 'Docker Run Cmd',
-  tags: 'string',
-  value: "$OPTIONS $IMAGE $ARGS",
+  tags: ['string', 'shell'],
+  value: "docker run $OPTIONS $IMAGE $COMMAND $ARGS",
   help: [
-    `Template that builds the 'docker run' command from $OPTIONS $IMAGE $ARGS\n`,
-    `You can change the startup command or arguments with this.`,
+    `Template that builds the 'docker run' command from $OPTIONS $IMAGE $COMMAND $ARGS\n`,
+    `You can more deeply customize the container settings by altering these.`,
   ]
 });

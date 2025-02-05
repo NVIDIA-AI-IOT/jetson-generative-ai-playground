@@ -4,13 +4,13 @@
   color: rgba(255,255,255,0.95);
   background: var(--theme-gray-dark);
   /*background: linear-gradient(165deg, rgb(0,0,0,0.475) 0%, rgb(0,0,0,0.55) 100%);*/
-  padding: 40px 10px 15px 10px;
+  padding: 5px 10px 15px 10px;
 }
 
 pre[class*="language-"] {
   background: var(--theme-gray-darker);
   padding: 12px 10px;
-  margin: 5px 0px 0px 0px;
+  margin: 10px;
   height: 100%;
 }
 
@@ -19,6 +19,19 @@ pre[class*="language-"] > code[class*="language-"] {
   padding: 0;
   margin: 0;
   font-size: 15px;
+}
+
+.tab-page-container {
+  /*background: var(--theme-gray-dark2);*/
+  margin: 40px 0px 0px 0px;
+  border-style: solid;
+  /*! border-top: rgb(180, 32, 32); */
+  border-width: 1px 0px 0px 0px;
+  border-top-color: rgb(120, 120, 120);
+}
+
+.tab-page-title {
+  font-size: 125%;
 }
 
 .code-block, .btn-float, .btn-absolute {

@@ -58,7 +58,7 @@ export class ConfigEditor {
 
     this.properties = new PropertyTable({
       db: db,
-      key: key,
+      env: env,
       id: this.ids.property_table,
       parent: this.body.querySelector(`#${this.ids.property_panel}`)
     });
@@ -195,7 +195,7 @@ export class ConfigEditor {
     if( !exists(env) )
       env = this.db.resolve(key);
 
-    //this.code.refresh(ModelGenerator({db: this.db, key: key ?? this.key}).pages);
+    this.code.refresh(env);
 
     console.log(`Resolved ${key}`, env);
   }

@@ -54,22 +54,22 @@ export class SearchBar {
     if( this.gate === 'or' )
       tags = [tags];  // nest tags for compound OR
 
-    this.results = this.db.query({
+    this.last_query = this.db.query({
       select: 'keys',
       from: '*',
       where: 'ancestors',
       in: tags
     });
 
-    for( const tag of tags ) { // add tags themselves from query
+    /*for( const tag of tags ) { // add tags themselves from query
       if( !this.results.includes(tag) )
         this.results.push(tag); 
-    } 
+    } */
 
     if( update ?? true )
       this.refresh();
 
-    return this.results;
+    return this.last_query;
   }
 
   /*
@@ -199,9 +199,9 @@ export class SearchBar {
     }
 
     if( !exists(keys) )
-      keys = this.results;
+      keys = this.last_query.results;
 
-    console.log(`[SearchBar] Updating layout with ${len(keys)} results`, keys);
+    console.log(`[SearchBar] Updating layout with ${len(keys)} results`, keys, 'roots', this.last_query.roots);
 
     // reset dynamic cards
     let card_container = $(`#${this.id}-results-container`);
@@ -212,7 +212,8 @@ export class SearchBar {
 
     html += this.db.treeReduce({
       func: this.layouts[this.layout],
-      mask: this.results
+      keys: this.last_query.roots,
+      mask: keys,
     });
 
     html += `</div>`;

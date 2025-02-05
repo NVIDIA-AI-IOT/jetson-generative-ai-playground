@@ -32,5 +32,17 @@
   "passkey": {
     "name": "Password, API Key, or Access Token",
     "tags": ["string"]
+  },
+  "resource": {
+    "help": "The resource tag is for code, documents, media, or other assets that can be shared or composited."
+  },
+  "code": {
+    "tags": "string"
+  },
+  "shell": {
+    "language": "shell",
+    "extension": ".sh",
+    "interpreter": "/bin/bash",
+    "tags": ["code", "resource"]
   }
 }

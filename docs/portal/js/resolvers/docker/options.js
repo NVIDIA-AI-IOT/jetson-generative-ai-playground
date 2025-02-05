@@ -8,15 +8,9 @@ export function docker_options(env) {
     opt.push(env.docker_options);
 
   if( nonempty(env.CUDA_VISIBLE_DEVICES) )
-    opt.push('--gpus ${env.CUDA_VISIBLE_DEVICES}');
+    opt.push(`--gpus ${env.CUDA_VISIBLE_DEVICES}`);
 
-  if( nonempty(env.server_host) ) {
-    var server_url = new URL('http://' + env.server_host);
-    opt.push('-p ${server_url.port}:${server_url.port}');
-  }
-  else {
-    opt.push('--network host');
-  }
+  opt.push(docker_network(env));
 
   if( !exists(env.auto_update) || env.auto_update != 'off' ) {
     opt.push('--pull always');

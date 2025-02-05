@@ -39,10 +39,11 @@ export class CodeEditor {
   /*
    * Layout components given a set of code tabs, sources, or files.
    */
-  refresh(tabs) {
+  refresh(env, group_by='resource') {
+    const db = env.db;
     const self = this;
-
-    if( !exists(tabs) )
+    
+    if( !exists(env) )
       return;
 
     if( this.refreshing ) {
@@ -50,13 +51,34 @@ export class CodeEditor {
       return;
     }
     
-    console.log(`[CodeEditor] refreshing tabs with:`, tabs);
+    console.log(`[CodeEditor] refreshing tabs with:`, env);
 
-    this.pages = tabs;
     this.refreshing = true;
+    this.pages = {};
 
-    for( const tab_key in tabs ) {
-      const tab = tabs[tab_key];
+    for( const field_key in env.properties ) {
+      if( !db.ancestors[field_key].includes(group_by) )
+        continue;
+      
+      for( const ancestor of db.ancestors[field_key] ) {
+        if( !db.children[group_by].includes(ancestor) )
+          continue;
+
+        if( !(ancestor in this.pages) ) 
+          this.pages[ancestor] = {};
+
+        let page = {...env.properties[field_key]};
+
+        if( exists(page.value) )
+          page.default = page.value;
+
+        page.value = env[field_key];
+        this.pages[ancestor][field_key] = page;
+      }
+    }
+
+    for( const tab_key in this.pages ) {
+      const tab = this.pages[tab_key];
       const ids = this.ids(tab_key);
 
       const activeTab = this.getActiveTab();
@@ -66,7 +88,7 @@ export class CodeEditor {
       {
         const tabNodes = htmlToNodes(
           `<input type="radio" id="${ids.tab}" class="btn-group-item" name="${this.id}-tab-group" ` +
-          `${isActive ? ' checked ' : ' '}> <label for="${ids.tab}">${tab.name}</label>`
+          `${isActive ? ' checked ' : ' '}> <label for="${ids.tab}">${tab_key}</label>`
         );
 
         for( const node of tabNodes ) {
@@ -77,33 +99,59 @@ export class CodeEditor {
         }
       }
 
-      let pageNode = document.getElementById(ids.page);
+      let tabNode = this.node.querySelector(`#${ids.page}`);
 
-      if( exists(pageNode) )
-        pageNode.remove();
+      if( exists(tabNode) )
+        tabNode.remove();
 
-      const codePage = (exists(tab.header) ? tab.header + '\n' : '') + tab.code;
+      tabNode = htmlToNode(`<div class="code-container full-height hidden" id="${ids.page}"></div>`);
 
-      pageNode = htmlToNode(
-        `<div class="code-container full-height hidden" id="${ids.page}">` +
-        `<pre><div class="absolute z-top" style="right: 20px;">` +
-        `<i id="${ids.download}" class="bi bi-arrow-down-square btn-float" title="Download code"></i>` +
-        `<i id="${ids.copy}" class="bi bi-copy btn-float ml-5" title="Copy to clipboard"></i></div>` +
-        `<code class="language-${tab.lang} full-height" style="scroll-padding-left: 20px;">${codePage}</code></pre></div>`
-      );
+      for( const page_key in tab ) {
+        const page = tab[page_key];
+        const page_ids = this.ids(`${tab_key}-${page_key}`);
+        const has_code = env.properties[page_key].tags.includes('code');
+            
+        let html = `<div id="${page_ids.page}" class="tab-page-container full-height"><div>`;
 
-      Prism.highlightAllUnder(pageNode);
-      this.node.appendChild(pageNode);
+        html += page.header ?? `<div class="tab-page-title">${env.properties[page_key].name}</div>`;
+        html += '</div><div class="tab-res-container"></div>';
 
-      document.getElementById(ids.copy).addEventListener('click', (evt) => {
-          console.log(`[Property Editor] Copying text from code block to clipboard`);
-          navigator.clipboard.writeText(tab.code);
-      });
+        if( exists(page.footer))
+          html += `<div>${page.footer}</div>`;
 
-      document.getElementById(ids.download).addEventListener('click', (evt) => {
-        console.log(`[Property Editor] Downloading file ${tab_key}`, tab);
-        save_page({page:tab});
-      });
+        const pageNode = htmlToNode(html + '</div>');
+        const pageBody = pageNode.querySelector('.tab-res-container');
+
+        if( has_code ) {
+          const codeBlock = htmlToNode(
+            `<pre><div class="absolute z-top" style="right: 20px;">` +
+            `<i id="${page_ids.download}" class="bi bi-arrow-down-square btn-float" title="Download code"></i>` +
+            `<i id="${page_ids.copy}" class="bi bi-copy btn-float ml-5" title="Copy to clipboard"></i></div>` +
+            `<code class="language-${page.language} full-height" style="scroll-padding-left: 20px;">${page.value}</code></pre>`
+          );
+          
+          Prism.highlightAllUnder(codeBlock);
+
+          codeBlock.querySelector(`#${page_ids.copy}`).addEventListener('click', (evt) => {
+            console.log(`[Property Editor] Copying text from code block to clipboard`);
+            navigator.clipboard.writeText(page.value);
+          });
+  
+          codeBlock.querySelector(`#${page_ids.download}`).addEventListener('click', (evt) => {
+            console.log(`[Property Editor] Downloading file ${page_key}`, page);
+            save_page({page:page});
+          });
+
+          pageBody.appendChild(codeBlock);
+        }
+        else if( exists(env.value) ) {
+          pageBody.appendChild(htmlToNode(`<div>${env.value}</div>`));
+        }
+
+        tabNode.appendChild(pageNode);
+      }
+
+      this.node.appendChild(tabNode);
 
       if( isActive )
         this.setActiveTab(tab_key);
@@ -156,6 +204,7 @@ export class CodeEditor {
       tab.checked = true;  // this still fires events...
 
     for( const page of this.node.getElementsByClassName('code-container') ) {
+      console.log('SET ACTIVE', page, ids.page);
       if( page.id === ids.page )
         page.classList.remove('hidden');
       else

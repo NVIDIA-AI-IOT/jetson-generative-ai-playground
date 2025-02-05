@@ -3,6 +3,18 @@
  */
 
 Resolvers({
+  container: {
+    name: "Docker Container",
+    tags: [],
+    docker_options: null,
+    docker_image: null,
+    docker_cmd: null,
+    docker_run: null,
+    auto_update: null,
+    cache_dir: null,
+    CUDA_VISIBLE_DEVICES: "all"
+  },
+
   docker_image: {
     tags: "string",
     help: [
@@ -10,6 +22,14 @@ Resolvers({
       "On Jetson, pick a tag that is compatible with your version of JetPack.\n",
       "For example, L4T r36.4.0 images are compatible with JetPack 6.1 and 6.2.\n",
       "These are built from jetson-containers with CUDA and are on DockerHub."
+    ]
+  },
+
+  docker_cmd: {
+    name: "Docker Entrypoint",
+    tags: "string",
+    help: [
+      "Override the default docker entrypoint command and its arguments that get executed when the container starts.",
     ]
   },
 

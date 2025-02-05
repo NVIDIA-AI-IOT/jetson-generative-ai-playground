@@ -30,7 +30,7 @@ export class ModalDialog {
     this.node = htmlToNode(html);
     this.body = this.node.querySelector('.modal-body');
 
-    if( exists(menu) ) {
+    if( nonempty(menu) ) {
       this.node.querySelector(
         '.modal-title-bar'
       ).appendChild(htmlToNode(menu));

@@ -43,12 +43,13 @@
  *  -------------------------------------------------------------------------------
  *   Mapping       Type                    Description
  *  -------------------------------------------------------------------------------
- *    db.index      dict[key, dict[tag]]    Original key->tag definitions
- *    db.flat       dict[key, dict[tag]]    Expanded inherited/composed fields
- *    db.props      dict[key, list[prop]]   List of typed property keys
- *    db.parents    dict[key, list[key]]    List of keys of all ancestors
- *    db.children   dict[key, list[key]]    List of keys of all descendants
- *    db.roots      list[key]               List of keys of root elements
+ *    db.index       dict[key, dict[tag]]    Original key->tag definitions
+ *    db.flat        dict[key, dict[tag]]    Expanded inherited/composed fields
+ *    db.props       dict[key, list[prop]]   List of typed property keys
+ *    db.roots       list[key]               List of keys of root elements
+ *    db.children    dict[key, list[key]]    List of keys that tag this key
+ *    db.ancestors   dict[key, list[key]]    Flattened list of all parents in the heirarchies
+ *    db.descendants dict[key, list[key]]    Flattened list of all children in the heirarchies
  * 
  * The database can be searched and filtered with `db.query()` to traverse the graph
  * and find the tags that include the set of requested tags from the query:
@@ -107,14 +108,14 @@ export class GraphDB {
    * or having been loaded from json (see `GraphDB.load` to load from file)
    */
   constructor(index) {
-      this.index = GraphDB.sanitize_index(Object.assign({}, GraphDB.RESOLVERS, index));
+      this.index = GraphDB.sanitizeIndex(Object.assign({}, GraphDB.RESOLVERS, index));
       this.flat = this.flatten();
       this.props = this.typed();
       [
         this.parents, this.children, 
         this.ancestors, this.descendants,
         this.roots,
-      ] = this.map_topology();
+      ] = this.mapTopology();
       this.log();
   }
 
@@ -141,6 +142,7 @@ export class GraphDB {
     args.select ??= '*';
     args.from ??= '*';
     args.results ??= (args.select == '*') ? {} : [];
+    args.roots ??= [];
 
     if( args.from === '*' ) { // aggegrated results over all records
       console.group('[GraphDB] Evaluate Query');
@@ -153,7 +155,9 @@ export class GraphDB {
       console.groupEnd();
     }
     else if( this.eval(args) ) { // just filter against this key only
-      //console.log('FILTER TRUE', args);
+      const root = this.primaryRoot(args.from);
+      if( exists(root) && !args.roots.includes(root) )
+        args.roots.push(root);
       if( args.select === '*' )
         args.results[args.from] = this.flat[args.from];
       else if( args.select === 'keys' )
@@ -162,7 +166,7 @@ export class GraphDB {
         throw new Error(`[GraphDB] query invalid 'select' argument '${args.select}' ('*' or 'keys' are supported)`);
     }
 
-    return args.results;
+    return args;
   }
 
   /*
@@ -228,7 +232,7 @@ export class GraphDB {
     else { // passed a dict
       if( !exists(func.func) )
         throw new Error(`[GraphDB] treeReduce() requires 'func' callback (was ${func})`);
-      var key = func.key ?? this.roots;
+      var key = func.key ?? func.keys ?? this.roots;
       var data = '';
       var depth = func.depth ?? 0;
       var mask = func.mask;
@@ -321,13 +325,13 @@ export class GraphDB {
   resolve(key) {
     let env = {db: this, key: key, properties: {}};
   
-    console.log('RESOLVE', key, this.props[key]);
+    //console.log('RESOLVE', key, this.props[key]);
 
     if( nonempty(this.props[key]) ) {
       for( const field_key of this.props[key] ) {
         env.properties[field_key] = this.flatten({key: key, property: field_key});
         env[field_key] = env.properties[field_key].value;
-        console.log(`RESOLVE set ${key}.${field_key} = ${env[field_key]}`);
+        //console.log(`RESOLVE set ${key}.${field_key} = ${env[field_key]}`);
       }
     }
   
@@ -336,10 +340,10 @@ export class GraphDB {
         env[field_key] = this.flat[key][field_key];
     }
   
-    /*for( const field_key in env ) {
+    for( const field_key in env ) {
       if( field_key in env.properties && 'func' in env.properties[field_key] )
         env[field_key] = env.properties[field_key]['func'](env);
-    }*/
+    }
 
     // using the little cleaner key led to issues with it not lining up with filesystems
     //env.model_name ??= get_model_name(env.url) ?? key; // key; 
@@ -362,8 +366,8 @@ export class GraphDB {
 
     if( exists(key) ) { // flatten just one in particular
       let output = args.output ?? {key: key, tags: []};
-      //console.log(`FLATTEN(key=${key}, property=${property}, output=`, output);
-  
+      //console.log(`Flatten ${key}`, output);
+
       if( exists(depth) )
         depth -= 1;
 
@@ -391,28 +395,22 @@ export class GraphDB {
         return output;
       }
 
-      //output.key = key;
-      
       for( const var_key in this.index[key] ) { // add properties from this key
         if( var_key === 'tags' || var_key === 'key' )
           continue; // tags get handled recursively after properties are filled
 
         const value = this.index[key][var_key];
-        const unique = ['key', 'name', 'title', 'url', 'help', 'last_modified', 'created_at'];
 
-        if( is_empty(output, var_key) && nonempty(value) ) {
-          //console.log(`INHERITING_EMPTY key=${key}.${var_key} => `, value);
+        if( is_empty(output, var_key) /*&& nonempty(value)*/ ) {
           output[var_key] = deep_copy(value);
         }
         else if( is_dict(value) ) {
-          //console.log(`ASSIGNING DICT key=${key}.${var_key}`, output[var_key], value);
           Object.assign(output[var_key], value);  
         }
         else if( is_list(value) ) {
           output[var_key] = output[var_key].concat(value);
         }
         /*else if( nonempty(value) && !unique.includes(var_key) ) {
-          //console.log(`INHERITING_OVERWRITE key=${key}.${var_key} prev_value=${output[var_key]} => `, value);
           output[var_key] = value;
         }*/
       }
@@ -431,7 +429,9 @@ export class GraphDB {
       let flat = {};
 
       for( const k in this.index ) {
+        //console.groupCollapsed(`Flatten ${k}`);
         flat[k] = this.flatten({depth: depth, key: k});
+        //console.groupEnd();
       }
 
       return flat;
@@ -486,11 +486,22 @@ export class GraphDB {
     return fields;
   }
 
+
+  /*
+   * Find the root node with the shortest path to this node.
+   */
+  primaryRoot(key) {
+    for( const parent of this.ancestors[key] ) {
+      if( this.roots.includes(parent) )
+        return parent;
+    }
+  }
+
   /**
    * Build the tree of parents and children from the flat list of tags.
    * @note this is automatically performed on init and the results cached.
    */
-  map_topology(index=this.index) {
+  mapTopology(index=this.index) {
     //const index = exists(args.index) ? args.index : this.index;
     var parents = {}, children = {}, roots = [];
     var ancestors = {}, descendants = {};
@@ -578,7 +589,7 @@ export class GraphDB {
   /*
    * Validate all items in the index
    */
-  static sanitize_index(index) {
+  static sanitizeIndex(index) {
     for( let key in index ) {
       let obj = index[key];
 

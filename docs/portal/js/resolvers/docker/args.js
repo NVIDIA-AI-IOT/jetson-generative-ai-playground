@@ -7,17 +7,17 @@ export function docker_args(env) {
   const model_repo = get_model_repo(env.url ?? env.model_name);
   const server_url = get_server_url(env);
 
-  let args = ` \\
-      --model ${model_repo} \\
+  let args = `  --model ${model_repo} \\
       --quantization ${env.quantization} \\
       --max-batch-size ${env.max_batch_size}`;
 
-  if( exists(env.max_context_len) ) {
+  console.log('MAX CONTEXT LEN', env.max_context_len);
+  if( is_number(env.max_context_len) ) {
     args += ` \\
       --max-context-len ${env.max_context_len}`;
   }
 
-  if( exists(env.prefill_chunk) ) {
+  if( is_number(env.prefill_chunk) ) {
     args += ` \\
       --prefill-chunk ${env.prefill_chunk}`;
   }
