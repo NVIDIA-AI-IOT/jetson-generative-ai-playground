@@ -17,7 +17,7 @@ export class CodeEditor {
     this.id = id ?? `code-editor`;
     this.parent = as_element(parent);
     this.outerHTML = `
-      <div id="${this.id}" class="full-height">
+      <div id="${this.id}" class="code-editor">
         <div id="${this.id}-tab-group" class="btn-group">
             <i id="${this.id}-download-set" class="bi bi-arrow-down-circle btn-float btn-absolute" title="Download the set of scripts for this model in a zip"></i>
         </div>
@@ -56,7 +56,19 @@ export class CodeEditor {
     this.refreshing = true;
     this.pages = {};
 
+    let properties = env.property_order ?? [];
+
     for( const field_key in env.properties ) {
+      if( !properties.includes(field_key) )
+        properties.push(field_key);
+    }
+
+    for( const field_key of properties ) {
+      if( !(field_key in db.index) ) {
+        console.warn(`Missing key '${field_key}' from ${env.key}.${field_key}`, properties);
+        continue;
+      }
+
       if( !db.ancestors[field_key].includes(group_by) )
         continue;
       
@@ -104,51 +116,21 @@ export class CodeEditor {
       if( exists(tabNode) )
         tabNode.remove();
 
-      tabNode = htmlToNode(`<div class="code-container full-height hidden" id="${ids.page}"></div>`);
+      tabNode = htmlToNode(`
+        <div class="code-container full-height hidden" id="${ids.page}">
+          <div class="tab-scroll-container"></div>
+        </div>`
+      );
+
+      const scrollArea = tabNode.querySelector('.tab-scroll-container');
 
       for( const page_key in tab ) {
-        const page = tab[page_key];
-        const page_ids = this.ids(`${tab_key}-${page_key}`);
-        const has_code = env.properties[page_key].tags.includes('code');
-            
-        let html = `<div id="${page_ids.page}" class="tab-page-container full-height"><div>`;
-
-        html += page.header ?? `<div class="tab-page-title">${env.properties[page_key].name}</div>`;
-        html += '</div><div class="tab-res-container"></div>';
-
-        if( exists(page.footer))
-          html += `<div>${page.footer}</div>`;
-
-        const pageNode = htmlToNode(html + '</div>');
-        const pageBody = pageNode.querySelector('.tab-res-container');
-
-        if( has_code ) {
-          const codeBlock = htmlToNode(
-            `<pre><div class="absolute z-top" style="right: 20px;">` +
-            `<i id="${page_ids.download}" class="bi bi-arrow-down-square btn-float" title="Download code"></i>` +
-            `<i id="${page_ids.copy}" class="bi bi-copy btn-float ml-5" title="Copy to clipboard"></i></div>` +
-            `<code class="language-${page.language} full-height" style="scroll-padding-left: 20px;">${page.value}</code></pre>`
-          );
-          
-          Prism.highlightAllUnder(codeBlock);
-
-          codeBlock.querySelector(`#${page_ids.copy}`).addEventListener('click', (evt) => {
-            console.log(`[Property Editor] Copying text from code block to clipboard`);
-            navigator.clipboard.writeText(page.value);
-          });
-  
-          codeBlock.querySelector(`#${page_ids.download}`).addEventListener('click', (evt) => {
-            console.log(`[Property Editor] Downloading file ${page_key}`, page);
-            save_page({page:page});
-          });
-
-          pageBody.appendChild(codeBlock);
-        }
-        else if( exists(env.value) ) {
-          pageBody.appendChild(htmlToNode(`<div>${env.value}</div>`));
-        }
-
-        tabNode.appendChild(pageNode);
+        scrollArea.appendChild(this.createPage(
+          tab[page_key], 
+          page_key,
+          this.ids(`${tab_key}-${page_key}`),
+          env,
+        ));
       }
 
       this.node.appendChild(tabNode);
@@ -158,6 +140,61 @@ export class CodeEditor {
     }
 
     this.refreshing = false;
+  }
+
+  /*
+   * Create a page of resources
+   */
+  createPage(page, page_key, page_ids, env) {
+    /*const page_key = page.key;*/
+    const property = env.properties[page_key];
+    const has_code = property.tags.includes('code');
+        
+    let html = `<div id="${page_ids.page}" class="tab-page-container full-height"><div>`;
+
+    html += page.header ?? `<div class="tab-page-title">${property.title ?? property.name}</div>`;
+  
+    if( exists(page.text) ) {
+      if( is_list(page.text) )
+        page.text = page.text.join(' ');
+      html += `<div class="tab-page-text">${page.text}</div>`;
+    }
+
+    html += '</div><div class="tab-res-container"></div>';
+
+    if( exists(page.footer) )
+      html += `<div class="tab-page-text">${page.footer}</div>`;
+
+    const pageNode = htmlToNode(html + '</div>');
+    const pageBody = pageNode.querySelector('.tab-res-container');
+
+    if( has_code ) {
+      const codeBlock = htmlToNode(
+        `<pre><div class="absolute z-top" style="right: 10px;">` +
+        `<i id="${page_ids.copy}" class="bi bi-copy code-button" title="Copy to clipboard"></i>` +
+        `<i id="${page_ids.download}" class="bi bi-arrow-down-square code-button" title="Download ${page.filename}"></i></div>` +
+        `<code class="language-${page.language} full-height" style="scroll-padding-left: 20px;">${page.value}</code></pre>`
+      );
+      
+      Prism.highlightAllUnder(codeBlock);
+
+      codeBlock.querySelector(`#${page_ids.copy}`).addEventListener('click', (evt) => {
+        console.log(`[Property Editor] Copying text from code block to clipboard`);
+        navigator.clipboard.writeText(page.value);
+      });
+
+      codeBlock.querySelector(`#${page_ids.download}`).addEventListener('click', (evt) => {
+        console.log(`[Property Editor] Downloading file ${page_key}`, page);
+        save_page({page:page});
+      });
+
+      pageBody.appendChild(codeBlock);
+    }
+    else if( exists(env.value) ) {
+      pageBody.appendChild(htmlToNode(`<div>${env.value}</div>`));
+    }
+
+    return pageNode;
   }
 
   /*
@@ -204,7 +241,6 @@ export class CodeEditor {
       tab.checked = true;  // this still fires events...
 
     for( const page of this.node.getElementsByClassName('code-container') ) {
-      console.log('SET ACTIVE', page, ids.page);
       if( page.id === ids.page )
         page.classList.remove('hidden');
       else

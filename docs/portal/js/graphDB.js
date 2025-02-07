@@ -583,6 +583,9 @@ export class GraphDB {
     else if( is_string(obj.tags) )
       obj.tags = [obj.tags];
 
+    if( exists(obj.help) && is_list(obj.help) )
+      obj.help = obj.help.join(' ');
+
     return obj;
   }
 

@@ -66,6 +66,10 @@ export function as_list(x) {
   return x;
 }
 
+export function is_value(x) {
+  return exists(x) && (is_string(x) || is_number(x) || is_bool(x));
+}
+
 export function as_element(x) {
   if( !exists(x) )
     return x;

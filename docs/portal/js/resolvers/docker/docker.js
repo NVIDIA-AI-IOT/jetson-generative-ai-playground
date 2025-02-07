@@ -33,6 +33,10 @@ Resolvers({
     ]
   },
 
+  docker_profile: {
+    tags: ["string"]
+  },
+
   auto_update: {
     tags: "string",
     options: ["on", "off"],

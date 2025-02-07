@@ -37,8 +37,8 @@
 .deepseek-header {
   background-image: url('/portal/data/models/images/headers/deepseek.svg'), linear-gradient(175deg, hsl(218.8, 21.2%, 50.3%) 0%, hsl(219.1, 70.4%, 42.4%) 100%); 
   background-size: 47%, 100%; 
-  background-position-y: 50px, 0px;
-  background-position-x: 510px, 0px;
+  background-position-y: 45px, 0px;
+  background-position-x: 565px, 0px;
 }
 
 .qwen-header {

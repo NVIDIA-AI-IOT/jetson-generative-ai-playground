@@ -2,10 +2,6 @@
  * Miscellaneous styling of various elements
  */
 
-.monospace {
-  font-family: monospace, monospace;
-}
-
 .hidden {
   display: none;
 }

@@ -17,6 +17,21 @@ export function docker_options(env) {
     opt.push('-e DOCKER_PULL=always');
   }
 
+  if( exists(env.hf_token) ) {
+    const tr = env.hf_token.trim();
+    if( tr.length > 0 )
+      opt.push(`-e HF_TOKEN=${tr}`);
+  }
+
+  if( exists(env.cache_dir) ) {
+    const tr = env.cache_dir.trim();
+    if( tr.length > 0 ) {
+      var cache_dir = `-v ${tr}:/root/.cache `;
+      var hf_hub_dir = `-e HF_HUB_CACHE=/root/.cache/huggingface `;
+      opt.push(hf_hub_dir + cache_dir);
+    }
+  }
+
   return opt.join(' ');
 }
 

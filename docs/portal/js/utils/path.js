@@ -40,3 +40,35 @@ export function make_url(url, domain='hf.co') {
   }
   return url;
 }
+
+/* Browser file downloader */
+export function save_page({page}) {
+  if( is_list(page) )
+    return save_pages(page);
+  var blob = new Blob([page.value + "\n"], {type: "text/plain;charset=utf-8"});
+  saveAs(blob, page.filename);
+}
+
+function find_key(x) {
+  for( const z in x ) {
+    if( exists(x[z].key) )
+      return x[z].key;
+  }
+}
+
+export function save_pages(pages) {
+  const key = find_key(pages);
+  let zip = new JSZip();
+  let folder = zip.folder(key);
+
+  for( const page_key in pages ) {
+    const page = pages[page_key];
+    folder.file(page.filename, page.value);
+  }
+
+  const zip_name = `${key}.zip`;
+  zip.generateAsync({type:"blob"})
+  .then(function(content) {
+      saveAs(content, zip_name); 
+  });
+}

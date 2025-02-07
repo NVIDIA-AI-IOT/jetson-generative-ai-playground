@@ -12,16 +12,16 @@
   <script type="module">
     import { GraphDB, SearchBar } from '/portal/nanolab.js';
 
-    const GRAPH_TAGS = '/portal/dist/db.json';
+    const GRAPH_DB = '/portal/dist/db.json';
 
     window.onload = () => {
-      GraphDB.load(GRAPH_TAGS).then(db => {
+      GraphDB.load(GRAPH_DB).then(db => {
         var searchBar = new SearchBar({
           db: db,
           tags: ['models'],
           parent: '.root-container'
         });
-        console.log("Window done loading");
+        console.log("[GraphDB]  Done loading");
       });
     };
   </script>

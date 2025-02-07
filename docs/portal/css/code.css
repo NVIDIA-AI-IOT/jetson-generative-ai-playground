@@ -1,17 +1,36 @@
 
- 
+
+.monospace {
+  font-family: monospace, monospace;
+  font-size: 85%;
+}
+
+.code-editor {
+  max-height: calc(100% + 15px);
+  
+}
+
+.code-container , .code-container a {
+  color: rgba(255,255,255,0.95);
+}
+
+.code-container a:hover {
+  text-decoration-color: hsla(82deg, 100%, 33.1%, 0.8);
+}
+
 .code-container {
   color: rgba(255,255,255,0.95);
   background: var(--theme-gray-dark);
   /*background: linear-gradient(165deg, rgb(0,0,0,0.475) 0%, rgb(0,0,0,0.55) 100%);*/
-  padding: 5px 10px 15px 10px;
+  padding: 5px 5px 15px 10px;
 }
 
 pre[class*="language-"] {
   background: var(--theme-gray-darker);
   padding: 12px 10px;
-  margin: 10px;
+  /*margin: 10px;*/
   height: 100%;
+  /*border-radius: 5px;*/
 }
 
 pre[class*="language-"] > code[class*="language-"] {
@@ -21,20 +40,59 @@ pre[class*="language-"] > code[class*="language-"] {
   font-size: 15px;
 }
 
-.tab-page-container {
-  /*background: var(--theme-gray-dark2);*/
+.tab-scroll-container {
+  overflow-y: scroll;
+  max-height: 450px;
   margin: 40px 0px 0px 0px;
-  border-style: solid;
-  /*! border-top: rgb(180, 32, 32); */
-  border-width: 1px 0px 0px 0px;
-  border-top-color: rgb(120, 120, 120);
+}
+
+.tab-page-container {
+  background: rgba(255,255,255,0.06);
+  margin: 0px 0px 7px 0px;
+  padding: 10px 20px 10px 10px;
+  overflow-y: scroll;
+  scrollbar-color: rgb(255,255,255,0.6) hsla(82deg, 100%, 33.1%, 0.8);
+  border-radius: 5px;
+}
+
+.tab-page-container:hover {
+  background: rgba(255,255,255,0.08);
 }
 
 .tab-page-title {
-  font-size: 125%;
+  font-weight: 450;
+  font-size: 115%;
+  line-height: 135%;
+  color: rgb(220,220,220);
+  text-decoration: underline;
+  text-underline-offset: 7px;
+  text-decoration-color: rgb(180,180,180);
+  margin-bottom: 10px;
 }
 
-.code-block, .btn-float, .btn-absolute {
+.tab-page-text {
+  font-weight: 400;
+  font-size: 90%;
+  color: rgb(220,220,220);
+}
+
+/* Floating buttons used for copy + downloading code */
+.code-button {
+  /*float: right;*/
+  font-size: 130%;
+  margin-left: 5px;
+  margin-right: 0px;
+  z-index: 100;
+  opacity: 0.75;
+  /*margin-left: auto;  https://stackoverflow.com/a/35270047 */
+}
+
+.code-button:hover {
+  color:  hsla(82deg, 100%, 38.1%, 1);
+  opacity: 1;
+}
+
+.code-block, .code-button, .btn-absolute {
   color: hsla(82deg, 100%, 38.1%, 1.0);
   text-shadow: rgba(50,50,50,0.35) 3px 0 3px;
   font-family: monospace;
@@ -44,4 +102,3 @@ pre[class*="language-"] > code[class*="language-"] {
 .code-block {
   padding-top: 20px;
 }
-

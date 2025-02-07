@@ -49,7 +49,7 @@ export class ConfigEditor {
           <div id="${this.ids.property_panel}" style="flex: 1 1 0px;">
             <!-- PROPERTY TABLE -->
           </div>
-          <div id="${this.ids.code_panel}" style="margin-left: 10px; height: 465px; width: 500px;">
+          <div id="${this.ids.code_panel}" style="margin-left: 10px; height: 465px; width: 565px;">
             <!-- CODE EDITOR -->
           </div>
         </div>

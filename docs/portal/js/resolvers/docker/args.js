@@ -11,7 +11,6 @@ export function docker_args(env) {
       --quantization ${env.quantization} \\
       --max-batch-size ${env.max_batch_size}`;
 
-  console.log('MAX CONTEXT LEN', env.max_context_len);
   if( is_number(env.max_context_len) ) {
     args += ` \\
       --max-context-len ${env.max_context_len}`;

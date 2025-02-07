@@ -110,8 +110,8 @@ export class PropertyTable {
 
     console.log(`[Property Editor] Value of ${event_key} (id=${id}) for ${this.key} changed to '${value}'`);
 
-    if( this.db.ancestors[event_key].includes('number') ) 
-      value = Number(value);
+    //if( this.db.ancestors[event_key].includes('number') ) 
+      //value = Number(value);
 
     this.db.flat[this.key][event_key] = value;
     
