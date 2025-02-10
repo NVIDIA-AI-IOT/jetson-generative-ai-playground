@@ -16,8 +16,8 @@ There are virtual [meetings](#meeting-schedule) that anyone is welcome to join, 
 	In the meantime, enjoy the time with your families, and feel welcome to keep in touch through the forums, Discord, or LinkedIn.</br><br/>-->
 	We are starting to hold weekly meetings on a rotation between 9am PST and 9pm PST to accommodate more time zones. The next meetings are on:
       <ul>
-        <li><a href="#meeting-schedule">Tuesday, January 28<sup>th</sup> at 9pm PST</a></li>
-        <li><a href="#meeting-schedule">Tuesday, February 4<sup>th</sup> at 9am PST</a></li>
+        <li><a href="#meeting-schedule">Tuesday, February 11<sup>th</sup> at 9pm PST</a></li>
+        <li><a href="#meeting-schedule">Tuesday, February 18<sup>th</sup> at 9am PST</a></li>
       </ul>
 	  
 	Download the [calendar invites](#meeting-schedule) below and join the [Discord](https://discord.gg/BmqNSK4886){:target="_blank"} server to stay involved and receive the latest updates.
@@ -81,14 +81,14 @@ Ongoing technical discussions are encouraged to occur on the forums, Discord, or
 
 We'll aim to weekly or bi-weekly on a rotating schedule in virtual meetings that anyone is welcome to join and speak during.  We'll discuss the latest updates and experiments that we want to explore.  Please remain courteous to others during the calls.  We'll stick around after for anyone who has questions or didn't get the chance to be heard.
 
-!!! abstract "Tuesday January 28<sup>th</sup> at 9pm PST (1/28/24)"
+!!! abstract "Tuesday February 11<sup>th</sup> at 9pm PST (2/11/24)"
 
 	- Microsoft Teams - [Meeting Link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_NTA4ZmE4MDAtYWUwMS00ZTczLWE0YWEtNTE5Y2JkNTFmOWM1%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} 
 	- Meeting ID: `264 770 145 196`
     - Passcode: `Uwbdgj`	
 	- Outlook Invite:  [`Jetson AI Lab Research Group (PM).ics`](research/invites/Jetson AI Lab Research Group (PM).ics){:target="_blank"} 
 	
-!!! abstract "Tuesday February 4<sup>th</sup> at 9am PST (2/4/24)"
+!!! abstract "Tuesday February 18<sup>th</sup> at 9am PST (2/18/24)"
 
 	- Microsoft Teams - [Meeting Link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_NTA4ZmE4MDAtYWUwMS00ZTczLWE0YWEtNTE5Y2JkNTFmOWM1%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} 
 	- Meeting ID: `264 770 145 196`
