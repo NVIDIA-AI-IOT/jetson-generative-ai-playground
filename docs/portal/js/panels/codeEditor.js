@@ -29,7 +29,7 @@ export class CodeEditor {
     this.download_set = this.node.querySelector(`#${this.id}-download-set`);
     this.download_set.addEventListener('click', (evt) => {
       if( exists(this.pages) )
-        save_pages(this.pages);
+        save_pages(this.pages, this.key);
     });  
 
     if( this.parent )
@@ -39,10 +39,7 @@ export class CodeEditor {
   /*
    * Layout components given a set of code tabs, sources, or files.
    */
-  refresh(env, group_by='resource') {
-    const db = env.db;
-    const self = this;
-    
+  refresh(env) {
     if( !exists(env) )
       return;
 
@@ -53,89 +50,15 @@ export class CodeEditor {
     
     console.log(`[CodeEditor] refreshing tabs with:`, env);
 
+    this.key = env.key;
     this.refreshing = true;
-    this.pages = {};
-
-    let properties = env.property_order ?? [];
-
-    for( const field_key in env.properties ) {
-      if( !properties.includes(field_key) )
-        properties.push(field_key);
-    }
-
-    for( const field_key of properties ) {
-      if( !(field_key in db.index) ) {
-        console.warn(`Missing key '${field_key}' from ${env.key}.${field_key}`, properties);
-        continue;
-      }
-
-      if( !db.ancestors[field_key].includes(group_by) )
-        continue;
-      
-      for( const ancestor of db.ancestors[field_key] ) {
-        if( !db.children[group_by].includes(ancestor) )
-          continue;
-
-        if( !(ancestor in this.pages) ) 
-          this.pages[ancestor] = {};
-
-        let page = {...env.properties[field_key]};
-
-        if( exists(page.value) )
-          page.default = page.value;
-
-        page.value = env[field_key];
-        this.pages[ancestor][field_key] = page;
-      }
-    }
+    this.pages = this.createPageGroups(env);
 
     for( const tab_key in this.pages ) {
-      const tab = this.pages[tab_key];
-      const ids = this.ids(tab_key);
-
-      const activeTab = this.getActiveTab();
-      const isActive = exists(activeTab) ? (ids.tab === activeTab.id) : true; //this.tabs.children.length === 0);
-
-      if( !exists(document.getElementById(ids.tab)) )
-      {
-        const tabNodes = htmlToNodes(
-          `<input type="radio" id="${ids.tab}" class="btn-group-item" name="${this.id}-tab-group" ` +
-          `${isActive ? ' checked ' : ' '}> <label for="${ids.tab}">${tab_key}</label>`
-        );
-
-        for( const node of tabNodes ) {
-          this.tabs.appendChild(node);  
-          node.addEventListener('click', (evt) => {
-            self.setActiveTab(tab_key);
-          });  
-        }
-      }
-
-      let tabNode = this.node.querySelector(`#${ids.page}`);
-
-      if( exists(tabNode) )
-        tabNode.remove();
-
-      tabNode = htmlToNode(`
-        <div class="code-container full-height hidden" id="${ids.page}">
-          <div class="tab-scroll-container"></div>
-        </div>`
-      );
-
-      const scrollArea = tabNode.querySelector('.tab-scroll-container');
-
-      for( const page_key in tab ) {
-        scrollArea.appendChild(this.createPage(
-          tab[page_key], 
-          page_key,
-          this.ids(`${tab_key}-${page_key}`),
-          env,
-        ));
-      }
-
+      const tabNode = this.createTab(env, tab_key);
       this.node.appendChild(tabNode);
 
-      if( isActive )
+      if( this.isActiveTab(tab_key) )
         this.setActiveTab(tab_key);
     }
 
@@ -143,69 +66,198 @@ export class CodeEditor {
   }
 
   /*
-   * Create a page of resources
+   * Create a collapsable/scrollable area of paged resources.
    */
   createPage(page, page_key, page_ids, env) {
-    /*const page_key = page.key;*/
-    const property = env.properties[page_key];
-    const has_code = property.tags.includes('code');
-        
-    let html = `<div id="${page_ids.page}" class="tab-page-container full-height"><div>`;
+    const has_code = page.tags.includes('code');
+    const expanded = page.expand ?? true;
+    const expClass = {true: 'bi-chevron-down', false: 'bi-chevron-up'};
 
-    html += page.header ?? `<div class="tab-page-title">${property.title ?? property.name}</div>`;
-  
+    let html = `<div id="${page_ids.page}" class="tab-page-container full-height"><div>`;
+    html += `<i class="bi ${expClass[expanded]} tab-page-expand"></i>`;
+    html += page.header ?? `<div class="tab-page-title-div"><span class="tab-page-title">${page.title ?? page.name}</span></div>`;
+    html += '<div class="tab-page-body">';
+    
     if( exists(page.text) ) {
       if( is_list(page.text) )
         page.text = page.text.join(' ');
       html += `<div class="tab-page-text">${page.text}</div>`;
     }
 
-    html += '</div><div class="tab-res-container"></div>';
-
-    if( exists(page.footer) )
-      html += `<div class="tab-page-text">${page.footer}</div>`;
+    html += '</div>';
 
     const pageNode = htmlToNode(html + '</div>');
-    const pageBody = pageNode.querySelector('.tab-res-container');
+    const pageBody = pageNode.querySelector('.tab-page-body');
+    const expander = pageNode.querySelector('.tab-page-expand');
 
     if( has_code ) {
-      const codeBlock = htmlToNode(
-        `<pre><div class="absolute z-top" style="right: 10px;">` +
-        `<i id="${page_ids.copy}" class="bi bi-copy code-button" title="Copy to clipboard"></i>` +
-        `<i id="${page_ids.download}" class="bi bi-arrow-down-square code-button" title="Download ${page.filename}"></i></div>` +
-        `<code class="language-${page.language} full-height" style="scroll-padding-left: 20px;">${page.value}</code></pre>`
-      );
-      
-      Prism.highlightAllUnder(codeBlock);
-
-      codeBlock.querySelector(`#${page_ids.copy}`).addEventListener('click', (evt) => {
-        console.log(`[Property Editor] Copying text from code block to clipboard`);
-        navigator.clipboard.writeText(page.value);
-      });
-
-      codeBlock.querySelector(`#${page_ids.download}`).addEventListener('click', (evt) => {
-        console.log(`[Property Editor] Downloading file ${page_key}`, page);
-        save_page({page:page});
-      });
-
-      pageBody.appendChild(codeBlock);
+      console.log('HAS CODE', page);
+      pageBody.appendChild(this.createCodeBlock(page));
     }
-    else if( exists(env.value) ) {
+    /*else if( exists(env.value) ) {
       pageBody.appendChild(htmlToNode(`<div>${env.value}</div>`));
+    }*/
+
+    if( exists(page.footer) ) {
+      pageBody.appendChild(htmlToNode(
+        `<div class="tab-page-text">${page.footer}</div>`
+      ));
     }
+
+    expander.addEventListener('click', (evt) => {
+      if( expander.classList.contains(expClass[true]) ) {
+        expander.classList.replace(expClass[true], expClass[false]);
+        console.log(`[Code Editor] Hiding page ${page.filename}`);
+      }
+      else {
+        expander.classList.replace(expClass[false], expClass[true]);
+        console.log(`[Code Editor] Expanding page ${page.filename}`);
+      }
+      pageBody.classList.toggle('hidden');
+    });
 
     return pageNode;
   }
 
   /*
-   * Remove this from the DOM
+   * Create a code block with syntax highlighting and copy/download buttons.
    */
-  remove() {
-    if( !exists(this.node) )
-      return;
+  createCodeBlock(page) {
+    const codeBlock = htmlToNode(
+      `<pre><div class="absolute z-top" style="right: 10px;">` +
+      `<i class="bi bi-copy code-button code-copy" title="Copy to clipboard"></i>` +
+      `<i class="bi bi-arrow-down-square code-button code-download" title="Download ${page.filename}"></i></div>` +
+      `<code class="language-${page.language} full-height" style="scroll-padding-left: 20px;">${page.value}</code></pre>`
+    );
+    
+    Prism.highlightAllUnder(codeBlock);
 
-    this.node.remove();
-    this.node = null;
+    codeBlock.querySelector('.code-copy').addEventListener('click', (evt) => {
+      console.log(`[Property Editor] Copying text from ${page.filename} to clipboard`);
+      navigator.clipboard.writeText(page.value);
+    });
+
+    codeBlock.querySelector('.code-download').addEventListener('click', (evt) => {
+      console.log(`[Property Editor] Downloading file ${page.filename}`, page);
+      save_page({page:page});
+    });
+
+    return codeBlock;
+  }
+
+  /*
+   * Group references by resource type (e.g. shell, compose, code, ect)
+   */
+  createPageGroups(env) {
+    let references = env.resource_order ?? [];
+    let pages = {};
+    let db = env.db;
+
+    for( const field_key in env.properties ) {
+      if( references.includes(field_key) )
+        continue;
+      
+      if( db.ancestors[field_key].includes('resource') )
+        references.push(field_key);
+    }
+
+    for( const ref_key in env.references ) {
+      if( !references.includes(ref_key) )
+        references.push(ref_key);
+    }
+
+    for( const ref_key of references ) {
+      if( !(ref_key in db.index) ) {
+        console.warn(`Missing key '${ref_key}' from ${env.key}.${ref_key}`, references);
+        continue;
+      }
+
+      if( ref_key in env.properties ) {
+        var page = {...env.properties[ref_key]};
+
+        if( exists(page.value) )
+          page.default = page.value;
+
+        page.value = env[ref_key];
+        console.log(`PAGE ${ref_key} value`, page.value);
+      }
+      else {
+        var page = env.references[ref_key];
+      }
+
+      let group = page.group; // TODO default to root-1
+
+      pages[group] ??= {};
+      pages[group][ref_key] = page;
+
+      /*if( !db.ancestors[ref_key].includes(groupBy) )
+        continue;
+      
+      for( const ancestor of db.ancestors[field_key] ) {
+        if( !db.children[groupBy].includes(ancestor) )
+          continue;
+
+        if( !(ancestor in pages) ) 
+          pages[ancestor] = {};
+
+        let page = {...env.properties[field_key]};
+
+        if( exists(page.value) )
+          page.default = page.value;
+
+        page.value = env[field_key];
+        pages[ancestor][field_key] = page;
+      }*/
+    }
+
+    return pages;
+  }
+
+  /*
+   * Create a tab from the tab group, along with its paged content.
+   */
+  createTab(env, tab_key) {
+    const tab = this.pages[tab_key];
+    const ids = this.ids(tab_key);
+    
+    if( !exists(document.getElementById(ids.tab)) )
+    {
+      const tabNodes = htmlToNodes(
+        `<input type="radio" id="${ids.tab}" class="btn-group-item" name="${this.id}-tab-group" ` +
+        `${this.isActiveTab(tab_key) ? ' checked ' : ' '}> <label for="${ids.tab}">${tab_key}</label>`
+      );
+
+      for( const node of tabNodes ) {
+        this.tabs.appendChild(node);  
+        node.addEventListener('click', (evt) => {
+          this.setActiveTab(tab_key);
+        });  
+      }
+    }
+
+    let tabNode = this.node.querySelector(`#${ids.page}`);
+
+    if( exists(tabNode) )
+      tabNode.remove();
+
+    tabNode = htmlToNode(`
+      <div class="code-container full-height hidden" id="${ids.page}">
+        <div class="tab-scroll-container"></div>
+      </div>`
+    );
+
+    const scrollArea = tabNode.querySelector('.tab-scroll-container');
+
+    for( const page_key in tab ) {
+      scrollArea.appendChild(this.createPage(
+        tab[page_key], 
+        page_key,
+        this.ids(`${tab_key}-${page_key}`),
+        env,
+      ));
+    }
+
+    return tabNode;
   }
 
   /*
@@ -223,6 +275,14 @@ export class CodeEditor {
     }
 
     return tabs[0];
+  }
+
+  /*
+   * Check if this is the active tab
+   */
+  isActiveTab(key) {
+    const activeTab = this.getActiveTab();
+    return exists(activeTab) ? (this.ids(key).tab === activeTab.id) : true;
   }
 
   /*
@@ -256,9 +316,18 @@ export class CodeEditor {
     return {
       tab: pre + 'tab',
       page: pre + 'page',
-      copy: pre + 'copy',
-      download: pre + 'download'
     };
+  }
+
+  /*
+   * Remove this from the DOM
+   */
+  remove() {
+    if( !exists(this.node) )
+      return;
+
+    this.node.remove();
+    this.node = null;
   }
 }
 

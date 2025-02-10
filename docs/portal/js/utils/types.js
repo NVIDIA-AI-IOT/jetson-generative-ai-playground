@@ -80,6 +80,10 @@ export function as_element(x) {
   return x;
 }
 
+export function dict_keys(x) {
+  return is_dict(x) ? Object.keys(x) : [];
+}
+
 /* 
  * Recursively deep clone an object (sharing unserializable objects like functions) 
  * This is used to work around errors you get errors using structuredClone()

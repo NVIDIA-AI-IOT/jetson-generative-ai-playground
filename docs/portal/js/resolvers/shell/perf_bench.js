@@ -4,7 +4,12 @@
 
 export function llm_perf_bench(env) {
 
-  const perf_container = 'dustynv/mlc:r36.4.0';
+  if( env.parent ) {
+    console.log(`Inheriting server host ${env.parent.server_host} => ${env.server_host}`);
+    env.server_host = env.parent.server_host;
+    
+  }
+  /*const perf_container = 'dustynv/mlc:r36.4.0';
   const server_url = get_server_url(env, 'http://0.0.0.0:9000');
   const newline = ' \\\n ';
 
@@ -20,15 +25,22 @@ export function llm_perf_bench(env) {
   if( 'tokenizer' in env )
     perf_cmd.push(` --tokenizer ${env.tokenizer}`);
 
-  return perf_cmd.join(newline);
+  return perf_cmd.join(newline);*/
+
+  return docker_run(env);
 }
 
 Resolvers({perf_bench: {
   func: llm_perf_bench,
-  title: 'Benchmarks',
+  title: 'Benchmark Client',
   filename: 'perf-bench.sh',
   hidden: true,
-  tags: ['docker_profile', 'shell'],
+  docker_image: "dustynv/mlc:r36.4.0",
+  docker_options: "-it --rm --network=host -v /var/run/docker.sock:/var/run/docker.sock",
+  docker_cmd: "sudonim bench stop",
+  group: ['shell'],
+  refs: ['llm'],
+  tags: ['docker_profile', 'shell', 'container'],
   text: `Profile decode generation (tokens/sec) and context prefill latency (ms)`,
   footer: [
     `This benchmarks through the <span class="monospace">chat.completion</span> endpoint,`, 

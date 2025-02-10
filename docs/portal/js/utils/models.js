@@ -5,7 +5,7 @@ import { exists } from '../nanolab.js';
 
 export function get_model_name(model) {
   if( !exists(model) )
-    return null;
+    return model;
 
   //model = model.split('/');
   //return model[model.length-1];
@@ -20,7 +20,7 @@ export function get_model_name(model) {
 }
 
 export function get_model_repo(model) {
-  return model.replace('hf.co/', '');
+  return exists(model) ? model.replace('hf.co/', '') : model;
 }
 
 export function get_model_cache(env) {

@@ -3,8 +3,13 @@
  */
 export function docker_args(env) {
 
-  const model_api = get_model_api(env.url ?? env.model_name)
-  const model_repo = get_model_repo(env.url ?? env.model_name);
+  let model_id = env.url ?? env.model_name;
+
+  if( !exists(model_id) && exists(env.parent) )
+    model_id = env.parent.url ?? env.parent.model_name;
+
+  const model_api = get_model_api(model_id)
+  const model_repo = get_model_repo(model_id);
   const server_url = get_server_url(env);
 
   let args = `  --model ${model_repo} \\

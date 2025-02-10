@@ -2,14 +2,12 @@
   "llm": {
     "name": "Language Models (LLM / SLM)",
     "tags": "models",
+    "refs": "resource",
     "max_batch_size": 1,
     "max_context_len": null,
     "prefill_chunk": null,
     "chat_template": null,
     "hf_token": null,
-    "curl_chat": null,
-    "perf_bench": null,
-    "docker_compose": null,
     "property_order": [
       "url", 
       "docker_image", 

@@ -3,6 +3,9 @@
  */
 export function docker_run(env) {
   
+  console.group(`[GraphDB]  Generating docker_run for ${env.key}`);
+  console.log(env);
+
   const opt = wrapLines(
     nonempty(env.docker_options) ? env.docker_options : docker_options(env)
   ) + ' \\\n ';
@@ -11,8 +14,9 @@ export function docker_run(env) {
   const exec = `${env.docker_cmd} \\\n   `;
    
   let args = docker_args(env);
+  let cmd = nonempty(env.docker_run) ? env.docker_run : env.db.index['docker_run'].value;
 
-  let cmd = env.docker_run
+  cmd = cmd
     .trim()
     .replace('$OPTIONS', '${OPTIONS}')
     .replace('$IMAGE', '${IMAGE}')
@@ -30,6 +34,9 @@ export function docker_run(env) {
     .replace('\\ ', '\\')
     .replace('  \\', ' \\');  
 
+  console.log(`[GraphDB] `, cmd);
+  console.groupEnd();
+
   return cmd; //`# ${get_endpoint_url(env)}\n` 
 }
 
@@ -39,10 +46,11 @@ Resolver({
   title: 'Docker Run',
   filename: 'docker-run.sh',
   value: "docker run $OPTIONS $IMAGE $COMMAND $ARGS",
+  group: 'shell',
   tags: ['string', 'shell'],
   help: [
     `Template that builds the 'docker run' command from $OPTIONS $IMAGE $COMMAND $ARGS\n`,
     `You can more deeply customize the container settings by altering these.`,
   ],
-  text: `Run these terminal commands from the host device or over SSH, this one downloading the model and starting an <span class="monospace">openai.chat.completion</span> server.`
+  text: `Run these terminal commands from the host device or SSH, this one downloading the model and starting an <span class="monospace">openai.chat.completion</span> server:`
 });

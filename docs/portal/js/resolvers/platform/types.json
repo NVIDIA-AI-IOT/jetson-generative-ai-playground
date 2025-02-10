@@ -34,7 +34,7 @@
     "tags": ["string"]
   },
   "resource": {
-    "help": "The resource tag is for code, documents, media, or other assets that can be shared or composited."
+    "help": "The resource tag is for code, documents, media, and other assets that can be shared or composed."
   },
   "code": {
     "tags": "string"

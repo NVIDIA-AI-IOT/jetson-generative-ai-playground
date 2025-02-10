@@ -26,7 +26,8 @@ export function RollUp({title, id, body, parent, expanded=false, icon='bi-nvidia
   const body_node = node.querySelector('.rollup-container-body');
   const head_node = node.querySelector('.rollup-container-header');
 
-  body_node.appendChild(body);
+  if( exists(body) )
+    body_node.appendChild(body);
 
   head_node.addEventListener('click', (evt) => {
     const result = body_node.classList.toggle('hidden');

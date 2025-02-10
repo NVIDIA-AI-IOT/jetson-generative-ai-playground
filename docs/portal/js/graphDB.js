@@ -321,33 +321,126 @@ export class GraphDB {
   /*
    * Return a copy of the fully-evaluated object, including any templating
    * or resolver functions recursively applied that fetch or generate content.
+   * 
+   * If the key has cross-references in its `refs` field, then leaf nodes that
+   * descend from `refs` will be added as dynamically composed properties.
    */
-  resolve(key) {
-    let env = {db: this, key: key, properties: {}};
+  resolve(key, parent=null) {
+    let env = {db: this, key: key, properties: {}, references: {}};
   
-    //console.log('RESOLVE', key, this.props[key]);
+    if( exists(parent) )
+      env.parent = parent;
 
-    if( nonempty(this.props[key]) ) {
+    if( nonempty(this.props[key]) ) { // property definitions
       for( const field_key of this.props[key] ) {
         env.properties[field_key] = this.flatten({key: key, property: field_key});
         env[field_key] = env.properties[field_key].value;
-        //console.log(`RESOLVE set ${key}.${field_key} = ${env[field_key]}`);
       }
     }
-  
-    for( const field_key in this.flat[key] ) {
+
+    for( const field_key in this.flat[key] ) { // other fields
       if( !exists(env[field_key]) )
         env[field_key] = this.flat[key][field_key];
     }
-  
-    for( const field_key in env ) {
+
+    for( const field_key in env ) { // evaluate resolvers
       if( field_key in env.properties && 'func' in env.properties[field_key] )
         env[field_key] = env.properties[field_key]['func'](env);
     }
 
-    // using the little cleaner key led to issues with it not lining up with filesystems
-    //env.model_name ??= get_model_name(env.url) ?? key; // key; 
+    if( !exists(parent) )
+      this.crossReference(env); // related references
+
     return env;
+  }
+    
+  /*
+   * Discover mutual references from other types of nodes.
+   */
+  crossReference(env, refs=null) {
+    env.refs = this.crossReferences(env.key, refs ?? env.refs);
+    env.references ??= {};
+
+    for( const ref_key of env.refs ) {
+      if( nonempty(env.references, ref_key) )
+        continue;
+
+      let ref_env = this.resolve(ref_key, env);
+      env.references[ref_key] = ref_env;
+
+      if( 'func' in ref_env ) {
+        ref_env.value = ref_env.func(ref_env);
+      }
+      
+      /*let property = this.flatten({key: env.key, property: ref_key});
+      env.properties[ref_key] = property;
+
+      property.parent = env;
+      property.db = this;
+      property.key = ref_key;
+
+      if( 'func' in property )
+        env[ref_key] = property['func'](property); // using the base env
+      else
+        env[ref_key] = property.value;*/
+    }
+
+    return env;
+  }
+
+  /*
+   * Return the set of keys with mutual references.
+   */
+  crossReferences(ancestors, descendants, leafs=true, refs=[]) {
+    ancestors = this.ancestors[ancestors].concat(ancestors);
+    descendants = this.filter({
+      keys: this.descendants[descendants].concat(descendants),
+      refs: true, leafs: leafs
+    });
+
+    for( const ancestor of ancestors ) {
+      for( const descendant of descendants ) {
+        if( this.flat[descendant].refs.includes(ancestor) ) {
+          refs.push(descendant);
+          break;
+        }
+      }
+    }
+
+    return refs;
+  }
+
+  /*
+   * Filter keys from the list or dict by their properties.
+   */
+  filter({keys, refs=null, children=null, leafs=false}) {
+    let out = [];
+
+    if( is_empty(keys) )
+      return [];
+
+    if( is_string(keys) )
+      keys = [keys];
+
+    if( is_dict(keys) )
+      keys = Object.keys(keys);
+
+    for( const key of keys ) {
+      if( exists(children) ) {
+        if( is_number(children) && this.children[key].length != children )
+          continue;
+      }
+
+      if( leafs && this.children[key].length != 0 )
+        continue;
+
+      if( refs === true && is_empty(this.flat[key].refs) )
+        continue;
+
+      out.push(key);
+    }
+
+    return out;
   }
 
   /*
@@ -582,6 +675,9 @@ export class GraphDB {
       obj.tags = [];
     else if( is_string(obj.tags) )
       obj.tags = [obj.tags];
+
+    if( exists(obj.refs) && is_string(obj.refs) )
+      obj.refs = [obj.refs];
 
     if( exists(obj.help) && is_list(obj.help) )
       obj.help = obj.help.join(' ');

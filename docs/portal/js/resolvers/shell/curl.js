@@ -22,6 +22,6 @@ Resolvers({curl_chat: {
   filename: 'curl.sh',
   hidden: true,
   tags: ['string', 'shell'],
-  text: `Check the connection and model with a test query from the command line:`,
-  footer: `The LLM reply is interleaved in the output stream, and not meant for reading.`
+  text: `Check the connection and model response with a simple test query:`,
+  footer: `The LLM reply is interleaved in the output stream and not particularly readable, but will produce errors if there was an issue with the request.`
 }});

@@ -1,18 +1,23 @@
 /*
  * These are docker options that preceed the container image name.
  */
-export function docker_options(env) {
+export function docker_options(env, use_cuda=true) {
   let opt = [];
   
   if( nonempty(env.docker_options) )
     opt.push(env.docker_options);
 
-  if( nonempty(env.CUDA_VISIBLE_DEVICES) )
+  if( use_cuda && nonempty(env.CUDA_VISIBLE_DEVICES) )
     opt.push(`--gpus ${env.CUDA_VISIBLE_DEVICES}`);
 
-  opt.push(docker_network(env));
+  const network_flags = docker_network(env);
 
-  if( !exists(env.auto_update) || env.auto_update != 'off' ) {
+  if( nonempty(network_flags) )
+    opt.push(network_flags);
+
+  const autoUpdate = env.auto_update ?? (exists(env.parent) ? env.parent.auto_update : 'on');
+
+  if( !exists(autoUpdate) || autoUpdate != 'off' ) {
     opt.push('--pull always');
     opt.push('-e DOCKER_PULL=always');
   }

@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+# This concatenates css, js, and json files into dist/
+# For live refresh:  python portal/python/bundle.py --watch
 import os
 import time
 import json
@@ -19,6 +21,7 @@ CSS=[
     '$ROOT/css/flex.css', 
     '$ROOT/css/card.css', 
     '$ROOT/css/code.css',
+    '$ROOT/css/tabs.css',
     '$ROOT/css/fields.css',
     '$ROOT/css/buttons.css', 
     '$ROOT/css/select.css',

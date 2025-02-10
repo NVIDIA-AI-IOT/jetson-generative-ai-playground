@@ -49,20 +49,14 @@ export function save_page({page}) {
   saveAs(blob, page.filename);
 }
 
-function find_key(x) {
-  for( const z in x ) {
-    if( exists(x[z].key) )
-      return x[z].key;
-  }
-}
-
-export function save_pages(pages) {
-  const key = find_key(pages);
+export function save_pages(pages, key) {
+  key ??= find_key(pages);
   let zip = new JSZip();
   let folder = zip.folder(key);
 
   for( const page_key in pages ) {
     const page = pages[page_key];
+    console.log('saving page', page);
     folder.file(page.filename, page.value);
   }
 
@@ -71,4 +65,11 @@ export function save_pages(pages) {
   .then(function(content) {
       saveAs(content, zip_name); 
   });
+}
+
+function find_key(x) {
+  for( const z in x ) {
+    if( exists(x[z].key) )
+      return x[z].key;
+  }
 }
