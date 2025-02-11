@@ -142,7 +142,9 @@ We are going to show how you can install SSD on your Jetson, and set it up for D
 
         ```bash
         sudo apt install -y jq
-        jq '. + {"default-runtime": "nvidia"}' /etc/docker/daemon.json | sudo tee /etc/docker/daemon.json > /dev/null
+        sudo jq '. + {"default-runtime": "nvidia"}' /etc/docker/daemon.json | \
+          sudo tee /etc/docker/daemon.json.tmp && \
+          sudo mv /etc/docker/daemon.json.tmp /etc/docker/daemon.json
         ```
 
     === "Manual"
