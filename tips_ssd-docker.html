@@ -927,27 +927,27 @@
          </p>
          <div class="highlight">
           <pre><span></span><code>NAME         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
-loop0          7:0    0    16M  1 loop 
-mmcblk1      179:0    0  59.5G  0 disk 
+loop0          7:0    0    16M  1 loop
+mmcblk1      179:0    0  59.5G  0 disk
 ├─mmcblk1p1  179:1    0    58G  0 part /
-├─mmcblk1p2  179:2    0   128M  0 part 
-├─mmcblk1p3  179:3    0   768K  0 part 
-├─mmcblk1p4  179:4    0  31.6M  0 part 
-├─mmcblk1p5  179:5    0   128M  0 part 
-├─mmcblk1p6  179:6    0   768K  0 part 
-├─mmcblk1p7  179:7    0  31.6M  0 part 
-├─mmcblk1p8  179:8    0    80M  0 part 
-├─mmcblk1p9  179:9    0   512K  0 part 
-├─mmcblk1p10 179:10   0    64M  0 part 
-├─mmcblk1p11 179:11   0    80M  0 part 
-├─mmcblk1p12 179:12   0   512K  0 part 
-├─mmcblk1p13 179:13   0    64M  0 part 
-└─mmcblk1p14 179:14   0 879.5M  0 part 
+├─mmcblk1p2  179:2    0   128M  0 part
+├─mmcblk1p3  179:3    0   768K  0 part
+├─mmcblk1p4  179:4    0  31.6M  0 part
+├─mmcblk1p5  179:5    0   128M  0 part
+├─mmcblk1p6  179:6    0   768K  0 part
+├─mmcblk1p7  179:7    0  31.6M  0 part
+├─mmcblk1p8  179:8    0    80M  0 part
+├─mmcblk1p9  179:9    0   512K  0 part
+├─mmcblk1p10 179:10   0    64M  0 part
+├─mmcblk1p11 179:11   0    80M  0 part
+├─mmcblk1p12 179:12   0   512K  0 part
+├─mmcblk1p13 179:13   0    64M  0 part
+└─mmcblk1p14 179:14   0 879.5M  0 part
 zram0        251:0    0   1.8G  0 disk [SWAP]
 zram1        251:1    0   1.8G  0 disk [SWAP]
 zram2        251:2    0   1.8G  0 disk [SWAP]
 zram3        251:3    0   1.8G  0 disk [SWAP]
-nvme0n1      259:0    0 238.5G  0 disk 
+nvme0n1      259:0    0 238.5G  0 disk
 </code></pre>
          </div>
          <p>
@@ -1130,19 +1130,42 @@ newgrp<span class="w"> </span>docker
            /etc/docker/daemon.json
           </code>
          </p>
-         <div class="highlight">
-          <pre><span></span><code>sudo<span class="w"> </span>vi<span class="w"> </span>/etc/docker/daemon.json
+         <div class="tabbed-set tabbed-alternate" data-tabs="1:2">
+          <input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"/>
+          <input id="__tabbed_1_2" name="__tabbed_1" type="radio"/>
+          <div class="tabbed-labels">
+           <label for="__tabbed_1_1">
+            One-liner
+           </label>
+           <label for="__tabbed_1_2">
+            Manual
+           </label>
+          </div>
+          <div class="tabbed-content">
+           <div class="tabbed-block">
+            <div class="highlight">
+             <pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>jq
+jq<span class="w"> </span><span class="s1">'. + {"default-runtime": "nvidia"}'</span><span class="w"> </span>/etc/docker/daemon.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/docker/daemon.json<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
 </code></pre>
-         </div>
-         <p>
-          Insert the
-          <code>
-           "default-runtime": "nvidia"
-          </code>
-          line as following:
-         </p>
-         <div class="highlight">
-          <pre><span></span><code><span class="p">{</span>
+            </div>
+           </div>
+           <div class="tabbed-block">
+            <p>
+             Use your editor to open the following JSON file.
+            </p>
+            <div class="highlight">
+             <pre><span></span><code>sudo<span class="w"> </span>vi<span class="w"> </span>/etc/docker/daemon.json
+</code></pre>
+            </div>
+            <p>
+             Insert the
+             <code>
+              "default-runtime": "nvidia"
+             </code>
+             line as following:
+            </p>
+            <div class="highlight">
+             <pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">"runtimes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">"nvidia"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nvidia-container-runtime"</span><span class="p">,</span>
@@ -1152,6 +1175,9 @@ newgrp<span class="w"> </span>docker
 <span class="w">    </span><span class="nt">"default-runtime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nvidia"</span>
 <span class="p">}</span>
 </code></pre>
+            </div>
+           </div>
+          </div>
          </div>
         </li>
         <li>
@@ -1188,7 +1214,7 @@ newgrp<span class="w"> </span>docker
           <pre><span></span><code>sudo<span class="w"> </span>du<span class="w"> </span>-csh<span class="w"> </span>/var/lib/docker/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>sudo<span class="w"> </span>mkdir<span class="w"> </span>/ssd/docker<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>sudo<span class="w"> </span>rsync<span class="w"> </span>-axPS<span class="w"> </span>/var/lib/docker/<span class="w"> </span>/ssd/docker/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>sudo<span class="w"> </span>du<span class="w"> </span>-csh<span class="w">  </span>/ssd/docker/<span class="w"> </span>
+<span class="w">    </span>sudo<span class="w"> </span>du<span class="w"> </span>-csh<span class="w">  </span>/ssd/docker/
 </code></pre>
          </div>
         </li>
@@ -1254,7 +1280,7 @@ newgrp<span class="w"> </span>docker
           [Terminal 1] First, open a terminal to monitor the disk usage while pulling a Docker image.
          </p>
          <div class="highlight">
-          <pre><span></span><code>watch<span class="w"> </span>-n1<span class="w"> </span>df<span class="w"> </span>
+          <pre><span></span><code>watch<span class="w"> </span>-n1<span class="w"> </span>df
 </code></pre>
          </div>
         </li>
