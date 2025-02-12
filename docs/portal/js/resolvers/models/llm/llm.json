@@ -23,6 +23,11 @@
       "docker_options",
       "server_host",
       "auto_update"
+    ],
+    "reference_order": [
+      "curl_request",
+      "perf_bench",
+      "open_webui"
     ]
   },
   "max_batch_size": {

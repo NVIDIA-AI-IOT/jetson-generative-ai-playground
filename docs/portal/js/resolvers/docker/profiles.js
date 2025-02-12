@@ -1,16 +1,19 @@
-export function docker_profile(env, profile_key, depends) {
+export function docker_profile(env, depends) {
 
-  const profile_name = profile_key.replace('_', '-');
-  let profile_cmd = '';
+  const profile_name = env.key.replace('_', '-');
+  const profile_cmd = env.value;
 
-  if( nonempty(env, profile_key) )
+  if( is_empty(profile_cmd) ) {
+    console.warn(`Missing resolved ${env.key}.value for docker_profile`);
+    return;
+  }
+
+  /*if( nonempty(env, profile_key) )
     profile_cmd = env[profile_key];
   else {
     if( exists(env.properties[profile_key].func) )
       profile_cmd = env.properties[profile_key].func(env);
-  }
-
-  //console.log(`PROFILE CMD`, profile_cmd);
+  }*/
 
   let comp = composerize(profile_cmd, null, 'latest', 2);
 
@@ -25,17 +28,19 @@ export function docker_profile(env, profile_key, depends) {
 
 export function docker_profiles(env, compose) {
 
-  let profile_keys = [];
+  let root_env = exists(env.parent) ? env.parent : env;
 
-  for( const field_key in env.properties ) {
-    console.log(`${field_key} ancestors`, env.db.ancestors[field_key]);
+  for( const ref_key in root_env['references'] ) {
+    const ref = root_env.references[ref_key];
 
-    if( env.db.ancestors[field_key].includes('docker_profile') )
-      profile_keys.push(field_key);
-  }
+    console.log(`${root_env.key}.references.${ref_key}.tags =`, ref.tags, 'root_env', root_env);
 
-  for( const profile_key of profile_keys ) {
-    let profile_cmd = docker_profile(env, profile_key, env.key);
+    if( !ref.tags.includes('docker_profile') )
+      continue;
+
+    let profile_cmd = docker_profile(ref, env.key);
+
+    console.log(`${env.key}.references.${ref_key} =`, profile_cmd);
 
     if( !exists(profile_cmd) )
       continue;

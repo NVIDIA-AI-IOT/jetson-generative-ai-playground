@@ -3,8 +3,8 @@
  */
 export function docker_run(env) {
   
-  console.group(`[GraphDB]  Generating docker_run for ${env.key}`);
-  console.log(env);
+  //console.group(`[GraphDB]  Generating docker_run for ${env.key}`);
+  //console.log(env);
 
   const opt = wrapLines(
     nonempty(env.docker_options) ? env.docker_options : docker_options(env)
@@ -34,8 +34,8 @@ export function docker_run(env) {
     .replace('\\ ', '\\')
     .replace('  \\', ' \\');  
 
-  console.log(`[GraphDB] `, cmd);
-  console.groupEnd();
+  //console.log(`[GraphDB] `, cmd);
+  //console.groupEnd();
 
   return cmd; //`# ${get_endpoint_url(env)}\n` 
 }

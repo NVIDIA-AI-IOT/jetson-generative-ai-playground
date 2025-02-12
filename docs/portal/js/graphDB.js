@@ -361,6 +361,20 @@ export class GraphDB {
     env.refs = this.crossReferences(env.key, refs ?? env.refs);
     env.references ??= {};
 
+    if( exists(env.reference_order) ) {
+      let reordered = [];
+      for( const ref_key of env.reference_order ) {
+        
+        if( env.refs.includes(ref_key) && !reordered.includes(ref_key) )
+          reordered.push(ref_key);
+      }
+      for( const ref_key of env.refs ) {
+        if( !reordered.includes(ref_key) )
+          reordered.push(ref_key);
+      }
+      env.refs = reordered;
+    }
+
     for( const ref_key of env.refs ) {
       if( nonempty(env.references, ref_key) )
         continue;
@@ -371,7 +385,7 @@ export class GraphDB {
       if( 'func' in ref_env ) {
         ref_env.value = ref_env.func(ref_env);
       }
-      
+
       /*let property = this.flatten({key: env.key, property: ref_key});
       env.properties[ref_key] = property;
 
@@ -392,7 +406,17 @@ export class GraphDB {
    * Return the set of keys with mutual references.
    */
   crossReferences(ancestors, descendants, leafs=true, refs=[]) {
+    
+    if( is_string(ancestors) )
+      ancestors = [ancestors];
+
+    if( is_string(descendants) )
+      descendants = [descendants];
+
+    //console.log('[GraphDB]  cross-referencing ancestors of:', ancestors, 'with descendants of:', descendants);
+
     ancestors = this.ancestors[ancestors].concat(ancestors);
+
     descendants = this.filter({
       keys: this.descendants[descendants].concat(descendants),
       refs: true, leafs: leafs
@@ -402,7 +426,7 @@ export class GraphDB {
       for( const descendant of descendants ) {
         if( this.flat[descendant].refs.includes(ancestor) ) {
           refs.push(descendant);
-          break;
+          //break;
         }
       }
     }

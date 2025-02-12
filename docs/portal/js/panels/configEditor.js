@@ -197,6 +197,6 @@ export class ConfigEditor {
 
     this.code.refresh(env);
 
-    console.log(`Resolved ${key}`, env);
+    console.log(`[GraphDB]  Resolved ${key}`, env);
   }
 }

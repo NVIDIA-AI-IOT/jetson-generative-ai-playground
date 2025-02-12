@@ -48,7 +48,7 @@ export class CodeEditor {
       return;
     }
     
-    console.log(`[CodeEditor] refreshing tabs with:`, env);
+    //console.log(`[CodeEditor] refreshing tabs with:`, env);
 
     this.key = env.key;
     this.refreshing = true;
@@ -91,7 +91,6 @@ export class CodeEditor {
     const expander = pageNode.querySelector('.tab-page-expand');
 
     if( has_code ) {
-      console.log('HAS CODE', page);
       pageBody.appendChild(this.createCodeBlock(page));
     }
     /*else if( exists(env.value) ) {
@@ -107,11 +106,11 @@ export class CodeEditor {
     expander.addEventListener('click', (evt) => {
       if( expander.classList.contains(expClass[true]) ) {
         expander.classList.replace(expClass[true], expClass[false]);
-        console.log(`[Code Editor] Hiding page ${page.filename}`);
+        //console.log(`[Code Editor] Hiding page ${page.filename}`);
       }
       else {
         expander.classList.replace(expClass[false], expClass[true]);
-        console.log(`[Code Editor] Expanding page ${page.filename}`);
+        //console.log(`[Code Editor] Expanding page ${page.filename}`);
       }
       pageBody.classList.toggle('hidden');
     });
@@ -179,7 +178,6 @@ export class CodeEditor {
           page.default = page.value;
 
         page.value = env[ref_key];
-        console.log(`PAGE ${ref_key} value`, page.value);
       }
       else {
         var page = env.references[ref_key];
@@ -292,7 +290,7 @@ export class CodeEditor {
     if( !exists(key) )
       return;
 
-    console.log(`[CodeEditor] changing active tab to '${key}'`);
+    //console.log(`[CodeEditor] changing active tab to '${key}'`);
 
     const ids = this.ids(key);
     const tab = document.getElementById(ids.tab);

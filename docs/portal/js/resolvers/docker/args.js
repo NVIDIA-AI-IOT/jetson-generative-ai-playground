@@ -3,32 +3,35 @@
  */
 export function docker_args(env) {
 
-  let model_id = env.url ?? env.model_name;
+  if( env.tags.includes('models') ) // TODO findParent() / findAncestor()
+    var model = env;
+  else if( exists(env.parent) && env.parent.tags.includes('models') )
+    var model = env.parent;
+  else 
+    return env.docker_args;
 
-  if( !exists(model_id) && exists(env.parent) )
-    model_id = env.parent.url ?? env.parent.model_name;
-
+  const model_id = model.url ?? model.model_name;
   const model_api = get_model_api(model_id)
   const model_repo = get_model_repo(model_id);
-  const server_url = get_server_url(env);
+  const server_url = get_server_url(model);
 
   let args = `  --model ${model_repo} \\
-      --quantization ${env.quantization} \\
-      --max-batch-size ${env.max_batch_size}`;
+      --quantization ${model.quantization} \\
+      --max-batch-size ${model.max_batch_size}`;
 
-  if( is_number(env.max_context_len) ) {
+  if( is_number(model.max_context_len) ) {
     args += ` \\
-      --max-context-len ${env.max_context_len}`;
+      --max-context-len ${model.max_context_len}`;
   }
 
-  if( is_number(env.prefill_chunk) ) {
+  if( is_number(model.prefill_chunk) ) {
     args += ` \\
-      --prefill-chunk ${env.prefill_chunk}`;
+      --prefill-chunk ${model.prefill_chunk}`;
   }
 
-  if( nonempty(env.chat_template) ) {
+  if( nonempty(model.chat_template) ) {
     args += ` \\
-      --chat-template ${env.chat_template}`;
+      --chat-template ${model.chat_template}`;
   }
 
   if( exists(server_url) ) {

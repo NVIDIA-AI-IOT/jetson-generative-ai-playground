@@ -2,7 +2,7 @@
  * Generate curl test script
  */
 
-export function get_curl_chat(env) {
+export function get_curl_request(env) {
   const code = 
   `curl http://${env.server_host}/v1/chat/completions \\
   -H "Content-Type: application/json" \\
@@ -16,12 +16,14 @@ export function get_curl_chat(env) {
   return code;
 }
 
-Resolvers({curl_chat: {
-  func: get_curl_chat,
-  title: 'Curl Test',
+Resolvers({curl_request: {
+  func: get_curl_request,
+  title: 'Curl Request',
   filename: 'curl.sh',
   hidden: true,
+  group: 'shell',
   tags: ['string', 'shell'],
+  refs: ['llm'],
   text: `Check the connection and model response with a simple test query:`,
   footer: `The LLM reply is interleaved in the output stream and not particularly readable, but will produce errors if there was an issue with the request.`
 }});

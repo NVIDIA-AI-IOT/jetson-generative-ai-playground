@@ -8,8 +8,8 @@
   background: rgba(255,255,255,0.06);
   margin: 0px 0px 7px 0px;
   padding: 7px 20px 5px 10px;
-  overflow-y: scroll;
-  scrollbar-color: rgb(255,255,255,0.6) hsla(82deg, 100%, 33.1%, 0.8);
+  /*overflow-y: scroll;
+  scrollbar-color: rgb(255,255,255,0.6) hsla(82deg, 100%, 33.1%, 0.8);*/
   border-radius: 5px;
 }
 
@@ -39,6 +39,10 @@
   vertical-align: 0em;
 }
 
+.tab-page-expand:hover:before {
+  font-weight: 600 !important;
+}
+
 .tab-page-title-div {
   margin-bottom: 10px;
 }
@@ -51,7 +55,7 @@
   text-decoration: underline;
   text-underline-offset: 7px;
   text-decoration-color: rgb(180,180,180);
-  text-shadow: rgba(50,50,50,0.7) 2px 2px 4px;
+  text-shadow: rgba(50,50,50,0.6) 3px 2px 4px;
 }
 
 .tab-page-title:hover {

@@ -3,10 +3,13 @@
  */
 export function docker_compose(env, service_name='llm-server') {
 
-  if( !env.db.ancestors[env.key].includes('container') )
-    return;
+  //if( !env.db.ancestors[env.key].includes('container') )
+  //  return;
+  
+  if( exists(env.parent) )
+    env = env.parent;
 
-  var compose = composerize(docker_run(env), null, 'latest', 2); // this gets imported globally by nanolab.js
+  var compose = composerize(env.docker_run ?? docker_run(env), null, 'latest', 2); // this gets imported globally by nanolab.js
   compose = compose.substring(compose.indexOf("\n") + 1); // first line from composerize is an unwanted name
 
   const server_url = get_server_url(env, 'http://0.0.0.0:9000');
@@ -43,14 +46,18 @@ Resolver({
   filename: 'compose.yml',
   language: 'yaml',
   hidden: true,
+  group: "compose",
   tags: ['compose'],
+  refs: ['llm'],
   text: [
     `Use this <a href="https://docs.docker.com/reference/compose-file/services/" ` +
     `title="To install docker compose on your Jetson use:\n ` +
-    `sudo apt install docker-compose-v2" target="_blank">docker compose</a> ` +
-    `template to orchestrate multiple containers.<br/>` +
-    `These included docker profiles launch the example scripts & tools:`,
-    `<div class="monospace" style="margin-top: 5px;">&nbsp;&nbsp;* docker compose --profile perf-client up`,
-    `&nbsp;&nbsp;* docker compose --profile open-webui up </div>`
-  ].join('<br/>')
+    `sudo apt install docker-compose-v2" target="_blank" class="monospace">compose.yml</a> ` +
+    `to manage microservice deployments and workflows.<br/>` +
+    `These embedded docker profiles launch the example scripts & tools:<br/>`,
+    `<div class="monospace" style="margin: 5px 0px 5px 25px">* docker compose --profile perf-client up<br/>`,
+    `* docker compose --profile open-webui up </div>` +
+    `By default,<span class="monospace"> docker compose up </span>will prepare the model and start the server. <br/>` +
+    `To stop the containers, run<span class="monospace"> docker compose down --remove-orphans</span>`
+  ].join(' ')
 });
