@@ -100,7 +100,7 @@ Once you save the above YAML file in a directory, issue the following.
 docker compose up
 ```
 
-![](./images/docker-compose_openwebui.png){.shadow}
+![](./images/openwebui_docker-compose.png){.shadow}
 
 ## Basic Usage
 
