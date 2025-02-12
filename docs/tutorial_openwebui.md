@@ -26,7 +26,7 @@ It can work with Ollama as a backend as well as other backend that is compatible
 
         - `7GB` for `open-webui` container image
 
-```
+```bash
 sudo docker run -d --network=host \
     -v ${HOME}/open-webui:/app/backend/data \
     -e OLLAMA_BASE_URL=http://127.0.0.1:11434 \
@@ -35,7 +35,7 @@ sudo docker run -d --network=host \
     ghcr.io/open-webui/open-webui:main
 ```
 
-## Ollama backend
+## 🦙 Ollama backend
 
 If you <a href="./tutorial_ollama.html">have installed Ollama</a>, you can just run the Open WebUI docker container without installing any other things.
 
@@ -280,4 +280,103 @@ sudo docker stop open-webui
 sudo docker rm open-webui
 ```
 
-## Optional Setup: MLC backend
+## Optional Setup: 🤖 MLC backend
+
+Instead of running Open WebUI with Ollama backend, we can run models with more performant backend with MLC that are designed to run optimally on Jetson and can communicate to Open WebUI through OpenAI compatible API.
+
+![](./images/jetson-ai-lab_models.png){.shadow}
+
+### Case 1: Separate `docker run` commands
+
+After running Open WebUI container with the following command, you can run the `docker run` command you find in the new [**Models**](./models.md) page.
+
+=== "Open WebUI container"
+
+    ```bash
+    sudo docker run -d --network=host \
+        -v ${HOME}/open-webui:/app/backend/data \
+        -e OLLAMA_BASE_URL=http://127.0.0.1:11434 \
+        --name open-webui \
+        ghcr.io/open-webui/open-webui:main
+    ```
+
+=== "MLC container with LLama 3.1 8B"
+
+    ```bash
+    docker run -it --rm --gpus all \
+    -p 9000:9000 \
+    --pull always \
+    -e DOCKER_PULL=on \
+    -e HF_HUB_CACHE=/root/.cache/huggingface \
+    -v /mnt/nvme/cache:/root/.cache \
+    dustynv/mlc:r36.4.0 \
+        sudonim serve \
+        --model dusty-nv/Llama-3.1-8B-Instruct-q4f16_ft-MLC \
+        --quantization q4f16_ft \
+        --max-batch-size 1 \
+        --host 0.0.0.0 \
+        --port 9000
+    ```
+
+### Case 2: Docker compose
+
+You can save the following YML file and issue `docker compose up`.
+
+=== "compose.yml"
+
+    ```yaml
+    # Save as compose.yml and run 'docker compose up'
+    services:
+      llm_server:
+        stdin_open: true
+        tty: true
+        deploy:
+          resources:
+            reservations:
+              devices:
+                - driver: nvidia
+                  count: all
+                  capabilities:
+                    - gpu
+        ports:
+          - 9000:9000
+        pull_policy: always
+        environment:
+          - DOCKER_PULL=on
+          - HF_HUB_CACHE=/root/.cache/huggingface
+        volumes:
+          - /mnt/nvme/cache:/root/.cache
+        image: dustynv/mlc:r36.4.0
+        command: sudonim serve --model dusty-nv/Llama-3.1-8B-Instruct-q4f16_ft-MLC
+          --quantization q4f16_ft --max-batch-size 1 --host 0.0.0.0 --port 9000
+        healthcheck:
+          test: ["CMD", "curl", "-f", "http://0.0.0.0:9000/v1/models"]
+          interval: 20s
+          timeout: 60s
+          retries: 45
+          start_period: 15s
+
+      open-webui:
+        image: ghcr.io/open-webui/open-webui:main
+        container_name: open-webui
+        restart: always
+        network_mode: host
+        environment:
+          - ENABLE_OPENAI_API=True
+          - OPENAI_API_BASE_URL=http://localhost:9000/v1
+          - OPENAI_API_KEY=foo
+        volumes:
+          - "${HOME}/open-webui:/app/backend/data"
+    ```
+
+Once you save the above YAML file in a directory, issue the following.
+
+```bash
+docker compose up
+```
+
+![alt text](images/openwebui_llama3.1-8b_compose.png){.shadow}
+
+Note that it generates faster than Ollama (llama.cpp).
+
+![](./images/openwebui_mlc_paris_to_swiss.png){.shadow}
