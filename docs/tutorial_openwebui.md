@@ -271,7 +271,7 @@ sudo docker run -d --network=host \
     ghcr.io/open-webui/open-webui:main
 ```
 
-#### How to Shut Down Open WebUI?
+### How to Shut Down Open WebUI?
 
 To gracefully stop and remove the Open WebUI container, run the following commands:
 
@@ -304,25 +304,44 @@ After running Open WebUI container with the following command, you can run the `
 
     ```bash
     docker run -it --rm --gpus all \
-    -p 9000:9000 \
-    --pull always \
-    -e DOCKER_PULL=on \
-    -e HF_HUB_CACHE=/root/.cache/huggingface \
-    -v /mnt/nvme/cache:/root/.cache \
-    dustynv/mlc:r36.4.0 \
+      -p 9000:9000 \
+      --pull always \
+      -e DOCKER_PULL=on \
+      -e HF_HUB_CACHE=/root/.cache/huggingface \
+      -v /mnt/nvme/cache:/root/.cache \
+      dustynv/mlc:r36.4.0 \
         sudonim serve \
-        --model dusty-nv/Llama-3.1-8B-Instruct-q4f16_ft-MLC \
-        --quantization q4f16_ft \
-        --max-batch-size 1 \
-        --host 0.0.0.0 \
-        --port 9000
+          --model dusty-nv/Llama-3.1-8B-Instruct-q4f16_ft-MLC \
+          --quantization q4f16_ft \
+          --max-batch-size 1 \
+          --host 0.0.0.0 \
+          --port 9000
+    ```
+
+=== "MLC container with DeepSeek R1 (Llama 8B)"
+
+    ```bash
+    docker run -it --rm --gpus all \
+      -p 9000:9000 \
+      --pull always \
+      -e DOCKER_PULL=on \
+      -e HF_HUB_CACHE=/root/.cache/huggingface \
+      -v /mnt/nvme/cache:/root/.cache \
+      dustynv/mlc:r36.4.0 \
+        sudonim serve \
+          --model dusty-nv/DeepSeek-R1-Distill-Llama-8B-q4f16_ft-MLC \
+          --quantization q4f16_ft \
+          --max-batch-size 1 \
+          --chat-template deepseek_r1_llama \
+          --host 0.0.0.0 \
+          --port 9000
     ```
 
 ### Case 2: Docker compose
 
-You can save the following YML file and issue `docker compose up`.
+You can save the following YML file (select one, and save as `compose.yml`) and issue `docker compose up`.
 
-=== "compose.yml"
+=== "compose.yml for Llama 3.1 8B"
 
     ```yaml
     # Save as compose.yml and run 'docker compose up'
@@ -349,6 +368,53 @@ You can save the following YML file and issue `docker compose up`.
         image: dustynv/mlc:r36.4.0
         command: sudonim serve --model dusty-nv/Llama-3.1-8B-Instruct-q4f16_ft-MLC
           --quantization q4f16_ft --max-batch-size 1 --host 0.0.0.0 --port 9000
+        healthcheck:
+          test: ["CMD", "curl", "-f", "http://0.0.0.0:9000/v1/models"]
+          interval: 20s
+          timeout: 60s
+          retries: 45
+          start_period: 15s
+
+      open-webui:
+        image: ghcr.io/open-webui/open-webui:main
+        container_name: open-webui
+        restart: always
+        network_mode: host
+        environment:
+          - ENABLE_OPENAI_API=True
+          - OPENAI_API_BASE_URL=http://localhost:9000/v1
+          - OPENAI_API_KEY=foo
+        volumes:
+          - "${HOME}/open-webui:/app/backend/data"
+    ```
+
+=== "compose.yml for DeepSeek R1 (Llama-8B)"
+
+    ```yaml
+    # Save as compose.yml and run 'docker compose up'
+    services:
+      llm_server:
+        stdin_open: true
+        tty: true
+        deploy:
+          resources:
+            reservations:
+              devices:
+                - driver: nvidia
+                  count: all
+                  capabilities:
+                    - gpu
+        ports:
+          - 9000:9000
+        pull_policy: always
+        environment:
+          - DOCKER_PULL=on
+          - HF_HUB_CACHE=/root/.cache/huggingface
+        volumes:
+          - /mnt/nvme/cache:/root/.cache
+        image: dustynv/mlc:r36.4.0
+        command: sudonim serve --model dusty-nv/DeepSeek-R1-Distill-Llama-8B-q4f16_ft-MLC
+          --quantization q4f16_ft --max-batch-size 1 --chat-template deepseek_r1_llama --host 0.0.0.0 --port 9000
         healthcheck:
           test: ["CMD", "curl", "-f", "http://0.0.0.0:9000/v1/models"]
           interval: 20s
