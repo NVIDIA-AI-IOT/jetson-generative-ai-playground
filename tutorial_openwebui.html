@@ -466,15 +466,15 @@
                            </span>
                           </a>
                          </li>
-                         <li class="md-nav__item">
-                          <a class="md-nav__link" href="#how-to-shut-down-open-webui">
-                           <span class="md-ellipsis">
-                            How to Shut Down Open WebUI?
-                           </span>
-                          </a>
-                         </li>
                         </ul>
                        </nav>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#how-to-shut-down-open-webui">
+                        <span class="md-ellipsis">
+                         How to Shut Down Open WebUI?
+                        </span>
+                       </a>
                       </li>
                      </ul>
                     </nav>
@@ -1085,15 +1085,15 @@
                   </span>
                  </a>
                 </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="#how-to-shut-down-open-webui">
-                  <span class="md-ellipsis">
-                   How to Shut Down Open WebUI?
-                  </span>
-                 </a>
-                </li>
                </ul>
               </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#how-to-shut-down-open-webui">
+               <span class="md-ellipsis">
+                How to Shut Down Open WebUI?
+               </span>
+              </a>
              </li>
             </ul>
            </nav>
@@ -1709,9 +1709,9 @@ bash<span class="w"> </span>jetson-containers/install.sh
 <span class="w">    </span>ghcr.io/open-webui/open-webui:main
 </code></pre>
        </div>
-       <h4 id="how-to-shut-down-open-webui">
+       <h3 id="how-to-shut-down-open-webui">
         How to Shut Down Open WebUI?
-       </h4>
+       </h3>
        <p>
         To gracefully stop and remove the Open WebUI container, run the following commands:
        </p>
@@ -1749,15 +1749,19 @@ sudo<span class="w"> </span>docker<span class="w"> </span>rm<span class="w"> </s
         </a>
         page.
        </p>
-       <div class="tabbed-set tabbed-alternate" data-tabs="2:2">
+       <div class="tabbed-set tabbed-alternate" data-tabs="2:3">
         <input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"/>
         <input id="__tabbed_2_2" name="__tabbed_2" type="radio"/>
+        <input id="__tabbed_2_3" name="__tabbed_2" type="radio"/>
         <div class="tabbed-labels">
          <label for="__tabbed_2_1">
           Open WebUI container
          </label>
          <label for="__tabbed_2_2">
           MLC container with LLama 3.1 8B
+         </label>
+         <label for="__tabbed_2_3">
+          MLC container with DeepSeek R1 (Llama 8B)
          </label>
         </div>
         <div class="tabbed-content">
@@ -1774,18 +1778,37 @@ sudo<span class="w"> </span>docker<span class="w"> </span>rm<span class="w"> </s
          <div class="tabbed-block">
           <div class="highlight">
            <pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
--p<span class="w"> </span><span class="m">9000</span>:9000<span class="w"> </span><span class="se">\</span>
---pull<span class="w"> </span>always<span class="w"> </span><span class="se">\</span>
--e<span class="w"> </span><span class="nv">DOCKER_PULL</span><span class="o">=</span>on<span class="w"> </span><span class="se">\</span>
--e<span class="w"> </span><span class="nv">HF_HUB_CACHE</span><span class="o">=</span>/root/.cache/huggingface<span class="w"> </span><span class="se">\</span>
--v<span class="w"> </span>/mnt/nvme/cache:/root/.cache<span class="w"> </span><span class="se">\</span>
-dustynv/mlc:r36.4.0<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-p<span class="w"> </span><span class="m">9000</span>:9000<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--pull<span class="w"> </span>always<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">DOCKER_PULL</span><span class="o">=</span>on<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">HF_HUB_CACHE</span><span class="o">=</span>/root/.cache/huggingface<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>/mnt/nvme/cache:/root/.cache<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>dustynv/mlc:r36.4.0<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>sudonim<span class="w"> </span>serve<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--model<span class="w"> </span>dusty-nv/Llama-3.1-8B-Instruct-q4f16_ft-MLC<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--quantization<span class="w"> </span>q4f16_ft<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--max-batch-size<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--port<span class="w"> </span><span class="m">9000</span>
+<span class="w">      </span>--model<span class="w"> </span>dusty-nv/Llama-3.1-8B-Instruct-q4f16_ft-MLC<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--quantization<span class="w"> </span>q4f16_ft<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--max-batch-size<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--port<span class="w"> </span><span class="m">9000</span>
+</code></pre>
+          </div>
+         </div>
+         <div class="tabbed-block">
+          <div class="highlight">
+           <pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-p<span class="w"> </span><span class="m">9000</span>:9000<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--pull<span class="w"> </span>always<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">DOCKER_PULL</span><span class="o">=</span>on<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">HF_HUB_CACHE</span><span class="o">=</span>/root/.cache/huggingface<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span>/mnt/nvme/cache:/root/.cache<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>dustynv/mlc:r36.4.0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>sudonim<span class="w"> </span>serve<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--model<span class="w"> </span>dusty-nv/DeepSeek-R1-Distill-Llama-8B-q4f16_ft-MLC<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--quantization<span class="w"> </span>q4f16_ft<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--max-batch-size<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--chat-template<span class="w"> </span>deepseek_r1_llama<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--port<span class="w"> </span><span class="m">9000</span>
 </code></pre>
           </div>
          </div>
@@ -1795,17 +1818,25 @@ dustynv/mlc:r36.4.0<span class="w"> </span><span class="se">\</span>
         Case 2: Docker compose
        </h3>
        <p>
-        You can save the following YML file and issue
+        You can save the following YML file (select one, and save as
+        <code>
+         compose.yml
+        </code>
+        ) and issue
         <code>
          docker compose up
         </code>
         .
        </p>
-       <div class="tabbed-set tabbed-alternate" data-tabs="3:1">
+       <div class="tabbed-set tabbed-alternate" data-tabs="3:2">
         <input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"/>
+        <input id="__tabbed_3_2" name="__tabbed_3" type="radio"/>
         <div class="tabbed-labels">
          <label for="__tabbed_3_1">
-          compose.yml
+          compose.yml for Llama 3.1 8B
+         </label>
+         <label for="__tabbed_3_2">
+          compose.yml for DeepSeek R1 (Llama-8B)
          </label>
         </div>
         <div class="tabbed-content">
@@ -1835,6 +1866,53 @@ dustynv/mlc:r36.4.0<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dustynv/mlc:r36.4.0</span>
 <span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sudonim serve --model dusty-nv/Llama-3.1-8B-Instruct-q4f16_ft-MLC</span>
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--quantization q4f16_ft --max-batch-size 1 --host 0.0.0.0 --port 9000</span>
+<span class="w">    </span><span class="nt">healthcheck</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"CMD"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"curl"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-f"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"http://0.0.0.0:9000/v1/models"</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20s</span>
+<span class="w">      </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60s</span>
+<span class="w">      </span><span class="nt">retries</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">45</span>
+<span class="w">      </span><span class="nt">start_period</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span>
+
+<span class="w">  </span><span class="nt">open-webui</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/open-webui/open-webui:main</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">open-webui</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
+<span class="w">    </span><span class="nt">network_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">host</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENABLE_OPENAI_API=True</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OPENAI_API_BASE_URL=http://localhost:9000/v1</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OPENAI_API_KEY=foo</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"${HOME}/open-webui:/app/backend/data"</span>
+</code></pre>
+          </div>
+         </div>
+         <div class="tabbed-block">
+          <div class="highlight">
+           <pre><span></span><code><span class="c1"># Save as compose.yml and run 'docker compose up'</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">llm_server</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">stdin_open</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">tty</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">deploy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">reservations</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">devices</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvidia</span>
+<span class="w">              </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span>
+<span class="w">              </span><span class="nt">capabilities</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpu</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9000:9000</span>
+<span class="w">    </span><span class="nt">pull_policy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DOCKER_PULL=on</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_HUB_CACHE=/root/.cache/huggingface</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/nvme/cache:/root/.cache</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dustynv/mlc:r36.4.0</span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sudonim serve --model dusty-nv/DeepSeek-R1-Distill-Llama-8B-q4f16_ft-MLC</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--quantization q4f16_ft --max-batch-size 1 --chat-template deepseek_r1_llama --host 0.0.0.0 --port 9000</span>
 <span class="w">    </span><span class="nt">healthcheck</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"CMD"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"curl"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-f"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"http://0.0.0.0:9000/v1/models"</span><span class="p p-Indicator">]</span>
 <span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20s</span>
