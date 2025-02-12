@@ -322,10 +322,10 @@
                    <li class="md-nav__item">
                     <a class="md-nav__link" href="#ollama-backend">
                      <span class="md-ellipsis">
-                      Ollama backend
+                      🦙 Ollama backend
                      </span>
                     </a>
-                    <nav aria-label="Ollama backend" class="md-nav">
+                    <nav aria-label="🦙 Ollama backend" class="md-nav">
                      <ul class="md-nav__list">
                       <li class="md-nav__item">
                        <a class="md-nav__link" href="#case-2-ollama-container">
@@ -482,9 +482,27 @@
                    <li class="md-nav__item">
                     <a class="md-nav__link" href="#optional-setup-mlc-backend">
                      <span class="md-ellipsis">
-                      Optional Setup: MLC backend
+                      Optional Setup: 🤖 MLC backend
                      </span>
                     </a>
+                    <nav aria-label="Optional Setup: 🤖 MLC backend" class="md-nav">
+                     <ul class="md-nav__list">
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#case-1-separate-docker-run-commands">
+                        <span class="md-ellipsis">
+                         Case 1: Separate docker run commands
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#case-2-docker-compose">
+                        <span class="md-ellipsis">
+                         Case 2: Docker compose
+                        </span>
+                       </a>
+                      </li>
+                     </ul>
+                    </nav>
                    </li>
                   </ul>
                  </nav>
@@ -923,10 +941,10 @@
           <li class="md-nav__item">
            <a class="md-nav__link" href="#ollama-backend">
             <span class="md-ellipsis">
-             Ollama backend
+             🦙 Ollama backend
             </span>
            </a>
-           <nav aria-label="Ollama backend" class="md-nav">
+           <nav aria-label="🦙 Ollama backend" class="md-nav">
             <ul class="md-nav__list">
              <li class="md-nav__item">
               <a class="md-nav__link" href="#case-2-ollama-container">
@@ -1083,9 +1101,27 @@
           <li class="md-nav__item">
            <a class="md-nav__link" href="#optional-setup-mlc-backend">
             <span class="md-ellipsis">
-             Optional Setup: MLC backend
+             Optional Setup: 🤖 MLC backend
             </span>
            </a>
+           <nav aria-label="Optional Setup: 🤖 MLC backend" class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#case-1-separate-docker-run-commands">
+               <span class="md-ellipsis">
+                Case 1: Separate docker run commands
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#case-2-docker-compose">
+               <span class="md-ellipsis">
+                Case 2: Docker compose
+               </span>
+              </a>
+             </li>
+            </ul>
+           </nav>
           </li>
          </ul>
         </nav>
@@ -1179,16 +1215,16 @@
         </ol>
        </div>
        <div class="highlight">
-        <pre><span></span><code>sudo docker run -d --network=host \
-    -v ${HOME}/open-webui:/app/backend/data \
-    -e OLLAMA_BASE_URL=http://127.0.0.1:11434 \
-    --name open-webui \
-    --restart always \
-    ghcr.io/open-webui/open-webui:main
+        <pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/open-webui:/app/backend/data<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-e<span class="w"> </span><span class="nv">OLLAMA_BASE_URL</span><span class="o">=</span>http://127.0.0.1:11434<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--name<span class="w"> </span>open-webui<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--restart<span class="w"> </span>always<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>ghcr.io/open-webui/open-webui:main
 </code></pre>
        </div>
        <h2 id="ollama-backend">
-        Ollama backend
+        🦙 Ollama backend
        </h2>
        <p>
         If you
@@ -1685,8 +1721,159 @@ sudo<span class="w"> </span>docker<span class="w"> </span>rm<span class="w"> </s
 </code></pre>
        </div>
        <h2 id="optional-setup-mlc-backend">
-        Optional Setup: MLC backend
+        Optional Setup: 🤖 MLC backend
        </h2>
+       <p>
+        Instead of running Open WebUI with Ollama backend, we can run models with more performant backend with MLC that are designed to run optimally on Jetson and can communicate to Open WebUI through OpenAI compatible API.
+       </p>
+       <p>
+        <img alt="" class="shadow" src="images/jetson-ai-lab_models.png"/>
+       </p>
+       <h3 id="case-1-separate-docker-run-commands">
+        Case 1: Separate
+        <code>
+         docker run
+        </code>
+        commands
+       </h3>
+       <p>
+        After running Open WebUI container with the following command, you can run the
+        <code>
+         docker run
+        </code>
+        command you find in the new
+        <a href="models.html">
+         <strong>
+          Models
+         </strong>
+        </a>
+        page.
+       </p>
+       <div class="tabbed-set tabbed-alternate" data-tabs="2:2">
+        <input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"/>
+        <input id="__tabbed_2_2" name="__tabbed_2" type="radio"/>
+        <div class="tabbed-labels">
+         <label for="__tabbed_2_1">
+          Open WebUI container
+         </label>
+         <label for="__tabbed_2_2">
+          MLC container with LLama 3.1 8B
+         </label>
+        </div>
+        <div class="tabbed-content">
+         <div class="tabbed-block">
+          <div class="highlight">
+           <pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/open-webui:/app/backend/data<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-e<span class="w"> </span><span class="nv">OLLAMA_BASE_URL</span><span class="o">=</span>http://127.0.0.1:11434<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--name<span class="w"> </span>open-webui<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>ghcr.io/open-webui/open-webui:main
+</code></pre>
+          </div>
+         </div>
+         <div class="tabbed-block">
+          <div class="highlight">
+           <pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
+-p<span class="w"> </span><span class="m">9000</span>:9000<span class="w"> </span><span class="se">\</span>
+--pull<span class="w"> </span>always<span class="w"> </span><span class="se">\</span>
+-e<span class="w"> </span><span class="nv">DOCKER_PULL</span><span class="o">=</span>on<span class="w"> </span><span class="se">\</span>
+-e<span class="w"> </span><span class="nv">HF_HUB_CACHE</span><span class="o">=</span>/root/.cache/huggingface<span class="w"> </span><span class="se">\</span>
+-v<span class="w"> </span>/mnt/nvme/cache:/root/.cache<span class="w"> </span><span class="se">\</span>
+dustynv/mlc:r36.4.0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>sudonim<span class="w"> </span>serve<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--model<span class="w"> </span>dusty-nv/Llama-3.1-8B-Instruct-q4f16_ft-MLC<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--quantization<span class="w"> </span>q4f16_ft<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--max-batch-size<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--port<span class="w"> </span><span class="m">9000</span>
+</code></pre>
+          </div>
+         </div>
+        </div>
+       </div>
+       <h3 id="case-2-docker-compose">
+        Case 2: Docker compose
+       </h3>
+       <p>
+        You can save the following YML file and issue
+        <code>
+         docker compose up
+        </code>
+        .
+       </p>
+       <div class="tabbed-set tabbed-alternate" data-tabs="3:1">
+        <input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"/>
+        <div class="tabbed-labels">
+         <label for="__tabbed_3_1">
+          compose.yml
+         </label>
+        </div>
+        <div class="tabbed-content">
+         <div class="tabbed-block">
+          <div class="highlight">
+           <pre><span></span><code><span class="c1"># Save as compose.yml and run 'docker compose up'</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">llm_server</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">stdin_open</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">tty</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">deploy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">reservations</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">devices</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvidia</span>
+<span class="w">              </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span>
+<span class="w">              </span><span class="nt">capabilities</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpu</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9000:9000</span>
+<span class="w">    </span><span class="nt">pull_policy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DOCKER_PULL=on</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_HUB_CACHE=/root/.cache/huggingface</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/nvme/cache:/root/.cache</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dustynv/mlc:r36.4.0</span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sudonim serve --model dusty-nv/Llama-3.1-8B-Instruct-q4f16_ft-MLC</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--quantization q4f16_ft --max-batch-size 1 --host 0.0.0.0 --port 9000</span>
+<span class="w">    </span><span class="nt">healthcheck</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"CMD"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"curl"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-f"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"http://0.0.0.0:9000/v1/models"</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20s</span>
+<span class="w">      </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60s</span>
+<span class="w">      </span><span class="nt">retries</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">45</span>
+<span class="w">      </span><span class="nt">start_period</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span>
+
+<span class="w">  </span><span class="nt">open-webui</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/open-webui/open-webui:main</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">open-webui</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
+<span class="w">    </span><span class="nt">network_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">host</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENABLE_OPENAI_API=True</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OPENAI_API_BASE_URL=http://localhost:9000/v1</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OPENAI_API_KEY=foo</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"${HOME}/open-webui:/app/backend/data"</span>
+</code></pre>
+          </div>
+         </div>
+        </div>
+       </div>
+       <p>
+        Once you save the above YAML file in a directory, issue the following.
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>up
+</code></pre>
+       </div>
+       <p>
+        <img alt="alt text" class="shadow" src="images/openwebui_llama3.1-8b_compose.png"/>
+       </p>
+       <p>
+        Note that it generates faster than Ollama (llama.cpp).
+       </p>
+       <p>
+        <img alt="" class="shadow" src="images/openwebui_mlc_paris_to_swiss.png"/>
+       </p>
       </article>
      </div>
      <script>
