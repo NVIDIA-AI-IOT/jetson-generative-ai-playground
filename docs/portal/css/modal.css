@@ -21,8 +21,8 @@
   margin: auto;
   padding: 0;
   background-color: rgb(0,0,0,0);
-  min-width: 1000px;
-  max-width: 1000px;
+  min-width: 1100px;
+  max-width: 1100px;
   /*width: 80%;*/
   /*box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);*/
   /*-webkit-animation-name: animatetop;
@@ -103,7 +103,7 @@
 /* make the dialog body partially transparent */
 .modal-body {
   padding: 15px 15px;
-  margin: 2px 0px 0px 3px;
+  margin: 1px 0px 0px 3px;
   color: #333333;
   font-weight: 500;
   /*text-shadow: rgba(50,50,50,0.4) 3px 0 3px;*/

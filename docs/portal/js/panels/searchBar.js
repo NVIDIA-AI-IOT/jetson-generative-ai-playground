@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { 
-  GraphTags, TreeGrid, TreeList, ToggleSwitch, 
+  GraphDB, TreeGrid, TreeList, ToggleSwitch, 
   ConfigEditor, htmlToNode, exists, ZipGenerator,
   SideBar, as_element, is_string, is_list, len,
 } from '../nanolab.js';
@@ -54,22 +54,22 @@ export class SearchBar {
     if( this.gate === 'or' )
       tags = [tags];  // nest tags for compound OR
 
-    this.results = this.db.query({
+    this.last_query = this.db.query({
       select: 'keys',
       from: '*',
       where: 'ancestors',
       in: tags
     });
 
-    for( const tag of tags ) { // add tags themselves from query
+    /*for( const tag of tags ) { // add tags themselves from query
       if( !this.results.includes(tag) )
         this.results.push(tag); 
-    } 
+    } */
 
     if( update ?? true )
       this.refresh();
 
-    return this.results;
+    return this.last_query;
   }
 
   /*
@@ -123,14 +123,24 @@ export class SearchBar {
       help: 'Grid or list layout'
     });
 
+    const sidebarSwitch = new ToggleSwitch({
+      id: `${this.id}-sidebar-switch`, 
+      value: 'visible', 
+      states: ['visible', 'hidden'], 
+      labels: ['', ''],
+      classes: [
+        ['bi', 'bi bi-chevron-left'], 
+        ['bi', 'bi bi-chevron-right']
+      ],
+      help: 'Show/hide the sidebar'
+    });
+
     html += `</select>
           ${gateSwitch.html()}
-          ${layoutSwitch.html()}
+          ${sidebarSwitch.html()}
         </div>
-        <div id="${this.id}-results-area" class="flex flex-row" style="margin-top: 15px;">
-          <div id="${this.id}-card-container" style="overflow-x: scroll;">
-          </div>
-          <div class="vertical-divider">
+        <div id="${this.id}-results-area" class="search-results-area">
+          <div id="${this.id}-results-container" class="search-results-container">
           </div>
         </div>
       </div>
@@ -139,14 +149,17 @@ export class SearchBar {
     this.node = htmlToNode(html);
     this.parent.appendChild(this.node);
 
-    this.node.querySelector(`#${this.id}-results-area`).appendChild(
-      SideBar({id: `${this.id}-sidebar`})
-    )
+    const sidebar = SideBar({id: `${this.id}-sidebar`, searchBar: this});
+    this.node.querySelector(`#${this.id}-results-area`).appendChild(sidebar);
 
-    //$(`#${this.id}-help-container`).draggable();
+    sidebarSwitch.toggled((state) => {
+      const result = sidebar.classList.toggle('hidden');
+      console.log(`Toggled sidebar to ${state} (${result})`);
+    });
 
     gateSwitch.toggled((gate) => self.refresh({gate: gate}));
     //layoutSwitch.toggled((layout) => self.refresh({layout: layout}));
+
 
     $(`#${select2_id}`).select2({
       allowClear: true,
@@ -186,12 +199,12 @@ export class SearchBar {
     }
 
     if( !exists(keys) )
-      keys = this.results;
+      keys = this.last_query.results;
 
-    console.log(`[SearchBar] Updating layout with ${len(keys)} results`, keys);
+    console.log(`[SearchBar] Updating layout with ${len(keys)} results`, keys, 'roots', this.last_query.roots);
 
     // reset dynamic cards
-    let card_container = $(`#${this.id}-card-container`);
+    let card_container = $(`#${this.id}-results-container`);
     card_container.empty(); 
 
     // generate dynamic content
@@ -199,7 +212,8 @@ export class SearchBar {
 
     html += this.db.treeReduce({
       func: this.layouts[this.layout],
-      mask: this.results
+      keys: this.last_query.roots,
+      mask: keys,
     });
 
     html += `</div>`;
@@ -230,8 +244,8 @@ export class SearchBar {
    */
   download(group='all') {
     console.log("Preparing current selection for download"); 
-    ZipGenerator({db: this.db, keys: this.results ?? Object.keys(this.db)});
+    save_all({db: this.db}); //, keys: this.results ?? Object.keys(this.db)});
     //ZipGenerator({db: this.db, keys: Object.keys(this.db)});
   }
-  
+
 }

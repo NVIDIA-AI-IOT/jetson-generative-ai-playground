@@ -8,6 +8,10 @@
   font-family: var(--theme-text-font);
 }*/
 
+.root-container {
+  position: relative;
+}
+
 .container, .root-container {
   display: flex;
   width: 100%;

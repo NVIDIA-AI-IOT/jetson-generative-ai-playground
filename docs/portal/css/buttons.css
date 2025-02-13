@@ -127,29 +127,13 @@
   margin: 3px;
 }
 
-/* Floating buttons used for copy + downloading code */
-.btn-float {
-  float: right;
-  font-size: 130%;
-  margin-left: 5px;
-  margin-right: 0px;
-  z-index: 100;
-  opacity: 0.75;
-  /*margin-left: auto;  https://stackoverflow.com/a/35270047 */
-}
-
-.btn-float:hover {
-  color:  hsla(82deg, 100%, 38.1%, 1);
-  opacity: 1;
-}
-
 .btn-absolute {
   position: absolute;
   text-shadow: 2px 2px 3px rgb(0,0,0,.4);
-  top: 15px;
-  right: 480px;
+  top: 16px;
+  right: 542px;
   z-index: 999;
-  font-size: 160%;
+  font-size: 175%;
   opacity: 0.75;
 }
 
