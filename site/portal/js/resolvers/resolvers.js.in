@@ -1,0 +1,12 @@
+/*
+ * Bundled resolver definitions
+ */
+/* import { 
+  Resolver, Resolvers, nonempty, exists,
+  get_model_api, get_model_repo, get_model_url,
+  
+} from '../nanolab.js'; */
+
+import '../nanolab.js';
+
+${RESOLVER_LIST}

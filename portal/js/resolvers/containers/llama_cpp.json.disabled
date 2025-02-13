@@ -1,0 +1,10 @@
+{
+  "llama_cpp:jp6": {
+    "name": "dustynv/llama_cpp:r36.4.0",
+    "docker_image": "dustynv/llama_cpp:r36.4.0",
+    "docker_command": "sudonim serve",
+    "docker_options": "-it --rm",
+    "server_host": "0.0.0.0:9000",
+    "tags": ["container", "llama_cpp", "l4t-r36"]
+  }
+}

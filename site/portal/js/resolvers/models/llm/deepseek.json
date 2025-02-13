@@ -1,0 +1,929 @@
+{
+  "deepseek-r1-distill": {
+    "name": "DeepSeek R1",
+    "header": "deepseek-header",
+    "url": "hf.co/deepseek-ai/DeepSeek-R1-Distill",
+    "max_context_len": {
+      "placeholder": 131072
+    },
+    "prefill_chunk": {
+      "placeholder": 8192
+    },
+    "tags": [
+      "llm"
+    ],
+    "links": {
+      "deepseek": {
+        "name": "DeepSeek",
+        "url": "https://www.deepseek.com/"
+      },
+      "hf": {
+        "name": "Hugging Face",
+        "color": "yellow",
+        "url": "hf.co/deepseek-ai/DeepSeek-R1-Distill-Llama-70B"
+      }
+    }
+  },
+  "deepseek-r1-distill-qwen-1.5b": {
+    "name": "DeepSeek R1 Qwen-1.5B",
+    "tags": [
+      "deepseek-r1-distill",
+      "orin"
+    ],
+    "chat_template": "deepseek_r1_qwen",
+    "url": "hf.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+    "links": {
+      "deepseek": {
+        "name": "DeepSeek",
+        "url": "https://www.deepseek.com/"
+      },
+      "hf": {
+        "name": "Hugging Face",
+        "color": "yellow",
+        "url": "hf.co/deepseek-ai/DeepSeek-R1-Distill-Llama-70B"
+      }
+    },
+    "created_at": "2025-01-20 09:04:18+00:00",
+    "last_modified": "2025-02-09 06:34:28+00:00"
+  },
+  "deepseek-r1-distill-qwen-1.5b-q4f16_ft-mlc-jp6": {
+    "title": "DeepSeek R1 Qwen-1.5B \u276f MLC q4f16_ft \u276f JetPack 6.1+",
+    "quantization": "q4f16_ft",
+    "tags": [
+      "deepseek-r1-distill-qwen-1.5b",
+      "q4f16_ft",
+      "mlc:jp6"
+    ],
+    "url": "dusty-nv/DeepSeek-R1-Distill-Qwen-1.5B-q4f16_ft-MLC",
+    "created_at": "2025-01-29 03:21:23+00:00",
+    "last_modified": "2025-01-29 03:21:48+00:00"
+  },
+  "deepseek-r1-distill-qwen-1.5b-q4f16_0-mlc-jp6": {
+    "title": "DeepSeek R1 Qwen-1.5B \u276f MLC q4f16_0 \u276f JetPack 6.1+",
+    "quantization": "q4f16_0",
+    "tags": [
+      "deepseek-r1-distill-qwen-1.5b",
+      "q4f16_0",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-qwen-1.5b-q4f16_1-mlc-jp6": {
+    "title": "DeepSeek R1 Qwen-1.5B \u276f MLC q4f16_1 \u276f JetPack 6.1+",
+    "quantization": "q4f16_1",
+    "tags": [
+      "deepseek-r1-distill-qwen-1.5b",
+      "q4f16_1",
+      "mlc:jp6"
+    ],
+    "url": "mlc-ai/DeepSeek-R1-Distill-Qwen-1.5B-q4f16_1-MLC",
+    "created_at": "2025-01-21 00:21:33+00:00",
+    "last_modified": "2025-01-21 07:58:52+00:00"
+  },
+  "deepseek-r1-distill-qwen-1.5b-q4f32_1-mlc-jp6": {
+    "title": "DeepSeek R1 Qwen-1.5B \u276f MLC q4f32_1 \u276f JetPack 6.1+",
+    "quantization": "q4f32_1",
+    "tags": [
+      "deepseek-r1-distill-qwen-1.5b",
+      "q4f32_1",
+      "mlc:jp6"
+    ],
+    "url": "mlc-ai/DeepSeek-R1-Distill-Qwen-1.5B-q4f32_1-MLC",
+    "created_at": "2025-01-21 00:24:11+00:00",
+    "last_modified": "2025-01-21 07:59:21+00:00"
+  },
+  "deepseek-r1-distill-qwen-1.5b-q4f16_2-mlc-jp6": {
+    "title": "DeepSeek R1 Qwen-1.5B \u276f MLC q4f16_2 \u276f JetPack 6.1+",
+    "quantization": "q4f16_2",
+    "tags": [
+      "deepseek-r1-distill-qwen-1.5b",
+      "q4f16_2",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-qwen-1.5b-q4f16_awq-mlc-jp6": {
+    "title": "DeepSeek R1 Qwen-1.5B \u276f MLC q4f16_awq \u276f JetPack 6.1+",
+    "quantization": "q4f16_awq",
+    "tags": [
+      "deepseek-r1-distill-qwen-1.5b",
+      "q4f16_awq",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-qwen-1.5b-e5m2_f16-mlc-jp6": {
+    "title": "DeepSeek R1 Qwen-1.5B \u276f MLC e5m2_f16 \u276f JetPack 6.1+",
+    "quantization": "e5m2_f16",
+    "tags": [
+      "deepseek-r1-distill-qwen-1.5b",
+      "e5m2_f16",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-qwen-1.5b-e4m3_f16-mlc-jp6": {
+    "title": "DeepSeek R1 Qwen-1.5B \u276f MLC e4m3_f16 \u276f JetPack 6.1+",
+    "quantization": "e4m3_f16",
+    "tags": [
+      "deepseek-r1-distill-qwen-1.5b",
+      "e4m3_f16",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-qwen-1.5b-e4m3_f16_max-mlc-jp6": {
+    "title": "DeepSeek R1 Qwen-1.5B \u276f MLC e4m3_f16_max \u276f JetPack 6.1+",
+    "quantization": "e4m3_f16_max",
+    "tags": [
+      "deepseek-r1-distill-qwen-1.5b",
+      "e4m3_f16_max",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-qwen-1.5b-q4_k_m-gguf-jp6": {
+    "title": "DeepSeek R1 Qwen-1.5B \u276f llama.cpp q4_k_m \u276f JetPack 6.1+",
+    "quantization": "q4_k_m",
+    "tags": [
+      "deepseek-r1-distill-qwen-1.5b",
+      "q4_k_m",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/DeepSeek-R1-Distill-Qwen-1.5B-GGUF/DeepSeek-R1-Distill-Qwen-1.5B-Q4_K_M.gguf",
+    "created_at": "2025-01-20 14:52:20+00:00",
+    "last_modified": "2025-01-22 15:19:36+00:00"
+  },
+  "deepseek-r1-distill-qwen-1.5b-q4_k_l-gguf-jp6": {
+    "title": "DeepSeek R1 Qwen-1.5B \u276f llama.cpp q4_k_l \u276f JetPack 6.1+",
+    "quantization": "q4_k_l",
+    "tags": [
+      "deepseek-r1-distill-qwen-1.5b",
+      "q4_k_l",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/DeepSeek-R1-Distill-Qwen-1.5B-GGUF/DeepSeek-R1-Distill-Qwen-1.5B-Q4_K_L.gguf",
+    "created_at": "2025-01-20 14:52:20+00:00",
+    "last_modified": "2025-01-22 15:19:36+00:00"
+  },
+  "deepseek-r1-distill-qwen-1.5b-q5_k_s-gguf-jp6": {
+    "title": "DeepSeek R1 Qwen-1.5B \u276f llama.cpp q5_k_s \u276f JetPack 6.1+",
+    "quantization": "q5_k_s",
+    "tags": [
+      "deepseek-r1-distill-qwen-1.5b",
+      "q5_k_s",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/DeepSeek-R1-Distill-Qwen-1.5B-GGUF/DeepSeek-R1-Distill-Qwen-1.5B-Q5_K_S.gguf",
+    "created_at": "2025-01-20 14:52:20+00:00",
+    "last_modified": "2025-01-22 15:19:36+00:00"
+  },
+  "deepseek-r1-distill-qwen-1.5b-q5_k_m-gguf-jp6": {
+    "title": "DeepSeek R1 Qwen-1.5B \u276f llama.cpp q5_k_m \u276f JetPack 6.1+",
+    "quantization": "q5_k_m",
+    "tags": [
+      "deepseek-r1-distill-qwen-1.5b",
+      "q5_k_m",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/DeepSeek-R1-Distill-Qwen-1.5B-GGUF/DeepSeek-R1-Distill-Qwen-1.5B-Q5_K_M.gguf",
+    "created_at": "2025-01-20 14:52:20+00:00",
+    "last_modified": "2025-01-22 15:19:36+00:00"
+  },
+  "deepseek-r1-distill-qwen-1.5b-q5_k_l-gguf-jp6": {
+    "title": "DeepSeek R1 Qwen-1.5B \u276f llama.cpp q5_k_l \u276f JetPack 6.1+",
+    "quantization": "q5_k_l",
+    "tags": [
+      "deepseek-r1-distill-qwen-1.5b",
+      "q5_k_l",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/DeepSeek-R1-Distill-Qwen-1.5B-GGUF/DeepSeek-R1-Distill-Qwen-1.5B-Q5_K_L.gguf",
+    "created_at": "2025-01-20 14:52:20+00:00",
+    "last_modified": "2025-01-22 15:19:36+00:00"
+  },
+  "deepseek-r1-distill-qwen-1.5b-q6_k-gguf-jp6": {
+    "title": "DeepSeek R1 Qwen-1.5B \u276f llama.cpp q6_k \u276f JetPack 6.1+",
+    "quantization": "q6_k",
+    "tags": [
+      "deepseek-r1-distill-qwen-1.5b",
+      "q6_k",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/DeepSeek-R1-Distill-Qwen-1.5B-GGUF/DeepSeek-R1-Distill-Qwen-1.5B-Q6_K.gguf",
+    "created_at": "2025-01-20 14:52:20+00:00",
+    "last_modified": "2025-01-22 15:19:36+00:00"
+  },
+  "deepseek-r1-distill-qwen-7b": {
+    "name": "DeepSeek R1 Qwen-7B",
+    "tags": [
+      "deepseek-r1-distill",
+      "orin"
+    ],
+    "chat_template": "deepseek_r1_qwen",
+    "url": "hf.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
+    "links": {
+      "deepseek": {
+        "name": "DeepSeek",
+        "url": "https://www.deepseek.com/"
+      },
+      "hf": {
+        "name": "Hugging Face",
+        "color": "yellow",
+        "url": "hf.co/deepseek-ai/DeepSeek-R1-Distill-Llama-70B"
+      }
+    },
+    "created_at": "2025-01-20 09:16:14+00:00",
+    "last_modified": "2025-02-09 06:34:39+00:00"
+  },
+  "deepseek-r1-distill-qwen-7b-q4f16_ft-mlc-jp6": {
+    "title": "DeepSeek R1 Qwen-7B \u276f MLC q4f16_ft \u276f JetPack 6.1+",
+    "quantization": "q4f16_ft",
+    "tags": [
+      "deepseek-r1-distill-qwen-7b",
+      "q4f16_ft",
+      "mlc:jp6"
+    ],
+    "url": "dusty-nv/DeepSeek-R1-Distill-Qwen-7B-q4f16_ft-MLC",
+    "created_at": "2025-01-29 03:00:28+00:00",
+    "last_modified": "2025-01-29 03:02:04+00:00"
+  },
+  "deepseek-r1-distill-qwen-7b-q4f16_0-mlc-jp6": {
+    "title": "DeepSeek R1 Qwen-7B \u276f MLC q4f16_0 \u276f JetPack 6.1+",
+    "quantization": "q4f16_0",
+    "tags": [
+      "deepseek-r1-distill-qwen-7b",
+      "q4f16_0",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-qwen-7b-q4f16_1-mlc-jp6": {
+    "title": "DeepSeek R1 Qwen-7B \u276f MLC q4f16_1 \u276f JetPack 6.1+",
+    "quantization": "q4f16_1",
+    "tags": [
+      "deepseek-r1-distill-qwen-7b",
+      "q4f16_1",
+      "mlc:jp6"
+    ],
+    "url": "mlc-ai/DeepSeek-R1-Distill-Qwen-7B-q4f16_1-MLC",
+    "created_at": "2025-01-21 00:28:25+00:00",
+    "last_modified": "2025-01-21 07:59:02+00:00"
+  },
+  "deepseek-r1-distill-qwen-7b-q4f32_1-mlc-jp6": {
+    "title": "DeepSeek R1 Qwen-7B \u276f MLC q4f32_1 \u276f JetPack 6.1+",
+    "quantization": "q4f32_1",
+    "tags": [
+      "deepseek-r1-distill-qwen-7b",
+      "q4f32_1",
+      "mlc:jp6"
+    ],
+    "url": "mlc-ai/DeepSeek-R1-Distill-Qwen-7B-q4f32_1-MLC",
+    "created_at": "2025-01-21 00:34:45+00:00",
+    "last_modified": "2025-01-21 07:59:36+00:00"
+  },
+  "deepseek-r1-distill-qwen-7b-q4f16_2-mlc-jp6": {
+    "title": "DeepSeek R1 Qwen-7B \u276f MLC q4f16_2 \u276f JetPack 6.1+",
+    "quantization": "q4f16_2",
+    "tags": [
+      "deepseek-r1-distill-qwen-7b",
+      "q4f16_2",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-qwen-7b-q4f16_awq-mlc-jp6": {
+    "title": "DeepSeek R1 Qwen-7B \u276f MLC q4f16_awq \u276f JetPack 6.1+",
+    "quantization": "q4f16_awq",
+    "tags": [
+      "deepseek-r1-distill-qwen-7b",
+      "q4f16_awq",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-qwen-7b-e5m2_f16-mlc-jp6": {
+    "title": "DeepSeek R1 Qwen-7B \u276f MLC e5m2_f16 \u276f JetPack 6.1+",
+    "quantization": "e5m2_f16",
+    "tags": [
+      "deepseek-r1-distill-qwen-7b",
+      "e5m2_f16",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-qwen-7b-e4m3_f16-mlc-jp6": {
+    "title": "DeepSeek R1 Qwen-7B \u276f MLC e4m3_f16 \u276f JetPack 6.1+",
+    "quantization": "e4m3_f16",
+    "tags": [
+      "deepseek-r1-distill-qwen-7b",
+      "e4m3_f16",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-qwen-7b-e4m3_f16_max-mlc-jp6": {
+    "title": "DeepSeek R1 Qwen-7B \u276f MLC e4m3_f16_max \u276f JetPack 6.1+",
+    "quantization": "e4m3_f16_max",
+    "tags": [
+      "deepseek-r1-distill-qwen-7b",
+      "e4m3_f16_max",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-qwen-7b-q4_k_m-gguf-jp6": {
+    "title": "DeepSeek R1 Qwen-7B \u276f llama.cpp q4_k_m \u276f JetPack 6.1+",
+    "quantization": "q4_k_m",
+    "tags": [
+      "deepseek-r1-distill-qwen-7b",
+      "q4_k_m",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/DeepSeek-R1-Distill-Qwen-7B-GGUF/DeepSeek-R1-Distill-Qwen-7B-Q4_K_M.gguf",
+    "created_at": "2025-01-20 14:53:04+00:00",
+    "last_modified": "2025-01-22 15:19:22+00:00"
+  },
+  "deepseek-r1-distill-qwen-7b-q4_k_l-gguf-jp6": {
+    "title": "DeepSeek R1 Qwen-7B \u276f llama.cpp q4_k_l \u276f JetPack 6.1+",
+    "quantization": "q4_k_l",
+    "tags": [
+      "deepseek-r1-distill-qwen-7b",
+      "q4_k_l",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/DeepSeek-R1-Distill-Qwen-7B-GGUF/DeepSeek-R1-Distill-Qwen-7B-Q4_K_L.gguf",
+    "created_at": "2025-01-20 14:53:04+00:00",
+    "last_modified": "2025-01-22 15:19:22+00:00"
+  },
+  "deepseek-r1-distill-qwen-7b-q5_k_s-gguf-jp6": {
+    "title": "DeepSeek R1 Qwen-7B \u276f llama.cpp q5_k_s \u276f JetPack 6.1+",
+    "quantization": "q5_k_s",
+    "tags": [
+      "deepseek-r1-distill-qwen-7b",
+      "q5_k_s",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/DeepSeek-R1-Distill-Qwen-7B-GGUF/DeepSeek-R1-Distill-Qwen-7B-Q5_K_S.gguf",
+    "created_at": "2025-01-20 14:53:04+00:00",
+    "last_modified": "2025-01-22 15:19:22+00:00"
+  },
+  "deepseek-r1-distill-qwen-7b-q5_k_m-gguf-jp6": {
+    "title": "DeepSeek R1 Qwen-7B \u276f llama.cpp q5_k_m \u276f JetPack 6.1+",
+    "quantization": "q5_k_m",
+    "tags": [
+      "deepseek-r1-distill-qwen-7b",
+      "q5_k_m",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/DeepSeek-R1-Distill-Qwen-7B-GGUF/DeepSeek-R1-Distill-Qwen-7B-Q5_K_M.gguf",
+    "created_at": "2025-01-20 14:53:04+00:00",
+    "last_modified": "2025-01-22 15:19:22+00:00"
+  },
+  "deepseek-r1-distill-qwen-7b-q5_k_l-gguf-jp6": {
+    "title": "DeepSeek R1 Qwen-7B \u276f llama.cpp q5_k_l \u276f JetPack 6.1+",
+    "quantization": "q5_k_l",
+    "tags": [
+      "deepseek-r1-distill-qwen-7b",
+      "q5_k_l",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/DeepSeek-R1-Distill-Qwen-7B-GGUF/DeepSeek-R1-Distill-Qwen-7B-Q5_K_L.gguf",
+    "created_at": "2025-01-20 14:53:04+00:00",
+    "last_modified": "2025-01-22 15:19:22+00:00"
+  },
+  "deepseek-r1-distill-qwen-7b-q6_k-gguf-jp6": {
+    "title": "DeepSeek R1 Qwen-7B \u276f llama.cpp q6_k \u276f JetPack 6.1+",
+    "quantization": "q6_k",
+    "tags": [
+      "deepseek-r1-distill-qwen-7b",
+      "q6_k",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/DeepSeek-R1-Distill-Qwen-7B-GGUF/DeepSeek-R1-Distill-Qwen-7B-Q6_K.gguf",
+    "created_at": "2025-01-20 14:53:04+00:00",
+    "last_modified": "2025-01-22 15:19:22+00:00"
+  },
+  "deepseek-r1-distill-llama-8b": {
+    "name": "DeepSeek R1 Llama-8B",
+    "tags": [
+      "deepseek-r1-distill",
+      "orin"
+    ],
+    "chat_template": "deepseek_r1_llama",
+    "url": "hf.co/deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
+    "links": {
+      "deepseek": {
+        "name": "DeepSeek",
+        "url": "https://www.deepseek.com/"
+      },
+      "hf": {
+        "name": "Hugging Face",
+        "color": "yellow",
+        "url": "hf.co/deepseek-ai/DeepSeek-R1-Distill-Llama-70B"
+      }
+    },
+    "created_at": "2025-01-20 09:09:42+00:00",
+    "last_modified": "2025-02-09 06:34:24+00:00"
+  },
+  "deepseek-r1-distill-llama-8b-q4f16_ft-mlc-jp6": {
+    "title": "DeepSeek R1 Llama-8B \u276f MLC q4f16_ft \u276f JetPack 6.1+",
+    "quantization": "q4f16_ft",
+    "tags": [
+      "deepseek-r1-distill-llama-8b",
+      "q4f16_ft",
+      "mlc:jp6"
+    ],
+    "url": "dusty-nv/DeepSeek-R1-Distill-Llama-8B-q4f16_ft-MLC",
+    "created_at": "2025-01-28 23:12:42+00:00",
+    "last_modified": "2025-01-29 02:42:40+00:00"
+  },
+  "deepseek-r1-distill-llama-8b-q4f16_0-mlc-jp6": {
+    "title": "DeepSeek R1 Llama-8B \u276f MLC q4f16_0 \u276f JetPack 6.1+",
+    "quantization": "q4f16_0",
+    "tags": [
+      "deepseek-r1-distill-llama-8b",
+      "q4f16_0",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-llama-8b-q4f16_1-mlc-jp6": {
+    "title": "DeepSeek R1 Llama-8B \u276f MLC q4f16_1 \u276f JetPack 6.1+",
+    "quantization": "q4f16_1",
+    "tags": [
+      "deepseek-r1-distill-llama-8b",
+      "q4f16_1",
+      "mlc:jp6"
+    ],
+    "url": "mlc-ai/DeepSeek-R1-Distill-Llama-8B-q4f16_1-MLC",
+    "created_at": "2025-01-21 01:49:30+00:00",
+    "last_modified": "2025-01-21 08:02:26+00:00"
+  },
+  "deepseek-r1-distill-llama-8b-q4f32_1-mlc-jp6": {
+    "title": "DeepSeek R1 Llama-8B \u276f MLC q4f32_1 \u276f JetPack 6.1+",
+    "quantization": "q4f32_1",
+    "tags": [
+      "deepseek-r1-distill-llama-8b",
+      "q4f32_1",
+      "mlc:jp6"
+    ],
+    "url": "mlc-ai/DeepSeek-R1-Distill-Llama-8B-q4f32_1-MLC",
+    "created_at": "2025-01-21 01:56:47+00:00",
+    "last_modified": "2025-01-21 08:02:56+00:00"
+  },
+  "deepseek-r1-distill-llama-8b-q4f16_2-mlc-jp6": {
+    "title": "DeepSeek R1 Llama-8B \u276f MLC q4f16_2 \u276f JetPack 6.1+",
+    "quantization": "q4f16_2",
+    "tags": [
+      "deepseek-r1-distill-llama-8b",
+      "q4f16_2",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-llama-8b-q4f16_awq-mlc-jp6": {
+    "title": "DeepSeek R1 Llama-8B \u276f MLC q4f16_awq \u276f JetPack 6.1+",
+    "quantization": "q4f16_awq",
+    "tags": [
+      "deepseek-r1-distill-llama-8b",
+      "q4f16_awq",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-llama-8b-e5m2_f16-mlc-jp6": {
+    "title": "DeepSeek R1 Llama-8B \u276f MLC e5m2_f16 \u276f JetPack 6.1+",
+    "quantization": "e5m2_f16",
+    "tags": [
+      "deepseek-r1-distill-llama-8b",
+      "e5m2_f16",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-llama-8b-e4m3_f16-mlc-jp6": {
+    "title": "DeepSeek R1 Llama-8B \u276f MLC e4m3_f16 \u276f JetPack 6.1+",
+    "quantization": "e4m3_f16",
+    "tags": [
+      "deepseek-r1-distill-llama-8b",
+      "e4m3_f16",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-llama-8b-e4m3_f16_max-mlc-jp6": {
+    "title": "DeepSeek R1 Llama-8B \u276f MLC e4m3_f16_max \u276f JetPack 6.1+",
+    "quantization": "e4m3_f16_max",
+    "tags": [
+      "deepseek-r1-distill-llama-8b",
+      "e4m3_f16_max",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-llama-8b-q4_k_m-gguf-jp6": {
+    "title": "DeepSeek R1 Llama-8B \u276f llama.cpp q4_k_m \u276f JetPack 6.1+",
+    "quantization": "q4_k_m",
+    "tags": [
+      "deepseek-r1-distill-llama-8b",
+      "q4_k_m",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/DeepSeek-R1-Distill-Llama-8B-GGUF/DeepSeek-R1-Distill-Llama-8B-Q4_K_M.gguf",
+    "created_at": "2025-01-20 14:52:51+00:00",
+    "last_modified": "2025-01-22 15:19:31+00:00"
+  },
+  "deepseek-r1-distill-llama-8b-q4_k_l-gguf-jp6": {
+    "title": "DeepSeek R1 Llama-8B \u276f llama.cpp q4_k_l \u276f JetPack 6.1+",
+    "quantization": "q4_k_l",
+    "tags": [
+      "deepseek-r1-distill-llama-8b",
+      "q4_k_l",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/DeepSeek-R1-Distill-Llama-8B-GGUF/DeepSeek-R1-Distill-Llama-8B-Q4_K_L.gguf",
+    "created_at": "2025-01-20 14:52:51+00:00",
+    "last_modified": "2025-01-22 15:19:31+00:00"
+  },
+  "deepseek-r1-distill-llama-8b-q5_k_s-gguf-jp6": {
+    "title": "DeepSeek R1 Llama-8B \u276f llama.cpp q5_k_s \u276f JetPack 6.1+",
+    "quantization": "q5_k_s",
+    "tags": [
+      "deepseek-r1-distill-llama-8b",
+      "q5_k_s",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/DeepSeek-R1-Distill-Llama-8B-GGUF/DeepSeek-R1-Distill-Llama-8B-Q5_K_S.gguf",
+    "created_at": "2025-01-20 14:52:51+00:00",
+    "last_modified": "2025-01-22 15:19:31+00:00"
+  },
+  "deepseek-r1-distill-llama-8b-q5_k_m-gguf-jp6": {
+    "title": "DeepSeek R1 Llama-8B \u276f llama.cpp q5_k_m \u276f JetPack 6.1+",
+    "quantization": "q5_k_m",
+    "tags": [
+      "deepseek-r1-distill-llama-8b",
+      "q5_k_m",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/DeepSeek-R1-Distill-Llama-8B-GGUF/DeepSeek-R1-Distill-Llama-8B-Q5_K_M.gguf",
+    "created_at": "2025-01-20 14:52:51+00:00",
+    "last_modified": "2025-01-22 15:19:31+00:00"
+  },
+  "deepseek-r1-distill-llama-8b-q5_k_l-gguf-jp6": {
+    "title": "DeepSeek R1 Llama-8B \u276f llama.cpp q5_k_l \u276f JetPack 6.1+",
+    "quantization": "q5_k_l",
+    "tags": [
+      "deepseek-r1-distill-llama-8b",
+      "q5_k_l",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/DeepSeek-R1-Distill-Llama-8B-GGUF/DeepSeek-R1-Distill-Llama-8B-Q5_K_L.gguf",
+    "created_at": "2025-01-20 14:52:51+00:00",
+    "last_modified": "2025-01-22 15:19:31+00:00"
+  },
+  "deepseek-r1-distill-llama-8b-q6_k-gguf-jp6": {
+    "title": "DeepSeek R1 Llama-8B \u276f llama.cpp q6_k \u276f JetPack 6.1+",
+    "quantization": "q6_k",
+    "tags": [
+      "deepseek-r1-distill-llama-8b",
+      "q6_k",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/DeepSeek-R1-Distill-Llama-8B-GGUF/DeepSeek-R1-Distill-Llama-8B-Q6_K.gguf",
+    "created_at": "2025-01-20 14:52:51+00:00",
+    "last_modified": "2025-01-22 15:19:31+00:00"
+  },
+  "deepseek-r1-distill-qwen-32b": {
+    "name": "DeepSeek R1 Qwen-32B",
+    "tags": [
+      "deepseek-r1-distill",
+      "agx-orin"
+    ],
+    "chat_template": "deepseek_r1_qwen",
+    "url": "hf.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
+    "links": {
+      "deepseek": {
+        "name": "DeepSeek",
+        "url": "https://www.deepseek.com/"
+      },
+      "hf": {
+        "name": "Hugging Face",
+        "color": "yellow",
+        "url": "hf.co/deepseek-ai/DeepSeek-R1-Distill-Llama-70B"
+      }
+    },
+    "created_at": "2025-01-20 09:19:00+00:00",
+    "last_modified": "2025-02-09 06:34:35+00:00"
+  },
+  "deepseek-r1-distill-qwen-32b-q4f16_ft-mlc-jp6": {
+    "title": "DeepSeek R1 Qwen-32B \u276f MLC q4f16_ft \u276f JetPack 6.1+",
+    "quantization": "q4f16_ft",
+    "tags": [
+      "deepseek-r1-distill-qwen-32b",
+      "q4f16_ft",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-qwen-32b-q4f16_0-mlc-jp6": {
+    "title": "DeepSeek R1 Qwen-32B \u276f MLC q4f16_0 \u276f JetPack 6.1+",
+    "quantization": "q4f16_0",
+    "tags": [
+      "deepseek-r1-distill-qwen-32b",
+      "q4f16_0",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-qwen-32b-q4f16_1-mlc-jp6": {
+    "title": "DeepSeek R1 Qwen-32B \u276f MLC q4f16_1 \u276f JetPack 6.1+",
+    "quantization": "q4f16_1",
+    "tags": [
+      "deepseek-r1-distill-qwen-32b",
+      "q4f16_1",
+      "mlc:jp6"
+    ],
+    "url": "mlc-ai/DeepSeek-R1-Distill-Qwen-32B-q4f16_1-MLC",
+    "created_at": "2025-01-21 01:07:21+00:00",
+    "last_modified": "2025-01-21 07:59:58+00:00"
+  },
+  "deepseek-r1-distill-qwen-32b-q4f32_1-mlc-jp6": {
+    "title": "DeepSeek R1 Qwen-32B \u276f MLC q4f32_1 \u276f JetPack 6.1+",
+    "quantization": "q4f32_1",
+    "tags": [
+      "deepseek-r1-distill-qwen-32b",
+      "q4f32_1",
+      "mlc:jp6"
+    ],
+    "url": "mlc-ai/DeepSeek-R1-Distill-Qwen-32B-q4f32_1-MLC",
+    "created_at": "2025-01-21 01:37:18+00:00",
+    "last_modified": "2025-01-21 08:00:15+00:00"
+  },
+  "deepseek-r1-distill-qwen-32b-q4f16_2-mlc-jp6": {
+    "title": "DeepSeek R1 Qwen-32B \u276f MLC q4f16_2 \u276f JetPack 6.1+",
+    "quantization": "q4f16_2",
+    "tags": [
+      "deepseek-r1-distill-qwen-32b",
+      "q4f16_2",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-qwen-32b-q4f16_awq-mlc-jp6": {
+    "title": "DeepSeek R1 Qwen-32B \u276f MLC q4f16_awq \u276f JetPack 6.1+",
+    "quantization": "q4f16_awq",
+    "tags": [
+      "deepseek-r1-distill-qwen-32b",
+      "q4f16_awq",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-qwen-32b-e5m2_f16-mlc-jp6": {
+    "title": "DeepSeek R1 Qwen-32B \u276f MLC e5m2_f16 \u276f JetPack 6.1+",
+    "quantization": "e5m2_f16",
+    "tags": [
+      "deepseek-r1-distill-qwen-32b",
+      "e5m2_f16",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-qwen-32b-e4m3_f16-mlc-jp6": {
+    "title": "DeepSeek R1 Qwen-32B \u276f MLC e4m3_f16 \u276f JetPack 6.1+",
+    "quantization": "e4m3_f16",
+    "tags": [
+      "deepseek-r1-distill-qwen-32b",
+      "e4m3_f16",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-qwen-32b-e4m3_f16_max-mlc-jp6": {
+    "title": "DeepSeek R1 Qwen-32B \u276f MLC e4m3_f16_max \u276f JetPack 6.1+",
+    "quantization": "e4m3_f16_max",
+    "tags": [
+      "deepseek-r1-distill-qwen-32b",
+      "e4m3_f16_max",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-qwen-32b-q4_k_m-gguf-jp6": {
+    "title": "DeepSeek R1 Qwen-32B \u276f llama.cpp q4_k_m \u276f JetPack 6.1+",
+    "quantization": "q4_k_m",
+    "tags": [
+      "deepseek-r1-distill-qwen-32b",
+      "q4_k_m",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/DeepSeek-R1-Distill-Qwen-32B-GGUF/DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gguf",
+    "created_at": "2025-01-20 14:02:00+00:00",
+    "last_modified": "2025-01-22 15:19:08+00:00"
+  },
+  "deepseek-r1-distill-qwen-32b-q4_k_l-gguf-jp6": {
+    "title": "DeepSeek R1 Qwen-32B \u276f llama.cpp q4_k_l \u276f JetPack 6.1+",
+    "quantization": "q4_k_l",
+    "tags": [
+      "deepseek-r1-distill-qwen-32b",
+      "q4_k_l",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/DeepSeek-R1-Distill-Qwen-32B-GGUF/DeepSeek-R1-Distill-Qwen-32B-Q4_K_L.gguf",
+    "created_at": "2025-01-20 14:02:00+00:00",
+    "last_modified": "2025-01-22 15:19:08+00:00"
+  },
+  "deepseek-r1-distill-qwen-32b-q5_k_s-gguf-jp6": {
+    "title": "DeepSeek R1 Qwen-32B \u276f llama.cpp q5_k_s \u276f JetPack 6.1+",
+    "quantization": "q5_k_s",
+    "tags": [
+      "deepseek-r1-distill-qwen-32b",
+      "q5_k_s",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/DeepSeek-R1-Distill-Qwen-32B-GGUF/DeepSeek-R1-Distill-Qwen-32B-Q5_K_S.gguf",
+    "created_at": "2025-01-20 14:02:00+00:00",
+    "last_modified": "2025-01-22 15:19:08+00:00"
+  },
+  "deepseek-r1-distill-qwen-32b-q5_k_m-gguf-jp6": {
+    "title": "DeepSeek R1 Qwen-32B \u276f llama.cpp q5_k_m \u276f JetPack 6.1+",
+    "quantization": "q5_k_m",
+    "tags": [
+      "deepseek-r1-distill-qwen-32b",
+      "q5_k_m",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/DeepSeek-R1-Distill-Qwen-32B-GGUF/DeepSeek-R1-Distill-Qwen-32B-Q5_K_M.gguf",
+    "created_at": "2025-01-20 14:02:00+00:00",
+    "last_modified": "2025-01-22 15:19:08+00:00"
+  },
+  "deepseek-r1-distill-qwen-32b-q5_k_l-gguf-jp6": {
+    "title": "DeepSeek R1 Qwen-32B \u276f llama.cpp q5_k_l \u276f JetPack 6.1+",
+    "quantization": "q5_k_l",
+    "tags": [
+      "deepseek-r1-distill-qwen-32b",
+      "q5_k_l",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/DeepSeek-R1-Distill-Qwen-32B-GGUF/DeepSeek-R1-Distill-Qwen-32B-Q5_K_L.gguf",
+    "created_at": "2025-01-20 14:02:00+00:00",
+    "last_modified": "2025-01-22 15:19:08+00:00"
+  },
+  "deepseek-r1-distill-qwen-32b-q6_k-gguf-jp6": {
+    "title": "DeepSeek R1 Qwen-32B \u276f llama.cpp q6_k \u276f JetPack 6.1+",
+    "quantization": "q6_k",
+    "tags": [
+      "deepseek-r1-distill-qwen-32b",
+      "q6_k",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/DeepSeek-R1-Distill-Qwen-32B-GGUF/DeepSeek-R1-Distill-Qwen-32B-Q6_K.gguf",
+    "created_at": "2025-01-20 14:02:00+00:00",
+    "last_modified": "2025-01-22 15:19:08+00:00"
+  },
+  "deepseek-r1-distill-llama-70b": {
+    "name": "DeepSeek R1 Llama-70B",
+    "tags": [
+      "deepseek-r1-distill",
+      "agx-orin"
+    ],
+    "chat_template": "deepseek_r1_llama",
+    "url": "hf.co/deepseek-ai/DeepSeek-R1-Distill-Llama-70B",
+    "links": {
+      "deepseek": {
+        "name": "DeepSeek",
+        "url": "https://www.deepseek.com/"
+      },
+      "hf": {
+        "name": "Hugging Face",
+        "color": "yellow",
+        "url": "hf.co/deepseek-ai/DeepSeek-R1-Distill-Llama-70B"
+      }
+    },
+    "created_at": "2025-01-20 09:13:33+00:00",
+    "last_modified": "2025-02-09 06:34:20+00:00"
+  },
+  "deepseek-r1-distill-llama-70b-q4f16_ft-mlc-jp6": {
+    "title": "DeepSeek R1 Llama-70B \u276f MLC q4f16_ft \u276f JetPack 6.1+",
+    "quantization": "q4f16_ft",
+    "tags": [
+      "deepseek-r1-distill-llama-70b",
+      "q4f16_ft",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-llama-70b-q4f16_0-mlc-jp6": {
+    "title": "DeepSeek R1 Llama-70B \u276f MLC q4f16_0 \u276f JetPack 6.1+",
+    "quantization": "q4f16_0",
+    "tags": [
+      "deepseek-r1-distill-llama-70b",
+      "q4f16_0",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-llama-70b-q4f16_1-mlc-jp6": {
+    "title": "DeepSeek R1 Llama-70B \u276f MLC q4f16_1 \u276f JetPack 6.1+",
+    "quantization": "q4f16_1",
+    "tags": [
+      "deepseek-r1-distill-llama-70b",
+      "q4f16_1",
+      "mlc:jp6"
+    ],
+    "url": "mlc-ai/DeepSeek-R1-Distill-Llama-70B-q4f16_1-MLC",
+    "created_at": "2025-01-21 02:19:24+00:00",
+    "last_modified": "2025-01-21 08:03:05+00:00"
+  },
+  "deepseek-r1-distill-llama-70b-q4f32_1-mlc-jp6": {
+    "title": "DeepSeek R1 Llama-70B \u276f MLC q4f32_1 \u276f JetPack 6.1+",
+    "quantization": "q4f32_1",
+    "tags": [
+      "deepseek-r1-distill-llama-70b",
+      "q4f32_1",
+      "mlc:jp6"
+    ],
+    "url": "mlc-ai/DeepSeek-R1-Distill-Llama-70B-q4f32_1-MLC",
+    "created_at": "2025-01-21 03:21:00+00:00",
+    "last_modified": "2025-01-21 08:03:13+00:00"
+  },
+  "deepseek-r1-distill-llama-70b-q4f16_2-mlc-jp6": {
+    "title": "DeepSeek R1 Llama-70B \u276f MLC q4f16_2 \u276f JetPack 6.1+",
+    "quantization": "q4f16_2",
+    "tags": [
+      "deepseek-r1-distill-llama-70b",
+      "q4f16_2",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-llama-70b-q4f16_awq-mlc-jp6": {
+    "title": "DeepSeek R1 Llama-70B \u276f MLC q4f16_awq \u276f JetPack 6.1+",
+    "quantization": "q4f16_awq",
+    "tags": [
+      "deepseek-r1-distill-llama-70b",
+      "q4f16_awq",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-llama-70b-e5m2_f16-mlc-jp6": {
+    "title": "DeepSeek R1 Llama-70B \u276f MLC e5m2_f16 \u276f JetPack 6.1+",
+    "quantization": "e5m2_f16",
+    "tags": [
+      "deepseek-r1-distill-llama-70b",
+      "e5m2_f16",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-llama-70b-e4m3_f16-mlc-jp6": {
+    "title": "DeepSeek R1 Llama-70B \u276f MLC e4m3_f16 \u276f JetPack 6.1+",
+    "quantization": "e4m3_f16",
+    "tags": [
+      "deepseek-r1-distill-llama-70b",
+      "e4m3_f16",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-llama-70b-e4m3_f16_max-mlc-jp6": {
+    "title": "DeepSeek R1 Llama-70B \u276f MLC e4m3_f16_max \u276f JetPack 6.1+",
+    "quantization": "e4m3_f16_max",
+    "tags": [
+      "deepseek-r1-distill-llama-70b",
+      "e4m3_f16_max",
+      "mlc:jp6"
+    ]
+  },
+  "deepseek-r1-distill-llama-70b-q4_k_m-gguf-jp6": {
+    "title": "DeepSeek R1 Llama-70B \u276f llama.cpp q4_k_m \u276f JetPack 6.1+",
+    "quantization": "q4_k_m",
+    "tags": [
+      "deepseek-r1-distill-llama-70b",
+      "q4_k_m",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/DeepSeek-R1-Distill-Llama-70B-GGUF/DeepSeek-R1-Distill-Llama-70B-Q4_K_M.gguf",
+    "created_at": "2025-01-20 17:08:16+00:00",
+    "last_modified": "2025-01-22 15:19:01+00:00"
+  },
+  "deepseek-r1-distill-llama-70b-q4_k_l-gguf-jp6": {
+    "title": "DeepSeek R1 Llama-70B \u276f llama.cpp q4_k_l \u276f JetPack 6.1+",
+    "quantization": "q4_k_l",
+    "tags": [
+      "deepseek-r1-distill-llama-70b",
+      "q4_k_l",
+      "llama_cpp:jp6"
+    ]
+  },
+  "deepseek-r1-distill-llama-70b-q5_k_s-gguf-jp6": {
+    "title": "DeepSeek R1 Llama-70B \u276f llama.cpp q5_k_s \u276f JetPack 6.1+",
+    "quantization": "q5_k_s",
+    "tags": [
+      "deepseek-r1-distill-llama-70b",
+      "q5_k_s",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/DeepSeek-R1-Distill-Llama-70B-GGUF/DeepSeek-R1-Distill-Llama-70B-Q5_K_S.gguf",
+    "created_at": "2025-01-20 17:08:16+00:00",
+    "last_modified": "2025-01-22 15:19:01+00:00"
+  },
+  "deepseek-r1-distill-llama-70b-q5_k_m-gguf-jp6": {
+    "title": "DeepSeek R1 Llama-70B \u276f llama.cpp q5_k_m \u276f JetPack 6.1+",
+    "quantization": "q5_k_m",
+    "tags": [
+      "deepseek-r1-distill-llama-70b",
+      "q5_k_m",
+      "llama_cpp:jp6"
+    ]
+  },
+  "deepseek-r1-distill-llama-70b-q5_k_l-gguf-jp6": {
+    "title": "DeepSeek R1 Llama-70B \u276f llama.cpp q5_k_l \u276f JetPack 6.1+",
+    "quantization": "q5_k_l",
+    "tags": [
+      "deepseek-r1-distill-llama-70b",
+      "q5_k_l",
+      "llama_cpp:jp6"
+    ]
+  },
+  "deepseek-r1-distill-llama-70b-q6_k-gguf-jp6": {
+    "title": "DeepSeek R1 Llama-70B \u276f llama.cpp q6_k \u276f JetPack 6.1+",
+    "quantization": "q6_k",
+    "tags": [
+      "deepseek-r1-distill-llama-70b",
+      "q6_k",
+      "llama_cpp:jp6"
+    ]
+  }
+}

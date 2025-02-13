@@ -1,0 +1,10 @@
+{
+  "mlc:jp6": {
+    "name": "dustynv/mlc:r36.4.0",
+    "docker_image": "dustynv/mlc:r36.4.0",
+    "docker_command": "sudonim serve",
+    "docker_options": "-it --rm",
+    "server_host": "0.0.0.0:9000",
+    "tags": ["container", "mlc", "l4t-r36"]
+  }
+}

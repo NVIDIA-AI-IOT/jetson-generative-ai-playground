@@ -1,7 +1,7 @@
 /*
  * Module loader / init (todo: minimize)
  */
-import { exists, include } from "./js/nanolab.js";
+import { exists, include } from "./dist/nanolab.js";
 
 // global side-effect imports
 import './dist/jquery/jquery-3.7.1.min.js';
@@ -13,22 +13,9 @@ import './dist/FileSaver/FileSaver.js';
 import './dist/jszip/jszip.js';
 
 if( exists(document) ) { // browser mode
-  include(
-    './css/themes.css',
-    './dist/select2/select2.css',
-    './dist/bootstrap-icons/bootstrap-icons.css',
-    './dist/prism/prism.nvidia.css',
-    './css/styles.css',
-    './css/flex.css', 
-    './css/card.css', 
-    './css/code.css',
-    './css/fields.css',
-    './css/buttons.css', 
-    './css/select.css',
-    './css/modal.css',
-    './data/models/models.css'
-  );
+  include('./dist/nanolab.css');
 }
 
 // export package modules
-export * from "./js/nanolab.js";
+export * from "./dist/nanolab.js";
+//export * from "./js/nanolab.js";

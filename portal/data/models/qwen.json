@@ -1,0 +1,70 @@
+{
+  "qwen-2.5": {
+    "name": "Qwen 2.5",
+    "header": "qwen-header",
+    "url": "hf.co/Qwen/Qwen2.5",
+    "max_context_len": {"placeholder": 131072},
+    "prefill_chunk": {"placeholder": 8192},
+    "tags": ["llm"],
+    "links": {
+      "qwen": {
+        "name": "Qwen",
+        "url": "https://qwenlm.github.io"
+      }
+    }
+  },
+  "-500m": {
+    "name": " 0.5B",
+    "url": "hf.co/Qwen/Qwen2.5-0.5B-Instruct",
+    "tags": ["qwen-2.5", "orin"]
+  },
+  "-1500m": {
+    "name": " 1.5B",
+    "url": "hf.co/Qwen/Qwen2.5-1.5B-Instruct",
+    "tags": ["qwen-2.5", "orin"]
+  },
+  "-3b": {
+    "name": " 3B",
+    "url": "hf.co/Qwen/Qwen2.5-3B-Instruct",
+    "tags": ["qwen-2.5", "orin"]
+  },
+  "-7b": {
+    "name": " 7B",
+    "url": "hf.co/Qwen/Qwen2.5-7B-Instruct",
+    "tags": ["qwen-2.5", "orin"]
+  },
+  "-14b": {
+    "name": " 14B",
+    "url": "hf.co/Qwen/Qwen2.5-14B-Instruct",
+    "tags": ["qwen-2.5", "agx-orin", "orin-nx"]
+  },
+  "-32b": {
+    "name": " 32B",
+    "url": "hf.co/Qwen/Qwen2.5-32B-Instruct",
+    "tags": ["qwen-2.5", "agx-orin"]
+  },
+  "qwen-2.5-500m-.*-mlc.*": {
+    "max_context_len": 4096,
+    "prefill_chunk": 4096
+  },
+  "qwen-2.5-1500m-.*-mlc.*": {
+    "max_context_len": 4096,
+    "prefill_chunk": 4096
+  },
+  "qwen-2.5-3b-.*-mlc.*": {
+    "max_context_len": 4096,
+    "prefill_chunk": 1024
+  },
+  "qwen-2.5-7b-.*-mlc.*": {
+    "max_context_len": 2048,
+    "prefill_chunk": 1024
+  },
+  "qwen-2.5-14b-.*-mlc.*": {
+    "max_context_len": 4096,
+    "prefill_chunk": 4096
+  },
+  "qwen-2.5-32b-.*-mlc.*": {
+    "max_context_len": 4096,
+    "prefill_chunk": 4096
+  }
+}
