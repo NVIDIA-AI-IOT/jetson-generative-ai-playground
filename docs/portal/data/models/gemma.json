@@ -24,6 +24,12 @@
     "blacklist": ["q4f16_ft"],
     "tags": ["gemma-2", "agx-orin", "orin-nx"]
   },
+  "gemma-2-27b": {
+    "name": "Gemma 2 27B",
+    "url": "hf.co/google/gemma-2-27b-it",
+    "blacklist": ["q4f16_ft"],
+    "tags": ["gemma-2", "agx-orin"]
+  },
   "gemma-2-.*gguf.*": {
     "max_context_len": 8192,
     "prefill_chunk": 8192

@@ -1,0 +1,388 @@
+{
+  "phi": {
+    "name": "Microsoft Phi",
+    "header": "phi-35-mini-header",
+    "tags": [
+      "llm"
+    ],
+    "links": {
+      "microsoft": {
+        "name": "Microsoft",
+        "url": "https://azure.microsoft.com/en-us/products/phi"
+      },
+      "hf": {
+        "name": "Hugging Face",
+        "color": "yellow",
+        "url": "Microsoft-Phi"
+      }
+    },
+    "url": "Microsoft-Phi"
+  },
+  "Phi-3-mini-4k": {
+    "name": "Phi 3 Mini 4K",
+    "url": "hf.co/microsoft/Phi-3-mini-4k-instruct",
+    "max_context_len": {
+      "placeholder": 4096
+    },
+    "prefill_chunk": {
+      "placeholder": 4096
+    },
+    "tags": [
+      "phi",
+      "orin"
+    ],
+    "links": {
+      "hf": {
+        "name": "Hugging Face",
+        "color": "yellow",
+        "url": "hf.co/microsoft/Phi-3-mini-4k-instruct"
+      }
+    },
+    "created_at": "2024-04-22 16:18:17+00:00",
+    "last_modified": "2024-09-20 18:09:38+00:00"
+  },
+  "Phi-3.5-mini-128k": {
+    "name": "Phi 3.5 Mini 128K",
+    "url": "hf.co/microsoft/Phi-3.5-mini-instruct",
+    "max_context_len": {
+      "placeholder": 131072
+    },
+    "prefill_chunk": {
+      "placeholder": 8192
+    },
+    "tags": [
+      "phi",
+      "orin"
+    ],
+    "links": {
+      "hf": {
+        "name": "Hugging Face",
+        "color": "yellow",
+        "url": "hf.co/microsoft/Phi-3.5-mini-instruct"
+      }
+    },
+    "created_at": "2024-08-16 20:48:26+00:00",
+    "last_modified": "2024-09-18 17:57:09+00:00"
+  },
+  "Phi-3-mini-4k-q4f16_ft-mlc-jp6": {
+    "title": "Phi 3 Mini 4K \u276f MLC q4f16_ft \u276f JetPack 6.1+",
+    "quantization": "q4f16_ft",
+    "tags": [
+      "Phi-3-mini-4k",
+      "q4f16_ft",
+      "mlc:jp6"
+    ]
+  },
+  "Phi-3-mini-4k-q4f16_1-mlc-jp6": {
+    "title": "Phi 3 Mini 4K \u276f MLC q4f16_1 \u276f JetPack 6.1+",
+    "quantization": "q4f16_1",
+    "tags": [
+      "Phi-3-mini-4k",
+      "q4f16_1",
+      "mlc:jp6"
+    ],
+    "url": "mlc-ai/Phi-3-mini-4k-instruct-q4f16_1-MLC",
+    "created_at": "2024-05-08 05:39:02+00:00",
+    "last_modified": "2024-12-13 14:15:02+00:00"
+  },
+  "Phi-3-mini-4k-q4f16_0-mlc-jp6": {
+    "title": "Phi 3 Mini 4K \u276f MLC q4f16_0 \u276f JetPack 6.1+",
+    "quantization": "q4f16_0",
+    "tags": [
+      "Phi-3-mini-4k",
+      "q4f16_0",
+      "mlc:jp6"
+    ]
+  },
+  "Phi-3-mini-4k-q4f32_1-mlc-jp6": {
+    "title": "Phi 3 Mini 4K \u276f MLC q4f32_1 \u276f JetPack 6.1+",
+    "quantization": "q4f32_1",
+    "tags": [
+      "Phi-3-mini-4k",
+      "q4f32_1",
+      "mlc:jp6"
+    ],
+    "url": "mlc-ai/Phi-3-mini-4k-instruct-q4f32_1-MLC",
+    "created_at": "2024-05-29 18:18:14+00:00",
+    "last_modified": "2024-12-13 14:15:16+00:00"
+  },
+  "Phi-3-mini-4k-q4f16_2-mlc-jp6": {
+    "title": "Phi 3 Mini 4K \u276f MLC q4f16_2 \u276f JetPack 6.1+",
+    "quantization": "q4f16_2",
+    "tags": [
+      "Phi-3-mini-4k",
+      "q4f16_2",
+      "mlc:jp6"
+    ],
+    "url": "mlc-ai/Phi-3-mini-4k-instruct-q4f16_2-MLC",
+    "created_at": "2024-05-08 05:39:58+00:00",
+    "last_modified": "2024-12-13 14:15:40+00:00"
+  },
+  "Phi-3-mini-4k-q4f16_awq-mlc-jp6": {
+    "title": "Phi 3 Mini 4K \u276f MLC q4f16_awq \u276f JetPack 6.1+",
+    "quantization": "q4f16_awq",
+    "tags": [
+      "Phi-3-mini-4k",
+      "q4f16_awq",
+      "mlc:jp6"
+    ]
+  },
+  "Phi-3-mini-4k-e5m2_f16-mlc-jp6": {
+    "title": "Phi 3 Mini 4K \u276f MLC e5m2_f16 \u276f JetPack 6.1+",
+    "quantization": "e5m2_f16",
+    "tags": [
+      "Phi-3-mini-4k",
+      "e5m2_f16",
+      "mlc:jp6"
+    ]
+  },
+  "Phi-3-mini-4k-e4m3_f16-mlc-jp6": {
+    "title": "Phi 3 Mini 4K \u276f MLC e4m3_f16 \u276f JetPack 6.1+",
+    "quantization": "e4m3_f16",
+    "tags": [
+      "Phi-3-mini-4k",
+      "e4m3_f16",
+      "mlc:jp6"
+    ]
+  },
+  "Phi-3-mini-4k-e4m3_f16_max-mlc-jp6": {
+    "title": "Phi 3 Mini 4K \u276f MLC e4m3_f16_max \u276f JetPack 6.1+",
+    "quantization": "e4m3_f16_max",
+    "tags": [
+      "Phi-3-mini-4k",
+      "e4m3_f16_max",
+      "mlc:jp6"
+    ]
+  },
+  "Phi-3-mini-4k-q4_k_m-gguf-jp6": {
+    "title": "Phi 3 Mini 4K \u276f llama.cpp q4_k_m \u276f JetPack 6.1+",
+    "quantization": "q4_k_m",
+    "tags": [
+      "Phi-3-mini-4k",
+      "q4_k_m",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/Phi-3-mini-4k-instruct-GGUF/Phi-3-mini-4k-instruct-Q4_K_M.gguf",
+    "created_at": "2024-04-29 16:53:40+00:00",
+    "last_modified": "2024-04-29 17:15:18+00:00"
+  },
+  "Phi-3-mini-4k-q4_k_l-gguf-jp6": {
+    "title": "Phi 3 Mini 4K \u276f llama.cpp q4_k_l \u276f JetPack 6.1+",
+    "quantization": "q4_k_l",
+    "tags": [
+      "Phi-3-mini-4k",
+      "q4_k_l",
+      "llama_cpp:jp6"
+    ]
+  },
+  "Phi-3-mini-4k-q5_k_s-gguf-jp6": {
+    "title": "Phi 3 Mini 4K \u276f llama.cpp q5_k_s \u276f JetPack 6.1+",
+    "quantization": "q5_k_s",
+    "tags": [
+      "Phi-3-mini-4k",
+      "q5_k_s",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/Phi-3-mini-4k-instruct-GGUF/Phi-3-mini-4k-instruct-Q5_K_S.gguf",
+    "created_at": "2024-04-29 16:53:40+00:00",
+    "last_modified": "2024-04-29 17:15:18+00:00"
+  },
+  "Phi-3-mini-4k-q5_k_m-gguf-jp6": {
+    "title": "Phi 3 Mini 4K \u276f llama.cpp q5_k_m \u276f JetPack 6.1+",
+    "quantization": "q5_k_m",
+    "tags": [
+      "Phi-3-mini-4k",
+      "q5_k_m",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/Phi-3-mini-4k-instruct-GGUF/Phi-3-mini-4k-instruct-Q5_K_M.gguf",
+    "created_at": "2024-04-29 16:53:40+00:00",
+    "last_modified": "2024-04-29 17:15:18+00:00"
+  },
+  "Phi-3-mini-4k-q5_k_l-gguf-jp6": {
+    "title": "Phi 3 Mini 4K \u276f llama.cpp q5_k_l \u276f JetPack 6.1+",
+    "quantization": "q5_k_l",
+    "tags": [
+      "Phi-3-mini-4k",
+      "q5_k_l",
+      "llama_cpp:jp6"
+    ]
+  },
+  "Phi-3-mini-4k-q6_k-gguf-jp6": {
+    "title": "Phi 3 Mini 4K \u276f llama.cpp q6_k \u276f JetPack 6.1+",
+    "quantization": "q6_k",
+    "tags": [
+      "Phi-3-mini-4k",
+      "q6_k",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/Phi-3-mini-4k-instruct-GGUF/Phi-3-mini-4k-instruct-Q6_K.gguf",
+    "created_at": "2024-04-29 16:53:40+00:00",
+    "last_modified": "2024-04-29 17:15:18+00:00"
+  },
+  "Phi-3.5-mini-128k-q4f16_ft-mlc-jp6": {
+    "title": "Phi 3.5 Mini 128K \u276f MLC q4f16_ft \u276f JetPack 6.1+",
+    "quantization": "q4f16_ft",
+    "tags": [
+      "Phi-3.5-mini-128k",
+      "q4f16_ft",
+      "mlc:jp6"
+    ],
+    "url": "dusty-nv/Phi-3.5-mini-instruct-q4f16_ft-MLC",
+    "created_at": "2024-12-09 15:18:26+00:00",
+    "last_modified": "2024-12-09 15:20:43+00:00"
+  },
+  "Phi-3.5-mini-128k-q4f16_1-mlc-jp6": {
+    "title": "Phi 3.5 Mini 128K \u276f MLC q4f16_1 \u276f JetPack 6.1+",
+    "quantization": "q4f16_1",
+    "tags": [
+      "Phi-3.5-mini-128k",
+      "q4f16_1",
+      "mlc:jp6"
+    ],
+    "url": "mlc-ai/Phi-3.5-mini-instruct-q4f16_1-MLC",
+    "created_at": "2024-08-21 03:04:15+00:00",
+    "last_modified": "2024-08-23 22:58:26+00:00"
+  },
+  "Phi-3.5-mini-128k-q4f16_0-mlc-jp6": {
+    "title": "Phi 3.5 Mini 128K \u276f MLC q4f16_0 \u276f JetPack 6.1+",
+    "quantization": "q4f16_0",
+    "tags": [
+      "Phi-3.5-mini-128k",
+      "q4f16_0",
+      "mlc:jp6"
+    ],
+    "url": "mlc-ai/Phi-3.5-mini-instruct-q4f16_0-MLC",
+    "created_at": "2024-08-23 13:28:30+00:00",
+    "last_modified": "2024-08-23 13:32:50+00:00"
+  },
+  "Phi-3.5-mini-128k-q4f32_1-mlc-jp6": {
+    "title": "Phi 3.5 Mini 128K \u276f MLC q4f32_1 \u276f JetPack 6.1+",
+    "quantization": "q4f32_1",
+    "tags": [
+      "Phi-3.5-mini-128k",
+      "q4f32_1",
+      "mlc:jp6"
+    ],
+    "url": "mlc-ai/Phi-3.5-mini-instruct-q4f32_1-MLC",
+    "created_at": "2024-08-21 03:00:49+00:00",
+    "last_modified": "2024-08-23 22:58:11+00:00"
+  },
+  "Phi-3.5-mini-128k-q4f16_2-mlc-jp6": {
+    "title": "Phi 3.5 Mini 128K \u276f MLC q4f16_2 \u276f JetPack 6.1+",
+    "quantization": "q4f16_2",
+    "tags": [
+      "Phi-3.5-mini-128k",
+      "q4f16_2",
+      "mlc:jp6"
+    ]
+  },
+  "Phi-3.5-mini-128k-q4f16_awq-mlc-jp6": {
+    "title": "Phi 3.5 Mini 128K \u276f MLC q4f16_awq \u276f JetPack 6.1+",
+    "quantization": "q4f16_awq",
+    "tags": [
+      "Phi-3.5-mini-128k",
+      "q4f16_awq",
+      "mlc:jp6"
+    ]
+  },
+  "Phi-3.5-mini-128k-e5m2_f16-mlc-jp6": {
+    "title": "Phi 3.5 Mini 128K \u276f MLC e5m2_f16 \u276f JetPack 6.1+",
+    "quantization": "e5m2_f16",
+    "tags": [
+      "Phi-3.5-mini-128k",
+      "e5m2_f16",
+      "mlc:jp6"
+    ]
+  },
+  "Phi-3.5-mini-128k-e4m3_f16-mlc-jp6": {
+    "title": "Phi 3.5 Mini 128K \u276f MLC e4m3_f16 \u276f JetPack 6.1+",
+    "quantization": "e4m3_f16",
+    "tags": [
+      "Phi-3.5-mini-128k",
+      "e4m3_f16",
+      "mlc:jp6"
+    ]
+  },
+  "Phi-3.5-mini-128k-e4m3_f16_max-mlc-jp6": {
+    "title": "Phi 3.5 Mini 128K \u276f MLC e4m3_f16_max \u276f JetPack 6.1+",
+    "quantization": "e4m3_f16_max",
+    "tags": [
+      "Phi-3.5-mini-128k",
+      "e4m3_f16_max",
+      "mlc:jp6"
+    ]
+  },
+  "Phi-3.5-mini-128k-q4_k_m-gguf-jp6": {
+    "title": "Phi 3.5 Mini 128K \u276f llama.cpp q4_k_m \u276f JetPack 6.1+",
+    "quantization": "q4_k_m",
+    "tags": [
+      "Phi-3.5-mini-128k",
+      "q4_k_m",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/Phi-3.5-mini-instruct-GGUF/Phi-3.5-mini-instruct-Q4_K_M.gguf",
+    "created_at": "2024-08-20 19:56:23+00:00",
+    "last_modified": "2024-09-15 07:35:15+00:00"
+  },
+  "Phi-3.5-mini-128k-q4_k_l-gguf-jp6": {
+    "title": "Phi 3.5 Mini 128K \u276f llama.cpp q4_k_l \u276f JetPack 6.1+",
+    "quantization": "q4_k_l",
+    "tags": [
+      "Phi-3.5-mini-128k",
+      "q4_k_l",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/Phi-3.5-mini-instruct-GGUF/Phi-3.5-mini-instruct-Q4_K_L.gguf",
+    "created_at": "2024-08-20 19:56:23+00:00",
+    "last_modified": "2024-09-15 07:35:15+00:00"
+  },
+  "Phi-3.5-mini-128k-q5_k_s-gguf-jp6": {
+    "title": "Phi 3.5 Mini 128K \u276f llama.cpp q5_k_s \u276f JetPack 6.1+",
+    "quantization": "q5_k_s",
+    "tags": [
+      "Phi-3.5-mini-128k",
+      "q5_k_s",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/Phi-3.5-mini-instruct-GGUF/Phi-3.5-mini-instruct-Q5_K_S.gguf",
+    "created_at": "2024-08-20 19:56:23+00:00",
+    "last_modified": "2024-09-15 07:35:15+00:00"
+  },
+  "Phi-3.5-mini-128k-q5_k_m-gguf-jp6": {
+    "title": "Phi 3.5 Mini 128K \u276f llama.cpp q5_k_m \u276f JetPack 6.1+",
+    "quantization": "q5_k_m",
+    "tags": [
+      "Phi-3.5-mini-128k",
+      "q5_k_m",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/Phi-3.5-mini-instruct-GGUF/Phi-3.5-mini-instruct-Q5_K_M.gguf",
+    "created_at": "2024-08-20 19:56:23+00:00",
+    "last_modified": "2024-09-15 07:35:15+00:00"
+  },
+  "Phi-3.5-mini-128k-q5_k_l-gguf-jp6": {
+    "title": "Phi 3.5 Mini 128K \u276f llama.cpp q5_k_l \u276f JetPack 6.1+",
+    "quantization": "q5_k_l",
+    "tags": [
+      "Phi-3.5-mini-128k",
+      "q5_k_l",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/Phi-3.5-mini-instruct-GGUF/Phi-3.5-mini-instruct-Q5_K_L.gguf",
+    "created_at": "2024-08-20 19:56:23+00:00",
+    "last_modified": "2024-09-15 07:35:15+00:00"
+  },
+  "Phi-3.5-mini-128k-q6_k-gguf-jp6": {
+    "title": "Phi 3.5 Mini 128K \u276f llama.cpp q6_k \u276f JetPack 6.1+",
+    "quantization": "q6_k",
+    "tags": [
+      "Phi-3.5-mini-128k",
+      "q6_k",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/Phi-3.5-mini-instruct-GGUF/Phi-3.5-mini-instruct-Q6_K.gguf",
+    "created_at": "2024-08-20 19:56:23+00:00",
+    "last_modified": "2024-09-15 07:35:15+00:00"
+  }
+}

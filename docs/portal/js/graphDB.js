@@ -623,13 +623,13 @@ export class GraphDB {
     var parents = {}, children = {}, roots = [];
     var ancestors = {}, descendants = {};
 
-    for( let key in index ) {
+    for( const key in index ) {
       parents[key] = [], children[key] = [];
       ancestors[key] = [], descendants[key] = [];
     }
 
-    for( let key in index ) {
-      for( let tag of this.index[key].tags ) {
+    for( const key in index ) {
+      for( const tag of this.index[key].tags ) {
         if( !(tag in index) ) {
           console.warn(`tag '${tag}' was missing from index, skipping it in the tree`);
           continue;
@@ -658,14 +658,33 @@ export class GraphDB {
       }
     }
 
-    for( let key in index ) {
+    for( const key in index ) {
       up_tree(key, key);
       down_tree(key, key);
     }
 
-    for( let key in index ) {
+    for( const key in index ) {
       if( parents[key].length == 0 )
         roots.push(key);
+    }
+
+    for( const key in index ) {
+      if( is_empty(index[key], 'child_order') )
+        continue;
+
+      let reordered = [];
+
+      for( const child_key of index[key].child_order ) {
+        if( children[key].includes(child_key) )
+          reordered.push(child_key);
+      }
+
+      for( const child_key of children[key] ) {
+        if( !reordered.includes(child_key) )
+          reordered.push(child_key);
+      }
+
+      children[key] = reordered;
     }
 
     return [parents, children, ancestors, descendants, roots];

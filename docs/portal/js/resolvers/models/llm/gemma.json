@@ -65,6 +65,26 @@
     "created_at": "2024-06-24 08:05:41+00:00",
     "last_modified": "2024-08-27 19:41:49+00:00"
   },
+  "gemma-2-27b": {
+    "name": "Gemma 2 27B",
+    "url": "hf.co/google/gemma-2-27b-it",
+    "blacklist": [
+      "q4f16_ft"
+    ],
+    "tags": [
+      "gemma-2",
+      "agx-orin"
+    ],
+    "links": {
+      "hf": {
+        "name": "Hugging Face",
+        "color": "yellow",
+        "url": "hf.co/google/gemma-2-27b-it"
+      }
+    },
+    "created_at": "2024-06-24 08:05:04+00:00",
+    "last_modified": "2024-08-27 19:41:54+00:00"
+  },
   "gemma-2-2b-q4f16_1-mlc-jp6": {
     "title": "Gemma 2 2B \u276f MLC q4f16_1 \u276f JetPack 6.1+",
     "quantization": "q4f16_1",
@@ -383,6 +403,168 @@
     "url": "bartowski/gemma-2-9b-it-GGUF/gemma-2-9b-it-Q6_K.gguf",
     "created_at": "2024-06-27 15:42:48+00:00",
     "last_modified": "2024-07-15 18:57:00+00:00",
+    "max_context_len": 8192,
+    "prefill_chunk": 8192
+  },
+  "gemma-2-27b-q4f16_1-mlc-jp6": {
+    "title": "Gemma 2 27B \u276f MLC q4f16_1 \u276f JetPack 6.1+",
+    "quantization": "q4f16_1",
+    "tags": [
+      "gemma-2-27b",
+      "q4f16_1",
+      "mlc:jp6"
+    ],
+    "url": "mlc-ai/gemma-2-27b-it-q4f16_1-MLC",
+    "created_at": "2024-07-31 23:16:53+00:00",
+    "last_modified": "2024-08-01 15:19:27+00:00"
+  },
+  "gemma-2-27b-q4f16_0-mlc-jp6": {
+    "title": "Gemma 2 27B \u276f MLC q4f16_0 \u276f JetPack 6.1+",
+    "quantization": "q4f16_0",
+    "tags": [
+      "gemma-2-27b",
+      "q4f16_0",
+      "mlc:jp6"
+    ]
+  },
+  "gemma-2-27b-q4f32_1-mlc-jp6": {
+    "title": "Gemma 2 27B \u276f MLC q4f32_1 \u276f JetPack 6.1+",
+    "quantization": "q4f32_1",
+    "tags": [
+      "gemma-2-27b",
+      "q4f32_1",
+      "mlc:jp6"
+    ],
+    "url": "mlc-ai/gemma-2-27b-it-q4f32_1-MLC",
+    "created_at": "2024-07-31 22:38:29+00:00",
+    "last_modified": "2024-08-01 15:13:53+00:00"
+  },
+  "gemma-2-27b-q4f16_2-mlc-jp6": {
+    "title": "Gemma 2 27B \u276f MLC q4f16_2 \u276f JetPack 6.1+",
+    "quantization": "q4f16_2",
+    "tags": [
+      "gemma-2-27b",
+      "q4f16_2",
+      "mlc:jp6"
+    ]
+  },
+  "gemma-2-27b-q4f16_awq-mlc-jp6": {
+    "title": "Gemma 2 27B \u276f MLC q4f16_awq \u276f JetPack 6.1+",
+    "quantization": "q4f16_awq",
+    "tags": [
+      "gemma-2-27b",
+      "q4f16_awq",
+      "mlc:jp6"
+    ]
+  },
+  "gemma-2-27b-e5m2_f16-mlc-jp6": {
+    "title": "Gemma 2 27B \u276f MLC e5m2_f16 \u276f JetPack 6.1+",
+    "quantization": "e5m2_f16",
+    "tags": [
+      "gemma-2-27b",
+      "e5m2_f16",
+      "mlc:jp6"
+    ]
+  },
+  "gemma-2-27b-e4m3_f16-mlc-jp6": {
+    "title": "Gemma 2 27B \u276f MLC e4m3_f16 \u276f JetPack 6.1+",
+    "quantization": "e4m3_f16",
+    "tags": [
+      "gemma-2-27b",
+      "e4m3_f16",
+      "mlc:jp6"
+    ]
+  },
+  "gemma-2-27b-e4m3_f16_max-mlc-jp6": {
+    "title": "Gemma 2 27B \u276f MLC e4m3_f16_max \u276f JetPack 6.1+",
+    "quantization": "e4m3_f16_max",
+    "tags": [
+      "gemma-2-27b",
+      "e4m3_f16_max",
+      "mlc:jp6"
+    ]
+  },
+  "gemma-2-27b-q4_k_m-gguf-jp6": {
+    "title": "Gemma 2 27B \u276f llama.cpp q4_k_m \u276f JetPack 6.1+",
+    "quantization": "q4_k_m",
+    "tags": [
+      "gemma-2-27b",
+      "q4_k_m",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/gemma-2-27b-it-GGUF/gemma-2-27b-it-Q4_K_M.gguf",
+    "created_at": "2024-06-27 17:54:57+00:00",
+    "last_modified": "2024-08-03 22:54:43+00:00",
+    "max_context_len": 8192,
+    "prefill_chunk": 8192
+  },
+  "gemma-2-27b-q4_k_l-gguf-jp6": {
+    "title": "Gemma 2 27B \u276f llama.cpp q4_k_l \u276f JetPack 6.1+",
+    "quantization": "q4_k_l",
+    "tags": [
+      "gemma-2-27b",
+      "q4_k_l",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/gemma-2-27b-it-GGUF/gemma-2-27b-it-Q4_K_L.gguf",
+    "created_at": "2024-06-27 17:54:57+00:00",
+    "last_modified": "2024-08-03 22:54:43+00:00",
+    "max_context_len": 8192,
+    "prefill_chunk": 8192
+  },
+  "gemma-2-27b-q5_k_s-gguf-jp6": {
+    "title": "Gemma 2 27B \u276f llama.cpp q5_k_s \u276f JetPack 6.1+",
+    "quantization": "q5_k_s",
+    "tags": [
+      "gemma-2-27b",
+      "q5_k_s",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/gemma-2-27b-it-GGUF/gemma-2-27b-it-Q5_K_S.gguf",
+    "created_at": "2024-06-27 17:54:57+00:00",
+    "last_modified": "2024-08-03 22:54:43+00:00",
+    "max_context_len": 8192,
+    "prefill_chunk": 8192
+  },
+  "gemma-2-27b-q5_k_m-gguf-jp6": {
+    "title": "Gemma 2 27B \u276f llama.cpp q5_k_m \u276f JetPack 6.1+",
+    "quantization": "q5_k_m",
+    "tags": [
+      "gemma-2-27b",
+      "q5_k_m",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/gemma-2-27b-it-GGUF/gemma-2-27b-it-Q5_K_M.gguf",
+    "created_at": "2024-06-27 17:54:57+00:00",
+    "last_modified": "2024-08-03 22:54:43+00:00",
+    "max_context_len": 8192,
+    "prefill_chunk": 8192
+  },
+  "gemma-2-27b-q5_k_l-gguf-jp6": {
+    "title": "Gemma 2 27B \u276f llama.cpp q5_k_l \u276f JetPack 6.1+",
+    "quantization": "q5_k_l",
+    "tags": [
+      "gemma-2-27b",
+      "q5_k_l",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/gemma-2-27b-it-GGUF/gemma-2-27b-it-Q5_K_L.gguf",
+    "created_at": "2024-06-27 17:54:57+00:00",
+    "last_modified": "2024-08-03 22:54:43+00:00",
+    "max_context_len": 8192,
+    "prefill_chunk": 8192
+  },
+  "gemma-2-27b-q6_k-gguf-jp6": {
+    "title": "Gemma 2 27B \u276f llama.cpp q6_k \u276f JetPack 6.1+",
+    "quantization": "q6_k",
+    "tags": [
+      "gemma-2-27b",
+      "q6_k",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/gemma-2-27b-it-GGUF/gemma-2-27b-it-Q6_K.gguf",
+    "created_at": "2024-06-27 17:54:57+00:00",
+    "last_modified": "2024-08-03 22:54:43+00:00",
     "max_context_len": 8192,
     "prefill_chunk": 8192
   }

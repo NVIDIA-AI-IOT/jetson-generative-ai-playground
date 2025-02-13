@@ -28,6 +28,14 @@
       "curl_request",
       "perf_bench",
       "open_webui"
+    ],
+    "child_order": [
+      "deepseek-r1-distill",
+      "qwen-2.5",
+      "llama-3",
+      "smol-2",
+      "gemma-2",
+      "phi"
     ]
   },
   "max_batch_size": {

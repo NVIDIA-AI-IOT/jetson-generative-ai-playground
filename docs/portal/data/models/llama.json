@@ -1,6 +1,6 @@
 {
   "llama-3": {
-    "name": "Llama 3",
+    "name": "Meta Llama 3",
     "max_context_len": {"placeholder": 131072},
     "prefill_chunk": {"placeholder": 8192},
     "tags": ["llm"],
