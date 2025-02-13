@@ -244,7 +244,7 @@ export class SearchBar {
    */
   download(group='all') {
     console.log("Preparing current selection for download"); 
-    ZipGenerator({db: this.db, keys: this.results ?? Object.keys(this.db)});
+    save_all({db: this.db}); //, keys: this.results ?? Object.keys(this.db)});
     //ZipGenerator({db: this.db, keys: Object.keys(this.db)});
   }
 

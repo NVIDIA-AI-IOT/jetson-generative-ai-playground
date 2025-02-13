@@ -23,6 +23,7 @@ export function SideBar({id, parent, searchBar}) {
   const statusMsg = StatusMessages({parent: sidebar});
   const deviceConfig = DeviceConfigHelp({parent: sidebar});
   const downloadPanel = DownloadPanel({parent: sidebar, searchBar: searchBar});
+  const pipPanel = PipPanel({parent: sidebar, searchBar: searchBar});
 
   return node;
 }
@@ -43,7 +44,7 @@ export function StatusMessages({id, parent}) {
   
     const node = htmlToNode(`
       <div>
-        Welcome to a live preview of Jetson AI Lab!  This model configuration/quantization tool is for launching local AI microservices.<br/><br/>
+        This interactive configuration/quantization tool is for launching local AI microservices.<br/><br/>
         We'll be populating more LLMs, VLMs, agent tools, and web UI's - come find us on <a href="https://github.com/dusty-nv/jetson-containers" target="_blank">GitHub</a> or <a href="https://discord.gg/vpmNaT46" target="_blank">Discord</a> for help or to get involved!<br/><br/>
         Warm thanks to all our partners, researchers, and contributors in the field <span style="font-size: 135%">🤗 🤖</span>
       </div>
@@ -74,7 +75,7 @@ export function DeviceConfigHelp({id, parent}) {
     id: id,
     title: `Device Setup`,
     body: node,
-    expanded: true,
+    expanded: false,
     parent: parent
   });
 }
@@ -113,7 +114,27 @@ export function DownloadPanel({id, parent, searchBar}) {
     id: id,
     title: `Downloads`,
     body: node,
-    expanded: true,
+    expanded: false,
+    parent: parent,
+    icon: 'bi-arrow-down-circle'
+  });
+}
+
+export function PipPanel({id, parent, searchBar}) {
+  id ??= `${parent.id}-pip-panel`;
+
+  const node = htmlToNode(`
+    <div>
+      Download CUDA wheels built by jetson-containers from <a href="https://pypi.jetson-ai-lab.dev" target="_blank" class="monospace">pypi.jetson-ai-lab.dev</a><br/><br/>
+      To enable this by default in pip for JetPack 6, and mirror PyPi for non-GPU packages:</br></br><span class="monospace">export PIP_INDEX_URL=https://pypi.jetson-ai-lab.dev/jp6/cu126</span>
+    </div>
+  `);
+
+  return RollUp({
+    id: id,
+    title: `Pip Server`,
+    body: node,
+    expanded: false,
     parent: parent,
     icon: 'bi-arrow-down-circle'
   });

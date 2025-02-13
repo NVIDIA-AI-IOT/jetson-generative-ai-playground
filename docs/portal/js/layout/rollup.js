@@ -35,5 +35,10 @@ export function RollUp({title, id, body, parent, expanded=false, icon='bi-nvidia
     console.log(`Toggled rolldown '${title}' to ${result}`, evt);
   });
   
+  if( !expanded ) {
+    body_node.classList.toggle('hidden');
+    node.classList.toggle('hidden_body');
+  }
+  
   return node;
 }

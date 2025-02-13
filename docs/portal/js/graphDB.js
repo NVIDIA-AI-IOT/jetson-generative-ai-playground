@@ -407,6 +407,9 @@ export class GraphDB {
    */
   crossReferences(ancestors, descendants, leafs=true, refs=[]) {
     
+    if( !exists(ancestors) || !exists(descendants) )
+      return [];
+
     if( is_string(ancestors) )
       ancestors = [ancestors];
 
