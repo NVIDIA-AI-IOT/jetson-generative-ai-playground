@@ -90,9 +90,12 @@ export class CodeEditor {
     const pageBody = pageNode.querySelector('.tab-page-body');
     const expander = pageNode.querySelector('.tab-page-expand');
 
-    if( has_code ) {
+    if( !expanded ) 
+      pageBody.classList.toggle('hidden');
+
+    if( has_code )
       pageBody.appendChild(this.createCodeBlock(page));
-    }
+
     /*else if( exists(env.value) ) {
       pageBody.appendChild(htmlToNode(`<div>${env.value}</div>`));
     }*/
@@ -247,6 +250,7 @@ export class CodeEditor {
     const scrollArea = tabNode.querySelector('.tab-scroll-container');
 
     for( const page_key in tab ) {
+      tab[page_key].expand = (scrollArea.childElementCount === 0);
       scrollArea.appendChild(this.createPage(
         tab[page_key], 
         page_key,

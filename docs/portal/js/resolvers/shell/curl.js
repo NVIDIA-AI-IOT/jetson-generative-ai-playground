@@ -3,6 +3,9 @@
  */
 
 export function get_curl_request(env) {
+  if( exists(env.parent) )
+    env = env.parent;
+  
   const code = 
   `curl http://${env.server_host}/v1/chat/completions \\
   -H "Content-Type: application/json" \\

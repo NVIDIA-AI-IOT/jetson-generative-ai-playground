@@ -17,6 +17,10 @@
   background: rgba(255,255,255,0.08);
 }
 
+.tab-page-body {
+  padding-bottom: 5px;
+}
+
 .tab-page-expand {
   float: right; 
   /*right: 10px;*/
@@ -65,6 +69,7 @@
 
 .tab-page-text {
   font-weight: 400;
-  font-size: 83%;
+  /*font-size: 83%;*/
+  font-size: 14px;
   color: rgb(210,210,210);
 }

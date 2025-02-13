@@ -19,12 +19,12 @@ export function docker_args(env) {
       --quantization ${model.quantization} \\
       --max-batch-size ${model.max_batch_size}`;
 
-  if( is_number(model.max_context_len) ) {
+  if( is_value(model.max_context_len) ) {
     args += ` \\
       --max-context-len ${model.max_context_len}`;
   }
 
-  if( is_number(model.prefill_chunk) ) {
+  if( is_value(model.prefill_chunk) ) {
     args += ` \\
       --prefill-chunk ${model.prefill_chunk}`;
   }

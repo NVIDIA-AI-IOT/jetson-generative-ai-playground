@@ -37,7 +37,13 @@ export function docker_run(env) {
   //console.log(`[GraphDB] `, cmd);
   //console.groupEnd();
 
-  return cmd; //`# ${get_endpoint_url(env)}\n` 
+  if( cmd.endsWith(' \\') )
+    cmd = cmd.slice(0, -2);
+
+  if( cmd.endsWith('\\') )
+    cmd = cmd.slice(0, -1);
+
+  return cmd; 
 }
 
 Resolver({
@@ -52,5 +58,6 @@ Resolver({
     `Template that builds the 'docker run' command from $OPTIONS $IMAGE $COMMAND $ARGS\n`,
     `You can more deeply customize the container settings by altering these.`,
   ],
-  text: `Run these terminal commands from the host device or SSH, this one downloading the model and starting an <span class="monospace">openai.chat.completion</span> server:`
+  text: `Run these terminal commands from the host device or SSH, this one downloading the model and starting an <span class="code">openai.chat.completion</span> server:`,
+  footer: `These individual commands are typically meant for exploratory use - see the <span class="code">Compose</span> tab for managed deployments of models and microservices.`
 });

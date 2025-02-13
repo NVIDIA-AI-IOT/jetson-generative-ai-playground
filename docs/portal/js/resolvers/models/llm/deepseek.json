@@ -44,7 +44,7 @@
       }
     },
     "created_at": "2025-01-20 09:04:18+00:00",
-    "last_modified": "2025-01-26 09:15:27+00:00"
+    "last_modified": "2025-02-09 06:34:28+00:00"
   },
   "deepseek-r1-distill-qwen-1.5b-q4f16_ft-mlc-jp6": {
     "title": "DeepSeek R1 Qwen-1.5B \u276f MLC q4f16_ft \u276f JetPack 6.1+",
@@ -228,7 +228,7 @@
       }
     },
     "created_at": "2025-01-20 09:16:14+00:00",
-    "last_modified": "2025-01-26 09:15:35+00:00"
+    "last_modified": "2025-02-09 06:34:39+00:00"
   },
   "deepseek-r1-distill-qwen-7b-q4f16_ft-mlc-jp6": {
     "title": "DeepSeek R1 Qwen-7B \u276f MLC q4f16_ft \u276f JetPack 6.1+",
@@ -412,7 +412,7 @@
       }
     },
     "created_at": "2025-01-20 09:09:42+00:00",
-    "last_modified": "2025-01-26 09:15:24+00:00"
+    "last_modified": "2025-02-09 06:34:24+00:00"
   },
   "deepseek-r1-distill-llama-8b-q4f16_ft-mlc-jp6": {
     "title": "DeepSeek R1 Llama-8B \u276f MLC q4f16_ft \u276f JetPack 6.1+",
@@ -596,7 +596,7 @@
       }
     },
     "created_at": "2025-01-20 09:19:00+00:00",
-    "last_modified": "2025-01-26 09:15:32+00:00"
+    "last_modified": "2025-02-09 06:34:35+00:00"
   },
   "deepseek-r1-distill-qwen-32b-q4f16_ft-mlc-jp6": {
     "title": "DeepSeek R1 Qwen-32B \u276f MLC q4f16_ft \u276f JetPack 6.1+",
@@ -777,7 +777,7 @@
       }
     },
     "created_at": "2025-01-20 09:13:33+00:00",
-    "last_modified": "2025-01-26 09:15:21+00:00"
+    "last_modified": "2025-02-09 06:34:20+00:00"
   },
   "deepseek-r1-distill-llama-70b-q4f16_ft-mlc-jp6": {
     "title": "DeepSeek R1 Llama-70B \u276f MLC q4f16_ft \u276f JetPack 6.1+",

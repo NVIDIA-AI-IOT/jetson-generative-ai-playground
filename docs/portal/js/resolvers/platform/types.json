@@ -40,9 +40,17 @@
     "tags": "string"
   },
   "shell": {
+    "name": "Shell",
     "language": "shell",
     "extension": ".sh",
     "interpreter": "/bin/bash",
+    "tags": ["code", "resource"]
+  },
+  "python": {
+    "name": "Python",
+    "language": "python",
+    "extension": ".py",
+    "interpreter": "python",
     "tags": ["code", "resource"]
   }
 }

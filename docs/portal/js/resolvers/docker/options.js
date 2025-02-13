@@ -3,11 +3,15 @@
  */
 export function docker_options(env, use_cuda=true) {
   let opt = [];
-  
+  const root = exists(env.parent) ? env.parent : env;
+
   if( nonempty(env.docker_options) )
     opt.push(env.docker_options);
 
-  if( use_cuda && nonempty(env.CUDA_VISIBLE_DEVICES) )
+  if( exists(env.docker_options) && !env.docker_options.includes('--name') && env.tags.includes('llm') )
+    opt.push(`--name llm_server`);
+
+  if( use_cuda && nonempty(env.CUDA_VISIBLE_DEVICES) && env.CUDA_VISIBLE_DEVICES.toLowerCase() != 'none' )
     opt.push(`--gpus ${env.CUDA_VISIBLE_DEVICES}`);
 
   const network_flags = docker_network(env);
@@ -18,8 +22,7 @@ export function docker_options(env, use_cuda=true) {
   const autoUpdate = env.auto_update ?? (exists(env.parent) ? env.parent.auto_update : 'on');
 
   if( !exists(autoUpdate) || autoUpdate != 'off' ) {
-    opt.push('--pull always');
-    opt.push('-e DOCKER_PULL=always');
+    opt.push('-e DOCKER_PULL=always^^^--pull always');
   }
 
   if( exists(env.hf_token) ) {
@@ -28,8 +31,8 @@ export function docker_options(env, use_cuda=true) {
       opt.push(`-e HF_TOKEN=${tr}`);
   }
 
-  if( exists(env.cache_dir) ) {
-    const tr = env.cache_dir.trim();
+  if( exists(root.cache_dir) ) {
+    const tr = root.cache_dir.trim();
     if( tr.length > 0 ) {
       var cache_dir = `-v ${tr}:/root/.cache `;
       var hf_hub_dir = `-e HF_HUB_CACHE=/root/.cache/huggingface `;

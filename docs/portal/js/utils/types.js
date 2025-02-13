@@ -41,11 +41,11 @@ export function is_string(x) {
 }
 
 export function is_bool(x) {
-  return typeof value === 'boolean';
+  return typeof x === 'boolean';
 }
 
 export function is_number(x) {
-  return typeof value === 'number';
+  return typeof x === 'number';
 }
 
 export function is_function(x) {
@@ -114,3 +114,11 @@ export function deep_copy(obj) {
 export function toTitleCase(x) {
   return x.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 };
+
+export function substitution(text, map) {
+  for( const k in map ) {
+    text = text.replace('$' + k.toUpperCase(), map[k]);
+    text = text.replace('${' + k.toUpperCase() + '}', map[k]);
+  }
+  return text;
+}

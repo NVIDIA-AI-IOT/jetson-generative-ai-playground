@@ -42,8 +42,8 @@ Resolvers({perf_bench: {
   tags: ['docker_profile', 'shell', 'container'],
   text: `Profile the decode generation rate (tokens/sec) and context prefill latency:`,
   footer: [
-    `This benchmarks through the <span class="monospace">chat.completion</span> endpoint,`, 
-    `so they need the server to be running. The results are saved under`,
-    `<span class="monospace">$CACHE/benchmarks</span>`
+    `This client benchmarks the <span class="code">chat.completion</span> endpoint,`, 
+    `so it needs the LLM server to be running. The results are saved under`,
+    `<span class="code">$CACHE/benchmarks</span>`
   ].join(' ')
 }});

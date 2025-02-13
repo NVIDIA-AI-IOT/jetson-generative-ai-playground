@@ -160,5 +160,5 @@ export function wrapLines({text, delim=' -', newline=' \\\n', indent=2, max_leng
       lines[i].trim().replaceAll('  ', ' ');
   }
 
-  return lines.join(newline);
+  return lines.join(newline).replace('^^^', ' ');
 }

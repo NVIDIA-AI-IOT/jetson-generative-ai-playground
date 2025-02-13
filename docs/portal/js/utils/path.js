@@ -49,7 +49,15 @@ export function save_page({page}) {
   saveAs(blob, page.filename);
 }
 
-export function save_pages(pages, key) {
+export function save_pages(tabs, key) {
+  let pages = {};
+
+  for( const page_group in tabs ) {
+    for( const page_key in tabs[page_group] ) {
+      pages[page_key] = tabs[page_group][page_key];
+    }
+  }
+
   key ??= find_key(pages);
   let zip = new JSZip();
   let folder = zip.folder(key);
