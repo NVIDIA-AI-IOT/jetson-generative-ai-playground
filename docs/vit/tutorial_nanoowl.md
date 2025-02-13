@@ -1,4 +1,4 @@
-# Tutorial - NanoOWL 
+# Tutorial - NanoOWL
 
 Let's run [NanoOWL](https://github.com/NVIDIA-AI-IOT/nanoowl), [OWL-ViT](https://huggingface.co/docs/transformers/model_doc/owlvit) optimized to run real-time on Jetson with [NVIDIA TensorRT](https://developer.nvidia.com/tensorrt).
 
@@ -24,11 +24,11 @@ Let's run [NanoOWL](https://github.com/NVIDIA-AI-IOT/nanoowl), [OWL-ViT](https:/
         - Spaces for models
 
     4. Clone and setup [`jetson-containers`](https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md){:target="_blank"}:
-    
+
 		```bash
 		git clone https://github.com/dusty-nv/jetson-containers
 		bash jetson-containers/install.sh
-		``` 
+		```
 
 ## How to start
 
@@ -54,6 +54,11 @@ jetson-containers run --workdir /opt/nanoowl $(autotag nanoowl)
     python3 tree_demo.py ../../data/owl_image_encoder_patch32.engine
     ```
 
+    | Option | Description | Example |
+    | ------ | ----------- | ------- |
+    | `--camera` | To specify camera index (corresponds to `/dev/video*`) when multiple cameras are connected | `1` |
+    | `--resolution` | To specify the camera open resolution in the format `{width}x{height}` | `640x480` |
+
     !!! info
 
         If it fails to find or load the TensorRT engine file, build the TensorRT engine for the OWL-ViT vision encoder on your Jetson device.
@@ -65,7 +70,7 @@ jetson-containers run --workdir /opt/nanoowl $(autotag nanoowl)
 
 3. Second, open your browser to ``http://<ip address>:7860``
 
-4. Type whatever prompt you like to see what works!  
+4. Type whatever prompt you like to see what works!
 
     Here are some examples
 
