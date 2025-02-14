@@ -5,12 +5,12 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="Showcasing generative AI projects that run on Jetson" name="description"/>
-  <link href="tutorial_nano-llm.html" rel="prev"/>
-  <link href="tutorial_slm.html" rel="next"/>
+  <link href="tips_ram-optimization.html" rel="prev"/>
+  <link href="tutorial_text-generation.html" rel="next"/>
   <link href="images/nvidia-favicon-rgb-16x16px@2x.png" rel="icon"/>
   <meta content="mkdocs-1.6.1, mkdocs-material-9.6.4" name="generator"/>
   <title>
-   TensorRT-LLM - NVIDIA Jetson AI Lab
+   🏆 Hackathon Guide - NVIDIA Jetson AI Lab
   </title>
   <link href="assets/stylesheets/main.8608ea7d.min.css" rel="stylesheet"/>
   <link href="assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
@@ -38,7 +38,7 @@
   <label class="md-overlay" for="__drawer">
   </label>
   <div data-md-component="skip">
-   <a class="md-skip" href="#tensorrt-llm-for-jetson">
+   <a class="md-skip" href="#hackathon-guide">
     Skip to content
    </a>
   </div>
@@ -67,7 +67,7 @@
       </div>
       <div class="md-header__topic" data-md-component="header-topic">
        <span class="md-ellipsis">
-        TensorRT-LLM
+        🏆 Hackathon Guide
        </span>
       </div>
      </div>
@@ -214,8 +214,8 @@
                </span>
               </a>
              </li>
-             <li class="md-nav__item md-nav__item--nested">
-              <input class="md-nav__toggle md-toggle" id="__nav_3_2" type="checkbox"/>
+             <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+              <input checked="" class="md-nav__toggle md-toggle" id="__nav_3_2" type="checkbox"/>
               <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
                <span class="md-ellipsis">
                 Jetson Setup Guide
@@ -223,7 +223,7 @@
                <span class="md-nav__icon md-icon">
                </span>
               </label>
-              <nav aria-expanded="false" aria-labelledby="__nav_3_2_label" class="md-nav" data-md-level="2">
+              <nav aria-expanded="true" aria-labelledby="__nav_3_2_label" class="md-nav" data-md-level="2">
                <label class="md-nav__title" for="__nav_3_2">
                 <span class="md-nav__icon md-icon">
                 </span>
@@ -258,18 +258,95 @@
                   </span>
                  </a>
                 </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="hackathon.html">
+                <li class="md-nav__item md-nav__item--active">
+                 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+                 <label class="md-nav__link md-nav__link--active" for="__toc">
+                  <span class="md-ellipsis">
+                   🏆 Hackathon Guide
+                  </span>
+                  <span class="md-nav__icon md-icon">
+                  </span>
+                 </label>
+                 <a class="md-nav__link md-nav__link--active" href="hackathon.html">
                   <span class="md-ellipsis">
                    🏆 Hackathon Guide
                   </span>
                  </a>
+                 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+                  <label class="md-nav__title" for="__toc">
+                   <span class="md-nav__icon md-icon">
+                   </span>
+                   Table of contents
+                  </label>
+                  <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#initial-setup">
+                     <span class="md-ellipsis">
+                      Initial Setup
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#physical-setup">
+                     <span class="md-ellipsis">
+                      Physical Setup
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#wi-fi-connection">
+                     <span class="md-ellipsis">
+                      Wi-Fi connection
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#example-projects">
+                     <span class="md-ellipsis">
+                      Example Projects
+                     </span>
+                    </a>
+                    <nav aria-label="Example Projects" class="md-nav">
+                     <ul class="md-nav__list">
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#nanoowl-tree_demo-with-live-camera">
+                        <span class="md-ellipsis">
+                         🦉 NanoOWL tree_demo with Live Camera
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#llms-and-openai-compatible-microservices">
+                        <span class="md-ellipsis">
+                         🗪 LLMs and OpenAI compatible microservices
+                        </span>
+                       </a>
+                      </li>
+                     </ul>
+                    </nav>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#troubleshooting">
+                     <span class="md-ellipsis">
+                      Troubleshooting
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#resources">
+                     <span class="md-ellipsis">
+                      Resources
+                     </span>
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
                 </li>
                </ul>
               </nav>
              </li>
-             <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-              <input checked="" class="md-nav__toggle md-toggle" id="__nav_3_3" type="checkbox"/>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_3" type="checkbox"/>
               <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
                <span class="md-ellipsis">
                 Text (LLM)
@@ -277,7 +354,7 @@
                <span class="md-nav__icon md-icon">
                </span>
               </label>
-              <nav aria-expanded="true" aria-labelledby="__nav_3_3_label" class="md-nav" data-md-level="2">
+              <nav aria-expanded="false" aria-labelledby="__nav_3_3_label" class="md-nav" data-md-level="2">
                <label class="md-nav__title" for="__nav_3_3">
                 <span class="md-nav__icon md-icon">
                 </span>
@@ -319,43 +396,12 @@
                   </span>
                  </a>
                 </li>
-                <li class="md-nav__item md-nav__item--active">
-                 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-                 <label class="md-nav__link md-nav__link--active" for="__toc">
-                  <span class="md-ellipsis">
-                   TensorRT-LLM
-                  </span>
-                  <span class="md-nav__icon md-icon">
-                  </span>
-                 </label>
-                 <a class="md-nav__link md-nav__link--active" href="tensorrt_llm.html">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tensorrt_llm.html">
                   <span class="md-ellipsis">
                    TensorRT-LLM
                   </span>
                  </a>
-                 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-                  <label class="md-nav__title" for="__toc">
-                   <span class="md-nav__icon md-icon">
-                   </span>
-                   Table of contents
-                  </label>
-                  <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-                   <li class="md-nav__item">
-                    <a class="md-nav__link" href="#building-tensorrt-llm-engine-for-llama">
-                     <span class="md-ellipsis">
-                      Building TensorRT-LLM Engine for Llama
-                     </span>
-                    </a>
-                   </li>
-                   <li class="md-nav__item">
-                    <a class="md-nav__link" href="#openai-api-endpoint">
-                     <span class="md-ellipsis">
-                      OpenAI API Endpoint
-                     </span>
-                    </a>
-                   </li>
-                  </ul>
-                 </nav>
                 </li>
                 <li class="md-nav__item">
                  <a class="md-nav__link" href="tutorial_slm.html">
@@ -761,16 +807,62 @@
          </label>
          <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
           <li class="md-nav__item">
-           <a class="md-nav__link" href="#building-tensorrt-llm-engine-for-llama">
+           <a class="md-nav__link" href="#initial-setup">
             <span class="md-ellipsis">
-             Building TensorRT-LLM Engine for Llama
+             Initial Setup
             </span>
            </a>
           </li>
           <li class="md-nav__item">
-           <a class="md-nav__link" href="#openai-api-endpoint">
+           <a class="md-nav__link" href="#physical-setup">
             <span class="md-ellipsis">
-             OpenAI API Endpoint
+             Physical Setup
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#wi-fi-connection">
+            <span class="md-ellipsis">
+             Wi-Fi connection
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#example-projects">
+            <span class="md-ellipsis">
+             Example Projects
+            </span>
+           </a>
+           <nav aria-label="Example Projects" class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#nanoowl-tree_demo-with-live-camera">
+               <span class="md-ellipsis">
+                🦉 NanoOWL tree_demo with Live Camera
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#llms-and-openai-compatible-microservices">
+               <span class="md-ellipsis">
+                🗪 LLMs and OpenAI compatible microservices
+               </span>
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#troubleshooting">
+            <span class="md-ellipsis">
+             Troubleshooting
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#resources">
+            <span class="md-ellipsis">
+             Resources
             </span>
            </a>
           </li>
@@ -781,214 +873,521 @@
      </div>
      <div class="md-content" data-md-component="content">
       <article class="md-content__inner md-typeset">
-       <h1 id="tensorrt-llm-for-jetson">
-        TensorRT-LLM for Jetson
+       <h1 id="hackathon-guide">
+        Hackathon Guide
        </h1>
        <p>
-        <a href="https://github.com/NVIDIA/TensorRT-LLM">
-         TensorRT-LLM
-        </a>
-        is a high-performance LLM inference library with advanced quantization, attention kernels, and paged KV caching.  Initial support for building TensorRT-LLM from source for JetPack 6.1 has been included in the
-        <a href="https://github.com/NVIDIA/TensorRT-LLM/tree/v0.12.0-jetson">
-         <code>
-          v0.12.0-jetson
-         </code>
-        </a>
-        branch of the
-        <a href="https://github.com/NVIDIA/TensorRT-LLM">
-         TensorRT-LLM repo
-        </a>
-        for Jetson AGX Orin.
+        <img align="right" alt="" src="images/her-blog-back-to-school-jetson-dev-kit-1080x1080.png" width="512"/>
        </p>
        <p>
-        <img src="https://blogs.nvidia.com/wp-content/uploads/2023/10/studio-ai-announcemenet-blog-kv-oct2023-1280x680-1.jpg"/>
+        The NVIDIA Jetson empowers you to bring your innovative ideas to life.
        </p>
        <p>
-        We've provided pre-compiled TensorRT-LLM
-        <a href="http://jetson.webredirect.org/jp6/cu126/tensorrt-llm/0.12.0">
-         wheels
-        </a>
-        and containers along with this guide for
-        <a href="https://github.com/NVIDIA/TensorRT-LLM/blob/v0.12.0-jetson/README4Jetson.md">
-         <code>
-          TensorRT-LLM Deployment on Jetson Orin
-         </code>
-        </a>
+        It's a powerful, compact edge computer to quickly build your great AI project in a hackathon setup.
        </p>
-       <div class="admonition abstract">
-        <p class="admonition-title">
-         What you need
-        </p>
-        <ol>
-         <li>
+       <p>
+        Check out the tips, guides and resources below to make the most of Jetson.
+       </p>
+       <p>
+        Have fun and happy hacking!
+       </p>
+       <h2 id="initial-setup">
+        Initial Setup
+       </h2>
+       <p>
+        Ideally, your Jetson developer kit is pre-setup.
+        <br/>
+        But you can also set it up by yourself.
+       </p>
+       <div class="tabbed-set tabbed-alternate" data-tabs="1:2">
+        <input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"/>
+        <input id="__tabbed_1_2" name="__tabbed_1" type="radio"/>
+        <div class="tabbed-labels">
+         <label for="__tabbed_1_1">
+          Case 1: Jetson comes pre-setup
+         </label>
+         <label for="__tabbed_1_2">
+          Case 2: You open the box for the first time
+         </label>
+        </div>
+        <div class="tabbed-content">
+         <div class="tabbed-block">
           <p>
-           One of the following Jetson devices:
+           Just check the default username and password with the person/organization who provide the hardware.
           </p>
+          <div class="admonition abstract">
+           <p class="admonition-title">
+            Treehacks 2025
+           </p>
+           <ul>
+            <li>
+             Login information
+             <ul>
+              <li>
+               Username:
+               <code>
+                jetson
+               </code>
+              </li>
+              <li>
+               Password:
+               <code>
+                jetson
+               </code>
+              </li>
+             </ul>
+            </li>
+            <li>
+             JetPack 6.2 is pre-installed and everything is set up on 1TB SSD.
+            </li>
+           </ul>
+          </div>
+         </div>
+         <div class="tabbed-block">
           <p>
-           <span class="blobDarkGreen4">
-            Jetson AGX Orin
-           </span>
-           *Support for other Orin devices is currently undergoing testing.
-          </p>
-         </li>
-         <li>
-          <p>
-           Running one of the following versions of
-           <a href="https://developer.nvidia.com/embedded/jetpack">
-            JetPack
-           </a>
-           :
-          </p>
-          <p>
-           <span class="blobPink2">
-            JetPack 6.1 (L4T r36.4)
-           </span>
-          </p>
-         </li>
-         <li>
-          <p>
-           <span class="markedYellow">
-            NVMe SSD
-            <strong>
-             highly recommended
-            </strong>
-           </span>
-           for storage speed and space
+           If the Jetson has not been set up, go through the following initial setup guide that matches your Jetson hardware.
           </p>
           <ul>
            <li>
-            <code>
-             18.5GB
-            </code>
-            for
-            <code>
-             tensorrt_llm
-            </code>
-            container image
+            Jetson Orin Nano 8GB Developer Kit :
+            <a href="initial_setup_jon.html">
+             Initial Setup Guide - Jetson Orin Nano
+            </a>
            </li>
            <li>
-            Space for models (
-            <code>
-             &gt;10GB
-            </code>
-            )
+            Jetson AGX Orin 64GB Developer Kit :
+            <a href="initial_setup_jon_sdkm.html">
+             Initial Setup (SDK Manager method)
+            </a>
+           </li>
+          </ul>
+         </div>
+        </div>
+       </div>
+       <h2 id="physical-setup">
+        Physical Setup
+       </h2>
+       <div class="tabbed-set tabbed-alternate" data-tabs="2:2">
+        <input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"/>
+        <input id="__tabbed_2_2" name="__tabbed_2" type="radio"/>
+        <div class="tabbed-labels">
+         <label for="__tabbed_2_1">
+          Headless setup
+         </label>
+         <label for="__tabbed_2_2">
+          Monitor-attached setup
+         </label>
+        </div>
+        <div class="tabbed-content">
+         <div class="tabbed-block">
+          <p>
+           A
+           <strong>
+            headless setup
+           </strong>
+           with Jetson's USB Device Mode provides an easy way to connect your laptop (or a PC) directly to a Jetson with minimal cabling.
+          </p>
+          <p>
+           <img alt="" src="images/usb-device-mode_Type-A.png"/>
+          </p>
+          <p>
+           Follow these steps:
+          </p>
+          <ol>
+           <li>
+            Take the Jetson developer kit out of the box and connect the bundled power supply.
+           </li>
+           <li>
+            Find a USB cable to connect the Jetson to your PC (USB-C end goes into the Jetson).
+           </li>
+           <li>
+            You should see a "L4T-README" drive automatically gets mounted on your PC.
+           </li>
+           <li>
+            Open a terminal on your PC and SSH into the Jetson using the following command:
+            <div class="highlight">
+             <pre><span></span><code>ssh<span class="w"> </span><span class="si">${</span><span class="nv">JETSON_USERNAME</span><span class="si">}</span>@192.168.55.1
+</code></pre>
+            </div>
+            <blockquote>
+             <p>
+              Replace the above
+              <code>
+               ${JETSON_USERNAME}
+              </code>
+              with the actual username that you found or set.
+              <br/>
+              To log in, you need to input the password.
+             </p>
+            </blockquote>
+           </li>
+          </ol>
+          <details class="info">
+           <summary>
+            Some more detail about USB Device Mode
+           </summary>
+           <p>
+            This is realized using Jetson's
+            <strong>
+             USB Device Mode
+            </strong>
+            feature.
+           </p>
+           <p>
+            When Jetson is connected to a PC, it acts as a USB Composite Device that presents a couple of USB device classes including:
+           </p>
+           <ul>
+            <li>
+             USB Ethernet (to provide the virtual NIC)
+            </li>
+            <li>
+             USB Mass Storage (to let the PC mount "L4T-README" drive)
+            </li>
+            <li>
+             USB Serial (to provide serial console access)
+            </li>
+           </ul>
+           <p>
+            When connected to a Windows PC, "Device Manager" in "Devices by connection" view shows something like following:
+           </p>
+           <p>
+            <img alt="" class="shadow" src="images/windows_device_manager.png" width="480"/>
+           </p>
+          </details>
+          <p>
+           You can also get Jetson on a Wi-fi network to have the Internet connection and that allows your team members to simultaneously access Jetson to do the work.
+          </p>
+         </div>
+         <div class="tabbed-block">
+          <p>
+           If you have a PC monitor, DisplayPort cable, USB keyboard and monitor, you can use Jetson as an independent computer and do all the work on it.
+          </p>
+         </div>
+        </div>
+       </div>
+       <h2 id="wi-fi-connection">
+        Wi-Fi connection
+       </h2>
+       <p>
+        Here is a command to connect Jetson to a Wi-Fi network. This comes handy especially when you are operating in headless mode.
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>sudo<span class="w"> </span>nmcli<span class="w"> </span>device<span class="w"> </span>wifi<span class="w"> </span>connect<span class="w"> </span><span class="si">${</span><span class="nv">WIFI_SSID</span><span class="si">}</span><span class="w"> </span>password<span class="w"> </span><span class="si">${</span><span class="nv">WIFI_PASSWORD</span><span class="si">}</span>
+</code></pre>
+       </div>
+       <blockquote>
+        <p>
+         Replace
+         <code>
+          ${WIFI_SSID}
+         </code>
+         and
+         <code>
+          ${WIFI_PASSWORD}
+         </code>
+         with the actual Wi-Fi facility information.
+        </p>
+       </blockquote>
+       <p>
+        Once you have your Jetson on the Wi-Fi network, you can try connect to the Jetson via Wi-Fi from your PC also connected to the same Wi-Fi network.
+       </p>
+       <p>
+        First check what IP address your Jetson got assigned on the wireless network interface.
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>ip<span class="w"> </span>addr
+</code></pre>
+       </div>
+       <p>
+        Then try to SSH in using the IP address.
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>ssh<span class="w"> </span>jetson@<span class="si">${</span><span class="nv">JETSON_WIFI_IP</span><span class="si">}</span>
+</code></pre>
+       </div>
+       <blockquote>
+        <p>
+         Replace
+         <code>
+          ${JETSON_WIFI_IP}
+         </code>
+         with the actual IP address that you found in above step.
+        </p>
+       </blockquote>
+       <div class="admonition tip">
+        <p class="admonition-title">
+         Tip
+        </p>
+        <p>
+         Sometimes, the Wi-Fi network policy is set up in such way that it does not allow device-to-device connection (like blocking SSH port).
+        </p>
+        <p>
+         USB Device Mode still allows you to communicate to Jetson via the USB cable from your PC locally, but that would limit only one PC to access Jetson.
+        </p>
+        <p>
+         If you want to have multiple PCs (like of your team members) access Jetson as a server at the same time, but the Wi-Fi network does not allow device-to-device connection, one alternative solution is to bring a Wi-Fi router and form a local network.
+        </p>
+       </div>
+       <h2 id="example-projects">
+        Example Projects
+       </h2>
+       <p>
+        Three are many great AI project examples available on this website. Here's a few to get you inspired:
+       </p>
+       <h3 id="nanoowl-tree_demo-with-live-camera">
+        🦉 NanoOWL
+        <code>
+         tree_demo
+        </code>
+        with Live Camera
+       </h3>
+       <p>
+        <a href="vit/tutorial_nanoowl.html">
+         NanoOWL
+        </a>
+        is a project that optimizes
+        <a href="https://huggingface.co/docs/transformers/model_doc/owlvit">
+         OWN-ViT
+        </a>
+        to run in real-time on Jetson Orin Nano.
+       </p>
+       <p>
+        The
+        <code>
+         tree_demo
+        </code>
+        showcases a hierarchical predictor operating on a live camera feed with dynamically editable text prompts.
+       </p>
+       <p>
+        <img alt="" src="https://github.com/NVIDIA-AI-IOT/nanoowl/raw/main/assets/jetson_person_2x.gif"/>
+       </p>
+       <p>
+        For example, a prompt like
+        <code>
+         [a person (healthy, needing assistance)]
+        </code>
+        could help create a robot capable of patrolling large event spaces to identify individuals who might need medical attention, such a s someone collapsing or sitting on the floor from exhaustion, etc.
+       </p>
+       <p>
+        <a class="md-button" href="vit/tutorial_nanoowl.html">
+         Go to NanoOWL tutorial
+        </a>
+       </p>
+       <h3 id="llms-and-openai-compatible-microservices">
+        🗪 LLMs and OpenAI compatible microservices
+       </h3>
+       <p>
+        Jetson can run various LLMs
+        <strong>
+         locally
+        </strong>
+        using its onboard GPU, enabling you to build a robot or device capable of engaging in conversations without needing an Internet connection.
+       </p>
+       <p>
+        Ollama, a popular open-source tool for running large language models locally, offers an official installer with Jetson support, allowing LLMs to run efficiently by leveraging the GPU's processing power.
+       </p>
+       <p>
+        Additionally, you can find pre-build containers built for Jetson that run as microservices, providing OpenAI compatible API endpoints for popular models like
+        <strong>
+         DeepSeek-R1
+        </strong>
+        (distilled). This makes it easy to create LLM application using familiar, standard API.
+       </p>
+       <p>
+        <a class="md-button" href="./vit/tutorial_openwebui.md#optional-setup-mlc-backend">
+         Go to Open WebUI tutorial to learn how to use the MLC backend microservice containers
+        </a>
+       </p>
+       <h2 id="troubleshooting">
+        Troubleshooting
+       </h2>
+       <details class="warning">
+        <summary>
+         Even after connecting USB-C cable, I cannot SSH into Jetson
+        </summary>
+        <ul>
+         <li>
+          Is the green LED near USB-C port on Jetson Orin Nano Developer Kit lit (power indicator)
+          <ul>
+           <li>
+            If not, check your DC power supply connection (to the wall outlet and to the Jetson carrier board)
            </li>
           </ul>
          </li>
          <li>
-          <p>
-           Clone and setup
-           <a href="https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md" target="_blank">
-            <code>
-             jetson-containers
-            </code>
-           </a>
-           :
-          </p>
+          Check if you see "L4T-README" drive shows up on desktop
+          <ul>
+           <li>
+            If not, check your USB-C cable connection on both PC end and Jetson end. Check the cable with other device.
+           </li>
+          </ul>
+         </li>
+        </ul>
+       </details>
+       <details class="warning">
+        <summary>
+         I cannot login with
+         <code>
+          jetson
+         </code>
+         /
+         <code>
+          jetson
+         </code>
+         credential
+        </summary>
+        <ul>
+         <li>
+          Check the username and password you typed again.
+         </li>
+         <li>
+          Somebody might have changed the password of the default user. If you cannot find out the updated password, you may need to start from the
+          <a href="#__tabbed_1_2">
+           initial setup
+          </a>
+          .
+         </li>
+        </ul>
+       </details>
+       <details class="warning">
+        <summary>
+         Jetson seems slow
+        </summary>
+        <ul>
+         <li>
+          Check your power mode with
+          <code>
+           nvpmodel
+          </code>
+          command
           <div class="highlight">
-           <pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dusty-nv/jetson-containers
-bash<span class="w"> </span>jetson-containers/install.sh
+           <pre><span></span><code>nvpmodel<span class="w"> </span>-q
 </code></pre>
           </div>
          </li>
-        </ol>
-       </div>
-       <h2 id="building-tensorrt-llm-engine-for-llama">
-        Building TensorRT-LLM Engine for Llama
+         <li>
+          Use
+          <code>
+           jtop
+          </code>
+          (explained below)
+         </li>
+        </ul>
+       </details>
+       <details class="warning">
+        <summary>
+         I want to check the Jetson's resource utilization in realtime
+        </summary>
+        <ul>
+         <li>
+          Install
+          <a href="https://github.com/rbonghi/jetson_stats">
+           <code>
+            jtop
+           </code>
+           (or jetson-stats)
+          </a>
+          to monitor the resource utilization and control.
+          <div class="highlight">
+           <pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>pip3-python
+sudo<span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>jetson-stats
+</code></pre>
+          </div>
+         </li>
+         <li>
+          <code>
+           6CTRL
+          </code>
+          tab allows you to change the power mode (under
+          <code>
+           NVP modes
+          </code>
+          )
+         </li>
+        </ul>
+       </details>
+       <details class="warning">
+        <summary>
+         I want to power Jetson with a battery
+        </summary>
+        <ul>
+         <li>
+          You can use something like the followings:
+          <ul>
+           <li>
+            USB power bank that supports 12V output via Power Delivery (PD) (
+            <a href="https://www.amazon.com/dp/B0B92JCWJW">
+             example
+            </a>
+            )
+           </li>
+           <li>
+            USB PD to DC power jack adapter cable (
+            <a href="https://www.amazon.com/dp/B0CZF4V746">
+             example
+            </a>
+            )
+           </li>
+          </ul>
+         </li>
+        </ul>
+       </details>
+       <h2 id="resources">
+        Resources
        </h2>
-       <p>
-        You can find the steps for converting Llama to TensorRT-LLM under
-        <a href="https://github.com/NVIDIA/TensorRT-LLM/tree/v0.12.0-jetson/examples/llama">
-         <code>
-          examples/llama
-         </code>
-        </a>
-        in the repo, and also in the
-        <a href="https://nvidia.github.io/TensorRT-LLM/">
-         documentation
-        </a>
-        .  This script will automate the process for Llama-7B with INT4 quantization applied, and run some generation and performance checks on the model:
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>jetson-containers<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-e<span class="w"> </span><span class="nv">HUGGINGFACE_TOKEN</span><span class="o">=</span>YOUR_API_KEY<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-e<span class="w"> </span><span class="nv">FORCE_BUILD</span><span class="o">=</span>on<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>dustynv/tensorrt_llm:0.12-r36.4.0<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>/opt/TensorRT-LLM/llama.sh
-</code></pre>
-       </div>
-       <p>
-        There are many such conversion procedures outlined in the TensorRT-LLM examples for different model architectures.
-       </p>
-       <h2 id="openai-api-endpoint">
-        OpenAI API Endpoint
-       </h2>
-       <p>
-        TensorRT-LLM has programming APIs for Python and C++ available, but it also includes an example
-        <a href="https://github.com/NVIDIA/TensorRT-LLM/tree/v0.12.0-jetson/examples/apps">
-         server endpoint
-        </a>
-        for the
-        <a href="https://github.com/openai/openai-python">
-         OpenAI protocol
-        </a>
-        that makes it easy to substitute for other local or cloud model backends.
-       </p>
-       <p>
-        This will start the TensorRT-LLM container with the server and model that you built above:
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>jetson-containers run \
-  dustynv/tensorrt_llm:0.12-r36.4.0 \
-  python3 /opt/TensorRT-LLM/examples/apps/openai_server.py \
-    /data/models/tensorrt_llm/Llama-2-7b-chat-hf-gptq
-</code></pre>
-       </div>
-       <p>
-        Then you can make chat completion requests against it from practically any language or from any connected device.  This
-        <a href="https://github.com/NVIDIA/TensorRT-LLM/tree/v0.12.0-jetson/examples/apps#v1completions">
-         example
-        </a>
-        shows a simple way of testing it initially from another terminal with curl:
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>curl http://localhost:8000/v1/completions \
-    -H "Content-Type: application/json" \
-    -d '{
-        "model": &lt;model_name&gt;,
-        "prompt": "Where is New York?",
-        "max_tokens": 16,
-        "temperature": 0
-    }'
-</code></pre>
-       </div>
-       <p>
-        Or the code included with
-        <a href="https://github.com/NVIDIA/TensorRT-LLM/blob/v0.12.0-jetson/examples/apps/openai_client.py">
-         openai_client.py
-        </a>
-        will handle these requests using the standard
-        <a href="https://github.com/openai/openai-python">
-         <code>
-          openai-python
-         </code>
-        </a>
-        package that can be installed outside of the container or on another machine.
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>jetson-containers run \
-  --workdir /opt/TensorRT-LLM/examples/apps \
-  dustynv/tensorrt_llm:0.12-r36.4.0 \
-    python3 openai_client.py --prompt "Where is New York?" --api chat
-</code></pre>
-       </div>
-       <p>
-        The patches in the branch above for TensorRT-LLM 0.12 are a preview release for Jetson AGX Orin, and we'll continue with validating and testing the various settings in TensorRT-LLM.  If you need any support, please post to the
-        <a href="https://forums.developer.nvidia.com/c/agx-autonomous-machines/jetson-embedded-systems/jetson-agx-orin/486">
-         Jetson Developer Forums.
-        </a>
-        .
-       </p>
+       <ul>
+        <li>
+         <a href="https://forums.developer.nvidia.com/c/robotics-edge-computing/jetson-embedded-systems/70">
+          NVIDIA Developer Forum - Jetson category
+         </a>
+         <ul>
+          <li>
+           <a href="https://forums.developer.nvidia.com/c/robotics-edge-computing/jetson-embedded-systems/jetson-orin-nano/632">
+            Jetson Orin Nano
+           </a>
+           ... Check if your question is already answered, and if not ask here.
+          </li>
+          <li>
+           <a href="https://forums.developer.nvidia.com/c/robotics-edge-computing/jetson-embedded-systems/jetson-agx-orin/486">
+            Jetson AGX Orin
+           </a>
+          </li>
+          <li>
+           <a href="https://forums.developer.nvidia.com/c/robotics-edge-computing/jetson-embedded-systems/jetson-projects/78">
+            Jetson Projects
+           </a>
+           ... See cool projects people built with Jetson!
+          </li>
+         </ul>
+        </li>
+        <li>
+         <a href="https://jetsonhacks.com/">
+          JetsonHacks
+         </a>
+         ... A great site with lots of tips for using Jetson
+        </li>
+        <li>
+         <a href="https://github.com/dusty-nv/jetson-inference">
+          Hello AI World / jetson-inference
+         </a>
+        </li>
+        <li>
+         <a href="https://discord.gg/BmqNSK4886">
+          Discord of Jetson AI Lab Research Group
+         </a>
+         ... Learn more about this research group
+         <a href="research.html">
+          here
+         </a>
+         <ul>
+          <li>
+           <a href="https://discord.gg/kUw358bs">
+            #jetson-getting-started
+           </a>
+          </li>
+         </ul>
+        </li>
+       </ul>
       </article>
      </div>
      <script>
