@@ -65,7 +65,7 @@ Ideally, your Jetson developer kit is pre-setup. <br>But you can also set it up 
 
         ![](./images/windows_device_manager.png){ width="480" .shadow}
 
-    You can also get Jetson on a Wi-fi network to have the Internet connection and that allows your team members to simultaneously access Jetson to do the work.
+    You can also get Jetson on a Wi-Fi network to have the Internet connection and that allows your team members to simultaneously access Jetson to do the work.
 
 === "Monitor-attached setup"
 
