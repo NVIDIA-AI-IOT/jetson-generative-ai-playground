@@ -1,6 +1,6 @@
 # Hackathon Guide
 
-![](./images/her-blog-back-to-school-jetson-dev-kit-1080x1080.png){ width="512"  align=right}
+![](./images/her-blog-back-to-school-jetson-dev-kit-1080x1080.png){ width="30%"  align=right}
 
 The NVIDIA Jetson empowers you to bring your innovative ideas to life.
 
@@ -154,7 +154,7 @@ Additionally, you can find pre-build containers built for Jetson that run as mic
         ```
     - Use `jtop` (explained below)
 
-??? warning "I want to check the Jetson's resource utilization in realtime"
+??? question "How can I check the Jetson's resource utilization in realtime?"
     - Install [`jtop` (or jetson-stats)](https://github.com/rbonghi/jetson_stats) to monitor the resource utilization and control.
         ```bash
         sudo apt install -y pip3-python
@@ -162,7 +162,7 @@ Additionally, you can find pre-build containers built for Jetson that run as mic
         ```
     - `6CTRL` tab allows you to change the power mode (under `NVP modes`)
 
-??? warning "I want to power Jetson with a battery"
+??? question "How can I power Jetson with a battery"
     - You can use something like the followings:
         - USB power bank that supports 12V output via Power Delivery (PD) ([example](https://www.amazon.com/dp/B0B92JCWJW))
         - USB PD to DC power jack adapter cable ([example](https://www.amazon.com/dp/B0CZF4V746))
