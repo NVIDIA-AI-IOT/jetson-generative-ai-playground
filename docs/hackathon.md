@@ -4,11 +4,11 @@
 
 The NVIDIA Jetson empowers you to bring your innovative ideas to life.
 
-It's a powerful, compact edge computer to quickly build your great AI project in a hackathon setup.
+It’s a powerful, compact edge AI computer with plenty of examples and learning resources to help your team build an impressive AI project at a hackathon. (See [an example of a successful team's project](https://blogs.nvidia.com/blog/pocket-pt/).)
 
-Check out the tips, guides and resources below to make the most of Jetson.
+Explore the tips, guides, and resources below to get started and make the most of your Jetson experience.
 
-Have fun and happy hacking!
+Good luck, have fun, and happy hacking!👍
 
 ## Initial Setup
 
