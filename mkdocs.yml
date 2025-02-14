@@ -89,6 +89,7 @@ nav:
       - 🛸 Initial Setup (SDK Manager method): initial_setup_jon_sdkm.md
       - 🔖 SSD + Docker: tips_ssd-docker.md
       - 🔖 Memory optimization: tips_ram-optimization.md
+      - 🏆 Hackathon Guide: hackathon.md
     - Text (LLM):
       - text-generation-webui: tutorial_text-generation.md
       - Ollama: tutorial_ollama.md
