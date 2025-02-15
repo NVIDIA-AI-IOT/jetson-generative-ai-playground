@@ -115,6 +115,7 @@ nav:
       - 📑 Knowledge Distillation: tutorial_distillation.md
     - Robotics & Embodiment:
       - Cosmos 🆕: cosmos.md
+      - Cosmos 🆕: genesis.md
       - LeRobot: lerobot.md
       - ROS2 Nodes: ros.md
       - OpenVLA: openvla.md
