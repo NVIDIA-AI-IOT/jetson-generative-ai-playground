@@ -40,18 +40,25 @@ jetson-containers run --workdir /opt/nanoowl $(autotag nanoowl)
 
 ## How to run the tree prediction (live camera) example
 
-1. Ensure you have a camera device connected
+0. Ensure you have a camera device connected
 
-    ```
+    ```bash
     ls /dev/video*
     ```
 
     <small>If no video device is found, exit from the container and check if you can see a video device on the host side.</small>
 
+1. Install missing module.
+
+    ```bash
+    pip install aiohttp
+    ```
+
 2. Launch the demo
     ```bash
     cd examples/tree_demo
-    python3 tree_demo.py ../../data/owl_image_encoder_patch32.engine
+    python3 tree_demo.py --camera 0 --resolution 640x480 \
+        ../../data/owl_image_encoder_patch32.engine
     ```
 
     | Option | Description | Example |
