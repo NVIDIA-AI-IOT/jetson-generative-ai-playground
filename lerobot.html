@@ -1427,25 +1427,39 @@ SUBSYSTEM=="tty", ATTRS{idVendor}=="2f5d", ATTRS{idProduct}=="2202", ATTRS{seria
 </code></pre>
        </div>
        <p>
-        Now disconnect the leader arm, and then only connect the follower arm to Jetson.
-       </p>
-       <p>
-        Repeat the same steps to record the serial to edit the second line of
+        First copy this under
         <code>
-         99-usb-serial.rules
+         /etc/udev/rules.d/
         </code>
-        file.
+        (of host).
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>sudo<span class="w"> </span>cp<span class="w"> </span>./99-usb-serial.rules<span class="w"> </span>/etc/udev/rules.d/
+</code></pre>
+       </div>
+       <p>
+        Now disconnect the leader arm, and then only connect the follower arm to Jetson. Record the serial for the follower arm.
        </p>
        <div class="highlight">
         <pre><span></span><code>$<span class="w"> </span>ll<span class="w"> </span>/dev/serial/by-id/
 lrwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span><span class="m">13</span><span class="w"> </span>Sep<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">13</span>:07<span class="w"> </span>usb-ROBOTIS_OpenRB-150_483F88DC50304A46462E3120FF0C081A-if00<span class="w"> </span>-&gt;<span class="w"> </span>../../ttyACM0
-$<span class="w"> </span>vi<span class="w"> </span>./packages/robots/lerobot
+</code></pre>
+       </div>
+       <p>
+        Repeat the same steps to record the serial to edit the lines of
+        <code>
+         /etc/udev/rules.d/99-usb-serial.rules
+        </code>
+        file.
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>vi<span class="w"> </span>/etc/udev/rules.d/99-usb-serial.rules
 </code></pre>
        </div>
        <p>
         You should have
         <code>
-         ./99-usb-serial.rules
+         /etc/udev/rules.d/99-usb-serial.rules
         </code>
         now looking like this:
        </p>
@@ -1455,14 +1469,14 @@ SUBSYSTEM=="tty", ATTRS{idVendor}=="2f5d", ATTRS{idProduct}=="2202", ATTRS{seria
 </code></pre>
        </div>
        <p>
-        Finally copy this under
+        Finally make sure the file is under
         <code>
          /etc/udev/rules.d/
         </code>
         (of host), and restart Jetson.
        </p>
        <div class="highlight">
-        <pre><span></span><code>sudo cp ./99-usb-serial.rules /etc/udev/rules.d/
+        <pre><span></span><code>sudo ls -l /etc/udev/rules.d/99-usb-serial.rules
 sudo reboot
 </code></pre>
        </div>
@@ -1849,7 +1863,7 @@ python<span class="w"> </span>lerobot/scripts/control_robot.py<span class="w"> <
          the outputs directory content back to the orinal Jetson that has the leader and follower arm attached.
         </p>
         <div class="highlight">
-         <pre><span></span><code>scp<span class="w"> </span>-r<span class="w"> </span>outputs/train/act_koch_test_01/<span class="w"> </span>&lt;USER&gt;@&lt;IP&gt;:/ssd/jetson-containers/data/lerobot/outputs/train/<span class="w"> </span>
+         <pre><span></span><code>scp<span class="w"> </span>-r<span class="w"> </span>outputs/train/act_koch_test_01/<span class="w"> </span>&lt;USER&gt;@&lt;IP&gt;:/ssd/jetson-containers/data/lerobot/outputs/train/
 </code></pre>
         </div>
        </div>
@@ -2023,7 +2037,7 @@ rerun
 <span class="w">    </span><span class="nv">policy</span><span class="o">=</span>act<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="nv">env</span><span class="o">=</span>aloha<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>env.task<span class="o">=</span>AlohaInsertion-v0<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="nv">dataset_repo_id</span><span class="o">=</span>lerobot/aloha_sim_insertion_human<span class="w"> </span>
+<span class="w">    </span><span class="nv">dataset_repo_id</span><span class="o">=</span>lerobot/aloha_sim_insertion_human
 </code></pre>
        </div>
        <p>
