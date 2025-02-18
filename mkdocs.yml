@@ -114,7 +114,7 @@ nav:
       - TAM: vit/tutorial_tam.md
       - 📑 Knowledge Distillation: tutorial_distillation.md
     - Robotics & Embodiment:
-      - Cosmos 🆕: cosmos.md
+      - Cosmos: cosmos.md
       - Genesis 🆕: genesis.md
       - LeRobot: lerobot.md
       - ROS2 Nodes: ros.md
