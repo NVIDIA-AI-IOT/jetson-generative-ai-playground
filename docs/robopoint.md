@@ -92,7 +92,7 @@ Connect the RoboPoint VLM to a Boston Dynamics Spot with Arm for mobile manipula
 
         ```bash
         pip3 install -r requirements.txt
-        python3 robopoint_spot_example.py -i frontleft -l "pick the object next to the ball" -g "jetson-ip:7860"
+        python3 robopoint_spot_example.py -i frontleft -l "pick the object next to the ball" -g "http://jetson-ip:7860"
         ```
 
         a. Connect to the robot and acquire a lease to control the robot
