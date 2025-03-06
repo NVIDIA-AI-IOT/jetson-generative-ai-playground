@@ -103,7 +103,7 @@ Connect the RoboPoint VLM to a Boston Dynamics Spot with Arm for mobile manipula
         e. Execute the grasp command
  
 
-## 4. Gradio Inference API 
+## Optional: Gradio Inference API 
 
 The Gradio inference API enables seamless command execution for other robots or testing purposes. It simplifies integration and allows for quick deployment across different robotic platforms.
 
