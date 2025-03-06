@@ -119,6 +119,7 @@ nav:
       - LeRobot: lerobot.md
       - ROS2 Nodes: ros.md
       - OpenVLA: openvla.md
+      - RoboPoint 🆕: robopoint.md
     - Image Generation:
       - Flux & ComfyUI: tutorial_comfyui_flux.md
       - Stable Diffusion: tutorial_stable-diffusion.md
