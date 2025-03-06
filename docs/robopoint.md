@@ -4,14 +4,14 @@
 
 <img width="960px" src="images/robopoint_spot.GIF">
 
-This tutorial provides a demo application for robotic manipulation using a Vision-Language Model (VLM) pipeline combined with a Large Language Model (LLM) to articulate manipulators using natural language. The RoboPoint inference pipeline generates 2D action points, which can be projected to 3D targets using depth maps or common algorithms like OpenCVs [solvePNP](https://docs.opencv.org/4.x/d5/d1f/calib3d_solvePnP.html). The computed 3D targets can be fed into motion planning and deployed to real hardware or simulation environments like Isaac Sim. Future phases will include ROS2 integration with an Isaac Sim pipeline and the implementation of quantization methods.
+This tutorial provides a demo application for robotic manipulation using a Vision-Language Model (VLM) pipeline combined with a Large Language Model (LLM) to articulate manipulators using natural language. The RoboPoint inference pipeline generates 2D action points, which can be projected to 3D targets using depth maps or renowned algorithms like OpenCV [solvePNP](https://docs.opencv.org/4.x/d5/d1f/calib3d_solvePnP.html). The computed 3D targets can be fed into motion planning and deployed to real hardware or simulation environments like Isaac Sim. Future phases will include ROS2 integration with an Isaac Sim pipeline and the implementation of quantization methods.
 
 In this tutorial we will guide you through:
 
-    1. Setting up the environment using jetson-containers   
-    2. Connecting a Boston Dynamics Spot with Arm to RoboPoint VLM  
-    3. Issuing commands using natural language prompts  
-    4. Executing pick-and-place operations  
+1. Setting up the environment using jetson-containers   
+2. Connecting a [Boston Dynamics Spot with Arm](https://bostondynamics.com/products/spot/arm/){:target="_blank"} to RoboPoint VLM  
+3. Issuing commands using natural language prompts  
+4. Executing pick-and-place operations  
 
 ## RoboPoint VLM for embodied AI
 
@@ -41,7 +41,7 @@ One key advantage of this architecture is its efficiency. The process of project
         <span class="blobDarkGreen4">Jetson AGX Orin (64GB)</span>
         <span class="blobDarkGreen5">Jetson AGX Orin (32GB)</span>
 	   
-    2. Running one of the following versions of [JetPack](https://developer.nvidia.com/embedded/jetpack):
+    2. Running the following version of [JetPack](https://developer.nvidia.com/embedded/jetpack):
 
         <span class="blobPink2">JetPack 6 (L4T r36.x)</span>
 
@@ -57,7 +57,7 @@ One key advantage of this architecture is its efficiency. The process of project
 		bash jetson-containers/install.sh
 		``` 
     
-    5. Download LLM from [`huggingface`](https://huggingface.co/wentao-yuan/robopoint-v1-vicuna-v1.5-13b){:target="_blank"}:
+    5. Download Model from [`huggingface`](https://huggingface.co/wentao-yuan/robopoint-v1-vicuna-v1.5-13b){:target="_blank"}:
 
         ```bash
         # Make sure you have git-lfs installed (https://git-lfs.com)
@@ -84,11 +84,15 @@ Connect the RoboPoint VLM to a Boston Dynamics Spot with Arm for mobile manipula
 
 !!! abstract "What we will do"
 
-    1. Setup your Spot SDK environment: [`Spot SDK`](https://dev.bostondynamics.com/docs/python/quickstart)
+    1. Setup your Python Spot SDK environment: [`Spot SDK`](https://dev.bostondynamics.com/docs/python/quickstart){:target="_blank"}
 	   
     2. Deploy the RoboPoint jetson-container
 
-    3. Use the RoboPoint Spot example script to execute the following steps:
+    3. Use the RoboPoint [Spot example script](https://github.com/mschweig/RoboPoint/blob/master/scripts/robopoint_spot_example.py){:target="_blank"} to execute the following steps:
+
+        ```bash
+        python3 robopoint_spot_example.py -i frontleft -l "pick the object next to the ball" -g "jetson-ip:7860"
+        ```
 
         a. Connect to the robot and acquire a lease to control the robot
 
@@ -99,7 +103,13 @@ Connect the RoboPoint VLM to a Boston Dynamics Spot with Arm for mobile manipula
         d. Run the motion planning
 
         e. Execute the grasp command
- 
+
+!!! example "Work in Progress"
+
+    - ROS2 Integration
+    - Isaac Sim Integration
+    - Ask questions in [`#vla`](https://discord.gg/BmqNSK4886){:target="_blank"} on Discord or [`jetson-containers/issues`](https://github.com/dusty-nv/jetson-containers/issues){:target="_blank"}
+
 
 ## Optional: Gradio Inference API 
 
