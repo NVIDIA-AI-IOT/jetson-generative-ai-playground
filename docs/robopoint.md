@@ -8,10 +8,10 @@ This tutorial provides a demo application for robotic manipulation using a Visio
 
 In this tutorial we will guide you through:
 
-1. Setting up the environment using jetson-containers   
-2. Connecting a [Boston Dynamics Spot with Arm](https://bostondynamics.com/products/spot/arm/){:target="_blank"} to RoboPoint VLM  
-3. Issuing commands using natural language prompts  
-4. Executing pick-and-place operations  
+:white_check_mark: Setting up the environment using jetson-containers   
+:white_check_mark: Connecting a [Boston Dynamics Spot with Arm](https://bostondynamics.com/products/spot/arm/){:target="_blank"} to RoboPoint VLM  
+:white_check_mark: Issuing commands using natural language prompts  
+:white_check_mark: Executing pick-and-place operations  
 
 ## RoboPoint VLM for embodied AI
 
