@@ -32,7 +32,7 @@ An RGB image is rendered from a procedurally generated 3D scene. We compute spat
 
 One key advantage of this architecture is its efficiency. The process of projecting 2D action points into 3D poses is both fast and computationally lightweight. This ensures smooth robotic manipulation, enabling rapid execution of even complex, long-term, and sequential commands.
 
-## 1. Setting up the environment
+## 1. Setting up the environment with `jetson-containers`
 
 !!! abstract "What you need"
 
@@ -86,11 +86,12 @@ Connect the RoboPoint VLM to a Boston Dynamics Spot with Arm for mobile manipula
 
     1. Setup your Python Spot SDK environment: [`Spot SDK`](https://dev.bostondynamics.com/docs/python/quickstart){:target="_blank"}
 	   
-    2. Deploy the RoboPoint jetson-container
+    2. Deploy the  [`RoboPoint jetson-container`](#1-setting-up-the-environment-with-jetson-containers) 
 
-    3. Use the RoboPoint [Spot example script](https://github.com/mschweig/RoboPoint/blob/master/scripts/robopoint_spot_example.py){:target="_blank"} to execute the following steps:
+    3. Use the RoboPoint [Spot example](https://github.com/mschweig/RoboPoint/tree/master/examples){:target="_blank"} to execute the following steps:
 
         ```bash
+        pip3 install -r requirements.txt
         python3 robopoint_spot_example.py -i frontleft -l "pick the object next to the ball" -g "jetson-ip:7860"
         ```
 
