@@ -84,13 +84,11 @@ Connect the RoboPoint VLM to a Boston Dynamics Spot with Arm for mobile manipula
 
 !!! abstract "What we will do"
 
-    1. Setup your Spot SDK environment:
-
-        [`Spot SDK`](https://dev.bostondynamics.com/docs/python/quickstart)
+    1. Setup your Spot SDK environment: [`Spot SDK`](https://dev.bostondynamics.com/docs/python/quickstart)
 	   
     2. Deploy the RoboPoint jetson-container
 
-    3. Use the RoboPoint Python Script to execute the following steps:
+    3. Use the RoboPoint Spot example script to execute the following steps:
 
         a. Connect to the robot and acquire a lease to control the robot
 
