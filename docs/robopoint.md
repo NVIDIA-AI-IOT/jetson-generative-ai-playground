@@ -17,7 +17,8 @@ In this tutorial we will guide you through:
 
 From rearranging objects on a table to putting groceries into shelves, robots must plan precise action points to perform tasks accurately and reliably. In spite of the recent adoption of vision language models (VLMs) to control robot behavior, VLMs struggle to precisely articulate robot actions using language. We introduce an automatic synthetic data generation pipeline that instruction-tunes VLMs to robotic domains and needs. 
 
-### RoboPoint Pipeline 
+### RoboPoint Pipeline
+
 <img width="960px" src="images/robopoint_architecture.png">
 
 Source: [RoboPoint Paper](https://arxiv.org/pdf/2406.10721)
@@ -28,6 +29,7 @@ An RGB image is rendered from a procedurally generated 3D scene. We compute spat
     Thank you to University of Washington, NVIDIA, Allen Institute for Artificial Intelligence and Universidad Catolica San Pablo for publishing their great research. 
 
 ### Advantages of the proposed architecture
+
 One key advantage of this architecture is its efficiency. The process of projecting 2D action points into 3D poses is both fast and computationally lightweight. This ensures smooth robotic manipulation, enabling rapid execution of even complex, long-term, and sequential commands.
 
 ## 1. Setting up the environment
@@ -69,12 +71,16 @@ One key advantage of this architecture is its efficiency. The process of project
 		``` 
 
 ## 2. Gradio Demo Application
+
 The project includes a Gradio demo application, packaged within the provided container. To access the interface and execute commands, simply open a web browser and navigate to `http://jetson-ip:7860/`. You should see a Gradio WebApp with Demo Examples as shown here.
 
 <img width="960px" src="images/robopoint_gradio.png">
 
 ## 3. Boston Dynamics Spot Deployment
+
 Connect the RoboPoint VLM to a Boston Dynamics Spot with Arm for mobile manipulation scenarios. The inference is performed using the Gradio API. The results are then parsed, projected into 3D and sent to the inverse kinematics (IK) solver of the Boston Dynamics Spot API. The required steps are outlined below.
+!!! warning "Disclaimer:  Use at your own risk"
+    Please note that controlling the robot to grasp an object involves moving parts that may cause damage or harm to people or property. Ensure that the operating environment is clear of obstacles and that all personnel maintain a safe distance from the robot during operation. Always follow safety guidelines and protocols provided by the robot manufacturer.
 
 !!! abstract "What we will do"
 
@@ -98,6 +104,7 @@ Connect the RoboPoint VLM to a Boston Dynamics Spot with Arm for mobile manipula
  
 
 ## 4. Gradio Inference API 
+
 The Gradio inference API enables seamless command execution for other robots or testing purposes. It simplifies integration and allows for quick deployment across different robotic platforms.
 
 ```python
