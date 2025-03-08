@@ -43,7 +43,7 @@ One key advantage of this architecture is its efficiency. The process of project
 	   
     2. Running one the following version of [JetPack](https://developer.nvidia.com/embedded/jetpack):
 
-        <span class="blobPink2">JetPack 6 (L4T >=r36.x)</span>
+        <span class="blobPink2">JetPack 6 (L4T r36.x)</span>
 
     3. <span class="markedYellow">NVMe SSD **highly recommended**</span> for storage speed and space
 
