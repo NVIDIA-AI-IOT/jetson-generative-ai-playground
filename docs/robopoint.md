@@ -115,3 +115,5 @@ Run `python3 client.py --help` for input parameter details.
 ```bash
 python3 client.py --request 'Find free space between the plates in the sink' --camera 0
 ```
+
+You will receive an `output_image.jpg` with the predicted 2D action points, and the coordinates will be logged to the command line. Use this result to verify the inference on your images.
