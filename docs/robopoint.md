@@ -41,14 +41,14 @@ One key advantage of this architecture is its efficiency. The process of project
         <span class="blobDarkGreen4">Jetson AGX Orin (64GB)</span>
         <span class="blobDarkGreen5">Jetson AGX Orin (32GB)</span>
 	   
-    2. Running the following version of [JetPack](https://developer.nvidia.com/embedded/jetpack):
+    2. Running one the following version of [JetPack](https://developer.nvidia.com/embedded/jetpack):
 
-        <span class="blobPink2">JetPack 6 (L4T r36.x)</span>
+        <span class="blobPink2">JetPack 6 (L4T >=r36.x)</span>
 
     3. <span class="markedYellow">NVMe SSD **highly recommended**</span> for storage speed and space
 
         - `25GB` for `robopoint-v1-vicuna-v1.5-13b` LLM
-        - `12GB` for `robopoint` container image
+        - `5.3GB` for `robopoint` container image
 
     4. Clone and setup [`jetson-containers`](https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md){:target="_blank"}:
     
@@ -57,17 +57,12 @@ One key advantage of this architecture is its efficiency. The process of project
 		bash jetson-containers/install.sh
 		``` 
     
-    5. Download Model from [`huggingface`](https://huggingface.co/wentao-yuan/robopoint-v1-vicuna-v1.5-13b){:target="_blank"}:
+    5. Take a look at the container [README](https://github.com/dusty-nv/jetson-containers/blob/master/packages/robots/robopoint/README.md){:target="_blank"}
+
+    6. Run the RoboPoint Container
 
         ```bash
-        # Make sure you have git-lfs installed (https://git-lfs.com)
-        git lfs install
-        git clone https://huggingface.co/wentao-yuan/robopoint-v1-vicuna-v1.5-13b /data/models
-        ``` 
-    6. Run the RoboPoint Container with the model properly mounted
-
-        ```bash
-		jetson-containers run --volume /data/models:/data/models $(autotag robopoint)
+		jetson-containers $(autotag robopoint)
 		``` 
 
 ## 2. Gradio Demo Application
@@ -112,29 +107,11 @@ Connect the RoboPoint VLM to a Boston Dynamics Spot with Arm for mobile manipula
     - Ask questions in [`#vla`](https://discord.gg/BmqNSK4886){:target="_blank"} on Discord or [`jetson-containers/issues`](https://github.com/dusty-nv/jetson-containers/issues){:target="_blank"}
 
 
-## Optional: Gradio Inference API 
+## Optional: No robot at hand? Demo script with camera input
 
-The Gradio inference API enables seamless command execution for other robots or testing purposes. It simplifies integration and allows for quick deployment across different robotic platforms.
+The Gradio inference API enables seamless command execution for other robots or testing purposes. It simplifies integration and allows for quick deployment across different robotic platforms or testing purpose. We provide a convenient [demo script](https://github.com/dusty-nv/jetson-containers/blob/master/packages/robots/robopoint/client.py){:target="_blank"} to test the API and inference with images or a live camera input. Start the [RoboPoint container](#1-setting-up-the-environment-with-jetson-containers)  and execute the `client.py`demo script. 
+Run `python3 client.py --help` for input parameter details.
 
-```python
-client = Client("http://jetson-ip:7860/")
-
-result = client.predict(
-    api_name="/load_demo_refresh_model_list"
-)
-
-result = client.predict(
-    text="<<<request>>>",
-    image=handle_file("test.jpg"),
-    image_process_mode="Pad",
-    api_name="/add_text_1"
-)
-
-result = client.predict(
-    model_selector="robopoint-v1-vicuna-v1.5-13b",
-    temperature=1,
-    top_p=0.7,
-    max_new_tokens=512,
-    api_name="/http_bot_2"
-)
+```bash
+python3 client.py --request 'Find free space between the plates in the sink' --camera 0
 ```
