@@ -75,11 +75,12 @@ As per the project's [user guide](https://genesis-world.readthedocs.io/en/latest
 	    - Getting Started - [https://genesis-world.readthedocs.io/en/latest/user_guide/index.html](https://genesis-world.readthedocs.io/en/latest/user_guide/index.html)
 	    - Documentation - [https://genesis-world.readthedocs.io](https://genesis-world.readthedocs.io){:target="_blank"}
 
-!!! example "Work in Progress"
-    Development status of the arm64 porting efforts (2/17/25)
+!!! example "Final Version"
+    Development status of the arm64 porting efforts (3/17/25)
 
+    - OMOL and LuisaRenders is working on Jetson.
     - [OMPL](https://github.com/ompl/ompl){:target="_blank"} - support for motion planning and IK, coming soon to Jetson.
-    - [LuisaRender](https://github.com/Alif-01/LuisaRender/tree/d3b8e341540832ebf517cbe6a8abf5da2cf2e026){:target="_blank"} - support for CUDA-accelerated raytracing, coming soon to Jetson.
+    - [LuisaRender](https://github.com/Alif-01/LuisaRender/tree/d3b8e341540832ebf517cbe6a8abf5da2cf2e026){:target="_blank"} - support for CUDA-accelerated raytracing.
     - Ask questions in [`#robot-simulation-discuss`](https://discord.gg/BmqNSK4886){:target="_blank"} on Discord or [`jetson-containers/issues`](https://github.com/dusty-nv/jetson-containers/issues){:target="_blank"}
 
 ## Start Container
