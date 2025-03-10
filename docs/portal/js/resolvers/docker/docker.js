@@ -43,6 +43,15 @@ Resolvers({
     help: "When set to 'on', will automatically pull the latest container on start-up."
   },
 
+  cache_dir: {
+    tags: "path",
+    value: "/mnt/nvme/cache",
+    help: [
+      "Path on the server's native filesystem that will be mounted into the container\n",
+      "for saving the models.\nIt is recommended this be relocated to NVME storage."
+    ]
+  },
+
   server_host: {
     name: "Server IP / Port",
     tags: "string",
@@ -53,12 +62,30 @@ Resolvers({
     ]
   },
 
-  cache_dir: {
-    tags: "path",
-    value: "/mnt/nvme/cache",
+  server_llm: {
+    name: "LLM Server URL",
+    tags: "string",
     help: [
-      "Path on the server's native filesystem that will be mounted into the container\n",
-      "for saving the models.\nIt is recommended this be relocated to NVME storage."
+      "The LLM server's hostname/IP and port (commonly OPENAI_API_BASE_URL)\n",
+      "The server implements the chat.completion endpoint for LLMs.\n",
+    ]
+  },
+
+  server_asr: {
+    name: "ASR Server URL",
+    tags: "string",
+    help: [
+      "The speech-to-text server's hostname/IP and port\n",
+      "The server implements the audio.transcriptions endpoint for ASR/STT.\n",
+    ]
+  },
+
+  server_tts: {
+    name: "TTS Server URL",
+    tags: "string",
+    help: [
+      "The text-to-speech server's hostname/IP and port\n",
+      "The server implements the audio.transcriptions endpoint for TTS.\n",
     ]
   }
 });

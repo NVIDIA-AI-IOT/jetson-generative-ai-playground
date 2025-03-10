@@ -60,6 +60,31 @@
   cursor: pointer;
 }
 
+/* make the dialog body partially transparent */
+.modal-body {
+  padding: 15px 15px;
+  margin: 1px 0px 0px 3px;
+  color: #333333;
+  font-weight: 500;
+  /*text-shadow: rgba(50,50,50,0.4) 3px 0 3px;*/
+  border-radius: 0px 0px 12px 12px;
+  backdrop-filter: blur(8px);
+  background: linear-gradient(0deg, rgba(210,210,210,0.75) 0%,rgb(225,225,225,0.75) 100%);
+  box-shadow: 5px 5px 5px rgb(103, 103, 103);
+}
+
+.modal-body .btn-md {
+  text-shadow: rgba(50,50,50,0.4) 3px 0 3px;
+}
+
+.modal-footer {
+  padding: 2px 2px;
+  color: white;
+  /*background-color: rgba(225,225,225,1); #7a7a7a;*/
+  border-radius: 0px 0px 12px 12px;
+}
+
+
 /* Header with title & close button */
 .modal-header {
   padding: 8px 15px;
@@ -100,28 +125,8 @@
   }
 }*/
 
-/* make the dialog body partially transparent */
-.modal-body {
-  padding: 15px 15px;
-  margin: 1px 0px 0px 3px;
-  color: #333333;
-  font-weight: 500;
-  /*text-shadow: rgba(50,50,50,0.4) 3px 0 3px;*/
-  border-radius: 0px 0px 12px 12px;
-  backdrop-filter: blur(8px);
-  background: linear-gradient(0deg, rgba(190,190,190,0.75) 0%,rgb(205,205,205,0.75) 100%);
-  box-shadow: 5px 5px 5px rgb(103, 103, 103);
-}
-
-.modal-body .btn-md {
-  text-shadow: rgba(50,50,50,0.4) 3px 0 3px;
-}
-
-.modal-footer {
-  padding: 2px 2px;
-  color: white;
-  /*background-color: rgba(225,225,225,1); #7a7a7a;*/
-  border-radius: 0px 0px 12px 12px;
+.modal-header-mod {
+  padding: 4px 15px;
 }
 
 .modal-title {
@@ -136,4 +141,8 @@
   height: 36px;
   margin-top: 0px;
   margin-bottom: 15px;
+}
+
+.modal-title-bar-mod {
+  margin-bottom: 9px;
 }

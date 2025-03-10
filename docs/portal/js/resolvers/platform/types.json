@@ -52,5 +52,14 @@
     "extension": ".py",
     "interpreter": "python",
     "tags": ["code", "resource"]
+  },
+  "webui": {
+    "name": "Web UI",
+    "tags": "container",
+    "refs": "docker_compose",
+    "child_order": [
+      "open_webui",
+      "flowise"
+    ]
   }
 }

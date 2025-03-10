@@ -110,29 +110,73 @@ export class GraphDB {
    * or having been loaded from json (see `GraphDB.load` to load from file)
    */
   constructor(index) {
-      this.index = GraphDB.sanitizeIndex(Object.assign({}, GraphDB.RESOLVERS, index));
-      this.flat = this.flatten();
-      this.props = this.typed();
-      [
-        this.parents, this.children, 
-        this.ancestors, this.descendants,
-        this.roots,
-      ] = this.mapTopology();
-      this.log();
+    this.index = GraphDB.sanitizeIndex(Object.assign({}, GraphDB.RESOLVERS, index));
+    this.flat = this.flatten();
+    this.props = this.typed();
+    [
+      this.parents, this.children, 
+      this.ancestors, this.descendants,
+      this.roots,
+    ] = this.mapTopology();
+    this.log();
   }
 
   /*
    * Fetch the index json, parse it, and return the GraphTag instance.
    */
-  static async load(url) {
-    // https://www.geeksforgeeks.org/how-to-convert-an-onload-promise-into-async-await/
-    console.log(`[GraphDB] fetching index from ${url}`);
-    const response = await fetch(url);
-    if (!response.ok)
-      throw new Error(`GraphDB failed to fetch index from ${url}`);
-    const index = await response.json();
-    console.log(`[GraphDB] loaded ${url} (${Object.keys(index).length} records)`);
-    return new GraphDB(index);
+  static async load(urls) {
+    if( is_string(urls) )
+      urls = [urls];
+    
+    console.log('LOAD', urls);
+    
+    let root_idx = {};
+
+    for( const url of urls ) {
+      // https://www.geeksforgeeks.org/how-to-convert-an-onload-promise-into-async-await/
+      console.log(`[GraphDB] fetching index from ${url}`);
+      const response = await fetch(url);
+      if (!response.ok)
+        throw new Error(`GraphDB failed to fetch index from ${url}`);
+      let index = await response.json();
+      console.log(`[GraphDB] loaded ${url} (${Object.keys(index).length} records)`);
+      for( const key in index ) {
+        if( !(key in root_idx) ) {
+          root_idx[key] = index[key];
+        }
+        else {
+          const renamed = `${key}-${index[key].tags[0]}`;
+          console.warn(`[GraphDB] duplicate key '${key}' found, renaming to '${renamed}'`);
+          this.rename_key(index, key, renamed);
+          root_idx[renamed] = index[key];
+        }
+      }
+    }
+
+    console.log(`[GraphDB] loaded ${Object.keys(root_idx).length} records total`);
+    return new GraphDB(root_idx);
+  }
+
+  /*
+   * Rename a key an index to another key in the event of collisions.
+   */
+  static rename_key(index, key, renamed) {
+    for( const k in index ) {
+      if( !exists(index[k].tags) )
+        continue;
+
+      const index_of = index[k].tags.indexOf(key);
+
+      if( index_of >= 0 )
+        index[k].tags[index_of] = renamed;
+    }
+
+    /*if( key in index ) {
+      index[renamed] = index[key];
+      delete index[key];
+    }*/
+
+    return index;
   }
 
   /*
@@ -144,8 +188,8 @@ export class GraphDB {
     args.select ??= '*';
     args.from ??= '*';
     args.results ??= (args.select == '*') ? {} : [];
-    args.roots ??= [];
-
+    args.db ??= this;
+    
     if( args.from === '*' ) { // aggegrated results over all records
       console.group('[GraphDB] Evaluate Query');
       console.log('QUERY', args);
@@ -157,9 +201,6 @@ export class GraphDB {
       console.groupEnd();
     }
     else if( this.eval(args) ) { // just filter against this key only
-      const root = this.primaryRoot(args.from);
-      if( exists(root) && !args.roots.includes(root) )
-        args.roots.push(root);
       if( args.select === '*' )
         args.results[args.from] = this.flat[args.from];
       else if( args.select === 'keys' )
@@ -227,36 +268,28 @@ export class GraphDB {
    * An additional wrapper on top of `walk()` that builds in the agreggation
    * by appending the output from the last node with the previous.
    */
-  treeReduce(func) {
-    if( func instanceof Function ) {
-      var key=this.roots; var data=''; var depth=0; var mask=null;
-    }
-    else { // passed a dict
-      if( !exists(func.func) )
-        throw new Error(`[GraphDB] treeReduce() requires 'func' callback (was ${func})`);
-      var key = func.key ?? func.keys ?? this.roots;
-      var data = '';
-      var depth = func.depth ?? 0;
-      var mask = func.mask;
-      func = func.func;
-    }
+  treeReduce({tags=null, key=null, func=null, data='', depth=0, mask=null}) {
+    if( !(func instanceof Function ))
+      throw new Error(`[GraphDB] treeReduce() requires 'func' callback (was ${func})`);
+
     if( is_string(key) ) {
       if( exists(mask) ) { // only traverse paths on the goal mask
-        let pass=mask.includes(key); 
-        if( pass ) { // remove reached keys from the goal mask
+        let pass = mask.includes(key);
+        /*if( pass ) { // remove reached keys from the goal mask
           delete mask[mask.indexOf(key)];
         }
         else { // check if any nodes in the mask are descendants    
-          for( const m of mask ) {
-            if( this.descendants[key].includes(m) ) {
-              pass=true;
-              break;
-        }}}
+          //pass = includes_any(mask, this.descendants[key]); 
+          pass = roots.includes(this.primaryRoot(key));
+        }*/
         if( !pass )
           return data;
       } // recurse into each child node
-      for( let child of this.children[key] ) {
+      if( !(key in this.children) ) 
+        throw new Error(`Missing children for key ${key}`);
+      for( const child of this.children[key] ) {
         data += this.treeReduce({
+          tags: tags,
           key: child, 
           func: func,
           data: '',
@@ -266,21 +299,63 @@ export class GraphDB {
       } // process this node (DFS)
       return func({db: this, key: key, data: data, depth: depth});
     }
-    else { // handle initial set of root keys
-      if( exists(mask) )
+    else if( is_list(tags) ) { // list of inital keys - add shortest paths to roots to the mask
+      var roots = this.primaryRoots(tags);
+
+      for( const tag of tags ) { // cover tags that are roots themselves
+        if( this.roots.includes(tag) && !roots.includes(tag) )
+          roots.push(tag);
+      }
+
+      if( exists(mask) ) { // enable shortest paths for masks->tags->roots
         mask = [...mask]; // make a copy as this gets modified
 
-      for( let root in key ) {
-        if( is_list(key) ) // list[key] instead of dict[key]
-          root = key[root]; 
+        for( const mask_key of mask ) { // enable paths from masks->tags
+          for( const tag of tags ) {
+            if( this.ancestors[mask_key].includes(tag) ) {
+              for( const ancestor of this.ancestors[mask_key] ) {
+                if( this.ancestors[ancestor].includes(tag) ) {
+                  if( !mask.includes(ancestor) )
+                    mask.push(ancestor);
+                }
+              }
+              break; // only enable shortest path
+            }
+          }
+        }
+
+        for( const tag of tags ) { // enable paths from tags->roots
+          if( !mask.includes(tag) )
+            mask.push(tag);
+
+          const ancestors = this.primaryAncestors(tag);
+
+          for( const ancestor of ancestors ) {
+            if( !mask.includes(ancestor) )
+              mask.push(ancestor);
+          }
+        }
+      }
+
+      for( let root of roots ) {
         data += this.treeReduce({
+          tags: tags,
           key: root, 
           func: func,
           data: '',
           depth: depth ?? 0,
-          mask: mask
+          mask: mask,
         });
       }
+    }
+    else { // global traversal (called with no tags)
+      data += this.treeReduce({
+        tags: this.roots,
+        func: func,
+        data: '',
+        depth: depth,
+        mask: mask,
+      });
     }
     return data;
   }
@@ -350,8 +425,12 @@ export class GraphDB {
         env[field_key] = env.properties[field_key]['func'](env);
     }
 
-    if( !exists(parent) )
+    if( !exists(parent) ) {
       this.crossReference(env); // related references
+
+      if( 'func' in env ) // root modifications
+        env.func(env);
+    }
 
     return env;
   }
@@ -420,17 +499,26 @@ export class GraphDB {
 
     //console.log('[GraphDB]  cross-referencing ancestors of:', ancestors, 'with descendants of:', descendants);
 
-    ancestors = this.ancestors[ancestors].concat(ancestors);
+    for( const ancestor of ancestors )
+      ancestors = merge_lists(ancestors, this.ancestors[ancestor]);
+
+    for( const descendant of descendants )
+      descendants = merge_lists(descendants, this.descendants[descendant]);
 
     descendants = this.filter({
-      keys: this.descendants[descendants].concat(descendants),
+      keys: descendants,
       refs: true, leafs: leafs
     });
 
+    //console.log(`XREF ans=${ancestors}  desc=${descendants}`);
+
     for( const ancestor of ancestors ) {
       for( const descendant of descendants ) {
+        if( ancestors.includes(descendant) )
+          continue;
         if( this.flat[descendant].refs.includes(ancestor) ) {
-          refs.push(descendant);
+          if( !refs.includes(descendant) )
+            refs.push(descendant);
           //break;
         }
       }
@@ -463,7 +551,7 @@ export class GraphDB {
       if( leafs && this.children[key].length != 0 )
         continue;
 
-      if( refs === true && is_empty(this.flat[key].refs) )
+      if( refs === true && is_empty(this.flat[key].refs) || this.flat[key].xref === false )
         continue;
 
       out.push(key);
@@ -608,15 +696,78 @@ export class GraphDB {
     return fields;
   }
 
+  /*
+   * Returns true if this key has no children, false otherwise.
+   */
+  isLeaf(key) {
+    return (this.children[key].length == 0);
+  }
+  
+  /*
+   * Find all the root nodes of this key or list of keys.
+   * If `primary=true`, then only the shortest path is used.
+   */
+  findRoots(key, primary=false, out=[]) {
+    if( is_list(key) ) {
+      for( const k of key ) {
+        this.findRoots(k, primary, out);
+      }
+      return out;
+    }
+
+    if( primary ) {
+      const root = this.primaryRoot(key);
+      if( !out.includes(root) ) {
+        out.push(root);
+        console.log(`[GraphDB]  Adding primary root '${root}' for '${key}'`);
+      }
+    }
+    else {
+      for( const ancestor of this.ancestors[key] ) {
+        if( this.roots.includes(ancestor) ) {
+          if( !out.includes(ancestor) )
+            out.push(ancestor);
+        }
+      }
+    }
+
+    return out;
+  }
+
+  /*
+   * Find the set of primary root nodes for the list of keys.
+   */
+  primaryRoots(keys) {
+    return this.findRoots(keys, true);
+  }
 
   /*
    * Find the root node with the shortest path to this node.
    */
   primaryRoot(key) {
-    for( const parent of this.ancestors[key] ) {
+    if( this.roots.includes(key) )
+      return key;
+
+    /*for( const parent of this.ancestors[key] ) {
       if( this.roots.includes(parent) )
         return parent;
-    }
+    }*/
+    return this.primaryAncestors(key).pop();
+  }
+
+  /*
+   * Find the shortest path of parent nodes to the root node.
+   */
+  primaryAncestors(key, out=[]) {
+    if( is_empty(this.parents[key]) )
+      return out;
+
+    const parent = this.parents[key][0];
+
+    if( !out.includes(parent) )
+      out.push(parent);
+
+    return this.primaryAncestors(parent, out);
   }
 
   /**
@@ -779,23 +930,22 @@ export class GraphDB {
  */
 export function SideBar({id, parent, searchBar}) {
 
-  const node = htmlToNode(`
-    <div id="${id}-container" class="sidebar-container">
+  // <div id="${id}-container" class="sidebar-container">
+  const sidebar = htmlToNode(`
       <div id="${id}" class="flex flex-column sidebar">
         <!-- <div class="sidebar-controls"><i class="bi bi-chevron-left sidebar-toggle"></i></div> -->
-      </div>
-    </div>\n`,
+      </div>\n`,
     parent
   );
 
-  const sidebar = node.querySelector('.sidebar');
+  //const sidebar = node.querySelector('.sidebar');
 
   const statusMsg = StatusMessages({parent: sidebar});
   const deviceConfig = DeviceConfigHelp({parent: sidebar});
   const downloadPanel = DownloadPanel({parent: sidebar, searchBar: searchBar});
   const pipPanel = PipPanel({parent: sidebar, searchBar: searchBar});
 
-  return node;
+  return sidebar;
 }
 
 /*const node = htmlToNode(`
@@ -906,7 +1056,7 @@ export function PipPanel({id, parent, searchBar}) {
     body: node,
     expanded: false,
     parent: parent,
-    icon: 'bi-arrow-down-circle'
+    icon: 'bi-gear-fill'
   });
 }
 /* END: /www/jetson-ai-lab.dev/staging/docs/portal/js/panels/sideBar.js */
@@ -1099,7 +1249,7 @@ export class ConfigEditor {
     // create layout and placeholder for dynamic content
     this.body = htmlToNode(`
       <div id="${this.ids.container}" class="flex flex-row full-width">
-        <div class="flex flex-row" style="flex-grow: 1;">
+        <div class="flex flex-row" style="flex-grow: 1; min-height: 500px;">
           <div id="${this.ids.property_panel}" style="flex: 1 1 0px;">
             <!-- PROPERTY TABLE -->
           </div>
@@ -1110,11 +1260,47 @@ export class ConfigEditor {
       </div>
     `);
 
+    this.property_panel = this.body.querySelector(`#${this.ids.property_panel}`);
+    
+    if( exists(env.thumbnail) ) {
+      let classes = exists(env.nav_class) ? env.nav_class : '';
+
+      if( is_string(classes) )
+        classes = [classes];
+  
+      classes = classes.join(' ');
+
+      let html = `<div class="property-thumbnail-panel ${classes}">`;
+
+      if( nonempty(env.links) ) {
+        let links = `<div class="property-thumbnail-links"><div class="property-thumbnail-links-heading">LINKS</div>`;
+        for( const link_key in env.links ) {
+          const link = env.links[link_key];
+          var link_url = link.url;
+          links += `
+            <div class="property-thumnail-link">
+              <a href="${link.url}" title="${link.url}" target="_blank">${link.name}</a>
+              <a href="${link.url}" title="${link.url}" class="property-field-link bi bi-box-arrow-up-right" target="_blank"></a>
+            </div>`;
+        }
+        links += `</div>`;
+        html += `<a href="${link_url}" title="${link_url}" target="_blank"><img src="${env.thumbnail}" class="property-thumbnail"></img></a>`;
+        html += links;
+      } 
+      else {
+        html += `<img src="${env.thumbnail}" class="property-thumbnail"></img>`;
+      }
+      
+      html += '</div>';
+
+      this.thumbnail_panel = htmlToNode(html, this.property_panel);
+    }
+
     this.properties = new PropertyTable({
       db: db,
       env: env,
       id: this.ids.property_table,
-      parent: this.body.querySelector(`#${this.ids.property_panel}`)
+      parent: this.property_panel,
     });
 
     this.properties.on('change', (event) => {self.updateCode()});
@@ -1278,15 +1464,17 @@ export class SearchBar {
     this.db = args.db;
     this.id = args.id ?? 'search-bar';
     this.tags = args.tags ?? [];    // default tags
-    this.gate = args.gate ?? 'and'; // 'and' | 'or'
+    this.gate = args.gate ?? 'or'; // 'and' | 'or'
+    this.view = args.view ?? 'models';
     this.node = null;
     this.parent = as_element(args.parent);
-    this.layout = args.layout ?? 'grid';
+    this.layout = args.layout ?? (this.view === 'models') ? 'grid' : 'list';
     this.default_tags = this.tags;
 
     this.layouts = {
-      grid: TreeGrid,
-      list: TreeList,
+      grid: TreeLayout(TreeGrid),
+      list: TreeLayout(TreeList),
+      //table: DataTable,
     };
 
     this.init();
@@ -1311,20 +1499,21 @@ export class SearchBar {
     else
       tags = this.default_tags; // default search pattern
 
-    if( this.gate === 'or' )
-      tags = [tags];  // nest tags for compound OR
+    const queryTags = (this.gate === 'or') ? [tags] : tags; // nest tags for compound OR
 
     this.last_query = this.db.query({
       select: 'keys',
       from: '*',
       where: 'ancestors',
-      in: tags
+      in: queryTags
     });
 
     /*for( const tag of tags ) { // add tags themselves from query
       if( !this.results.includes(tag) )
         this.results.push(tag); 
     } */
+
+    this.last_query.tags = tags;
 
     if( update ?? true )
       this.refresh();
@@ -1356,18 +1545,17 @@ export class SearchBar {
       <select id="${select2_id}" class="${select2_id}" multiple style="flex-grow: 1;">
     `;
 
-    html += this.db.treeReduce(
-      ({db, key, data, depth}) => {
+    html += this.db.treeReduce({func: ({db, key, data, depth}) => {
       return `<option class="select2-tree-option-${(this.db.children[key].length > 0) ? 'down' : 'leaf'} select2-tree-depth-${depth}" 
         ${self.tags.includes(key) ? "selected" : ""} 
         value="${key}">${db.index[key].name}</option>`
         + data;
-    });
+    }});
 
     const gateSwitch = new ToggleSwitch({
       id: `${this.id}-gate-switch`, 
       states: ['and', 'or'], 
-      value: 'and', 
+      value: this.gate, 
       help: 'OR will search for any of the tags.\nAND will search for resources having all the tags.'
     });
 
@@ -1392,7 +1580,7 @@ export class SearchBar {
         ['bi', 'bi bi-chevron-left'], 
         ['bi', 'bi bi-chevron-right']
       ],
-      help: 'Show/hide the sidebar'
+      help: 'Show/hide the Help bar'
     });
 
     html += `</select>
@@ -1440,7 +1628,7 @@ export class SearchBar {
     $(`#${select2_id}`).on('change', (evt) => {
       const tags = Array.from(evt.target.selectedOptions)
                         .map(({ value }) => value);
-      self.refresh({tags});
+      self.refresh({tags: tags});
     });
   }
 
@@ -1458,32 +1646,27 @@ export class SearchBar {
       this.query({tags, gate, update: false}); // avoid self-recursion
     }
 
-    if( !exists(keys) )
-      keys = this.last_query.results;
-
-    console.log(`[SearchBar] Updating layout with ${len(keys)} results`, keys, 'roots', this.last_query.roots);
+    if( exists(keys) ) // TODO reconcile this properly
+      this.last_query.results = keys;
 
     // reset dynamic cards
     let card_container = $(`#${this.id}-results-container`);
     card_container.empty(); 
 
-    // generate dynamic content
-    let html = `<div>`;
+    console.group(`[SearchBar] Updating layout with ${len(this.last_query.results)} results`);
+    console.log('KEYS', this.last_query.results);
+    let html = this.layouts[this.layout](this.last_query); // generate dynamic view
+    console.groupEnd();
 
-    html += this.db.treeReduce({
-      func: this.layouts[this.layout],
-      keys: this.last_query.roots,
-      mask: keys,
-    });
+    if( is_empty(html) )
+      return;
 
-    html += `</div>`;
+    card_container.html(`<div style="overflow-x: scroll;">${html}</div>`);
 
-    card_container.html(html);
-
-    $('.btn-open-item').on('click', (evt) => {
+    $('.btn-open-item, .nav-tree-app').on('click', (evt) => {
       const dialog = new ConfigEditor({
         db: this.db,
-        key: evt.target.dataset.model,
+        key: evt.target.dataset.key,
       });
     });
   }
@@ -2356,6 +2539,28 @@ export function dict_keys(x) {
   return is_dict(x) ? Object.keys(x) : [];
 }
 
+export function includes_any(x, y) {
+  for( const val of y ) {
+    if( x.includes(val) )
+      return true;
+  }
+  return false;
+}
+
+/*
+ * Merge and deduplicate two lists (https://stackoverflow.com/a/1584377)
+ *
+ *   const merged = merge_lists(['a', 'b', 'c'], ['c', 'x', 'd']);
+ * 
+ *   merge_lists([{id: 1}, {id: 2}], [{id: 2}, {id: 3}], (a, b) => a.id === b.id);
+ */
+export function merge_lists(a, b, predicate = (a, b) => a === b) {
+  const c = [...a]; // copy to avoid side effects
+  // add all items from B to copy C if they're not already present
+  b.forEach((bItem) => (c.some((cItem) => predicate(bItem, cItem)) ? null : c.push(bItem)))
+  return c;
+}
+
 /* 
  * Recursively deep clone an object (sharing unserializable objects like functions) 
  * This is used to work around errors you get errors using structuredClone()
@@ -2389,9 +2594,19 @@ export function toTitleCase(x) {
 
 export function substitution(text, map) {
   for( const k in map ) {
-    text = text.replace('$' + k.toUpperCase(), map[k]);
-    text = text.replace('${' + k.toUpperCase() + '}', map[k]);
+    const k1 = '$' + k.toUpperCase();
+    const k2 = '${' + k.toUpperCase() + '}';
+
+    //var re = new RegExp(k1, 'g');
+    //var rp = new RegExp(k2, 'g');
+
+    //text = text.replace(re, map[k]);
+    //text = text.replace(rp, map[k]);
+
+    text = text.split(k1).join(map[k]);
+    text = text.split(k2).join(map[k]);
   }
+
   return text;
 }
 /* END: /www/jetson-ai-lab.dev/staging/docs/portal/js/utils/types.js */
@@ -2600,6 +2815,33 @@ export function PropertyLabel({
 }
 /* END: /www/jetson-ai-lab.dev/staging/docs/portal/js/layout/fields.js */
 
+/* BEGIN: /www/jetson-ai-lab.dev/staging/docs/portal/js/layout/dataTable.js */
+
+/*
+ * Generates HTML for sortable data table (using tabulator)
+ */
+export function DataTable({db, tags, results}) {
+  for( const result of results ) {
+    if( db.descendants[result].length > 0 )
+      continue;
+  }
+  x.name = x.db.index[x.key].name;
+  switch(x.depth) {
+    case 1:
+      return TreeListHeader(x);
+    case 2:
+      return TreeListGroup(x);
+    case 3:
+      return TreeListItem(x);
+    default:
+      return x.data;
+  }
+}
+
+
+
+/* END: /www/jetson-ai-lab.dev/staging/docs/portal/js/layout/dataTable.js */
+
 /* BEGIN: /www/jetson-ai-lab.dev/staging/docs/portal/js/layout/modal.js */
 /* #!/usr/bin/env node
  *//* import { 
@@ -2613,11 +2855,15 @@ export class ModalDialog {
   
   constructor({id, title, body, header='', menu='', classes=''}) {
     this.id = id;
+    
+    const header_mod = is_empty(classes) ? 'modal-header-mod' : classes;
+    const title_bar_mod = is_empty(classes) ? 'modal-title-bar-mod' : classes;
+
     let html = `
       <div class="modal" id="${id}">
         <div class="modal-content" id="${id}-content">
-          <div class="modal-header ${classes}" id="${id}-header">
-            <div class="modal-title-bar" id="${id}-title-bar">
+          <div class="modal-header ${header_mod}" id="${id}-header">
+            <div class="modal-title-bar ${title_bar_mod}" id="${id}-title-bar">
               <span class="modal-close">&times;</span>
               <span class="modal-title">${title}</span>
             </div>
@@ -2729,9 +2975,19 @@ export function RollUp({title, id, body, parent, expanded=false, icon='bi-nvidia
 /* BEGIN: /www/jetson-ai-lab.dev/staging/docs/portal/js/layout/treeLayout.js */
 
 /*
- * Route multiple views through a dict
+ * Route tree traversal for heirarchial layouts
  */
-export function TreeLayout(map) {
+export function TreeLayout(func) {
+  return function (query) {
+    return query.db.treeReduce({
+      func: func,
+      tags: query.tags,
+      mask: query.results
+    });
+  }
+}
+
+/*export function TreeLayout(map) {
   return function (x) {
     if( x.depth in map ) {
       if( exists(x.db.index[x.key].name) )
@@ -2740,7 +2996,7 @@ export function TreeLayout(map) {
     }
     return x.data;
   }
-} 
+}*/
 /* END: /www/jetson-ai-lab.dev/staging/docs/portal/js/layout/treeLayout.js */
 
 /* BEGIN: /www/jetson-ai-lab.dev/staging/docs/portal/js/layout/buttons.js */
@@ -2833,6 +3089,33 @@ export class ToggleSwitch {
  */
 export function TreeGrid(x) {
   x.name = x.db.index[x.key].name;
+
+  if( x.depth <= 2 && x.db.isLeaf(x.key) ) {
+    const env = x.db.flat[x.key];
+    
+    if( exists(env.thumbnail) )
+      var style = `background-image: url('${env.thumbnail}'); `;
+    else
+      var style = `background: #76B900; `;
+
+    if( exists(env.nav_style) )
+      style += env.nav_style;
+    
+    let classes = exists(env.nav_class) ? env.nav_class : '';
+
+    if( is_string(classes) )
+      classes = [classes];
+
+    classes = classes.join(' ');
+
+    return `
+    <div class="card nav-tree-app ${classes}" id="${x.key}_card" data-key="${x.key}" style="${style}">
+      <div class="nav-tree-app-text">
+        ${x.name}
+      </div>
+    </div>`;
+  }
+
   switch(x.depth) {
     case 1:
       return TreeGridHeader(x);
@@ -2852,7 +3135,7 @@ export function TreeGridHeader(x) {
   return `
     <div style="white-space: nowrap;">
       <h1 style="margin-bottom: 15px;">${x.name}</h1>
-      <div class="flex flex-row" style="overflow-x: scroll; padding-bottom: 45px;">
+      <div class="flex flex-row" style="padding-bottom: 45px;">
         ${x.data}
       </div>
     </div>`;
@@ -2879,7 +3162,7 @@ export function TreeGridItem({db, key, data, name}) {
     const resource = db.index[tag];
     if( resource.pin ) {
       data = data + `
-        <button data-model="${key}" class="btn-green btn-sm btn-open-item">${resource.name}</button>
+        <button data-key="${key}" class="btn-green btn-sm btn-open-item">${resource.name}</button>
       `;
     }
   }
@@ -2893,6 +3176,92 @@ export function TreeGridItem({db, key, data, name}) {
 }
 
 /* END: /www/jetson-ai-lab.dev/staging/docs/portal/js/layout/treeGrid.js */
+
+/* BEGIN: /www/jetson-ai-lab.dev/staging/docs/portal/js/layout/menu.js */
+/* #!/usr/bin/env node
+ *//* import { 
+  htmlToNode, QueryViews
+} from '../nanolab.js';
+ */  
+
+/*
+ * Attach extra navigation drop-down menus or context menus in the DOM.
+ */
+export function addNavMenus() {
+  return [
+    addNavMenuViews('models.html', QueryViews)
+  ]
+}
+
+/*
+ * Create a navigation drop-down menu of the different query views,
+ * and add it to the DOM. This attaches the menu to to one of the 
+ * top-level navigation tabs, as specified by it's page name.
+ */
+export function addNavMenu(page, children) {
+
+  var navDropdown = htmlToNode(`
+    <div class="nav-menu-dropdown">
+      ${children}
+    </div>
+  `);
+
+  const onNavMenuHide = (evt) => {
+    const mx = evt.clientX;
+    const my = evt.clientY;
+    const dd = navDropdown.getBoundingClientRect();
+    if( my < dd.top || my > dd.bottom || mx < dd.left || mx > dd.right )
+      navDropdown.style.display = "none";
+  };
+
+  navDropdown.addEventListener("mouseleave", onNavMenuHide);
+
+  navDropdown.childNodes.forEach((navMenuItem) => {
+    navMenuItem.addEventListener("click", (evt) => {
+      navDropdown.style.display = "none";
+    })
+  });
+
+  var navTabs = document.querySelectorAll('.md-tabs__item');
+
+  navTabs.forEach((navTab) => {
+    const navTabLink = navTab.querySelector('a');
+    const navTabPage = navTabLink.href.split('/').pop();
+    if( navTabPage != page )
+      return;
+    //navTabLink.appendChild(htmlToNode(`<i class="nav-tab-icon"></i>`));
+    navTab.addEventListener("mouseenter", (evt) => {
+      const navLinkRect = navTabLink.getBoundingClientRect();
+      const navTabRect = navTab.getBoundingClientRect();
+      navDropdown.style.display = "flex";
+      navDropdown.style.left = `${navLinkRect.x - 5}px`;
+      navDropdown.style.top = `${navTabRect.bottom}px`;
+    });
+    navTab.addEventListener("mouseleave", onNavMenuHide);
+  });
+
+  document.body.appendChild(navDropdown);
+  return navDropdown;
+}
+
+/*
+ * Add a nav drop-down menu based on the different graphDB views.
+ */
+export function addNavMenuViews(page, views) {
+  var html = '';
+
+  for( const key in views ) {
+    const view = views[key];
+    if( !view.menu )
+      continue;
+    if( view.menu === 'divider' )
+      html += `<div class="nav-menu-divider"></div>`;
+    html += `<a href="${page}?view=${key}">${view.name}</a>`;
+  }
+
+  return addNavMenu(page, html);
+}
+/* END: /www/jetson-ai-lab.dev/staging/docs/portal/js/layout/menu.js */
 
 /* BEGIN: /www/jetson-ai-lab.dev/staging/docs/portal/js/layout/treeList.js */
 
@@ -2954,6 +3323,65 @@ export function TreeListItem(x) {
 
 /* END: /www/jetson-ai-lab.dev/staging/docs/portal/js/layout/treeList.js */
 
+/* BEGIN: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/views.js */
+/* #!/usr/bin/env node
+ */
+/*
+ * Static definitions of preset query views and their associated tags.
+ * These aren't pulled from the DB because they're used in the site-wide
+ * menus, and we want to avoid loading the DB when otherwise unused.
+ */
+export const QueryViews = {
+  all: {
+    name: 'All',
+    tags: ['models', 'webui'],
+    menu: false
+  },
+  models: {
+    name: 'Models',
+    tags: ['models'],
+    menu: false
+  },
+  llm: {
+    name: 'LLM',
+    tags: ['llm'],
+    menu: true
+  },
+  vlm: {
+    name: 'VLM',
+    tags: ['vlm'],
+    menu: true
+  },
+  webui: {
+    name: 'Web UI',
+    tags: ['webui'],
+    menu: 'divider'
+  },
+  containers: {
+    name: 'Containers',
+    tags: ['jetson-containers'],
+    menu: true
+  }
+}
+
+/*
+ * Get the specified view from the browser's query string (?view=xyz)
+ */
+export function QueryView(param='view', default_view='all') {
+  const params = new URLSearchParams(window.location.search);
+  const key = params.has(param) ? params.get(param) : default_view;
+  
+  if( !(key in QueryViews) )
+    return;
+
+  var view = QueryViews[key];
+  view.key = key;
+
+  return view;
+}
+
+/* END: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/views.js */
+
 /* BEGIN: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/models/prompts.js */
 
 const TEST_PROMPT = "Why did the LLM cross the road?";
@@ -2991,6 +3419,134 @@ export function GenerationConfig({env, quote='', assign='=', indent=2}) {
   return txt;
 }
 /* END: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/models/generation.js */
+
+/* BEGIN: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/launchers/n8n.js */
+/*
+ * n8n launcher
+ */
+
+export function n8n(env) {
+
+  let server_host = env.server_host.split(':');
+ 
+  const PORT = server_host.pop();
+  const ADDR = server_host.pop();
+
+  env.properties.docker_run.text = [
+    `Use <a href="https://github.com/n8n-io/n8n" target="_blank">n8n</a> workflow automation platform to build AI-enabled bots from LangChain graphs.`,
+    `Launch the server and navigate to <a href="http://${ADDR}:${PORT}" target="_blank" class="code">http://${ADDR}:${PORT}</a>`
+  ].join(' ');
+
+  env.properties.docker_run.footer = [
+    'n8n has many <a href="https://docs.n8n.io/hosting/configuration/environment-variables/" target="_blank">environment variables</a>',
+    'for configuring different API adapters in LangChain and <a href="https://docs.n8n.io/integrations/community-nodes/installation/" target="_blank">community nodes</a>',
+    'for connecting LLMs to various messaging services, databases, and embedding endpoints for RAG.'
+  ].join(' ');
+
+  env.docker_run = substitution(docker_run(env), {
+    'server_addr': ADDR,
+    //'server_llm': as_url(env.server_llm),
+    'cache_dir': env.cache_dir,
+    'port': PORT
+  });
+  
+  return env.docker_run;
+}
+
+Resolver({
+  func: n8n,
+  name: 'n8n',
+  filename: 'n8n.sh',
+  server_host: '0.0.0.0:5678',
+  //server_llm: '0.0.0.0:9000',
+  docker_image: 'n8nio/n8n:stable',
+  docker_options: [
+    '-it --rm --name=n8n --network=host',
+    '-e N8N_LISTEN_ADDRESS=${SERVER_ADDR}',
+    '-e N8N_PORT=${PORT}',
+    '-e N8N_SECURE_COOKIE=false',
+    //'-e OPENAI_API_BASE=${SERVER_LLM}v1 -e OPENAI_API_KEY=foo',
+    '-v ${CACHE_DIR}/n8n:/root/node/.n8n',
+  ].join(' '),
+  docker_run: 'docker run $OPTIONS $IMAGE',
+  CUDA_VISIBLE_DEVICES: "none",
+  thumbnail: '/portal/dist/images/n8n.webp',
+  nav_class: 'theme-light',
+  hidden: true,
+  tags: ['webui', 'shell'],
+  links: {
+    website: {
+      name: "n8n.io",
+      url: "https://n8n.io/"
+    },
+    github: {
+      name: "GitHub",
+      url: "https://github.com/n8n-io/n8n"
+    }
+  }
+});
+/* END: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/launchers/n8n.js */
+
+/* BEGIN: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/launchers/flowise.js */
+/*
+ * Flowise launcher
+ */
+
+export function flowise(env) {
+  const PORT = env.server_host.split(':').pop();
+
+  env.properties.docker_run.text = [
+    `Start <a href="https://github.com/FlowiseAI" target="_blank">Flowise</a> server to use the graphical agent builder and create chat flows.`,
+    `Then navigate your browser to <a href="http://0.0.0.0:${PORT}" target="_blank" class="code">http://0.0.0.0:${PORT}</a> (or your Jetson's IP)`
+  ].join('<br/>');
+
+  env.properties.docker_run.footer = [
+    'To use local models, first start one of the <a href="models.html?view=llm" target="_blank">LLM Servers</a>,',
+    'then in Flowise select the <span class="code">ChatOpenAI Custom</span> model type, and enter any value for the <span class="code">Model Name</span>.<br/><br/>',
+    'The default login is defined in the docker environment with the following:</br>',
+    '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code">* username: nvidia</span></br>',
+    '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code">* password: nvidia</span></br>'
+  ].join(' ');
+
+  env.docker_run = substitution(docker_run(env), {
+    'server_llm': as_url(env.server_llm),
+    'cache_dir': env.cache_dir,
+    'port': PORT
+  });
+  
+  return env.docker_run;
+}
+
+Resolver({
+  func: flowise,
+  name: 'Flowise',
+  filename: 'flowise.sh',
+  server_host: '0.0.0.0:3000',
+  server_llm: '0.0.0.0:9000',
+  docker_image: 'flowiseai/flowise:latest',
+  docker_options: [
+    '-it --rm --name=flowise --network=host -e PORT=${PORT}',
+    '-e FLOWISE_USERNAME=nvidia -e FLOWISE_PASSWORD=nvidia',
+    '-e OPENAI_API_BASE=${SERVER_LLM}v1 -e OPENAI_API_KEY=foo',
+    '-v ${CACHE_DIR}/flowise:/root/.flowise',
+  ].join(' '),
+  docker_run: 'docker run $OPTIONS $IMAGE',
+  CUDA_VISIBLE_DEVICES: "none",
+  thumbnail: '/portal/dist/images/flowise.webp',
+  hidden: true,
+  tags: ['webui', 'shell'],
+  links: {
+    website: {
+      name: "FlowiseAI.com",
+      url: "https://flowiseai.com/"
+    },
+    github: {
+      name: "GitHub",
+      url: "https://github.com/FlowiseAI"
+    }
+  }
+});
+/* END: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/launchers/flowise.js */
 
 /* BEGIN: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/launchers/perf_bench.js */
 /*
@@ -3060,42 +3616,79 @@ Resolvers({perf_bench: {
 */
 
 export function open_webui(env) {
-  const root = exists(env.parent) ? env.parent : env;
+  
+  const port = env.server_host.split(':').pop();
+
+  if( exists(env.parent) ) {
+    var root = env.parent;
+    var server_llm = get_server_url(env.parent ?? {});
+  }
+  else {
+    var root = env;
+    root.properties.docker_run.text = [
+      `Start an <a href="https://github.com/open-webui/open-webui" target="_blank">Open WebUI</a> server that uses a running <span class="code">chat.completion</span> model:`,
+      `Then navigate your browser to <a href="http://0.0.0.0:${port}" target="_blank" class="code">http://0.0.0.0:${port}</a> (or your Jetson's IP)`
+    ].join('<br/>'),
+    root.properties.docker_run.footer = env.footer; // `These individual commands are typically meant for exploratory use - see the <span class="code">Compose</span> tab for managed deployments of models and microservices.`
+  }
 
   env.cache_dir = root.cache_dir;
 
-  return substitution(docker_run(env), {
-    server_host: get_server_url(env.parent ?? {}),
-    cache_dir: root.cache_dir
+  env.docker_run = substitution(docker_run(env), {
+    server_llm: server_llm ?? as_url(env.server_llm),
+    server_asr: as_url(env.server_asr),
+    server_tts: as_url(env.server_tts),
+    cache_dir: root.cache_dir,
+    port: port
   });
+
+  return env.docker_run;
 }
 
 Resolver({
   func: open_webui,
-  title: 'Open WebUI',
+  name: 'Open WebUI',
   filename: 'open-webui.sh',
   server_host: '0.0.0.0:8080',
+  server_llm: '0.0.0.0:9000',
+  server_asr: '0.0.0.0:8990',
+  server_tts: '0.0.0.0:8995',
   docker_image: 'ghcr.io/open-webui/open-webui:main',
   docker_options: [
-    '-it --rm --name open-webui --network=host', /* --net-alias open-webui */
+    '-it --rm --name open-webui --network=host -e PORT=${PORT}', /* --net-alias open-webui */
     '-e ENABLE_OPENAI_API=True -e ENABLE_OLLAMA_API=False',
-    '-e OPENAI_API_BASE_URL=${SERVER_HOST}v1 -e OPENAI_API_KEY=foo',
+    '-e OPENAI_API_BASE_URL=${SERVER_LLM}v1 -e OPENAI_API_KEY=foo',
+    '-e AUDIO_STT_ENGINE=openai -e AUDIO_TTS_ENGINE=openai',
+    '-e AUDIO_STT_OPENAI_API_BASE_URL=${SERVER_ASR}v1',
+    '-e AUDIO_TTS_OPENAI_API_BASE_URL=${SERVER_TTS}v1',
     '-v ${CACHE_DIR}/open-webui:/app/backend/data',
   ].join(' '),
   docker_run: 'docker run $OPTIONS $IMAGE',
   CUDA_VISIBLE_DEVICES: "none",
+  thumbnail: '/portal/dist/images/open-webui.webp',
+  nav_style: 'background-size: auto;',
   hidden: true,
   group: ['shell'],
   refs: ['llm'],
-  tags: ['docker_profile', 'shell', 'container'],
+  tags: ['docker_profile', 'shell', 'webui'],
+  links: {
+    website: {
+      name: "openwebui.com",
+      url: "https://openwebui.com/"
+    },
+    github: {
+      name: "GitHub",
+      url: "https://github.com/open-webui/open-webui"
+    }
+  },
   text: [
-    `Start a user interface for chatting with this model, following this <a href="/tutorial_openwebui.html" target="_blank">tutorial</a>.`,
+    `Start an <a href="https://github.com/open-webui/open-webui" target="_blank">Open WebUI</a> user interface with this model, as per this <a href="/tutorial_openwebui.html" target="_blank">tutorial</a>.`,
     `Then navigate your browser to <a href="http://0.0.0.0:8080" target="_blank" class="code">http://0.0.0.0:8080</a> (or your Jetson's IP)`
   ].join('<br/>'),
   footer: [
     `The <span class="code">chat.completion</span> model server should already be running before starting Open WebUI`, 
     `(which is handled automatically when using docker-compose)<br/>`,
-    `It will have you create a login on the first use, but this is only stored locally.`
+    `It will have you create a login on the first use, but its only stored locally.`
   ].join(' ')
 });
 /* END: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/launchers/open_webui.js */
@@ -3156,6 +3749,148 @@ Resolver({
   ].join(' ')
 });
 /* END: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/launchers/python.js */
+
+/* BEGIN: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/launchers/portainer.js */
+/*
+ * portainer launcher
+ */
+
+export function portainer(env) {
+
+  let server_host = env.server_host.split(':');
+ 
+  const PORT = server_host.pop();
+  const ADDR = server_host.pop();
+
+  env.properties.docker_run.text = [
+    `<a href="https://www.portainer.io/" target="_blank">Portainer</a> is web-based management platform for deploying containers,`,
+    `orchestrating microservices, and control of distributed edge devices.`,
+  ].join(' ');
+
+  env.properties.docker_run.footer = [
+    `After you start Portainer, navigate to`,
+    `<a href="http://${ADDR}:${PORT}" target="_blank" class="code">http://${ADDR}:${PORT}</a>`,
+    `to establish a login and enter the management console.`,
+    `The docker command above mounts the system's socket for the docker daemon, so it can launch containers from within.`
+  ].join(' ');
+
+  env.docker_run = substitution(docker_run(env), {
+    'cache_dir': env.cache_dir,
+    'port': PORT
+  });
+  
+  return env.docker_run;
+}
+
+// map ports 9000 and 9443
+Resolver({
+  func: portainer,
+  name: 'Portainer',
+  filename: 'portainer.sh',
+  server_host: '0.0.0.0:9100',
+  docker_image: 'portainer/portainer-ce:lts',
+  docker_options: [
+    '-it --rm --name=portainer',
+    '-p ${PORT}:9000 -p 9443:9443',
+    '-v /var/run/docker.sock:/var/run/docker.sock',
+    '-v ${CACHE_DIR}/portainer:/data',
+    '-v ${CACHE_DIR}:/root/.cache'
+  ].join(' '),
+  docker_run: 'docker run $OPTIONS $IMAGE',
+  thumbnail: '/portal/dist/images/portainer.webp',
+  nav_class: 'theme-light',
+  nav_style: 'background-size: 150%;',
+  hidden: true,
+  tags: ['webui', 'shell'],
+  links: {
+    website: {
+      name: "Portainer.io",
+      url: "https://www.portainer.io/"
+    },
+    github: {
+      name: "GitHub",
+      url: "https://github.com/portainer/portainer"
+    },
+    docs: {
+      name: "Docs",
+      url: "https://docs.portainer.io/"
+    }
+  }
+});
+/* END: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/launchers/portainer.js */
+
+/* BEGIN: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/launchers/jupyterlab.js */
+/*
+ * jupyterlab launcher
+ */
+
+export function jupyterlab_server(env) {
+
+  let server_host = env.server_host.split(':');
+ 
+  const PORT = server_host.pop();
+  const ADDR = server_host.pop();
+
+  env.properties.docker_run.text = [
+    `<a href="https://jupyter.org/" target="_blank">JupyterLab</a> is a remote web-based IDE with classic IPython notebook support`,
+    `along with Linux terminals, file browsers, scientific plotting, and more.`,
+  ].join(' ');
+
+  env.properties.docker_run.footer = [
+    `After you start Jupyter, copy the login token that it prints in the terminal, and navigate to`,
+    `<a href="http://${ADDR}:${PORT}" target="_blank" class="code">http://${ADDR}:${PORT}</a>`,
+    `to set an initial password.<br/><br/>`,
+    `The environment is configured to automatically install GPU-accelerated Python wheels from the Jetson AI Lab`,
+    `<a href="https://pypi.jetson-ai-lab.dev/jp6/cu126" target="_blank">pip server</a>, which`,
+    `gets set like below:<br/><br/>&nbsp;&nbsp;&nbsp`,
+    `<span class="code">PIP_INDEX_URL=<a href="https://pypi.jetson-ai-lab.dev/jp6/cu126" target="_blank">https://pypi.jetson-ai-lab.dev/jp6/cu126</a></span>`
+  ].join(' ');
+
+  env.docker_run = substitution(docker_run(env), {
+    'cache_dir': env.cache_dir,
+    'port': PORT
+  });
+  
+  return env.docker_run;
+}
+
+Resolver({
+  func: jupyterlab_server,
+  name: 'JupyterLab',
+  filename: 'jupyterlab.sh',
+  server_host: '0.0.0.0:8888',
+  docker_image: 'dustynv/jupyterlab:r36.4.0',
+  docker_options: [
+    '-it --rm --name=jupyterlab --network=host',
+    '-e JUPYTER_PORT=${PORT}',
+    '-e JUPYTER_LOGS=/root/.cache/jupyter/jupyter.log',
+    //'-e OPENAI_API_BASE=${SERVER_LLM}v1 -e OPENAI_API_KEY=foo',
+    '-v ${CACHE_DIR}/jupyter:/root/.cache/jupyter',
+    '-v ${CACHE_DIR}/jupyter/ipynb_checkpoints:/root/.ipynb_checkpoints',
+    '-v ${CACHE_DIR}/jupyter/ipython:/root/.ipython',
+    '-v ${CACHE_DIR}/jupyter/jupyter:/root/.jupyter'
+  ].join(' '),
+  docker_run: 'docker run $OPTIONS $IMAGE',
+  thumbnail: '/portal/dist/images/jupyterlab.webp',
+  nav_class: 'theme-light',
+  hidden: true,
+  tags: ['webui', 'shell'],
+  links: {
+    website: {
+      name: "Project Jupyter",
+      url: "https://jupyter.org/"
+    },
+    github: {
+      name: "GitHub",
+      url: "https://github.com/jupyterlab"
+    },
+    docs: {
+      name: "Docs",
+      url: "https://jupyterlab.readthedocs.io/en/latest/"
+    }
+  }
+});
+/* END: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/launchers/jupyterlab.js */
 
 /* BEGIN: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/launchers/curl.js */
 /*
@@ -3262,6 +3997,11 @@ Resolver({
 /*
  * Networking options for docker
  */
+
+export function as_url(url) {
+  return new URL('http://' + url);
+}
+
 export function get_server_url(env, default_host='0.0.0.0:9000') {
   if( nonempty(env.server_host) )
     var host = env.server_host;
@@ -3270,7 +4010,7 @@ export function get_server_url(env, default_host='0.0.0.0:9000') {
   else
     var host = default_host;
 
-  return new URL('http://' + host);
+  return as_url(default_host);
 }
 
 export function get_endpoint_url(env, default_host='0.0.0.0:9000') {
@@ -3361,7 +4101,7 @@ Resolver({
   hidden: true,
   group: "compose",
   tags: ['compose'],
-  refs: ['llm'],
+  refs: ['llm', 'webui'],
   text: [
     'Use this <a href="https://docs.docker.com/reference/compose-file/services/" ' +
     'title="To install docker compose on your Jetson use:\n ' +
@@ -3482,6 +4222,15 @@ Resolvers({
     help: "When set to 'on', will automatically pull the latest container on start-up."
   },
 
+  cache_dir: {
+    tags: "path",
+    value: "/mnt/nvme/cache",
+    help: [
+      "Path on the server's native filesystem that will be mounted into the container\n",
+      "for saving the models.\nIt is recommended this be relocated to NVME storage."
+    ]
+  },
+
   server_host: {
     name: "Server IP / Port",
     tags: "string",
@@ -3492,12 +4241,30 @@ Resolvers({
     ]
   },
 
-  cache_dir: {
-    tags: "path",
-    value: "/mnt/nvme/cache",
+  server_llm: {
+    name: "LLM Server URL",
+    tags: "string",
     help: [
-      "Path on the server's native filesystem that will be mounted into the container\n",
-      "for saving the models.\nIt is recommended this be relocated to NVME storage."
+      "The LLM server's hostname/IP and port (commonly OPENAI_API_BASE_URL)\n",
+      "The server implements the chat.completion endpoint for LLMs.\n",
+    ]
+  },
+
+  server_asr: {
+    name: "ASR Server URL",
+    tags: "string",
+    help: [
+      "The speech-to-text server's hostname/IP and port\n",
+      "The server implements the audio.transcriptions endpoint for ASR/STT.\n",
+    ]
+  },
+
+  server_tts: {
+    name: "TTS Server URL",
+    tags: "string",
+    help: [
+      "The text-to-speech server's hostname/IP and port\n",
+      "The server implements the audio.transcriptions endpoint for TTS.\n",
     ]
   }
 });

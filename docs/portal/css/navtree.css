@@ -1,0 +1,74 @@
+
+.nav-tree-app {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row;
+    min-height: 200px;
+    opacity: 90%;
+    border-style:solid;
+    border-color:rgba(0,0,0,0.0);
+    border-width: 2px;
+    background-size: contain;
+} 
+
+.nav-tree-app:hover {
+    opacity: 100%;
+    border-color:rgba(100,100,100,1.0);
+    box-shadow: 4px 4px 7px 0px rgba(0,0,0,0.3);
+} 
+
+.nav-tree-app-text {
+    color: rgba(255,255,255,1);
+    background-color: rgba(255,255,255,0.2);
+    font-size: 125%;
+    font-weight: 400;
+    padding: 5px 10px;
+}
+
+.theme-light .nav-tree-app-text {
+    color: rgba(255,255,255,1);
+    background-color: rgba(0,0,0,0.5);
+}
+
+/* Dropdown Content (Hidden by Default) */
+.nav-menu-dropdown {
+    display: none;
+    position: absolute;
+    background-color: black;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 999;
+    flex-direction: column;
+}
+  
+/* Links inside the dropdown */
+.nav-menu-dropdown a {
+    color: white;
+    opacity: 0.7;
+    padding: 10px 16px;
+    text-decoration: none;
+    font-size: .7rem;
+}
+
+.nav-menu-dropdown a:hover {
+    opacity: 1.0;
+}
+
+.nav-menu-divider {
+	height: 0;
+	margin-top: 5px;
+	overflow: hidden;
+	border-top: 1px solid hsl(0, 0%, 50%);
+}
+
+.nav-tab-icon {
+    background-color: #7c4dff;
+    mask-image: var(--md-admonition-icon--example);
+    /*mask-image: url('/portal/dist/images/hubot.svg');*/
+    /*mask-image: url('/portal/dist/images/beaker.svg');*/
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    height: 20px;
+    width: 20px;
+}

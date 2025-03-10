@@ -11,11 +11,13 @@ export * from './graphDB.js';
 
 export * from './layout/buttons.js';
 export * from './layout/fields.js';
+export * from './layout/menu.js';
 export * from './layout/modal.js';
 export * from './layout/rollup.js';
 export * from './layout/treeLayout.js';
 export * from './layout/treeGrid.js';
 export * from './layout/treeList.js';
+export * from './layout/dataTable.js';
 
 export * from './panels/codeEditor.js';
 export * from './panels/configEditor.js';

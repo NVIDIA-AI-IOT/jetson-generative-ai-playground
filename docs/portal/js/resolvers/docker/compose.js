@@ -66,7 +66,7 @@ Resolver({
   hidden: true,
   group: "compose",
   tags: ['compose'],
-  refs: ['llm'],
+  refs: ['llm', 'webui'],
   text: [
     'Use this <a href="https://docs.docker.com/reference/compose-file/services/" ' +
     'title="To install docker compose on your Jetson use:\n ' +

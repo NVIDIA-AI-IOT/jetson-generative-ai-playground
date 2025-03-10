@@ -1,6 +1,11 @@
 /*
  * Networking options for docker
  */
+
+export function as_url(url) {
+  return new URL('http://' + url);
+}
+
 export function get_server_url(env, default_host='0.0.0.0:9000') {
   if( nonempty(env.server_host) )
     var host = env.server_host;
@@ -9,7 +14,7 @@ export function get_server_url(env, default_host='0.0.0.0:9000') {
   else
     var host = default_host;
 
-  return new URL('http://' + host);
+  return as_url(default_host);
 }
 
 export function get_endpoint_url(env, default_host='0.0.0.0:9000') {

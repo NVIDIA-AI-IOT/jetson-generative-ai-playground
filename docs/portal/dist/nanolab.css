@@ -243,7 +243,7 @@ pre[class*="language-"] > code[class*="language-"] {
  */
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .z-top {
@@ -656,6 +656,51 @@ pre[class*="language-"] > code[class*="language-"] {
   background: rgba(255,255,255,0.4);
 }
 
+.property-thumbnail {
+  max-height: 140px;
+  margin: 0px 10px 10px 0px;
+  /*background-repeat: no-repeat;
+  background-size: contain;*/
+}
+
+.property-thumbnail:hover {
+  opacity: 95%;
+}
+
+.property-thumbnail-panel {
+  display: flex;
+  flex-direction: row;
+}
+
+.theme-light .property-thumbnail {
+  opacity: 65%;
+}
+
+.property-thumbnail-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.property-thumnail-link {
+  margin: 0px 10px 5px 0px;
+}
+
+.property-thumnail-link a {
+  color: rgb(30,30,30);
+  font-weight: 400;
+  text-decoration-thickness: 1px;
+}
+
+.property-thumnail-link a:hover {
+  color: var(--nv-green-dark);
+  text-decoration-color: hsla(82deg, 100%, 33.1%, 0.8);
+}
+
+.property-thumbnail-links-heading {
+  text-decoration: underline;
+  margin-bottom: 3px;
+}
+
 .property-table {
   width: 100%;
 }
@@ -1007,6 +1052,10 @@ input[type="radio"].toggle {
 
 
 .sidebar {
+  position: absolute;
+  min-width: 350px;
+  max-width: 350px;
+  left: calc(100% - 350px + 10px);
   margin: -15px -15px 0px 0px;
   padding: 15px;
   border-style: solid;
@@ -1064,8 +1113,8 @@ input[type="radio"].toggle {
 }*/
 
 .rollup-container {
-  min-width: 315px;
-  max-width: 315px;
+  /*min-width: 315px;
+  max-width: 315px;*/
   margin: 1px 0px 7px 0px;
   padding: 0px;
   /*padding-bottom: 7px;*/
@@ -1169,6 +1218,86 @@ input[type="radio"].toggle {
 
 
 
+/* BEGIN: $ROOT/css/navtree.css */
+
+
+.nav-tree-app {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row;
+    min-height: 200px;
+    opacity: 90%;
+    border-style:solid;
+    border-color:rgba(0,0,0,0.0);
+    border-width: 2px;
+    background-size: contain;
+} 
+
+.nav-tree-app:hover {
+    opacity: 100%;
+    border-color:rgba(100,100,100,1.0);
+    box-shadow: 4px 4px 7px 0px rgba(0,0,0,0.3);
+} 
+
+.nav-tree-app-text {
+    color: rgba(255,255,255,1);
+    background-color: rgba(255,255,255,0.2);
+    font-size: 125%;
+    font-weight: 400;
+    padding: 5px 10px;
+}
+
+.theme-light .nav-tree-app-text {
+    color: rgba(255,255,255,1);
+    background-color: rgba(0,0,0,0.5);
+}
+
+/* Dropdown Content (Hidden by Default) */
+.nav-menu-dropdown {
+    display: none;
+    position: absolute;
+    background-color: black;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 999;
+    flex-direction: column;
+}
+  
+/* Links inside the dropdown */
+.nav-menu-dropdown a {
+    color: white;
+    opacity: 0.7;
+    padding: 10px 16px;
+    text-decoration: none;
+    font-size: .7rem;
+}
+
+.nav-menu-dropdown a:hover {
+    opacity: 1.0;
+}
+
+.nav-menu-divider {
+	height: 0;
+	margin-top: 5px;
+	overflow: hidden;
+	border-top: 1px solid hsl(0, 0%, 50%);
+}
+
+.nav-tab-icon {
+    background-color: #7c4dff;
+    mask-image: var(--md-admonition-icon--example);
+    /*mask-image: url('/portal/dist/images/hubot.svg');*/
+    /*mask-image: url('/portal/dist/images/beaker.svg');*/
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    height: 20px;
+    width: 20px;
+}
+/* END: $ROOT/css/navtree.css */
+
+
+
 /* BEGIN: $ROOT/css/modal.css */
 
 /* 
@@ -1233,6 +1362,31 @@ input[type="radio"].toggle {
   cursor: pointer;
 }
 
+/* make the dialog body partially transparent */
+.modal-body {
+  padding: 15px 15px;
+  margin: 1px 0px 0px 3px;
+  color: #333333;
+  font-weight: 500;
+  /*text-shadow: rgba(50,50,50,0.4) 3px 0 3px;*/
+  border-radius: 0px 0px 12px 12px;
+  backdrop-filter: blur(8px);
+  background: linear-gradient(0deg, rgba(210,210,210,0.75) 0%,rgb(225,225,225,0.75) 100%);
+  box-shadow: 5px 5px 5px rgb(103, 103, 103);
+}
+
+.modal-body .btn-md {
+  text-shadow: rgba(50,50,50,0.4) 3px 0 3px;
+}
+
+.modal-footer {
+  padding: 2px 2px;
+  color: white;
+  /*background-color: rgba(225,225,225,1); #7a7a7a;*/
+  border-radius: 0px 0px 12px 12px;
+}
+
+
 /* Header with title & close button */
 .modal-header {
   padding: 8px 15px;
@@ -1273,28 +1427,8 @@ input[type="radio"].toggle {
   }
 }*/
 
-/* make the dialog body partially transparent */
-.modal-body {
-  padding: 15px 15px;
-  margin: 1px 0px 0px 3px;
-  color: #333333;
-  font-weight: 500;
-  /*text-shadow: rgba(50,50,50,0.4) 3px 0 3px;*/
-  border-radius: 0px 0px 12px 12px;
-  backdrop-filter: blur(8px);
-  background: linear-gradient(0deg, rgba(190,190,190,0.75) 0%,rgb(205,205,205,0.75) 100%);
-  box-shadow: 5px 5px 5px rgb(103, 103, 103);
-}
-
-.modal-body .btn-md {
-  text-shadow: rgba(50,50,50,0.4) 3px 0 3px;
-}
-
-.modal-footer {
-  padding: 2px 2px;
-  color: white;
-  /*background-color: rgba(225,225,225,1); #7a7a7a;*/
-  border-radius: 0px 0px 12px 12px;
+.modal-header-mod {
+  padding: 4px 15px;
 }
 
 .modal-title {
@@ -1309,6 +1443,10 @@ input[type="radio"].toggle {
   height: 36px;
   margin-top: 0px;
   margin-bottom: 15px;
+}
+
+.modal-title-bar-mod {
+  margin-bottom: 9px;
 }
 /* END: $ROOT/css/modal.css */
 
