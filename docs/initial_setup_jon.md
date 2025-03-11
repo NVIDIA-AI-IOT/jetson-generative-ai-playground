@@ -392,7 +392,7 @@ Once we know the onboard firmware is up-to-date and ready for JetPack 6.x, we ca
 
 ## 7️⃣ Reboot and observe firmware update to `36.4.3`
 
-1. Reboot your Jetson Orin Nano Developer Kit on JetPack 6.1 (rev.1) SD card to trigger the final firmware update (to `36.4.2`).
+1. Reboot your Jetson Orin Nano Developer Kit on JetPack 6.2 SD card to trigger the final firmware update (to `36.4.3`).
 
     === ":material-monitor: GUI"
 
@@ -424,7 +424,7 @@ Once we know the onboard firmware is up-to-date and ready for JetPack 6.x, we ca
         Update Progress - 10% *****++++++++++++++++++++++++++++++++++++++++++++++++++
         ```
 
-Once done, you will boot into JetPack 6.1 (rev.1) again, with the underlying firmware updated to `36.4.2`, which unlock the Super performance.
+Once done, you will boot into JetPack 6.2 again, with the underlying firmware updated to `36.4.3`, which unlock the Super performance.
 
 ## 8️⃣ Unlock Super Performance
 
