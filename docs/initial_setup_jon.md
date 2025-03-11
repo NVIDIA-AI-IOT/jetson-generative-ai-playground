@@ -414,6 +414,16 @@ Once we know the onboard firmware is up-to-date and ready for JetPack 6.x, we ca
 
     === ":material-monitor-off: Headless (serial)"
 
+        ```text
+        Jetson System firmware version 36.3.0-gcid-36106755 date 2025-04-25T02:38:25+00:
+
+        ESC   to enter Setup.
+        F11   to enter Boot Manager Menu.
+        Enter to continue boot.
+
+        Update Progress - 10% *****++++++++++++++++++++++++++++++++++++++++++++++++++
+        ```
+
 Once done, you will boot into JetPack 6.1 (rev.1) again, with the underlying firmware updated to `36.4.2`, which unlock the Super performance.
 
 ## 8️⃣ Unlock Super Performance
