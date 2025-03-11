@@ -216,7 +216,7 @@ You can take one of the following methods.
 
             It would still schedule the UEFI firmware update in the background, so when you power cycle the unit, most likely it will perform the firmware update on the next boot up.
 
-            So if this happens, skip to the next step (3️⃣-2).
+            So if this happens, skip to the next step ([Step 3️⃣](#3-reboot-and-observe-firmware-update-to-50)'s bullet point `2`.).
 
     6. Ensure firmware update is scheduled.
 
