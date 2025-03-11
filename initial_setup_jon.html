@@ -8,7 +8,7 @@
   <link href="tutorial-intro.html" rel="prev"/>
   <link href="initial_setup_jon_sdkm.html" rel="next"/>
   <link href="images/nvidia-favicon-rgb-16x16px@2x.png" rel="icon"/>
-  <meta content="mkdocs-1.6.1, mkdocs-material-9.6.4" name="generator"/>
+  <meta content="mkdocs-1.6.1, mkdocs-material-9.6.7" name="generator"/>
   <title>
    🚀 Initial Setup Guide - Jetson Orin Nano - NVIDIA Jetson AI Lab
   </title>
@@ -1243,8 +1243,8 @@
     H --&gt; O
     O --&gt; P[7️⃣ Reboot]
     P --&gt; Q{{Firmware update to 36.4.3 during reboot}}
-    Q --&gt; R[8️⃣ Unlock super performance] 
-    R --&gt; S(👍 Start developing on JetPack 6.2) 
+    Q --&gt; R[8️⃣ Unlock super performance]
+    R --&gt; S(👍 Start developing on JetPack 6.2)
 
 
     style C fill:#fee
@@ -1356,11 +1356,6 @@
          <div class="tabbed-block">
           <ol>
            <li>
-            Connect USB to TTL Serial cable onto the following pins on
-            <code>
-             J14
-            </code>
-            "button" header of carrier board located under the Jetson module.
             <ul>
              <li>
               <code>
@@ -1412,20 +1407,34 @@
               <span class="blobBlack">
                Black
               </span>
-              <blockquote>
-               <p>
-                For the detail, refer to
-                <a href="https://developer.nvidia.com/embedded/downloads#?search=Carrier%20Board%20Specification&amp;tx=$product,jetson_orin_nano">
-                 Jetson Orin Nano Developer Kit Carrier Board Specification
-                </a>
-                .
-               </p>
-              </blockquote>
              </li>
             </ul>
+            <p>
+             Connect USB to TTL Serial cable onto the following pins on
+             <code>
+              J14
+             </code>
+             "button" header of carrier board located under the Jetson module.
+            </p>
+            <p>
+             <a href="images/jon_adafruit_uart_cable.jpg">
+              <img alt="" src="images/jon_adafruit_uart_cable.jpg" width="640"/>
+             </a>
+            </p>
+            <blockquote>
+             <p>
+              For the detail, refer to
+              <a href="https://developer.nvidia.com/embedded/downloads#?search=Carrier%20Board%20Specification&amp;tx=$product,jetson_orin_nano">
+               Jetson Orin Nano Developer Kit Carrier Board Specification
+              </a>
+              .
+             </p>
+            </blockquote>
            </li>
            <li>
-            On your PC, run your console monitor program and open the USB serial port.
+            <p>
+             On your PC, run your console monitor program and open the USB serial port.
+            </p>
            </li>
            <li>
             Power on the developer kit by plugging in the bundled DC power supply
@@ -1503,7 +1512,7 @@
         </p>
         <p>
          If you found your Jetson Orin Nano needs its firmware updated to run JetPack 6.x, click
-         <a href="#__tabbed_2_2">
+         <a href="#__tabbed_2_1">
           "
           <span class="twemoji">
            <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -1517,7 +1526,7 @@
         </p>
         <p>
          If you know your Jetson Orin Nano has the latest firmware, stay on
-         <a href="#__tabbed_2_1">
+         <a href="#__tabbed_2_2">
           "
           <span class="twemoji">
            <svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
@@ -1675,7 +1684,15 @@
               It would still schedule the UEFI firmware update in the background, so when you power cycle the unit, most likely it will perform the firmware update on the next boot up.
              </p>
              <p>
-              So if this happens, skip to the next step (3️⃣-2).
+              So if this happens, skip to the next step (
+              <a href="#3-reboot-and-observe-firmware-update-to-50">
+               Step 3️⃣
+              </a>
+              's bullet point
+              <code>
+               2
+              </code>
+              .).
              </p>
             </div>
            </li>
@@ -1721,7 +1738,7 @@
               <div class="tabbed-block">
                <div class="highlight">
                 <pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>nv-l4t-bootloader-config
-<span class="o">[</span>sudo<span class="o">]</span><span class="w"> </span>password<span class="w"> </span><span class="k">for</span><span class="w"> </span>jetson:<span class="w"> </span>
+<span class="o">[</span>sudo<span class="o">]</span><span class="w"> </span>password<span class="w"> </span><span class="k">for</span><span class="w"> </span>jetson:
 ●<span class="w"> </span>nv-l4t-bootloader-config.service<span class="w"> </span>-<span class="w"> </span>Configure<span class="w"> </span>bootloader<span class="w"> </span>service
 <span class="w">    </span>Loaded:<span class="w"> </span>loaded<span class="w"> </span><span class="o">(</span>/etc/systemd/system/nv-l4t-bootloader-config.service<span class="p">;</span><span class="w"> </span>enabled<span class="p">;</span><span class="w"> </span>vendor<span class="w"> </span>preset:<span class="w"> </span>enabled<span class="o">)</span>
 <span class="w">    </span>Active:<span class="w"> </span>inactive<span class="w"> </span><span class="o">(</span>dead<span class="o">)</span><span class="w"> </span>since<span class="w"> </span>Fri<span class="w"> </span><span class="m">2024</span>-05-03<span class="w"> </span><span class="m">13</span>:36:13<span class="w"> </span>PDT<span class="p">;</span><span class="w"> </span>1min<span class="w"> </span>57s<span class="w"> </span>ago
@@ -1900,6 +1917,14 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
             <p>
              Install QSPI Updater Debian package to trigger the entire QSPI update
             </p>
+            <div class="admonition note">
+             <p class="admonition-title">
+              Note
+             </p>
+             <p>
+              An Internet connection is required to download the QSPI updater package.
+             </p>
+            </div>
             <p>
              On Jetson terminal, run the following:
             </p>
@@ -2098,7 +2123,7 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
            <div class="tabbed-block">
             <div class="highlight">
              <pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>nv-l4t-bootloader-config
-<span class="o">[</span>sudo<span class="o">]</span><span class="w"> </span>password<span class="w"> </span><span class="k">for</span><span class="w"> </span>jetson:<span class="w"> </span>
+<span class="o">[</span>sudo<span class="o">]</span><span class="w"> </span>password<span class="w"> </span><span class="k">for</span><span class="w"> </span>jetson:
 ●<span class="w"> </span>nv-l4t-bootloader-config.service<span class="w"> </span>-<span class="w"> </span>Configure<span class="w"> </span>bootloader<span class="w"> </span>service
 <span class="w">    </span>Loaded:<span class="w"> </span>loaded<span class="w"> </span><span class="o">(</span>/etc/systemd/system/nv-l4t-bootloader-config.service<span class="p">;</span><span class="w"> </span>enabled<span class="p">;</span><span class="w"> </span>vendor<span class="w"> </span>preset:<span class="w"> </span>enabled<span class="o">)</span>
 <span class="w">    </span>Active:<span class="w"> </span>inactive<span class="w"> </span><span class="o">(</span>dead<span class="o">)</span><span class="w"> </span>since<span class="w"> </span>Fri<span class="w"> </span><span class="m">2024</span>-05-03<span class="w"> </span><span class="m">13</span>:36:13<span class="w"> </span>PDT<span class="p">;</span><span class="w"> </span>1min<span class="w"> </span>57s<span class="w"> </span>ago
@@ -2120,9 +2145,9 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
        <ol>
         <li>
          <p>
-          Reboot your Jetson Orin Nano Developer Kit on JetPack 6.1 (rev.1) SD card to trigger the final firmware update (to
+          Reboot your Jetson Orin Nano Developer Kit on JetPack 6.2 SD card to trigger the final firmware update (to
           <code>
-           36.4.2
+           36.4.3
           </code>
           ).
          </p>
@@ -2212,15 +2237,25 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
             </p>
            </div>
            <div class="tabbed-block">
+            <div class="highlight">
+             <pre><span></span><code>Jetson System firmware version 36.3.0-gcid-36106755 date 2025-04-25T02:38:25+00:
+
+ESC   to enter Setup.
+F11   to enter Boot Manager Menu.
+Enter to continue boot.
+
+Update Progress - 10% *****++++++++++++++++++++++++++++++++++++++++++++++++++
+</code></pre>
+            </div>
            </div>
           </div>
          </div>
         </li>
        </ol>
        <p>
-        Once done, you will boot into JetPack 6.1 (rev.1) again, with the underlying firmware updated to
+        Once done, you will boot into JetPack 6.2 again, with the underlying firmware updated to
         <code>
-         36.4.2
+         36.4.3
         </code>
         , which unlock the Super performance.
        </p>
@@ -2412,7 +2447,7 @@ Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</s
   </script>
   <script src="//assets.adobedtm.com/5d4962a43b79/814eb6e9b4e1/launch-4bc07f1e0b0b.min.js">
   </script>
-  <script src="assets/javascripts/bundle.f1b6f286.min.js">
+  <script src="assets/javascripts/bundle.c8b220af.min.js">
   </script>
   <script>
    window._6si = window._6si || [];
