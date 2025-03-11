@@ -300,6 +300,10 @@ You can take one of the following methods.
 
     2. Install QSPI Updater Debian package to trigger the entire QSPI update
 
+        !!! note
+
+            An Internet connection is required to download the QSPI updater package.
+
         On Jetson terminal, run the following:
 
         ```bash
