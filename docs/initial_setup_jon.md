@@ -138,6 +138,8 @@ You can take one of the following methods.
           - `RXD` (Pin 3) :fontawesome-solid-arrows-left-right: Adafruit adaptor cable <span class="blobGreen">Green</span>
           - `TXD` (Pin 4) :fontawesome-solid-arrows-left-right: Adafruit adaptor cable <span class="blobWhite">White</span>
           - `GND` (Pin 7) :fontawesome-solid-arrows-left-right: Adafruit adaptor cable <span class="blobBlack">Black</span>
+
+        [![](./images/jon_adafruit_uart_cable.jpg){ width="640" }](./images/jon_adafruit_uart_cable.jpg)
         > For the detail, refer to [Jetson Orin Nano Developer Kit Carrier Board Specification](https://developer.nvidia.com/embedded/downloads#?search=Carrier%20Board%20Specification&tx=$product,jetson_orin_nano).
     1. On your PC, run your console monitor program and open the USB serial port.
     2. Power on the developer kit by plugging in the bundled DC power supply
