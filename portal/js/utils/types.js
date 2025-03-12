@@ -84,6 +84,28 @@ export function dict_keys(x) {
   return is_dict(x) ? Object.keys(x) : [];
 }
 
+export function includes_any(x, y) {
+  for( const val of y ) {
+    if( x.includes(val) )
+      return true;
+  }
+  return false;
+}
+
+/*
+ * Merge and deduplicate two lists (https://stackoverflow.com/a/1584377)
+ *
+ *   const merged = merge_lists(['a', 'b', 'c'], ['c', 'x', 'd']);
+ * 
+ *   merge_lists([{id: 1}, {id: 2}], [{id: 2}, {id: 3}], (a, b) => a.id === b.id);
+ */
+export function merge_lists(a, b, predicate = (a, b) => a === b) {
+  const c = [...a]; // copy to avoid side effects
+  // add all items from B to copy C if they're not already present
+  b.forEach((bItem) => (c.some((cItem) => predicate(bItem, cItem)) ? null : c.push(bItem)))
+  return c;
+}
+
 /* 
  * Recursively deep clone an object (sharing unserializable objects like functions) 
  * This is used to work around errors you get errors using structuredClone()
@@ -117,8 +139,18 @@ export function toTitleCase(x) {
 
 export function substitution(text, map) {
   for( const k in map ) {
-    text = text.replace('$' + k.toUpperCase(), map[k]);
-    text = text.replace('${' + k.toUpperCase() + '}', map[k]);
+    const k1 = '$' + k.toUpperCase();
+    const k2 = '${' + k.toUpperCase() + '}';
+
+    //var re = new RegExp(k1, 'g');
+    //var rp = new RegExp(k2, 'g');
+
+    //text = text.replace(re, map[k]);
+    //text = text.replace(rp, map[k]);
+
+    text = text.split(k1).join(map[k]);
+    text = text.split(k2).join(map[k]);
   }
+
   return text;
 }

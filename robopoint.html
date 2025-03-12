@@ -537,10 +537,10 @@
                    <li class="md-nav__item">
                     <a class="md-nav__link" href="#robopoint-vlm-for-embodied-ai">
                      <span class="md-ellipsis">
-                      RoboPoint VLM for embodied AI
+                      RoboPoint VLM for Embodied AI
                      </span>
                     </a>
-                    <nav aria-label="RoboPoint VLM for embodied AI" class="md-nav">
+                    <nav aria-label="RoboPoint VLM for Embodied AI" class="md-nav">
                      <ul class="md-nav__list">
                       <li class="md-nav__item">
                        <a class="md-nav__link" href="#robopoint-pipeline">
@@ -816,10 +816,10 @@
           <li class="md-nav__item">
            <a class="md-nav__link" href="#robopoint-vlm-for-embodied-ai">
             <span class="md-ellipsis">
-             RoboPoint VLM for embodied AI
+             RoboPoint VLM for Embodied AI
             </span>
            </a>
-           <nav aria-label="RoboPoint VLM for embodied AI" class="md-nav">
+           <nav aria-label="RoboPoint VLM for Embodied AI" class="md-nav">
             <ul class="md-nav__list">
              <li class="md-nav__item">
               <a class="md-nav__link" href="#robopoint-pipeline">
@@ -874,17 +874,29 @@
      <div class="md-content" data-md-component="content">
       <article class="md-content__inner md-typeset">
        <h1 id="tutorial-robopoint-vlm-for-robotic-manipulation">
-        Tutorial - RoboPoint VLM for robotic manipulation
+        Tutorial - RoboPoint VLM for Robotic Manipulation
        </h1>
        <p>
         <a href="https://robo-point.github.io/">
          RoboPoint
         </a>
-        is a general model that enables several downstream applications such as robot navigation, manipulation, and augmented reality (AR) assistance.
+        is a general vision/language model that has been specifially tuned for spatially-aware tasks and referencing the relative locations of objects during language-guided robot navigation, manipulation, and augmented reality (AR) assistance.
        </p>
        <p>
         <img src="images/robopoint_spot.GIF" width="960px"/>
        </p>
+       <div class="admonition abstract">
+        <p class="admonition-title">
+         Credits
+        </p>
+        <p>
+         Thank you to
+         <a href="https://github.com/mschweig" target="_blank">
+          Manuel Schweiger
+         </a>
+         for creating this tutorial, along with the University of Washington, NVIDIA, Allen Institute and Universidad Catolica San Pablo.
+        </p>
+       </div>
        <p>
         This tutorial provides a demo application for robotic manipulation using a Vision-Language Model (VLM) pipeline combined with a Large Language Model (LLM) to articulate manipulators using natural language. The RoboPoint inference pipeline generates 2D action points, which can be projected to 3D targets using depth maps or renowned algorithms like OpenCV
         <a href="https://docs.opencv.org/4.x/d5/d1f/calib3d_solvePnP.html">
@@ -895,25 +907,27 @@
        <p>
         In this tutorial we will guide you through:
        </p>
-       <p>
-        <img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2705.svg" title=":white_check_mark:"/>
-        Setting up the environment using jetson-containers
-        <br/>
-        <img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2705.svg" title=":white_check_mark:"/>
-        Connecting a
-        <a href="https://bostondynamics.com/products/spot/arm/" target="_blank">
-         Boston Dynamics Spot with Arm
-        </a>
-        to RoboPoint VLM
-        <br/>
-        <img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2705.svg" title=":white_check_mark:"/>
-        Issuing commands using natural language prompts
-        <br/>
-        <img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2705.svg" title=":white_check_mark:"/>
-        Executing pick-and-place operations
-       </p>
+       <blockquote>
+        <p>
+         <img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2705.svg" title=":white_check_mark:"/>
+         Setting up the environment using jetson-containers
+         <br/>
+         <img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2705.svg" title=":white_check_mark:"/>
+         Connecting a
+         <a href="https://bostondynamics.com/products/spot/arm/" target="_blank">
+          Boston Dynamics Spot with Arm
+         </a>
+         to RoboPoint VLM
+         <br/>
+         <img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2705.svg" title=":white_check_mark:"/>
+         Issuing commands using natural language prompts
+         <br/>
+         <img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2705.svg" title=":white_check_mark:"/>
+         Executing pick-and-place operations
+        </p>
+       </blockquote>
        <h2 id="robopoint-vlm-for-embodied-ai">
-        RoboPoint VLM for embodied AI
+        RoboPoint VLM for Embodied AI
        </h2>
        <p>
         From rearranging objects on a table to putting groceries into shelves, robots must plan precise action points to perform tasks accurately and reliably. In spite of the recent adoption of vision language models (VLMs) to control robot behavior, VLMs struggle to precisely articulate robot actions using language. We introduce an automatic synthetic data generation pipeline that instruction-tunes VLMs to robotic domains and needs.
@@ -936,14 +950,6 @@
          paper and project
         </a>
        </p>
-       <div class="admonition abstract">
-        <p class="admonition-title">
-         Credits
-        </p>
-        <p>
-         Thank you to University of Washington, NVIDIA, Allen Institute for Artificial Intelligence and Universidad Catolica San Pablo for publishing their great research.
-        </p>
-       </div>
        <h3 id="advantages-of-the-proposed-architecture">
         Advantages of the proposed architecture
        </h3>

@@ -276,6 +276,18 @@
       "resource"
     ]
   },
+  "webui": {
+    "name": "Web UI",
+    "tags": "container",
+    "refs": "docker_compose",
+    "child_order": [
+      "open_webui",
+      "flowise",
+      "n8n",
+      "portainer",
+      "aim"
+    ]
+  },
   "l4t": {
     "name": "Linux4Tegra (JetPack)",
     "tags": [
@@ -4790,6 +4802,7 @@
     "name": "Language Models (LLM / SLM)",
     "tags": "models",
     "refs": "resource",
+    "xref": false,
     "max_batch_size": 1,
     "max_context_len": null,
     "prefill_chunk": null,

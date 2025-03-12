@@ -18,15 +18,17 @@ export class SearchBar {
     this.db = args.db;
     this.id = args.id ?? 'search-bar';
     this.tags = args.tags ?? [];    // default tags
-    this.gate = args.gate ?? 'and'; // 'and' | 'or'
+    this.gate = args.gate ?? 'or'; // 'and' | 'or'
+    this.view = args.view ?? 'models';
     this.node = null;
     this.parent = as_element(args.parent);
-    this.layout = args.layout ?? 'grid';
+    this.layout = args.layout ?? (this.view === 'models') ? 'grid' : 'list';
     this.default_tags = this.tags;
 
     this.layouts = {
-      grid: TreeGrid,
-      list: TreeList,
+      grid: TreeLayout(TreeGrid),
+      list: TreeLayout(TreeList),
+      //table: DataTable,
     };
 
     this.init();
@@ -51,20 +53,21 @@ export class SearchBar {
     else
       tags = this.default_tags; // default search pattern
 
-    if( this.gate === 'or' )
-      tags = [tags];  // nest tags for compound OR
+    const queryTags = (this.gate === 'or') ? [tags] : tags; // nest tags for compound OR
 
     this.last_query = this.db.query({
       select: 'keys',
       from: '*',
       where: 'ancestors',
-      in: tags
+      in: queryTags
     });
 
     /*for( const tag of tags ) { // add tags themselves from query
       if( !this.results.includes(tag) )
         this.results.push(tag); 
     } */
+
+    this.last_query.tags = tags;
 
     if( update ?? true )
       this.refresh();
@@ -96,18 +99,17 @@ export class SearchBar {
       <select id="${select2_id}" class="${select2_id}" multiple style="flex-grow: 1;">
     `;
 
-    html += this.db.treeReduce(
-      ({db, key, data, depth}) => {
+    html += this.db.treeReduce({func: ({db, key, data, depth}) => {
       return `<option class="select2-tree-option-${(this.db.children[key].length > 0) ? 'down' : 'leaf'} select2-tree-depth-${depth}" 
         ${self.tags.includes(key) ? "selected" : ""} 
         value="${key}">${db.index[key].name}</option>`
         + data;
-    });
+    }});
 
     const gateSwitch = new ToggleSwitch({
       id: `${this.id}-gate-switch`, 
       states: ['and', 'or'], 
-      value: 'and', 
+      value: this.gate, 
       help: 'OR will search for any of the tags.\nAND will search for resources having all the tags.'
     });
 
@@ -132,7 +134,7 @@ export class SearchBar {
         ['bi', 'bi bi-chevron-left'], 
         ['bi', 'bi bi-chevron-right']
       ],
-      help: 'Show/hide the sidebar'
+      help: 'Show/hide the Help bar'
     });
 
     html += `</select>
@@ -180,7 +182,7 @@ export class SearchBar {
     $(`#${select2_id}`).on('change', (evt) => {
       const tags = Array.from(evt.target.selectedOptions)
                         .map(({ value }) => value);
-      self.refresh({tags});
+      self.refresh({tags: tags});
     });
   }
 
@@ -198,32 +200,27 @@ export class SearchBar {
       this.query({tags, gate, update: false}); // avoid self-recursion
     }
 
-    if( !exists(keys) )
-      keys = this.last_query.results;
-
-    console.log(`[SearchBar] Updating layout with ${len(keys)} results`, keys, 'roots', this.last_query.roots);
+    if( exists(keys) ) // TODO reconcile this properly
+      this.last_query.results = keys;
 
     // reset dynamic cards
     let card_container = $(`#${this.id}-results-container`);
     card_container.empty(); 
 
-    // generate dynamic content
-    let html = `<div>`;
+    console.group(`[SearchBar] Updating layout with ${len(this.last_query.results)} results`);
+    console.log('KEYS', this.last_query.results);
+    let html = this.layouts[this.layout](this.last_query); // generate dynamic view
+    console.groupEnd();
 
-    html += this.db.treeReduce({
-      func: this.layouts[this.layout],
-      keys: this.last_query.roots,
-      mask: keys,
-    });
+    if( is_empty(html) )
+      return;
 
-    html += `</div>`;
+    card_container.html(`<div style="overflow-x: scroll;">${html}</div>`);
 
-    card_container.html(html);
-
-    $('.btn-open-item').on('click', (evt) => {
+    $('.btn-open-item, .nav-tree-app').on('click', (evt) => {
       const dialog = new ConfigEditor({
         db: this.db,
-        key: evt.target.dataset.model,
+        key: evt.currentTarget.dataset.key,
       });
     });
   }

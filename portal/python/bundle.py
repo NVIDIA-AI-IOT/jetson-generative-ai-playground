@@ -27,6 +27,7 @@ CSS=[
     '$ROOT/css/select.css',
     '$ROOT/css/sidebar.css',
     '$ROOT/css/rollup.css',
+    '$ROOT/css/navtree.css',
     '$ROOT/css/modal.css',
     '$ROOT/css/models.css'
 ]

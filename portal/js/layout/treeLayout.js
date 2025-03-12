@@ -1,8 +1,18 @@
 
 /*
- * Route multiple views through a dict
+ * Route tree traversal for heirarchial layouts
  */
-export function TreeLayout(map) {
+export function TreeLayout(func) {
+  return function (query) {
+    return query.db.treeReduce({
+      func: func,
+      tags: query.tags,
+      mask: query.results
+    });
+  }
+}
+
+/*export function TreeLayout(map) {
   return function (x) {
     if( x.depth in map ) {
       if( exists(x.db.index[x.key].name) )
@@ -11,4 +21,4 @@ export function TreeLayout(map) {
     }
     return x.data;
   }
-} 
+}*/

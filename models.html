@@ -38,15 +38,18 @@
     }
   </style>
   <script type="module">
-   import { GraphDB, SearchBar } from '/portal/nanolab.js';
+   import { GraphDB, SearchBar, QueryView} from '/portal/nanolab.js';
 
-    const GRAPH_DB = '/portal/dist/db.json';
+    const GRAPH_DB = [
+      '/portal/dist/db.json',
+      /*'https://raw.githubusercontent.com/dusty-nv/jetson-containers/refs/heads/dev/data/graphdb/db.json'*/
+    ];
 
     window.onload = () => {
       GraphDB.load(GRAPH_DB).then(db => {
         var searchBar = new SearchBar({
           db: db,
-          tags: ['models'],
+          tags: QueryView().tags,
           parent: '.root-container'
         });
         console.log("[GraphDB]  Done loading");

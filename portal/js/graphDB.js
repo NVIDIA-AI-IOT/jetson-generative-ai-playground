@@ -108,29 +108,73 @@ export class GraphDB {
    * or having been loaded from json (see `GraphDB.load` to load from file)
    */
   constructor(index) {
-      this.index = GraphDB.sanitizeIndex(Object.assign({}, GraphDB.RESOLVERS, index));
-      this.flat = this.flatten();
-      this.props = this.typed();
-      [
-        this.parents, this.children, 
-        this.ancestors, this.descendants,
-        this.roots,
-      ] = this.mapTopology();
-      this.log();
+    this.index = GraphDB.sanitizeIndex(Object.assign({}, GraphDB.RESOLVERS, index));
+    this.flat = this.flatten();
+    this.props = this.typed();
+    [
+      this.parents, this.children, 
+      this.ancestors, this.descendants,
+      this.roots,
+    ] = this.mapTopology();
+    this.log();
   }
 
   /*
    * Fetch the index json, parse it, and return the GraphTag instance.
    */
-  static async load(url) {
-    // https://www.geeksforgeeks.org/how-to-convert-an-onload-promise-into-async-await/
-    console.log(`[GraphDB] fetching index from ${url}`);
-    const response = await fetch(url);
-    if (!response.ok)
-      throw new Error(`GraphDB failed to fetch index from ${url}`);
-    const index = await response.json();
-    console.log(`[GraphDB] loaded ${url} (${Object.keys(index).length} records)`);
-    return new GraphDB(index);
+  static async load(urls) {
+    if( is_string(urls) )
+      urls = [urls];
+    
+    console.log('LOAD', urls);
+    
+    let root_idx = {};
+
+    for( const url of urls ) {
+      // https://www.geeksforgeeks.org/how-to-convert-an-onload-promise-into-async-await/
+      console.log(`[GraphDB] fetching index from ${url}`);
+      const response = await fetch(url);
+      if (!response.ok)
+        throw new Error(`GraphDB failed to fetch index from ${url}`);
+      let index = await response.json();
+      console.log(`[GraphDB] loaded ${url} (${Object.keys(index).length} records)`);
+      for( const key in index ) {
+        if( !(key in root_idx) ) {
+          root_idx[key] = index[key];
+        }
+        else {
+          const renamed = `${key}-${index[key].tags[0]}`;
+          console.warn(`[GraphDB] duplicate key '${key}' found, renaming to '${renamed}'`);
+          this.rename_key(index, key, renamed);
+          root_idx[renamed] = index[key];
+        }
+      }
+    }
+
+    console.log(`[GraphDB] loaded ${Object.keys(root_idx).length} records total`);
+    return new GraphDB(root_idx);
+  }
+
+  /*
+   * Rename a key an index to another key in the event of collisions.
+   */
+  static rename_key(index, key, renamed) {
+    for( const k in index ) {
+      if( !exists(index[k].tags) )
+        continue;
+
+      const index_of = index[k].tags.indexOf(key);
+
+      if( index_of >= 0 )
+        index[k].tags[index_of] = renamed;
+    }
+
+    /*if( key in index ) {
+      index[renamed] = index[key];
+      delete index[key];
+    }*/
+
+    return index;
   }
 
   /*
@@ -142,8 +186,8 @@ export class GraphDB {
     args.select ??= '*';
     args.from ??= '*';
     args.results ??= (args.select == '*') ? {} : [];
-    args.roots ??= [];
-
+    args.db ??= this;
+    
     if( args.from === '*' ) { // aggegrated results over all records
       console.group('[GraphDB] Evaluate Query');
       console.log('QUERY', args);
@@ -155,9 +199,6 @@ export class GraphDB {
       console.groupEnd();
     }
     else if( this.eval(args) ) { // just filter against this key only
-      const root = this.primaryRoot(args.from);
-      if( exists(root) && !args.roots.includes(root) )
-        args.roots.push(root);
       if( args.select === '*' )
         args.results[args.from] = this.flat[args.from];
       else if( args.select === 'keys' )
@@ -225,36 +266,28 @@ export class GraphDB {
    * An additional wrapper on top of `walk()` that builds in the agreggation
    * by appending the output from the last node with the previous.
    */
-  treeReduce(func) {
-    if( func instanceof Function ) {
-      var key=this.roots; var data=''; var depth=0; var mask=null;
-    }
-    else { // passed a dict
-      if( !exists(func.func) )
-        throw new Error(`[GraphDB] treeReduce() requires 'func' callback (was ${func})`);
-      var key = func.key ?? func.keys ?? this.roots;
-      var data = '';
-      var depth = func.depth ?? 0;
-      var mask = func.mask;
-      func = func.func;
-    }
+  treeReduce({tags=null, key=null, func=null, data='', depth=0, mask=null}) {
+    if( !(func instanceof Function ))
+      throw new Error(`[GraphDB] treeReduce() requires 'func' callback (was ${func})`);
+
     if( is_string(key) ) {
       if( exists(mask) ) { // only traverse paths on the goal mask
-        let pass=mask.includes(key); 
-        if( pass ) { // remove reached keys from the goal mask
+        let pass = mask.includes(key);
+        /*if( pass ) { // remove reached keys from the goal mask
           delete mask[mask.indexOf(key)];
         }
         else { // check if any nodes in the mask are descendants    
-          for( const m of mask ) {
-            if( this.descendants[key].includes(m) ) {
-              pass=true;
-              break;
-        }}}
+          //pass = includes_any(mask, this.descendants[key]); 
+          pass = roots.includes(this.primaryRoot(key));
+        }*/
         if( !pass )
           return data;
       } // recurse into each child node
-      for( let child of this.children[key] ) {
+      if( !(key in this.children) ) 
+        throw new Error(`Missing children for key ${key}`);
+      for( const child of this.children[key] ) {
         data += this.treeReduce({
+          tags: tags,
           key: child, 
           func: func,
           data: '',
@@ -264,21 +297,63 @@ export class GraphDB {
       } // process this node (DFS)
       return func({db: this, key: key, data: data, depth: depth});
     }
-    else { // handle initial set of root keys
-      if( exists(mask) )
+    else if( is_list(tags) ) { // list of inital keys - add shortest paths to roots to the mask
+      var roots = this.primaryRoots(tags);
+
+      for( const tag of tags ) { // cover tags that are roots themselves
+        if( this.roots.includes(tag) && !roots.includes(tag) )
+          roots.push(tag);
+      }
+
+      if( exists(mask) ) { // enable shortest paths for masks->tags->roots
         mask = [...mask]; // make a copy as this gets modified
 
-      for( let root in key ) {
-        if( is_list(key) ) // list[key] instead of dict[key]
-          root = key[root]; 
+        for( const mask_key of mask ) { // enable paths from masks->tags
+          for( const tag of tags ) {
+            if( this.ancestors[mask_key].includes(tag) ) {
+              for( const ancestor of this.ancestors[mask_key] ) {
+                if( this.ancestors[ancestor].includes(tag) ) {
+                  if( !mask.includes(ancestor) )
+                    mask.push(ancestor);
+                }
+              }
+              break; // only enable shortest path
+            }
+          }
+        }
+
+        for( const tag of tags ) { // enable paths from tags->roots
+          if( !mask.includes(tag) )
+            mask.push(tag);
+
+          const ancestors = this.primaryAncestors(tag);
+
+          for( const ancestor of ancestors ) {
+            if( !mask.includes(ancestor) )
+              mask.push(ancestor);
+          }
+        }
+      }
+
+      for( let root of roots ) {
         data += this.treeReduce({
+          tags: tags,
           key: root, 
           func: func,
           data: '',
           depth: depth ?? 0,
-          mask: mask
+          mask: mask,
         });
       }
+    }
+    else { // global traversal (called with no tags)
+      data += this.treeReduce({
+        tags: this.roots,
+        func: func,
+        data: '',
+        depth: depth,
+        mask: mask,
+      });
     }
     return data;
   }
@@ -348,8 +423,12 @@ export class GraphDB {
         env[field_key] = env.properties[field_key]['func'](env);
     }
 
-    if( !exists(parent) )
+    if( !exists(parent) ) {
       this.crossReference(env); // related references
+
+      if( 'func' in env ) // root modifications
+        env.func(env);
+    }
 
     return env;
   }
@@ -418,17 +497,26 @@ export class GraphDB {
 
     //console.log('[GraphDB]  cross-referencing ancestors of:', ancestors, 'with descendants of:', descendants);
 
-    ancestors = this.ancestors[ancestors].concat(ancestors);
+    for( const ancestor of ancestors )
+      ancestors = merge_lists(ancestors, this.ancestors[ancestor]);
+
+    for( const descendant of descendants )
+      descendants = merge_lists(descendants, this.descendants[descendant]);
 
     descendants = this.filter({
-      keys: this.descendants[descendants].concat(descendants),
+      keys: descendants,
       refs: true, leafs: leafs
     });
 
+    //console.log(`XREF ans=${ancestors}  desc=${descendants}`);
+
     for( const ancestor of ancestors ) {
       for( const descendant of descendants ) {
+        if( ancestors.includes(descendant) )
+          continue;
         if( this.flat[descendant].refs.includes(ancestor) ) {
-          refs.push(descendant);
+          if( !refs.includes(descendant) )
+            refs.push(descendant);
           //break;
         }
       }
@@ -461,7 +549,7 @@ export class GraphDB {
       if( leafs && this.children[key].length != 0 )
         continue;
 
-      if( refs === true && is_empty(this.flat[key].refs) )
+      if( refs === true && is_empty(this.flat[key].refs) || this.flat[key].xref === false )
         continue;
 
       out.push(key);
@@ -606,15 +694,78 @@ export class GraphDB {
     return fields;
   }
 
+  /*
+   * Returns true if this key has no children, false otherwise.
+   */
+  isLeaf(key) {
+    return (this.children[key].length == 0);
+  }
+  
+  /*
+   * Find all the root nodes of this key or list of keys.
+   * If `primary=true`, then only the shortest path is used.
+   */
+  findRoots(key, primary=false, out=[]) {
+    if( is_list(key) ) {
+      for( const k of key ) {
+        this.findRoots(k, primary, out);
+      }
+      return out;
+    }
+
+    if( primary ) {
+      const root = this.primaryRoot(key);
+      if( !out.includes(root) ) {
+        out.push(root);
+        console.log(`[GraphDB]  Adding primary root '${root}' for '${key}'`);
+      }
+    }
+    else {
+      for( const ancestor of this.ancestors[key] ) {
+        if( this.roots.includes(ancestor) ) {
+          if( !out.includes(ancestor) )
+            out.push(ancestor);
+        }
+      }
+    }
+
+    return out;
+  }
+
+  /*
+   * Find the set of primary root nodes for the list of keys.
+   */
+  primaryRoots(keys) {
+    return this.findRoots(keys, true);
+  }
 
   /*
    * Find the root node with the shortest path to this node.
    */
   primaryRoot(key) {
-    for( const parent of this.ancestors[key] ) {
+    if( this.roots.includes(key) )
+      return key;
+
+    /*for( const parent of this.ancestors[key] ) {
       if( this.roots.includes(parent) )
         return parent;
-    }
+    }*/
+    return this.primaryAncestors(key).pop();
+  }
+
+  /*
+   * Find the shortest path of parent nodes to the root node.
+   */
+  primaryAncestors(key, out=[]) {
+    if( is_empty(this.parents[key]) )
+      return out;
+
+    const parent = this.parents[key][0];
+
+    if( !out.includes(parent) )
+      out.push(parent);
+
+    return this.primaryAncestors(parent, out);
   }
 
   /**
