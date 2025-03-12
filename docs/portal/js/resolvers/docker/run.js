@@ -1,3 +1,5 @@
+import { substitution } from "../../nanolab";
+
 /*
  * Generate 'docker run' templates for launching models & containers
  */
@@ -30,7 +32,13 @@ export function docker_run(env) {
     .replace('${OPTIONS}', opt)
     .replace('${IMAGE}', image)
     .replace('${COMMAND}', exec)
-    .replace('${ARGS}', args)
+    .replace('${ARGS}', args);
+
+  cmd = substitution(cmd, {
+    'MODEL': get_model_repo(env.url ?? env.model_name)
+  });
+
+  cmd = cmd
     .replace('\\ ', '\\')
     .replace('  \\', ' \\');  
 

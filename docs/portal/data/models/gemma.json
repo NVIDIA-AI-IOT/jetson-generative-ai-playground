@@ -1,6 +1,6 @@
 {
   "gemma-2": {
-    "name": "Google Gemma",
+    "name": "Google Gemma 2",
     "header": "gemma-header",
     "max_context_len": {"placeholder": 8192},
     "prefill_chunk": {"placeholder": 8192},
