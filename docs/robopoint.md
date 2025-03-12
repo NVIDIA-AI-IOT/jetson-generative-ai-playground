@@ -1,19 +1,22 @@
-# Tutorial - RoboPoint VLM for robotic manipulation
+# Tutorial - RoboPoint VLM for Robotic Manipulation
 
-[RoboPoint](https://robo-point.github.io/) is a general model that enables several downstream applications such as robot navigation, manipulation, and augmented reality (AR) assistance. 
+[RoboPoint](https://robo-point.github.io/) is a general vision/language model that has been specifially tuned for spatially-aware tasks and referencing the relative locations of objects during language-guided robot navigation, manipulation, and augmented reality (AR) assistance. 
 
 <img width="960px" src="images/robopoint_spot.GIF">
+
+!!! abstract "Credits"
+    Thank you to <a href="https://github.com/mschweig" target="_blank">Manuel Schweiger</a> for creating this tutorial, along with the University of Washington, NVIDIA, Allen Institute and Universidad Catolica San Pablo. 
 
 This tutorial provides a demo application for robotic manipulation using a Vision-Language Model (VLM) pipeline combined with a Large Language Model (LLM) to articulate manipulators using natural language. The RoboPoint inference pipeline generates 2D action points, which can be projected to 3D targets using depth maps or renowned algorithms like OpenCV [solvePNP](https://docs.opencv.org/4.x/d5/d1f/calib3d_solvePnP.html). The computed 3D targets can be fed into motion planning and deployed to real hardware or simulation environments like Isaac Sim. Future phases will include ROS2 integration with an Isaac Sim pipeline and the implementation of quantization methods.
 
 In this tutorial we will guide you through:
 
-:white_check_mark: Setting up the environment using jetson-containers   
-:white_check_mark: Connecting a [Boston Dynamics Spot with Arm](https://bostondynamics.com/products/spot/arm/){:target="_blank"} to RoboPoint VLM  
-:white_check_mark: Issuing commands using natural language prompts  
-:white_check_mark: Executing pick-and-place operations  
+> :white_check_mark: Setting up the environment using jetson-containers   
+> :white_check_mark: Connecting a [Boston Dynamics Spot with Arm](https://bostondynamics.com/products/spot/arm/){:target="_blank"} to RoboPoint VLM  
+> :white_check_mark: Issuing commands using natural language prompts  
+> :white_check_mark: Executing pick-and-place operations  
 
-## RoboPoint VLM for embodied AI
+## RoboPoint VLM for Embodied AI
 
 From rearranging objects on a table to putting groceries into shelves, robots must plan precise action points to perform tasks accurately and reliably. In spite of the recent adoption of vision language models (VLMs) to control robot behavior, VLMs struggle to precisely articulate robot actions using language. We introduce an automatic synthetic data generation pipeline that instruction-tunes VLMs to robotic domains and needs. 
 
@@ -25,8 +28,6 @@ Source: [RoboPoint Paper](https://arxiv.org/pdf/2406.10721)
 
 An RGB image is rendered from a procedurally generated 3D scene. We compute spatial relations from the camera's perspective and generate affordances by sampling points within object masks and object-surface intersections. These instruction-point pairs fine-tune the language model. During deployment, RoboPoint predicts 2D action points from an image and instruction, which are projected into 3D using a depth map. The robot then navigates to these 3D targets with a motion planner. For more information please refer the official [paper and project](https://robo-point.github.io)
 
-!!! abstract "Credits"
-    Thank you to University of Washington, NVIDIA, Allen Institute for Artificial Intelligence and Universidad Catolica San Pablo for publishing their great research. 
 
 ### Advantages of the proposed architecture
 
