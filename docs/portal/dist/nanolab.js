@@ -1279,7 +1279,7 @@ export class ConfigEditor {
           var link_url = link.url;
           links += `
             <div class="property-thumnail-link">
-              <a href="${link.url}" title="${link.url}" target="_blank">${link.name}</a>
+              &nbsp;<a href="${link.url}" title="${link.url}" target="_blank">${link.name}</a>
               <a href="${link.url}" title="${link.url}" class="property-field-link bi bi-box-arrow-up-right" target="_blank"></a>
             </div>`;
         }
@@ -1381,7 +1381,7 @@ export class ConfigEditor {
       let header = '';
 
       if( nonempty(env.links) ) {
-        header += '<div style="margin-left: 10px">';
+        header += '<div style="margin-top: 15px; margin-left: 10px;">';
         for( const link_name in env.links ) {
           const link = env.links[link_name];
           header += `<a href="${link.url}" title="${link.url}" class="btn-oval" target="_blank">${link.name}</a>`;
@@ -1666,7 +1666,7 @@ export class SearchBar {
     $('.btn-open-item, .nav-tree-app').on('click', (evt) => {
       const dialog = new ConfigEditor({
         db: this.db,
-        key: evt.target.dataset.key,
+        key: evt.currentTarget.dataset.key,
       });
     });
   }
@@ -2857,7 +2857,7 @@ export class ModalDialog {
     this.id = id;
     
     const header_mod = is_empty(classes) ? 'modal-header-mod' : classes;
-    const title_bar_mod = is_empty(classes) ? 'modal-title-bar-mod' : classes;
+    const title_bar_mod = 'modal-title-bar-mod'; //is_empty(classes) ? 'modal-title-bar-mod' : classes;
 
     let html = `
       <div class="modal" id="${id}">
@@ -3091,29 +3091,7 @@ export function TreeGrid(x) {
   x.name = x.db.index[x.key].name;
 
   if( x.depth <= 2 && x.db.isLeaf(x.key) ) {
-    const env = x.db.flat[x.key];
-    
-    if( exists(env.thumbnail) )
-      var style = `background-image: url('${env.thumbnail}'); `;
-    else
-      var style = `background: #76B900; `;
-
-    if( exists(env.nav_style) )
-      style += env.nav_style;
-    
-    let classes = exists(env.nav_class) ? env.nav_class : '';
-
-    if( is_string(classes) )
-      classes = [classes];
-
-    classes = classes.join(' ');
-
-    return `
-    <div class="card nav-tree-app ${classes}" id="${x.key}_card" data-key="${x.key}" style="${style}">
-      <div class="nav-tree-app-text">
-        ${x.name}
-      </div>
-    </div>`;
+    return GalleryItem(x);
   }
 
   switch(x.depth) {
@@ -3135,7 +3113,7 @@ export function TreeGridHeader(x) {
   return `
     <div style="white-space: nowrap;">
       <h1 style="margin-bottom: 15px;">${x.name}</h1>
-      <div class="flex flex-row" style="padding-bottom: 45px;">
+      <div id="${x.key}-nav-grid" class="flex flex-row" style="padding-bottom: 45px;">
         ${x.data}
       </div>
     </div>`;
@@ -3175,6 +3153,34 @@ export function TreeGridItem({db, key, data, name}) {
     </div>`;
 }
 
+/*
+ * Gallery items with background image
+ */
+export function GalleryItem(x) {
+  const env = x.db.flat[x.key];
+    
+  if( exists(env.thumbnail) )
+    var style = `background-image: url('${env.thumbnail}'); `;
+  else
+    var style = `background: #76B900; `;
+
+  if( exists(env.nav_style) )
+    style += env.nav_style;
+  
+  let classes = exists(env.nav_class) ? env.nav_class : '';
+
+  if( is_string(classes) )
+    classes = [classes];
+
+  classes = classes.join(' ');
+
+  return `
+  <div class="card nav-tree-app ${classes}" id="${x.key}_card" data-key="${x.key}" style="${style}">
+    <div class="nav-tree-app-text">
+      ${x.name}
+    </div>
+  </div>`;
+}
 /* END: /www/jetson-ai-lab.dev/staging/docs/portal/js/layout/treeGrid.js */
 
 /* BEGIN: /www/jetson-ai-lab.dev/staging/docs/portal/js/layout/menu.js */
@@ -3472,6 +3478,7 @@ Resolver({
   CUDA_VISIBLE_DEVICES: "none",
   thumbnail: '/portal/dist/images/n8n.webp',
   nav_class: 'theme-light',
+  nav_style: 'background-size: 150%; background-position: -120px, -55px;',
   hidden: true,
   tags: ['webui', 'shell'],
   links: {
@@ -3693,6 +3700,93 @@ Resolver({
 });
 /* END: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/launchers/open_webui.js */
 
+/* BEGIN: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/launchers/aim.js */
+/*
+ * aim launcher
+ */
+
+export function aim_server(env) {
+
+  let server_host = env.server_host.split(':');
+  let web_host = env.web_host.split(':');
+
+  const SERVER_PORT = server_host.pop();
+  const SERVER_ADDR = server_host.pop();
+
+  const WEB_PORT = web_host.pop();
+  const WEB_ADDR = web_host.pop();
+
+  env.properties.docker_run.text = [
+    `Collect, monitor, and analyze multimodal ML/AI datasets and metrics with <a href="https://github.com/aimhubio" target="_blank">Aim</a>,<br/>`,
+    `an open-source experiment tracker for visualization and model development.`,
+  ].join(' ');
+
+  env.properties.docker_run.footer = `
+    This starts a centralized <a href="https://aimstack.readthedocs.io/en/latest/using/remote_tracking.html" target="_blank">remote server</a>
+    that can be reached on your LAN from:<br/><br/>
+    &nbsp;&nbsp;&nbsp;&nbsp; <b>Browser</b> &nbsp;
+    <a href="http://${WEB_ADDR}:${WEB_PORT}" target="_blank" class="code">http://${WEB_ADDR}:${WEB_PORT}</a>
+    &nbsp;&nbsp;&nbsp;&nbsp; <b>Python</b> &nbsp;
+    <a href="http://${SERVER_ADDR}:${SERVER_PORT}" target="_blank" class="code">http://${SERVER_ADDR}:${SERVER_PORT}</a>
+    <br/><br/>
+    The data is logged from <a href="https://aimstack.readthedocs.io/en/latest/using/remote_tracking.html#client-side-setup" target="_blank">Python clients</a>
+    during jobs and is stored locally.  See these <a href="https://aimstack.readthedocs.io/en/latest/examples/images_explorer_gan.html" target="_blank">examples</a>.
+  `;
+
+  env.docker_run = substitution(docker_run(env), {
+    CACHE_DIR: env.cache_dir,
+    SERVER_PORT: SERVER_PORT,
+    SERVER_ADDR: SERVER_ADDR,
+    WEB_PORT: WEB_PORT,
+    WEB_ADDR: WEB_ADDR,
+  });
+  
+  return env.docker_run;
+}
+
+Resolver({
+  func: aim_server,
+  name: 'Aim',
+  filename: 'aim.sh',
+  web_host: '0.0.0.0:9200',
+  server_host: '0.0.0.0:53800',
+  docker_image: 'dustynv/aim:3.27.0-r36.4.0',
+  docker_options: [
+    '-it --rm --name=aim',
+    '--entrypoint /opt/aim/start-servers.sh',
+    '--volume ${CACHE_DIR}/aim:/repo',
+    '--env WEB_HOST=${WEB_ADDR}',
+    '--env WEB_PORT=${WEB_PORT}',
+    '--env SERVER_HOST=${SERVER_ADDR}',
+    '--env SERVER_PORT=${SERVER_PORT}',
+    '--publish ${WEB_PORT}:${WEB_PORT}',
+    '--publish ${SERVER_PORT}:${SERVER_PORT}',
+  ].join(' '),
+  docker_run: [
+    'docker run $OPTIONS $IMAGE'
+  ].join(' '),
+  thumbnail: '/portal/dist/images/aim.webp',
+  nav_style: 'background-size: 125%;',
+  nav_class: 'theme-light',
+  hidden: true,
+  tags: ['webui', 'shell'],
+  links: {
+    website: {
+      name: "aimstack.io",
+      url: "https://aimstack.io/"
+    },
+    github: {
+      name: "GitHub",
+      url: "https://github.com/aimhubio/aim"
+    },
+    docs: {
+      name: "Docs",
+      url: "https://aimstack.readthedocs.io/en/latest"
+    }
+  }
+});
+/* END: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/launchers/aim.js */
+
 /* BEGIN: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/launchers/python.js */
 /*
  * Python example
@@ -3771,7 +3865,7 @@ export function portainer(env) {
     `After you start Portainer, navigate to`,
     `<a href="http://${ADDR}:${PORT}" target="_blank" class="code">http://${ADDR}:${PORT}</a>`,
     `to establish a login and enter the management console.`,
-    `The docker command above mounts the system's socket for the docker daemon, so it can launch containers from within.`
+    `The command above mounts the system's socket for the docker daemon, so it can launch containers from within.`
   ].join(' ');
 
   env.docker_run = substitution(docker_run(env), {
@@ -3785,7 +3879,7 @@ export function portainer(env) {
 // map ports 9000 and 9443
 Resolver({
   func: portainer,
-  name: 'Portainer',
+  name: 'Portainer CE',
   filename: 'portainer.sh',
   server_host: '0.0.0.0:9100',
   docker_image: 'portainer/portainer-ce:lts',
@@ -3891,6 +3985,116 @@ Resolver({
   }
 });
 /* END: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/launchers/jupyterlab.js */
+
+/* BEGIN: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/launchers/llama-factory.js */
+/*
+ * llama-factory launcher
+ */
+
+export function llama_factory(env) {
+
+  let server_host = env.server_host.split(':');
+  let web_host = env.web_host.split(':');
+
+  const SERVER_PORT = server_host.pop();
+  const SERVER_ADDR = server_host.pop();
+
+  const WEB_PORT = web_host.pop();
+  const WEB_ADDR = web_host.pop();
+
+  const DOCKER_IMAGE = env.docker_image;
+
+  env.properties.docker_run.text = `
+    Fine-tune multimodal LLMs with <a href="https://github.com/hiyouga/LLaMA-Factory" target="_blank">LLaMa-Factory</a>,
+    supporting PEFT, QLoRA, RLHF, KTO, SFT, reward modelling, and pretraining through HuggingFace <a href="https://github.com/huggingface/trl" target="_blank">TRL</a>.
+
+    <p style="opacity: 80%; margin-top: 7px;">&nbsp;&nbsp;&nbsp;
+      <i class="bi bi-exclamation-triangle-fill"></i>&nbsp;&nbsp;
+      May exceed memory limits (Jetson AGX Orin 64GB recommended)
+    </p>
+  `;
+
+  env.properties.docker_run.footer = `
+    After you start the server, navigate your browser to <a href="http://${WEB_ADDR}:${WEB_PORT}" target="_blank" class="code">http://${WEB_ADDR}:${WEB_PORT}</a>
+    <br/>
+      This also supports serving a 
+      <a href="https://github.com/hiyouga/LLaMA-Factory/tree/main?tab=readme-ov-file#deploy-with-openai-style-api-and-vllm" target="_blank">
+        <span class="code">chat.completion</span>
+      </a>
+      inference endpoint with vLLM.
+    <p>
+      The <a href="https://github.com/hiyouga/LLaMA-Factory/blob/main/data/README.md" target="_blank">dataset formats</a> supported are Alpaca and ShareGPT,
+      and there are several build-in <a href="https://github.com/hiyouga/LLaMA-Factory/tree/main/examples" target="_blank">examples</a> that will automatically download test data subsets & models.
+    </p>
+    <p>
+      This is the build configuration of <span class="code">${DOCKER_IMAGE}</span> container:
+      <pre class="code" style="color: revert; line-height: revert; margin: 0px;">
+  - llamafactory version: 0.9.2
+  - Platform: Linux-5.15.148-tegra-aarch64-with-glibc2.35
+  - Python version: 3.10.12
+  - PyTorch version: 2.6.0 (GPU)
+  - Transformers version: 4.49.0
+  - Datasets version: 3.2.0
+  - Accelerate version: 1.2.1
+  - PEFT version: 0.12.0
+  - TRL version: 0.9.6
+  - Bitsandbytes version: 0.45.4.dev0
+  - vLLM version: 0.7.4
+      </pre>
+    You can change to the dark theme by adding <span class="code">?__theme=dark</span> to the URL.
+    </p>
+  `;
+
+  env.docker_run = substitution(docker_run(env), {
+    CACHE_DIR: env.cache_dir,
+    SERVER_PORT: SERVER_PORT,
+    SERVER_ADDR: SERVER_ADDR,
+    WEB_PORT: WEB_PORT,
+    WEB_ADDR: WEB_ADDR,
+  });
+  
+  return env.docker_run;
+}
+
+Resolver({
+  func: llama_factory,
+  name: 'LLaMa Factory',
+  filename: 'llama-factory.sh',
+  web_host: '0.0.0.0:7860',
+  server_host: '0.0.0.0:9000',
+  hf_token: null,
+  docker_image: 'dustynv/llama-factory:r36.4.0',
+  docker_options: [
+    '-it --rm --name=llama-factory',
+    '-v ${CACHE_DIR}/llama-factory/cache:/data/llama-factory/cache',
+    '-v ${CACHE_DIR}/llama-factory/config:/data/llama-factory/config',
+    '-v ${CACHE_DIR}/llama-factory/data:/data/llama-factory/data',
+    '-v ${CACHE_DIR}/llama-factory/saves:/data/llama-factory/saves',
+    '-e GRADIO_SERVER_PORT=${WEB_PORT}',
+    '-e API_PORT=${SERVER_PORT}',
+    '-p ${WEB_PORT}:${WEB_PORT}',
+    '-p ${SERVER_PORT}:${SERVER_PORT}',
+  ].join(' '),
+  docker_run: [
+    'docker run $OPTIONS $IMAGE'
+  ].join(' '),
+  thumbnail: '/portal/dist/images/llama-factory.webp',
+  nav_style: 'background-size: 115%;',
+  nav_class: 'theme-light',
+  hidden: true,
+  tags: ['webui', 'shell'],
+  links: {
+    github: {
+      name: "GitHub",
+      url: "https://github.com/hiyouga/LLaMA-Factory"
+    },
+    docs: {
+      name: "Docs",
+      url: "https://llamafactory.readthedocs.io/en/latest/"
+    }
+  }
+});
+/* END: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/launchers/llama-factory.js */
 
 /* BEGIN: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/launchers/curl.js */
 /*
@@ -4019,7 +4223,7 @@ export function get_endpoint_url(env, default_host='0.0.0.0:9000') {
 
 export function docker_network(env) {
   if( exists(env.docker_options) ) { // skip these defaults if manually specified
-    if( env.docker_options.includes('--network') || env.docker_options.includes('-p ') )
+    if( env.docker_options.includes('--network') || env.docker_options.includes('-p ') || env.docker_options.includes('--publish ') )
       return;
   }
 
@@ -4228,6 +4432,14 @@ Resolvers({
     help: [
       "Path on the server's native filesystem that will be mounted into the container\n",
       "for saving the models.\nIt is recommended this be relocated to NVME storage."
+    ]
+  },
+
+  web_host: {
+    name: "Webserver IP / Port",
+    tags: "string",
+    help: [
+      "This is the hostname/IP and port of the frontend webserver that browsers would navigate to."
     ]
   },
 

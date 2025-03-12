@@ -75,7 +75,7 @@ export class ConfigEditor {
           var link_url = link.url;
           links += `
             <div class="property-thumnail-link">
-              <a href="${link.url}" title="${link.url}" target="_blank">${link.name}</a>
+              &nbsp;<a href="${link.url}" title="${link.url}" target="_blank">${link.name}</a>
               <a href="${link.url}" title="${link.url}" class="property-field-link bi bi-box-arrow-up-right" target="_blank"></a>
             </div>`;
         }
@@ -177,7 +177,7 @@ export class ConfigEditor {
       let header = '';
 
       if( nonempty(env.links) ) {
-        header += '<div style="margin-left: 10px">';
+        header += '<div style="margin-top: 15px; margin-left: 10px;">';
         for( const link_name in env.links ) {
           const link = env.links[link_name];
           header += `<a href="${link.url}" title="${link.url}" class="btn-oval" target="_blank">${link.name}</a>`;

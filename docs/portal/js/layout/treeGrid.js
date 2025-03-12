@@ -6,29 +6,7 @@ export function TreeGrid(x) {
   x.name = x.db.index[x.key].name;
 
   if( x.depth <= 2 && x.db.isLeaf(x.key) ) {
-    const env = x.db.flat[x.key];
-    
-    if( exists(env.thumbnail) )
-      var style = `background-image: url('${env.thumbnail}'); `;
-    else
-      var style = `background: #76B900; `;
-
-    if( exists(env.nav_style) )
-      style += env.nav_style;
-    
-    let classes = exists(env.nav_class) ? env.nav_class : '';
-
-    if( is_string(classes) )
-      classes = [classes];
-
-    classes = classes.join(' ');
-
-    return `
-    <div class="card nav-tree-app ${classes}" id="${x.key}_card" data-key="${x.key}" style="${style}">
-      <div class="nav-tree-app-text">
-        ${x.name}
-      </div>
-    </div>`;
+    return GalleryItem(x);
   }
 
   switch(x.depth) {
@@ -50,7 +28,7 @@ export function TreeGridHeader(x) {
   return `
     <div style="white-space: nowrap;">
       <h1 style="margin-bottom: 15px;">${x.name}</h1>
-      <div class="flex flex-row" style="padding-bottom: 45px;">
+      <div id="${x.key}-nav-grid" class="flex flex-row" style="padding-bottom: 45px;">
         ${x.data}
       </div>
     </div>`;
@@ -88,4 +66,33 @@ export function TreeGridItem({db, key, data, name}) {
         ${data}
       </div>
     </div>`;
+}
+
+/*
+ * Gallery items with background image
+ */
+export function GalleryItem(x) {
+  const env = x.db.flat[x.key];
+    
+  if( exists(env.thumbnail) )
+    var style = `background-image: url('${env.thumbnail}'); `;
+  else
+    var style = `background: #76B900; `;
+
+  if( exists(env.nav_style) )
+    style += env.nav_style;
+  
+  let classes = exists(env.nav_class) ? env.nav_class : '';
+
+  if( is_string(classes) )
+    classes = [classes];
+
+  classes = classes.join(' ');
+
+  return `
+  <div class="card nav-tree-app ${classes}" id="${x.key}_card" data-key="${x.key}" style="${style}">
+    <div class="nav-tree-app-text">
+      ${x.name}
+    </div>
+  </div>`;
 }

@@ -18,7 +18,7 @@ export function portainer(env) {
     `After you start Portainer, navigate to`,
     `<a href="http://${ADDR}:${PORT}" target="_blank" class="code">http://${ADDR}:${PORT}</a>`,
     `to establish a login and enter the management console.`,
-    `The docker command above mounts the system's socket for the docker daemon, so it can launch containers from within.`
+    `The command above mounts the system's socket for the docker daemon, so it can launch containers from within.`
   ].join(' ');
 
   env.docker_run = substitution(docker_run(env), {
@@ -32,7 +32,7 @@ export function portainer(env) {
 // map ports 9000 and 9443
 Resolver({
   func: portainer,
-  name: 'Portainer',
+  name: 'Portainer CE',
   filename: 'portainer.sh',
   server_host: '0.0.0.0:9100',
   docker_image: 'portainer/portainer-ce:lts',

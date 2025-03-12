@@ -52,6 +52,14 @@ Resolvers({
     ]
   },
 
+  web_host: {
+    name: "Webserver IP / Port",
+    tags: "string",
+    help: [
+      "This is the hostname/IP and port of the frontend webserver that browsers would navigate to."
+    ]
+  },
+
   server_host: {
     name: "Server IP / Port",
     tags: "string",

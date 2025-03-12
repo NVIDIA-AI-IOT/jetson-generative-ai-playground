@@ -12,7 +12,7 @@ export class ModalDialog {
     this.id = id;
     
     const header_mod = is_empty(classes) ? 'modal-header-mod' : classes;
-    const title_bar_mod = is_empty(classes) ? 'modal-title-bar-mod' : classes;
+    const title_bar_mod = 'modal-title-bar-mod'; //is_empty(classes) ? 'modal-title-bar-mod' : classes;
 
     let html = `
       <div class="modal" id="${id}">

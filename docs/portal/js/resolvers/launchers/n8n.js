@@ -49,6 +49,7 @@ Resolver({
   CUDA_VISIBLE_DEVICES: "none",
   thumbnail: '/portal/dist/images/n8n.webp',
   nav_class: 'theme-light',
+  nav_style: 'background-size: 150%; background-position: -120px, -55px;',
   hidden: true,
   tags: ['webui', 'shell'],
   links: {

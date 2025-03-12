@@ -1247,6 +1247,10 @@ input[type="radio"].toggle {
     padding: 5px 10px;
 }
 
+.theme-light {
+    border-color:rgba(100,100,100,0.8) !important;
+}
+
 .theme-light .nav-tree-app-text {
     color: rgba(255,255,255,1);
     background-color: rgba(0,0,0,0.5);
@@ -1537,6 +1541,9 @@ input[type="radio"].toggle {
   background-position-y: 0px, -30px;
 }
 
-
+#webui-nav-grid {
+  flex-wrap: wrap;
+  width: 1500px;
+}
 /* END: $ROOT/css/models.css */
 

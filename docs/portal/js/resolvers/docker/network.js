@@ -23,7 +23,7 @@ export function get_endpoint_url(env, default_host='0.0.0.0:9000') {
 
 export function docker_network(env) {
   if( exists(env.docker_options) ) { // skip these defaults if manually specified
-    if( env.docker_options.includes('--network') || env.docker_options.includes('-p ') )
+    if( env.docker_options.includes('--network') || env.docker_options.includes('-p ') || env.docker_options.includes('--publish ') )
       return;
   }
 

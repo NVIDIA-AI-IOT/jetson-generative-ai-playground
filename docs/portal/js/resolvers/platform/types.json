@@ -59,7 +59,10 @@
     "refs": "docker_compose",
     "child_order": [
       "open_webui",
-      "flowise"
+      "flowise",
+      "n8n",
+      "portainer",
+      "aim"
     ]
   }
 }

@@ -220,7 +220,7 @@ export class SearchBar {
     $('.btn-open-item, .nav-tree-app').on('click', (evt) => {
       const dialog = new ConfigEditor({
         db: this.db,
-        key: evt.target.dataset.key,
+        key: evt.currentTarget.dataset.key,
       });
     });
   }
