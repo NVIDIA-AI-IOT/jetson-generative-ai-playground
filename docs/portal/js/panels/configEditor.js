@@ -45,7 +45,7 @@ export class ConfigEditor {
     // create layout and placeholder for dynamic content
     this.body = htmlToNode(`
       <div id="${this.ids.container}" class="flex flex-row full-width">
-        <div class="flex flex-row" style="flex-grow: 1;">
+        <div class="flex flex-row" style="flex-grow: 1; min-height: 500px;">
           <div id="${this.ids.property_panel}" style="flex: 1 1 0px;">
             <!-- PROPERTY TABLE -->
           </div>
@@ -56,11 +56,47 @@ export class ConfigEditor {
       </div>
     `);
 
+    this.property_panel = this.body.querySelector(`#${this.ids.property_panel}`);
+    
+    if( exists(env.thumbnail) ) {
+      let classes = exists(env.nav_class) ? env.nav_class : '';
+
+      if( is_string(classes) )
+        classes = [classes];
+  
+      classes = classes.join(' ');
+
+      let html = `<div class="property-thumbnail-panel ${classes}">`;
+
+      if( nonempty(env.links) ) {
+        let links = `<div class="property-thumbnail-links"><div class="property-thumbnail-links-heading">LINKS</div>`;
+        for( const link_key in env.links ) {
+          const link = env.links[link_key];
+          var link_url = link.url;
+          links += `
+            <div class="property-thumnail-link">
+              &nbsp;<a href="${link.url}" title="${link.url}" target="_blank">${link.name}</a>
+              <a href="${link.url}" title="${link.url}" class="property-field-link bi bi-box-arrow-up-right" target="_blank"></a>
+            </div>`;
+        }
+        links += `</div>`;
+        html += `<a href="${link_url}" title="${link_url}" target="_blank"><img src="${env.thumbnail}" class="property-thumbnail"></img></a>`;
+        html += links;
+      } 
+      else {
+        html += `<img src="${env.thumbnail}" class="property-thumbnail"></img>`;
+      }
+      
+      html += '</div>';
+
+      this.thumbnail_panel = htmlToNode(html, this.property_panel);
+    }
+
     this.properties = new PropertyTable({
       db: db,
       env: env,
       id: this.ids.property_table,
-      parent: this.body.querySelector(`#${this.ids.property_panel}`)
+      parent: this.property_panel,
     });
 
     this.properties.on('change', (event) => {self.updateCode()});
@@ -141,7 +177,7 @@ export class ConfigEditor {
       let header = '';
 
       if( nonempty(env.links) ) {
-        header += '<div style="margin-left: 10px">';
+        header += '<div style="margin-top: 15px; margin-left: 10px;">';
         for( const link_name in env.links ) {
           const link = env.links[link_name];
           header += `<a href="${link.url}" title="${link.url}" class="btn-oval" target="_blank">${link.name}</a>`;

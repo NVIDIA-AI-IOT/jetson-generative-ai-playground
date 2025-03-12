@@ -81,3 +81,7 @@
   background-position-y: 0px, -30px;
 }
 
+#webui-nav-grid {
+  flex-wrap: wrap;
+  width: 1500px;
+}

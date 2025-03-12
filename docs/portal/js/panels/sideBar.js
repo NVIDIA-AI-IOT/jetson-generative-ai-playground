@@ -9,23 +9,22 @@ import {
  */
 export function SideBar({id, parent, searchBar}) {
 
-  const node = htmlToNode(`
-    <div id="${id}-container" class="sidebar-container">
+  // <div id="${id}-container" class="sidebar-container">
+  const sidebar = htmlToNode(`
       <div id="${id}" class="flex flex-column sidebar">
         <!-- <div class="sidebar-controls"><i class="bi bi-chevron-left sidebar-toggle"></i></div> -->
-      </div>
-    </div>\n`,
+      </div>\n`,
     parent
   );
 
-  const sidebar = node.querySelector('.sidebar');
+  //const sidebar = node.querySelector('.sidebar');
 
   const statusMsg = StatusMessages({parent: sidebar});
   const deviceConfig = DeviceConfigHelp({parent: sidebar});
   const downloadPanel = DownloadPanel({parent: sidebar, searchBar: searchBar});
   const pipPanel = PipPanel({parent: sidebar, searchBar: searchBar});
 
-  return node;
+  return sidebar;
 }
 
 /*const node = htmlToNode(`
@@ -136,6 +135,6 @@ export function PipPanel({id, parent, searchBar}) {
     body: node,
     expanded: false,
     parent: parent,
-    icon: 'bi-arrow-down-circle'
+    icon: 'bi-gear-fill'
   });
 }

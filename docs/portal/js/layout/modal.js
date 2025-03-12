@@ -10,11 +10,15 @@ export class ModalDialog {
   
   constructor({id, title, body, header='', menu='', classes=''}) {
     this.id = id;
+    
+    const header_mod = is_empty(classes) ? 'modal-header-mod' : classes;
+    const title_bar_mod = 'modal-title-bar-mod'; //is_empty(classes) ? 'modal-title-bar-mod' : classes;
+
     let html = `
       <div class="modal" id="${id}">
         <div class="modal-content" id="${id}-content">
-          <div class="modal-header ${classes}" id="${id}-header">
-            <div class="modal-title-bar" id="${id}-title-bar">
+          <div class="modal-header ${header_mod}" id="${id}-header">
+            <div class="modal-title-bar ${title_bar_mod}" id="${id}-title-bar">
               <span class="modal-close">&times;</span>
               <span class="modal-title">${title}</span>
             </div>
