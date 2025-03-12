@@ -1,6 +1,6 @@
 # Tips - SSD + Docker
 
-Once you have your Jetson set up by flashing the latest Jetson Linux (L4T) BSP on it or by flashing the SD card with the whole JetPack image, before embarking on testing out all the great generative AI application using `jetson-containers`, you want to make sure you have a huge storage space for all the containers and the models you will download.  
+Once you have your Jetson set up by flashing the latest Jetson Linux (L4T) BSP on it or by flashing the SD card with the whole JetPack image, before embarking on testing out all the great generative AI application using `jetson-containers`, you want to make sure you have a huge storage space for all the containers and the models you will download.
 
 We are going to show how you can install SSD on your Jetson, and set it up for Docker.
 
@@ -35,27 +35,27 @@ We are going to show how you can install SSD on your Jetson, and set it up for D
 
     ```log
     NAME         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
-    loop0          7:0    0    16M  1 loop 
-    mmcblk1      179:0    0  59.5G  0 disk 
+    loop0          7:0    0    16M  1 loop
+    mmcblk1      179:0    0  59.5G  0 disk
     ├─mmcblk1p1  179:1    0    58G  0 part /
-    ├─mmcblk1p2  179:2    0   128M  0 part 
-    ├─mmcblk1p3  179:3    0   768K  0 part 
-    ├─mmcblk1p4  179:4    0  31.6M  0 part 
-    ├─mmcblk1p5  179:5    0   128M  0 part 
-    ├─mmcblk1p6  179:6    0   768K  0 part 
-    ├─mmcblk1p7  179:7    0  31.6M  0 part 
-    ├─mmcblk1p8  179:8    0    80M  0 part 
-    ├─mmcblk1p9  179:9    0   512K  0 part 
-    ├─mmcblk1p10 179:10   0    64M  0 part 
-    ├─mmcblk1p11 179:11   0    80M  0 part 
-    ├─mmcblk1p12 179:12   0   512K  0 part 
-    ├─mmcblk1p13 179:13   0    64M  0 part 
-    └─mmcblk1p14 179:14   0 879.5M  0 part 
+    ├─mmcblk1p2  179:2    0   128M  0 part
+    ├─mmcblk1p3  179:3    0   768K  0 part
+    ├─mmcblk1p4  179:4    0  31.6M  0 part
+    ├─mmcblk1p5  179:5    0   128M  0 part
+    ├─mmcblk1p6  179:6    0   768K  0 part
+    ├─mmcblk1p7  179:7    0  31.6M  0 part
+    ├─mmcblk1p8  179:8    0    80M  0 part
+    ├─mmcblk1p9  179:9    0   512K  0 part
+    ├─mmcblk1p10 179:10   0    64M  0 part
+    ├─mmcblk1p11 179:11   0    80M  0 part
+    ├─mmcblk1p12 179:12   0   512K  0 part
+    ├─mmcblk1p13 179:13   0    64M  0 part
+    └─mmcblk1p14 179:14   0 879.5M  0 part
     zram0        251:0    0   1.8G  0 disk [SWAP]
     zram1        251:1    0   1.8G  0 disk [SWAP]
     zram2        251:2    0   1.8G  0 disk [SWAP]
     zram3        251:3    0   1.8G  0 disk [SWAP]
-    nvme0n1      259:0    0 238.5G  0 disk 
+    nvme0n1      259:0    0 238.5G  0 disk
     ```
 
     Identify the device corresponding to your SSD. In this case, it is `nvme0n1`.
@@ -66,7 +66,7 @@ We are going to show how you can install SSD on your Jetson, and set it up for D
     sudo mkfs.ext4 /dev/nvme0n1
     ```
 
-    > You can choose any name for the mount point directory. We use `/ssd` here, but in `jetson-containers`' [setup.md](https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md) documentation, `/mnt` is used.  
+    > You can choose any name for the mount point directory. We use `/ssd` here, but in `jetson-containers`' [setup.md](https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md) documentation, `/mnt` is used.
 
     ```bash
     sudo mkdir /ssd
@@ -138,23 +138,36 @@ We are going to show how you can install SSD on your Jetson, and set it up for D
 
 3. Add default runtime in `/etc/docker/daemon.json`
 
-    ```bash
-    sudo vi /etc/docker/daemon.json
-    ```
+    === "One-liner"
 
-    Insert the `"default-runtime": "nvidia"` line as following:
+        ```bash
+        sudo apt install -y jq
+        sudo jq '. + {"default-runtime": "nvidia"}' /etc/docker/daemon.json | \
+          sudo tee /etc/docker/daemon.json.tmp && \
+          sudo mv /etc/docker/daemon.json.tmp /etc/docker/daemon.json
+        ```
 
-    ```json
-    {
-        "runtimes": {
-            "nvidia": {
-                "path": "nvidia-container-runtime",
-                "runtimeArgs": []
-            }
-        },
-        "default-runtime": "nvidia"
-    }
-    ```
+    === "Manual"
+
+        Use your editor to open the following JSON file.
+
+        ```bash
+        sudo vi /etc/docker/daemon.json
+        ```
+
+        Insert the `"default-runtime": "nvidia"` line as following:
+
+        ```json
+        {
+            "runtimes": {
+                "nvidia": {
+                    "path": "nvidia-container-runtime",
+                    "runtimeArgs": []
+                }
+            },
+            "default-runtime": "nvidia"
+        }
+        ```
 
 4. Restart Docker
 
@@ -178,7 +191,7 @@ Now that the SSD is installed and available on your device, you can use the extr
     sudo du -csh /var/lib/docker/ && \
         sudo mkdir /ssd/docker && \
         sudo rsync -axPS /var/lib/docker/ /ssd/docker/ && \
-        sudo du -csh  /ssd/docker/ 
+        sudo du -csh  /ssd/docker/
     ```
 
 3. Edit `/etc/docker/daemon.json`
@@ -221,7 +234,7 @@ Now that the SSD is installed and available on your device, you can use the extr
 1. \[Terminal 1\] First, open a terminal to monitor the disk usage while pulling a Docker image.
 
     ```bash
-    watch -n1 df 
+    watch -n1 df
     ```
 
 2. \[Terminal 2\] Next, open a new terminal and start Docker pull.

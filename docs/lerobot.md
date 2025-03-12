@@ -12,7 +12,7 @@ Let's run HuggingFace [`LeRobot`](https://github.com/huggingface/lerobot/) to tr
         <span class="blobDarkGreen5">Jetson AGX Orin (32GB)</span>
         <span class="blobLightGreen3">Jetson Orin NX (16GB)</span>
         <span class="blobLightGreen4">Jetson Orin Nano (8GB)</span><span title="Orin Nano 8GB can run Llava-7b, VILA-7b, and Obsidian-3B">⚠️</span>
-	   
+
     2. Running one of the following versions of [JetPack](https://developer.nvidia.com/embedded/jetpack):
 
         <span class="blobPink2">JetPack 6 GA (L4T r36.3)</span> <span class="blobPink1">JetPack 6.1 (L4T r36.4)</span>
@@ -21,13 +21,13 @@ Let's run HuggingFace [`LeRobot`](https://github.com/huggingface/lerobot/) to tr
 
         - `16.5GB` for [`lerobot`](https://hub.docker.com/r/dustynv/lerobot) container image
         - Space for models (`>2GB`)
-		 
+
     4. Clone and setup [`jetson-containers`](https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md){:target="_blank"}:
-    
+
 		```bash
 		git clone https://github.com/dusty-nv/jetson-containers
 		bash jetson-containers/install.sh
-		```  
+		```
 
 ## Work with Real-World Robots - Before starting containers
 
@@ -40,9 +40,9 @@ This section gives the guide on how you can work through the LeRobot official ex
 
     `lerobot` is designed to show camera view in windows and playback TTS audio while capturing dataset, so it is more convenient to setup your Jetson with its monitor (and speakers) attached to Jetson.d
 
-### a. Check `jetson-container`'s location 
+### a. Check `jetson-container`'s location
 
-![alt text](images/lerobot_jetson_ssd.png){: style="height:240px;" align=right} 
+![alt text](images/lerobot_jetson_ssd.png){: style="height:240px;" align=right}
 
 Through out the course of all the workflows of `lerobot`, we will be generating a lot of data, especially for capturing dataset.
 
@@ -89,7 +89,7 @@ This is already added to `run.sh` of `jetson-containers`, however, we need to ed
 sudo vi /etc/pulse/default.pa
 ```
 
-Find the section loading `module-native-protomocl-unix` and add `auth-anonymous=1` 
+Find the section loading `module-native-protomocl-unix` and add `auth-anonymous=1`
 
 ```bash
 ### Load several protocols
@@ -113,7 +113,7 @@ pulseaudio --start
 It is more convenient if the lerobot programs can always find the device of leader and follower arm with unique names.
 
 For that, we set an udev rule so that arms always get assigned the same device name as following.<br>
-This is first done on Jetson host side. 
+This is first done on Jetson host side.
 
 - `/dev/ttyACM_kochleader`   : Leader arm
 - `/dev/ttyACM_kochfollower` : Follower arm
@@ -139,27 +139,36 @@ SUBSYSTEM=="tty", ATTRS{idVendor}=="2f5d", ATTRS{idProduct}=="2202", ATTRS{seria
 SUBSYSTEM=="tty", ATTRS{idVendor}=="2f5d", ATTRS{idProduct}=="2202", ATTRS{serial}=="00000000000000000000000000000000", SYMLINK+="ttyACM_kochfollower"
 ```
 
-Now disconnect the leader arm, and then only connect the follower arm to Jetson.
+First copy this under `/etc/udev/rules.d/` (of host).
 
-Repeat the same steps to record the serial to edit the second line of `99-usb-serial.rules` file.
+```bash
+sudo cp ./99-usb-serial.rules /etc/udev/rules.d/
+```
+
+Now disconnect the leader arm, and then only connect the follower arm to Jetson. Record the serial for the follower arm.
 
 ```bash
 $ ll /dev/serial/by-id/
 lrwxrwxrwx 1 root root 13 Sep 24 13:07 usb-ROBOTIS_OpenRB-150_483F88DC50304A46462E3120FF0C081A-if00 -> ../../ttyACM0
-$ vi ./packages/robots/lerobot
 ```
 
-You should have `./99-usb-serial.rules` now looking like this:
+Repeat the same steps to record the serial to edit the lines of `/etc/udev/rules.d/99-usb-serial.rules` file.
+
+```bash
+$ sudo vi /etc/udev/rules.d/99-usb-serial.rules
+```
+
+You should have `/etc/udev/rules.d/99-usb-serial.rules` now looking like this:
 
 ```
 SUBSYSTEM=="tty", ATTRS{idVendor}=="2f5d", ATTRS{idProduct}=="2202", ATTRS{serial}=="BA98C8C350304A46462E3120FF121B06", SYMLINK+="ttyACM_kochleader"
 SUBSYSTEM=="tty", ATTRS{idVendor}=="2f5d", ATTRS{idProduct}=="2202", ATTRS{serial}=="483F88DC50304A46462E3120FF0C081A", SYMLINK+="ttyACM_kochfollower"
 ```
 
-Finally copy this under `/etc/udev/rules.d/` (of host), and restart Jetson.
+Finally make sure the file is under `/etc/udev/rules.d/` (of host), and restart Jetson.
 
 ```
-sudo cp ./99-usb-serial.rules /etc/udev/rules.d/
+sudo ls -l /etc/udev/rules.d/99-usb-serial.rules
 sudo reboot
 ```
 
@@ -180,7 +189,7 @@ lrwxrwxrwx 1 root root         7 Sep 24 16:13 /dev/ttyACM_kochleader -> ttyACM1
 
 ### e. (Optional) CSI cameras
 
-![alt text](images/lerobot_csi_camera.png){: style="height:240px;" align=right} 
+![alt text](images/lerobot_csi_camera.png){: style="height:240px;" align=right}
 
 If you plan to use CSI cameras (not USB webcams) for data capture, you will use the new `--csi2webcam` options of `jetson-containers`, which exposes V4L2loopback devices that performs like USB webcams (MJPEG) for CSI cameras using Jetson's hardware JPEG encoder.
 
@@ -265,7 +274,7 @@ pactl set-default-sink [SINK_NAME_OR_INDEX]
 
 You can order the Koch v1.1 kits from ROBOTIS. (*Note: they don't come with 3d printed parts*)
 
-- [Follower arm](https://www.robotis.us/koch-v1-1-low-cost-robot-arm-follower/) 
+- [Follower arm](https://www.robotis.us/koch-v1-1-low-cost-robot-arm-follower/)
 - [Leader arm](https://www.robotis.us/koch-v1-1-low-cost-robot-arm-follower/)
 
 TODO:
@@ -333,7 +342,7 @@ You should operate on ther container's terminal.
 Follow the [official document's section](https://github.com/huggingface/lerobot/blob/main/examples/7_get_started_with_real_robot.md#4-train-a-policy-on-your-data).
 
 !!! tip
-    
+
     ```bash
     wandb login
     DATA_DIR=data python lerobot/scripts/train.py \
@@ -351,7 +360,7 @@ Follow the [official document's section](https://github.com/huggingface/lerobot/
     If you perform the training on other Jetson or PC, `scp` the outputs directory content back to the orinal Jetson that has the leader and follower arm attached.
 
     ```bash
-    scp -r outputs/train/act_koch_test_01/ <USER>@<IP>:/ssd/jetson-containers/data/lerobot/outputs/train/ 
+    scp -r outputs/train/act_koch_test_01/ <USER>@<IP>:/ssd/jetson-containers/data/lerobot/outputs/train/
     ```
 
 ### 5. Evaluate your policy
@@ -389,7 +398,7 @@ Follow the [official document's section](https://github.com/huggingface/lerobot/
 
 ![alt text](images/lerobot_visuzalize_dataset_html.png)
 
-If everything goes well, you should see 
+If everything goes well, you should see
 
 <video controls autoplay muted style="max-width: 960px">
     <source src="https://github.com/user-attachments/assets/1ec6e4f0-0f85-4a8a-85c0-f70019f3405b" type="video/mp4">
@@ -442,11 +451,11 @@ jetson-containers run -w /opt/lerobot $(autotag lerobot) \
     policy=act \
     env=aloha \
     env.task=AlohaInsertion-v0 \
-    dataset_repo_id=lerobot/aloha_sim_insertion_human 
+    dataset_repo_id=lerobot/aloha_sim_insertion_human
 ```
 
 See [Trossen Robotics](https://www.trossenrobotics.com/aloha-kits) for dual-arm ALOHA kits, and [Robotis](https://www.robotis.us/project-bundles/) for the low-cost [Koch v1.1](https://github.com/jess-moss/koch-v1-1) kit used in the [LeRobot tutorial](https://github.com/huggingface/lerobot/blob/main/examples/7_get_started_with_real_robot.md):
 
 <a href="https://github.com/huggingface/lerobot/blob/main/examples/7_get_started_with_real_robot.md"><img src="images/lerobot_lego.jpg" style="max-width:750px;"></a>
 > HuggingFace LeRobot - Get Started with Real-World Robots ([YouTube Playlist](https://www.youtube.com/playlist?list=PLo2EIpI_JMQu5zrDHe4NchRyumF2ynaUN))
-  
+

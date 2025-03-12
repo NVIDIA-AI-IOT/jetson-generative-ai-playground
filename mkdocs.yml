@@ -1,5 +1,5 @@
 site_name: NVIDIA Jetson AI Lab
-site_url: 
+site_url:
 site_description: Showcasing generative AI projects that run on Jetson
 copyright: <ul class="global-footer__links"><li><a href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/" target="_blank">Privacy Policy</a></li><li> <a href="https://www.nvidia.com/en-us/privacy-center/" target="_blank">Manage My Privacy</a> </li> <li> <a href="https://www.nvidia.com/en-us/preferences/email-preferences/" target="_blank">Do Not Sell or Share My Data</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/legal-info/" target="_blank">Legal</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/accessibility/" target="_blank">Accessibility</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/company-policies/" target="_self">Corporate Policies</a> </li> <li> <a href="https://www.nvidia.com/en-us/product-security/" target="_blank">Product Security</a> </li> <li> <a href="https://www.nvidia.com/en-us/contact/" target="_blank">Contact</a> </li> </ul><div class="global-footer__copyright">Copyright &copy; 2024 NVIDIA Corporation</div>
 ## Repository
@@ -10,10 +10,10 @@ theme:
   name: "material"
   custom_dir: docs/overrides
   favicon: images/nvidia-favicon-rgb-16x16px@2x.png
-  font: 
+  font:
     text: NVIDIA-NALA
   palette:
-    - media: "(prefers-color-scheme: light)" 
+    - media: "(prefers-color-scheme: light)"
       scheme: nv-black-green
       primary: nv-black-green
       accent: nv-black-green
@@ -38,7 +38,7 @@ plugins:
         'tutorial_nanoowl.md': 'vit/tutorial_nanoowl.md'
         'tutorial_sam.md': 'vit/tutorial_sam.md'
         'tutorial_tam.md': 'vit/tutorial_tam.md'
-  
+
 use_directory_urls: false
 
 markdown_extensions:
@@ -68,7 +68,7 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.tabbed:
-      alternate_style: true 
+      alternate_style: true
   - pymdownx.tasklist:
       custom_checkbox: true
   - meta
@@ -84,13 +84,14 @@ nav:
   - Models: models.md
   - Tutorials:
     - Introduction: tutorial-intro.md
-    - Jetson Orin Nano Guide:
+    - Jetson Setup Guide:
       - 🚀 Initial Setup Guide - Jetson Orin Nano: initial_setup_jon.md
       - 🛸 Initial Setup (SDK Manager method): initial_setup_jon_sdkm.md
       - 🔖 SSD + Docker: tips_ssd-docker.md
       - 🔖 Memory optimization: tips_ram-optimization.md
+      - 🏆 Hackathon Guide: hackathon.md
     - Text (LLM):
-      - text-generation-webui: tutorial_text-generation.md 
+      - text-generation-webui: tutorial_text-generation.md
       - Ollama: tutorial_ollama.md
       - Open WebUI: tutorial_openwebui.md
       - llamaspeak: tutorial_llamaspeak.md
@@ -104,7 +105,7 @@ nav:
       - NanoVLM: tutorial_nano-vlm.md
       - Llama 3.2 Vision: llama_vlm.md
       - Agent Studio: agent_studio.md
-    - Vision Transformers (ViT): 
+    - Vision Transformers (ViT):
       - vit/index.md
       - EfficientViT: vit/tutorial_efficientvit.md
       - NanoOWL: vit/tutorial_nanoowl.md
@@ -113,10 +114,12 @@ nav:
       - TAM: vit/tutorial_tam.md
       - 📑 Knowledge Distillation: tutorial_distillation.md
     - Robotics & Embodiment:
-      - Cosmos 🆕: cosmos.md
+      - Cosmos: cosmos.md
+      - Genesis 🆕: genesis.md
       - LeRobot: lerobot.md
       - ROS2 Nodes: ros.md
       - OpenVLA: openvla.md
+      - RoboPoint 🆕: robopoint.md
     - Image Generation:
       - Flux & ComfyUI: tutorial_comfyui_flux.md
       - Stable Diffusion: tutorial_stable-diffusion.md
@@ -150,4 +153,4 @@ extra:
   analytics:
     provider: google
     property: G-SXH8S4Y8RW
-  
+
