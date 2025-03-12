@@ -1,7 +1,7 @@
 {
   "gemma-3": {
     "name": "Google Gemma 3",
-    "header": "gemma-header",
+    "header": "gemma-3-header",
     "max_context_len": {
       "placeholder": 4096
     },
