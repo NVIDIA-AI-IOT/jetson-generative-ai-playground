@@ -4,6 +4,10 @@
     "tags": ["enum"],
     "help": "The inference API and type of quantization used."
   },
+  "fp16" : {
+    "name": "fp16 (vLLM)",
+    "tags": ["quantization", "vllm"]
+  },
   "q4f16_ft": {
     "name": "q4f16_ft (MLC)",
     "tags": ["quantization", "mlc"]

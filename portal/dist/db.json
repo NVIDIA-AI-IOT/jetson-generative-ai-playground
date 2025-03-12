@@ -50,6 +50,29 @@
     "name": "AWQ TinyChat",
     "tags": "api"
   },
+  "vllm": {
+    "name": "vLLM",
+    "tags": "api",
+    "links": {
+      "mlc": {
+        "name": "vLLM",
+        "url": "https://github.com/vllm-project/vllm"
+      }
+    }
+  },
+  "vllm:jp6": {
+    "name": "dustynv/vllm:0.7.4-r36.4.0-cu128-24.04",
+    "docker_image": "dustynv/vllm:0.7.4-r36.4.0-cu128-24.04",
+    "docker_cmd": "vllm serve ${MODEL}",
+    "docker_args": "--host=${SERVER_ADDR} --port=${SERVER_PORT} --dtype=auto --max-num-seqs=${MAX_BATCH_SIZE} --max-model-len=${MAX_CONTEXT_LEN} --gpu-memory-utilization=0.75",
+    "docker_options": "-it --rm",
+    "server_host": "0.0.0.0:9000",
+    "tags": [
+      "container",
+      "vllm",
+      "l4t-r36"
+    ]
+  },
   "sudonim": {
     "docker_cmd": "sudonim serve",
     "docker_options": "-it --rm",
@@ -64,6 +87,13 @@
       "enum"
     ],
     "help": "The inference API and type of quantization used."
+  },
+  "fp16": {
+    "name": "fp16 (vLLM)",
+    "tags": [
+      "quantization",
+      "vllm"
+    ]
   },
   "q4f16_ft": {
     "name": "q4f16_ft (MLC)",
@@ -2648,6 +2678,192 @@
     "max_context_len": 8192,
     "prefill_chunk": 8192
   },
+  "gemma-3": {
+    "name": "Google Gemma 3",
+    "header": "gemma-3-header",
+    "max_context_len": {
+      "placeholder": 4096
+    },
+    "prefill_chunk": {
+      "placeholder": 4096
+    },
+    "blacklist": [
+      "mlc",
+      "llama_cpp"
+    ],
+    "tags": [
+      "llm"
+    ],
+    "links": {
+      "google": {
+        "name": "Google",
+        "url": "https://ai.google.dev/gemma"
+      },
+      "hf": {
+        "name": "Hugging Face",
+        "color": "yellow",
+        "url": "Google-Gemma-3"
+      }
+    },
+    "url": "Google-Gemma-3"
+  },
+  "gemma-3-1b-it": {
+    "name": "Gemma 3 1B",
+    "url": "hf.co/google/gemma-3-1b-it",
+    "blacklist": [
+      "mlc",
+      "llama_cpp"
+    ],
+    "tags": [
+      "gemma-3",
+      "orin"
+    ],
+    "links": {
+      "hf": {
+        "name": "Hugging Face",
+        "color": "yellow",
+        "url": "hf.co/google/gemma-3-1b-it"
+      }
+    },
+    "created_at": "2025-03-10 12:09:00+00:00",
+    "last_modified": "2025-03-12 14:50:25+00:00"
+  },
+  "gemma-3-4b-it": {
+    "name": "Gemma 3 4B",
+    "url": "hf.co/google/gemma-3-4b-it",
+    "blacklist": [
+      "mlc",
+      "llama_cpp"
+    ],
+    "tags": [
+      "gemma-3",
+      "orin"
+    ],
+    "links": {
+      "hf": {
+        "name": "Hugging Face",
+        "color": "yellow",
+        "url": "hf.co/google/gemma-3-4b-it"
+      }
+    },
+    "created_at": "2025-02-20 21:20:07+00:00",
+    "last_modified": "2025-03-12 08:30:08+00:00"
+  },
+  "gemma-3-12b-it": {
+    "name": "Gemma 3 12B",
+    "url": "hf.co/google/gemma-3-12b-it",
+    "blacklist": [
+      "mlc",
+      "llama_cpp"
+    ],
+    "tags": [
+      "gemma-3",
+      "orin-nx",
+      "agx-orin"
+    ],
+    "links": {
+      "hf": {
+        "name": "Hugging Face",
+        "color": "yellow",
+        "url": "hf.co/google/gemma-3-12b-it"
+      }
+    },
+    "created_at": "2025-03-01 19:11:34+00:00",
+    "last_modified": "2025-03-12 08:30:33+00:00"
+  },
+  "gemma-3-27b-it": {
+    "name": "Gemma 3 27B",
+    "url": "hf.co/google/gemma-3-27b-it",
+    "blacklist": [
+      "mlc",
+      "llama_cpp"
+    ],
+    "tags": [
+      "gemma-3",
+      "agx-orin"
+    ],
+    "links": {
+      "hf": {
+        "name": "Hugging Face",
+        "color": "yellow",
+        "url": "hf.co/google/gemma-3-27b-it"
+      }
+    },
+    "created_at": "2025-03-01 19:10:19+00:00",
+    "last_modified": "2025-03-12 08:30:59+00:00"
+  },
+  "gemma-3-1b-it-fp16-vllm-jp6": {
+    "title": "Gemma 3 1B \u276f vLLM fp16 \u276f JetPack 6.1+",
+    "quantization": "fp16",
+    "tags": [
+      "gemma-3-1b-it",
+      "fp16",
+      "vllm:jp6"
+    ]
+  },
+  "gemma-3-1b-it-q4_0-ollama-jp6": {
+    "title": "Gemma 3 1B \u276f ollama q4_0 \u276f JetPack 6.1+",
+    "quantization": "q4_0",
+    "tags": [
+      "gemma-3-1b-it",
+      "q4_0",
+      "ollama:jp6"
+    ]
+  },
+  "gemma-3-4b-it-fp16-vllm-jp6": {
+    "title": "Gemma 3 4B \u276f vLLM fp16 \u276f JetPack 6.1+",
+    "quantization": "fp16",
+    "tags": [
+      "gemma-3-4b-it",
+      "fp16",
+      "vllm:jp6"
+    ]
+  },
+  "gemma-3-4b-it-q4_0-ollama-jp6": {
+    "title": "Gemma 3 4B \u276f ollama q4_0 \u276f JetPack 6.1+",
+    "quantization": "q4_0",
+    "tags": [
+      "gemma-3-4b-it",
+      "q4_0",
+      "ollama:jp6"
+    ]
+  },
+  "gemma-3-12b-it-fp16-vllm-jp6": {
+    "title": "Gemma 3 12B \u276f vLLM fp16 \u276f JetPack 6.1+",
+    "quantization": "fp16",
+    "tags": [
+      "gemma-3-12b-it",
+      "fp16",
+      "vllm:jp6"
+    ]
+  },
+  "gemma-3-12b-it-q4_0-ollama-jp6": {
+    "title": "Gemma 3 12B \u276f ollama q4_0 \u276f JetPack 6.1+",
+    "quantization": "q4_0",
+    "tags": [
+      "gemma-3-12b-it",
+      "q4_0",
+      "ollama:jp6"
+    ]
+  },
+  "gemma-3-27b-it-fp16-vllm-jp6": {
+    "title": "Gemma 3 27B \u276f vLLM fp16 \u276f JetPack 6.1+",
+    "quantization": "fp16",
+    "tags": [
+      "gemma-3-27b-it",
+      "fp16",
+      "vllm:jp6"
+    ]
+  },
+  "gemma-3-27b-it-q4_0-ollama-jp6": {
+    "title": "Gemma 3 27B \u276f ollama q4_0 \u276f JetPack 6.1+",
+    "quantization": "q4_0",
+    "tags": [
+      "gemma-3-27b-it",
+      "q4_0",
+      "ollama:jp6"
+    ]
+  },
   "deepseek-r1-distill": {
     "name": "DeepSeek R1",
     "header": "deepseek-header",
@@ -4830,6 +5046,7 @@
       "open_webui"
     ],
     "child_order": [
+      "gemma-3",
       "deepseek-r1-distill",
       "qwen-2.5",
       "llama-3",

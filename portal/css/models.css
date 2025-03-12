@@ -59,6 +59,13 @@
   background-position-y: 0px, -74px;
 }
 
+.gemma-3-header {
+	background-image: url('/portal/data/models/images/headers/gemma3.svg'), linear-gradient(90deg, hsl(218.8, 21.2%, 50.3%) 0%, rgb(66, 39, 141) 57%, rgba(63, 82, 166, 0.9) 100%);
+	background-size: 48%, 100%;
+	background-position-x: 520px, 0px;
+	background-position-y: 30px, 0px;
+}
+
 .hf-smol-header {
   background-image: linear-gradient(90deg, hsl(36.4, 69%, 53.1%) 0%, rgb(66, 39, 141) 56%, rgba(63, 82, 166, 0) 65%), 
                       url('/portal/data/models/images/headers/smol-v2.webp');

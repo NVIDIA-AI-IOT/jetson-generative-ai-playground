@@ -31,6 +31,7 @@
       "open_webui"
     ],
     "child_order": [
+      "gemma-3",
       "deepseek-r1-distill",
       "qwen-2.5",
       "llama-3",
