@@ -5,25 +5,23 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="Showcasing generative AI projects that run on Jetson" name="description"/>
-  <link href="cosmos.html" rel="prev"/>
-  <link href="lerobot.html" rel="next"/>
-  <link href="images/nvidia-favicon-rgb-16x16px@2x.png" rel="icon"/>
+  <link href="../images/nvidia-favicon-rgb-16x16px@2x.png" rel="icon"/>
   <meta content="mkdocs-1.6.1, mkdocs-material-9.6.8" name="generator"/>
   <title>
-   Genesis 🆕 - NVIDIA Jetson AI Lab
+   AI Microservices Tutorial with n8n - NVIDIA Jetson AI Lab
   </title>
-  <link href="assets/stylesheets/main.8608ea7d.min.css" rel="stylesheet"/>
-  <link href="assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+  <link href="../assets/stylesheets/main.8608ea7d.min.css" rel="stylesheet"/>
+  <link href="../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
   <link href="https://fonts.googleapis.com/css?family=NVIDIA-NALA:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
   <style>
    :root{--md-text-font:"NVIDIA-NALA";--md-code-font:"Roboto Mono"}
   </style>
-  <link href="css/colors.css" rel="stylesheet"/>
-  <link href="css/extra.css" rel="stylesheet"/>
-  <link href="css/nvidia-font.css" rel="stylesheet"/>
+  <link href="../css/colors.css" rel="stylesheet"/>
+  <link href="../css/extra.css" rel="stylesheet"/>
+  <link href="../css/nvidia-font.css" rel="stylesheet"/>
   <script>
-   __md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}
+   __md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}
   </script>
   <script id="__analytics">
    function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SXH8S4Y8RW"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SXH8S4Y8RW",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SXH8S4Y8RW",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}
@@ -38,7 +36,7 @@
   <label class="md-overlay" for="__drawer">
   </label>
   <div data-md-component="skip">
-   <a class="md-skip" href="#genesis-a-generative-and-universal-physics-engine-for-robotics-and-beyond">
+   <a class="md-skip" href="#ai-microservices-tutorial-with-n8n">
     Skip to content
    </a>
   </div>
@@ -46,7 +44,7 @@
   </div>
   <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
    <nav aria-label="Header" class="md-header__inner md-grid">
-    <a aria-label="NVIDIA Jetson AI Lab" class="md-header__button md-logo" data-md-component="logo" href="index.html" title="NVIDIA Jetson AI Lab">
+    <a aria-label="NVIDIA Jetson AI Lab" class="md-header__button md-logo" data-md-component="logo" href="../index.html" title="NVIDIA Jetson AI Lab">
      <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54">
       </path>
@@ -67,7 +65,7 @@
       </div>
       <div class="md-header__topic" data-md-component="header-topic">
        <span class="md-ellipsis">
-        Genesis 🆕
+        AI Microservices Tutorial with n8n
        </span>
       </div>
      </div>
@@ -127,32 +125,32 @@
     <div class="md-grid">
      <ul class="md-tabs__list">
       <li class="md-tabs__item">
-       <a class="md-tabs__link" href="index.html">
+       <a class="md-tabs__link" href="../index.html">
         Home
        </a>
       </li>
       <li class="md-tabs__item">
-       <a class="md-tabs__link" href="models.html">
+       <a class="md-tabs__link" href="../models.html">
         Models
        </a>
       </li>
-      <li class="md-tabs__item md-tabs__item--active">
-       <a class="md-tabs__link" href="tutorial-intro.html">
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="../tutorial-intro.html">
         Tutorials
        </a>
       </li>
       <li class="md-tabs__item">
-       <a class="md-tabs__link" href="benchmarks.html">
+       <a class="md-tabs__link" href="../benchmarks.html">
         Benchmarks
        </a>
       </li>
       <li class="md-tabs__item">
-       <a class="md-tabs__link" href="community_articles.html">
+       <a class="md-tabs__link" href="../community_articles.html">
         Projects
        </a>
       </li>
       <li class="md-tabs__item">
-       <a class="md-tabs__link" href="research.html">
+       <a class="md-tabs__link" href="../research.html">
         Research Group
        </a>
       </li>
@@ -168,7 +166,7 @@
        <div class="md-sidebar__inner">
         <nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
          <label class="md-nav__title" for="__drawer">
-          <a aria-label="NVIDIA Jetson AI Lab" class="md-nav__button md-logo" data-md-component="logo" href="index.html" title="NVIDIA Jetson AI Lab">
+          <a aria-label="NVIDIA Jetson AI Lab" class="md-nav__button md-logo" data-md-component="logo" href="../index.html" title="NVIDIA Jetson AI Lab">
            <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54">
             </path>
@@ -178,29 +176,29 @@
          </label>
          <ul class="md-nav__list" data-md-scrollfix="">
           <li class="md-nav__item">
-           <a class="md-nav__link" href="index.html">
+           <a class="md-nav__link" href="../index.html">
             <span class="md-ellipsis">
              Home
             </span>
            </a>
           </li>
           <li class="md-nav__item">
-           <a class="md-nav__link" href="models.html">
+           <a class="md-nav__link" href="../models.html">
             <span class="md-ellipsis">
              Models
             </span>
            </a>
           </li>
-          <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-           <input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
-           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+          <li class="md-nav__item md-nav__item--nested">
+           <input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             <span class="md-ellipsis">
              Tutorials
             </span>
             <span class="md-nav__icon md-icon">
             </span>
            </label>
-           <nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+           <nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
             <label class="md-nav__title" for="__nav_3">
              <span class="md-nav__icon md-icon">
              </span>
@@ -208,7 +206,7 @@
             </label>
             <ul class="md-nav__list" data-md-scrollfix="">
              <li class="md-nav__item">
-              <a class="md-nav__link" href="tutorial-intro.html">
+              <a class="md-nav__link" href="../tutorial-intro.html">
                <span class="md-ellipsis">
                 Introduction
                </span>
@@ -231,35 +229,35 @@
                </label>
                <ul class="md-nav__list" data-md-scrollfix="">
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="initial_setup_jon.html">
+                 <a class="md-nav__link" href="../initial_setup_jon.html">
                   <span class="md-ellipsis">
                    🚀 Initial Setup Guide - Jetson Orin Nano
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="initial_setup_jon_sdkm.html">
+                 <a class="md-nav__link" href="../initial_setup_jon_sdkm.html">
                   <span class="md-ellipsis">
                    🛸 Initial Setup (SDK Manager method)
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="tips_ssd-docker.html">
+                 <a class="md-nav__link" href="../tips_ssd-docker.html">
                   <span class="md-ellipsis">
                    🔖 SSD + Docker
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="tips_ram-optimization.html">
+                 <a class="md-nav__link" href="../tips_ram-optimization.html">
                   <span class="md-ellipsis">
                    🔖 Memory optimization
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="hackathon.html">
+                 <a class="md-nav__link" href="../hackathon.html">
                   <span class="md-ellipsis">
                    🏆 Hackathon Guide
                   </span>
@@ -285,7 +283,7 @@
                </label>
                <ul class="md-nav__list" data-md-scrollfix="">
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorials/microservices_intro.html">
+                 <a class="md-nav__link" href="microservices_intro.html">
                   <span class="md-ellipsis">
                    Microservices Intro
                   </span>
@@ -311,56 +309,56 @@
                </label>
                <ul class="md-nav__list" data-md-scrollfix="">
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_text-generation.html">
+                 <a class="md-nav__link" href="../tutorial_text-generation.html">
                   <span class="md-ellipsis">
                    text-generation-webui
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_ollama.html">
+                 <a class="md-nav__link" href="../tutorial_ollama.html">
                   <span class="md-ellipsis">
                    Ollama
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_openwebui.html">
+                 <a class="md-nav__link" href="../tutorial_openwebui.html">
                   <span class="md-ellipsis">
                    Open WebUI
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_llamaspeak.html">
+                 <a class="md-nav__link" href="../tutorial_llamaspeak.html">
                   <span class="md-ellipsis">
                    llamaspeak
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_nano-llm.html">
+                 <a class="md-nav__link" href="../tutorial_nano-llm.html">
                   <span class="md-ellipsis">
                    NanoLLM
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="tensorrt_llm.html">
+                 <a class="md-nav__link" href="../tensorrt_llm.html">
                   <span class="md-ellipsis">
                    TensorRT-LLM
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_slm.html">
+                 <a class="md-nav__link" href="../tutorial_slm.html">
                   <span class="md-ellipsis">
                    Small LLM (SLM)
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_api-examples.html">
+                 <a class="md-nav__link" href="../tutorial_api-examples.html">
                   <span class="md-ellipsis">
                    API Examples
                   </span>
@@ -386,35 +384,35 @@
                </label>
                <ul class="md-nav__list" data-md-scrollfix="">
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_llava.html">
+                 <a class="md-nav__link" href="../tutorial_llava.html">
                   <span class="md-ellipsis">
                    LLaVA
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_live-llava.html">
+                 <a class="md-nav__link" href="../tutorial_live-llava.html">
                   <span class="md-ellipsis">
                    Live LLaVA
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_nano-vlm.html">
+                 <a class="md-nav__link" href="../tutorial_nano-vlm.html">
                   <span class="md-ellipsis">
                    NanoVLM
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="llama_vlm.html">
+                 <a class="md-nav__link" href="../llama_vlm.html">
                   <span class="md-ellipsis">
                    Llama 3.2 Vision
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="agent_studio.html">
+                 <a class="md-nav__link" href="../agent_studio.html">
                   <span class="md-ellipsis">
                    Agent Studio
                   </span>
@@ -426,7 +424,7 @@
              <li class="md-nav__item md-nav__item--nested">
               <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_6" type="checkbox"/>
               <div class="md-nav__link md-nav__container">
-               <a class="md-nav__link" href="vit/index.html">
+               <a class="md-nav__link" href="../vit/index.html">
                 <span class="md-ellipsis">
                  Vision Transformers (ViT)
                 </span>
@@ -444,42 +442,42 @@
                </label>
                <ul class="md-nav__list" data-md-scrollfix="">
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="vit/tutorial_efficientvit.html">
+                 <a class="md-nav__link" href="../vit/tutorial_efficientvit.html">
                   <span class="md-ellipsis">
                    EfficientViT
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="vit/tutorial_nanoowl.html">
+                 <a class="md-nav__link" href="../vit/tutorial_nanoowl.html">
                   <span class="md-ellipsis">
                    NanoOWL
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="vit/tutorial_nanosam.html">
+                 <a class="md-nav__link" href="../vit/tutorial_nanosam.html">
                   <span class="md-ellipsis">
                    NanoSAM
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="vit/tutorial_sam.html">
+                 <a class="md-nav__link" href="../vit/tutorial_sam.html">
                   <span class="md-ellipsis">
                    SAM
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="vit/tutorial_tam.html">
+                 <a class="md-nav__link" href="../vit/tutorial_tam.html">
                   <span class="md-ellipsis">
                    TAM
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_distillation.html">
+                 <a class="md-nav__link" href="../tutorial_distillation.html">
                   <span class="md-ellipsis">
                    📑 Knowledge Distillation
                   </span>
@@ -488,8 +486,8 @@
                </ul>
               </nav>
              </li>
-             <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-              <input checked="" class="md-nav__toggle md-toggle" id="__nav_3_7" type="checkbox"/>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_7" type="checkbox"/>
               <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
                <span class="md-ellipsis">
                 Robotics &amp; Embodiment
@@ -497,7 +495,7 @@
                <span class="md-nav__icon md-icon">
                </span>
               </label>
-              <nav aria-expanded="true" aria-labelledby="__nav_3_7_label" class="md-nav" data-md-level="2">
+              <nav aria-expanded="false" aria-labelledby="__nav_3_7_label" class="md-nav" data-md-level="2">
                <label class="md-nav__title" for="__nav_3_7">
                 <span class="md-nav__icon md-icon">
                 </span>
@@ -505,73 +503,42 @@
                </label>
                <ul class="md-nav__list" data-md-scrollfix="">
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="cosmos.html">
+                 <a class="md-nav__link" href="../cosmos.html">
                   <span class="md-ellipsis">
                    Cosmos
                   </span>
                  </a>
                 </li>
-                <li class="md-nav__item md-nav__item--active">
-                 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-                 <label class="md-nav__link md-nav__link--active" for="__toc">
-                  <span class="md-ellipsis">
-                   Genesis 🆕
-                  </span>
-                  <span class="md-nav__icon md-icon">
-                  </span>
-                 </label>
-                 <a class="md-nav__link md-nav__link--active" href="genesis.html">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="../genesis.html">
                   <span class="md-ellipsis">
                    Genesis 🆕
                   </span>
                  </a>
-                 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-                  <label class="md-nav__title" for="__toc">
-                   <span class="md-nav__icon md-icon">
-                   </span>
-                   Table of contents
-                  </label>
-                  <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-                   <li class="md-nav__item">
-                    <a class="md-nav__link" href="#start-container">
-                     <span class="md-ellipsis">
-                      Start Container
-                     </span>
-                    </a>
-                   </li>
-                   <li class="md-nav__item">
-                    <a class="md-nav__link" href="#demo-walkthroughs">
-                     <span class="md-ellipsis">
-                      Demo Walkthroughs
-                     </span>
-                    </a>
-                   </li>
-                  </ul>
-                 </nav>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="lerobot.html">
+                 <a class="md-nav__link" href="../lerobot.html">
                   <span class="md-ellipsis">
                    LeRobot
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="ros.html">
+                 <a class="md-nav__link" href="../ros.html">
                   <span class="md-ellipsis">
                    ROS2 Nodes
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="openvla.html">
+                 <a class="md-nav__link" href="../openvla.html">
                   <span class="md-ellipsis">
                    OpenVLA
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="robopoint.html">
+                 <a class="md-nav__link" href="../robopoint.html">
                   <span class="md-ellipsis">
                    RoboPoint 🆕
                   </span>
@@ -597,28 +564,28 @@
                </label>
                <ul class="md-nav__list" data-md-scrollfix="">
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_comfyui_flux.html">
+                 <a class="md-nav__link" href="../tutorial_comfyui_flux.html">
                   <span class="md-ellipsis">
                    Flux &amp; ComfyUI
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_stable-diffusion.html">
+                 <a class="md-nav__link" href="../tutorial_stable-diffusion.html">
                   <span class="md-ellipsis">
                    Stable Diffusion
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_stable-diffusion-xl.html">
+                 <a class="md-nav__link" href="../tutorial_stable-diffusion-xl.html">
                   <span class="md-ellipsis">
                    Stable Diffusion XL
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="nerf.html">
+                 <a class="md-nav__link" href="../nerf.html">
                   <span class="md-ellipsis">
                    nerfstudio
                   </span>
@@ -644,21 +611,21 @@
                </label>
                <ul class="md-nav__list" data-md-scrollfix="">
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_nanodb.html">
+                 <a class="md-nav__link" href="../tutorial_nanodb.html">
                   <span class="md-ellipsis">
                    NanoDB
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_llamaindex.html">
+                 <a class="md-nav__link" href="../tutorial_llamaindex.html">
                   <span class="md-ellipsis">
                    LlamaIndex
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_jetson-copilot.html">
+                 <a class="md-nav__link" href="../tutorial_jetson-copilot.html">
                   <span class="md-ellipsis">
                    Jetson Copilot
                   </span>
@@ -684,35 +651,35 @@
                </label>
                <ul class="md-nav__list" data-md-scrollfix="">
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_holoscan.html">
+                 <a class="md-nav__link" href="../tutorial_holoscan.html">
                   <span class="md-ellipsis">
                    Holoscan SDK
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_jps.html">
+                 <a class="md-nav__link" href="../tutorial_jps.html">
                   <span class="md-ellipsis">
                    Jetson Platform Services
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_gapi_workflows.html">
+                 <a class="md-nav__link" href="../tutorial_gapi_workflows.html">
                   <span class="md-ellipsis">
                    Gapi Workflows
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_gapi_microservices.html">
+                 <a class="md-nav__link" href="../tutorial_gapi_microservices.html">
                   <span class="md-ellipsis">
                    Gapi Micro Services
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_ultralytics.html">
+                 <a class="md-nav__link" href="../tutorial_ultralytics.html">
                   <span class="md-ellipsis">
                    Ultralytics YOLOv8
                   </span>
@@ -738,21 +705,21 @@
                </label>
                <ul class="md-nav__list" data-md-scrollfix="">
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_whisper.html">
+                 <a class="md-nav__link" href="../tutorial_whisper.html">
                   <span class="md-ellipsis">
                    Whisper
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_audiocraft.html">
+                 <a class="md-nav__link" href="../tutorial_audiocraft.html">
                   <span class="md-ellipsis">
                    AudioCraft
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_voicecraft.html">
+                 <a class="md-nav__link" href="../tutorial_voicecraft.html">
                   <span class="md-ellipsis">
                    VoiceCraft
                   </span>
@@ -765,21 +732,21 @@
            </nav>
           </li>
           <li class="md-nav__item">
-           <a class="md-nav__link" href="benchmarks.html">
+           <a class="md-nav__link" href="../benchmarks.html">
             <span class="md-ellipsis">
              Benchmarks
             </span>
            </a>
           </li>
           <li class="md-nav__item">
-           <a class="md-nav__link" href="community_articles.html">
+           <a class="md-nav__link" href="../community_articles.html">
             <span class="md-ellipsis">
              Projects
             </span>
            </a>
           </li>
           <li class="md-nav__item">
-           <a class="md-nav__link" href="research.html">
+           <a class="md-nav__link" href="../research.html">
             <span class="md-ellipsis">
              Research Group
             </span>
@@ -794,313 +761,15 @@
       <div class="md-sidebar__scrollwrap">
        <div class="md-sidebar__inner">
         <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-         <label class="md-nav__title" for="__toc">
-          <span class="md-nav__icon md-icon">
-          </span>
-          Table of contents
-         </label>
-         <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#start-container">
-            <span class="md-ellipsis">
-             Start Container
-            </span>
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#demo-walkthroughs">
-            <span class="md-ellipsis">
-             Demo Walkthroughs
-            </span>
-           </a>
-          </li>
-         </ul>
         </nav>
        </div>
       </div>
      </div>
      <div class="md-content" data-md-component="content">
       <article class="md-content__inner md-typeset">
-       <h1 id="genesis-a-generative-and-universal-physics-engine-for-robotics-and-beyond">
-        Genesis: A Generative and Universal Physics Engine for Robotics and Beyond
+       <h1 id="ai-microservices-tutorial-with-n8n">
+        AI Microservices Tutorial with n8n
        </h1>
-       <p>
-        <a href="https://genesis-embodied-ai.github.io/" target="_blank">
-         Genesis
-        </a>
-        is an open-source physics simulation platform with massively-parallel GPU acceleration and provisions for
-        <a href="https://robogen-ai.github.io/" target="_blank">
-         generative automation
-        </a>
-        .
-       </p>
-       <p>
-        As per the project's
-        <a href="https://genesis-world.readthedocs.io/en/latest/user_guide/index.html" target="_blank">
-         user guide
-        </a>
-        and
-        <a href="https://github.com/Genesis-Embodied-AI/Genesis" target="_blank">
-         GitHub repo
-        </a>
-        , it is designed for robotics &amp; embodied AI by a broad consortium of organizations:
-       </p>
-       <ol>
-        <li>
-         A universal physics engine re-built from the ground up, capable of simulating a wide range of materials and physical phenomena.
-        </li>
-        <li>
-         A lightweight, ultra-fast, pythonic, and user-friendly robotics simulation platform.
-        </li>
-        <li>
-         A powerful and fast photo-realistic rendering system.
-        </li>
-        <li>
-         A generative data engine that transforms user-prompted natural language description into various modalities of data.
-        </li>
-       </ol>
-       <table>
-        <tr>
-         <td style="text-align: center; max-width: 550px;">
-          <a href="https://robogen-ai.github.io/" target="_blank">
-           <video autoplay="" controls="" loop="" muted="">
-            <source src="https://genesis-embodied-ai.github.io/videos/manipulation/throw.mp4" type="video/mp4">
-            </source>
-           </video>
-          </a>
-          <span style="font-size: 90%; font-style: italic;">
-           "A mobile franka arm throws all the objects on the floor into the basket."
-          </span>
-         </td>
-         <td style="text-align: center; max-width: 550px;">
-          <a href="https://robogen-ai.github.io/" target="_blank">
-           <video autoplay="" controls="" loop="" muted="">
-            <source src="https://genesis-embodied-ai.github.io/videos/manipulation/book.mp4" type="video/mp4">
-            </source>
-           </video>
-          </a>
-          <span style="font-size: 90%; font-style: italic;">
-           "A mobile franka arm re-organizes the books on the table by pushing them..."
-          </span>
-         </td>
-        </tr>
-        <tr>
-         <td style="text-align: center; max-width: 550px;">
-          <video autoplay="" controls="" loop="" muted="">
-           <source src="https://genesis-embodied-ai.github.io/videos/facial_single.mp4" type="video/mp4">
-           </source>
-          </video>
-          <span style="font-size: 90%; font-style: italic;">
-           Speech Audio, Facial Animation &amp; Emotion Generation for Digital Human
-          </span>
-         </td>
-         <td style="text-align: center; max-width: 550px;">
-          <video autoplay="" controls="" loop="" muted="">
-           <source src="https://genesis-embodied-ai.github.io/videos/locomotion/quadraped/traverse.mp4" type="video/mp4">
-           </source>
-          </video>
-          <span style="font-size: 90%; font-style: italic;">
-           "Quadraped locomotion with various base heights (Sim2Real)"
-          </span>
-         </td>
-        </tr>
-       </table>
-       <blockquote>
-        <p>
-         Special thanks to
-         <a href="https://www.linkedin.com/in/johnnycano/" target="_blank">
-          Johnny Núñez Cano
-         </a>
-         for porting Genesis to arm64+CUDA and Jetson, along with the extensive stack to support it.
-        </p>
-       </blockquote>
-       <div class="admonition abstract">
-        <p class="admonition-title">
-         What you need
-        </p>
-        <ol>
-         <li>
-          <p>
-           One of the following Jetson devices:
-          </p>
-          <p>
-           <span class="blobDarkGreen4">
-            Jetson AGX Orin (64GB)
-           </span>
-           <span class="blobDarkGreen5">
-            Jetson AGX Orin (32GB)
-           </span>
-          </p>
-         </li>
-         <li>
-          <p>
-           Running one of the following versions of
-           <a href="https://developer.nvidia.com/embedded/jetpack" target="_blank">
-            JetPack
-           </a>
-           :
-          </p>
-          <p>
-           <span class="blobPink2">
-            JetPack 6 (L4T r36.x)
-           </span>
-          </p>
-         </li>
-         <li>
-          <p>
-           <span class="markedYellow">
-            NVMe SSD
-            <strong>
-             highly recommended
-            </strong>
-           </span>
-           for storage speed and space
-          </p>
-          <ul>
-           <li>
-            <code>
-             11.1GB
-            </code>
-            for
-            <a href="https://hub.docker.com/r/dustynv/genesis">
-             <code>
-              dustynv/genesis:r36.4.0-cu128
-             </code>
-            </a>
-            container image
-           </li>
-           <li>
-            Space for models and datasets (
-            <code>
-             &gt;50GB
-            </code>
-            )
-           </li>
-          </ul>
-         </li>
-         <li>
-          <p>
-           Clone and setup
-           <a href="https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md" target="_blank">
-            <code>
-             jetson-containers
-            </code>
-           </a>
-           :
-          </p>
-          <div class="highlight">
-           <pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dusty-nv/jetson-containers
-bash<span class="w"> </span>jetson-containers/install.sh
-</code></pre>
-          </div>
-         </li>
-         <li>
-          <p>
-           Please refer to the upstream project for more resources:
-          </p>
-          <ul>
-           <li>
-            Code Examples -
-            <a href="https://github.com/Genesis-Embodied-AI/Genesis/tree/main/examples" target="_blank">
-             https://github.com/Genesis-Embodied-AI/Genesis/tree/main/examples
-            </a>
-           </li>
-           <li>
-            Getting Started -
-            <a href="https://genesis-world.readthedocs.io/en/latest/user_guide/index.html">
-             https://genesis-world.readthedocs.io/en/latest/user_guide/index.html
-            </a>
-           </li>
-           <li>
-            Documentation -
-            <a href="https://genesis-world.readthedocs.io" target="_blank">
-             https://genesis-world.readthedocs.io
-            </a>
-           </li>
-          </ul>
-         </li>
-        </ol>
-       </div>
-       <p>
-        !!! "Final Version"
-    Development status of the arm64 porting efforts (3/17/25)
-       </p>
-       <pre><code>- OMPL and LuisaRenders is working on Jetson.
-- [OMPL](https://github.com/ompl/ompl){:target="_blank"} - support for motion planning and IK.
-- [LuisaRender](https://github.com/Alif-01/LuisaRender/tree/d3b8e341540832ebf517cbe6a8abf5da2cf2e026){:target="_blank"} - support for CUDA-accelerated raytracing.
-- Ask questions in [`#robot-simulation-discuss`](https://discord.gg/BmqNSK4886){:target="_blank"} on Discord or [`jetson-containers/issues`](https://github.com/dusty-nv/jetson-containers/issues){:target="_blank"}
-</code></pre>
-       <h2 id="start-container">
-        Start Container
-       </h2>
-       <p>
-        Currently a container image is available for JetPack 6.1+ and L4T R36.4, built with CUDA 12.8 and PyTorch 2.6:
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>jetson-containers<span class="w"> </span>run<span class="w"> </span>dustynv/genesis:r36.4.0-cu128
-</code></pre>
-       </div>
-       <p>
-        To mount your own directories into the container, use the
-        <a href="https://docs.docker.com/engine/reference/commandline/run/#volume">
-         <code>
-          -v
-         </code>
-        </a>
-        or
-        <a href="https://docs.docker.com/engine/reference/commandline/run/#volume">
-         <code>
-          --volume
-         </code>
-        </a>
-        flags:
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>jetson-containers<span class="w"> </span>run<span class="w"> </span>-v<span class="w"> </span>/path/on/host:/path/in/container<span class="w"> </span>dustynv/genesis:r36.4.0-cu128
-</code></pre>
-       </div>
-       <h2 id="demo-walkthroughs">
-        Demo Walkthroughs
-       </h2>
-       <p>
-        There are numerous
-        <a href="https://genesis-world.readthedocs.io/en/latest/user_guide/index.html">
-         quickstart guides
-        </a>
-        and
-        <a href="https://github.com/Genesis-Embodied-AI/Genesis/tree/main/examples" target="_blank">
-         code examples
-        </a>
-        that come with Genesis and are installed inside the container under
-        <code>
-         /opt/genesis
-        </code>
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>jetson-containers<span class="w"> </span>run<span class="w"> </span>-w<span class="w"> </span>/opt/genesis/examples<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>dustynv/genesis:r36.4.0-cu128<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>python3<span class="w"> </span>elastic_dragon.py<span class="w"> </span>--vis
-</code></pre>
-       </div>
-       <video autoplay="" controls="" loop="" muted="" style="max-width: 75%">
-        <source src="images/genesis_demo.mp4" type="video/mp4">
-        </source>
-       </video>
-       <p>
-        We encourage you to explore these resources and
-        <a href="https://discord.gg/BmqNSK4886" target="_blank">
-         get involved
-        </a>
-        in the efforts, and share results or feedback with the group and upstream maintainers. We'll continue updating this page with progress from porting the remaining dependencies, along with integration of AI &amp; robotics models and related SDKs like
-        <a href="ros.html" target="_blank">
-         ROS
-        </a>
-        and
-        <a href="lerobot.html" target="_blank">
-         LeRobot
-        </a>
-        .
-       </p>
       </article>
      </div>
      <script>
@@ -1179,7 +848,7 @@ bash<span class="w"> </span>jetson-containers/install.sh
    </div>
   </div>
   <script id="__config" type="application/json">
-   {"base": ".", "features": ["navigation.indexes", "navigation.expand", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.tabs.link", "content.code.copy", "announce.dismiss"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}
+   {"base": "..", "features": ["navigation.indexes", "navigation.expand", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.tabs.link", "content.code.copy", "announce.dismiss"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}
   </script>
   <!-- OneTrust Cookies Consent Notice start for www.jetson-ai-lab.com -->
   <script charset="UTF-8" data-domain-script="018e2d65-efdf-7071-b793-f15ccf25c234" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" type="text/javascript">
@@ -1195,7 +864,7 @@ bash<span class="w"> </span>jetson-containers/install.sh
   </script>
   <script src="//assets.adobedtm.com/5d4962a43b79/814eb6e9b4e1/launch-4bc07f1e0b0b.min.js">
   </script>
-  <script src="assets/javascripts/bundle.c8b220af.min.js">
+  <script src="../assets/javascripts/bundle.c8b220af.min.js">
   </script>
   <script>
    window._6si = window._6si || [];
