@@ -3,8 +3,9 @@ import sys
 from bs4 import BeautifulSoup
 
 # Specify the section name exactly as spelled in mkdocs.yml file
-sections_to_keep_open = ["Text (LLM)", 
-                         "Text + Vision (VLM)", 
+sections_to_keep_open = ["AI Microservices",
+                        "Text (LLM)",
+                         "Text + Vision (VLM)",
                          "Vision Transformers (ViT)",
                          "Robotics & Embodiment"
                          ]
