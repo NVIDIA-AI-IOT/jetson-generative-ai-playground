@@ -360,8 +360,110 @@ Let's take a look at how this VLM capability can be used in Open WebUI
 
     ![](../images/openwebui_vlm_moon.gif){ .shadow }
 
+7. Check the log on terminal running Ollama
 
+    You may find information like following.
+
+    ```text
+    INFO 03-15 20:57:25 [logger.py:39] Received request chatcmpl-ffb41435ad4a4bb990b48ecc341850a9: prompt: '<bos><start_of_turn>user\n### Task:\nGenerate 1-3 broad tags categorizing the main themes of the chat history, along with 1-3 more specific subtopic tags.\n\n### Guidelines:\n- Start with high-level domains (e.g. Science, Technology, Philosophy, Arts, Politics, Business, Health, Sports, Entertainment, Education)\n- Consider including relevant subfields/subdomains if they are strongly represented throughout the conversation\n- If content is too short (less than 3 messages) or too diverse, use only ["General"]\n- Use the chat\'s primary language; default to English if multilingual\n- Prioritize accuracy over specificity\n\n### Output:\nJSON format: { "tags": ["tag1", "tag2", "tag3"] }\n\n### Chat History:\n<chat_history>\nUSER: Describe the photo.\nASSISTANT: Here\'s a description of the photo:\n\nThe photo showcases a large, full moon dominating the frame. It is a vibrant, creamy white color, with prominent and detailed dark grey and brown craters, maria (smooth, dark plains formed by ancient lava flows), and highlands visible across its surface. \n\nThe background is a solid, dark black, which makes the moon stand out dramatically and emphasizes its round shape.  It appears to be a close-up shot, giving a clear and detailed view of the lunar surface.\n</chat_history><end_of_turn>\n<start_of_turn>model\n', params: SamplingParams(n=1, presence_penalty=0.0, frequency_penalty=0.0, repetition_penalty=1.0, temperature=1.0, top_p=1.0, top_k=-1, min_p=0.0, seed=None, stop=[], stop_token_ids=[], bad_words=[], include_stop_str_in_output=False, ignore_eos=False, max_tokens=7890, min_tokens=0, logprobs=None, prompt_logprobs=None, skip_special_tokens=True, spaces_between_special_tokens=True, truncate_prompt_tokens=None, guided_decoding=None, extra_args=None), prompt_token_ids: None, lora_request: None, prompt_adapter_request: None.
+    INFO 03-15 20:57:25 [engine.py:289] Added request chatcmpl-ffb41435ad4a4bb990b48ecc341850a9.
+    INFO:     172.17.0.1:42452 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+    INFO 03-15 20:57:36 [metrics.py:481] Avg prompt throughput: 48.7 tokens/s, Avg generation throughput: 4.1 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+    INFO 03-15 20:57:46 [metrics.py:481] Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Swapped: 0 reqs, Pending: 0 reqs, GPU KV cache usage: 0.0%, CPU KV cache usage: 0.0%.
+    ```
 
 #### n8n
+
+1. Start n8n server container
+
+    === ":material-list-box: Step-by-step Instruction"
+
+        1. Go to [**Models**](../models.html) section of Jetson AI Lab
+        2. Go to **Web UI** section, and click "**n8n**" card
+        3. Check the parameter, change as needed, and click on the **:octicons-copy-16: ("Copy to clipboard")** icon in the code snippet under the "**Docker Run**" section
+            - Note the "**Server IP / Port**" section. The default is **`0.0.0.0:5678`**.
+        4. Paste the `docker run` command in Jetson terminal and execute
+
+            ```bash
+            docker run -it --rm --name=n8n \
+                --network=host \
+                -e N8N_LISTEN_ADDRESS=0.0.0.0 \
+                -e N8N_PORT=5678 \
+                -e N8N_SECURE_COOKIE=false \
+                -v /mnt/nvme/cache/n8n:/root/node/.n8n \
+                -e DOCKER_PULL=always --pull always \
+                -e HF_HUB_CACHE=/root/.cache/huggingface \
+                -v /mnt/nvme/cache:/root/.cache \
+                n8nio/n8n:stable
+            ```
+
+    === ":octicons-video-16: Walk-through video"
+
+        <video controls>
+        <source src="https://github.com/user-attachments/assets/901a2fde-4376-42af-a829-752e7c207659" type="video/mp4">
+        Your browser does not support the video tag.
+        </video>
+
+2. First create a "Credential" to configure the connection to the local Ollama server.
+
+    === ":material-list-box: Step-by-step Instruction"
+
+        1. On the n8n top screen, click on "**:octicons-plus-16:**" button on the left, and select "**Credential**".
+        2. In the "**Add new credential**" prompt box, in the "**:octicons-search-16:Search for app...**" field, type "openai" and select "OpenAi". Hit "**Continue**" button.
+        3. In the "**OpenAi account**" prompt box, put the followings;
+
+            | Field | Value |
+            | ----- | ----- |
+            | API Key | `foo` (or whatever random) |
+            | Organization ID | ` ` (leave it blank) |
+            | Base URL | `http://0.0.0.0:9000/v1` |
+
+        4. Once done, hit "**Save**" button. Check you get "**:material-check-circle: Connection tested successfully**" message.
+
+            ![](../images/n8n_OpenAi-account_configured.png){ .shadow }
+
+        5. Put your mouse cursor over the text "OpenAi account" at the top of the prompt box
+        6. "**:material-pencil: (Edit)**" icon shows up, so click on it to edit, and name is something like "**Local Ollama**".
+        7. Click :octicons-x-16: icon on the top left corner of the prompt box to close
+
+            ![](../images/n8n_credential_added.png){ .shadow }
+
+    === ":octicons-video-16: Walk-through video"
+
+        <video controls>
+        <source src="https://github.com/user-attachments/assets/ef53a91c-1985-4622-95ac-0c6e8055a727" type="video/mp4">
+        Your browser does not support the video tag.
+        </video>
+
+3. Then create a "**Workflow**" to use the "OpenAI Analyze Image" node to use gemma-3-4b model hosted on Ollama
+
+    === ":material-list-box: Step-by-step Instruction"
+
+        1. On the n8n top screen, click on "**:octicons-plus-16:**" button on the left, and select "**Workflow**".
+        2. Click on "**Add first step...**" button in the center
+        3. In the right side pane that shows up, in the field "**:octicons-search-16:Search for app...**" field, type "openai" and select "OpenAI", the first item.
+        4. Under the "**Actions (15)**" section, under "**IMAGE ACTION**" category, find and select "**Analyze Image**"
+        5. In the "**OpenAi account**" prompt box, under the "**Parameters**" tab, put the followings;
+
+            | Field | Value | Note |
+            | ----- | ----- | ---- |
+            | Credential to connect with | "**Local Ollama**" | (or whatever credential you created and named) |
+            | Resource | Image | (default) |
+            | Operation | Analyze Image | (default) |
+            | Model | **`google/gemma-3-4b-it`** | (Ollama cares this field, so you need to supply the correct name of the model)|
+            | Text Input | "What's in this image" | (default) |
+            | Input Type | Image URL(s) | (default) |
+            | URL | https://raw.githubusercontent.com/dusty-nv/jetson-containers/refs/heads/dev/data/images/hoover.jpg | |
+
+        6. Click "Tst step" button the top right of the prompt box, and check the output shown on the right.
+
+            ![](../images/n8n_analyze-image_test-step.png)
+
+    === ":octicons-video-16: Walk-through video"
+
+        <video controls>
+        <source src="https://github.com/user-attachments/assets/8dcf3e0b-279f-45be-b20b-5cdaf02d4a9f" type="video/mp4">
+        Your browser does not support the video tag.
+        </video>
 
 ## 2. Augmented VLM Microservice
