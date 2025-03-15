@@ -92,6 +92,7 @@ nav:
       - 🏆 Hackathon Guide: hackathon.md
     - AI Microservices:
       - Microservices Intro : tutorials/microservices_intro.md
+      - Microservices for VLM : tutorials/microservices_vlm.md
     - Text (LLM):
       - text-generation-webui: tutorial_text-generation.md
       - Ollama: tutorial_ollama.md
