@@ -64,14 +64,15 @@
     "name": "dustynv/vllm:0.7.4-r36.4.0-cu128-24.04",
     "docker_image": "dustynv/vllm:0.7.4-r36.4.0-cu128-24.04",
     "docker_cmd": "vllm serve ${MODEL}",
-    "docker_args": "--host=${SERVER_ADDR} --port=${SERVER_PORT} --dtype=auto --max-num-seqs=${MAX_BATCH_SIZE} --max-model-len=${MAX_CONTEXT_LEN} --gpu-memory-utilization=0.75",
+    "docker_args": "--host=${SERVER_ADDR} --port=${SERVER_PORT} --dtype=auto --max-num-seqs=${MAX_BATCH_SIZE} --max-model-len=${MAX_CONTEXT_LEN} --gpu-memory-utilization=0.757",
     "docker_options": "-it --rm",
     "server_host": "0.0.0.0:9000",
     "tags": [
       "container",
       "vllm",
       "l4t-r36"
-    ]
+    ],
+    "max_context_len": 8192
   },
   "sudonim": {
     "docker_cmd": "sudonim serve",
