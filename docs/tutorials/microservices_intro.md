@@ -50,7 +50,7 @@ Let’s build something amazing together! 💡✨
 | `GET`  | `/v1/models` | Get a list of models available |
 | `POST` | `/v1/chat/completions` | Get a response from the model using a prompt |
 
-## Example Use of LLM Microservices with Curl
+## Example `curl` commands
 
 ### `/v1/models`
 
@@ -112,7 +112,7 @@ Let’s build something amazing together! 💡✨
                 "role": "user",
                 "content": "Hello!"
             }
-            ],
+            ]
         }'
         ```
 
@@ -173,7 +173,9 @@ Let’s build something amazing together! 💡✨
     Your browser does not support the video tag.
     </video>
 
-## Example Use of LLM Microservices with Open WebUI
+## Example Python scripts
+
+## Example with Open WebUI
 
 === ":material-list-box: Step-by-step Instruction"
 
