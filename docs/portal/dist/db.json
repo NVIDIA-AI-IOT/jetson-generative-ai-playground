@@ -71,7 +71,9 @@
       "container",
       "vllm",
       "l4t-r36"
-    ]
+    ],
+    "max_context_len": 8192,
+    "hf_token": "${HUGGINGFACE_TOKEN}"
   },
   "sudonim": {
     "docker_cmd": "sudonim serve",
