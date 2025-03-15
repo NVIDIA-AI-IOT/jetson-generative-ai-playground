@@ -116,6 +116,24 @@ Let’s build something amazing together! 💡✨
         }'
         ```
 
+        ??? tip
+
+            You can find the model `curl` command in a couple of ways.
+
+            === "OpenAI Docs"
+
+                [OpenAI API Reference Docs](https://platform.openai.com/docs/api-reference/chat/create) provides examples for combinations of their API requests .
+
+                You can use their `curl` command, replace the **base URL** and remove the authorization header and `model` field, but you can see it's essentially compatible.
+
+                This is something demonstrated in the [walk-through video](#__tabbed_2_2).
+
+            === "Jetson AI Lab Model Card"
+
+                Each model card on Jetson AI Lab provides the "**Curl Request**" example, along with "**Performance Benchmark**" and "**Curl Request**" `docker run` commands.
+
+                ![](../images/JAL_Models_Where-to-find-curl-command.gif)
+
     2. Check the output. It should show something like the following.
 
         ``` { .json .no-copy }
@@ -199,7 +217,7 @@ Let’s build something amazing together! 💡✨
 
     !!! tip
 
-        You can check out the walk-through video (in the [next tab](#__tabbed_3_2)) for details.
+        You can check out the walk-through video (in the [next "**Walk-through video**" tab](#__tabbed_4_2)) for details.
 
 === ":octicons-video-16: Walk-through video"
 
