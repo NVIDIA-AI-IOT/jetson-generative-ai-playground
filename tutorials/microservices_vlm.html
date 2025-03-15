@@ -5,23 +5,25 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="Showcasing generative AI projects that run on Jetson" name="description"/>
-  <link href="../../../../../../images/nvidia-favicon-rgb-16x16px@2x.png" rel="icon"/>
+  <link href="microservices_intro.html" rel="prev"/>
+  <link href="../tutorial_text-generation.html" rel="next"/>
+  <link href="../images/nvidia-favicon-rgb-16x16px@2x.png" rel="icon"/>
   <meta content="mkdocs-1.6.1, mkdocs-material-9.6.8" name="generator"/>
   <title>
-   generateNodeStream(options[, onUpdate]) - NVIDIA Jetson AI Lab
+   Microservices for VLM - NVIDIA Jetson AI Lab
   </title>
-  <link href="../../../../../../assets/stylesheets/main.8608ea7d.min.css" rel="stylesheet"/>
-  <link href="../../../../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+  <link href="../assets/stylesheets/main.8608ea7d.min.css" rel="stylesheet"/>
+  <link href="../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
   <link href="https://fonts.googleapis.com/css?family=NVIDIA-NALA:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
   <style>
    :root{--md-text-font:"NVIDIA-NALA";--md-code-font:"Roboto Mono"}
   </style>
-  <link href="../../../../../../css/colors.css" rel="stylesheet"/>
-  <link href="../../../../../../css/extra.css" rel="stylesheet"/>
-  <link href="../../../../../../css/nvidia-font.css" rel="stylesheet"/>
+  <link href="../css/colors.css" rel="stylesheet"/>
+  <link href="../css/extra.css" rel="stylesheet"/>
+  <link href="../css/nvidia-font.css" rel="stylesheet"/>
   <script>
-   __md_scope=new URL("../../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}
+   __md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}
   </script>
   <script id="__analytics">
    function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SXH8S4Y8RW"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SXH8S4Y8RW",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SXH8S4Y8RW",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}
@@ -36,7 +38,7 @@
   <label class="md-overlay" for="__drawer">
   </label>
   <div data-md-component="skip">
-   <a class="md-skip" href="#arguments">
+   <a class="md-skip" href="#ai-microservices-fo-vlm">
     Skip to content
    </a>
   </div>
@@ -44,7 +46,7 @@
   </div>
   <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
    <nav aria-label="Header" class="md-header__inner md-grid">
-    <a aria-label="NVIDIA Jetson AI Lab" class="md-header__button md-logo" data-md-component="logo" href="../../../../../../index.html" title="NVIDIA Jetson AI Lab">
+    <a aria-label="NVIDIA Jetson AI Lab" class="md-header__button md-logo" data-md-component="logo" href="../index.html" title="NVIDIA Jetson AI Lab">
      <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54">
       </path>
@@ -65,7 +67,7 @@
       </div>
       <div class="md-header__topic" data-md-component="header-topic">
        <span class="md-ellipsis">
-        generateNodeStream(options[, onUpdate])
+        Microservices for VLM
        </span>
       </div>
      </div>
@@ -125,32 +127,32 @@
     <div class="md-grid">
      <ul class="md-tabs__list">
       <li class="md-tabs__item">
-       <a class="md-tabs__link" href="../../../../../../index.html">
+       <a class="md-tabs__link" href="../index.html">
         Home
        </a>
       </li>
       <li class="md-tabs__item">
-       <a class="md-tabs__link" href="../../../../../../models.html">
+       <a class="md-tabs__link" href="../models.html">
         Models
        </a>
       </li>
-      <li class="md-tabs__item">
-       <a class="md-tabs__link" href="../../../../../../tutorial-intro.html">
+      <li class="md-tabs__item md-tabs__item--active">
+       <a class="md-tabs__link" href="../tutorial-intro.html">
         Tutorials
        </a>
       </li>
       <li class="md-tabs__item">
-       <a class="md-tabs__link" href="../../../../../../benchmarks.html">
+       <a class="md-tabs__link" href="../benchmarks.html">
         Benchmarks
        </a>
       </li>
       <li class="md-tabs__item">
-       <a class="md-tabs__link" href="../../../../../../community_articles.html">
+       <a class="md-tabs__link" href="../community_articles.html">
         Projects
        </a>
       </li>
       <li class="md-tabs__item">
-       <a class="md-tabs__link" href="../../../../../../research.html">
+       <a class="md-tabs__link" href="../research.html">
         Research Group
        </a>
       </li>
@@ -166,7 +168,7 @@
        <div class="md-sidebar__inner">
         <nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
          <label class="md-nav__title" for="__drawer">
-          <a aria-label="NVIDIA Jetson AI Lab" class="md-nav__button md-logo" data-md-component="logo" href="../../../../../../index.html" title="NVIDIA Jetson AI Lab">
+          <a aria-label="NVIDIA Jetson AI Lab" class="md-nav__button md-logo" data-md-component="logo" href="../index.html" title="NVIDIA Jetson AI Lab">
            <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54">
             </path>
@@ -176,29 +178,29 @@
          </label>
          <ul class="md-nav__list" data-md-scrollfix="">
           <li class="md-nav__item">
-           <a class="md-nav__link" href="../../../../../../index.html">
+           <a class="md-nav__link" href="../index.html">
             <span class="md-ellipsis">
              Home
             </span>
            </a>
           </li>
           <li class="md-nav__item">
-           <a class="md-nav__link" href="../../../../../../models.html">
+           <a class="md-nav__link" href="../models.html">
             <span class="md-ellipsis">
              Models
             </span>
            </a>
           </li>
-          <li class="md-nav__item md-nav__item--nested">
-           <input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
-           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+           <input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             <span class="md-ellipsis">
              Tutorials
             </span>
             <span class="md-nav__icon md-icon">
             </span>
            </label>
-           <nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+           <nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
             <label class="md-nav__title" for="__nav_3">
              <span class="md-nav__icon md-icon">
              </span>
@@ -206,7 +208,7 @@
             </label>
             <ul class="md-nav__list" data-md-scrollfix="">
              <li class="md-nav__item">
-              <a class="md-nav__link" href="../../../../../../tutorial-intro.html">
+              <a class="md-nav__link" href="../tutorial-intro.html">
                <span class="md-ellipsis">
                 Introduction
                </span>
@@ -229,35 +231,35 @@
                </label>
                <ul class="md-nav__list" data-md-scrollfix="">
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../initial_setup_jon.html">
+                 <a class="md-nav__link" href="../initial_setup_jon.html">
                   <span class="md-ellipsis">
                    🚀 Initial Setup Guide - Jetson Orin Nano
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../initial_setup_jon_sdkm.html">
+                 <a class="md-nav__link" href="../initial_setup_jon_sdkm.html">
                   <span class="md-ellipsis">
                    🛸 Initial Setup (SDK Manager method)
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tips_ssd-docker.html">
+                 <a class="md-nav__link" href="../tips_ssd-docker.html">
                   <span class="md-ellipsis">
                    🔖 SSD + Docker
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tips_ram-optimization.html">
+                 <a class="md-nav__link" href="../tips_ram-optimization.html">
                   <span class="md-ellipsis">
                    🔖 Memory optimization
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../hackathon.html">
+                 <a class="md-nav__link" href="../hackathon.html">
                   <span class="md-ellipsis">
                    🏆 Hackathon Guide
                   </span>
@@ -266,8 +268,8 @@
                </ul>
               </nav>
              </li>
-             <li class="md-nav__item md-nav__item--nested">
-              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_3" type="checkbox"/>
+             <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+              <input checked="" class="md-nav__toggle md-toggle" id="__nav_3_3" type="checkbox"/>
               <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
                <span class="md-ellipsis">
                 AI Microservices
@@ -275,7 +277,7 @@
                <span class="md-nav__icon md-icon">
                </span>
               </label>
-              <nav aria-expanded="false" aria-labelledby="__nav_3_3_label" class="md-nav" data-md-level="2">
+              <nav aria-expanded="true" aria-labelledby="__nav_3_3_label" class="md-nav" data-md-level="2">
                <label class="md-nav__title" for="__nav_3_3">
                 <span class="md-nav__icon md-icon">
                 </span>
@@ -283,18 +285,49 @@
                </label>
                <ul class="md-nav__list" data-md-scrollfix="">
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tutorials/microservices_intro.html">
+                 <a class="md-nav__link" href="microservices_intro.html">
                   <span class="md-ellipsis">
                    Microservices Intro
                   </span>
                  </a>
                 </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tutorials/microservices_vlm.html">
+                <li class="md-nav__item md-nav__item--active">
+                 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+                 <label class="md-nav__link md-nav__link--active" for="__toc">
+                  <span class="md-ellipsis">
+                   Microservices for VLM
+                  </span>
+                  <span class="md-nav__icon md-icon">
+                  </span>
+                 </label>
+                 <a class="md-nav__link md-nav__link--active" href="microservices_vlm.html">
                   <span class="md-ellipsis">
                    Microservices for VLM
                   </span>
                  </a>
+                 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+                  <label class="md-nav__title" for="__toc">
+                   <span class="md-nav__icon md-icon">
+                   </span>
+                   Table of contents
+                  </label>
+                  <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#vlm-microservices">
+                     <span class="md-ellipsis">
+                      VLM Microservices
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#enhanced-vlm-microservice-for-edge">
+                     <span class="md-ellipsis">
+                      Enhanced VLM Microservice for Edge
+                     </span>
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
                 </li>
                </ul>
               </nav>
@@ -316,56 +349,56 @@
                </label>
                <ul class="md-nav__list" data-md-scrollfix="">
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tutorial_text-generation.html">
+                 <a class="md-nav__link" href="../tutorial_text-generation.html">
                   <span class="md-ellipsis">
                    text-generation-webui
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tutorial_ollama.html">
+                 <a class="md-nav__link" href="../tutorial_ollama.html">
                   <span class="md-ellipsis">
                    Ollama
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tutorial_openwebui.html">
+                 <a class="md-nav__link" href="../tutorial_openwebui.html">
                   <span class="md-ellipsis">
                    Open WebUI
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tutorial_llamaspeak.html">
+                 <a class="md-nav__link" href="../tutorial_llamaspeak.html">
                   <span class="md-ellipsis">
                    llamaspeak
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tutorial_nano-llm.html">
+                 <a class="md-nav__link" href="../tutorial_nano-llm.html">
                   <span class="md-ellipsis">
                    NanoLLM
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tensorrt_llm.html">
+                 <a class="md-nav__link" href="../tensorrt_llm.html">
                   <span class="md-ellipsis">
                    TensorRT-LLM
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tutorial_slm.html">
+                 <a class="md-nav__link" href="../tutorial_slm.html">
                   <span class="md-ellipsis">
                    Small LLM (SLM)
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tutorial_api-examples.html">
+                 <a class="md-nav__link" href="../tutorial_api-examples.html">
                   <span class="md-ellipsis">
                    API Examples
                   </span>
@@ -391,35 +424,35 @@
                </label>
                <ul class="md-nav__list" data-md-scrollfix="">
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tutorial_llava.html">
+                 <a class="md-nav__link" href="../tutorial_llava.html">
                   <span class="md-ellipsis">
                    LLaVA
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tutorial_live-llava.html">
+                 <a class="md-nav__link" href="../tutorial_live-llava.html">
                   <span class="md-ellipsis">
                    Live LLaVA
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tutorial_nano-vlm.html">
+                 <a class="md-nav__link" href="../tutorial_nano-vlm.html">
                   <span class="md-ellipsis">
                    NanoVLM
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../llama_vlm.html">
+                 <a class="md-nav__link" href="../llama_vlm.html">
                   <span class="md-ellipsis">
                    Llama 3.2 Vision
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../agent_studio.html">
+                 <a class="md-nav__link" href="../agent_studio.html">
                   <span class="md-ellipsis">
                    Agent Studio
                   </span>
@@ -431,7 +464,7 @@
              <li class="md-nav__item md-nav__item--nested">
               <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_6" type="checkbox"/>
               <div class="md-nav__link md-nav__container">
-               <a class="md-nav__link" href="../../../../../../vit/index.html">
+               <a class="md-nav__link" href="../vit/index.html">
                 <span class="md-ellipsis">
                  Vision Transformers (ViT)
                 </span>
@@ -449,42 +482,42 @@
                </label>
                <ul class="md-nav__list" data-md-scrollfix="">
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../vit/tutorial_efficientvit.html">
+                 <a class="md-nav__link" href="../vit/tutorial_efficientvit.html">
                   <span class="md-ellipsis">
                    EfficientViT
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../vit/tutorial_nanoowl.html">
+                 <a class="md-nav__link" href="../vit/tutorial_nanoowl.html">
                   <span class="md-ellipsis">
                    NanoOWL
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../vit/tutorial_nanosam.html">
+                 <a class="md-nav__link" href="../vit/tutorial_nanosam.html">
                   <span class="md-ellipsis">
                    NanoSAM
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../vit/tutorial_sam.html">
+                 <a class="md-nav__link" href="../vit/tutorial_sam.html">
                   <span class="md-ellipsis">
                    SAM
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../vit/tutorial_tam.html">
+                 <a class="md-nav__link" href="../vit/tutorial_tam.html">
                   <span class="md-ellipsis">
                    TAM
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tutorial_distillation.html">
+                 <a class="md-nav__link" href="../tutorial_distillation.html">
                   <span class="md-ellipsis">
                    📑 Knowledge Distillation
                   </span>
@@ -510,42 +543,42 @@
                </label>
                <ul class="md-nav__list" data-md-scrollfix="">
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../cosmos.html">
+                 <a class="md-nav__link" href="../cosmos.html">
                   <span class="md-ellipsis">
                    Cosmos
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../genesis.html">
+                 <a class="md-nav__link" href="../genesis.html">
                   <span class="md-ellipsis">
                    Genesis 🆕
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../lerobot.html">
+                 <a class="md-nav__link" href="../lerobot.html">
                   <span class="md-ellipsis">
                    LeRobot
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../ros.html">
+                 <a class="md-nav__link" href="../ros.html">
                   <span class="md-ellipsis">
                    ROS2 Nodes
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../openvla.html">
+                 <a class="md-nav__link" href="../openvla.html">
                   <span class="md-ellipsis">
                    OpenVLA
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../robopoint.html">
+                 <a class="md-nav__link" href="../robopoint.html">
                   <span class="md-ellipsis">
                    RoboPoint 🆕
                   </span>
@@ -571,28 +604,28 @@
                </label>
                <ul class="md-nav__list" data-md-scrollfix="">
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tutorial_comfyui_flux.html">
+                 <a class="md-nav__link" href="../tutorial_comfyui_flux.html">
                   <span class="md-ellipsis">
                    Flux &amp; ComfyUI
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tutorial_stable-diffusion.html">
+                 <a class="md-nav__link" href="../tutorial_stable-diffusion.html">
                   <span class="md-ellipsis">
                    Stable Diffusion
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tutorial_stable-diffusion-xl.html">
+                 <a class="md-nav__link" href="../tutorial_stable-diffusion-xl.html">
                   <span class="md-ellipsis">
                    Stable Diffusion XL
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../nerf.html">
+                 <a class="md-nav__link" href="../nerf.html">
                   <span class="md-ellipsis">
                    nerfstudio
                   </span>
@@ -618,21 +651,21 @@
                </label>
                <ul class="md-nav__list" data-md-scrollfix="">
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tutorial_nanodb.html">
+                 <a class="md-nav__link" href="../tutorial_nanodb.html">
                   <span class="md-ellipsis">
                    NanoDB
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tutorial_llamaindex.html">
+                 <a class="md-nav__link" href="../tutorial_llamaindex.html">
                   <span class="md-ellipsis">
                    LlamaIndex
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tutorial_jetson-copilot.html">
+                 <a class="md-nav__link" href="../tutorial_jetson-copilot.html">
                   <span class="md-ellipsis">
                    Jetson Copilot
                   </span>
@@ -658,35 +691,35 @@
                </label>
                <ul class="md-nav__list" data-md-scrollfix="">
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tutorial_holoscan.html">
+                 <a class="md-nav__link" href="../tutorial_holoscan.html">
                   <span class="md-ellipsis">
                    Holoscan SDK
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tutorial_jps.html">
+                 <a class="md-nav__link" href="../tutorial_jps.html">
                   <span class="md-ellipsis">
                    Jetson Platform Services
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tutorial_gapi_workflows.html">
+                 <a class="md-nav__link" href="../tutorial_gapi_workflows.html">
                   <span class="md-ellipsis">
                    Gapi Workflows
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tutorial_gapi_microservices.html">
+                 <a class="md-nav__link" href="../tutorial_gapi_microservices.html">
                   <span class="md-ellipsis">
                    Gapi Micro Services
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tutorial_ultralytics.html">
+                 <a class="md-nav__link" href="../tutorial_ultralytics.html">
                   <span class="md-ellipsis">
                    Ultralytics YOLOv8
                   </span>
@@ -712,21 +745,21 @@
                </label>
                <ul class="md-nav__list" data-md-scrollfix="">
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tutorial_whisper.html">
+                 <a class="md-nav__link" href="../tutorial_whisper.html">
                   <span class="md-ellipsis">
                    Whisper
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tutorial_audiocraft.html">
+                 <a class="md-nav__link" href="../tutorial_audiocraft.html">
                   <span class="md-ellipsis">
                    AudioCraft
                   </span>
                  </a>
                 </li>
                 <li class="md-nav__item">
-                 <a class="md-nav__link" href="../../../../../../tutorial_voicecraft.html">
+                 <a class="md-nav__link" href="../tutorial_voicecraft.html">
                   <span class="md-ellipsis">
                    VoiceCraft
                   </span>
@@ -739,21 +772,21 @@
            </nav>
           </li>
           <li class="md-nav__item">
-           <a class="md-nav__link" href="../../../../../../benchmarks.html">
+           <a class="md-nav__link" href="../benchmarks.html">
             <span class="md-ellipsis">
              Benchmarks
             </span>
            </a>
           </li>
           <li class="md-nav__item">
-           <a class="md-nav__link" href="../../../../../../community_articles.html">
+           <a class="md-nav__link" href="../community_articles.html">
             <span class="md-ellipsis">
              Projects
             </span>
            </a>
           </li>
           <li class="md-nav__item">
-           <a class="md-nav__link" href="../../../../../../research.html">
+           <a class="md-nav__link" href="../research.html">
             <span class="md-ellipsis">
              Research Group
             </span>
@@ -775,16 +808,16 @@
          </label>
          <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
           <li class="md-nav__item">
-           <a class="md-nav__link" href="#arguments">
+           <a class="md-nav__link" href="#vlm-microservices">
             <span class="md-ellipsis">
-             Arguments
+             VLM Microservices
             </span>
            </a>
           </li>
           <li class="md-nav__item">
-           <a class="md-nav__link" href="#examples">
+           <a class="md-nav__link" href="#enhanced-vlm-microservice-for-edge">
             <span class="md-ellipsis">
-             Examples
+             Enhanced VLM Microservice for Edge
             </span>
            </a>
           </li>
@@ -795,126 +828,15 @@
      </div>
      <div class="md-content" data-md-component="content">
       <article class="md-content__inner md-typeset">
-       <h1>
-        generateNodeStream(options[, onUpdate])
+       <h1 id="ai-microservices-fo-vlm">
+        AI Microservices fo VLM
        </h1>
-       <p>
-        Generates the complete zip file as a nodejs stream.
-       </p>
-       <p>
-        <strong>
-         Returns
-        </strong>
-        : a
-        <a href="https://github.com/nodejs/readable-stream">
-         nodejs Streams3
-        </a>
-        .
-       </p>
-       <p>
-        <strong>
-         Since
-        </strong>
-        : v3.0.0
-       </p>
-       <h2 id="arguments">
-        Arguments
+       <h2 id="vlm-microservices">
+        VLM Microservices
        </h2>
-       <table>
-        <thead>
-         <tr>
-          <th>
-           name
-          </th>
-          <th>
-           type
-          </th>
-          <th>
-           default
-          </th>
-          <th>
-           description
-          </th>
-         </tr>
-        </thead>
-        <tbody>
-         <tr>
-          <td>
-           options
-          </td>
-          <td>
-           object
-          </td>
-          <td>
-          </td>
-          <td>
-           the options to generate the zip file, see
-           <a href="{{site.baseurl}}/documentation/api_jszip/generate_async.html">
-            the options of
-            <code>
-             generateAsync()
-            </code>
-           </a>
-          </td>
-         </tr>
-         <tr>
-          <td>
-           onUpdate
-          </td>
-          <td>
-           function
-          </td>
-          <td>
-          </td>
-          <td>
-           The optional function called on each internal update with the metadata.
-          </td>
-         </tr>
-        </tbody>
-       </table>
-       <p>
-        The
-        <code>
-         type
-        </code>
-        parameter has here the default value of
-        <code>
-         nodebuffer
-        </code>
-        .
-Only
-        <code>
-         nodebuffer
-        </code>
-        is currently supported.
-       </p>
-       <p>
-        <strong>
-         Metadata
-        </strong>
-        : see
-        <a href="{{site.baseurl}}/documentation/api_jszip/generate_async.html#onupdate-callback">
-         the metadata of
-         <code>
-          generateAsync()
-         </code>
-        </a>
-        .
-       </p>
-       <h2 id="examples">
-        Examples
+       <h2 id="enhanced-vlm-microservice-for-edge">
+        Enhanced VLM Microservice for Edge
        </h2>
-       <div class="highlight">
-        <pre><span></span><code><span class="nx">zip</span>
-<span class="p">.</span><span class="nx">generateNodeStream</span><span class="p">({</span><span class="nx">streamFiles</span><span class="o">:</span><span class="kc">true</span><span class="p">})</span>
-<span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">fs</span><span class="p">.</span><span class="nx">createWriteStream</span><span class="p">(</span><span class="s1">'out.zip'</span><span class="p">))</span>
-<span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'finish'</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// JSZip generates a readable stream with a "end" event,</span>
-<span class="w">    </span><span class="c1">// but is piped here in a writable stream which emits a "finish" event.</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"out.zip written."</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre>
-       </div>
       </article>
      </div>
      <script>
@@ -993,7 +915,7 @@ Only
    </div>
   </div>
   <script id="__config" type="application/json">
-   {"base": "../../../../../..", "features": ["navigation.indexes", "navigation.expand", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.tabs.link", "content.code.copy", "announce.dismiss"], "search": "../../../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}
+   {"base": "..", "features": ["navigation.indexes", "navigation.expand", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.tabs.link", "content.code.copy", "announce.dismiss"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}
   </script>
   <!-- OneTrust Cookies Consent Notice start for www.jetson-ai-lab.com -->
   <script charset="UTF-8" data-domain-script="018e2d65-efdf-7071-b793-f15ccf25c234" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" type="text/javascript">
@@ -1009,7 +931,7 @@ Only
   </script>
   <script src="//assets.adobedtm.com/5d4962a43b79/814eb6e9b4e1/launch-4bc07f1e0b0b.min.js">
   </script>
-  <script src="../../../../../../assets/javascripts/bundle.c8b220af.min.js">
+  <script src="../assets/javascripts/bundle.c8b220af.min.js">
   </script>
   <script>
    window._6si = window._6si || [];
