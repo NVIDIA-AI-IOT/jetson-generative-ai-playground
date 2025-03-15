@@ -7,7 +7,7 @@
 Jetson AI Lab now offers a collection of pre-built containers, each functioning as a **local AI microservice**, designed to bring flexibility, efficiency, and scalability to your projects.
 
 A **microservice** is a small, independent, and loosely coupled software component that performs a specific function.<br>
-In the [**Models**](../models.html) section of Jetson AI Lab, you'll find AI inference services accessible through a standardized REST API.
+In the [**Models**](../models.md) section of Jetson AI Lab, you'll find AI inference services accessible through a standardized REST API.
 
 These local AI microservices are powerful building blocks that enable you to create cutting-edge edge AI applications with ease.
 Whether you're working on robotics, vision, or intelligent automation, you now have the tools to accelerate innovation.
