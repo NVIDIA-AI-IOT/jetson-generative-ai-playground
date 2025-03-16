@@ -450,12 +450,13 @@ Let's take a look at how this VLM capability can be used in Open WebUI
             | Credential to connect with | "**Local Ollama**" | (or whatever credential you created and named) |
             | Resource | Image | (default) |
             | Operation | Analyze Image | (default) |
+            | Model Specify Method | By ID |
             | Model | **`google/gemma-3-4b-it`** | (Ollama cares this field, so you need to supply the correct name of the model)|
             | Text Input | "What's in this image" | (default) |
             | Input Type | Image URL(s) | (default) |
             | URL | https://raw.githubusercontent.com/dusty-nv/jetson-containers/refs/heads/dev/data/images/hoover.jpg | |
 
-        6. Click "Tst step" button the top right of the prompt box, and check the output shown on the right.
+        6. Click "Test step" button the top right of the prompt box, and check the output shown on the right.
 
             ![](../images/n8n_analyze-image_test-step.png)
 
@@ -467,3 +468,153 @@ Let's take a look at how this VLM capability can be used in Open WebUI
         </video>
 
 ## 2. Augmented VLM Microservice
+
+### Challenges with Local Video Source
+
+A **VLM is powerful**, but processing a continuous **local video stream** with it can be complex. Traditional methods require the client to extract frames from the local video source/device, encode them, and send the data over API requests -- adding unnecessary overhead and latency.
+
+### Solution
+
+An "**Augmented VLM Microservice**" eliminates this complexity by internalizing video source management. <br>
+Instead of handling frame extraction and encoding, the client can simply point to the video source, letting the microservice handle everything internally and efficiently. Additionally, it can provide optional output streams and useful metrics, making integration with applications seamless and efficient.
+
+This approach reduces client-side complexity, enhances **real-time processing**, and improves overall performance for edge AI applications. 🚀
+
+=== "Cloud"
+
+    ![](../images/microservice-diagram1_cloud.png)
+
+    > Your client application is responsible for managing the video source, extracting the frame.<br>
+    The API request includes the Base64-encoded image, adding overhead and latency.
+
+    <div style="text-align: right;">
+    <a href="#__tabbed_7_2" class="md-button">When VLM moves to local... :material-arrow-right-thick:</a>
+    </div>
+
+=== "Local Microservice"
+
+    ![](../images/microservice-diagram2_local.png)
+
+    > Even when you have a local VLM Microservice, your client application is still responsible for managing the video source, extracting the frame.
+
+    <div style="display: flex; justify-content: space-between;">
+    <a href="#__tabbed_7_1" class="md-button">:material-arrow-left-thick: Back</a>
+    <a href="#__tabbed_7_3" class="md-button">The solution is... :material-arrow-right-thick:</a>
+    </div>
+
+=== "Augmented Microservice"
+
+    ![](../images/microservice-diagram3_AugM-simpliefied.png)
+
+    > The Augmented VLM Microservice internalizes the video source management and frame processing, allowing your client application to only point to the video source and keeping itself simple.
+
+    <div style="display: flex; justify-content: space-between;">
+    <a href="#__tabbed_7_2" class="md-button">:material-arrow-left-thick: Back</a>
+    <a href="#__tabbed_7_4" class="md-button">Details of the Augmented Microservice :material-arrow-right-thick:</a>
+    </div>
+
+=== "Augmented Microservice (Detailed)"
+
+    ![](../images/microservice-diagram4_AugM-detailed.png)
+
+    > The Augmented VLM Microservice can optionally produces output/preview video stream and other useful metrics.
+
+    <div style="text-align: left;">
+    <a href="#__tabbed_7_3" class="md-button">:material-arrow-left-thick: Back</a>
+    </div>
+
+### Example - VILA Microservice
+
+Let's take a look at an example augmented VLM microservice, VILA Microservice, which is based on VILA 1.5 - 3B.
+
+=== ":material-list-box: Step-by-step Instruction"
+
+    !!! note
+
+        This section assumes you have installed `jetson-containers`.
+
+        ```bash
+        git clone https://github.com/dusty-nv/jetson-containers
+        bash ./jetson-containers/install.sh
+        ```
+
+    1. Prepare a video source
+
+        === "USB webcam"
+
+            Before starting the VILA Microservice container using `jetson-containers`, first hook up a USB webcam to your Jetson.<br>
+            Make sure it shows up on `ls /dev/video*`.
+
+        === "RTSP video stream"
+
+            Follow [this instruction](https://docs.nvidia.com/jetson/jps/nvstreamer/moj-nvstreamer.html) to install `nvstream`, start its container, and upload an MP4 video file to start streaming over RTSP.
+
+    2. Start VILA Microservice container
+
+        ```bash
+        jetson-containers run dustynv/vila-microservice:r36.4.0
+        ```
+
+    3. Start n8n server
+
+        Follow the [instruction above](#n8n).
+
+    4. Make sure you have the credential for `http://0.0.0.0:9000/v1`
+
+        You can keep using the credential you made of Ollama as we kept the base URL (and the API scheme) same.<br>
+        You can also create a dedicated credential for VILA Microservice (in case you customize the port number, etc).
+
+    5. Create a "**Workflow**" like before, but be sure to specify your video source in **URL field**.
+
+        === "USB webcam"
+
+            | Field | Value | Note |
+            | ----- | ----- | ---- |
+            | Credential to connect with | "**Local Ollama**" | Or the one you made for VILA Microservice |
+            | Resource | Image | (default) |
+            | Operation | Analyze Image | (default) |
+            | Model Specify Method | **`By ID`** |  |
+            | Model | **`Efficient-Large-Model/VILA1.5-3b`** | VILA Microservice does not check this |
+            | Text Input | "What's in this image" | (default) |
+            | Input Type | Image URL(s) | (default) |
+            | URL | **`v4l2:///dev/video0`** |  |
+
+        === "RTSP video stream"
+
+            | Field | Value | Note |
+            | ----- | ----- | ---- |
+            | Credential to connect with | "**Local Ollama**" | Or the one you made for VILA Microservice |
+            | Resource | Image | (default) |
+            | Operation | Analyze Image | (default) |
+            | Model Specify Method | **`By ID`** |  |
+            | Model | **`Efficient-Large-Model/VILA1.5-3b`** | VILA Microservice does not check this |
+            | Text Input | "What's in this image" | (default) |
+            | Input Type | Image URL(s) | (default) |
+            | URL | **`rtsp://<JETSON_IP>/<PATH_TO_VIDEO_FILE>`** | (e.g. `rtsp://10.110.51.72:31554/nvstream/opt/store/nvstreamer_videos/sample_1080p_h264.mp4`) |
+
+    6. Click "Test step" button the top right of the prompt box, and check the output shown on the right.
+
+        ![](../images/n8n_v4l2_test.png)
+
+    7. Open "VLC". From "**Media**" menu, select "**Open Network Stream...**", input the address in the following format, and hit "Play" button
+
+        ```
+        rtsp://<JETSON_IP>:5011/out
+        ```
+
+        ![](../images/vlc_network.png)
+
+    8. Try sending another API request by hitting "Test step" button on n8n.
+
+        Notice the overlay on the video showing the prompt and response changes (and fade away).
+
+    9.  If you have multiple video source ready, change the **URL** field, and hit "Test step" button again.
+
+        Notice the stream changes to the new input you specify.
+
+=== ":octicons-video-16: Walk-through video"
+
+    <video controls>
+    <source src="https://github.com/user-attachments/assets/f90e8de7-8659-44b7-92aa-dba79e10aa61" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
