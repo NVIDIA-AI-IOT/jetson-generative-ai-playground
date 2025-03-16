@@ -2,10 +2,11 @@
   "gemma-3": {
     "name": "Google Gemma 3",
     "header": "gemma-3-header",
+    "hf_token": "${HF_TOKEN}",
     "max_context_len": {"placeholder": 4096},
     "prefill_chunk": {"placeholder": 4096},
     "blacklist": ["mlc", "llama_cpp"],
-    "tags": ["llm"],
+    "tags": ["vlm"],
     "links": {
       "google": {
         "name": "Google",
@@ -36,5 +37,17 @@
     "url": "hf.co/google/gemma-3-27b-it",
     "blacklist": ["mlc", "llama_cpp"],
     "tags": ["gemma-3", "agx-orin"]
+  },
+  "gemma-3-1b-.*-ollama-.*": {
+    "url": "ollama.com/library/gemma3:1b"
+  },
+  "gemma-3-4b-.*-ollama-.*": {
+    "url": "ollama.com/library/gemma3:4b"
+  },
+  "gemma-3-12b-.*-ollama-.*": {
+    "url": "ollama.com/library/gemma3:12b"
+  },
+  "gemma-3-27b-.*-ollama-.*": {
+    "url": "ollama.com/library/gemma3:27b"
   }
 }

@@ -56,7 +56,7 @@ export function docker_args(env) {
   let sub = {
     'SERVER_ADDR': server_url.hostname,
     'SERVER_PORT': server_url.port,
-    'MAX_CONTEXT_LEN': is_value(model.max_context_len) ? model.max_context_len : 1,
+    'MAX_CONTEXT_LEN': is_value(model.max_context_len) ? model.max_context_len : 4096,
     'MAX_BATCH_SIZE': is_value(model.max_batch_size) ? model.max_batch_size : 1,
     'MODEL': model_repo,
   };

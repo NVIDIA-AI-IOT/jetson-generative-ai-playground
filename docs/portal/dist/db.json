@@ -46,9 +46,26 @@
       "l4t-r36"
     ]
   },
-  "awq": {
-    "name": "AWQ TinyChat",
-    "tags": "api"
+  "ollama": {
+    "name": "ollama",
+    "tags": "api",
+    "links": {
+      "ollama": {
+        "name": "ollama",
+        "url": "https://ollama.com/"
+      }
+    }
+  },
+  "ollama:jp6": {
+    "name": "dustynv/ollama:main-r36.4.0",
+    "docker_image": "dustynv/ollama:main-r36.4.0",
+    "docker_options": "-it --rm -e OLLAMA_MODEL=${MODEL} -e OLLAMA_MODELS=/root/.ollama -e OLLAMA_HOST=${SERVER_HOST} -e OLLAMA_CONTEXT_LEN=${MAX_CONTEXT_LEN} -e OLLAMA_LOGS=/root/.ollama/ollama.log -v ${CACHE_DIR}/ollama:/root/.ollama",
+    "server_host": "0.0.0.0:9000",
+    "tags": [
+      "container",
+      "ollama",
+      "l4t-r36"
+    ]
   },
   "vllm": {
     "name": "vLLM",
@@ -72,6 +89,10 @@
       "vllm",
       "l4t-r36"
     ]
+  },
+  "awq": {
+    "name": "AWQ TinyChat",
+    "tags": "api"
   },
   "sudonim": {
     "docker_cmd": "sudonim serve",
@@ -2681,6 +2702,7 @@
   "gemma-3": {
     "name": "Google Gemma 3",
     "header": "gemma-3-header",
+    "hf_token": "${HF_TOKEN}",
     "max_context_len": {
       "placeholder": 4096
     },
@@ -2692,7 +2714,7 @@
       "llama_cpp"
     ],
     "tags": [
-      "llm"
+      "vlm"
     ],
     "links": {
       "google": {
@@ -2801,14 +2823,15 @@
       "vllm:jp6"
     ]
   },
-  "gemma-3-1b-it-q4_0-ollama-jp6": {
-    "title": "Gemma 3 1B \u276f ollama q4_0 \u276f JetPack 6.1+",
-    "quantization": "q4_0",
+  "gemma-3-1b-it-q4_k_m-ollama-jp6": {
+    "title": "Gemma 3 1B \u276f ollama q4_k_m \u276f JetPack 6.1+",
+    "quantization": "q4_k_m",
     "tags": [
       "gemma-3-1b-it",
-      "q4_0",
+      "q4_k_m",
       "ollama:jp6"
-    ]
+    ],
+    "url": "ollama.com/library/gemma3:1b"
   },
   "gemma-3-4b-it-fp16-vllm-jp6": {
     "title": "Gemma 3 4B \u276f vLLM fp16 \u276f JetPack 6.1+",
@@ -2819,14 +2842,15 @@
       "vllm:jp6"
     ]
   },
-  "gemma-3-4b-it-q4_0-ollama-jp6": {
-    "title": "Gemma 3 4B \u276f ollama q4_0 \u276f JetPack 6.1+",
-    "quantization": "q4_0",
+  "gemma-3-4b-it-q4_k_m-ollama-jp6": {
+    "title": "Gemma 3 4B \u276f ollama q4_k_m \u276f JetPack 6.1+",
+    "quantization": "q4_k_m",
     "tags": [
       "gemma-3-4b-it",
-      "q4_0",
+      "q4_k_m",
       "ollama:jp6"
-    ]
+    ],
+    "url": "ollama.com/library/gemma3:4b"
   },
   "gemma-3-12b-it-fp16-vllm-jp6": {
     "title": "Gemma 3 12B \u276f vLLM fp16 \u276f JetPack 6.1+",
@@ -2837,14 +2861,15 @@
       "vllm:jp6"
     ]
   },
-  "gemma-3-12b-it-q4_0-ollama-jp6": {
-    "title": "Gemma 3 12B \u276f ollama q4_0 \u276f JetPack 6.1+",
-    "quantization": "q4_0",
+  "gemma-3-12b-it-q4_k_m-ollama-jp6": {
+    "title": "Gemma 3 12B \u276f ollama q4_k_m \u276f JetPack 6.1+",
+    "quantization": "q4_k_m",
     "tags": [
       "gemma-3-12b-it",
-      "q4_0",
+      "q4_k_m",
       "ollama:jp6"
-    ]
+    ],
+    "url": "ollama.com/library/gemma3:12b"
   },
   "gemma-3-27b-it-fp16-vllm-jp6": {
     "title": "Gemma 3 27B \u276f vLLM fp16 \u276f JetPack 6.1+",
@@ -2855,14 +2880,15 @@
       "vllm:jp6"
     ]
   },
-  "gemma-3-27b-it-q4_0-ollama-jp6": {
-    "title": "Gemma 3 27B \u276f ollama q4_0 \u276f JetPack 6.1+",
-    "quantization": "q4_0",
+  "gemma-3-27b-it-q4_k_m-ollama-jp6": {
+    "title": "Gemma 3 27B \u276f ollama q4_k_m \u276f JetPack 6.1+",
+    "quantization": "q4_k_m",
     "tags": [
       "gemma-3-27b-it",
-      "q4_0",
+      "q4_k_m",
       "ollama:jp6"
-    ]
+    ],
+    "url": "ollama.com/library/gemma3:27b"
   },
   "deepseek-r1-distill": {
     "name": "DeepSeek R1",
@@ -5046,13 +5072,42 @@
       "open_webui"
     ],
     "child_order": [
-      "gemma-3",
       "deepseek-r1-distill",
       "qwen-2.5",
       "llama-3",
       "smol-2",
       "gemma-2",
       "phi"
+    ]
+  },
+  "vlm": {
+    "name": "Vision/Language Models (VLM)",
+    "tags": "models",
+    "refs": "resource",
+    "xref": false,
+    "max_batch_size": 1,
+    "max_context_len": null,
+    "prefill_chunk": null,
+    "chat_template": null,
+    "hf_token": null,
+    "property_order": [
+      "url",
+      "docker_image",
+      "quantization",
+      "max_batch_size",
+      "max_context_len",
+      "prefill_chunk",
+      "chat_template",
+      "hf_token",
+      "cache_dir",
+      "docker_run",
+      "docker_cmd",
+      "docker_options",
+      "server_host",
+      "auto_update"
+    ],
+    "child_order": [
+      "gemma-3"
     ]
   },
   "max_batch_size": {

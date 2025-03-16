@@ -425,16 +425,64 @@ export class GraphDB {
         env[field_key] = env.properties[field_key]['func'](env);
     }
 
+    if( env.tags.includes('resource') && is_empty(env.value) && is_url(env.url) ) { // download remote assets
+      console.log(`[GraphDB]  Fetching resource '${key}' from:  ${env.url}`);
+      env.promise = fetch(env.url).then(response => { // use env.promise.then() to wait
+        if( !response.ok ) {
+          const error_msg = `HTTP error ${response.status} while fetching resource for '${key}' from:  ${env.url}`;
+          env.value = error_msg;
+          throw new Error(`[GraphDB]  ${error_msg}`);
+        }
+        return response.text(); // or response.json(), response.blob(), etc.
+      }).then(data => {
+        console.log(`[GraphDB]  Downloaded ${data.length} bytes for resource '${key}' from:  ${env.url}`);
+        env.value = data;
+        return data;
+      }).catch(error => {
+        const error_msg = `Error '${error}' while fetching content for resource '${key}' from:  ${env.url}`;
+        env.value = error_msg;
+        throw new Error(`[GraphDB]  ${error_msg}`);
+      });
+    }
+
     if( !exists(parent) ) {
       this.crossReference(env); // related references
 
       if( 'func' in env ) // root modifications
         env.func(env);
+
+      let promises = []; // agreggate all promises
+
+      if( env.promise )
+        promises.push(env.promise);
+
+      for( const ref_key in env.references ) {
+        const ref_promise = env.references[ref_key].promise;
+        if( ref_promise )
+          promises.push(ref_promise);
+      }
+      
+      if( promises.length > 0 )
+        console.log(`[GraphDB]  Promises left to resolve '${env.key}' (count=${promises.length})`);
+
+      env.promise = Promise.allSettled(promises);
     }
 
     return env;
   }
     
+  /*
+   * Wait on promises to resolve the values of async keys.
+   */
+  async value(env) {
+    if( is_empty(env.value) )
+      return env.value;
+    if( is_promise(env.value) ) {
+      await env.value;
+    }
+    return env.value;
+  }
+
   /*
    * Discover mutual references from other types of nodes.
    */
@@ -1368,7 +1416,7 @@ export class ConfigEditor {
   /*
    * update dynamic elements on selection changes
    */
-  refresh(key, env) {
+  refresh(key, env=null, async=true) {
     if( exists(key) )
       this.key = key;
 
@@ -1376,6 +1424,11 @@ export class ConfigEditor {
 
     if( !exists(env) )
       env = this.db.resolve(key);
+
+    if( async ) {
+      env.promise.then(x => this.refresh(key, env, false));
+      return;
+    }
 
     if( this.has_header ) {
       let header = '';
@@ -1426,17 +1479,21 @@ export class ConfigEditor {
     }
 
     this.properties.refresh(key);
-    this.updateCode(key, env);
+    this.updateCode(key, env, async);
   }
 
-  updateCode(key, env) {
+  updateCode(key, env=null, async=true) {
     key ??= this.key;
 
     if( !exists(env) )
       env = this.db.resolve(key);
 
-    this.code.refresh(env);
+    if( async ) {
+      env.promise.then(x => this.updateCode(key, env, false));
+      return;
+    }
 
+    this.code.refresh(env);
     console.log(`[GraphDB]  Resolved ${key}`, env);
   }
 }
@@ -2357,9 +2414,7 @@ export function get_model_name(model) {
   if( !exists(model) )
     return model;
 
-  //model = model.split('/');
-  //return model[model.length-1];
-  model = model.replace('hf.co/', '');
+  model = get_model_repo(model);
 
   if( model.toLowerCase().includes('.gguf') ) {
     const split = model.split('/');
@@ -2370,7 +2425,13 @@ export function get_model_name(model) {
 }
 
 export function get_model_repo(model) {
-  return exists(model) ? model.replace('hf.co/', '') : model;
+  if( !exists(model) )
+    return model;
+
+  model = model.replace('hf.co/', '');
+  model = model.replace('ollama.com/library/', '');
+
+  return model;
 }
 
 export function get_model_cache(env) {
@@ -2381,6 +2442,8 @@ export function get_model_cache(env) {
     var cache = 'mlc_llm';
   else if( api == 'llama.cpp' )
     var cache = 'llama_cpp';
+  else if( api == 'ollama' )
+    var cache = 'ollama';
 
   var repo = get_model_repo(model);
   var split = repo.split('/');
@@ -2400,6 +2463,8 @@ export function get_model_api(model) {
     return 'mlc';
   else if( model.includes('.gguf') )
     return 'llama.cpp';
+  else if( model.includes('ollama') )
+    return 'ollama';
   else
     console.warn(`Unsupported / unrecognized model ${model}`);
 }
@@ -2427,7 +2492,7 @@ export function dirname(x, levels=1) {
 }
 
 export function package_root() {
-  console.log('PACKAGE ROOT', import.meta.url, dirname(import.meta.url, 2));
+  //console.log('PACKAGE ROOT', import.meta.url, dirname(import.meta.url, 2));
   return dirname(import.meta.url, 2);
 }
 
@@ -2437,17 +2502,6 @@ export function file_extension(x) {
 
 export function has_extension(x, ...ext) {
   return ext.includes(file_extension(x));
-}
-
-export function make_url(url, domain='hf.co') {
-  const x = url.toLowerCase();
-  if( !x.startsWith('http') && !x.startsWith('www') ) {
-    if( !x.startsWith('huggingface') && !x.startsWith('hf.co') ) {
-      url = domain + '/' + url;
-    }  
-    url = 'https://' + url;
-  }
-  return url;
 }
 
 /* END: /www/jetson-ai-lab.dev/staging/docs/portal/js/utils/path.js */
@@ -2535,6 +2589,30 @@ export function as_element(x) {
   return x;
 }
 
+export function is_promise(x) {
+  return exists(x) && (
+    (x instanceof Promise) ||
+    (x.then && typeof x.then === 'function')
+  );
+}
+
+export function is_url(x) {
+  return nonempty(x) && (x.startsWith('http') || x.startsWith('www'));
+}
+
+export function make_url(url, domain='hf.co') {
+  const x = url.toLowerCase();
+  if( !is_url(x) ) {
+    if( !x.includes('.co') ) {
+      if( !x.startsWith('huggingface') && !x.startsWith('hf.co') ) {
+        url = domain + '/' + url;
+      }  
+    }
+    url = 'https://' + url;
+  }
+  return url;
+}
+
 export function dict_keys(x) {
   return is_dict(x) ? Object.keys(x) : [];
 }
@@ -2546,6 +2624,10 @@ export function includes_any(x, y) {
   }
   return false;
 }
+
+export function toTitleCase(x) {
+  return x.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+};
 
 /*
  * Merge and deduplicate two lists (https://stackoverflow.com/a/1584377)
@@ -2588,14 +2670,38 @@ export function deep_copy(obj) {
   return clone;
 }
 
-export function toTitleCase(x) {
-  return x.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-};
+/*
+ * Perform variable substitution on references to environment variables (of the form $XYZ or ${XYZ})
+ */
+export function substitution(text, env) {
 
-export function substitution(text, map) {
-  for( const k in map ) {
+  if( is_empty(text) )
+    return '';
+
+  if( exists(env.tags) ) {
+    if( exists(env.server_host) ) {
+      const server_url = get_server_url(env);
+      env.server_addr ??= server_url.hostname;
+      env.server_port ??= server_url.port;
+    }
+
+    if( exists(env.url) && env.tags.includes('models') ) {
+      env.model ??= get_model_repo(env.url ?? env.model_name);
+    }
+  }
+
+  for( const k in env ) {
     const k1 = '$' + k.toUpperCase();
     const k2 = '${' + k.toUpperCase() + '}';
+
+    let val = env[k];
+
+    if( is_dict(val) ) {
+      if( nonempty(val.value) )
+        val = val.value;
+      else if( exists(val.placeholder) )
+        val = val.placeholder;
+    }
 
     //var re = new RegExp(k1, 'g');
     //var rp = new RegExp(k2, 'g');
@@ -2603,8 +2709,8 @@ export function substitution(text, map) {
     //text = text.replace(re, map[k]);
     //text = text.replace(rp, map[k]);
 
-    text = text.split(k1).join(map[k]);
-    text = text.split(k2).join(map[k]);
+    text = text.split(k1).join(val);
+    text = text.split(k2).join(val);
   }
 
   return text;
@@ -4131,6 +4237,39 @@ Resolvers({curl_request: {
 }});
 /* END: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/launchers/curl.js */
 
+/* BEGIN: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/launchers/vlm.js */
+/*
+ * VLM code examples (todo move under clients/ or resources/)
+ */
+
+Resolver({
+  key: 'python-vlm',
+  url: 'https://raw.githubusercontent.com/dusty-nv/sudonim/refs/heads/main/sudonim/clients/vlm.py',
+  /*func: python_vlm,*/
+  title: '<span class="code" style="font-size: 105%">vlm.py</span>',
+  filename: 'vlm.py',
+  hidden: true,
+  group: ['python'],
+  refs: ['vlm'],
+  tags: ['python'],
+  text: `
+    This multimodal <a href="https://platform.openai.com/docs/api-reference/chat/create" target="_blank" class="code">chat.completion</a> 
+    client supports text/image inputs and streaming text output.  It runs some example Visual Question Answering (VQA) queries
+    on these <a href="https://github.com/dusty-nv/jetson-containers/tree/master/data/images" target="_blank">test images</a>,
+    encoded as <a href="https://annacsmedeiros.medium.com/efficient-image-processing-in-python-a-straightforward-guide-to-base64-and-numpy-conversions-e9e3aac13312" target="_blank">base64</a>
+    in the chat message URLs.
+  `,
+  footer: `
+    Before running <span class="code">vlm.py</span>, the model service container should be started, and you should <span class="code">pip install openai</span>
+    in your Python environment if needed. Lightweight dependencies make it easy to install clients outside of container or in others.
+    <br/><br/>
+    For relevant API documentation from the OpenAI Python library, see:<br/>&nbsp;&nbsp;&nbsp;
+    <a href="https://github.com/openai/openai-python" target="_blank" class="code">https://github.com/openai/openai-python</a><br/>&nbsp;&nbsp;&nbsp;
+    <a href="https://platform.openai.com/docs/guides/images" target="_blank" class="code">https://platform.openai.com/docs/guides/images</a>
+  `
+});
+/* END: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/launchers/vlm.js */
+
 /* BEGIN: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/docker/run.js */
 /* import { substitution } from "../../nanolab";
  */
@@ -4138,16 +4277,16 @@ Resolvers({curl_request: {
  * Generate 'docker run' templates for launching models & containers
  */
 export function docker_run(env) {
-  
-  //console.group(`[GraphDB]  Generating docker_run for ${env.key}`);
-  //console.log(env);
-
   const opt = wrapLines(
     nonempty(env.docker_options) ? env.docker_options : docker_options(env)
   ) + ' \\\n ';
 
-  const image = `${env.docker_image} \\\n   `; 
-  const exec = `${env.docker_cmd} \\\n   `;
+  const indent = '   ';
+  const line_sep = '\\\n';
+  const line_indent = line_sep + indent;
+  
+  const image = `${env.docker_image} ${line_indent}`; 
+  const exec = nonempty(env.docker_cmd) ? `${env.docker_cmd} ${line_indent}` : ``;
    
   let args = docker_args(env);
   let cmd = nonempty(env.docker_run) ? env.docker_run : env.db.index['docker_run'].value;
@@ -4160,7 +4299,7 @@ export function docker_run(env) {
     .replace('$ARGS', '${ARGS}');
 
   if( !cmd.endsWith('${ARGS}') )
-    args += ` \\\n      `;  // line break for user args
+    args += ' ' + line_sep + line_indent + line_indent;  // line break for user args
 
   cmd = cmd
     .replace('${OPTIONS}', opt)
@@ -4168,16 +4307,14 @@ export function docker_run(env) {
     .replace('${COMMAND}', exec)
     .replace('${ARGS}', args);
 
-  cmd = substitution(cmd, {
-    'MODEL': get_model_repo(env.url ?? env.model_name)
-  });
+  cmd = substitution(cmd, env).trim();
 
   cmd = cmd
     .replace('\\ ', '\\')
     .replace('  \\', ' \\');  
 
-  //console.log(`[GraphDB] `, cmd);
-  //console.groupEnd();
+  if( cmd.endsWith(line_sep) )
+    cmd = cmd.slice(0, -line_sep.length + 1);
 
   if( cmd.endsWith(' \\') )
     cmd = cmd.slice(0, -2);
@@ -4549,7 +4686,7 @@ export function docker_args(env) {
   let sub = {
     'SERVER_ADDR': server_url.hostname,
     'SERVER_PORT': server_url.port,
-    'MAX_CONTEXT_LEN': is_value(model.max_context_len) ? model.max_context_len : 1,
+    'MAX_CONTEXT_LEN': is_value(model.max_context_len) ? model.max_context_len : 4096,
     'MAX_BATCH_SIZE': is_value(model.max_batch_size) ? model.max_batch_size : 1,
     'MODEL': model_repo,
   };

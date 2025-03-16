@@ -38,9 +38,22 @@
     "docker_image": "dustynv/llama_cpp:r36.4.0",
     "tags": ["sudonim", "llama_cpp", "l4t-r36"]
   },
-  "awq": {
-    "name": "AWQ TinyChat",
-    "tags": "api"
+  "ollama": {
+    "name": "ollama",
+    "tags": "api",
+    "links": {
+      "ollama": {
+        "name": "ollama",
+        "url": "https://ollama.com/"
+      }
+    }
+  },
+  "ollama:jp6": {
+    "name": "dustynv/ollama:main-r36.4.0",
+    "docker_image": "dustynv/ollama:main-r36.4.0",
+    "docker_options": "-it --rm -e OLLAMA_MODEL=${MODEL} -e OLLAMA_MODELS=/root/.ollama -e OLLAMA_HOST=${SERVER_HOST} -e OLLAMA_CONTEXT_LEN=${MAX_CONTEXT_LEN} -e OLLAMA_LOGS=/root/.ollama/ollama.log -v ${CACHE_DIR}/ollama:/root/.ollama",
+    "server_host": "0.0.0.0:9000",
+    "tags": ["container", "ollama", "l4t-r36"]
   },
   "vllm": {
     "name": "vLLM",
@@ -60,6 +73,10 @@
     "docker_options": "-it --rm",
     "server_host": "0.0.0.0:9000",
     "tags": ["container", "vllm", "l4t-r36"]
+  },
+  "awq": {
+    "name": "AWQ TinyChat",
+    "tags": "api"
   },
   "sudonim": {
     "docker_cmd": "sudonim serve",

@@ -4,16 +4,16 @@ import { substitution } from "../../nanolab";
  * Generate 'docker run' templates for launching models & containers
  */
 export function docker_run(env) {
-  
-  //console.group(`[GraphDB]  Generating docker_run for ${env.key}`);
-  //console.log(env);
-
   const opt = wrapLines(
     nonempty(env.docker_options) ? env.docker_options : docker_options(env)
   ) + ' \\\n ';
 
-  const image = `${env.docker_image} \\\n   `; 
-  const exec = `${env.docker_cmd} \\\n   `;
+  const indent = '   ';
+  const line_sep = '\\\n';
+  const line_indent = line_sep + indent;
+  
+  const image = `${env.docker_image} ${line_indent}`; 
+  const exec = nonempty(env.docker_cmd) ? `${env.docker_cmd} ${line_indent}` : ``;
    
   let args = docker_args(env);
   let cmd = nonempty(env.docker_run) ? env.docker_run : env.db.index['docker_run'].value;
@@ -26,7 +26,7 @@ export function docker_run(env) {
     .replace('$ARGS', '${ARGS}');
 
   if( !cmd.endsWith('${ARGS}') )
-    args += ` \\\n      `;  // line break for user args
+    args += ' ' + line_sep + line_indent + line_indent;  // line break for user args
 
   cmd = cmd
     .replace('${OPTIONS}', opt)
@@ -34,16 +34,14 @@ export function docker_run(env) {
     .replace('${COMMAND}', exec)
     .replace('${ARGS}', args);
 
-  cmd = substitution(cmd, {
-    'MODEL': get_model_repo(env.url ?? env.model_name)
-  });
+  cmd = substitution(cmd, env).trim();
 
   cmd = cmd
     .replace('\\ ', '\\')
     .replace('  \\', ' \\');  
 
-  //console.log(`[GraphDB] `, cmd);
-  //console.groupEnd();
+  if( cmd.endsWith(line_sep) )
+    cmd = cmd.slice(0, -line_sep.length + 1);
 
   if( cmd.endsWith(' \\') )
     cmd = cmd.slice(0, -2);
