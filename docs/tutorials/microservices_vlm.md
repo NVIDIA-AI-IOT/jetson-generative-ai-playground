@@ -1,3 +1,6 @@
+![](../images/AugVLM.png){ width="40%"  align=right }
+
+
 # Local VLM Microservices
 
 Local VLM (Vision Language Model) microservices can unlock a **new class of applications** for VLMs at the edge, as it can enable capabilities and performance that cloud-hosted VLMs cannot achieve, especially when integrated with **local live video sources**.
