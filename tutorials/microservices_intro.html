@@ -345,12 +345,12 @@
                     </a>
                    </li>
                    <li class="md-nav__item">
-                    <a class="md-nav__link" href="#example-use-of-llm-microservices-with-curl">
+                    <a class="md-nav__link" href="#example-curl-commands">
                      <span class="md-ellipsis">
-                      Example Use of LLM Microservices with Curl
+                      Example curl commands
                      </span>
                     </a>
-                    <nav aria-label="Example Use of LLM Microservices with Curl" class="md-nav">
+                    <nav aria-label="Example curl commands" class="md-nav">
                      <ul class="md-nav__list">
                       <li class="md-nav__item">
                        <a class="md-nav__link" href="#v1models">
@@ -370,9 +370,16 @@
                     </nav>
                    </li>
                    <li class="md-nav__item">
-                    <a class="md-nav__link" href="#example-use-of-llm-microservices-with-open-webui">
+                    <a class="md-nav__link" href="#example-python-scripts">
                      <span class="md-ellipsis">
-                      Example Use of LLM Microservices with Open WebUI
+                      Example Python scripts
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#example-with-open-webui">
+                     <span class="md-ellipsis">
+                      Example with Open WebUI
                      </span>
                     </a>
                    </li>
@@ -904,12 +911,12 @@
            </a>
           </li>
           <li class="md-nav__item">
-           <a class="md-nav__link" href="#example-use-of-llm-microservices-with-curl">
+           <a class="md-nav__link" href="#example-curl-commands">
             <span class="md-ellipsis">
-             Example Use of LLM Microservices with Curl
+             Example curl commands
             </span>
            </a>
-           <nav aria-label="Example Use of LLM Microservices with Curl" class="md-nav">
+           <nav aria-label="Example curl commands" class="md-nav">
             <ul class="md-nav__list">
              <li class="md-nav__item">
               <a class="md-nav__link" href="#v1models">
@@ -929,9 +936,16 @@
            </nav>
           </li>
           <li class="md-nav__item">
-           <a class="md-nav__link" href="#example-use-of-llm-microservices-with-open-webui">
+           <a class="md-nav__link" href="#example-python-scripts">
             <span class="md-ellipsis">
-             Example Use of LLM Microservices with Open WebUI
+             Example Python scripts
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#example-with-open-webui">
+            <span class="md-ellipsis">
+             Example with Open WebUI
             </span>
            </a>
           </li>
@@ -1109,8 +1123,12 @@ Whether you're working on robotics, vision, or intelligent automation, you now h
          </tr>
         </tbody>
        </table>
-       <h2 id="example-use-of-llm-microservices-with-curl">
-        Example Use of LLM Microservices with Curl
+       <h2 id="example-curl-commands">
+        Example
+        <code>
+         curl
+        </code>
+        commands
        </h2>
        <h3 id="v1models">
         <code>
@@ -1270,10 +1288,90 @@ Whether you're working on robotics, vision, or intelligent automation, you now h
 <span class="s1">        "role": "user",</span>
 <span class="s1">        "content": "Hello!"</span>
 <span class="s1">    }</span>
-<span class="s1">    ],</span>
+<span class="s1">    ]</span>
 <span class="s1">}'</span>
 </code></pre>
             </div>
+            <details class="tip">
+             <summary>
+              Tip
+             </summary>
+             <p>
+              You can find the model
+              <code>
+               curl
+              </code>
+              command in a couple of ways.
+             </p>
+             <div class="tabbed-set tabbed-alternate" data-tabs="3:2">
+              <input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"/>
+              <input id="__tabbed_3_2" name="__tabbed_3" type="radio"/>
+              <div class="tabbed-labels">
+               <label for="__tabbed_3_1">
+                OpenAI Docs
+               </label>
+               <label for="__tabbed_3_2">
+                Jetson AI Lab Model Card
+               </label>
+              </div>
+              <div class="tabbed-content">
+               <div class="tabbed-block">
+                <p>
+                 <a href="https://platform.openai.com/docs/api-reference/chat/create">
+                  OpenAI API Reference Docs
+                 </a>
+                 provides examples for combinations of their API requests .
+                </p>
+                <p>
+                 You can use their
+                 <code>
+                  curl
+                 </code>
+                 command, replace the
+                 <strong>
+                  base URL
+                 </strong>
+                 and remove the authorization header and
+                 <code>
+                  model
+                 </code>
+                 field, but you can see it's essentially compatible.
+                </p>
+                <p>
+                 This is something demonstrated in the
+                 <a href="#__tabbed_2_2">
+                  walk-through video
+                 </a>
+                 .
+                </p>
+               </div>
+               <div class="tabbed-block">
+                <p>
+                 Each model card on Jetson AI Lab provides the "
+                 <strong>
+                  Curl Request
+                 </strong>
+                 " example, along with "
+                 <strong>
+                  Performance Benchmark
+                 </strong>
+                 " and "
+                 <strong>
+                  Curl Request
+                 </strong>
+                 "
+                 <code>
+                  docker run
+                 </code>
+                 commands.
+                </p>
+                <p>
+                 <img alt="" src="../images/JAL_Models_Where-to-find-curl-command.gif"/>
+                </p>
+               </div>
+              </div>
+             </div>
+            </details>
            </li>
            <li>
             <p>
@@ -1323,14 +1421,17 @@ Whether you're working on robotics, vision, or intelligent automation, you now h
          </div>
         </div>
        </div>
-       <h2 id="example-use-of-llm-microservices-with-open-webui">
-        Example Use of LLM Microservices with Open WebUI
+       <h2 id="example-python-scripts">
+        Example Python scripts
        </h2>
-       <div class="tabbed-set tabbed-alternate" data-tabs="3:2">
-        <input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"/>
-        <input id="__tabbed_3_2" name="__tabbed_3" type="radio"/>
+       <h2 id="example-with-open-webui">
+        Example with Open WebUI
+       </h2>
+       <div class="tabbed-set tabbed-alternate" data-tabs="4:2">
+        <input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio"/>
+        <input id="__tabbed_4_2" name="__tabbed_4" type="radio"/>
         <div class="tabbed-labels">
-         <label for="__tabbed_3_1">
+         <label for="__tabbed_4_1">
           <span class="twemoji">
            <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2M7 7h2v2H7zm0 4h2v2H7zm0 4h2v2H7zm10 2h-6v-2h6zm0-4h-6v-2h6zm0-4h-6V7h6z">
@@ -1339,7 +1440,7 @@ Whether you're working on robotics, vision, or intelligent automation, you now h
           </span>
           Step-by-step Instruction
          </label>
-         <label for="__tabbed_3_2">
+         <label for="__tabbed_4_2">
           <span class="twemoji">
            <svg viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 3.75C0 2.784.784 2 1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25Zm1.75-.25a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25Z">
@@ -1478,8 +1579,12 @@ Whether you're working on robotics, vision, or intelligent automation, you now h
            </p>
            <p>
             You can check out the walk-through video (in the
-            <a href="#__tabbed_3_2">
-             next tab
+            <a href="#__tabbed_4_2">
+             next "
+             <strong>
+              Walk-through video
+             </strong>
+             " tab
             </a>
             ) for details.
            </p>
