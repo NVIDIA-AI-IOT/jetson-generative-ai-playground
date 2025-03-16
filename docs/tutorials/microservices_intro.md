@@ -7,7 +7,7 @@
 Jetson AI Lab now offers a collection of pre-built containers, each functioning as a **local AI microservice**, designed to bring flexibility, efficiency, and scalability to your projects.
 
 A **microservice** is a small, independent, and loosely coupled software component that performs a specific function.<br>
-In the [**Models**](../models.html) section of Jetson AI Lab, you'll find AI inference services accessible through a standardized REST API.
+In the [**Models**](../models.md) section of Jetson AI Lab, you'll find AI inference services accessible through a standardized REST API.
 
 These local AI microservices are powerful building blocks that enable you to create cutting-edge edge AI applications with ease.
 Whether you're working on robotics, vision, or intelligent automation, you now have the tools to accelerate innovation.
@@ -50,7 +50,7 @@ Let’s build something amazing together! 💡✨
 | `GET`  | `/v1/models` | Get a list of models available |
 | `POST` | `/v1/chat/completions` | Get a response from the model using a prompt |
 
-## Example Use of LLM Microservices with Curl
+## Example `curl` commands
 
 ### `/v1/models`
 
@@ -112,9 +112,27 @@ Let’s build something amazing together! 💡✨
                 "role": "user",
                 "content": "Hello!"
             }
-            ],
+            ]
         }'
         ```
+
+        ??? tip
+
+            You can find the model `curl` command in a couple of ways.
+
+            === "OpenAI Docs"
+
+                [OpenAI API Reference Docs](https://platform.openai.com/docs/api-reference/chat/create) provides examples for combinations of their API requests .
+
+                You can use their `curl` command, replace the **base URL** and remove the authorization header and `model` field, but you can see it's essentially compatible.
+
+                This is something demonstrated in the [walk-through video](#__tabbed_2_2).
+
+            === "Jetson AI Lab Model Card"
+
+                Each model card on Jetson AI Lab provides the "**Curl Request**" example, along with "**Performance Benchmark**" and "**Curl Request**" `docker run` commands.
+
+                ![](../images/JAL_Models_Where-to-find-curl-command.gif)
 
     2. Check the output. It should show something like the following.
 
@@ -155,7 +173,9 @@ Let’s build something amazing together! 💡✨
     Your browser does not support the video tag.
     </video>
 
-## Example Use of LLM Microservices with Open WebUI
+## Example Python scripts
+
+## Example with Open WebUI
 
 === ":material-list-box: Step-by-step Instruction"
 
@@ -199,7 +219,7 @@ Let’s build something amazing together! 💡✨
 
     !!! tip
 
-        You can check out the walk-through video (in the [next tab](#__tabbed_3_2)) for details.
+        You can check out the walk-through video (in the [next "**Walk-through video**" tab](#__tabbed_4_2)) for details.
 
 === ":octicons-video-16: Walk-through video"
 
