@@ -80,6 +80,30 @@ export function as_element(x) {
   return x;
 }
 
+export function is_promise(x) {
+  return exists(x) && (
+    (x instanceof Promise) ||
+    (x.then && typeof x.then === 'function')
+  );
+}
+
+export function is_url(x) {
+  return nonempty(x) && (x.startsWith('http') || x.startsWith('www'));
+}
+
+export function make_url(url, domain='hf.co') {
+  const x = url.toLowerCase();
+  if( !is_url(x) ) {
+    if( !x.includes('.co') ) {
+      if( !x.startsWith('huggingface') && !x.startsWith('hf.co') ) {
+        url = domain + '/' + url;
+      }  
+    }
+    url = 'https://' + url;
+  }
+  return url;
+}
+
 export function dict_keys(x) {
   return is_dict(x) ? Object.keys(x) : [];
 }
@@ -91,6 +115,10 @@ export function includes_any(x, y) {
   }
   return false;
 }
+
+export function toTitleCase(x) {
+  return x.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+};
 
 /*
  * Merge and deduplicate two lists (https://stackoverflow.com/a/1584377)
@@ -133,14 +161,38 @@ export function deep_copy(obj) {
   return clone;
 }
 
-export function toTitleCase(x) {
-  return x.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-};
+/*
+ * Perform variable substitution on references to environment variables (of the form $XYZ or ${XYZ})
+ */
+export function substitution(text, env) {
 
-export function substitution(text, map) {
-  for( const k in map ) {
+  if( is_empty(text) )
+    return '';
+
+  if( exists(env.tags) ) {
+    if( exists(env.server_host) ) {
+      const server_url = get_server_url(env);
+      env.server_addr ??= server_url.hostname;
+      env.server_port ??= server_url.port;
+    }
+
+    if( exists(env.url) && env.tags.includes('models') ) {
+      env.model ??= get_model_repo(env.url ?? env.model_name);
+    }
+  }
+
+  for( const k in env ) {
     const k1 = '$' + k.toUpperCase();
     const k2 = '${' + k.toUpperCase() + '}';
+
+    let val = env[k];
+
+    if( is_dict(val) ) {
+      if( nonempty(val.value) )
+        val = val.value;
+      else if( exists(val.placeholder) )
+        val = val.placeholder;
+    }
 
     //var re = new RegExp(k1, 'g');
     //var rp = new RegExp(k2, 'g');
@@ -148,8 +200,8 @@ export function substitution(text, map) {
     //text = text.replace(re, map[k]);
     //text = text.replace(rp, map[k]);
 
-    text = text.split(k1).join(map[k]);
-    text = text.split(k2).join(map[k]);
+    text = text.split(k1).join(val);
+    text = text.split(k2).join(val);
   }
 
   return text;

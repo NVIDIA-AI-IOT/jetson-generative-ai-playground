@@ -7,9 +7,7 @@ export function get_model_name(model) {
   if( !exists(model) )
     return model;
 
-  //model = model.split('/');
-  //return model[model.length-1];
-  model = model.replace('hf.co/', '');
+  model = get_model_repo(model);
 
   if( model.toLowerCase().includes('.gguf') ) {
     const split = model.split('/');
@@ -20,7 +18,13 @@ export function get_model_name(model) {
 }
 
 export function get_model_repo(model) {
-  return exists(model) ? model.replace('hf.co/', '') : model;
+  if( !exists(model) )
+    return model;
+
+  model = model.replace('hf.co/', '');
+  model = model.replace('ollama.com/library/', '');
+
+  return model;
 }
 
 export function get_model_cache(env) {
@@ -31,6 +35,8 @@ export function get_model_cache(env) {
     var cache = 'mlc_llm';
   else if( api == 'llama.cpp' )
     var cache = 'llama_cpp';
+  else if( api == 'ollama' )
+    var cache = 'ollama';
 
   var repo = get_model_repo(model);
   var split = repo.split('/');
@@ -50,6 +56,8 @@ export function get_model_api(model) {
     return 'mlc';
   else if( model.includes('.gguf') )
     return 'llama.cpp';
+  else if( model.includes('ollama') )
+    return 'ollama';
   else
     console.warn(`Unsupported / unrecognized model ${model}`);
 }

@@ -423,16 +423,65 @@ export class GraphDB {
         env[field_key] = env.properties[field_key]['func'](env);
     }
 
+    if( env.tags.includes('resource') && is_empty(env.value) && is_url(env.url) ) { // download remote assets
+      const url = env.url.replace('github.com', 'raw.githubusercontent.com').replace('/blob/', '/refs/heads/');
+      console.log(`[GraphDB]  Fetching resource '${key}' from:  ${url}`);
+      env.promise = fetch(url).then(response => { // use env.promise.then() to wait
+        if( !response.ok ) {
+          const error_msg = `HTTP error ${response.status} while fetching resource for '${key}' from:  ${url}`;
+          env.value = error_msg;
+          throw new Error(`[GraphDB]  ${error_msg}`);
+        }
+        return response.text(); // or response.json(), response.blob(), etc.
+      }).then(data => {
+        console.log(`[GraphDB]  Downloaded ${data.length} bytes for resource '${key}' from:  ${url}`);
+        env.value = data;
+        return data;
+      }).catch(error => {
+        const error_msg = `Error '${error}' while fetching content for resource '${key}' from:  ${url}`;
+        env.value = error_msg;
+        throw new Error(`[GraphDB]  ${error_msg}`);
+      });
+    }
+
     if( !exists(parent) ) {
       this.crossReference(env); // related references
 
       if( 'func' in env ) // root modifications
         env.func(env);
+
+      let promises = []; // agreggate all promises
+
+      if( env.promise )
+        promises.push(env.promise);
+
+      for( const ref_key in env.references ) {
+        const ref_promise = env.references[ref_key].promise;
+        if( ref_promise )
+          promises.push(ref_promise);
+      }
+      
+      if( promises.length > 0 )
+        console.log(`[GraphDB]  Promises left to resolve '${env.key}' (count=${promises.length})`);
+
+      env.promise = Promise.allSettled(promises);
     }
 
     return env;
   }
     
+  /*
+   * Wait on promises to resolve the values of async keys.
+   */
+  async value(env) {
+    if( is_empty(env.value) )
+      return env.value;
+    if( is_promise(env.value) ) {
+      await env.value;
+    }
+    return env.value;
+  }
+
   /*
    * Discover mutual references from other types of nodes.
    */

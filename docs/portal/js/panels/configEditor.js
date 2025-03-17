@@ -164,7 +164,7 @@ export class ConfigEditor {
   /*
    * update dynamic elements on selection changes
    */
-  refresh(key, env) {
+  refresh(key, env=null, async=true) {
     if( exists(key) )
       this.key = key;
 
@@ -172,6 +172,11 @@ export class ConfigEditor {
 
     if( !exists(env) )
       env = this.db.resolve(key);
+
+    if( async ) {
+      env.promise.then(x => this.refresh(key, env, false));
+      return;
+    }
 
     if( this.has_header ) {
       let header = '';
@@ -222,17 +227,21 @@ export class ConfigEditor {
     }
 
     this.properties.refresh(key);
-    this.updateCode(key, env);
+    this.updateCode(key, env, async);
   }
 
-  updateCode(key, env) {
+  updateCode(key, env=null, async=true) {
     key ??= this.key;
 
     if( !exists(env) )
       env = this.db.resolve(key);
 
-    this.code.refresh(env);
+    if( async ) {
+      env.promise.then(x => this.updateCode(key, env, false));
+      return;
+    }
 
+    this.code.refresh(env);
     console.log(`[GraphDB]  Resolved ${key}`, env);
   }
 }
