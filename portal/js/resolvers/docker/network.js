@@ -14,7 +14,7 @@ export function get_server_url(env, default_host='0.0.0.0:9000') {
   else
     var host = default_host;
 
-  return as_url(default_host);
+  return as_url(host);
 }
 
 export function get_endpoint_url(env, default_host='0.0.0.0:9000') {

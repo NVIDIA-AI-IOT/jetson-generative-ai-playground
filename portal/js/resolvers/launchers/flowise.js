@@ -21,7 +21,7 @@ export function flowise(env) {
   env.docker_run = substitution(docker_run(env), {
     'server_llm': as_url(env.server_llm),
     'cache_dir': env.cache_dir,
-    'port': PORT
+    'server_port': PORT
   });
   
   return env.docker_run;
@@ -35,9 +35,9 @@ Resolver({
   server_llm: '0.0.0.0:9000',
   docker_image: 'flowiseai/flowise:latest',
   docker_options: [
-    '-it --rm --name=flowise --network=host -e PORT=${PORT}',
+    '-it --rm --name=flowise --network=host -e PORT=${SERVER_PORT}',
     '-e FLOWISE_USERNAME=nvidia -e FLOWISE_PASSWORD=nvidia',
-    '-e OPENAI_API_BASE=${SERVER_LLM}v1 -e OPENAI_API_KEY=foo',
+    '-e OPENAI_API_BASE=${SERVER_LLM}/v1 -e OPENAI_API_KEY=foo',
     '-v ${CACHE_DIR}/flowise:/root/.flowise',
   ].join(' '),
   docker_run: 'docker run $OPTIONS $IMAGE',

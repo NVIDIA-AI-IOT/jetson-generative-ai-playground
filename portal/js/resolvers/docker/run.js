@@ -4,18 +4,18 @@ import { substitution } from "../../nanolab";
  * Generate 'docker run' templates for launching models & containers
  */
 export function docker_run(env) {
-  
-  //console.group(`[GraphDB]  Generating docker_run for ${env.key}`);
-  //console.log(env);
-
   const opt = wrapLines(
     nonempty(env.docker_options) ? env.docker_options : docker_options(env)
   ) + ' \\\n ';
 
-  const image = `${env.docker_image} \\\n   `; 
-  const exec = `${env.docker_cmd} \\\n   `;
-   
-  let args = docker_args(env);
+  const indent = ' '.repeat(4);
+  const line_sep = '\\\n';
+  const line_indent = line_sep + indent;
+  
+  const image = `${env.docker_image} ${line_sep}   `; 
+  const exec = nonempty(env.docker_cmd) ? `${env.docker_cmd} ${line_sep}     ` : ``;
+
+  let args = wrapLines({text: docker_args(env), indent: 6});
   let cmd = nonempty(env.docker_run) ? env.docker_run : env.db.index['docker_run'].value;
 
   cmd = cmd
@@ -26,7 +26,7 @@ export function docker_run(env) {
     .replace('$ARGS', '${ARGS}');
 
   if( !cmd.endsWith('${ARGS}') )
-    args += ` \\\n      `;  // line break for user args
+    args += ' ' + line_sep + ' '.repeat(6);  // line break for user args
 
   cmd = cmd
     .replace('${OPTIONS}', opt)
@@ -34,16 +34,17 @@ export function docker_run(env) {
     .replace('${COMMAND}', exec)
     .replace('${ARGS}', args);
 
-  cmd = substitution(cmd, {
-    'MODEL': get_model_repo(env.url ?? env.model_name)
-  });
+  console.log('EXEC', exec);
+  console.log('ARGS', args);
+  
+  cmd = substitution(cmd, env).trim();
 
   cmd = cmd
     .replace('\\ ', '\\')
     .replace('  \\', ' \\');  
 
-  //console.log(`[GraphDB] `, cmd);
-  //console.groupEnd();
+  if( cmd.endsWith(line_sep) )
+    cmd = cmd.slice(0, -line_sep.length + 1);
 
   if( cmd.endsWith(' \\') )
     cmd = cmd.slice(0, -2);

@@ -54,7 +54,7 @@ export function docker_profiles(env, depends) {
 }
 
 export function docker_service_name(compose, name) {
-  for( const api of ['mlc', 'llama_cpp', 'tensorrt_llm', 'vllm'] )
+  for( const api of ['mlc', 'llama_cpp', 'ollama', 'tensorrt_llm', 'vllm', 'awq'] )
     compose = compose.replace(`  ${api}:`, `  ${name}:`);
   return compose;
 }
