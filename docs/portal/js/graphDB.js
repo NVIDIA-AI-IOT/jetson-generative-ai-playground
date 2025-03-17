@@ -424,20 +424,21 @@ export class GraphDB {
     }
 
     if( env.tags.includes('resource') && is_empty(env.value) && is_url(env.url) ) { // download remote assets
-      console.log(`[GraphDB]  Fetching resource '${key}' from:  ${env.url}`);
-      env.promise = fetch(env.url).then(response => { // use env.promise.then() to wait
+      const url = env.url.replace('github.com', 'raw.githubusercontent.com').replace('/blob/', '/refs/heads/');
+      console.log(`[GraphDB]  Fetching resource '${key}' from:  ${url}`);
+      env.promise = fetch(url).then(response => { // use env.promise.then() to wait
         if( !response.ok ) {
-          const error_msg = `HTTP error ${response.status} while fetching resource for '${key}' from:  ${env.url}`;
+          const error_msg = `HTTP error ${response.status} while fetching resource for '${key}' from:  ${url}`;
           env.value = error_msg;
           throw new Error(`[GraphDB]  ${error_msg}`);
         }
         return response.text(); // or response.json(), response.blob(), etc.
       }).then(data => {
-        console.log(`[GraphDB]  Downloaded ${data.length} bytes for resource '${key}' from:  ${env.url}`);
+        console.log(`[GraphDB]  Downloaded ${data.length} bytes for resource '${key}' from:  ${url}`);
         env.value = data;
         return data;
       }).catch(error => {
-        const error_msg = `Error '${error}' while fetching content for resource '${key}' from:  ${env.url}`;
+        const error_msg = `Error '${error}' while fetching content for resource '${key}' from:  ${url}`;
         env.value = error_msg;
         throw new Error(`[GraphDB]  ${error_msg}`);
       });

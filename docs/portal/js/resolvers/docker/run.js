@@ -8,14 +8,14 @@ export function docker_run(env) {
     nonempty(env.docker_options) ? env.docker_options : docker_options(env)
   ) + ' \\\n ';
 
-  const indent = '   ';
+  const indent = ' '.repeat(4);
   const line_sep = '\\\n';
   const line_indent = line_sep + indent;
   
-  const image = `${env.docker_image} ${line_indent}`; 
-  const exec = nonempty(env.docker_cmd) ? `${env.docker_cmd} ${line_indent}` : ``;
-   
-  let args = docker_args(env);
+  const image = `${env.docker_image} ${line_sep}   `; 
+  const exec = nonempty(env.docker_cmd) ? `${env.docker_cmd} ${line_sep}     ` : ``;
+
+  let args = wrapLines({text: docker_args(env), indent: 6});
   let cmd = nonempty(env.docker_run) ? env.docker_run : env.db.index['docker_run'].value;
 
   cmd = cmd
@@ -26,7 +26,7 @@ export function docker_run(env) {
     .replace('$ARGS', '${ARGS}');
 
   if( !cmd.endsWith('${ARGS}') )
-    args += ' ' + line_sep + line_indent + line_indent;  // line break for user args
+    args += ' ' + line_sep + ' '.repeat(6);  // line break for user args
 
   cmd = cmd
     .replace('${OPTIONS}', opt)
@@ -34,6 +34,9 @@ export function docker_run(env) {
     .replace('${COMMAND}', exec)
     .replace('${ARGS}', args);
 
+  console.log('EXEC', exec);
+  console.log('ARGS', args);
+  
   cmd = substitution(cmd, env).trim();
 
   cmd = cmd

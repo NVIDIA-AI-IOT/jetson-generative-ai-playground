@@ -20,13 +20,15 @@ export function docker_compose(env, service_name='llm-server') {
   
   compose = docker_service_name(compose, service_name);
 
-  compose += `\n    healthcheck:`;
-  compose += `\n      test: ["CMD", "curl", "-f", "http://${server_url.hostname}:${server_url.port}/v1/models"]`;
-  compose += `\n      interval: 20s`;
-  compose += `\n      timeout: 60s`;
-  compose += `\n      retries: 45`;    
-  compose += `\n      start_period: 15s`; 
-
+  if( env.db.ancestors[root.key].includes('models') ) {
+    compose += `\n    healthcheck:`;
+    compose += `\n      test: ["CMD", "curl", "-f", "http://${server_url.hostname}:${server_url.port}/v1/models"]`;
+    compose += `\n      interval: 20s`;
+    compose += `\n      timeout: 60s`;
+    compose += `\n      retries: 45`;    
+    compose += `\n      start_period: 15s`; 
+  }
+  
   const profiles = docker_profiles(root, service_name);
 
   let profile_docs = [];
@@ -66,7 +68,7 @@ Resolver({
   hidden: true,
   group: "compose",
   tags: ['compose'],
-  refs: ['llm', 'webui'],
+  refs: ['llm', 'vlm', 'webui'],
   text: [
     'Use this <a href="https://docs.docker.com/reference/compose-file/services/" ' +
     'title="To install docker compose on your Jetson use:\n ' +

@@ -4,7 +4,7 @@
 
 Resolver({
   key: 'python-vlm',
-  url: 'https://raw.githubusercontent.com/dusty-nv/sudonim/refs/heads/main/sudonim/clients/vlm.py',
+  url: 'https://github.com/dusty-nv/sudonim/blob/main/sudonim/clients/vlm.py',
   /*func: python_vlm,*/
   title: '<span class="code" style="font-size: 105%">vlm.py</span>',
   filename: 'vlm.py',
@@ -13,8 +13,9 @@ Resolver({
   refs: ['vlm'],
   tags: ['python'],
   text: `
-    This multimodal <a href="https://platform.openai.com/docs/api-reference/chat/create" target="_blank" class="code">chat.completion</a> 
-    client supports text/image inputs and streaming text output.  It runs some example Visual Question Answering (VQA) queries
+    This multimodal <span class="code">chat.completion</span> 
+    <a href="https://github.com/dusty-nv/sudonim/blob/main/sudonim/clients/vlm.py" target="_blank">client</a>
+    supports text/image inputs and streaming text output.  It runs some example Visual Question Answering (VQA) prompts
     on these <a href="https://github.com/dusty-nv/jetson-containers/tree/master/data/images" target="_blank">test images</a>,
     encoded as <a href="https://annacsmedeiros.medium.com/efficient-image-processing-in-python-a-straightforward-guide-to-base64-and-numpy-conversions-e9e3aac13312" target="_blank">base64</a>
     in the chat message URLs.

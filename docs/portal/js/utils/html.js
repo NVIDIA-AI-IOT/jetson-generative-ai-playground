@@ -132,15 +132,18 @@ export function capitalize(text) {
   return text.charAt(0).toUpperCase() + text.slice(1)
 }
 
-
 /*
  * Insert line breaks when a string gets too long
  * (this is setup for multi-line shell commands)
  */
 export function wrapLines({text, delim=' -', newline=' \\\n', indent=2, max_length=20}) {
-  if( !exists(text) && arguments.length > 0 )
-    text = arguments[0];
-
+  if( is_empty(text) ) {
+    if( arguments.length > 0 && is_string(arguments[0]) )
+      text = arguments[0];
+    else
+      return '';
+  }
+  console.log('WRAP LINES text=', text);
   const split = text.split(delim);
   let lines = [''];
   indent = (indent > 0) ? ' '.repeat(indent) : '';
@@ -149,11 +152,14 @@ export function wrapLines({text, delim=' -', newline=' \\\n', indent=2, max_leng
     const next = (i > 0 ? delim : '') + split[i];
     const last = lines.length - 1;
 
-    if( lines[last].length + next.length >= max_length )
+    if( i > 0 && lines[last].length + next.length >= max_length )
       lines.push(next);
     else
       lines[last] += next;
   }
+
+  if( lines[0].length == 0 )
+    lines.shift(); // remove leading empty element
 
   for( const i in lines ) {
     lines[i] = (i > 0 ? indent : '') + 

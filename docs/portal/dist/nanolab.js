@@ -426,20 +426,21 @@ export class GraphDB {
     }
 
     if( env.tags.includes('resource') && is_empty(env.value) && is_url(env.url) ) { // download remote assets
-      console.log(`[GraphDB]  Fetching resource '${key}' from:  ${env.url}`);
-      env.promise = fetch(env.url).then(response => { // use env.promise.then() to wait
+      const url = env.url.replace('github.com', 'raw.githubusercontent.com').replace('/blob/', '/refs/heads/');
+      console.log(`[GraphDB]  Fetching resource '${key}' from:  ${url}`);
+      env.promise = fetch(url).then(response => { // use env.promise.then() to wait
         if( !response.ok ) {
-          const error_msg = `HTTP error ${response.status} while fetching resource for '${key}' from:  ${env.url}`;
+          const error_msg = `HTTP error ${response.status} while fetching resource for '${key}' from:  ${url}`;
           env.value = error_msg;
           throw new Error(`[GraphDB]  ${error_msg}`);
         }
         return response.text(); // or response.json(), response.blob(), etc.
       }).then(data => {
-        console.log(`[GraphDB]  Downloaded ${data.length} bytes for resource '${key}' from:  ${env.url}`);
+        console.log(`[GraphDB]  Downloaded ${data.length} bytes for resource '${key}' from:  ${url}`);
         env.value = data;
         return data;
       }).catch(error => {
-        const error_msg = `Error '${error}' while fetching content for resource '${key}' from:  ${env.url}`;
+        const error_msg = `Error '${error}' while fetching content for resource '${key}' from:  ${url}`;
         env.value = error_msg;
         throw new Error(`[GraphDB]  ${error_msg}`);
       });
@@ -1827,9 +1828,17 @@ export class CodeEditor {
     const expanded = page.expand ?? true;
     const expClass = {true: 'bi-chevron-down', false: 'bi-chevron-up'};
 
+    let pageTitle = page.title ?? page.name;
+    
+    if( nonempty(page.url) )
+      pageTitle = `<a href="${page.url}" target="_blank" class="tab-page-title">${pageTitle}</a>`;
+    else
+      pageTitle = `<span class="tab-page-title">${pageTitle}</span>`;
+
     let html = `<div id="${page_ids.page}" class="tab-page-container full-height"><div>`;
+
     html += `<i class="bi ${expClass[expanded]} tab-page-expand"></i>`;
-    html += page.header ?? `<div class="tab-page-title-div"><span class="tab-page-title">${page.title ?? page.name}</span></div>`;
+    html += page.header ?? `<div class="tab-page-title-div">${pageTitle}</div>`;
     html += '<div class="tab-page-body">';
     
     if( exists(page.text) ) {
@@ -1879,11 +1888,21 @@ export class CodeEditor {
    * Create a code block with syntax highlighting and copy/download buttons.
    */
   createCodeBlock(page) {
+    let code = page.value;
+
+    if( page.language === 'python' ) {
+      if( code.startsWith('#!') )
+        code = code.split('\n').slice(1).join('\n');
+      //if( nonempty(page.url) )
+      //  code = `# ${page.url}\n` + code;      
+    }
+
     const codeBlock = htmlToNode(
       `<pre><div class="absolute z-top" style="right: 10px;">` +
+      `<span style="margin-left: auto; padding-left: 10px; background: var(--theme-gray-darker);">` +
       `<i class="bi bi-copy code-button code-copy" title="Copy to clipboard"></i>` +
-      `<i class="bi bi-arrow-down-square code-button code-download" title="Download ${page.filename}"></i></div>` +
-      `<code class="language-${page.language} full-height" style="scroll-padding-left: 20px;">${page.value}</code></pre>`
+      `<i class="bi bi-arrow-down-square code-button code-download" title="Download ${page.filename}"></i></span></div>` +
+      `<code class="language-${page.language} full-height" style="scroll-padding-left: 20px;">${code}</code></pre>`
     );
     
     Prism.highlightAllUnder(codeBlock);
@@ -2225,15 +2244,18 @@ export function capitalize(text) {
   return text.charAt(0).toUpperCase() + text.slice(1)
 }
 
-
 /*
  * Insert line breaks when a string gets too long
  * (this is setup for multi-line shell commands)
  */
 export function wrapLines({text, delim=' -', newline=' \\\n', indent=2, max_length=20}) {
-  if( !exists(text) && arguments.length > 0 )
-    text = arguments[0];
-
+  if( is_empty(text) ) {
+    if( arguments.length > 0 && is_string(arguments[0]) )
+      text = arguments[0];
+    else
+      return '';
+  }
+  console.log('WRAP LINES text=', text);
   const split = text.split(delim);
   let lines = [''];
   indent = (indent > 0) ? ' '.repeat(indent) : '';
@@ -2242,11 +2264,14 @@ export function wrapLines({text, delim=' -', newline=' \\\n', indent=2, max_leng
     const next = (i > 0 ? delim : '') + split[i];
     const last = lines.length - 1;
 
-    if( lines[last].length + next.length >= max_length )
+    if( i > 0 && lines[last].length + next.length >= max_length )
       lines.push(next);
     else
       lines[last] += next;
   }
+
+  if( lines[0].length == 0 )
+    lines.shift(); // remove leading empty element
 
   for( const i in lines ) {
     lines[i] = (i > 0 ? indent : '') + 
@@ -3624,7 +3649,7 @@ export function flowise(env) {
   env.docker_run = substitution(docker_run(env), {
     'server_llm': as_url(env.server_llm),
     'cache_dir': env.cache_dir,
-    'port': PORT
+    'server_port': PORT
   });
   
   return env.docker_run;
@@ -3638,9 +3663,9 @@ Resolver({
   server_llm: '0.0.0.0:9000',
   docker_image: 'flowiseai/flowise:latest',
   docker_options: [
-    '-it --rm --name=flowise --network=host -e PORT=${PORT}',
+    '-it --rm --name=flowise --network=host -e PORT=${SERVER_PORT}',
     '-e FLOWISE_USERNAME=nvidia -e FLOWISE_PASSWORD=nvidia',
-    '-e OPENAI_API_BASE=${SERVER_LLM}v1 -e OPENAI_API_KEY=foo',
+    '-e OPENAI_API_BASE=${SERVER_LLM}/v1 -e OPENAI_API_KEY=foo',
     '-v ${CACHE_DIR}/flowise:/root/.flowise',
   ].join(' '),
   docker_run: 'docker run $OPTIONS $IMAGE',
@@ -3770,10 +3795,10 @@ Resolver({
   docker_options: [
     '-it --rm --name open-webui --network=host -e PORT=${PORT}', /* --net-alias open-webui */
     '-e ENABLE_OPENAI_API=True -e ENABLE_OLLAMA_API=False',
-    '-e OPENAI_API_BASE_URL=${SERVER_LLM}v1 -e OPENAI_API_KEY=foo',
+    '-e OPENAI_API_BASE_URL=${SERVER_LLM}/v1 -e OPENAI_API_KEY=foo',
     '-e AUDIO_STT_ENGINE=openai -e AUDIO_TTS_ENGINE=openai',
-    '-e AUDIO_STT_OPENAI_API_BASE_URL=${SERVER_ASR}v1',
-    '-e AUDIO_TTS_OPENAI_API_BASE_URL=${SERVER_TTS}v1',
+    '-e AUDIO_STT_OPENAI_API_BASE_URL=${SERVER_ASR}/v1',
+    '-e AUDIO_TTS_OPENAI_API_BASE_URL=${SERVER_TTS}/v1',
     '-v ${CACHE_DIR}/open-webui:/app/backend/data',
   ].join(' '),
   docker_run: 'docker run $OPTIONS $IMAGE',
@@ -4207,7 +4232,7 @@ Resolver({
  * Generate curl test script
  */
 
-export function get_curl_request(env) {
+export function curl_llm(env) {
   if( exists(env.parent) )
     env = env.parent;
   
@@ -4224,17 +4249,57 @@ export function get_curl_request(env) {
   return code;
 }
 
-Resolvers({curl_request: {
-  func: get_curl_request,
-  title: 'Curl Request',
-  filename: 'curl.sh',
-  hidden: true,
-  group: 'shell',
-  tags: ['string', 'shell'],
-  refs: ['llm'],
-  text: `Check the connection and model response with a simple test query:`,
-  footer: `The LLM reply is interleaved in the output stream and not particularly readable, but will produce errors if there was an issue with the request.`
-}});
+export function curl_vlm(env) {
+  if( exists(env.parent) )
+    env = env.parent;
+
+  const code =
+  `curl http://${env.server_host}/v1/chat/completions \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "messages": [{
+      "role": "user",
+      "content": [{
+        "type": "text",
+        "text": "What is in this image?"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
+        }
+      }
+    ]}],
+    "max_tokens": 300
+  }'`;
+
+  return code;
+}
+
+Resolvers({
+  curl_request: {
+    func: curl_llm,
+    title: 'Curl Request',
+    filename: 'curl.sh',
+    hidden: true,
+    group: 'shell',
+    tags: ['string', 'shell'],
+    refs: ['llm'],
+    text: `Check the connection and model response with a simple test query:`,
+    footer: `The LLM reply is interleaved in the output stream and not particularly readable, but will produce errors if there was an issue with the request.`
+  },
+  curl_vlm: {
+    func: curl_vlm,
+    title: 'Curl Request',
+    filename: 'curl-vlm.sh',
+    hidden: true,
+    group: 'shell',
+    tags: ['string', 'shell'],
+    refs: ['vlm'],
+    text: `This curl query is for vision/language models and uses images in the prompt:`,
+    footer: `<b>Note:</b> for ollama, see the Python examples that use base64 encoding instead.`
+  },
+});
 /* END: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/launchers/curl.js */
 
 /* BEGIN: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/launchers/vlm.js */
@@ -4244,7 +4309,7 @@ Resolvers({curl_request: {
 
 Resolver({
   key: 'python-vlm',
-  url: 'https://raw.githubusercontent.com/dusty-nv/sudonim/refs/heads/main/sudonim/clients/vlm.py',
+  url: 'https://github.com/dusty-nv/sudonim/blob/main/sudonim/clients/vlm.py',
   /*func: python_vlm,*/
   title: '<span class="code" style="font-size: 105%">vlm.py</span>',
   filename: 'vlm.py',
@@ -4253,8 +4318,9 @@ Resolver({
   refs: ['vlm'],
   tags: ['python'],
   text: `
-    This multimodal <a href="https://platform.openai.com/docs/api-reference/chat/create" target="_blank" class="code">chat.completion</a> 
-    client supports text/image inputs and streaming text output.  It runs some example Visual Question Answering (VQA) queries
+    This multimodal <span class="code">chat.completion</span> 
+    <a href="https://github.com/dusty-nv/sudonim/blob/main/sudonim/clients/vlm.py" target="_blank">client</a>
+    supports text/image inputs and streaming text output.  It runs some example Visual Question Answering (VQA) prompts
     on these <a href="https://github.com/dusty-nv/jetson-containers/tree/master/data/images" target="_blank">test images</a>,
     encoded as <a href="https://annacsmedeiros.medium.com/efficient-image-processing-in-python-a-straightforward-guide-to-base64-and-numpy-conversions-e9e3aac13312" target="_blank">base64</a>
     in the chat message URLs.
@@ -4281,14 +4347,14 @@ export function docker_run(env) {
     nonempty(env.docker_options) ? env.docker_options : docker_options(env)
   ) + ' \\\n ';
 
-  const indent = '   ';
+  const indent = ' '.repeat(4);
   const line_sep = '\\\n';
   const line_indent = line_sep + indent;
   
-  const image = `${env.docker_image} ${line_indent}`; 
-  const exec = nonempty(env.docker_cmd) ? `${env.docker_cmd} ${line_indent}` : ``;
-   
-  let args = docker_args(env);
+  const image = `${env.docker_image} ${line_sep}   `; 
+  const exec = nonempty(env.docker_cmd) ? `${env.docker_cmd} ${line_sep}     ` : ``;
+
+  let args = wrapLines({text: docker_args(env), indent: 6});
   let cmd = nonempty(env.docker_run) ? env.docker_run : env.db.index['docker_run'].value;
 
   cmd = cmd
@@ -4299,7 +4365,7 @@ export function docker_run(env) {
     .replace('$ARGS', '${ARGS}');
 
   if( !cmd.endsWith('${ARGS}') )
-    args += ' ' + line_sep + line_indent + line_indent;  // line break for user args
+    args += ' ' + line_sep + ' '.repeat(6);  // line break for user args
 
   cmd = cmd
     .replace('${OPTIONS}', opt)
@@ -4307,6 +4373,9 @@ export function docker_run(env) {
     .replace('${COMMAND}', exec)
     .replace('${ARGS}', args);
 
+  console.log('EXEC', exec);
+  console.log('ARGS', args);
+  
   cmd = substitution(cmd, env).trim();
 
   cmd = cmd
@@ -4359,7 +4428,7 @@ export function get_server_url(env, default_host='0.0.0.0:9000') {
   else
     var host = default_host;
 
-  return as_url(default_host);
+  return as_url(host);
 }
 
 export function get_endpoint_url(env, default_host='0.0.0.0:9000') {
@@ -4404,13 +4473,15 @@ export function docker_compose(env, service_name='llm-server') {
   
   compose = docker_service_name(compose, service_name);
 
-  compose += `\n    healthcheck:`;
-  compose += `\n      test: ["CMD", "curl", "-f", "http://${server_url.hostname}:${server_url.port}/v1/models"]`;
-  compose += `\n      interval: 20s`;
-  compose += `\n      timeout: 60s`;
-  compose += `\n      retries: 45`;    
-  compose += `\n      start_period: 15s`; 
-
+  if( env.db.ancestors[root.key].includes('models') ) {
+    compose += `\n    healthcheck:`;
+    compose += `\n      test: ["CMD", "curl", "-f", "http://${server_url.hostname}:${server_url.port}/v1/models"]`;
+    compose += `\n      interval: 20s`;
+    compose += `\n      timeout: 60s`;
+    compose += `\n      retries: 45`;    
+    compose += `\n      start_period: 15s`; 
+  }
+  
   const profiles = docker_profiles(root, service_name);
 
   let profile_docs = [];
@@ -4450,7 +4521,7 @@ Resolver({
   hidden: true,
   group: "compose",
   tags: ['compose'],
-  refs: ['llm', 'webui'],
+  refs: ['llm', 'vlm', 'webui'],
   text: [
     'Use this <a href="https://docs.docker.com/reference/compose-file/services/" ' +
     'title="To install docker compose on your Jetson use:\n ' +
@@ -4638,49 +4709,44 @@ export function docker_args(env) {
   else if( exists(env.parent) && env.parent.tags.includes('models') )
     var model = env.parent;
   else 
-    return env.docker_args;
+    return env.docker_args ?? '';
 
   const model_id = model.url ?? model.model_name;
   const model_api = get_model_api(model_id)
   const model_repo = get_model_repo(model_id);
   const server_url = get_server_url(model);
 
-  let args = ``;
+  let args = [];
   
   if( env.tags.includes('sudonim') ) {
-    args += `  --model ${model_repo} \\
-        --quantization ${model.quantization} \\
-        --max-batch-size ${model.max_batch_size}`;
+    args.push(
+      `--model ${model_repo}`,
+      `--quantization ${model.quantization}`,
+      `--max-batch-size ${model.max_batch_size}`
+    );
 
     if( is_value(model.max_context_len) ) {
-      args += ` \\
-        --max-context-len ${model.max_context_len}`;
+      args.push(`--max-context-len ${model.max_context_len}`);
     }
 
     if( is_value(model.prefill_chunk) ) {
-      args += ` \\
-        --prefill-chunk ${model.prefill_chunk}`;
+      args.push(`--prefill-chunk ${model.prefill_chunk}`);
     }
 
     if( nonempty(model.chat_template) ) {
-      args += ` \\
-        --chat-template ${model.chat_template}`;
+      args.push(`--chat-template ${model.chat_template}`);
     }
 
     if( exists(server_url) ) {
-      args += ` \\
-        --host ${server_url.hostname} \\
-        --port ${server_url.port}`;
-    }
-
-    if( exists(env.docker_args) ) {
-      args += ` \\
-    `;
+      args.push(
+        `--host ${server_url.hostname}`,
+        `--port ${server_url.port}`
+      );
     }
   }
 
   if( exists(env.docker_args) ) {
-    args += `${env.docker_args}`;
+    args.push(env.docker_args);
   }
 
   let sub = {
@@ -4691,6 +4757,13 @@ export function docker_args(env) {
     'MODEL': model_repo,
   };
 
+  if( env.quantization === "fp16" )
+    sub['VLLM_QUANTIZATION'] = '';
+  else if( env.quantization === "fp8" )
+    sub['VLLM_QUANTIZATION'] = '--quantization=fp8'
+  else if( env.quantization === "bnb4" )
+    sub['VLLM_QUANTIZATION'] = '--quantization=bitsandbytes --load-format=bitsandbytes'
+
   if( is_value(model.max_batch_size) ) {
     sub['MAX_BATCH_SIZE'] = model.max_batch_size;
   }
@@ -4699,7 +4772,7 @@ export function docker_args(env) {
     sub['MAX_CONTEXT_LEN'] = model.max_context_len;
   }
 
-  return substitution(args, sub);
+  return substitution(args.join(' '), sub);
 }
 
 /* END: /www/jetson-ai-lab.dev/staging/docs/portal/js/resolvers/docker/args.js */
@@ -4761,7 +4834,7 @@ export function docker_profiles(env, depends) {
 }
 
 export function docker_service_name(compose, name) {
-  for( const api of ['mlc', 'llama_cpp', 'tensorrt_llm', 'vllm'] )
+  for( const api of ['mlc', 'llama_cpp', 'ollama', 'tensorrt_llm', 'vllm', 'awq'] )
     compose = compose.replace(`  ${api}:`, `  ${name}:`);
   return compose;
 }

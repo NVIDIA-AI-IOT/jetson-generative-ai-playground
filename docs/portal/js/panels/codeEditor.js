@@ -73,9 +73,17 @@ export class CodeEditor {
     const expanded = page.expand ?? true;
     const expClass = {true: 'bi-chevron-down', false: 'bi-chevron-up'};
 
+    let pageTitle = page.title ?? page.name;
+    
+    if( nonempty(page.url) )
+      pageTitle = `<a href="${page.url}" target="_blank" class="tab-page-title">${pageTitle}</a>`;
+    else
+      pageTitle = `<span class="tab-page-title">${pageTitle}</span>`;
+
     let html = `<div id="${page_ids.page}" class="tab-page-container full-height"><div>`;
+
     html += `<i class="bi ${expClass[expanded]} tab-page-expand"></i>`;
-    html += page.header ?? `<div class="tab-page-title-div"><span class="tab-page-title">${page.title ?? page.name}</span></div>`;
+    html += page.header ?? `<div class="tab-page-title-div">${pageTitle}</div>`;
     html += '<div class="tab-page-body">';
     
     if( exists(page.text) ) {
@@ -125,11 +133,21 @@ export class CodeEditor {
    * Create a code block with syntax highlighting and copy/download buttons.
    */
   createCodeBlock(page) {
+    let code = page.value;
+
+    if( page.language === 'python' ) {
+      if( code.startsWith('#!') )
+        code = code.split('\n').slice(1).join('\n');
+      //if( nonempty(page.url) )
+      //  code = `# ${page.url}\n` + code;      
+    }
+
     const codeBlock = htmlToNode(
       `<pre><div class="absolute z-top" style="right: 10px;">` +
+      `<span style="margin-left: auto; padding-left: 10px; background: var(--theme-gray-darker);">` +
       `<i class="bi bi-copy code-button code-copy" title="Copy to clipboard"></i>` +
-      `<i class="bi bi-arrow-down-square code-button code-download" title="Download ${page.filename}"></i></div>` +
-      `<code class="language-${page.language} full-height" style="scroll-padding-left: 20px;">${page.value}</code></pre>`
+      `<i class="bi bi-arrow-down-square code-button code-download" title="Download ${page.filename}"></i></span></div>` +
+      `<code class="language-${page.language} full-height" style="scroll-padding-left: 20px;">${code}</code></pre>`
     );
     
     Prism.highlightAllUnder(codeBlock);

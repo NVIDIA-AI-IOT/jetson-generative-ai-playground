@@ -81,7 +81,7 @@
     "name": "dustynv/vllm:0.7.4-r36.4.0-cu128-24.04",
     "docker_image": "dustynv/vllm:0.7.4-r36.4.0-cu128-24.04",
     "docker_cmd": "vllm serve ${MODEL}",
-    "docker_args": "--host=${SERVER_ADDR} --port=${SERVER_PORT} --dtype=auto --max-num-seqs=${MAX_BATCH_SIZE} --max-model-len=${MAX_CONTEXT_LEN} --gpu-memory-utilization=0.75",
+    "docker_args": "--host=${SERVER_ADDR} --port=${SERVER_PORT} --dtype=auto --max-num-seqs=${MAX_BATCH_SIZE} --max-model-len=${MAX_CONTEXT_LEN} --gpu-memory-utilization=0.75 ${VLLM_QUANTIZATION}",
     "docker_options": "-it --rm",
     "server_host": "0.0.0.0:9000",
     "tags": [
@@ -111,6 +111,20 @@
   },
   "fp16": {
     "name": "fp16 (vLLM)",
+    "tags": [
+      "quantization",
+      "vllm"
+    ]
+  },
+  "fp8": {
+    "name": "fp8 (vLLM)",
+    "tags": [
+      "quantization",
+      "vllm"
+    ]
+  },
+  "bnb4": {
+    "name": "bnb4 (vLLM)",
     "tags": [
       "quantization",
       "vllm"
@@ -2814,15 +2828,6 @@
     "created_at": "2025-03-01 19:10:19+00:00",
     "last_modified": "2025-03-12 08:30:59+00:00"
   },
-  "gemma-3-1b-it-fp16-vllm-jp6": {
-    "title": "Gemma 3 1B \u276f vLLM fp16 \u276f JetPack 6.1+",
-    "quantization": "fp16",
-    "tags": [
-      "gemma-3-1b-it",
-      "fp16",
-      "vllm:jp6"
-    ]
-  },
   "gemma-3-1b-it-q4_k_m-ollama-jp6": {
     "title": "Gemma 3 1B \u276f ollama q4_k_m \u276f JetPack 6.1+",
     "quantization": "q4_k_m",
@@ -2833,11 +2838,29 @@
     ],
     "url": "ollama.com/library/gemma3:1b"
   },
-  "gemma-3-4b-it-fp16-vllm-jp6": {
-    "title": "Gemma 3 4B \u276f vLLM fp16 \u276f JetPack 6.1+",
+  "gemma-3-1b-it-bnb4-vllm-jp6": {
+    "title": "Gemma 3 1B \u276f vLLM bnb4 \u276f JetPack 6.1+",
+    "quantization": "bnb4",
+    "tags": [
+      "gemma-3-1b-it",
+      "bnb4",
+      "vllm:jp6"
+    ]
+  },
+  "gemma-3-1b-it-fp8-vllm-jp6": {
+    "title": "Gemma 3 1B \u276f vLLM fp8 \u276f JetPack 6.1+",
+    "quantization": "fp8",
+    "tags": [
+      "gemma-3-1b-it",
+      "fp8",
+      "vllm:jp6"
+    ]
+  },
+  "gemma-3-1b-it-fp16-vllm-jp6": {
+    "title": "Gemma 3 1B \u276f vLLM fp16 \u276f JetPack 6.1+",
     "quantization": "fp16",
     "tags": [
-      "gemma-3-4b-it",
+      "gemma-3-1b-it",
       "fp16",
       "vllm:jp6"
     ]
@@ -2852,11 +2875,29 @@
     ],
     "url": "ollama.com/library/gemma3:4b"
   },
-  "gemma-3-12b-it-fp16-vllm-jp6": {
-    "title": "Gemma 3 12B \u276f vLLM fp16 \u276f JetPack 6.1+",
+  "gemma-3-4b-it-bnb4-vllm-jp6": {
+    "title": "Gemma 3 4B \u276f vLLM bnb4 \u276f JetPack 6.1+",
+    "quantization": "bnb4",
+    "tags": [
+      "gemma-3-4b-it",
+      "bnb4",
+      "vllm:jp6"
+    ]
+  },
+  "gemma-3-4b-it-fp8-vllm-jp6": {
+    "title": "Gemma 3 4B \u276f vLLM fp8 \u276f JetPack 6.1+",
+    "quantization": "fp8",
+    "tags": [
+      "gemma-3-4b-it",
+      "fp8",
+      "vllm:jp6"
+    ]
+  },
+  "gemma-3-4b-it-fp16-vllm-jp6": {
+    "title": "Gemma 3 4B \u276f vLLM fp16 \u276f JetPack 6.1+",
     "quantization": "fp16",
     "tags": [
-      "gemma-3-12b-it",
+      "gemma-3-4b-it",
       "fp16",
       "vllm:jp6"
     ]
@@ -2871,11 +2912,29 @@
     ],
     "url": "ollama.com/library/gemma3:12b"
   },
-  "gemma-3-27b-it-fp16-vllm-jp6": {
-    "title": "Gemma 3 27B \u276f vLLM fp16 \u276f JetPack 6.1+",
+  "gemma-3-12b-it-bnb4-vllm-jp6": {
+    "title": "Gemma 3 12B \u276f vLLM bnb4 \u276f JetPack 6.1+",
+    "quantization": "bnb4",
+    "tags": [
+      "gemma-3-12b-it",
+      "bnb4",
+      "vllm:jp6"
+    ]
+  },
+  "gemma-3-12b-it-fp8-vllm-jp6": {
+    "title": "Gemma 3 12B \u276f vLLM fp8 \u276f JetPack 6.1+",
+    "quantization": "fp8",
+    "tags": [
+      "gemma-3-12b-it",
+      "fp8",
+      "vllm:jp6"
+    ]
+  },
+  "gemma-3-12b-it-fp16-vllm-jp6": {
+    "title": "Gemma 3 12B \u276f vLLM fp16 \u276f JetPack 6.1+",
     "quantization": "fp16",
     "tags": [
-      "gemma-3-27b-it",
+      "gemma-3-12b-it",
       "fp16",
       "vllm:jp6"
     ]
@@ -2889,6 +2948,33 @@
       "ollama:jp6"
     ],
     "url": "ollama.com/library/gemma3:27b"
+  },
+  "gemma-3-27b-it-bnb4-vllm-jp6": {
+    "title": "Gemma 3 27B \u276f vLLM bnb4 \u276f JetPack 6.1+",
+    "quantization": "bnb4",
+    "tags": [
+      "gemma-3-27b-it",
+      "bnb4",
+      "vllm:jp6"
+    ]
+  },
+  "gemma-3-27b-it-fp8-vllm-jp6": {
+    "title": "Gemma 3 27B \u276f vLLM fp8 \u276f JetPack 6.1+",
+    "quantization": "fp8",
+    "tags": [
+      "gemma-3-27b-it",
+      "fp8",
+      "vllm:jp6"
+    ]
+  },
+  "gemma-3-27b-it-fp16-vllm-jp6": {
+    "title": "Gemma 3 27B \u276f vLLM fp16 \u276f JetPack 6.1+",
+    "quantization": "fp16",
+    "tags": [
+      "gemma-3-27b-it",
+      "fp16",
+      "vllm:jp6"
+    ]
   },
   "deepseek-r1-distill": {
     "name": "DeepSeek R1",

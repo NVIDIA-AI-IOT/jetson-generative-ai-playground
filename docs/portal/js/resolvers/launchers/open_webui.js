@@ -54,10 +54,10 @@ Resolver({
   docker_options: [
     '-it --rm --name open-webui --network=host -e PORT=${PORT}', /* --net-alias open-webui */
     '-e ENABLE_OPENAI_API=True -e ENABLE_OLLAMA_API=False',
-    '-e OPENAI_API_BASE_URL=${SERVER_LLM}v1 -e OPENAI_API_KEY=foo',
+    '-e OPENAI_API_BASE_URL=${SERVER_LLM}/v1 -e OPENAI_API_KEY=foo',
     '-e AUDIO_STT_ENGINE=openai -e AUDIO_TTS_ENGINE=openai',
-    '-e AUDIO_STT_OPENAI_API_BASE_URL=${SERVER_ASR}v1',
-    '-e AUDIO_TTS_OPENAI_API_BASE_URL=${SERVER_TTS}v1',
+    '-e AUDIO_STT_OPENAI_API_BASE_URL=${SERVER_ASR}/v1',
+    '-e AUDIO_TTS_OPENAI_API_BASE_URL=${SERVER_TTS}/v1',
     '-v ${CACHE_DIR}/open-webui:/app/backend/data',
   ].join(' '),
   docker_run: 'docker run $OPTIONS $IMAGE',
