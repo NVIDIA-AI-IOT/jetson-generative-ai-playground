@@ -402,7 +402,7 @@ Let's take a look at how this VLM capability can be used in Open WebUI
                 n8nio/n8n:stable
             ```
 
-        5. On a web browser on a PC (that is on the same network as Jetson), access http://<JETSON_IP>:5678/
+        5. On a web browser on a PC (that is on the same network as Jetson), access `http://<JETSON_IP>:5678/`
 
     === ":octicons-video-16: Walk-through video"
 
