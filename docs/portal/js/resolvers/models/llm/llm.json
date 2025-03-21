@@ -66,7 +66,9 @@
       "auto_update"
     ],
     "child_order": [
-      "gemma-3"
+      "gemma-3",
+      "llava",
+      "qwen-2.5-vl"
     ]
   },
   "max_batch_size": {
