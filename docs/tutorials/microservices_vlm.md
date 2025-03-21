@@ -8,7 +8,7 @@ Local VLM (Vision Language Model) microservices can unlock a **new class of appl
 In this module, we
 
 1. first look at the example of local VML microservices and its applications, and then
-1. experiment with the **"Augmented" VLM Microservice** that enables the efficient local video source ingestion and explore the applications
+1. experiment with the **"Augmented" VLM Microservice** that enables the efficient local video source ingestion and explore the applications.
 
 ## 1. Local VLM Microservices
 
@@ -103,7 +103,7 @@ You will see a response something like this.
 
 [OpenAI API Doc](https://platform.openai.com/docs/guides/images) shows how to use the vision capabilities through their API. This works with Ollama as well.
 
-You make the request to the same `/v1/chat/completions` endpoint, but provides extra image information, either by putting a URL for an image file or by providing an image as a Base64-encoded data.
+You make the request to the same `/v1/chat/completions` endpoint, and provide extra image information, either by putting a URL for an image file or by providing an image as a Base64-encoded data.
 
 ![](../images/openai_api_docs_image-and-vision.png){ .shadow }
 
@@ -377,6 +377,8 @@ Let's take a look at how this VLM capability can be used in Open WebUI
 
 #### n8n
 
+**n8n** is a powerful open-source workflow automation tool that enables seamless integration between various applications, APIs, and services -- making it an excellent choice for **orchestrating LLMs and VLMs**, edge AI deployments, and local AI-powered workflows.
+
 1. Start n8n server container
 
     === ":material-list-box: Step-by-step Instruction"
@@ -399,6 +401,8 @@ Let's take a look at how this VLM capability can be used in Open WebUI
                 -v /mnt/nvme/cache:/root/.cache \
                 n8nio/n8n:stable
             ```
+
+        5. On a web browser on a PC (that is on the same network as Jetson), access http://<JETSON_IP>:5678/
 
     === ":octicons-video-16: Walk-through video"
 
