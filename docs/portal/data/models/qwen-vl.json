@@ -1,0 +1,25 @@
+{
+  "qwen-2.5-vl": {
+    "name": "Qwen 2.5 VL",
+    "header": "qwen-header",
+    "max_context_len": 1024,
+    "runtimes": ["vllm"],
+    "tags": ["vlm"],
+    "links": {
+      "qwen": {
+        "name": "Qwen",
+        "url": "https://qwenlm.github.io"
+      }
+    }
+  },
+  "qwen-2.5-vl-3b": {
+    "name": "Qwen 2.5 VL 3B",
+    "url": "hf.co/Qwen/Qwen2.5-VL-3B-Instruct",
+    "tags": ["qwen-2.5-vl", "orin"]
+  },
+  "qwen-2.5-vl-7b": {
+    "name": "Qwen 2.5 VL 7B",
+    "url": "hf.co/Qwen/Qwen2.5-VL-7B-Instruct",
+    "tags": ["qwen-2.5-vl", "orin"]
+  }
+}
