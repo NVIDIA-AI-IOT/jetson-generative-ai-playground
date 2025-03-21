@@ -39,6 +39,30 @@ export function SideBar({id, parent, searchBar}) {
 `);*/
 
 export function StatusMessages({id, parent}) {
+  id ??= `${parent.id}-status`;
+
+  const node = htmlToNode(`
+    <div>
+      This interactive configuration/quantization tool is for launching 
+      <a href="https://github.com/dusty-nv/jetson-containers" target="_blank">local AI microservices</a>
+      for on-device LLMs, VLMs, agents, and web UI's.<br/><br/>
+      Check out the <a href="tutorials/microservices_intro.html" target="_blank">tutorial</a> and community 
+      <a href="https://discord.gg/BmqNSK4886" target="_blank">Discord</a> channel for help or to get involved!<br/><br/>
+      Warm thanks to all our partners, researchers, and contributors in the field <span style="font-size: 135%">🤗 🤖</span>
+    </div>
+  `);
+
+  return RollUp({
+    id: id,
+    title: `AI Microservices`,
+    body: node,
+    icon: 'bi-nvidia',
+    expanded: true,
+    parent: parent
+  });
+}
+
+/*export function StatusMessages({id, parent}) {
     id ??= `${parent.id}-status`;
   
     const node = htmlToNode(`
@@ -57,8 +81,9 @@ export function StatusMessages({id, parent}) {
       expanded: true,
       parent: parent
     });
-  }
+  }*/
 
+    
 export function DeviceConfigHelp({id, parent}) {
   id ??= `${parent.id}-device-config`;
 
@@ -74,6 +99,7 @@ export function DeviceConfigHelp({id, parent}) {
     id: id,
     title: `Device Setup`,
     body: node,
+    icon: 'bi-motherboard-fill',
     expanded: false,
     parent: parent
   });

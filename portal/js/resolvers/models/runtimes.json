@@ -69,7 +69,7 @@
     "name": "dustynv/vllm:0.7.4-r36.4.0-cu128-24.04",
     "docker_image": "dustynv/vllm:0.7.4-r36.4.0-cu128-24.04",
     "docker_cmd": "vllm serve ${MODEL}",
-    "docker_args": "--host=${SERVER_ADDR} --port=${SERVER_PORT} --dtype=auto --max-num-seqs=${MAX_BATCH_SIZE} --max-model-len=${MAX_CONTEXT_LEN} --gpu-memory-utilization=0.75 ${VLLM_QUANTIZATION}",
+    "docker_args": "--host=${SERVER_ADDR} --port=${SERVER_PORT} --dtype=auto --max-num-seqs=${MAX_BATCH_SIZE} --max-model-len=${MAX_CONTEXT_LEN} --chat-template-content-format=openai --trust-remote-code --gpu-memory-utilization=0.75 --uvicorn-log-level=debug ${VLLM_QUANTIZATION}",
     "docker_options": "-it --rm",
     "server_host": "0.0.0.0:9000",
     "tags": ["container", "vllm", "l4t-r36"]

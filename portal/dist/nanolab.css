@@ -1423,6 +1423,10 @@ input[type="radio"].toggle {
   border: 1px solid rgba(255,255,255,0.5);
 }
 
+.modal-header-extensions select option {
+  background-color: rgba(100,100,100,1.0);
+}
+
 /*.modal-header-extensions div {
   margin-left: 0px;
   margin-bottom: 10px;
@@ -1462,13 +1466,23 @@ input[type="radio"].toggle {
  * Styles and elements for certain models
  */
 
- .modal-header-extensions {
+.modal-header-extensions {
   background-repeat: no-repeat, no-repeat; 
   background-position-x: 0px, right; 
   height: 160px;
- }
+}
 
- .llama-header {
+.generic-header {
+  height: 100px;
+}
+
+.vlm-header {
+  background-image: url('/portal/data/models/images/headers/solar-2.webp'); 
+  background-position-y: -110px;
+  background-size: 1465px 750px;
+}
+
+.llama-header {
   padding-top: 20px;
 }
 
