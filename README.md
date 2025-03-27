@@ -2,11 +2,12 @@
 
 Document generation status: [![example workflow](https://github.com/NVIDIA-AI-IOT/jetson-generative-ai-playground/actions/workflows/ci.yml/badge.svg)](https://github.com/NVIDIA-AI-IOT/jetson-generative-ai-playground/actions)
 
-# About this repo
+## About this repo
 
 This repo is to host a tutorial documentation site for running generative AI models on NVIDIA Jetson devices.
 
 The auto generated documentation is hosted on the following, using their CI/CD feature to automatically generate/update the HTML documentation site upon new commit:
+
   - [GitHub Pages site](https://nvidia-ai-iot.github.io/jetson-generative-ai-playground)
 
 ## How to use this repo locally
@@ -41,4 +42,3 @@ livereload ./site_postprocessed
 
 > If you get "docker: Got permission denied while trying to connect to the Docker daemon socket at ..." error, 
 > issue `sudo usermod -aG docker $USER; newgrp docker` to get around with the issue.
-
