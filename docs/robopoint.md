@@ -58,7 +58,7 @@ One key advantage of this architecture is its efficiency. The process of project
 		bash jetson-containers/install.sh
 		``` 
     
-    5. Take a look at the container [README](https://github.com/dusty-nv/jetson-containers/blob/master/packages/robots/robopoint/README.md){:target="_blank"}
+    5. Take a look at the container [README](https://github.com/dusty-nv/jetson-containers/tree/master/packages/vla/robopoint/README.md){:target="_blank"}
 
     6. Run the RoboPoint Container
 
@@ -110,7 +110,7 @@ Connect the RoboPoint VLM to a Boston Dynamics Spot with Arm for mobile manipula
 
 ## Optional: No robot at hand? Demo script with camera input
 
-The Gradio inference API enables seamless command execution for other robots or testing purposes. It simplifies integration and allows for quick deployment across different robotic platforms or testing purpose. We provide a convenient [demo script](https://github.com/dusty-nv/jetson-containers/blob/master/packages/robots/robopoint/client.py){:target="_blank"} to test the API and inference with images or a live camera input. Start the [RoboPoint container](#1-setting-up-the-environment-with-jetson-containers)  and execute the `client.py`demo script. 
+The Gradio inference API enables seamless command execution for other robots or testing purposes. It simplifies integration and allows for quick deployment across different robotic platforms or testing purpose. We provide a convenient [demo script](https://github.com/dusty-nv/jetson-containers/tree/master/packages/vla/robopoint/client.py){:target="_blank"} to test the API and inference with images or a live camera input. Start the [RoboPoint container](#1-setting-up-the-environment-with-jetson-containers)  and execute the `client.py`demo script. 
 Run `python3 client.py --help` for input parameter details.
 
 ```bash
