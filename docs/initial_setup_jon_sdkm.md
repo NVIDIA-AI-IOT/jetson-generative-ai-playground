@@ -1,4 +1,4 @@
-# 🛸 Initial Setup using SDK Manager 
+# 🛸 Initial Setup using SDK Manager
 
 ![](./images/m48-workstation-256px-blk.png){ width="256"  align=right}
 
@@ -7,15 +7,15 @@
 
 The NVIDIA® <span class="blobLightGreen4">Jetson Orin Nano™ Developer Kit</span> is a perfect kit to start your journey of local generative AI evaluation and development.
 
-This guide explains the **alternative method** for setting up Jetson Orin Nano Developer Kit by flashing both the latest firmware (QSPI image) and the latest JetPack all at once, using a host x86 PC.
+This guide explains the **alternative method** for setting up the Jetson Orin Nano Developer Kit by flashing both the latest firmware (QSPI image) and the latest JetPack all at once, using a host x86 PC.
 
 ## Check your toolbox
 
 The following item is needed or highly desired for flashing your Jetson Orin Nano Developer Kit using your host PC.
 
-If you don't have them, check the [default microSD-only setup instruction](./initial_setup_jon.md) or you want to arrange them first then return to this guide once they are available. 
+If you don't have them, check the [default microSD-only setup instruction](./initial_setup_jon.md), or you want to arrange to get them first, then return to this guide once they are available. 
 
-!!! warning "What not come in the box - What you need/want to prepare"   
+!!! warning "What doesn't come in the box - What you need/want to prepare"   
 
     ### Host PC
 
@@ -38,21 +38,21 @@ If you don't have them, check the [default microSD-only setup instruction](./ini
     - :material-checkbox-blank-outline: USB cable (USB-C plug for Jetson Orin Nano Developer Kit side, other end depends on your PC)
     - :material-checkbox-blank-outline: jumper pin (or metal paper clip)
 
-    ### Mean to access terminal
+    ### Ways to access the terminal
 
-    You need either of the following set:
+    You need at least one of the following:
 
     - :material-checkbox-blank-outline: DisplayPort cable,  DisplayPort capable monitor and a USB keyboard
-    - :material-checkbox-blank-outline: DisplayPort to HDMI cable and HDMI capable monitor (or TV) and a USB keyboard
+    - :material-checkbox-blank-outline: DisplayPort to HDMI cable and HDMI capable monitor (or TV), and a USB keyboard
     - :material-checkbox-blank-outline: [USB to TTL Serial cable :octicons-link-external-16:](https://www.adafruit.com/product/954) (Advanced)
 
 !!! danger ""
 
-    ## 🚀 Default method : microSD card only setup method
+    ## 🚀 Default method: microSD card only setup method
 
     In case you **do NOT** have an x86 PC running Ubuntu 22.04 or 20.04, you can fall back to the default "microSD card only" setup method that does not require any host PC.
 
-    The decision process can look like this.
+    The decision-making process can be represented as follows.
 
     ```mermaid
     flowchart LR
@@ -70,7 +70,7 @@ If you don't have them, check the [default microSD-only setup instruction](./ini
 
     [🚀 microSD-only method](./initial_setup_jon.md){ .md-button .md-button--darkgreen }
 
-    Otherwise, continue reading on this page for the SDK Manager method.
+    If not, please continue reading on this page for the SDK Manager method.
 
 
 ## Overall flow (SDK Manager method)
