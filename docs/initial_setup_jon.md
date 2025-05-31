@@ -9,15 +9,15 @@ The NVIDIA® <span class="blobLightGreen4">Jetson Orin Nano™ Developer Kit</sp
 
 With the December 2024 software update (JetPack 6.1 (rev.1)), this advanced edge computer delivers up to 70% more performance, making it an even more powerful platform for the era of generative AI.
 
-This guide explains the complete flow from opening the box, updating the firmware if needed, flashing the latest **JetPack 6.2** image on SD card, and the initial software setup, so that you will be ready for tutorials listed on this site and other AI projects.
+This guide explains the complete flow, from opening the box to updating the firmware if needed, flashing the latest **JetPack 6.2** image onto the SD card, and performing the initial software setup, so that you will be ready for the tutorials listed on this site and other AI projects.
 
 
 ## Check your inventory
 
 The following item is needed or highly desired to set up your Jetson Orin Nano Developer Kit.<br>
-If you don't have them in your inventory, you want to arrange them and return to this guide once they are available.
+If you don't have them in your inventory, arrange to obtain them and return to this guide once they are available.
 
-!!! warning "What not come in the box - What you need/want to prepare"
+!!! warning "What doesn't come in the box - What you need/want to prepare"
 
     ### Storage
 
@@ -26,21 +26,21 @@ If you don't have them in your inventory, you want to arrange them and return to
 
     <img src="images/microsd_64gb.png" style="max-width:120px;">  <img src="images/ssd_nvme_1tb.png" style="max-width:540px;">
 
-    ### Mean to access terminal
+    ### Ways to access the terminal
 
-    You need either of the following set:
+    You need one of the following:
 
     - :material-checkbox-blank-outline: DisplayPort cable,  DisplayPort capable monitor and a USB keyboard
-    - :material-checkbox-blank-outline: DisplayPort to HDMI cable and HDMI capable monitor (or TV) and a USB keyboard
+    - :material-checkbox-blank-outline: DisplayPort to HDMI cable and HDMI capable monitor (or TV), and a USB keyboard
     - :material-checkbox-blank-outline: [USB to TTL Serial cable :octicons-link-external-16:](https://www.adafruit.com/product/954) (Advanced)
 
 !!! danger ""
 
-    ## 🛸 Alternative method : SDK Manager
+    ## 🛸 Alternative method: SDK Manager
 
-    In case you have an x86 PC running Ubuntu 22.04 or 20.04, then you can flash your Jetson Orin Nano Developer Kit with the latest firmware and JetPack all at once using **NVIDIA SDK Manager**.
+    If you have an x86 PC running Ubuntu 22.04 or 20.04, then you can flash your Jetson Orin Nano Developer Kit with the latest firmware and JetPack all at once using **NVIDIA SDK Manager**.
 
-    Also, if you wish to not use a microSD card but rather use a large NVMe SSD for the OS and data, then you need to use SDK Manager to flash the latest JetPack on the NVMe SSD.
+    Additionally, if you prefer not to use a microSD card but instead use a large NVMe SSD for the OS and data, you will need to use the SDK Manager to flash the latest JetPack onto the NVMe SSD.
 
     ```mermaid
     flowchart LR
@@ -54,7 +54,7 @@ If you don't have them in your inventory, you want to arrange them and return to
         style U stroke-width:3px, fill:#d2e9e5,stroke:#0e7a71
     ```
 
-    Click the button below to jump to a page that explains the alternative setup method using SDK Manager if you want to set your Jetson Orin Nano Developer Kit with an NVMe SSD or just want to flash all at once with your Ubuntu PC.
+    Click the button below to jump to a page that explains the alternative setup method using SDK Manager if you want to set your Jetson Orin Nano Developer Kit with an NVMe SSD, or want to flash all at once with your Ubuntu PC.
 
     [🛸 SDK Manager method](./initial_setup_jon_sdkm.md){ .md-button .md-button--darkpurple }
 
@@ -107,9 +107,9 @@ Note that it will undergo a total of **three (3)** reboot cycles.
 
 ### Walk-through Video
 
-??? info "Click here to expand and watch video"
+??? info "Click here to expand and watch the video"
 
-    <iframe width="960" height="480" src="https://www.youtube.com/embed/7-U_zGUwAPQ?si=_BumnsGFGWm5Bpjz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe width="960" height="480" src="https://www.youtube.com/embed/7-U_zGUwAPQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 ## 1️⃣ Check if Jetson UEFI Firmware version > `36.0`
@@ -125,26 +125,26 @@ You can take one of the following methods.
 
     1. Connect your monitor and USB keyboard to your developer kit.
     2. Turn on the developer kit by plugging in the bundled DC power supply
-    3. Repeatedly press ++esc++ key on the keyboard, especially after NVIDIA logo boot splash screen first appears on the monitor
-    4. You should see UEFI setup menu screen
+    3. Repeatedly press ++esc++ key on the keyboard, especially after the NVIDIA logo boot splash screen first appears on the monitor
+    4. You should see the UEFI setup menu screen
     5. Check the third line from the top (below "Not specified"), which should be the version number of Jetson UEFI firmware
 
-    > Below image shows that this Jetson Orin Nano Developer Kit unit has the old UEFI firmware, indicating that the unit first needs its firmware/QSPI updated in order to run JetPack 6.x.
+    The image below shows that this Jetson Orin Nano Developer Kit unit has the old UEFI firmware, indicating that the unit first needs its firmware/QSPI updated to run JetPack 6.x.
     ![computer screen showing UEFI menu](images/vlcsnap-2025-01-09-15h00m32s319.png){ width="960" }
 
 === ":material-monitor-off: Headless"
 
-    1. Connect USB to TTL Serial cable onto the following pins on `J14` "button" header of carrier board located under the Jetson module.
+    1. Connect the USB to the TTL Serial cable to the following pins on the `J14` "button" header of the carrier board located under the Jetson module.
           - `RXD` (Pin 3) :fontawesome-solid-arrows-left-right: Adafruit adaptor cable <span class="blobGreen">Green</span>
           - `TXD` (Pin 4) :fontawesome-solid-arrows-left-right: Adafruit adaptor cable <span class="blobWhite">White</span>
           - `GND` (Pin 7) :fontawesome-solid-arrows-left-right: Adafruit adaptor cable <span class="blobBlack">Black</span>
 
         [![](./images/jon_adafruit_uart_cable.jpg){ width="640" }](./images/jon_adafruit_uart_cable.jpg)
-        > For the detail, refer to [Jetson Orin Nano Developer Kit Carrier Board Specification](https://developer.nvidia.com/embedded/downloads#?search=Carrier%20Board%20Specification&tx=$product,jetson_orin_nano).
+        > For details, refer to [Jetson Orin Nano Developer Kit Carrier Board Specification](https://developer.nvidia.com/embedded/downloads#?search=Carrier%20Board%20Specification&tx=$product,jetson_orin_nano).
     1. On your PC, run your console monitor program and open the USB serial port.
     2. Power on the developer kit by plugging in the bundled DC power supply
-    3. On the PC console, repeatedly press ++esc++ key on the keyboard, especially after NVIDIA logo boot splash screen first appears on the monitor
-    4. You should see UEFI setup menu screen
+    3. On the PC console, repeatedly press ++esc++ key on the keyboard, especially after the NVIDIA logo boot splash screen first appears on the monitor
+    4. You should see the UEFI setup menu screen
     5. Check the third line from the top (below "Not specified"), which should be the version number of Jetson UEFI firmware
 
 === "😁I'm feeling lucky"
@@ -153,11 +153,11 @@ You can take one of the following methods.
 
         <B>Avoid leaving the device in a black screen state for extended periods or attempting to boot repeatedly with an SD card containing an incompatible JetPack version.</B>
 
-        There is a chance that accumulated boot failures may trigger the L4T launcher to always boot into recovery kernel.
+        Accumulated boot failures may trigger the L4T launcher to always boot into the recovery kernel.
 
         If this happens, even after switching to the proper JetPack 5.1.3 SD card, it won't boot from the SD card until we manually change the L4T Launcher setting.
 
-    Although we don't recommend for the above stated reason, you could skip to [***6️⃣ Boot with JetPack 6.x SD card***](#6-boot-with-jetpack-6x-sd-card), and try your luck to see if your Jetson just boots with the JetPack 6.x SD card.
+    Although we don't recommend it for the above-stated reason, you could skip to [***6️⃣ Boot with JetPack 6.x SD card***](#6-boot-with-jetpack-6x-sd-card), and try your luck to see if your Jetson just boots with the JetPack 6.x SD card.
 
     If the Ubuntu desktop does not appear within 3 minutes and the screen remains black (as shown below), it indicates that the unit is running an older UEFI firmware version that is incompatible with the JetPack 6.x SD card.
 
@@ -166,43 +166,43 @@ You can take one of the following methods.
     Turn the unit off, and skip to the next section ([2️⃣ Boot with JetPack 5.1.3 SD card to schedule firmware update](#2-boot-with-jetpack-513-sd-card-to-schedule-firmware-update)).
 
 
-## Determine QSPI update is necessary or not
+## Determine whether QSPI update is necessary or not
 
 !!! warning "Attention"
 
-    Select the appropriate tab below based on your firmware version you found in the above step.
+    Select the appropriate tab below based on your firmware version, which you found in the above step.
 
-    If you found your Jetson Orin Nano needs its firmware updated to run JetPack 6.x, click [":material-update: Firmware < 36.0"](#__tabbed_2_1) tab, and then additional step 2 to 5 will appear for you to follow.
+    If you found your Jetson Orin Nano needs its firmware updated to run JetPack 6.x, click [":material-update: Firmware < 36.0"](#__tabbed_2_1) tab, and then steps 2 to 5 will appear for you to follow.
 
     If you know your Jetson Orin Nano has the latest firmware, stay on [":fontawesome-solid-forward-fast: Firmware 36.x"](#__tabbed_2_2) tab, and skip to the next section ([***6️⃣ Boot with JetPack 6.x SD card***](#6-boot-with-jetpack-6x-sd-card))
 
 === ":material-update: Firmware < 36.0"
 
-    Your Jetson Orin Nano **needs** its firmware updated in order to make JetPack 6.x SD card work.
+    Your Jetson Orin Nano **requires** its firmware to be updated to make JetPack 6.x SD card work.
 
     Perform the following steps (2 to 5).
 
     ## 2️⃣ Boot with JetPack 5.1.3 SD card to schedule firmware update
 
-    First, we need to run JetPack 5.1.3 in order to let its `nvidia-l4t-bootloader` package get its bootloader/firmware updater activated, so that the firmware update automatically runs the next time it reboots.
+    First, we need to run JetPack 5.1.3 to activate its `nvidia-l4t-bootloader` package, which will enable the bootloader/firmware updater. This will ensure that the firmware update runs automatically the next time the device reboots.
 
-    1. Download SD card image on to your PC
+    1. Download the SD card image onto your PC
 
-        On your PC, download JetPack 5.1.3 image for Jetson Orin Nano Developer Kit from the official [JetPack 5.1.3 page](https://developer.nvidia.com/embedded/jetpack-sdk-513) or from the below direct link button.
+        On your PC, download the JetPack 5.1.3 image for Jetson Orin Nano Developer Kit from the official [JetPack 5.1.3 page](https://developer.nvidia.com/embedded/jetpack-sdk-513) or the button below.
 
         !!! warning
 
-            NVIDIA had updated the JetPack 5.1.3 image on 5/28/2024, as the old version had some issue and the following process did not work.<br>So please download and use the latest image (the new file name is **`JP513-orin-nano-sd-card-image_b29.zip`**).
+            NVIDIA updated the JetPack 5.1.3 image on May 28, 2024, as the old version had some issues, and the following process did not work.<br>So please download and use the latest image (the new file name is **`JP513-orin-nano-sd-card-image_b29.zip`**).
 
         [Jetson Orin Nano Developer Kit<br>JetPack 5.1.3 image](https://developer.nvidia.com/downloads/embedded/l4t/r35_release_v5.0/jp513-orin-nano-sd-card-image.zip){ .md-button .md-button--primary }
 
-    2. Use Balena Etcher to flash image to SD card
+    2. Use Balena Etcher to flash the image to the SD card
 
         If you don't have Balena Etcher on your PC, download from [Balena official site](https://etcher.balena.io/).
 
         ![alt text](images/balena_etcher.png){ width="360" }
 
-    3. Insert the flashed microSD card into the slot on Jetson module
+    3. Insert the flashed microSD card into the slot on the Jetson module
 
         ![](./images/jetson-orin-nano-dev-kit-sd-slot.png){ width="360" }
 
@@ -216,15 +216,15 @@ You can take one of the following methods.
 
             There is a chance that JetPack 5.1.3 SD card does not show any desktop UI on the attached display (the display remains black).
 
-            It would still schedule the UEFI firmware update in the background, so when you power cycle the unit, most likely it will perform the firmware update on the next boot up.
+            It would still schedule the UEFI firmware update in the background, so when you power cycle the unit, it will most likely perform the firmware update on the next boot up.
 
             So if this happens, skip to the next step ([Step 3️⃣](#3-reboot-and-observe-firmware-update-to-50)'s bullet point `2`.).
 
-    6. Ensure firmware update is scheduled.
+    6. Ensure the firmware update is scheduled.
 
-        Once Jetson boots into Jetson Linux system, a background service automatically runs to schedule a firmware update (if needed) to be performed during the next boot-up process.
+        Once Jetson boots into the Jetson Linux system, a background service automatically runs to schedule a firmware update (if needed) to be performed during the next boot-up process.
 
-        Once you see the following, or just wait about 5 minutes after powering on to ensure the scheduling is done, reboot.
+        Once you see the following, or wait about 5 minutes after powering on to ensure the scheduling is done, reboot.
 
         === ":material-monitor: GUI"
 
@@ -250,7 +250,7 @@ You can take one of the following methods.
 
         === ":material-monitor: GUI"
 
-            On the Ubuntu desktop click the power icon (:material-power:) and select "**Restart...**".
+            On the Ubuntu desktop, click the power icon (:material-power:) and select "**Restart...**".
 
         === ":material-monitor-off: CUI"
 
@@ -258,9 +258,9 @@ You can take one of the following methods.
             $ sudo reboot
             ```
 
-    2. Observe firmware update
+    2. Observe the firmware update
 
-        You should see the following during the boot up process.
+        You should see the following during the boot-up process.
 
         === ":material-monitor: With monitor"
 
@@ -276,11 +276,11 @@ You can take one of the following methods.
 
     Now that your UEFI firmware is updated to 35.5.0 ( = JetPack 5.1.3 ), it is capable of updating the entire QSPI content to make it ready for JetPack 6.x.
 
-    We will run a special tool so that the entire QSPI update is scheduled to run automatically on the next boot-up.
+    We will run a special tool to schedule the entire QSPI update to run automatically on the next boot-up.
 
     1. Double-check your firmware version is up to date (`35.5.0` = JetPack 5.1.3)
 
-        Once it reboots back into Jetson Linux system, on Jetson terminal, run the following:
+        Once it reboots back into the Jetson Linux system, on the Jetson terminal, run the following:
 
         ```bash
         sudo nvbootctrl dump-slots-info
@@ -298,13 +298,13 @@ You can take one of the following methods.
         slot: 1,             status: normal
         ```
 
-    2. Install QSPI Updater Debian package to trigger the entire QSPI update
+    2. Install the QSPI Updater Debian package to trigger the entire QSPI update
 
         !!! note
 
             An Internet connection is required to download the QSPI updater package.
 
-        On Jetson terminal, run the following:
+        On the Jetson terminal, run the following:
 
         ```bash
         sudo apt-get install nvidia-l4t-jetson-orin-nano-qspi-updater
@@ -318,15 +318,15 @@ You can take one of the following methods.
 
         Once the QSPI update is scheduled, reboot your Jetson Orin Nano Developer Kit.
 
-    2. Observe update
+    2. Observe the update
 
-        You can observe the QSPI update during the boot up process.
+        You can observe the QSPI update during the boot-up process.
 
     3. Power off
 
         Once the update is done, it reboots and tries to boot, however it will get stuck **UNLESS you change the SD card to JetPack 6.x one**.
 
-        Therefore you should just power off the developer kit simply by disconnecting the DC power supply.
+        Therefore, you should power off the developer kit simply by disconnecting the DC power supply.
 
         !!! danger "Attention"
 
@@ -348,13 +348,13 @@ You can take one of the following methods.
 
 Once we know the onboard firmware is up-to-date and ready for JetPack 6.x, we can boot Jetson Orin Nano Developer Kit with a microSD card for JetPack 6.2.
 
-1. Download SD card image on to your PC
+1. Download the SD card image onto your PC
 
-    On your PC, download the latest JetPack 6.x image for Jetson Orin Nano Developer Kit from the official [JetPack page](https://developer.nvidia.com/embedded/jetpack) or from the below direct link button.
+    On your PC, download the latest JetPack 6.x image for Jetson Orin Nano Developer Kit from the official [JetPack page](https://developer.nvidia.com/embedded/jetpack) or the below direct link button.
 
     [Jetson Orin Nano Developer Kit<br>JetPack 6.2](https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v4.3/jp62-orin-nano-sd-card-image.zip){ .md-button .md-button--primary }
 
-2. Use Balena Etcher to flash image to SD card
+2. Use Balena Etcher to flash the image to the SD card
 
     Insert your microSD card into your PC's SD card slot, and use Balena Etcher to flash the SD card with the image you just downloaded.
 
@@ -362,15 +362,15 @@ Once we know the onboard firmware is up-to-date and ready for JetPack 6.x, we ca
 
     ![alt text](images/balena_etcher.png){ width="540" }
 
-3. Insert the **JetPack 6.2** microSD card into the slot on Jetson module
+3. Insert the **JetPack 6.2** microSD card into the slot on the Jetson module
 
     ![](./images/jetson-orin-nano-dev-kit-sd-slot.png){ width="360" }
 
-4. Power-on by plugging the DC power supply
+4. Power on by plugging the DC power supply
 
 5. Complete the initial software setup (`oem-config`)
 
-6. Ensure firmware update is scheduled.
+6. Ensure the firmware update is scheduled.
 
     JetPack 6.2 SD card will automatically schedule another firmware/bootloader update in the next (3rd and final) reboot cycle.
 
@@ -396,7 +396,7 @@ Once we know the onboard firmware is up-to-date and ready for JetPack 6.x, we ca
 
     === ":material-monitor: GUI"
 
-        On the Ubuntu desktop click the power icon (:material-power:) and select "**Restart...**".
+        On the Ubuntu desktop, click the power icon (:material-power:) and select "**Restart...**".
 
     === ":material-monitor-off: CUI"
 
@@ -404,9 +404,9 @@ Once we know the onboard firmware is up-to-date and ready for JetPack 6.x, we ca
         $ sudo reboot
         ```
 
-2. Observe firmware update
+2. Observe the firmware update
 
-    You should see the following during the boot up process.
+    You should see the following during the boot-up process.
 
     === ":material-monitor: With monitor"
 
@@ -424,13 +424,13 @@ Once we know the onboard firmware is up-to-date and ready for JetPack 6.x, we ca
         Update Progress - 10% *****++++++++++++++++++++++++++++++++++++++++++++++++++
         ```
 
-Once done, you will boot into JetPack 6.2 again, with the underlying firmware updated to `36.4.3`, which unlock the Super performance.
+Once done, you will boot into JetPack 6.2 again, with the underlying firmware updated to `36.4.3`, which unlocks the Super performance.
 
 ## 8️⃣ Unlock Super Performance
 
 !!! warning "Attention"
 
-    If your are booting with ***JetPack 6.1 (rev.1)*** SD card instead of JetPack 6.2 SD card, you may need to execute the following command after the final login and reboot your device.
+    If you are booting with ***JetPack 6.1 (rev.1)*** SD card instead of JetPack 6.2 SD card, you may need to execute the following command after the final login and reboot your device.
 
     This ensures that the **MAXN** performance mode becomes available on your system.
 
@@ -441,9 +441,9 @@ Once done, you will boot into JetPack 6.2 again, with the underlying firmware up
 ### Switch to MAXN SUPER mode
 
 Note that the default power mode on JetPack 6.2 on Jetson Orin Nano Developer Kit is **25W**. <br>
-To switch to the **MAXN SUPER** mode and unlock the unregulated performance, follow below steps:
+To switch to the **MAXN SUPER** mode and unlock the unregulated performance, follow the steps below:
 
-1. Click on the current power mode (**25W**) by clicking the NVIDIA icon on the right side of the Ubuntu desktop’s top bar.
+1. Click on the current power mode (**25W**) by clicking the NVIDIA icon on the right side of the Ubuntu desktop's top bar.
 2. Select **Power mode** from the menu.
 3. Choose **MAXN SUPER** to enable maximum performance.
 
@@ -452,7 +452,7 @@ To switch to the **MAXN SUPER** mode and unlock the unregulated performance, fol
 ## 👍 Start developing on JetPack 6.2
 
 🎊 **Congratulations!** <br>
-Your Jetson Orin Nano Developer Kit is set up with JetPack 6.2 and you are ready to develop on JetPack 6.2.
+Your Jetson Orin Nano Developer Kit is set up with JetPack 6.2, and you are ready to develop on JetPack 6.2.
 
 ## Next step
 
