@@ -1,6 +1,6 @@
-# Genesis: A Generative and Universal Physics Engine for Robotics and Beyond
+# Genesis-World: A Generative and Universal Physics Engine for Robotics and Beyond
 
-[Genesis](https://genesis-embodied-ai.github.io/){:target="_blank"} is an open-source physics simulation platform with massively-parallel GPU acceleration and provisions for [generative automation](https://robogen-ai.github.io/){:target="_blank"}. 
+[Genesis-World](https://genesis-embodied-ai.github.io/){:target="_blank"} is an open-source physics simulation platform with massively-parallel GPU acceleration and provisions for [generative automation](https://robogen-ai.github.io/){:target="_blank"}. 
 
 As per the project's [user guide](https://genesis-world.readthedocs.io/en/latest/user_guide/index.html){:target="_blank"} and [GitHub repo](https://github.com/Genesis-Embodied-AI/Genesis){:target="_blank"}, it is designed for robotics & embodied AI by a broad consortium of organizations:
 
@@ -59,7 +59,7 @@ As per the project's [user guide](https://genesis-world.readthedocs.io/en/latest
 
     3. <span class="markedYellow">NVMe SSD **highly recommended**</span> for storage speed and space
 
-        - `11.1GB` for [`dustynv/genesis:r36.4.0-cu128`](https://hub.docker.com/r/dustynv/genesis) container image
+        - `11.1GB` for [`dustynv/genesis-world:r36.4.0-cu128`](https://hub.docker.com/r/dustynv/genesis) container image
         - Space for models and datasets (`>50GB`)
 		 
     4. Clone and setup [`jetson-containers`](https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md){:target="_blank"}:
@@ -76,19 +76,19 @@ As per the project's [user guide](https://genesis-world.readthedocs.io/en/latest
 	    - Documentation - [https://genesis-world.readthedocs.io](https://genesis-world.readthedocs.io){:target="_blank"}
 
 !!! "Final Version"
-    Development status of the arm64 porting efforts (3/17/25)
+    Development status of the arm64 porting efforts (6/17/25)
 
     - OMPL and LuisaRenders is working on Jetson.
     - [OMPL](https://github.com/ompl/ompl){:target="_blank"} - support for motion planning and IK.
     - [LuisaRender](https://github.com/Alif-01/LuisaRender/tree/d3b8e341540832ebf517cbe6a8abf5da2cf2e026){:target="_blank"} - support for CUDA-accelerated raytracing.
     - Ask questions in [`#robot-simulation-discuss`](https://discord.gg/BmqNSK4886){:target="_blank"} on Discord or [`jetson-containers/issues`](https://github.com/dusty-nv/jetson-containers/issues){:target="_blank"}
-
+    - Taichi(https://github.com/johnnynunez/taichi) Now supports LLVM20, Blackwell and Vulkan 1.4, which is required for Genesis-World.
 ## Start Container
 
 Currently a container image is available for JetPack 6.1+ and L4T R36.4, built with CUDA 12.8 and PyTorch 2.6:
 
 ```bash
-jetson-containers run dustynv/genesis:r36.4.0-cu128
+jetson-containers run dustynv/genesis-world:r36.4.0-cu128
 ```
 
 To mount your own directories into the container, use the [
@@ -96,7 +96,7 @@ To mount your own directories into the container, use the [
 `--volume`](https://docs.docker.com/engine/reference/commandline/run/#volume) flags:
 
 ```bash
-jetson-containers run -v /path/on/host:/path/in/container dustynv/genesis:r36.4.0-cu128
+jetson-containers run -v /path/on/host:/path/in/container dustynv/genesis-world:r36.4.0-cu128
 ```
 
 ## Demo Walkthroughs
@@ -105,7 +105,7 @@ There are numerous [quickstart guides](https://genesis-world.readthedocs.io/en/l
 
 ```bash
 jetson-containers run -w /opt/genesis/examples \
-  dustynv/genesis:r36.4.0-cu128 \
+  dustynv/genesis-world:r36.4.0-cu128 \
     python3 elastic_dragon.py --vis
 ```
 
