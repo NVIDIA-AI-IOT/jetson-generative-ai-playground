@@ -546,13 +546,14 @@ Below are shown some of the sustaining members of the group who have been workin
 	</div>
 	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
-			<a href="https://www.linkedin.com/in/mieszkosyty/" target="_blank"><img class="bio-image" src="research/images/Mieszko_Syty.jpg" title="Hey there, I'm Mieszko Syty—your friendly neighbourhood AI/ML enthusiast, Design lover, and Front-End Engineer. With a knack for coding since I was knee-high, and a solid design foundation from the Fine Arts I bring a unique blend of creativity and tech expertise to the table.&#013;&#013;By day, I'm conquering the digital space as a Lead Front-End Engineer, orchestrating projects for News, Fin-tech, and Private Banking on a global scale. But when the sun sets, you'll find me knee-deep in ML & NLP escapades, especially in the areas of Home Automation, Personal Assistants and LLM/VLM driven apps.&#013;&#013;Oh, and did I mention I'm a Sci-Fi fan? Yep, I'm all about turning your childhood dreams into cutting-edge & edge-computing reality! So, if you're ready to embark on a journey where tech meets imagination, let's connect and make some digital magic happen!"></img></a><br/>
+			<a href="https://www.linkedin.com/in/mieszkosyty/" target="_blank"><img class="bio-image" src="research/images/Mieszko_Syty.jpg"></img></a><br/>
+			<a href="https://www.youtube.com/@FutureProofHomes" target="_blank"><img class="bio-logo" src="research/images/youtube.png"></img></a>
 			<a href="https://www.linkedin.com/in/mieszkosyty/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
 			<a href="https://github.com/ms1design" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
-			Mieszko Syty, MS/1 Design<br/>
+			Mieszko Syty, <a href="https://futureproofhomes.net/" target="_blank">FutureProofHomes</a><br>
 			<small>
 				AI/ML Engineer | Warsaw, Poland<br/>
-				(LLM, Home Assistants, ML DevOps)
+				(LLM, ML DevOps, Edge AI, Home Assistant, <a href="https://futureproofhomes.net/pages/ai-base-station" target="_blank">Nexus: AI Home Assistant</a>, <a href="https://github.com/dusty-nv/jetson-containers" target="_blank">jetson-containers</a>)
 			</small>
 		</div>
 	</div>	
