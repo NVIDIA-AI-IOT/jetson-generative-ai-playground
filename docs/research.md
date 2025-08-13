@@ -6,25 +6,22 @@ hide:
 
 # Jetson AI Lab Research Group
 
-The Jetson AI Lab Research Group is a global collective for advancing open-source Edge ML, open to anyone to join and collaborate with others from the community and leverage each other's work.  Our goal is using advanced AI for good in real-world applications in accessible and responsible ways.  By coordinating together as a group, we can keep up with the rapidly evolving pace of AI and more quickly arrive at deploying intelligent multimodal agents and autonomous robots into the field.
+The Jetson AI Lab Research Group is a global collective for advancing open-source Edge ML, open to anyone to join and collaborate with others from the community and leverage each other's work. Our goal is using advanced AI for good in real-world applications in accessible and responsible ways. By coordinating together as a group, we can keep up with the rapidly evolving pace of AI and more quickly arrive at deploying intelligent multimodal agents and autonomous robots into the field.
 
 There are virtual [meetings](#meeting-schedule) that anyone is welcome to join, offline discussion on the [Jetson Projects](https://forums.developer.nvidia.com/c/agx-autonomous-machines/jetson-embedded-systems/jetson-projects/78){:target="_blank"} forum, and guidelines for upstreaming open-source [contributions](#contribution-guidelines). 
 
 !!! abstract "Upcoming Meetings"
-    <!--The next team meeting is on Tuesday, June 11<sup>th</sup> at 9am PST.  View the [recording](#past-meetings) from the last meeting below.-->
-    <!--With holiday schedules soon taking effect, we will reconvene in 2025 - thank you everyone for an amazing year!<br/><br/>
-	In the meantime, enjoy the time with your families, and feel welcome to keep in touch through the forums, Discord, or LinkedIn.</br><br/>-->
-	We are starting to hold weekly meetings on a rotation between 9am PST and 9pm PST to accommodate more time zones. The next meetings are on:
-      <ul>
-        <li><a href="#meeting-schedule">Tuesday, April 1<sup>st</sup> at 9am PST</a></li>
-        <li><a href="#meeting-schedule">Tuesday, April 8<sup>th</sup> at 9pm PST</a></li>
-      </ul>
-	  
-	Download the [calendar invites](#meeting-schedule) below and join the [Discord](https://discord.gg/BmqNSK4886){:target="_blank"} server to stay involved and receive the latest updates.
+    **Regular Series Begins: 2nd Tuesday of every month starting September 9, 2025**
+    
+    We are pleased to announce the resumption of the Jetson AI Lab Research Group Community calls. The primary objective of these calls remains consistent with our past meetings. We aim to discuss emerging trends, share insights on exciting projects undertaken by members of this group, address any issues or roadblocks, and explore new frameworks and libraries, among other topics.
+    
+    We will share more details during the call. We look forward to reconnecting with all of you.
+    
+    Join the [Discord](https://discord.gg/BmqNSK4886){:target="_blank"} server to stay involved and receive the latest updates.
 
-## Topics of Interest
+## Research Topics
 
-These are some initial research topics for us to discuss and investigate. This list will vary over time as experiments evolve and the SOTA progresses:
+Our group explores cutting-edge research areas in edge AI and robotics. These topics represent our current focus areas and will evolve as the state-of-the-art progresses and new challenges emerge:
 
 <table>
   <tr>
@@ -36,7 +33,7 @@ These are some initial research topics for us to discuss and investigate. This l
     <td>• Continuous multi-image VLM streaming and change detection</td>
   </tr>
   <tr>
-    <td>• Recurrent LLM architectures (Mamba, RKVW, ect) [<a href="https://github.com/dusty-nv/jetson-containers/issues/447" target="_blank">1</a>]</td>
+    <td>• Recurrent LLM architectures (Mamba, RKVW, etc) [<a href="https://github.com/dusty-nv/jetson-containers/issues/447" target="_blank">1</a>]</td>
     <td>• Lightweight low-memory streaming ASR/TTS models</td>
   </tr>
   <tr>
@@ -55,9 +52,7 @@ These are some initial research topics for us to discuss and investigate. This l
 
 ## Contribution Guidelines
 
-<!--<img src="research/images/robots_1.jpg" style="max-height: 325px;" align="right"></img>-->
-
-When experiments are successful, ideally the results will be packaged in such a way that they are easily reusable for others to integrate into their own projects:
+When experiments are successful, we package the results in ways that make them easily reusable for others to integrate into their own projects. We encourage contributions through multiple channels:
 
 <div style="display: flex; align-items: center;">
 	<span style="min-width: 365px;">
@@ -71,7 +66,7 @@ When experiments are successful, ideally the results will be packaged in such a 
 		</ul>
 	</span>
 	<span style="margin-left: 2em;">
-		<img src="research/images/robots_0.jpg" style="max-height: 220px;">
+		<img src="research/images/robots_0.jpg" style="max-height: 150px; border-radius: 8px;">
 	</span>
 </div>
 
@@ -79,79 +74,43 @@ Ongoing technical discussions are encouraged to occur on the forums, Discord, or
 
 ## Meeting Schedule
 
-We'll aim to weekly or bi-weekly on a rotating schedule in virtual meetings that anyone is welcome to join and speak during.  We'll discuss the latest updates and experiments that we want to explore.  Please remain courteous to others during the calls.  We'll stick around after for anyone who has questions or didn't get the chance to be heard.
+**Regular Series: 2nd Tuesday of every month starting September 9, 2025**
 
-!!! abstract "Tuesday April 1<sup>st</sup> at 9am PST (4/1/25)"
+We hold virtual meetings that anyone is welcome to join and speak during. We discuss the latest updates and experiments that we want to explore. Please remain courteous to others during the calls. We'll stick around after for anyone who has questions or didn't get the chance to be heard.
 
-	- Microsoft Teams - [Meeting Link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_NTA4ZmE4MDAtYWUwMS00ZTczLWE0YWEtNTE5Y2JkNTFmOWM1%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} 
-	- Meeting ID: `264 770 145 196`
-    - Passcode: `Uwbdgj`	
-	- Outlook Invite:  [`Jetson AI Lab Research Group.ics`](research/invites/Jetson AI Lab Research Group.ics){:target="_blank"} 
- 
-!!! abstract "Tuesday April 8<sup>th</sup> at 9pm PST (4/8/25)"
+!!! abstract "Next Meeting: Tuesday, September 9<sup>th</sup>, 2025"
 
-	- Microsoft Teams - [Meeting Link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_NTA4ZmE4MDAtYWUwMS00ZTczLWE0YWEtNTE5Y2JkNTFmOWM1%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"} 
-	- Meeting ID: `264 770 145 196`
-    - Passcode: `Uwbdgj`	
-	- Outlook Invite:  [`Jetson AI Lab Research Group (PM).ics`](research/invites/Jetson AI Lab Research Group (PM).ics){:target="_blank"} 
-	
-<!--
-    - Agenda:
-	    * OpenVLA on [MimicGen](https://mimicgen.github.io/){:target="_blank"} 
-	    * [Phi-3 Vision via ONNX](https://techcommunity.microsoft.com/t5/educator-developer-blog/running-phi-3-vision-via-onnx-on-jetson-platform/ba-p/4195041){:target="_blank"} (Jambo Chen)
-	    * [OStream GenRunner](https://genainerds.com/#/Gapi){:target="_blank"} - GAPI (Kerry Shih)
-	    * Open Q&A
+	- **Time:** 9:00 AM PST / 12:00 PM EST / 5:00 PM GMT
+	- **Platform:** Microsoft Teams
+	- **Meeting Link:** [Join Meeting](https://teams.microsoft.com/l/meetup-join/19%3ameeting_NTA4ZmE4MDAtYWUwMS00ZTczLWE0YWEtNTE5Y2JkNTFmOWM1%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"}
+	- **Meeting ID:** `264 770 145 196`
+	- **Passcode:** `Uwbdgj`
+	- **Calendar Invite:** [`Jetson AI Lab Research Group.ics`](research/invites/Jetson AI Lab Research Group.ics){:target="_blank"}
 
-	- Forum Topic:  [`forums.developer.nvidia.com/t/293749`](https://forums.developer.nvidia.com/t/jetson-ai-lab-research-group-meeting-on-5-29/293749)
-	
-	- Agenda:
-	    * OpenAI-style Tools with <a href="https://huggingface.co/NousResearch/Hermes-2-Pro-Llama-3-8B" target="_blank">NousResearch/Hermes-2-Pro-Llama-3-8B</a>
-	    * Jetson Copilot with <a href="https://github.com/dusty-nv/jetson-containers/tree/master/packages/rag/jetrag" target="_blank">jetrag</a>
-	    * <a href="https://github.com/NVIDIA-AI-IOT/whisper_trt" target="_blank">whisper_trt</a> for Orin Nano
-	    * Open Q&A
--->   
-Please join the `#events` channel on the [Discord](https://discord.gg/BmqNSK4886){:target="_blank"} server for the latest info.  The meetings will be recorded so anyone unable to attend live can watch them after.
+!!! abstract "Future Meetings"
+
+	- **October 14<sup>th</sup>, 2025** - 2nd Tuesday
+	- **November 11<sup>th</sup>, 2025** - 2nd Tuesday  
+	- **December 9<sup>th</sup>, 2025** - 2nd Tuesday
+	- **January 13<sup>th</sup>, 2026** - 2nd Tuesday
+
+Please join the `#events` channel on the [Discord](https://discord.gg/BmqNSK4886){:target="_blank"} server for the latest info. The meetings will be recorded so anyone unable to attend live can watch them after.
 
 ## Past Meetings
 
-<details open><summary>Recordings Archive</summary>
+Our meeting recordings and resources are available for review and reference.
 
-	<div><br>The meeting recordings are stored on Google Drive here:<br>
+!!! info "Recordings Archive"
+    All meeting recordings are stored on Google Drive: [Jetson AI Lab Research Group Recordings](https://drive.google.com/drive/folders/18BC7o32jorx_LzZXx5wW0Io_nf1ZwO6X?usp=sharing){:target="_blank"}
 
-	<ul><li><code><a href="https://drive.google.com/drive/folders/18BC7o32jorx_LzZXx5wW0Io_nf1ZwO6X?usp=sharing" target="_blank">https://drive.google.com/drive/folders/18BC7o32jorx_LzZXx5wW0Io_nf1ZwO6X?usp=sharing</a></code><br></li></ul></div>
+### Recent Meetings
 
-</details>
-
-<!--<details open><summary>November 12, 2024</summary>
-
-<div><iframe width="850" height="476" src="https://www.youtube.com/embed/3QxRUdgnbJw" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-
-<p>Topics Covered:</p>
-
-<ul>
-    <li><a href="https://github.com/robosoft-ai/SMACC2" target="_blank">SMACC in Isaac Sim</a> (Brett Aldrich, <a href="https://robosoft.ai/">robosoft.ai</a>)</li>
-    <li><a href="https://medium.com/@kabilankb2003" target="_blank">Kaya sim2real Agents</a> (Kabilan Kb, <a href="https://www.nvidia.com/en-us/training/instructor-directory/bio/?instructorId=0038Z00003UGyF9QAL">DLI Instructor</a>)</li>
-</ul>
-
-</details>-->
-
-<!--<details open><summary>October 29, 2024</summary>
-
-<div><iframe width="850" height="476" src="https://www.youtube.com/embed/-C43j2HgQdY" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-
-<p>Topics Covered:</p>
-
-<ul>
-    <li><a href="https://github.com/nasa-jpl/rosa" target="_blank">ROSA Connector for Isaac Sim</a> (Rob Royce, NASA JPL)</li>
-    <li><a href="https://oasisproject.net/" target="_blank">The OASIS Project: A Technical Brief</a> (Kris Kersey, Kersey Fabrications)</li>
-</ul>
-
-</details>-->
+<!-- Keeping older meeting blocks hidden for brevity. -->
 
 
 <details><summary>October 15, 2024</summary>
 
-<div><iframe width="850" height="476" src="https://www.youtube.com/embed/Dpe48AVKc4c" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/Dpe48AVKc4c" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Topics Covered:</p>
 
@@ -164,7 +123,7 @@ Please join the `#events` channel on the [Discord](https://discord.gg/BmqNSK4886
 
 <details><summary>October 1, 2024</summary>
 
-<div><iframe width="850" height="476" src="https://www.youtube.com/embed/HfJR3NwsM4M" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/HfJR3NwsM4M" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Topics Covered:</p>
 
@@ -177,7 +136,7 @@ Please join the `#events` channel on the [Discord](https://discord.gg/BmqNSK4886
 
 <details><summary>September 17, 2024</summary>
 
-<div><iframe width="850" height="476" src="https://www.youtube.com/embed/Gys_AUOYZ4c" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/Gys_AUOYZ4c" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Topics Covered:</p>
 
@@ -191,7 +150,7 @@ Please join the `#events` channel on the [Discord](https://discord.gg/BmqNSK4886
 
 <details><summary>September 3, 2024</summary>
 
-<div><iframe width="850" height="476" src="https://www.youtube.com/embed/r1i3QQrRnfI" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/r1i3QQrRnfI" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Topics Covered:</p>
 
@@ -206,7 +165,7 @@ Please join the `#events` channel on the [Discord](https://discord.gg/BmqNSK4886
 
 <details><summary>August 20, 2024</summary>
 
-<div><iframe width="850" height="476" src="https://www.youtube.com/embed/WOv_GymDDNs" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/WOv_GymDDNs" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Topics Covered:</p>
 
@@ -220,7 +179,7 @@ Please join the `#events` channel on the [Discord](https://discord.gg/BmqNSK4886
 
 <details><summary>August 6, 2024</summary>
 
-<div><iframe width="850" height="476" src="https://www.youtube.com/embed/W1o-9MZQYMA" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/W1o-9MZQYMA" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Topics Covered:</p>
 
@@ -234,7 +193,7 @@ Please join the `#events` channel on the [Discord](https://discord.gg/BmqNSK4886
 
 <details><summary>July 23, 2024</summary>
 
-<div><iframe width="850" height="476" src="https://www.youtube.com/embed/pURku7OAWuo" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/pURku7OAWuo" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Topics Covered:</p>
 
@@ -249,7 +208,7 @@ Please join the `#events` channel on the [Discord](https://discord.gg/BmqNSK4886
 
 <details><summary>July 9, 2024</summary>
 
-<div><iframe width="850" height="476" src="https://www.youtube.com/embed/Ngaq2WCDlZM" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/Ngaq2WCDlZM" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Topics Covered:</p>
 
@@ -264,7 +223,7 @@ Please join the `#events` channel on the [Discord](https://discord.gg/BmqNSK4886
 
 <details><summary>June 25, 2024</summary>
 
-<div><iframe width="850" height="476" src="https://www.youtube.com/embed/mIrxJiF1NiI" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/mIrxJiF1NiI" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Topics Covered:</p>
 
@@ -279,7 +238,7 @@ Please join the `#events` channel on the [Discord](https://discord.gg/BmqNSK4886
 
 <details><summary>June 11, 2024</summary>
 
-<div><iframe width="850" height="476" src="https://www.youtube.com/embed/0GV5cYKz7Rc" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/0GV5cYKz7Rc" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Topics Covered:</p>
 
@@ -293,7 +252,7 @@ Please join the `#events` channel on the [Discord](https://discord.gg/BmqNSK4886
 
 <details><summary>May 29, 2024</summary>
 
-<div><iframe width="850" height="476" src="https://www.youtube.com/embed/aq7QS9AtwE8" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/aq7QS9AtwE8" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Topics Covered:</p>
 
@@ -307,7 +266,7 @@ Please join the `#events` channel on the [Discord](https://discord.gg/BmqNSK4886
 
 <details><summary>May 15, 2024</summary>
 
-<div><iframe width="850" height="476" src="https://www.youtube.com/embed/zoyONbiHd14" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/zoyONbiHd14" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Topics Covered:</p>
 
@@ -323,7 +282,7 @@ Please join the `#events` channel on the [Discord](https://discord.gg/BmqNSK4886
 
 <details><summary>May 1, 2024</summary>
 
-<div><iframe width="850" height="476" src="https://www.youtube.com/embed/L4i5x8zzyNc" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/L4i5x8zzyNc" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Topics Covered:</p>
 
@@ -337,7 +296,7 @@ Please join the `#events` channel on the [Discord](https://discord.gg/BmqNSK4886
 
 <details><summary>April 17, 2024</summary>
 
-<div><iframe width="850" height="476" src="https://www.youtube.com/embed/F0v0OsqGsVw" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/F0v0OsqGsVw" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Topics Covered:</p>
 
@@ -352,7 +311,7 @@ Please join the `#events` channel on the [Discord](https://discord.gg/BmqNSK4886
 
 <details><summary>April 3, 2024</summary>
 
-<div><iframe width="850" height="476" src="https://www.youtube.com/embed/7w3RHoIIkNE" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/7w3RHoIIkNE" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
 <p>Project Kickoffs:</p>
 
@@ -366,7 +325,9 @@ Please join the `#events` channel on the [Discord](https://discord.gg/BmqNSK4886
 		
 ## Team Members
 
-Below are shown some of the sustaining members of the group who have been working on generative AI in edge computing:
+Our research group brings together experts from academia, industry, and the open-source community who are passionate about advancing edge AI and robotics. Below are some of our sustaining members who have been actively contributing to generative AI in edge computing:
+
+### Core Contributors
 
 <style>
 .shadow {
@@ -449,8 +410,6 @@ Below are shown some of the sustaining members of the group who have been workin
    display:flex;
    -ms-flex-wrap:wrap;
    flex-wrap:wrap;
-   /* margin-right:-15px;
-   margin-left:-15px */
 }
 
 .bio-logo {
@@ -461,11 +420,14 @@ Below are shown some of the sustaining members of the group who have been workin
 }
     
 .bio-image {
-	max-height: 355px;
+	max-height: 200px;
+	width: auto;
+	border-radius: 8px;
 }
 
 .bio-container {
-    min-width: 355px;
+    min-width: 280px;
+    max-width: 320px;
 }
 </style>
 
@@ -497,7 +459,7 @@ Below are shown some of the sustaining members of the group who have been workin
 	</div>
 	<div class="bio-container col-lg-4 col-sm-4">
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
-			<a href="https://www.youtube.com/@kerseyfabs" target="_blank"><img class="bio-image"src="research/images/Kris_Kersey.jpg"></img></a><br/>
+            <a href="https://www.youtube.com/@kerseyfabs" target="_blank"><img class="bio-image" src="research/images/Kris_Kersey.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/kriskersey/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
 			<a href="https://www.youtube.com/@kerseyfabs" target="_blank"><img class="bio-logo" src="research/images/youtube.png"></img></a>
 			Kris Kersey, <small>Kersey Fabrications</small><br/>
@@ -670,7 +632,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			<a href="https://hanlab.mit.edu/songhan" target="_blank"><img class="bio-image" src="research/images/Song_Han.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/songhanmit/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
 			<a href="https://github.com/mit-han-lab" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
-			Song Han, <a href="https://hanlab.mit.edu/" target="_blank"">MIT HAN Lab</a><br/>
+            Song Han, <a href="https://hanlab.mit.edu/" target="_blank">MIT HAN Lab</a><br/>
 			<small>
 				<a href="https://research.nvidia.com/person/song-han" target="_blank">NVIDIA Research</a> | Cambridge, MA<br/>
 				(<a href="https://github.com/Efficient-Large-Model" target="_blank">Efficient Large Models</a>, <a href="https://github.com/mit-han-lab/llm-awq" target="_blank">AWQ</a>, <a href="https://github.com/Efficient-Large-Model/VILA" target="_blank">VILA</a>)
@@ -694,7 +656,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			<a href="https://tqchen.com/" target="_blank"><img class="bio-image" src="research/images/Tianqi_Chen.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/tianqi-chen-679a9856/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
 			<a href="https://github.com/mlc-ai/mlc-llm" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
-			Tianqi Chen, <a href="https://catalyst.cs.cmu.edu/" target="_blank"">CMU Catalyst</a><br/>
+            Tianqi Chen, <a href="https://catalyst.cs.cmu.edu/" target="_blank">CMU Catalyst</a><br/>
 			<small>
 				<a href="https://octo.ai/" target="_blank">OctoML</a>, CTO | Seattle, WA<br/>
 				(<a href="https://llm.mlc.ai/" target="_blank">MLC</a>, <a href="https://tvm.apache.org/" target="_blank">Apache TVM</a>, <a href="https://xgboost.ai/" target="_blank">XGBoost</a>)
@@ -706,7 +668,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			<a href="https://www.linkedin.com/in/michael-gr%C3%BCner-9249562a/" target="_blank"><img class="bio-image" src="research/images/Michael_Gruner.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/michael-gr%C3%BCner-9249562a/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
 			<a href="https://github.com/michaelgruner" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
-			Michael Grüner, <a href="https://www.ridgerun.com/" target="_blank"">RidgeRun</a><br/>
+            Michael Grüner, <a href="https://www.ridgerun.com/" target="_blank">RidgeRun</a><br/>
 			<small>
 				Team Lead / Architect | Costa Rica<br/>
 				(Embedded Vision & AI, Multimedia)
@@ -717,7 +679,7 @@ Below are shown some of the sustaining members of the group who have been workin
 		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
 			<a href="https://www.linkedin.com/in/jesse-flot-51b50bb9/" target="_blank"><img class="bio-image" src="research/images/Jesse_Flot.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/jesse-flot-51b50bb9/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
-			Jesse Flot, <a href="https://www.cmu.edu/roboticsacademy/" target="_blank"">CMU Robotics Academy</a><br/>
+            Jesse Flot, <a href="https://www.cmu.edu/roboticsacademy/" target="_blank">CMU Robotics Academy</a><br/>
 			<small>
 				Co-Director | Pittsburgh, PA<br/>
 				(<a href="https://www.cmu.edu/roboticsacademy/roboticscurriculum/nvidia_curriculum/applied_ai.html" target="_blank">Applied AI & Robotics</a>, <a href="https://www.cmu.edu/roboticsacademy/roboticscurriculum/nvidia_curriculum/autonomy_foundations.html" target="_blank">Autonomy Foundations</a>)
@@ -742,7 +704,7 @@ Below are shown some of the sustaining members of the group who have been workin
 			<a href="https://www.linkedin.com/in/michael-hansen-9885b2105/" target="_blank"><img class="bio-image" src="research/images/Mike_Hansen.jpg"></img></a><br/>
 			<a href="https://www.linkedin.com/in/michael-hansen-9885b2105/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
 			<a href="https://github.com/synesthesiam" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
-			Mike Hansen, <a href="https://www.nabucasa.com/" target="_blank"">Nabu Casa</a><br/>
+            Mike Hansen, <a href="https://www.nabucasa.com/" target="_blank">Nabu Casa</a><br/>
 			<small>
 				Voice Engineering Lead | Urbandale, Iowa<br/>
 				(<a href="https://www.home-assistant.io" target="_blank">Home Assistant</a>, <a href="https://github.com/rhasspy/piper" target="_blank">Piper TTS</a>, <a href="https://github.com/rhasspy/wyoming" target="_blank">Wyoming</a>)
@@ -883,3 +845,4 @@ Below are shown some of the sustaining members of the group who have been workin
 		</div>
 	</div>
 </div>
+
