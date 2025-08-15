@@ -40,13 +40,18 @@ jobs:
           mkdocs build
             # Custom step to modify HTML files
 
-      - name: Duplicate the generated site dir with postprocessing
+      - name: Duplicate the generated site dir with postprocessing (non-blocking)
         run: |
-          python ./scripts/duplicate_site_with_postprocess.py ./site ../site_postprocessed
+          if python ./scripts/duplicate_site_with_postprocess.py ./site ../site_postprocessed; then
+            echo "Post-processing OK"
+          else
+            echo "Post-processing failed, using unprocessed site"
+            rm -rf ../site_postprocessed
+            cp -r ./site ../site_postprocessed
+          fi
 
       - name: Deploy to GitHub Pages
         run: |
-          # Initialize gh-pages branch if it doesn't exist
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
@@ -54,11 +59,7 @@ jobs:
           git checkout gh-pages || git checkout --orphan gh-pages
           ls -lh
           git status
-          
-          # Copy the site content into the current directory
           cp -r ../site_postprocessed/* .
-
-          # Commit and push the changes
           git add .
           git commit -m "Deployed ${GITHUB_SHA} with mkdocs-material v${{ env.MKDOCS_MATERIAL_VERSION }} and HTML post-processing"
           git push origin gh-pages --force
