@@ -17,6 +17,10 @@ def duplicate_and_process_html(src_dir, dest_dir):
 
     # Walk through the source directory
     for root, dirs, files in os.walk(src_dir):
+
+        if 'dist' in dirs:
+            dirs.remove('dist')
+
         # Create corresponding directory in the destination
         rel_path = os.path.relpath(root, src_dir)
         dest_subdir = os.path.join(dest_dir, rel_path)
@@ -30,6 +34,7 @@ def duplicate_and_process_html(src_dir, dest_dir):
             if file_name.endswith(".html"):
                 # ### HTML file ### 
                 #  - Make certain nav items collapse by removing `md-toggle--indeterminate` class.
+                print(f"--> Processing file: {src_file_path}")
                 postprocess_html_file(src_file_path, dest_file_path)
             else:
                 # Copy non-HTML files as-is
