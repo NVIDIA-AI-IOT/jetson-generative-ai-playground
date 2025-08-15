@@ -1,1033 +1,2548 @@
 <!-- Elements added to main will be displayed on all pages -->
-<!DOCTYPE html>
-<html class="no-js" lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width,initial-scale=1" name="viewport"/>
-  <meta content="Showcasing generative AI projects that run on Jetson" name="description"/>
-  <link href="tips_ssd-docker.html" rel="prev"/>
-  <link href="hackathon.html" rel="next"/>
-  <link href="images/nvidia-favicon-rgb-16x16px@2x.png" rel="icon"/>
-  <meta content="mkdocs-1.6.1, mkdocs-material-9.6.14" name="generator"/>
-  <title>
-   🔖 Memory optimization - NVIDIA Jetson AI Lab
-  </title>
-  <link href="assets/stylesheets/main.342714a4.min.css" rel="stylesheet"/>
-  <link href="assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
-  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css?family=NVIDIA-NALA:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
-  <style>
-   :root{--md-text-font:"NVIDIA-NALA";--md-code-font:"Roboto Mono"}
-  </style>
-  <link href="css/colors.css" rel="stylesheet"/>
-  <link href="css/extra.css" rel="stylesheet"/>
-  <link href="css/nvidia-font.css" rel="stylesheet"/>
-  <script>
-   __md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}
-  </script>
-  <script id="__analytics">
-   function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SXH8S4Y8RW"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SXH8S4Y8RW",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SXH8S4Y8RW",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}
-  </script>
-  <script>
-   "undefined"!=typeof __md_analytics&&__md_analytics()
-  </script>
- </head>
- <body data-md-color-accent="nv-black-green" data-md-color-primary="nv-black-green" data-md-color-scheme="nv-black-green" dir="ltr">
-  <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
-  <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
-  <label class="md-overlay" for="__drawer">
-  </label>
-  <div data-md-component="skip">
-   <a class="md-skip" href="#ram-optimization">
-    Skip to content
-   </a>
-  </div>
-  <div data-md-component="announce">
-  </div>
-  <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
-   <nav aria-label="Header" class="md-header__inner md-grid">
-    <a aria-label="NVIDIA Jetson AI Lab" class="md-header__button md-logo" data-md-component="logo" href="index.html" title="NVIDIA Jetson AI Lab">
-     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54">
-      </path>
-     </svg>
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Showcasing generative AI projects that run on Jetson">
+      
+      
+      
+      
+        <link rel="prev" href="tips_ssd-docker.html">
+      
+      
+        <link rel="next" href="hackathon.html">
+      
+      
+      <link rel="icon" href="images/nvidia-favicon-rgb-16x16px@2x.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.17">
+    
+    
+      
+        <title>🔖 Memory optimization - NVIDIA Jetson AI Lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=NVIDIA-NALA:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"NVIDIA-NALA";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="css/colors.css">
+    
+      <link rel="stylesheet" href="css/extra.css">
+    
+      <link rel="stylesheet" href="css/nvidia-font.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SXH8S4Y8RW"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SXH8S4Y8RW",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SXH8S4Y8RW",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="nv-black-green" data-md-color-primary="nv-black-green" data-md-color-accent="nv-black-green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ram-optimization" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="NVIDIA Jetson AI Lab" class="md-header__button md-logo" aria-label="NVIDIA Jetson AI Lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z">
-      </path>
-     </svg>
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
-     <div class="md-header__ellipsis">
-      <div class="md-header__topic">
-       <span class="md-ellipsis">
-        NVIDIA Jetson AI Lab
-       </span>
-      </div>
-      <div class="md-header__topic" data-md-component="header-topic">
-       <span class="md-ellipsis">
-        🔖 Memory optimization
-       </span>
-      </div>
-     </div>
-    </div>
-    <form class="md-header__option" data-md-component="palette">
-     <input aria-hidden="true" class="md-option" data-md-color-accent="nv-black-green" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="nv-black-green" data-md-color-scheme="nv-black-green" id="__palette_0" name="__palette" type="radio"/>
-    </form>
-    <script>
-     var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}
-    </script>
-    <label class="md-header__button md-icon" for="__search">
-     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5">
-      </path>
-     </svg>
-    </label>
-    <div class="md-search" data-md-component="search" role="dialog">
-     <label class="md-search__overlay" for="__search">
-     </label>
-     <div class="md-search__inner" role="search">
-      <form class="md-search__form" name="search">
-       <input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
-       <label class="md-search__icon md-icon" for="__search">
-        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5">
-         </path>
-        </svg>
-        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z">
-         </path>
-        </svg>
-       </label>
-       <nav aria-label="Search" class="md-search__options">
-        <button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
-         <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
-          </path>
-         </svg>
-        </button>
-       </nav>
-      </form>
-      <div class="md-search__output">
-       <div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
-        <div class="md-search-result" data-md-component="search-result">
-         <div class="md-search-result__meta">
-          Initializing search
-         </div>
-         <ol class="md-search-result__list" role="presentation">
-         </ol>
-        </div>
-       </div>
-      </div>
-     </div>
-    </div>
-   </nav>
-   <nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
-    <div class="md-grid">
-     <ul class="md-tabs__list">
-      <li class="md-tabs__item">
-       <a class="md-tabs__link" href="index.html">
-        Home
-       </a>
-      </li>
-      <li class="md-tabs__item">
-       <a class="md-tabs__link" href="models.html">
-        Models
-       </a>
-      </li>
-      <li class="md-tabs__item md-tabs__item--active">
-       <a class="md-tabs__link" href="tutorial-intro.html">
-        Tutorials
-       </a>
-      </li>
-      <li class="md-tabs__item">
-       <a class="md-tabs__link" href="benchmarks.html">
-        Benchmarks
-       </a>
-      </li>
-      <li class="md-tabs__item">
-       <a class="md-tabs__link" href="community_articles.html">
-        Projects
-       </a>
-      </li>
-      <li class="md-tabs__item">
-       <a class="md-tabs__link" href="research.html">
-        Research Group
-       </a>
-      </li>
-     </ul>
-    </div>
-   </nav>
-  </header>
-  <div class="md-container" data-md-component="container">
-   <main class="md-main" data-md-component="main">
-    <div class="md-main__inner md-grid">
-     <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
-      <div class="md-sidebar__scrollwrap">
-       <div class="md-sidebar__inner">
-        <nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
-         <label class="md-nav__title" for="__drawer">
-          <a aria-label="NVIDIA Jetson AI Lab" class="md-nav__button md-logo" data-md-component="logo" href="index.html" title="NVIDIA Jetson AI Lab">
-           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54">
-            </path>
-           </svg>
-          </a>
-          NVIDIA Jetson AI Lab
-         </label>
-         <ul class="md-nav__list" data-md-scrollfix="">
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="index.html">
-            <span class="md-ellipsis">
-             Home
-            </span>
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="models.html">
-            <span class="md-ellipsis">
-             Models
-            </span>
-           </a>
-          </li>
-          <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-           <input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
-           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
-            <span class="md-ellipsis">
-             Tutorials
-            </span>
-            <span class="md-nav__icon md-icon">
-            </span>
-           </label>
-           <nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
-            <label class="md-nav__title" for="__nav_3">
-             <span class="md-nav__icon md-icon">
-             </span>
-             Tutorials
-            </label>
-            <ul class="md-nav__list" data-md-scrollfix="">
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="tutorial-intro.html">
-               <span class="md-ellipsis">
-                Introduction
-               </span>
-              </a>
-             </li>
-             <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-              <input checked="" class="md-nav__toggle md-toggle" id="__nav_3_2" type="checkbox"/>
-              <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
-               <span class="md-ellipsis">
-                Jetson Setup Guide
-               </span>
-               <span class="md-nav__icon md-icon">
-               </span>
-              </label>
-              <nav aria-expanded="true" aria-labelledby="__nav_3_2_label" class="md-nav" data-md-level="2">
-               <label class="md-nav__title" for="__nav_3_2">
-                <span class="md-nav__icon md-icon">
-                </span>
-                Jetson Setup Guide
-               </label>
-               <ul class="md-nav__list" data-md-scrollfix="">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="initial_setup_jon.html">
-                  <span class="md-ellipsis">
-                   🚀 Initial Setup Guide - Jetson Orin Nano
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="initial_setup_jon_sdkm.html">
-                  <span class="md-ellipsis">
-                   🛸 Initial Setup (SDK Manager method)
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tips_ssd-docker.html">
-                  <span class="md-ellipsis">
-                   🔖 SSD + Docker
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item md-nav__item--active">
-                 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-                 <label class="md-nav__link md-nav__link--active" for="__toc">
-                  <span class="md-ellipsis">
-                   🔖 Memory optimization
-                  </span>
-                  <span class="md-nav__icon md-icon">
-                  </span>
-                 </label>
-                 <a class="md-nav__link md-nav__link--active" href="tips_ram-optimization.html">
-                  <span class="md-ellipsis">
-                   🔖 Memory optimization
-                  </span>
-                 </a>
-                 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-                  <label class="md-nav__title" for="__toc">
-                   <span class="md-nav__icon md-icon">
-                   </span>
-                   Table of contents
-                  </label>
-                  <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-                   <li class="md-nav__item">
-                    <a class="md-nav__link" href="#disabling-the-desktop-gui">
-                     <span class="md-ellipsis">
-                      Disabling the Desktop GUI
-                     </span>
-                    </a>
-                   </li>
-                   <li class="md-nav__item">
-                    <a class="md-nav__link" href="#disabling-misc-services">
-                     <span class="md-ellipsis">
-                      Disabling misc services
-                     </span>
-                    </a>
-                   </li>
-                   <li class="md-nav__item">
-                    <a class="md-nav__link" href="#mounting-swap">
-                     <span class="md-ellipsis">
-                      Mounting Swap
-                     </span>
-                    </a>
-                   </li>
-                  </ul>
-                 </nav>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="hackathon.html">
-                  <span class="md-ellipsis">
-                   🏆 Hackathon Guide
-                  </span>
-                 </a>
-                </li>
-               </ul>
-              </nav>
-             </li>
-             <li class="md-nav__item md-nav__item--nested">
-              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_3" type="checkbox"/>
-              <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
-               <span class="md-ellipsis">
-                AI Microservices
-               </span>
-               <span class="md-nav__icon md-icon">
-               </span>
-              </label>
-              <nav aria-expanded="false" aria-labelledby="__nav_3_3_label" class="md-nav" data-md-level="2">
-               <label class="md-nav__title" for="__nav_3_3">
-                <span class="md-nav__icon md-icon">
-                </span>
-                AI Microservices
-               </label>
-               <ul class="md-nav__list" data-md-scrollfix="">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorials/microservices_intro.html">
-                  <span class="md-ellipsis">
-                   Microservices Intro
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorials/microservices_vlm.html">
-                  <span class="md-ellipsis">
-                   Microservices for VLM
-                  </span>
-                 </a>
-                </li>
-               </ul>
-              </nav>
-             </li>
-             <li class="md-nav__item md-nav__item--nested">
-              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_4" type="checkbox"/>
-              <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
-               <span class="md-ellipsis">
-                Text (LLM)
-               </span>
-               <span class="md-nav__icon md-icon">
-               </span>
-              </label>
-              <nav aria-expanded="false" aria-labelledby="__nav_3_4_label" class="md-nav" data-md-level="2">
-               <label class="md-nav__title" for="__nav_3_4">
-                <span class="md-nav__icon md-icon">
-                </span>
-                Text (LLM)
-               </label>
-               <ul class="md-nav__list" data-md-scrollfix="">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_text-generation.html">
-                  <span class="md-ellipsis">
-                   text-generation-webui
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_ollama.html">
-                  <span class="md-ellipsis">
-                   Ollama
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_openwebui.html">
-                  <span class="md-ellipsis">
-                   Open WebUI
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_llamaspeak.html">
-                  <span class="md-ellipsis">
-                   llamaspeak
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_nano-llm.html">
-                  <span class="md-ellipsis">
-                   NanoLLM
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tensorrt_llm.html">
-                  <span class="md-ellipsis">
-                   TensorRT-LLM
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_slm.html">
-                  <span class="md-ellipsis">
-                   Small LLM (SLM)
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_api-examples.html">
-                  <span class="md-ellipsis">
-                   API Examples
-                  </span>
-                 </a>
-                </li>
-               </ul>
-              </nav>
-             </li>
-             <li class="md-nav__item md-nav__item--nested">
-              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_5" type="checkbox"/>
-              <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
-               <span class="md-ellipsis">
-                Text + Vision (VLM)
-               </span>
-               <span class="md-nav__icon md-icon">
-               </span>
-              </label>
-              <nav aria-expanded="false" aria-labelledby="__nav_3_5_label" class="md-nav" data-md-level="2">
-               <label class="md-nav__title" for="__nav_3_5">
-                <span class="md-nav__icon md-icon">
-                </span>
-                Text + Vision (VLM)
-               </label>
-               <ul class="md-nav__list" data-md-scrollfix="">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_llava.html">
-                  <span class="md-ellipsis">
-                   LLaVA
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_live-llava.html">
-                  <span class="md-ellipsis">
-                   Live LLaVA
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_nano-vlm.html">
-                  <span class="md-ellipsis">
-                   NanoVLM
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="llama_vlm.html">
-                  <span class="md-ellipsis">
-                   Llama 3.2 Vision
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="agent_studio.html">
-                  <span class="md-ellipsis">
-                   Agent Studio
-                  </span>
-                 </a>
-                </li>
-               </ul>
-              </nav>
-             </li>
-             <li class="md-nav__item md-nav__item--nested">
-              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_6" type="checkbox"/>
-              <div class="md-nav__link md-nav__container">
-               <a class="md-nav__link" href="vit/index.html">
-                <span class="md-ellipsis">
-                 Vision Transformers (ViT)
-                </span>
-               </a>
-               <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
-                <span class="md-nav__icon md-icon">
-                </span>
-               </label>
-              </div>
-              <nav aria-expanded="false" aria-labelledby="__nav_3_6_label" class="md-nav" data-md-level="2">
-               <label class="md-nav__title" for="__nav_3_6">
-                <span class="md-nav__icon md-icon">
-                </span>
-                Vision Transformers (ViT)
-               </label>
-               <ul class="md-nav__list" data-md-scrollfix="">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="vit/tutorial_efficientvit.html">
-                  <span class="md-ellipsis">
-                   EfficientViT
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="vit/tutorial_nanoowl.html">
-                  <span class="md-ellipsis">
-                   NanoOWL
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="vit/tutorial_nanosam.html">
-                  <span class="md-ellipsis">
-                   NanoSAM
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="vit/tutorial_sam.html">
-                  <span class="md-ellipsis">
-                   SAM
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="vit/tutorial_tam.html">
-                  <span class="md-ellipsis">
-                   TAM
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_distillation.html">
-                  <span class="md-ellipsis">
-                   📑 Knowledge Distillation
-                  </span>
-                 </a>
-                </li>
-               </ul>
-              </nav>
-             </li>
-             <li class="md-nav__item md-nav__item--nested">
-              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_7" type="checkbox"/>
-              <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
-               <span class="md-ellipsis">
-                Robotics &amp; Embodiment
-               </span>
-               <span class="md-nav__icon md-icon">
-               </span>
-              </label>
-              <nav aria-expanded="false" aria-labelledby="__nav_3_7_label" class="md-nav" data-md-level="2">
-               <label class="md-nav__title" for="__nav_3_7">
-                <span class="md-nav__icon md-icon">
-                </span>
-                Robotics &amp; Embodiment
-               </label>
-               <ul class="md-nav__list" data-md-scrollfix="">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="cosmos.html">
-                  <span class="md-ellipsis">
-                   Cosmos
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="genesis.html">
-                  <span class="md-ellipsis">
-                   Genesis 🆕
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="lerobot.html">
-                  <span class="md-ellipsis">
-                   LeRobot
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="ros.html">
-                  <span class="md-ellipsis">
-                   ROS2 Nodes
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="openvla.html">
-                  <span class="md-ellipsis">
-                   OpenVLA
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="robopoint.html">
-                  <span class="md-ellipsis">
-                   RoboPoint 🆕
-                  </span>
-                 </a>
-                </li>
-               </ul>
-              </nav>
-             </li>
-             <li class="md-nav__item md-nav__item--nested">
-              <input class="md-nav__toggle md-toggle" id="__nav_3_8" type="checkbox"/>
-              <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
-               <span class="md-ellipsis">
-                Image Generation
-               </span>
-               <span class="md-nav__icon md-icon">
-               </span>
-              </label>
-              <nav aria-expanded="false" aria-labelledby="__nav_3_8_label" class="md-nav" data-md-level="2">
-               <label class="md-nav__title" for="__nav_3_8">
-                <span class="md-nav__icon md-icon">
-                </span>
-                Image Generation
-               </label>
-               <ul class="md-nav__list" data-md-scrollfix="">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_comfyui_flux.html">
-                  <span class="md-ellipsis">
-                   Flux &amp; ComfyUI
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_stable-diffusion.html">
-                  <span class="md-ellipsis">
-                   Stable Diffusion
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_stable-diffusion-xl.html">
-                  <span class="md-ellipsis">
-                   Stable Diffusion XL
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="nerf.html">
-                  <span class="md-ellipsis">
-                   nerfstudio
-                  </span>
-                 </a>
-                </li>
-               </ul>
-              </nav>
-             </li>
-             <li class="md-nav__item md-nav__item--nested">
-              <input class="md-nav__toggle md-toggle" id="__nav_3_9" type="checkbox"/>
-              <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
-               <span class="md-ellipsis">
-                RAG &amp; Vector Database
-               </span>
-               <span class="md-nav__icon md-icon">
-               </span>
-              </label>
-              <nav aria-expanded="false" aria-labelledby="__nav_3_9_label" class="md-nav" data-md-level="2">
-               <label class="md-nav__title" for="__nav_3_9">
-                <span class="md-nav__icon md-icon">
-                </span>
-                RAG &amp; Vector Database
-               </label>
-               <ul class="md-nav__list" data-md-scrollfix="">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_nanodb.html">
-                  <span class="md-ellipsis">
-                   NanoDB
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_llamaindex.html">
-                  <span class="md-ellipsis">
-                   LlamaIndex
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_jetson-copilot.html">
-                  <span class="md-ellipsis">
-                   Jetson Copilot
-                  </span>
-                 </a>
-                </li>
-               </ul>
-              </nav>
-             </li>
-             <li class="md-nav__item md-nav__item--nested">
-              <input class="md-nav__toggle md-toggle" id="__nav_3_10" type="checkbox"/>
-              <label class="md-nav__link" for="__nav_3_10" id="__nav_3_10_label" tabindex="0">
-               <span class="md-ellipsis">
-                SDK Integrations
-               </span>
-               <span class="md-nav__icon md-icon">
-               </span>
-              </label>
-              <nav aria-expanded="false" aria-labelledby="__nav_3_10_label" class="md-nav" data-md-level="2">
-               <label class="md-nav__title" for="__nav_3_10">
-                <span class="md-nav__icon md-icon">
-                </span>
-                SDK Integrations
-               </label>
-               <ul class="md-nav__list" data-md-scrollfix="">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_holoscan.html">
-                  <span class="md-ellipsis">
-                   Holoscan SDK
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_jps.html">
-                  <span class="md-ellipsis">
-                   Jetson Platform Services
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_gapi_workflows.html">
-                  <span class="md-ellipsis">
-                   Gapi Workflows
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_gapi_microservices.html">
-                  <span class="md-ellipsis">
-                   Gapi Micro Services
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_ultralytics.html">
-                  <span class="md-ellipsis">
-                   Ultralytics YOLOv8
-                  </span>
-                 </a>
-                </li>
-               </ul>
-              </nav>
-             </li>
-             <li class="md-nav__item md-nav__item--nested">
-              <input class="md-nav__toggle md-toggle" id="__nav_3_11" type="checkbox"/>
-              <label class="md-nav__link" for="__nav_3_11" id="__nav_3_11_label" tabindex="0">
-               <span class="md-ellipsis">
-                Audio
-               </span>
-               <span class="md-nav__icon md-icon">
-               </span>
-              </label>
-              <nav aria-expanded="false" aria-labelledby="__nav_3_11_label" class="md-nav" data-md-level="2">
-               <label class="md-nav__title" for="__nav_3_11">
-                <span class="md-nav__icon md-icon">
-                </span>
-                Audio
-               </label>
-               <ul class="md-nav__list" data-md-scrollfix="">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_whisper.html">
-                  <span class="md-ellipsis">
-                   Whisper
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_audiocraft.html">
-                  <span class="md-ellipsis">
-                   AudioCraft
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_voicecraft.html">
-                  <span class="md-ellipsis">
-                   VoiceCraft
-                  </span>
-                 </a>
-                </li>
-               </ul>
-              </nav>
-             </li>
-            </ul>
-           </nav>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="benchmarks.html">
-            <span class="md-ellipsis">
-             Benchmarks
-            </span>
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="community_articles.html">
-            <span class="md-ellipsis">
-             Projects
-            </span>
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="research.html">
-            <span class="md-ellipsis">
-             Research Group
-            </span>
-           </a>
-          </li>
-         </ul>
-        </nav>
-       </div>
-      </div>
-     </div>
-     <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
-      <div class="md-sidebar__scrollwrap">
-       <div class="md-sidebar__inner">
-        <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-         <label class="md-nav__title" for="__toc">
-          <span class="md-nav__icon md-icon">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NVIDIA Jetson AI Lab
           </span>
-          Table of contents
-         </label>
-         <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#disabling-the-desktop-gui">
-            <span class="md-ellipsis">
-             Disabling the Desktop GUI
-            </span>
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#disabling-misc-services">
-            <span class="md-ellipsis">
-             Disabling misc services
-            </span>
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#mounting-swap">
-            <span class="md-ellipsis">
-             Mounting Swap
-            </span>
-           </a>
-          </li>
-         </ul>
-        </nav>
-       </div>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              🔖 Memory optimization
+            
+          </span>
+        </div>
       </div>
-     </div>
-     <div class="md-content" data-md-component="content">
-      <article class="md-content__inner md-typeset">
-       <h1 id="ram-optimization">
-        RAM Optimization
-       </h1>
-       <p>
-        Running a LLM requires a huge RAM space.
-       </p>
-       <p>
-        Especially if you are on
-        <span class="blobLightGreen4">
-         Jetson Orin Nano
-        </span>
-        that only has 8GB of RAM, it is crucial to leave as much RAM space available for models.
-       </p>
-       <p>
-        Here we share a couple of ways to optimize the system RAM usage.
-       </p>
-       <h2 id="disabling-the-desktop-gui">
-        Disabling the Desktop GUI
-       </h2>
-       <p>
-        If you use your Jetson remotely through SSH, you can disable the Ubuntu desktop GUI.
-        <br/>
-        This will free up extra memory that the window manager and desktop uses (around ~800MB for Unity/GNOME).
-       </p>
-       <p>
-        You can disable the desktop temporarily, run commands in the console, and then re-start the desktop when desired:
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>$ sudo init 3     # stop the desktop
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="nv-black-green" data-md-color-primary="nv-black-green" data-md-color-accent="nv-black-green"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="models.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Models
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="tutorial-intro.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="benchmarks.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Benchmarks
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="community_articles.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Projects
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="research.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Research Group
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="NVIDIA Jetson AI Lab" class="md-nav__button md-logo" aria-label="NVIDIA Jetson AI Lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    NVIDIA Jetson AI Lab
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="models.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tutorials
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial-intro.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Jetson Setup Guide
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Jetson Setup Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="initial_setup_jon.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🚀 Initial Setup Guide - Jetson Orin Nano
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="initial_setup_jon_sdkm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🛸 Initial Setup (SDK Manager method)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tips_ssd-docker.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🔖 SSD + Docker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    🔖 Memory optimization
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="tips_ram-optimization.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    🔖 Memory optimization
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#disabling-the-desktop-gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disabling the Desktop GUI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disabling-misc-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disabling misc services
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mounting-swap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mounting Swap
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="hackathon.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🏆 Hackathon Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    AI Microservices
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            AI Microservices
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/microservices_intro.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Microservices Intro
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/microservices_vlm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Microservices for VLM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Text (LLM)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Text (LLM)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_text-generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    text-generation-webui
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_ollama.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ollama
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_openwebui.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Open WebUI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_llamaspeak.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    llamaspeak
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_nano-llm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NanoLLM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tensorrt_llm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TensorRT-LLM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_slm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Small LLM (SLM)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_api-examples.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Examples
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Text + Vision (VLM)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Text + Vision (VLM)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_llava.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LLaVA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_live-llava.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Live LLaVA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_nano-vlm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NanoVLM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="llama_vlm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Llama 3.2 Vision
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="agent_studio.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Agent Studio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="vit/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Vision Transformers (ViT)
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Vision Transformers (ViT)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vit/tutorial_efficientvit.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EfficientViT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vit/tutorial_nanoowl.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NanoOWL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vit/tutorial_nanosam.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NanoSAM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vit/tutorial_sam.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SAM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vit/tutorial_tam.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TAM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_distillation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    📑 Knowledge Distillation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Robotics & Embodiment
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            Robotics & Embodiment
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cosmos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cosmos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="genesis.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Genesis 🆕
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="lerobot.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LeRobot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ros.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ROS2 Nodes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="openvla.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenVLA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="robopoint.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RoboPoint 🆕
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Image Generation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            Image Generation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_comfyui_flux.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Flux & ComfyUI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_stable-diffusion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Stable Diffusion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_stable-diffusion-xl.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Stable Diffusion XL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="nerf.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    nerfstudio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    RAG & Vector Database
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            RAG & Vector Database
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_nanodb.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NanoDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_llamaindex.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LlamaIndex
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_jetson-copilot.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Jetson Copilot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_10" id="__nav_3_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    SDK Integrations
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_10">
+            <span class="md-nav__icon md-icon"></span>
+            SDK Integrations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_holoscan.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Holoscan SDK
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_jps.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Jetson Platform Services
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_gapi_workflows.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gapi Workflows
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_gapi_microservices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gapi Micro Services
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_ultralytics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ultralytics YOLOv8
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_11" id="__nav_3_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Audio
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_11">
+            <span class="md-nav__icon md-icon"></span>
+            Audio
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_whisper.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Whisper
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_audiocraft.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AudioCraft
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_voicecraft.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VoiceCraft
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="benchmarks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Benchmarks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="community_articles.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Projects
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="research.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Research Group
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#disabling-the-desktop-gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disabling the Desktop GUI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disabling-misc-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disabling misc services
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mounting-swap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mounting Swap
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ram-optimization">RAM Optimization</h1>
+<p>Running a LLM requires a huge RAM space.</p>
+<p>Especially if you are on <span class="blobLightGreen4">Jetson Orin Nano</span> that only has 8GB of RAM, it is crucial to leave as much RAM space available for models. </p>
+<p>Here we share a couple of ways to optimize the system RAM usage. </p>
+<h2 id="disabling-the-desktop-gui">Disabling the Desktop GUI</h2>
+<p>If you use your Jetson remotely through SSH, you can disable the Ubuntu desktop GUI.<br>
+This will free up extra memory that the window manager and desktop uses (around ~800MB for Unity/GNOME).</p>
+<p>You can disable the desktop temporarily, run commands in the console, and then re-start the desktop when desired:</p>
+<div class="highlight"><pre><span></span><code>$ sudo init 3     # stop the desktop
 # log your user back into the console (Ctrl+Alt+F1, F2, ect)
 $ sudo init 5     # restart the desktop
-</code></pre>
-       </div>
-       <p>
-        If you wish to make this persistent across reboots, you can use the following commands to change the boot-up behavior:
-       </p>
-       <ul>
-        <li>
-         <p>
-          To disable desktop on boot
-         </p>
-         <div class="highlight">
-          <pre><span></span><code>sudo systemctl set-default multi-user.target
-</code></pre>
-         </div>
-        </li>
-        <li>
-         <p>
-          To enable desktop on boot
-         </p>
-         <div class="highlight">
-          <pre><span></span><code>sudo systemctl set-default graphical.target
-</code></pre>
-         </div>
-        </li>
-       </ul>
-       <h2 id="disabling-misc-services">
-        Disabling misc services
-       </h2>
-       <div class="highlight">
-        <pre><span></span><code>sudo systemctl disable nvargus-daemon.service
-</code></pre>
-       </div>
-       <h2 id="mounting-swap">
-        Mounting Swap
-       </h2>
-       <p>
-        If you're building containers or working with large models, it's advisable to mount SWAP (typically correlated with the amount of memory in the board). Run these commands to disable ZRAM and create a swap file:
-       </p>
-       <blockquote>
-        <p>
-         If you have NVMe SSD storage available, it's preferred to allocate the swap file on the NVMe SSD.
-        </p>
-       </blockquote>
-       <div class="highlight">
-        <pre><span></span><code>sudo systemctl disable nvzramconfig
+</code></pre></div>
+<p>If you wish to make this persistent across reboots, you can use the following commands to change the boot-up behavior:</p>
+<ul>
+<li>
+<p>To disable desktop on boot</p>
+<div class="highlight"><pre><span></span><code>sudo systemctl set-default multi-user.target
+</code></pre></div>
+</li>
+<li>
+<p>To enable desktop on boot</p>
+<div class="highlight"><pre><span></span><code>sudo systemctl set-default graphical.target
+</code></pre></div>
+</li>
+</ul>
+<h2 id="disabling-misc-services">Disabling misc services</h2>
+<div class="highlight"><pre><span></span><code>sudo systemctl disable nvargus-daemon.service
+</code></pre></div>
+<h2 id="mounting-swap">Mounting Swap</h2>
+<p>If you're building containers or working with large models, it's advisable to mount SWAP (typically correlated with the amount of memory in the board). Run these commands to disable ZRAM and create a swap file:</p>
+<blockquote>
+<p>If you have NVMe SSD storage available, it's preferred to allocate the swap file on the NVMe SSD.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>sudo systemctl disable nvzramconfig
 sudo fallocate -l 16G /ssd/16GB.swap
 sudo mkswap /ssd/16GB.swap
 sudo swapon /ssd/16GB.swap
-</code></pre>
-       </div>
-       <p>
-        Then add the following line to the end of /etc/fstab to make the change persistent:
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>/ssd/16GB.swap  none  swap  sw 0  0
-</code></pre>
-       </div>
-      </article>
-     </div>
-     <script>
-      var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}
-     </script>
-     <script>
-      var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))
-     </script>
-    </div>
-    <button class="md-top md-icon" data-md-component="top" hidden="" type="button">
-     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z">
-      </path>
-     </svg>
-     Back to top
-    </button>
-   </main>
-   <footer class="md-footer">
-    <div class="md-footer-meta md-typeset">
-     <div class="md-footer-meta__inner md-grid">
-      <div class="md-copyright">
-       <div class="md-copyright__highlight">
-        <ul class="global-footer__links">
-         <li>
-          <a href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/" target="_blank">
-           Privacy Policy
-          </a>
-         </li>
-         <li>
-          <a href="https://www.nvidia.com/en-us/privacy-center/" target="_blank">
-           Manage My Privacy
-          </a>
-         </li>
-         <li>
-          <a href="https://www.nvidia.com/en-us/preferences/email-preferences/" target="_blank">
-           Do Not Sell or Share My Data
-          </a>
-         </li>
-         <li>
-          <a href="https://www.nvidia.com/en-us/about-nvidia/legal-info/" target="_blank">
-           Legal
-          </a>
-         </li>
-         <li>
-          <a href="https://www.nvidia.com/en-us/about-nvidia/accessibility/" target="_blank">
-           Accessibility
-          </a>
-         </li>
-         <li>
-          <a href="https://www.nvidia.com/en-us/about-nvidia/company-policies/" target="_self">
-           Corporate Policies
-          </a>
-         </li>
-         <li>
-          <a href="https://www.nvidia.com/en-us/product-security/" target="_blank">
-           Product Security
-          </a>
-         </li>
-         <li>
-          <a href="https://www.nvidia.com/en-us/contact/" target="_blank">
-           Contact
-          </a>
-         </li>
-        </ul>
-        <div class="global-footer__copyright">
-         Copyright © 2024 NVIDIA Corporation
+</code></pre></div>
+<p>Then add the following line to the end of /etc/fstab to make the change persistent:</p>
+<div class="highlight"><pre><span></span><code>/ssd/16GB.swap  none  swap  sw 0  0
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-       </div>
-      </div>
-     </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <ul class="global-footer__links"><li><a href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/" target="_blank">Privacy Policy</a></li><li> <a href="https://www.nvidia.com/en-us/privacy-center/" target="_blank">Manage My Privacy</a> </li> <li> <a href="https://www.nvidia.com/en-us/preferences/email-preferences/" target="_blank">Do Not Sell or Share My Data</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/legal-info/" target="_blank">Legal</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/accessibility/" target="_blank">Accessibility</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/company-policies/" target="_self">Corporate Policies</a> </li> <li> <a href="https://www.nvidia.com/en-us/product-security/" target="_blank">Product Security</a> </li> <li> <a href="https://www.nvidia.com/en-us/contact/" target="_blank">Contact</a> </li> </ul><div class="global-footer__copyright">Copyright &copy; 2024 NVIDIA Corporation</div>
     </div>
-   </footer>
+  
+  
+</div>
+      
+    </div>
   </div>
-  <div class="md-dialog" data-md-component="dialog">
-   <div class="md-dialog__inner md-typeset">
-   </div>
-  </div>
-  <script id="__config" type="application/json">
-   {"base": ".", "features": ["navigation.indexes", "navigation.expand", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.tabs.link", "content.code.copy", "announce.dismiss"], "search": "assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}
-  </script>
-  <!-- OneTrust Cookies Consent Notice start for www.jetson-ai-lab.com -->
-  <script charset="UTF-8" data-domain-script="018e2d65-efdf-7071-b793-f15ccf25c234" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" type="text/javascript">
-  </script>
-  <script type="text/javascript">
-   function OptanonWrapper() {        
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["navigation.indexes", "navigation.expand", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.tabs.link", "content.code.copy", "announce.dismiss"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+<!-- OneTrust Cookies Consent Notice start for www.jetson-ai-lab.com -->
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"  type="text/javascript" charset="UTF-8" data-domain-script="018e2d65-efdf-7071-b793-f15ccf25c234" ></script>
+<script type="text/javascript">
+function OptanonWrapper() {        
         var event = new Event('bannerLoaded');
         window.dispatchEvent(event);
     }
-  </script>
-  <!-- OneTrust Cookies Consent Notice end for www.jetson-ai-lab.com -->
-  <script src="https://images.nvidia.com/aem-dam/Solutions/ot-js/ot-custom.js" type="text/javascript">
-  </script>
-  <script src="//assets.adobedtm.com/5d4962a43b79/814eb6e9b4e1/launch-4bc07f1e0b0b.min.js">
-  </script>
-  <script src="assets/javascripts/bundle.13a4f30d.min.js">
-  </script>
-  <script>
-   window._6si = window._6si || [];
+</script>
+<!-- OneTrust Cookies Consent Notice end for www.jetson-ai-lab.com -->
+
+ <script type="text/javascript" src="https://images.nvidia.com/aem-dam/Solutions/ot-js/ot-custom.js"></script>
+<script src="//assets.adobedtm.com/5d4962a43b79/814eb6e9b4e1/launch-4bc07f1e0b0b.min.js"></script>
+
+      <script src="assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+<script>
+  window._6si = window._6si || [];
   window._6si.push(['enableEventTracking', true]);
   window._6si.push(['setToken', 'eb417ec30d332e34d732e2916f185311']);
   window._6si.push(['setEndpoint', 'b.6sc.co']);
@@ -1044,9 +2559,8 @@ sudo swapon /ssd/16GB.swap
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(gd, s);
   })();
-  </script>
-  <script type="text/javascript">
-   _satellite.pageBottom();
-  </script>
- </body>
+</script>
+<script type="text/javascript">_satellite.pageBottom();</script>
+
+  </body>
 </html>

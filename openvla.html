@@ -1,1219 +1,2694 @@
 <!-- Elements added to main will be displayed on all pages -->
-<!DOCTYPE html>
-<html class="no-js" lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width,initial-scale=1" name="viewport"/>
-  <meta content="Showcasing generative AI projects that run on Jetson" name="description"/>
-  <link href="ros.html" rel="prev"/>
-  <link href="robopoint.html" rel="next"/>
-  <link href="images/nvidia-favicon-rgb-16x16px@2x.png" rel="icon"/>
-  <meta content="mkdocs-1.6.1, mkdocs-material-9.6.14" name="generator"/>
-  <title>
-   OpenVLA - NVIDIA Jetson AI Lab
-  </title>
-  <link href="assets/stylesheets/main.342714a4.min.css" rel="stylesheet"/>
-  <link href="assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
-  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css?family=NVIDIA-NALA:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
-  <style>
-   :root{--md-text-font:"NVIDIA-NALA";--md-code-font:"Roboto Mono"}
-  </style>
-  <link href="css/colors.css" rel="stylesheet"/>
-  <link href="css/extra.css" rel="stylesheet"/>
-  <link href="css/nvidia-font.css" rel="stylesheet"/>
-  <script>
-   __md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}
-  </script>
-  <script id="__analytics">
-   function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SXH8S4Y8RW"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SXH8S4Y8RW",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SXH8S4Y8RW",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}
-  </script>
-  <script>
-   "undefined"!=typeof __md_analytics&&__md_analytics()
-  </script>
- </head>
- <body data-md-color-accent="nv-black-green" data-md-color-primary="nv-black-green" data-md-color-scheme="nv-black-green" dir="ltr">
-  <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
-  <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
-  <label class="md-overlay" for="__drawer">
-  </label>
-  <div data-md-component="skip">
-   <a class="md-skip" href="#openvla-visionlanguage-action-models-for-embodied-robotics">
-    Skip to content
-   </a>
-  </div>
-  <div data-md-component="announce">
-  </div>
-  <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
-   <nav aria-label="Header" class="md-header__inner md-grid">
-    <a aria-label="NVIDIA Jetson AI Lab" class="md-header__button md-logo" data-md-component="logo" href="index.html" title="NVIDIA Jetson AI Lab">
-     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54">
-      </path>
-     </svg>
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Showcasing generative AI projects that run on Jetson">
+      
+      
+      
+      
+        <link rel="prev" href="ros.html">
+      
+      
+        <link rel="next" href="robopoint.html">
+      
+      
+      <link rel="icon" href="images/nvidia-favicon-rgb-16x16px@2x.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.17">
+    
+    
+      
+        <title>OpenVLA - NVIDIA Jetson AI Lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=NVIDIA-NALA:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"NVIDIA-NALA";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="css/colors.css">
+    
+      <link rel="stylesheet" href="css/extra.css">
+    
+      <link rel="stylesheet" href="css/nvidia-font.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SXH8S4Y8RW"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SXH8S4Y8RW",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SXH8S4Y8RW",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="nv-black-green" data-md-color-primary="nv-black-green" data-md-color-accent="nv-black-green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#openvla-visionlanguage-action-models-for-embodied-robotics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="NVIDIA Jetson AI Lab" class="md-header__button md-logo" aria-label="NVIDIA Jetson AI Lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z">
-      </path>
-     </svg>
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
-     <div class="md-header__ellipsis">
-      <div class="md-header__topic">
-       <span class="md-ellipsis">
-        NVIDIA Jetson AI Lab
-       </span>
-      </div>
-      <div class="md-header__topic" data-md-component="header-topic">
-       <span class="md-ellipsis">
-        OpenVLA
-       </span>
-      </div>
-     </div>
-    </div>
-    <form class="md-header__option" data-md-component="palette">
-     <input aria-hidden="true" class="md-option" data-md-color-accent="nv-black-green" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="nv-black-green" data-md-color-scheme="nv-black-green" id="__palette_0" name="__palette" type="radio"/>
-    </form>
-    <script>
-     var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}
-    </script>
-    <label class="md-header__button md-icon" for="__search">
-     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5">
-      </path>
-     </svg>
-    </label>
-    <div class="md-search" data-md-component="search" role="dialog">
-     <label class="md-search__overlay" for="__search">
-     </label>
-     <div class="md-search__inner" role="search">
-      <form class="md-search__form" name="search">
-       <input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
-       <label class="md-search__icon md-icon" for="__search">
-        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5">
-         </path>
-        </svg>
-        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-         <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z">
-         </path>
-        </svg>
-       </label>
-       <nav aria-label="Search" class="md-search__options">
-        <button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
-         <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
-          </path>
-         </svg>
-        </button>
-       </nav>
-      </form>
-      <div class="md-search__output">
-       <div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
-        <div class="md-search-result" data-md-component="search-result">
-         <div class="md-search-result__meta">
-          Initializing search
-         </div>
-         <ol class="md-search-result__list" role="presentation">
-         </ol>
-        </div>
-       </div>
-      </div>
-     </div>
-    </div>
-   </nav>
-   <nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
-    <div class="md-grid">
-     <ul class="md-tabs__list">
-      <li class="md-tabs__item">
-       <a class="md-tabs__link" href="index.html">
-        Home
-       </a>
-      </li>
-      <li class="md-tabs__item">
-       <a class="md-tabs__link" href="models.html">
-        Models
-       </a>
-      </li>
-      <li class="md-tabs__item md-tabs__item--active">
-       <a class="md-tabs__link" href="tutorial-intro.html">
-        Tutorials
-       </a>
-      </li>
-      <li class="md-tabs__item">
-       <a class="md-tabs__link" href="benchmarks.html">
-        Benchmarks
-       </a>
-      </li>
-      <li class="md-tabs__item">
-       <a class="md-tabs__link" href="community_articles.html">
-        Projects
-       </a>
-      </li>
-      <li class="md-tabs__item">
-       <a class="md-tabs__link" href="research.html">
-        Research Group
-       </a>
-      </li>
-     </ul>
-    </div>
-   </nav>
-  </header>
-  <div class="md-container" data-md-component="container">
-   <main class="md-main" data-md-component="main">
-    <div class="md-main__inner md-grid">
-     <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
-      <div class="md-sidebar__scrollwrap">
-       <div class="md-sidebar__inner">
-        <nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
-         <label class="md-nav__title" for="__drawer">
-          <a aria-label="NVIDIA Jetson AI Lab" class="md-nav__button md-logo" data-md-component="logo" href="index.html" title="NVIDIA Jetson AI Lab">
-           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54">
-            </path>
-           </svg>
-          </a>
-          NVIDIA Jetson AI Lab
-         </label>
-         <ul class="md-nav__list" data-md-scrollfix="">
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="index.html">
-            <span class="md-ellipsis">
-             Home
-            </span>
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="models.html">
-            <span class="md-ellipsis">
-             Models
-            </span>
-           </a>
-          </li>
-          <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-           <input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
-           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
-            <span class="md-ellipsis">
-             Tutorials
-            </span>
-            <span class="md-nav__icon md-icon">
-            </span>
-           </label>
-           <nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
-            <label class="md-nav__title" for="__nav_3">
-             <span class="md-nav__icon md-icon">
-             </span>
-             Tutorials
-            </label>
-            <ul class="md-nav__list" data-md-scrollfix="">
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="tutorial-intro.html">
-               <span class="md-ellipsis">
-                Introduction
-               </span>
-              </a>
-             </li>
-             <li class="md-nav__item md-nav__item--nested">
-              <input class="md-nav__toggle md-toggle" id="__nav_3_2" type="checkbox"/>
-              <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
-               <span class="md-ellipsis">
-                Jetson Setup Guide
-               </span>
-               <span class="md-nav__icon md-icon">
-               </span>
-              </label>
-              <nav aria-expanded="false" aria-labelledby="__nav_3_2_label" class="md-nav" data-md-level="2">
-               <label class="md-nav__title" for="__nav_3_2">
-                <span class="md-nav__icon md-icon">
-                </span>
-                Jetson Setup Guide
-               </label>
-               <ul class="md-nav__list" data-md-scrollfix="">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="initial_setup_jon.html">
-                  <span class="md-ellipsis">
-                   🚀 Initial Setup Guide - Jetson Orin Nano
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="initial_setup_jon_sdkm.html">
-                  <span class="md-ellipsis">
-                   🛸 Initial Setup (SDK Manager method)
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tips_ssd-docker.html">
-                  <span class="md-ellipsis">
-                   🔖 SSD + Docker
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tips_ram-optimization.html">
-                  <span class="md-ellipsis">
-                   🔖 Memory optimization
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="hackathon.html">
-                  <span class="md-ellipsis">
-                   🏆 Hackathon Guide
-                  </span>
-                 </a>
-                </li>
-               </ul>
-              </nav>
-             </li>
-             <li class="md-nav__item md-nav__item--nested">
-              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_3" type="checkbox"/>
-              <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
-               <span class="md-ellipsis">
-                AI Microservices
-               </span>
-               <span class="md-nav__icon md-icon">
-               </span>
-              </label>
-              <nav aria-expanded="false" aria-labelledby="__nav_3_3_label" class="md-nav" data-md-level="2">
-               <label class="md-nav__title" for="__nav_3_3">
-                <span class="md-nav__icon md-icon">
-                </span>
-                AI Microservices
-               </label>
-               <ul class="md-nav__list" data-md-scrollfix="">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorials/microservices_intro.html">
-                  <span class="md-ellipsis">
-                   Microservices Intro
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorials/microservices_vlm.html">
-                  <span class="md-ellipsis">
-                   Microservices for VLM
-                  </span>
-                 </a>
-                </li>
-               </ul>
-              </nav>
-             </li>
-             <li class="md-nav__item md-nav__item--nested">
-              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_4" type="checkbox"/>
-              <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
-               <span class="md-ellipsis">
-                Text (LLM)
-               </span>
-               <span class="md-nav__icon md-icon">
-               </span>
-              </label>
-              <nav aria-expanded="false" aria-labelledby="__nav_3_4_label" class="md-nav" data-md-level="2">
-               <label class="md-nav__title" for="__nav_3_4">
-                <span class="md-nav__icon md-icon">
-                </span>
-                Text (LLM)
-               </label>
-               <ul class="md-nav__list" data-md-scrollfix="">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_text-generation.html">
-                  <span class="md-ellipsis">
-                   text-generation-webui
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_ollama.html">
-                  <span class="md-ellipsis">
-                   Ollama
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_openwebui.html">
-                  <span class="md-ellipsis">
-                   Open WebUI
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_llamaspeak.html">
-                  <span class="md-ellipsis">
-                   llamaspeak
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_nano-llm.html">
-                  <span class="md-ellipsis">
-                   NanoLLM
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tensorrt_llm.html">
-                  <span class="md-ellipsis">
-                   TensorRT-LLM
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_slm.html">
-                  <span class="md-ellipsis">
-                   Small LLM (SLM)
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_api-examples.html">
-                  <span class="md-ellipsis">
-                   API Examples
-                  </span>
-                 </a>
-                </li>
-               </ul>
-              </nav>
-             </li>
-             <li class="md-nav__item md-nav__item--nested">
-              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_5" type="checkbox"/>
-              <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
-               <span class="md-ellipsis">
-                Text + Vision (VLM)
-               </span>
-               <span class="md-nav__icon md-icon">
-               </span>
-              </label>
-              <nav aria-expanded="false" aria-labelledby="__nav_3_5_label" class="md-nav" data-md-level="2">
-               <label class="md-nav__title" for="__nav_3_5">
-                <span class="md-nav__icon md-icon">
-                </span>
-                Text + Vision (VLM)
-               </label>
-               <ul class="md-nav__list" data-md-scrollfix="">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_llava.html">
-                  <span class="md-ellipsis">
-                   LLaVA
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_live-llava.html">
-                  <span class="md-ellipsis">
-                   Live LLaVA
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_nano-vlm.html">
-                  <span class="md-ellipsis">
-                   NanoVLM
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="llama_vlm.html">
-                  <span class="md-ellipsis">
-                   Llama 3.2 Vision
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="agent_studio.html">
-                  <span class="md-ellipsis">
-                   Agent Studio
-                  </span>
-                 </a>
-                </li>
-               </ul>
-              </nav>
-             </li>
-             <li class="md-nav__item md-nav__item--nested">
-              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_6" type="checkbox"/>
-              <div class="md-nav__link md-nav__container">
-               <a class="md-nav__link" href="vit/index.html">
-                <span class="md-ellipsis">
-                 Vision Transformers (ViT)
-                </span>
-               </a>
-               <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
-                <span class="md-nav__icon md-icon">
-                </span>
-               </label>
-              </div>
-              <nav aria-expanded="false" aria-labelledby="__nav_3_6_label" class="md-nav" data-md-level="2">
-               <label class="md-nav__title" for="__nav_3_6">
-                <span class="md-nav__icon md-icon">
-                </span>
-                Vision Transformers (ViT)
-               </label>
-               <ul class="md-nav__list" data-md-scrollfix="">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="vit/tutorial_efficientvit.html">
-                  <span class="md-ellipsis">
-                   EfficientViT
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="vit/tutorial_nanoowl.html">
-                  <span class="md-ellipsis">
-                   NanoOWL
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="vit/tutorial_nanosam.html">
-                  <span class="md-ellipsis">
-                   NanoSAM
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="vit/tutorial_sam.html">
-                  <span class="md-ellipsis">
-                   SAM
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="vit/tutorial_tam.html">
-                  <span class="md-ellipsis">
-                   TAM
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_distillation.html">
-                  <span class="md-ellipsis">
-                   📑 Knowledge Distillation
-                  </span>
-                 </a>
-                </li>
-               </ul>
-              </nav>
-             </li>
-             <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-              <input checked="" class="md-nav__toggle md-toggle" id="__nav_3_7" type="checkbox"/>
-              <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
-               <span class="md-ellipsis">
-                Robotics &amp; Embodiment
-               </span>
-               <span class="md-nav__icon md-icon">
-               </span>
-              </label>
-              <nav aria-expanded="true" aria-labelledby="__nav_3_7_label" class="md-nav" data-md-level="2">
-               <label class="md-nav__title" for="__nav_3_7">
-                <span class="md-nav__icon md-icon">
-                </span>
-                Robotics &amp; Embodiment
-               </label>
-               <ul class="md-nav__list" data-md-scrollfix="">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="cosmos.html">
-                  <span class="md-ellipsis">
-                   Cosmos
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="genesis.html">
-                  <span class="md-ellipsis">
-                   Genesis 🆕
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="lerobot.html">
-                  <span class="md-ellipsis">
-                   LeRobot
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="ros.html">
-                  <span class="md-ellipsis">
-                   ROS2 Nodes
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item md-nav__item--active">
-                 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-                 <label class="md-nav__link md-nav__link--active" for="__toc">
-                  <span class="md-ellipsis">
-                   OpenVLA
-                  </span>
-                  <span class="md-nav__icon md-icon">
-                  </span>
-                 </label>
-                 <a class="md-nav__link md-nav__link--active" href="openvla.html">
-                  <span class="md-ellipsis">
-                   OpenVLA
-                  </span>
-                 </a>
-                 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-                  <label class="md-nav__title" for="__toc">
-                   <span class="md-nav__icon md-icon">
-                   </span>
-                   Table of contents
-                  </label>
-                  <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-                   <li class="md-nav__item">
-                    <a class="md-nav__link" href="#vla-architecture">
-                     <span class="md-ellipsis">
-                      VLA Architecture
-                     </span>
-                    </a>
-                   </li>
-                   <li class="md-nav__item">
-                    <a class="md-nav__link" href="#quantization">
-                     <span class="md-ellipsis">
-                      Quantization
-                     </span>
-                    </a>
-                   </li>
-                   <li class="md-nav__item">
-                    <a class="md-nav__link" href="#inference-api">
-                     <span class="md-ellipsis">
-                      Inference API
-                     </span>
-                    </a>
-                   </li>
-                   <li class="md-nav__item">
-                    <a class="md-nav__link" href="#online-validation">
-                     <span class="md-ellipsis">
-                      Online Validation
-                     </span>
-                    </a>
-                   </li>
-                   <li class="md-nav__item">
-                    <a class="md-nav__link" href="#simulation-with-mimicgen">
-                     <span class="md-ellipsis">
-                      Simulation with MimicGen
-                     </span>
-                    </a>
-                    <nav aria-label="Simulation with MimicGen" class="md-nav">
-                     <ul class="md-nav__list">
-                      <li class="md-nav__item">
-                       <a class="md-nav__link" href="#data-generation">
-                        <span class="md-ellipsis">
-                         Data Generation
-                        </span>
-                       </a>
-                      </li>
-                      <li class="md-nav__item">
-                       <a class="md-nav__link" href="#rlds-conversion">
-                        <span class="md-ellipsis">
-                         RLDS Conversion
-                        </span>
-                       </a>
-                      </li>
-                     </ul>
-                    </nav>
-                   </li>
-                   <li class="md-nav__item">
-                    <a class="md-nav__link" href="#fine-tuning">
-                     <span class="md-ellipsis">
-                      Fine Tuning
-                     </span>
-                    </a>
-                    <nav aria-label="Fine Tuning" class="md-nav">
-                     <ul class="md-nav__list">
-                      <li class="md-nav__item">
-                       <a class="md-nav__link" href="#on-device-lora">
-                        <span class="md-ellipsis">
-                         On-Device LoRA
-                        </span>
-                       </a>
-                      </li>
-                      <li class="md-nav__item">
-                       <a class="md-nav__link" href="#validation">
-                        <span class="md-ellipsis">
-                         Validation
-                        </span>
-                       </a>
-                      </li>
-                     </ul>
-                    </nav>
-                   </li>
-                   <li class="md-nav__item">
-                    <a class="md-nav__link" href="#inference-simulation">
-                     <span class="md-ellipsis">
-                      Inference + Simulation
-                     </span>
-                    </a>
-                   </li>
-                   <li class="md-nav__item">
-                    <a class="md-nav__link" href="#episodes-vs-epochs">
-                     <span class="md-ellipsis">
-                      Episodes vs Epochs
-                     </span>
-                    </a>
-                   </li>
-                   <li class="md-nav__item">
-                    <a class="md-nav__link" href="#future-research">
-                     <span class="md-ellipsis">
-                      Future Research
-                     </span>
-                    </a>
-                   </li>
-                  </ul>
-                 </nav>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="robopoint.html">
-                  <span class="md-ellipsis">
-                   RoboPoint 🆕
-                  </span>
-                 </a>
-                </li>
-               </ul>
-              </nav>
-             </li>
-             <li class="md-nav__item md-nav__item--nested">
-              <input class="md-nav__toggle md-toggle" id="__nav_3_8" type="checkbox"/>
-              <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
-               <span class="md-ellipsis">
-                Image Generation
-               </span>
-               <span class="md-nav__icon md-icon">
-               </span>
-              </label>
-              <nav aria-expanded="false" aria-labelledby="__nav_3_8_label" class="md-nav" data-md-level="2">
-               <label class="md-nav__title" for="__nav_3_8">
-                <span class="md-nav__icon md-icon">
-                </span>
-                Image Generation
-               </label>
-               <ul class="md-nav__list" data-md-scrollfix="">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_comfyui_flux.html">
-                  <span class="md-ellipsis">
-                   Flux &amp; ComfyUI
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_stable-diffusion.html">
-                  <span class="md-ellipsis">
-                   Stable Diffusion
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_stable-diffusion-xl.html">
-                  <span class="md-ellipsis">
-                   Stable Diffusion XL
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="nerf.html">
-                  <span class="md-ellipsis">
-                   nerfstudio
-                  </span>
-                 </a>
-                </li>
-               </ul>
-              </nav>
-             </li>
-             <li class="md-nav__item md-nav__item--nested">
-              <input class="md-nav__toggle md-toggle" id="__nav_3_9" type="checkbox"/>
-              <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
-               <span class="md-ellipsis">
-                RAG &amp; Vector Database
-               </span>
-               <span class="md-nav__icon md-icon">
-               </span>
-              </label>
-              <nav aria-expanded="false" aria-labelledby="__nav_3_9_label" class="md-nav" data-md-level="2">
-               <label class="md-nav__title" for="__nav_3_9">
-                <span class="md-nav__icon md-icon">
-                </span>
-                RAG &amp; Vector Database
-               </label>
-               <ul class="md-nav__list" data-md-scrollfix="">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_nanodb.html">
-                  <span class="md-ellipsis">
-                   NanoDB
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_llamaindex.html">
-                  <span class="md-ellipsis">
-                   LlamaIndex
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_jetson-copilot.html">
-                  <span class="md-ellipsis">
-                   Jetson Copilot
-                  </span>
-                 </a>
-                </li>
-               </ul>
-              </nav>
-             </li>
-             <li class="md-nav__item md-nav__item--nested">
-              <input class="md-nav__toggle md-toggle" id="__nav_3_10" type="checkbox"/>
-              <label class="md-nav__link" for="__nav_3_10" id="__nav_3_10_label" tabindex="0">
-               <span class="md-ellipsis">
-                SDK Integrations
-               </span>
-               <span class="md-nav__icon md-icon">
-               </span>
-              </label>
-              <nav aria-expanded="false" aria-labelledby="__nav_3_10_label" class="md-nav" data-md-level="2">
-               <label class="md-nav__title" for="__nav_3_10">
-                <span class="md-nav__icon md-icon">
-                </span>
-                SDK Integrations
-               </label>
-               <ul class="md-nav__list" data-md-scrollfix="">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_holoscan.html">
-                  <span class="md-ellipsis">
-                   Holoscan SDK
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_jps.html">
-                  <span class="md-ellipsis">
-                   Jetson Platform Services
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_gapi_workflows.html">
-                  <span class="md-ellipsis">
-                   Gapi Workflows
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_gapi_microservices.html">
-                  <span class="md-ellipsis">
-                   Gapi Micro Services
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_ultralytics.html">
-                  <span class="md-ellipsis">
-                   Ultralytics YOLOv8
-                  </span>
-                 </a>
-                </li>
-               </ul>
-              </nav>
-             </li>
-             <li class="md-nav__item md-nav__item--nested">
-              <input class="md-nav__toggle md-toggle" id="__nav_3_11" type="checkbox"/>
-              <label class="md-nav__link" for="__nav_3_11" id="__nav_3_11_label" tabindex="0">
-               <span class="md-ellipsis">
-                Audio
-               </span>
-               <span class="md-nav__icon md-icon">
-               </span>
-              </label>
-              <nav aria-expanded="false" aria-labelledby="__nav_3_11_label" class="md-nav" data-md-level="2">
-               <label class="md-nav__title" for="__nav_3_11">
-                <span class="md-nav__icon md-icon">
-                </span>
-                Audio
-               </label>
-               <ul class="md-nav__list" data-md-scrollfix="">
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_whisper.html">
-                  <span class="md-ellipsis">
-                   Whisper
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_audiocraft.html">
-                  <span class="md-ellipsis">
-                   AudioCraft
-                  </span>
-                 </a>
-                </li>
-                <li class="md-nav__item">
-                 <a class="md-nav__link" href="tutorial_voicecraft.html">
-                  <span class="md-ellipsis">
-                   VoiceCraft
-                  </span>
-                 </a>
-                </li>
-               </ul>
-              </nav>
-             </li>
-            </ul>
-           </nav>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="benchmarks.html">
-            <span class="md-ellipsis">
-             Benchmarks
-            </span>
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="community_articles.html">
-            <span class="md-ellipsis">
-             Projects
-            </span>
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="research.html">
-            <span class="md-ellipsis">
-             Research Group
-            </span>
-           </a>
-          </li>
-         </ul>
-        </nav>
-       </div>
-      </div>
-     </div>
-     <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
-      <div class="md-sidebar__scrollwrap">
-       <div class="md-sidebar__inner">
-        <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-         <label class="md-nav__title" for="__toc">
-          <span class="md-nav__icon md-icon">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NVIDIA Jetson AI Lab
           </span>
-          Table of contents
-         </label>
-         <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#vla-architecture">
-            <span class="md-ellipsis">
-             VLA Architecture
-            </span>
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#quantization">
-            <span class="md-ellipsis">
-             Quantization
-            </span>
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#inference-api">
-            <span class="md-ellipsis">
-             Inference API
-            </span>
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#online-validation">
-            <span class="md-ellipsis">
-             Online Validation
-            </span>
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#simulation-with-mimicgen">
-            <span class="md-ellipsis">
-             Simulation with MimicGen
-            </span>
-           </a>
-           <nav aria-label="Simulation with MimicGen" class="md-nav">
-            <ul class="md-nav__list">
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#data-generation">
-               <span class="md-ellipsis">
-                Data Generation
-               </span>
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#rlds-conversion">
-               <span class="md-ellipsis">
-                RLDS Conversion
-               </span>
-              </a>
-             </li>
-            </ul>
-           </nav>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#fine-tuning">
-            <span class="md-ellipsis">
-             Fine Tuning
-            </span>
-           </a>
-           <nav aria-label="Fine Tuning" class="md-nav">
-            <ul class="md-nav__list">
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#on-device-lora">
-               <span class="md-ellipsis">
-                On-Device LoRA
-               </span>
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#validation">
-               <span class="md-ellipsis">
-                Validation
-               </span>
-              </a>
-             </li>
-            </ul>
-           </nav>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#inference-simulation">
-            <span class="md-ellipsis">
-             Inference + Simulation
-            </span>
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#episodes-vs-epochs">
-            <span class="md-ellipsis">
-             Episodes vs Epochs
-            </span>
-           </a>
-          </li>
-          <li class="md-nav__item">
-           <a class="md-nav__link" href="#future-research">
-            <span class="md-ellipsis">
-             Future Research
-            </span>
-           </a>
-          </li>
-         </ul>
-        </nav>
-       </div>
-      </div>
-     </div>
-     <div class="md-content" data-md-component="content">
-      <article class="md-content__inner md-typeset">
-       <h1 id="openvla-visionlanguage-action-models-for-embodied-robotics">
-        OpenVLA - Vision/Language Action Models for Embodied Robotics
-       </h1>
-       <div class="admonition admonition">
-        <p class="admonition-title">
-         Fine Tuning and Deployment Guide
-        </p>
-        <p>
-         The tutorials's goal is to provide optimized quantization and inference for deploying VLA models, along with reference fine-tuning workflows for adapting models for new robots, tasks, and environments.  Rigorous performance and accuracy validation is applied in a self-contained sim environment with scenario generation and domain randomization (
-         <a href="https://mimicgen.github.io/">
-          MimicGen
-         </a>
-         ).  Future phases will include sim2real with
-         <a href="https://isaac-sim.github.io/IsaacLab/">
-          Isaac Lab
-         </a>
-         and ROS2 integration, study of related models like
-         <a href="https://crossformer-model.github.io/">
-          CrossFormer
-         </a>
-         and optimizations to the neural architecture for realtime performance.
-        </p>
-        <p>
-         ✅ Quantization and inference optimizations for VLA models
-         <br/>
-         ✅ Accuracy validation of the original OpenVLA-7B weights
-         <br/>
-         ✅ Reference fine-tuning workflow with synthetic data generation
-         <br/>
-         ✅ On-device training with LoRA's on Jetson AGX Orin and full fine-tuning on A100/H100 instances
-         <br/>
-         ✅ 85% accuracy on an example block-stacking task with domain randomization
-         <br/>
-         ✅ Sample datasets and test models for reproducing results
-         <br/>
-         <!--🟩 sim2real with Isaac Sim and ROS2 integration<br />🟩 Multi-frame/multi-camera image inputs with prior state<br />🟩 Action windowing across multiple frames for larger timesteps<br />🟩 Similar test model for UGV rover along with onboard sim environment-->
-        </p>
-        <p>
-         Thank you to OpenVLA, Open X-Embodiment, MimicGen, Robosuite and many others with related work for sharing their promising research, models, and tools for advancing physical AI and robotics.
-        </p>
-       </div>
-       <video autoplay="" controls="" muted="" style="max-width: 100%">
-        <source src="images/agent_studio_openvla_mimicgen.mp4" type="video/mp4">
-        </source>
-       </video>
-       <h2 id="vla-architecture">
-        VLA Architecture
-       </h2>
-       <p>
-        <a href="https://openvla.github.io/">
-         OpenVLA
-        </a>
-        is a vision/language action model for embodied robotics and behavioral learning built on LLM/VLMs (this base model is a Prismatic VLM using Llama-7B, DINOv2, and SigLIP).  Instead of image captioning or visual question/answering, VLA models generate action tokens from camera images and natural language instructions that are used for controlling the robot.  Action tokens are discrete token ID's reserved from the text tokenizer's vocabulary that map to continuous values, normalized against the range of motion of each robot. These real-valued tokens are more efficient and accurate than the model outputting numerical data as text in JSON or Pydantic formats, where each digit, decimal point, separator, and whitespace takes an additional token to generate.  Other hybrid vision/language models like
-        <a href="https://huggingface.co/microsoft/Florence-2-large">
-         Florence-2
-        </a>
-        have adopted similar approaches for continuous-domain prediction using Transformers.
-       </p>
-       <p>
-        Each action token generated by the model represents a degree-of-freedom of the output coordinate space (i.e. xyz, rotation pose), or a component of the robot that can be controlled (like the gripper). OpenVLA-7B was trained on the
-        <a href="https://robotics-transformer-x.github.io/">
-         Open X-Embodiment
-        </a>
-        dataset for manipulation, with a 7-DoF action space consisting of
-        <code>
-         (delta xyz, delta roll/pitch/yaw, gripper)
-        </code>
-        .  The position and rotation are relative changes to the end-effector (EEF) pose, with an external inverse kinematics (IK) solution like
-        <a href="https://curobo.org/">
-         cuMotion
-        </a>
-        solving joint constraints specific to each robotic arm.  The gripper dimension is an absolute control between 0 (open) and 1 (closed) that does not recieve further scaling/normalization.
-       </p>
-       <p>
-        <a href="https://openvla.github.io/" target="_blank">
-         <img src="https://openvla.github.io/static/images/openvla_model.jpg"/>
-        </a>
-       </p>
-       <p>
-        OpenVLA reserves 256 of the least-frequently used tokens out of the Llama-7B vocabulary for action values, which gives it 8-bit resolution over the controls.  It has an input image resolution of 224x224 to stacked DINOv2/SigLIP vision encoders that are projected to ~275 input tokens (plus the text prompt), and outputs 7 tokens mapped to
-        <code>
-         (Δpos, Δrotation, gripper)
-        </code>
-        coordinates.
-       </p>
-       <h2 id="quantization">
-        Quantization
-       </h2>
-       <div class="admonition abstract">
-        <p class="admonition-title">
-         What you need
-        </p>
-        <ol>
-         <li>
-          <p>
-           One of the following Jetson devices:
-          </p>
-          <p>
-           <span class="blobDarkGreen4">
-            Jetson AGX Orin (64GB)
-           </span>
-           <span class="blobDarkGreen5">
-            Jetson AGX Orin (32GB)
-           </span>
-           <span class="blobLightGreen3">
-            Jetson Orin NX (16GB)
-           </span>
-          </p>
-         </li>
-         <li>
-          <p>
-           Running one of the following versions of
-           <a href="https://developer.nvidia.com/embedded/jetpack">
-            JetPack
-           </a>
-           :
-          </p>
-          <p>
-           <span class="blobPink2">
-            JetPack 6 (L4T r36.x)
-           </span>
-          </p>
-         </li>
-         <li>
-          <p>
-           <span class="markedYellow">
-            NVMe SSD
-            <strong>
-             highly recommended
-            </strong>
-           </span>
-           for storage speed and space
-          </p>
-          <ul>
-           <li>
-            <code>
-             22GB
-            </code>
-            for
-            <code>
-             nano_llm
-            </code>
-            container image
-           </li>
-           <li>
-            Space for models and datasets (
-            <code>
-             &gt;15GB
-            </code>
-            )
-           </li>
-          </ul>
-         </li>
-         <li>
-          <p>
-           Clone and setup
-           <a href="https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md" target="_blank">
-            <code>
-             jetson-containers
-            </code>
-           </a>
-           :
-          </p>
-          <div class="highlight">
-           <pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dusty-nv/jetson-containers
-bash<span class="w"> </span>jetson-containers/install.sh
-</code></pre>
-          </div>
-         </li>
-        </ol>
-       </div>
-       <p>
-        Support for OpenVLA has been added to
-        <a href="tutorial_nano-llm.html">
-         NanoLLM
-        </a>
-        on top of its streaming VLM pipeline with INT4/FP8 quantization using MLC and vision encoders in FP16 with TensorRT.  First we'll test the model on
-        <a href="https://rail-berkeley.github.io/bridgedata/">
-         BridgeData V2
-        </a>
-        , one of the top weighted datasets from the Open X-Embodiment collection.  The model was trained on this data and is used to confirm that the quantization and inference are working correctly during deployment.  This is what the dataset looks like, courtesy of their
-        <a href="https://rail-berkeley.github.io/bridgedata/">
-         website
-        </a>
-        :
-       </p>
-       <video controls="" muted="" style="max-width: 100%">
-        <source src="images/BridgeData-V2.webm" type="video/webm">
-        </source>
-       </video>
-       <p>
-        The following command starts the container, downloads the dataset and model (if needed), quantizes it on the first run, and measures the accuracy of the action values against the groundtruth from the dataset using normalized mean-squared error (
-        <a href="https://en.wikipedia.org/wiki/Root_mean_square_deviation#Normalization">
-         NRMSE
-        </a>
-        ) to unbias the varying ranges each dimension of the action space can have.  We extracted a 100-episode subset of the original Bridge data here on HuggingFace Hub, so you don't need to download the entire ~400GB dataset just for these tests.
-       </p>
-       <div class="tabbed-set tabbed-alternate" data-tabs="1:3">
-        <input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"/>
-        <input id="__tabbed_1_2" name="__tabbed_1" type="radio"/>
-        <input id="__tabbed_1_3" name="__tabbed_1" type="radio"/>
-        <div class="tabbed-labels">
-         <label for="__tabbed_1_1">
-          INT4
-         </label>
-         <label for="__tabbed_1_2">
-          FP8
-         </label>
-         <label for="__tabbed_1_3">
-          FP16
-         </label>
         </div>
-        <div class="tabbed-content">
-         <div class="tabbed-block">
-          <div class="highlight">
-           <pre><span></span><code>jetson-containers run $(autotag nano_llm) \
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              OpenVLA
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="nv-black-green" data-md-color-primary="nv-black-green" data-md-color-accent="nv-black-green"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="models.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Models
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="tutorial-intro.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="benchmarks.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Benchmarks
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="community_articles.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Projects
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="research.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Research Group
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="NVIDIA Jetson AI Lab" class="md-nav__button md-logo" aria-label="NVIDIA Jetson AI Lab" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    NVIDIA Jetson AI Lab
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="models.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tutorials
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial-intro.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Jetson Setup Guide
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Jetson Setup Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="initial_setup_jon.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🚀 Initial Setup Guide - Jetson Orin Nano
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="initial_setup_jon_sdkm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🛸 Initial Setup (SDK Manager method)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tips_ssd-docker.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🔖 SSD + Docker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tips_ram-optimization.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🔖 Memory optimization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="hackathon.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🏆 Hackathon Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    AI Microservices
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            AI Microservices
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/microservices_intro.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Microservices Intro
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/microservices_vlm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Microservices for VLM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Text (LLM)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Text (LLM)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_text-generation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    text-generation-webui
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_ollama.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ollama
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_openwebui.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Open WebUI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_llamaspeak.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    llamaspeak
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_nano-llm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NanoLLM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tensorrt_llm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TensorRT-LLM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_slm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Small LLM (SLM)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_api-examples.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Examples
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Text + Vision (VLM)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Text + Vision (VLM)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_llava.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LLaVA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_live-llava.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Live LLaVA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_nano-vlm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NanoVLM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="llama_vlm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Llama 3.2 Vision
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="agent_studio.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Agent Studio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="vit/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Vision Transformers (ViT)
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Vision Transformers (ViT)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vit/tutorial_efficientvit.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    EfficientViT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vit/tutorial_nanoowl.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NanoOWL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vit/tutorial_nanosam.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NanoSAM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vit/tutorial_sam.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SAM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vit/tutorial_tam.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    TAM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_distillation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    📑 Knowledge Distillation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Robotics & Embodiment
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            Robotics & Embodiment
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cosmos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cosmos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="genesis.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Genesis 🆕
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="lerobot.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LeRobot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ros.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ROS2 Nodes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    OpenVLA
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="openvla.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    OpenVLA
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vla-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      VLA Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quantization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inference-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inference API
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#online-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Online Validation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simulation-with-mimicgen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simulation with MimicGen
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Simulation with MimicGen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Generation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rlds-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      RLDS Conversion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fine-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fine Tuning
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fine Tuning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-device-lora" class="md-nav__link">
+    <span class="md-ellipsis">
+      On-Device LoRA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inference-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inference + Simulation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#episodes-vs-epochs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Episodes vs Epochs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-research" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Research
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="robopoint.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RoboPoint 🆕
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Image Generation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            Image Generation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_comfyui_flux.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Flux & ComfyUI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_stable-diffusion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Stable Diffusion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_stable-diffusion-xl.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Stable Diffusion XL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="nerf.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    nerfstudio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    RAG & Vector Database
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            RAG & Vector Database
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_nanodb.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NanoDB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_llamaindex.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LlamaIndex
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_jetson-copilot.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Jetson Copilot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_10" id="__nav_3_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    SDK Integrations
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_10">
+            <span class="md-nav__icon md-icon"></span>
+            SDK Integrations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_holoscan.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Holoscan SDK
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_jps.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Jetson Platform Services
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_gapi_workflows.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gapi Workflows
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_gapi_microservices.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gapi Micro Services
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_ultralytics.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ultralytics YOLOv8
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_11" id="__nav_3_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Audio
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_11">
+            <span class="md-nav__icon md-icon"></span>
+            Audio
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_whisper.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Whisper
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_audiocraft.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AudioCraft
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial_voicecraft.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VoiceCraft
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="benchmarks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Benchmarks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="community_articles.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Projects
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="research.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Research Group
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vla-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      VLA Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quantization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inference-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inference API
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#online-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Online Validation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simulation-with-mimicgen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simulation with MimicGen
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Simulation with MimicGen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Generation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rlds-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      RLDS Conversion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fine-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fine Tuning
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fine Tuning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-device-lora" class="md-nav__link">
+    <span class="md-ellipsis">
+      On-Device LoRA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inference-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inference + Simulation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#episodes-vs-epochs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Episodes vs Epochs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-research" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Research
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="openvla-visionlanguage-action-models-for-embodied-robotics">OpenVLA - Vision/Language Action Models for Embodied Robotics</h1>
+<div class="admonition admonition">
+<p class="admonition-title">Fine Tuning and Deployment Guide</p>
+<p>The tutorials's goal is to provide optimized quantization and inference for deploying VLA models, along with reference fine-tuning workflows for adapting models for new robots, tasks, and environments.  Rigorous performance and accuracy validation is applied in a self-contained sim environment with scenario generation and domain randomization (<a href="https://mimicgen.github.io/">MimicGen</a>).  Future phases will include sim2real with <a href="https://isaac-sim.github.io/IsaacLab/">Isaac Lab</a> and ROS2 integration, study of related models like <a href="https://crossformer-model.github.io/">CrossFormer</a> and optimizations to the neural architecture for realtime performance. </p>
+<p>✅ Quantization and inference optimizations for VLA models<br />
+✅ Accuracy validation of the original OpenVLA-7B weights<br />
+✅ Reference fine-tuning workflow with synthetic data generation<br />
+✅ On-device training with LoRA's on Jetson AGX Orin and full fine-tuning on A100/H100 instances<br />
+✅ 85% accuracy on an example block-stacking task with domain randomization<br />
+✅ Sample datasets and test models for reproducing results<br />
+<!--🟩 sim2real with Isaac Sim and ROS2 integration<br />🟩 Multi-frame/multi-camera image inputs with prior state<br />🟩 Action windowing across multiple frames for larger timesteps<br />🟩 Similar test model for UGV rover along with onboard sim environment--></p>
+<p>Thank you to OpenVLA, Open X-Embodiment, MimicGen, Robosuite and many others with related work for sharing their promising research, models, and tools for advancing physical AI and robotics.</p>
+</div>
+<video controls autoplay muted style="max-width: 100%">
+    <source src="images/agent_studio_openvla_mimicgen.mp4" type="video/mp4">
+</video>
+
+<h2 id="vla-architecture">VLA Architecture</h2>
+<p><a href="https://openvla.github.io/">OpenVLA</a> is a vision/language action model for embodied robotics and behavioral learning built on LLM/VLMs (this base model is a Prismatic VLM using Llama-7B, DINOv2, and SigLIP).  Instead of image captioning or visual question/answering, VLA models generate action tokens from camera images and natural language instructions that are used for controlling the robot.  Action tokens are discrete token ID's reserved from the text tokenizer's vocabulary that map to continuous values, normalized against the range of motion of each robot. These real-valued tokens are more efficient and accurate than the model outputting numerical data as text in JSON or Pydantic formats, where each digit, decimal point, separator, and whitespace takes an additional token to generate.  Other hybrid vision/language models like <a href="https://huggingface.co/microsoft/Florence-2-large">Florence-2</a> have adopted similar approaches for continuous-domain prediction using Transformers.</p>
+<p>Each action token generated by the model represents a degree-of-freedom of the output coordinate space (i.e. xyz, rotation pose), or a component of the robot that can be controlled (like the gripper). OpenVLA-7B was trained on the <a href="https://robotics-transformer-x.github.io/">Open X-Embodiment</a> dataset for manipulation, with a 7-DoF action space consisting of <code>(delta xyz, delta roll/pitch/yaw, gripper)</code>.  The position and rotation are relative changes to the end-effector (EEF) pose, with an external inverse kinematics (IK) solution like <a href="https://curobo.org/">cuMotion</a> solving joint constraints specific to each robotic arm.  The gripper dimension is an absolute control between 0 (open) and 1 (closed) that does not recieve further scaling/normalization.</p>
+<p><a href="https://openvla.github.io/" target="_blank"><img src="https://openvla.github.io/static/images/openvla_model.jpg"></a></p>
+<p>OpenVLA reserves 256 of the least-frequently used tokens out of the Llama-7B vocabulary for action values, which gives it 8-bit resolution over the controls.  It has an input image resolution of 224x224 to stacked DINOv2/SigLIP vision encoders that are projected to ~275 input tokens (plus the text prompt), and outputs 7 tokens mapped to <code>(Δpos, Δrotation, gripper)</code> coordinates.</p>
+<h2 id="quantization">Quantization</h2>
+<div class="admonition abstract">
+<p class="admonition-title">What you need</p>
+<ol>
+<li>
+<p>One of the following Jetson devices:</p>
+<p><span class="blobDarkGreen4">Jetson AGX Orin (64GB)</span>
+<span class="blobDarkGreen5">Jetson AGX Orin (32GB)</span>
+<span class="blobLightGreen3">Jetson Orin NX (16GB)</span></p>
+</li>
+<li>
+<p>Running one of the following versions of <a href="https://developer.nvidia.com/embedded/jetpack">JetPack</a>:</p>
+<p><span class="blobPink2">JetPack 6 (L4T r36.x)</span></p>
+</li>
+<li>
+<p><span class="markedYellow">NVMe SSD <strong>highly recommended</strong></span> for storage speed and space</p>
+<ul>
+<li><code>22GB</code> for <code>nano_llm</code> container image</li>
+<li>Space for models and datasets (<code>&gt;15GB</code>)</li>
+</ul>
+</li>
+<li>
+<p>Clone and setup <a href="https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md" target="_blank"><code>jetson-containers</code></a>:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dusty-nv/jetson-containers
+bash<span class="w"> </span>jetson-containers/install.sh
+</code></pre></div>
+</li>
+</ol>
+</div>
+<p>Support for OpenVLA has been added to <a href="tutorial_nano-llm.html">NanoLLM</a> on top of its streaming VLM pipeline with INT4/FP8 quantization using MLC and vision encoders in FP16 with TensorRT.  First we'll test the model on <a href="https://rail-berkeley.github.io/bridgedata/">BridgeData V2</a>, one of the top weighted datasets from the Open X-Embodiment collection.  The model was trained on this data and is used to confirm that the quantization and inference are working correctly during deployment.  This is what the dataset looks like, courtesy of their <a href="https://rail-berkeley.github.io/bridgedata/">website</a>:</p>
+<video controls muted style="max-width: 100%">
+    <source src="images/BridgeData-V2.webm" type="video/webm">
+</video>
+
+<p>The following command starts the container, downloads the dataset and model (if needed), quantizes it on the first run, and measures the accuracy of the action values against the groundtruth from the dataset using normalized mean-squared error (<a href="https://en.wikipedia.org/wiki/Root_mean_square_deviation#Normalization">NRMSE</a>) to unbias the varying ranges each dimension of the action space can have.  We extracted a 100-episode subset of the original Bridge data here on HuggingFace Hub, so you don't need to download the entire ~400GB dataset just for these tests.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">INT4</label><label for="__tabbed_1_2">FP8</label><label for="__tabbed_1_3">FP16</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>jetson-containers run $(autotag nano_llm) \
   python3 -m nano_llm.vision.vla --api mlc \
     --model openvla/openvla-7b \
     --quantization q4f16_ft \
@@ -1221,12 +2696,10 @@ bash<span class="w"> </span>jetson-containers/install.sh
     --dataset-type rlds \
     --max-episodes 10 \
     --save-stats /data/benchmarks/openvla_bridge_int4.json
-</code></pre>
-          </div>
-         </div>
-         <div class="tabbed-block">
-          <div class="highlight">
-           <pre><span></span><code>jetson-containers run $(autotag nano_llm) \
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>jetson-containers run $(autotag nano_llm) \
   python3 -m nano_llm.vision.vla --api mlc \
     --model openvla/openvla-7b \
     --quantization q8f16_ft \
@@ -1234,99 +2707,55 @@ bash<span class="w"> </span>jetson-containers/install.sh
     --dataset-type rlds \
     --max-episodes 10 \
     --save-stats /data/benchmarks/openvla_bridge_fp8.json
-</code></pre>
-          </div>
-         </div>
-         <div class="tabbed-block">
-          <div class="highlight">
-           <pre><span></span><code>jetson-containers run $(autotag nano_llm) \
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>jetson-containers run $(autotag nano_llm) \
   python3 -m nano_llm.vision.vla --api hf \
     --model openvla/openvla-7b \
     --dataset dusty-nv/bridge_orig_ep100 \
     --dataset-type rlds \
     --max-episodes 10 \
     --save-stats /data/benchmarks/openvla_bridge_fp16.json
-</code></pre>
-          </div>
-         </div>
-        </div>
-       </div>
-       <table>
-        <thead>
-         <tr>
-          <th>
-           Quantization
-          </th>
-          <th style="text-align: center;">
-           Accuracy
-          </th>
-          <th style="text-align: center;">
-           Latency
-          </th>
-          <th style="text-align: center;">
-           FPS
-          </th>
-         </tr>
-        </thead>
-        <tbody>
-         <tr>
-          <td>
-           FP16
-          </td>
-          <td style="text-align: center;">
-           95.3%
-          </td>
-          <td style="text-align: center;">
-           840 ms
-          </td>
-          <td style="text-align: center;">
-           1.19
-          </td>
-         </tr>
-         <tr>
-          <td>
-           FP8
-          </td>
-          <td style="text-align: center;">
-           95.2%
-          </td>
-          <td style="text-align: center;">
-           471 ms
-          </td>
-          <td style="text-align: center;">
-           2.12
-          </td>
-         </tr>
-         <tr>
-          <td>
-           INT4
-          </td>
-          <td style="text-align: center;">
-           90.1%
-          </td>
-          <td style="text-align: center;">
-           336 ms
-          </td>
-          <td style="text-align: center;">
-           2.97
-          </td>
-         </tr>
-        </tbody>
-       </table>
-       <blockquote>
-        <p>
-         These results were run on Jetson AGX Orin 64GB with JetPack 6, and we will see later with our fine-tuned model the INT4 accuracy match FP8/FP16.
-        </p>
-       </blockquote>
-       <p>
-        Each frame, the 7D action vector predicted by the model is printed along with the groundtruth, along with the accuracy, latency, and framerate for that frame.  The numbers printed after
-        <code>
-         ~
-        </code>
-        are the averages of those so far, with the last value reported being the mean over the entire dataset processed.
-       </p>
-       <div class="highlight">
-        <pre><span></span><code># INT4
+</code></pre></div>
+</div>
+</div>
+</div>
+<table>
+<thead>
+<tr>
+<th>Quantization</th>
+<th style="text-align: center;">Accuracy</th>
+<th style="text-align: center;">Latency</th>
+<th style="text-align: center;">FPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FP16</td>
+<td style="text-align: center;">95.3%</td>
+<td style="text-align: center;">840 ms</td>
+<td style="text-align: center;">1.19</td>
+</tr>
+<tr>
+<td>FP8</td>
+<td style="text-align: center;">95.2%</td>
+<td style="text-align: center;">471 ms</td>
+<td style="text-align: center;">2.12</td>
+</tr>
+<tr>
+<td>INT4</td>
+<td style="text-align: center;">90.1%</td>
+<td style="text-align: center;">336 ms</td>
+<td style="text-align: center;">2.97</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>These results were run on Jetson AGX Orin 64GB with JetPack 6, and we will see later with our fine-tuned model the INT4 accuracy match FP8/FP16.</p>
+</blockquote>
+<p>Each frame, the 7D action vector predicted by the model is printed along with the groundtruth, along with the accuracy, latency, and framerate for that frame.  The numbers printed after <code>~</code> are the averages of those so far, with the last value reported being the mean over the entire dataset processed.  </p>
+<div class="highlight"><pre><span></span><code># INT4
 step 355  [-0.02692  0.00776 -0.00299  0.08160  0.07292  0.04791  0.99608]  accuracy 0.8466 ~0.9017  time=336.2 ms  fps=2.96 ~2.97
 gt   355  [-0.02387  0.00760 -0.00318  0.15965  0.07707  0.03281  1.00000]
 
@@ -1337,38 +2766,15 @@ gt   355  [-0.02387  0.00760 -0.00318  0.15965  0.07707  0.03281  1.00000]
 # FP16
 step 355  [-0.02392  0.00767 -0.00310  0.08160  0.07692  0.03217  0.99608]  accuracy 0.9982 ~0.9531  time=842.3 ms  fps=1.19 ~1.18
 gt   355  [-0.02387  0.00760 -0.00318  0.15965  0.07707  0.03281  1.00000]
-</code></pre>
-       </div>
-       <p>
-        The per-frame metrics and averages can be saved with the
-        <code>
-         --save-stats
-        </code>
-        argument, and in the interests of time you can cap the amount of episodes processed with
-        <code>
-         --max-episodes
-        </code>
-        .  As mentioned above, the Bridge dataset used was included in the training dataset, and further below we run this again on data we generated not from the training dataset with significant variation. This tool can also load other datasets in RLDS/TFDS format from Open X-Embodiment, and HDF5 from Robomimic/MimicGen.  You can also create your own agents and scripts using the exposed APIs from the coding examples below.
-       </p>
-       <h2 id="inference-api">
-        Inference API
-       </h2>
-       <p>
-        The code is simple for running VLA inference on camera streams using the
-        <a href="tutorial_nano-llm.html">
-         NanoLLM
-        </a>
-        library in the container:
-       </p>
-       <div class="highlight">
-        <span class="filename">
-         VLA on Video
-        </span>
-        <pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">nano_llm</span><span class="w"> </span><span class="kn">import</span> <span class="n">NanoLLM</span>
+</code></pre></div>
+<p>The per-frame metrics and averages can be saved with the <code>--save-stats</code> argument, and in the interests of time you can cap the amount of episodes processed with <code>--max-episodes</code>.  As mentioned above, the Bridge dataset used was included in the training dataset, and further below we run this again on data we generated not from the training dataset with significant variation. This tool can also load other datasets in RLDS/TFDS format from Open X-Embodiment, and HDF5 from Robomimic/MimicGen.  You can also create your own agents and scripts using the exposed APIs from the coding examples below.</p>
+<h2 id="inference-api">Inference API</h2>
+<p>The code is simple for running VLA inference on camera streams using the <a href="tutorial_nano-llm.html">NanoLLM</a> library in the container:</p>
+<div class="highlight"><span class="filename">VLA on Video</span><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">nano_llm</span><span class="w"> </span><span class="kn">import</span> <span class="n">NanoLLM</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">nano_llm.plugins</span><span class="w"> </span><span class="kn">import</span> <span class="n">VideoSource</span>
 
 <span class="c1"># load vision/language action model</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">NanoLLM</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">quantization</span><span class="o">=</span><span class="s1">'q4f16_ft'</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">NanoLLM</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">quantization</span><span class="o">=</span><span class="s1">&#39;q4f16_ft&#39;</span><span class="p">)</span>
 <span class="n">camera</span> <span class="o">=</span> <span class="n">VideoSource</span><span class="p">(</span><span class="n">video_source</span><span class="p">,</span> <span class="n">cuda_stream</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="k">assert</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">vla</span><span class="p">)</span>  <span class="c1"># make sure this is a VLA</span>
@@ -1384,143 +2790,38 @@ gt   355  [-0.02387  0.00760 -0.00318  0.15965  0.07707  0.03281  1.00000]
     <span class="c1"># for OpenVLA, this is (Δx, Δy, Δz, Δroll, Δpitch, Δyaw, gripper)</span>
     <span class="n">actions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">vla</span><span class="o">.</span><span class="n">predict_action</span><span class="p">(</span>
         <span class="n">image</span><span class="p">,</span> 
-        <span class="n">instruction</span><span class="o">=</span><span class="s2">"pick up the nearest object"</span><span class="p">,</span> 
-        <span class="n">action_space</span><span class="o">=</span><span class="s2">"normalized"</span><span class="p">,</span>
-        <span class="n">return_tensors</span><span class="o">=</span><span class="s1">'np'</span><span class="p">,</span>
+        <span class="n">instruction</span><span class="o">=</span><span class="s2">&quot;pick up the nearest object&quot;</span><span class="p">,</span> 
+        <span class="n">action_space</span><span class="o">=</span><span class="s2">&quot;normalized&quot;</span><span class="p">,</span>
+        <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;np&#39;</span><span class="p">,</span>
     <span class="p">)</span>
 
     <span class="c1"># send the actions to your robot controller or IK solver</span>
     <span class="o">...</span>
-</code></pre>
-       </div>
-       <p>
-        VLA models are also supported in
-        <a href="agent_studio.html">
-         Agent Studio
-        </a>
-        , which includes the simulator components as well.
-       </p>
-       <h2 id="online-validation">
-        Online Validation
-       </h2>
-       <p>
-        Given the challenging task domain, dynamic feedback loops, and computational demands for sim/training/inference, using VLAs for language-guided dexterous manipulation involves a significant increase in complexity over baseline usage of LLMs and VLMs.  To go from predicting logits at the token level to actions consistently correct enough over an extended series of frames to form useful behaviors, it's important to cross-check outputs and measure accuracy at each stage of the training/inference workflow to be able to identify the source of potential regressions when they occur.
-       </p>
-       <p>
-        Unlike typical applications in supervised learning, the metrics for end-task completion and success aren't measured from static pre-recorded datasets that don't account for the temporal domain and feedback from physical interactions along with compounding errors - they require online validation, either in simulation or real-world tests.
-       </p>
-       <p>
-        <a href="https://developer.nvidia.com/blog/closing-the-sim-to-real-gap-training-spot-quadruped-locomotion-with-nvidia-isaac-lab/" target="_blank">
-         <img src="https://developer-blogs.nvidia.com/wp-content/uploads/2024/06/workflow-locomotion-policy-training-framework-isaac-sim-isaac-lab.jpg"/>
-        </a>
-        <small>
-         <a href="https://developer.nvidia.com/blog/closing-the-sim-to-real-gap-training-spot-quadruped-locomotion-with-nvidia-isaac-lab/" target="_blank">
-          <i>
-           Closing the Sim-to-Real Gap: Training Spot Quadruped Locomotion with NVIDIA Isaac Lab
-          </i>
-         </a>
-        </small>
-       </p>
-       <p>
-        During training the token classification accuracy is measured from the groundtruth action labels (i.e. how many action tokens were predicted exactly right), with the model optimizing to minimize this loss (as is normal for LLMs).  Action accuracy in the continuous domain is also is also measured during training from the L1 error of the detokenized real-valued outputs.  Continuous action accuracy trends slightly higher than token classification accuracy, as the later does not provide any reward for being closer to the desired result.  In practice, these should be &gt;95% accurate at this level for completing tasks successfully in similar environments.  To achieve that high degree of accuracy, it seems intentional in the work and related research to overfit the model by training it for many epochs (upwards of 30 epochs on the same 900K episodes for OpenVLA).  Transformers are known to recall specific knowledge from few training examples, and are sensitive to overfitting and forgetting previously learned information.  As such, LLMs are normally only trained for a few epochs at most to preserved their zero-shot capabilities and ability to generatize to out-of-distribution inputs.  During the fine-tuning part of this project, we characterize the impacts on model accuracy and task success from the number of distinct training episodes versus the number of epochs over repeated data.
-       </p>
-       <p>
-        The actual task success rate doesn't get measured until the inference stage, when it is either connected to a simulator or physically tested in a series of time-consuming trials under similar conditions.  We integrated MimicGen directly with the OpenVLA training scripts for an endless source of unseen data, but encountered gradient instabilities after the model had received a significant number of episodes.
-       </p>
-       <h2 id="simulation-with-mimicgen">
-        Simulation with MimicGen
-       </h2>
-       <p>
-        <a href="https://mimicgen.github.io/">
-         MimicGen
-        </a>
-        creates randomized episodes from as few as 10 teleoperated examples by utilizing scene graph information and task/subtask metadata about which objects in the environment are targets of the current subtask, in order to interpolate the original teloperated trajectories into their new random locations and poses.  This generates large amounts of unique training data to improve robustness, without needing large amounts of human effort for the robot learning new skills and behaviors.
-       </p>
-       <video autoplay="" controls="" muted="" style="max-width: 100%">
-        <source src="https://mimicgen.github.io/resources/overview.mp4" type="video/mp4">
-        </source>
-       </video>
-       <p>
-        MimicGen is built on the
-        <a href="https://robomimic.github.io/">
-         Robomimic
-        </a>
-        and
-        <a href="https://robosuite.ai/">
-         Robosuite
-        </a>
-        simulators and are able to run onboard Jetson headlessly alongside the VLA, simplifying the setup for reproducibility.  The
-        <a href="https://robocasa.ai/">
-         RoboCasa
-        </a>
-        project is built on MimicGen and being integrated with NVIDIA
-        <a href="https://nvidianews.nvidia.com/news/nvidia-accelerates-worldwide-humanoid-robotics-development">
-         Omniverse and OSMO
-        </a>
-        , and in future work we'd use
-        <a href="https://isaac-sim.github.io/IsaacLab/">
-         Isaac Lab
-        </a>
-        for scalability, more accurate physics, and photorealistic rendering.
-       </p>
-       <p>
-        MimicGen includes 12 tasks like block stacking, pick and place, assembly, and kitchen scenarios.  And each type of task has variants increasing in difficulty as learning progresses, which would be interesting to compare curated approaches to the purely random sequencing that OpenVLA uses with Open X-Embodiment.  In this phase of the tutorial, we focus on the block stacking task to understand the training requirements and runtime performance needed to master a new task with success rates of &gt;75-80%, similar to the
-        <a href="https://arxiv.org/abs/2406.09246">
-         paper
-        </a>
-        .  This will help inform scaling to multiple behaviors and more complex scenarios that vary significantly from in-distribution examples like the MimicGen environments (as evidenced by the original OpenVLA weights scoring zero successes in them).
-       </p>
-       <h3 id="data-generation">
-        Data Generation
-       </h3>
-       <p>
-        We built MimicGen containers for Jetson from a
-        <a href="https://github.com/dusty-nv/mimicgen">
-         fork
-        </a>
-        of the code with some patches for aarch64+igpu along with enhancements like generation of natural language labels with random variations for the relevant tasks, along with additional domain randomization for the colors/materials of objects (these environments were added as
-        <code>
-         Stack_D2
-        </code>
-        ,
-        <code>
-         Stack_D3
-        </code>
-        , and
-        <code>
-         Stack_D4
-        </code>
-        ).  For training OpenVLA, the images and labels are saved to disk, whereas later inference is done with online simulation to measure the task success rate.  To that effect we integrated MimicGen with
-        <a href="agent_studio.html">
-         Agent Studio
-        </a>
-        for interactively testing the models and quickly dropping in components like ASR for verbally commanding the robot.
-       </p>
-       <div class="admonition admonition">
-        <p class="admonition-title">
-         Online Training
-        </p>
-        <p>
-         There's initial support for direct integration of MimicGen in this
-         <a href="https://github.com/dusty-nv/openvla">
-          fork
-         </a>
-         of OpenVLA for live simulation and validation during training and endless episodes without repeating epochs.  The models experienced spiking gradients later into LoRA's, and should try again with lower learning rates or by similarly integrating MimicGen into their full fine-tuning script using FDSP for increasing the batch size on dGPU.
-        </p>
-       </div>
-       <p>
-        This command will generate the specified number of training episodes, saved in Robomimic
-        <a href="https://robomimic.github.io/docs/tutorials/dataset_contents.html">
-         HDF5 format
-        </a>
-        . We provide the rendered datasets for these on
-        <a href="https://huggingface.co/dusty-nv">
-         HuggingFace Hub
-        </a>
-        with 1000 and 2500 episodes.  OpenVLA suggests only needing 10-150 episodes for fine-tuning and data-efficient adaptation, which perhaps performs similarly in comparable spaces, but we ultimately found insufficient for the MimicGen environments.
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>jetson-containers<span class="w"> </span>run<span class="w"> </span><span class="k">$(</span>autotag<span class="w"> </span>nano_llm<span class="k">)</span><span class="w"> </span><span class="se">\</span>
+</code></pre></div>
+<p>VLA models are also supported in <a href="agent_studio.html">Agent Studio</a>, which includes the simulator components as well.</p>
+<h2 id="online-validation">Online Validation</h2>
+<p>Given the challenging task domain, dynamic feedback loops, and computational demands for sim/training/inference, using VLAs for language-guided dexterous manipulation involves a significant increase in complexity over baseline usage of LLMs and VLMs.  To go from predicting logits at the token level to actions consistently correct enough over an extended series of frames to form useful behaviors, it's important to cross-check outputs and measure accuracy at each stage of the training/inference workflow to be able to identify the source of potential regressions when they occur.  </p>
+<p>Unlike typical applications in supervised learning, the metrics for end-task completion and success aren't measured from static pre-recorded datasets that don't account for the temporal domain and feedback from physical interactions along with compounding errors - they require online validation, either in simulation or real-world tests.  </p>
+<p><a href="https://developer.nvidia.com/blog/closing-the-sim-to-real-gap-training-spot-quadruped-locomotion-with-nvidia-isaac-lab/" target="_blank"><img src="https://developer-blogs.nvidia.com/wp-content/uploads/2024/06/workflow-locomotion-policy-training-framework-isaac-sim-isaac-lab.jpg"></a>
+<small><a href="https://developer.nvidia.com/blog/closing-the-sim-to-real-gap-training-spot-quadruped-locomotion-with-nvidia-isaac-lab/" target="_blank"><i>Closing the Sim-to-Real Gap: Training Spot Quadruped Locomotion with NVIDIA Isaac Lab</i></a></small></p>
+<p>During training the token classification accuracy is measured from the groundtruth action labels (i.e. how many action tokens were predicted exactly right), with the model optimizing to minimize this loss (as is normal for LLMs).  Action accuracy in the continuous domain is also is also measured during training from the L1 error of the detokenized real-valued outputs.  Continuous action accuracy trends slightly higher than token classification accuracy, as the later does not provide any reward for being closer to the desired result.  In practice, these should be &gt;95% accurate at this level for completing tasks successfully in similar environments.  To achieve that high degree of accuracy, it seems intentional in the work and related research to overfit the model by training it for many epochs (upwards of 30 epochs on the same 900K episodes for OpenVLA).  Transformers are known to recall specific knowledge from few training examples, and are sensitive to overfitting and forgetting previously learned information.  As such, LLMs are normally only trained for a few epochs at most to preserved their zero-shot capabilities and ability to generatize to out-of-distribution inputs.  During the fine-tuning part of this project, we characterize the impacts on model accuracy and task success from the number of distinct training episodes versus the number of epochs over repeated data.</p>
+<p>The actual task success rate doesn't get measured until the inference stage, when it is either connected to a simulator or physically tested in a series of time-consuming trials under similar conditions.  We integrated MimicGen directly with the OpenVLA training scripts for an endless source of unseen data, but encountered gradient instabilities after the model had received a significant number of episodes.</p>
+<h2 id="simulation-with-mimicgen">Simulation with MimicGen</h2>
+<p><a href="https://mimicgen.github.io/">MimicGen</a> creates randomized episodes from as few as 10 teleoperated examples by utilizing scene graph information and task/subtask metadata about which objects in the environment are targets of the current subtask, in order to interpolate the original teloperated trajectories into their new random locations and poses.  This generates large amounts of unique training data to improve robustness, without needing large amounts of human effort for the robot learning new skills and behaviors.    </p>
+<video controls muted autoplay style="max-width: 100%">
+    <source src="https://mimicgen.github.io/resources/overview.mp4" type="video/mp4">
+</video>
+
+<p>MimicGen is built on the <a href="https://robomimic.github.io/">Robomimic</a> and <a href="https://robosuite.ai/">Robosuite</a> simulators and are able to run onboard Jetson headlessly alongside the VLA, simplifying the setup for reproducibility.  The <a href="https://robocasa.ai/">RoboCasa</a> project is built on MimicGen and being integrated with NVIDIA <a href="https://nvidianews.nvidia.com/news/nvidia-accelerates-worldwide-humanoid-robotics-development">Omniverse and OSMO</a>, and in future work we'd use <a href="https://isaac-sim.github.io/IsaacLab/">Isaac Lab</a> for scalability, more accurate physics, and photorealistic rendering.</p>
+<p>MimicGen includes 12 tasks like block stacking, pick and place, assembly, and kitchen scenarios.  And each type of task has variants increasing in difficulty as learning progresses, which would be interesting to compare curated approaches to the purely random sequencing that OpenVLA uses with Open X-Embodiment.  In this phase of the tutorial, we focus on the block stacking task to understand the training requirements and runtime performance needed to master a new task with success rates of &gt;75-80%, similar to the <a href="https://arxiv.org/abs/2406.09246">paper</a>.  This will help inform scaling to multiple behaviors and more complex scenarios that vary significantly from in-distribution examples like the MimicGen environments (as evidenced by the original OpenVLA weights scoring zero successes in them).</p>
+<h3 id="data-generation">Data Generation</h3>
+<p>We built MimicGen containers for Jetson from a <a href="https://github.com/dusty-nv/mimicgen">fork</a> of the code with some patches for aarch64+igpu along with enhancements like generation of natural language labels with random variations for the relevant tasks, along with additional domain randomization for the colors/materials of objects (these environments were added as <code>Stack_D2</code>, <code>Stack_D3</code>, and <code>Stack_D4</code>).  For training OpenVLA, the images and labels are saved to disk, whereas later inference is done with online simulation to measure the task success rate.  To that effect we integrated MimicGen with <a href="agent_studio.html">Agent Studio</a> for interactively testing the models and quickly dropping in components like ASR for verbally commanding the robot.</p>
+<div class="admonition admonition">
+<p class="admonition-title">Online Training</p>
+<p>There's initial support for direct integration of MimicGen in this <a href="https://github.com/dusty-nv/openvla">fork</a> of OpenVLA for live simulation and validation during training and endless episodes without repeating epochs.  The models experienced spiking gradients later into LoRA's, and should try again with lower learning rates or by similarly integrating MimicGen into their full fine-tuning script using FDSP for increasing the batch size on dGPU.  </p>
+</div>
+<p>This command will generate the specified number of training episodes, saved in Robomimic <a href="https://robomimic.github.io/docs/tutorials/dataset_contents.html">HDF5 format</a>. We provide the rendered datasets for these on <a href="https://huggingface.co/dusty-nv">HuggingFace Hub</a> with 1000 and 2500 episodes.  OpenVLA suggests only needing 10-150 episodes for fine-tuning and data-efficient adaptation, which perhaps performs similarly in comparable spaces, but we ultimately found insufficient for the MimicGen environments.   </p>
+<div class="highlight"><pre><span></span><code>jetson-containers<span class="w"> </span>run<span class="w"> </span><span class="k">$(</span>autotag<span class="w"> </span>nano_llm<span class="k">)</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>python3<span class="w"> </span>-m<span class="w"> </span>mimicgen.generate<span class="w"> </span><span class="se">\</span>
 <span class="w">      </span>--tasks<span class="w"> </span>Stack_D4<span class="w"> </span><span class="se">\</span>
 <span class="w">      </span>--episodes<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="se">\</span>
@@ -1528,206 +2829,65 @@ gt   355  [-0.02387  0.00760 -0.00318  0.15965  0.07707  0.03281  1.00000]
 <span class="w">      </span>--cameras<span class="w"> </span>agentview<span class="w"> </span><span class="se">\</span>
 <span class="w">      </span>--camera-width<span class="w"> </span><span class="m">224</span><span class="w"> </span><span class="se">\</span>
 <span class="w">      </span>--camera-height<span class="w"> </span><span class="m">224</span>
-</code></pre>
-       </div>
-       <p>
-        The HDF5 dataset will be saved to
-        <code>
-         /data/datasets/mimicgen/demo_src_stack_task_D4/demo.hdf5
-        </code>
-        (which is in a mounted volume under your
-        <code>
-         jetson-containers/data
-        </code>
-        directory outside of the container), along with a video of sample episodes that were rendered:
-       </p>
-       <video controls="" muted="" style="max-width: 512px">
-        <source src="images/mimicgen_stack.mp4" type="video/mp4">
-        </source>
-       </video>
-       <p>
-        This video is actually of Stack_D2 to avoid subjecting everyone to flickering colors.  Stack_D4 is used for training and generates blocks with random colors and positions each frame, along with language labels augmented through the random combination of various nouns, adjectives, and verbs that form the instruction (
-        <code>
-         Stack the red block on the green block
-        </code>
-        ,
-        <code>
-         Put the little cube on top
-        </code>
-        ).  Stack_D3 randomizes colors/positions each frame, and instructions each episode.  Stack_D2 does them all per-episode (which is typically used at runtime). Since OpenVLA uses a single frame at a time with no temporal aspect during training, applying domain randomization per-frame as opposed to per-episode is feasible provides more variance in the dataset.  The block-stacking episodes typically come out to be around ~110 frames each, and take around 10-15 seconds to generate per episode on Jetson AGX Orin with per-frame domain randomization, and 5 seconds per episode without domain randomization.
-       </p>
-       <p>
-        The agentview camera looks onward from the front of the scene towards the robot. There are others available like sideview and eye_in_hand (wrist view) - we tried using the onboard wrist camera, but found the model would too easily veer off track and get 'lost' offscreen.  It may be possible for wrist-only to work should the dataset add examples of the robot recovering and returning to a wider vantage point.  Other VIT-based embodied models like
-        <a href="https://github.com/octo-models/octo">
-         Octo
-        </a>
-        and
-        <a href="https://crossformer-model.github.io/">
-         CrossFormer
-        </a>
-        use both cameras, and is a future experiment with VLA's based on multi-image VLM's like
-        <a href="tutorial_nano-vlm.html#video-sequences">
-         VILA
-        </a>
-        .
-       </p>
-       <h3 id="rlds-conversion">
-        RLDS Conversion
-       </h3>
-       <p>
-        OpenVLA uses datasets in
-        <a href="https://github.com/google-research/rlds">
-         RLDS
-        </a>
-        format (which is based on
-        <a href="https://github.com/tensorflow/datasets">
-         TFDS
-        </a>
-        ), so we provide a converter from HDF5.  This extra step can also be time-consuming for a large number of epiodes, like those used here.  This is one of the reasons we desire to run MimicGen online with training and performed the initial integration directly with OpenVLA.  Unless you are generating different data, you can skip this and use the MimicGen datasets that we uploaded
-        <a href="https://huggingface.co/dusty-nv">
-         here
-        </a>
-        in RLDS format.
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>jetson-containers<span class="w"> </span>run<span class="w"> </span><span class="k">$(</span>autotag<span class="w"> </span>nano_llm<span class="k">)</span><span class="w"> </span><span class="se">\</span>
+</code></pre></div>
+<p>The HDF5 dataset will be saved to <code>/data/datasets/mimicgen/demo_src_stack_task_D4/demo.hdf5</code> (which is in a mounted volume under your <code>jetson-containers/data</code> directory outside of the container), along with a video of sample episodes that were rendered:</p>
+<video controls muted style="max-width: 512px">
+    <source src="images/mimicgen_stack.mp4" type="video/mp4">
+</video>
+
+<p>This video is actually of Stack_D2 to avoid subjecting everyone to flickering colors.  Stack_D4 is used for training and generates blocks with random colors and positions each frame, along with language labels augmented through the random combination of various nouns, adjectives, and verbs that form the instruction (<code>Stack the red block on the green block</code>, <code>Put the little cube on top</code>).  Stack_D3 randomizes colors/positions each frame, and instructions each episode.  Stack_D2 does them all per-episode (which is typically used at runtime). Since OpenVLA uses a single frame at a time with no temporal aspect during training, applying domain randomization per-frame as opposed to per-episode is feasible provides more variance in the dataset.  The block-stacking episodes typically come out to be around ~110 frames each, and take around 10-15 seconds to generate per episode on Jetson AGX Orin with per-frame domain randomization, and 5 seconds per episode without domain randomization.</p>
+<p>The agentview camera looks onward from the front of the scene towards the robot. There are others available like sideview and eye_in_hand (wrist view) - we tried using the onboard wrist camera, but found the model would too easily veer off track and get 'lost' offscreen.  It may be possible for wrist-only to work should the dataset add examples of the robot recovering and returning to a wider vantage point.  Other VIT-based embodied models like <a href="https://github.com/octo-models/octo">Octo</a> and <a href="https://crossformer-model.github.io/">CrossFormer</a> use both cameras, and is a future experiment with VLA's based on multi-image VLM's like <a href="tutorial_nano-vlm.html#video-sequences">VILA</a>.</p>
+<h3 id="rlds-conversion">RLDS Conversion</h3>
+<p>OpenVLA uses datasets in <a href="https://github.com/google-research/rlds">RLDS</a> format (which is based on <a href="https://github.com/tensorflow/datasets">TFDS</a>), so we provide a converter from HDF5.  This extra step can also be time-consuming for a large number of epiodes, like those used here.  This is one of the reasons we desire to run MimicGen online with training and performed the initial integration directly with OpenVLA.  Unless you are generating different data, you can skip this and use the MimicGen datasets that we uploaded <a href="https://huggingface.co/dusty-nv">here</a> in RLDS format.</p>
+<div class="highlight"><pre><span></span><code>jetson-containers<span class="w"> </span>run<span class="w"> </span><span class="k">$(</span>autotag<span class="w"> </span>nano_llm<span class="k">)</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>python3<span class="w"> </span>-m<span class="w"> </span>nano_llm.datasets<span class="w"> </span><span class="se">\</span>
 <span class="w">        </span>--dataset<span class="w"> </span>/data/datasets/mimicgen/demo_src_stack_task_D4/demo.hdf5<span class="w"> </span><span class="se">\</span>
 <span class="w">        </span>--dataset-type<span class="w"> </span>mimicgen<span class="w"> </span><span class="se">\</span>
 <span class="w">        </span>--convert<span class="w"> </span>rlds<span class="w"> </span><span class="se">\</span>
 <span class="w">        </span>--remap-keys<span class="w"> </span>agentview:image<span class="w"> </span><span class="se">\</span>
 <span class="w">        </span>--output<span class="w"> </span>/data/datasets/mimicgen/rlds/stack_d4_ep2500
-</code></pre>
-       </div>
-       <p>
-        This will create a set of tfrecord files under the output directory that are able to be loaded by the OpenVLA training scripts.
-       </p>
-       <h2 id="fine-tuning">
-        Fine Tuning
-       </h2>
-       <p>
-        A primary objective of this project is to characterize the training needed to adapt the model to different robots and tasks.  Our development primarily consisted of running test LoRA's onboard Jetson AGX Orin 64GB and debugging issues locally, and when the results were encouraging to perform a full fine-tuning with
-        <a href="https://pytorch.org/tutorials/intermediate/FSDP_tutorial.html">
-         FDSP
-        </a>
-        on multiple A100/H100's from spot instance providers like
-        <a href="https://brev.dev/">
-         Brev.dev
-        </a>
-        ,
-        <a href="https://vast.ai/">
-         Vast.ai
-        </a>
-        , and
-        <a href="https://www.runpod.io/">
-         RunPod
-        </a>
-        .  Full fine-tuning on 2x Jetson AGX Orin's was attempted with FDSP, but ran out of memory with all settings that we tried. We provide the test models we trained on
-        <a href="https://huggingface.co/dusty-nv">
-         HuggingFace
-        </a>
-        for others to try in the inference + sim setup below.  Below are the training GPU configurations that were used, along with their batch sizes that maximized memory usage:
-       </p>
-       <table>
-        <thead>
-         <tr>
-          <th>
-          </th>
-          <th style="text-align: center;">
-           Batch Size
-          </th>
-          <th style="text-align: center;">
-           FPS
-          </th>
-          <th style="text-align: center;">
-           $/hr
-          </th>
-         </tr>
-        </thead>
-        <tbody>
-         <tr>
-          <td>
-           Jetson AGX Orin 64GB
-          </td>
-          <td style="text-align: center;">
-           8 (LoRA)
-          </td>
-          <td style="text-align: center;">
-           1.57
-          </td>
-          <td style="text-align: center;">
-           -
-          </td>
-         </tr>
-         <tr>
-          <td>
-           2x A100 SMX4 80GB
-          </td>
-          <td style="text-align: center;">
-           48
-          </td>
-          <td style="text-align: center;">
-           13.07
-          </td>
-          <td style="text-align: center;">
-           ~$1.50
-          </td>
-         </tr>
-         <tr>
-          <td>
-           8x H100 NVL 94GB
-          </td>
-          <td style="text-align: center;">
-           256
-          </td>
-          <td style="text-align: center;">
-           92.4
-          </td>
-          <td style="text-align: center;">
-           ~$25
-          </td>
-         </tr>
-        </tbody>
-       </table>
-       <p>
-        The rental fees are ballpark averages over the spot instances available with these GPUs at the time of writing, and becomes quite reasonable when used alongside a Jetson repurposed for training daily test LoRA's on a reduced amount of data.  Training until convergence on Jetson and 2xA100 took roughly 24-36 hours depending on the amount of data and number of epochs.  We kept to &lt;5 epochs for the full fine-tunes in an attempt to prevent the afformentioned overfitting, instead opting to increase the number of episodes.
-       </p>
-       <p>
-        Below we provide the steps to run the OpenVLA LoRA training on Jetson, and for the dGPU systems refer to
-        <a href="https://github.com/openvla/openvla?tab=readme-ov-file#fully-fine-tuning-openvla">
-         Fully Fine-Tuning OpenVLA
-        </a>
-        .  Typically you will launch a spot instance with your provider of choice in a CUDA or PyTorch container, then install the OpenVLA repo and its dependencies with pip, and download your dataset to the system before launching the command (or create a bundled container with it all included to save time).  Here's the
-        <a href="https://wandb.ai/dusty-nv-none/openvla_ft_mimicgen/workspace?nw=nwuserdustynv">
-         WandB Dashboard
-        </a>
-        from the full fine-tuning runs that you can inspect, comparing a fewer number of episodes for more epochs, versus a larger number of episodes trained for fewer epochs:
-       </p>
-       <iframe height="850px" src="https://wandb.ai/dusty-nv-none/openvla_ft_mimicgen/workspace?nw=nwuserdustynv" width="100%">
-       </iframe>
-       <h3 id="on-device-lora">
-        On-Device LoRA
-       </h3>
-       <p>
-        The OpenVLA repo provides working training scripts for LoRA/qLoRA and multi-node multi-GPU full fine-tunes using PyTorch FDSP.  It was not difficult to go in a make changes and enhancements, some of which we have done for our purposes of on-device training in this
-        <a href="https://github.com/dusty-nv/openvla">
-         fork
-        </a>
-        .  Overall we found the process to be more similar than not to training other vision DNNs, just with larger datasets and rigorous validation required of the data pipeline that all the coordinate spaces and transformations matched up at every step of the sim→training→inference workflow.
-       </p>
-       <p>
-        We built an OpenVLA container for JetPack that runs the LoRA training, which you can find the specific documentation about from the
-        <a href="https://github.com/openvla/openvla?tab=readme-ov-file#fine-tuning-openvla-via-lora">
-         OpenVLA readme
-        </a>
-        (it's also recommended to read their
-        <a href="https://arxiv.org/abs/2406.09246">
-         paper
-        </a>
-        which includes many insights into the training process).
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>jetson-containers<span class="w"> </span>run<span class="w"> </span><span class="k">$(</span>autotag<span class="w"> </span>openvla<span class="k">)</span><span class="w"> </span><span class="se">\</span>
+</code></pre></div>
+<p>This will create a set of tfrecord files under the output directory that are able to be loaded by the OpenVLA training scripts.</p>
+<h2 id="fine-tuning">Fine Tuning</h2>
+<p>A primary objective of this project is to characterize the training needed to adapt the model to different robots and tasks.  Our development primarily consisted of running test LoRA's onboard Jetson AGX Orin 64GB and debugging issues locally, and when the results were encouraging to perform a full fine-tuning with <a href="https://pytorch.org/tutorials/intermediate/FSDP_tutorial.html">FDSP</a> on multiple A100/H100's from spot instance providers like <a href="https://brev.dev/">Brev.dev</a>, <a href="https://vast.ai/">Vast.ai</a>, and <a href="https://www.runpod.io/">RunPod</a>.  Full fine-tuning on 2x Jetson AGX Orin's was attempted with FDSP, but ran out of memory with all settings that we tried. We provide the test models we trained on <a href="https://huggingface.co/dusty-nv">HuggingFace</a> for others to try in the inference + sim setup below.  Below are the training GPU configurations that were used, along with their batch sizes that maximized memory usage:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: center;">Batch Size</th>
+<th style="text-align: center;">FPS</th>
+<th style="text-align: center;">$/hr</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jetson AGX Orin 64GB</td>
+<td style="text-align: center;">8 (LoRA)</td>
+<td style="text-align: center;">1.57</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr>
+<td>2x A100 SMX4 80GB</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">13.07</td>
+<td style="text-align: center;">~$1.50</td>
+</tr>
+<tr>
+<td>8x H100 NVL 94GB</td>
+<td style="text-align: center;">256</td>
+<td style="text-align: center;">92.4</td>
+<td style="text-align: center;">~$25</td>
+</tr>
+</tbody>
+</table>
+<p>The rental fees are ballpark averages over the spot instances available with these GPUs at the time of writing, and becomes quite reasonable when used alongside a Jetson repurposed for training daily test LoRA's on a reduced amount of data.  Training until convergence on Jetson and 2xA100 took roughly 24-36 hours depending on the amount of data and number of epochs.  We kept to &lt;5 epochs for the full fine-tunes in an attempt to prevent the afformentioned overfitting, instead opting to increase the number of episodes.</p>
+<p>Below we provide the steps to run the OpenVLA LoRA training on Jetson, and for the dGPU systems refer to <a href="https://github.com/openvla/openvla?tab=readme-ov-file#fully-fine-tuning-openvla">Fully Fine-Tuning OpenVLA</a>.  Typically you will launch a spot instance with your provider of choice in a CUDA or PyTorch container, then install the OpenVLA repo and its dependencies with pip, and download your dataset to the system before launching the command (or create a bundled container with it all included to save time).  Here's the <a href="https://wandb.ai/dusty-nv-none/openvla_ft_mimicgen/workspace?nw=nwuserdustynv">WandB Dashboard</a> from the full fine-tuning runs that you can inspect, comparing a fewer number of episodes for more epochs, versus a larger number of episodes trained for fewer epochs:</p>
+<iframe src="https://wandb.ai/dusty-nv-none/openvla_ft_mimicgen/workspace?nw=nwuserdustynv" width="100%" height="850px"></iframe>
+
+<h3 id="on-device-lora">On-Device LoRA</h3>
+<p>The OpenVLA repo provides working training scripts for LoRA/qLoRA and multi-node multi-GPU full fine-tunes using PyTorch FDSP.  It was not difficult to go in a make changes and enhancements, some of which we have done for our purposes of on-device training in this <a href="https://github.com/dusty-nv/openvla">fork</a>.  Overall we found the process to be more similar than not to training other vision DNNs, just with larger datasets and rigorous validation required of the data pipeline that all the coordinate spaces and transformations matched up at every step of the sim→training→inference workflow.</p>
+<p>We built an OpenVLA container for JetPack that runs the LoRA training, which you can find the specific documentation about from the <a href="https://github.com/openvla/openvla?tab=readme-ov-file#fine-tuning-openvla-via-lora">OpenVLA readme</a> (it's also recommended to read their <a href="https://arxiv.org/abs/2406.09246">paper</a> which includes many insights into the training process).</p>
+<div class="highlight"><pre><span></span><code>jetson-containers<span class="w"> </span>run<span class="w"> </span><span class="k">$(</span>autotag<span class="w"> </span>openvla<span class="k">)</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>torchrun<span class="w"> </span>--standalone<span class="w"> </span>--nnodes<span class="w"> </span><span class="m">1</span><span class="w"> </span>--nproc-per-node<span class="w"> </span><span class="m">1</span><span class="w"> </span>vla-scripts/finetune.py<span class="w"> </span><span class="se">\</span>
 <span class="w">      </span>--vla_path<span class="w"> </span>openvla/openvla-7b<span class="w"> </span><span class="se">\</span>
 <span class="w">      </span>--data_root_dir<span class="w"> </span>/data/datasets/mimicgen/rlds<span class="w"> </span><span class="se">\</span>
@@ -1740,66 +2900,14 @@ gt   355  [-0.02387  0.00760 -0.00318  0.15965  0.07707  0.03281  1.00000]
 <span class="w">      </span>--image_aug<span class="w"> </span>False<span class="w"> </span><span class="se">\</span>
 <span class="w">      </span>--save_steps<span class="w"> </span><span class="m">250</span><span class="w"> </span><span class="se">\</span>
 <span class="w">      </span>--epochs<span class="w"> </span><span class="m">5</span>
-</code></pre>
-       </div>
-       <p>
-        This will start a TensorBoard server on port 6006 to monitor the training progress.  Typically you would set the script running for more epochs than you intend to actually run, so that you can instead stop when the model converges (typically occurring with a loss below 0.5 and token accuracy &gt;95%). This script was adapted so that if you interrupt training by pressing
-        <code>
-         Ctrl+D
-        </code>
-        from the terminal, it will gracefully stop early and still merge the LoRA weights before exiting.  If training is terminated otherwise, we added a
-        <a href="https://github.com/dusty-nv/openvla/blob/main/vla-scripts/merge.py">
-         <code>
-          merge.py
-         </code>
-        </a>
-        script that you should run afterwards get the model ready for inference.
-       </p>
-       <h3 id="validation">
-        Validation
-       </h3>
-       <p>
-        Now that we have trained our test model (or you can download one from
-        <a href="https://huggingface.co/dusty-nv">
-         here
-        </a>
-        ), let's re-validate it again like we did
-        <a href="#quantization">
-         above
-        </a>
-        on the original OpenVLA model, but this time on unseen data from MimicGen with a different random seed (
-        <a href="https://huggingface.co/datasets/dusty-nv/mimicgen-stack_d4-ep100">
-         <code>
-          dusty-nv/mimicgen-stack_d4-ep100
-         </code>
-        </a>
-        ).  These commands will download and run the fully fine-tuned checkpoint (on 2500 episodes for 4 epochs) that we released to (
-        <a href="https://huggingface.co/datasets/dusty-nv/openvla-7b-mimicgen">
-         <code>
-          dusty-nv/openvla-7b-mimicgen
-         </code>
-        </a>
-        .  If you trained your own model, you can substitute the local path to the HF checkpoint.
-       </p>
-       <div class="tabbed-set tabbed-alternate" data-tabs="2:3">
-        <input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"/>
-        <input id="__tabbed_2_2" name="__tabbed_2" type="radio"/>
-        <input id="__tabbed_2_3" name="__tabbed_2" type="radio"/>
-        <div class="tabbed-labels">
-         <label for="__tabbed_2_1">
-          INT4
-         </label>
-         <label for="__tabbed_2_2">
-          FP8
-         </label>
-         <label for="__tabbed_2_3">
-          FP16
-         </label>
-        </div>
-        <div class="tabbed-content">
-         <div class="tabbed-block">
-          <div class="highlight">
-           <pre><span></span><code>jetson-containers run $(autotag nano_llm) \
+</code></pre></div>
+<p>This will start a TensorBoard server on port 6006 to monitor the training progress.  Typically you would set the script running for more epochs than you intend to actually run, so that you can instead stop when the model converges (typically occurring with a loss below 0.5 and token accuracy &gt;95%). This script was adapted so that if you interrupt training by pressing <code>Ctrl+D</code> from the terminal, it will gracefully stop early and still merge the LoRA weights before exiting.  If training is terminated otherwise, we added a <a href="https://github.com/dusty-nv/openvla/blob/main/vla-scripts/merge.py"><code>merge.py</code></a> script that you should run afterwards get the model ready for inference.</p>
+<h3 id="validation">Validation</h3>
+<p>Now that we have trained our test model (or you can download one from <a href="https://huggingface.co/dusty-nv">here</a>), let's re-validate it again like we did <a href="#quantization">above</a> on the original OpenVLA model, but this time on unseen data from MimicGen with a different random seed (<a href="https://huggingface.co/datasets/dusty-nv/mimicgen-stack_d4-ep100"><code>dusty-nv/mimicgen-stack_d4-ep100</code></a>).  These commands will download and run the fully fine-tuned checkpoint (on 2500 episodes for 4 epochs) that we released to (<a href="https://huggingface.co/datasets/dusty-nv/openvla-7b-mimicgen"><code>dusty-nv/openvla-7b-mimicgen</code></a>.  If you trained your own model, you can substitute the local path to the HF checkpoint.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">INT4</label><label for="__tabbed_2_2">FP8</label><label for="__tabbed_2_3">FP16</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>jetson-containers run $(autotag nano_llm) \
   python3 -m nano_llm.vision.vla --api mlc \
     --model dusty-nv/openvla-7b-mimicgen \
     --quantization q4f16_ft \
@@ -1807,12 +2915,10 @@ gt   355  [-0.02387  0.00760 -0.00318  0.15965  0.07707  0.03281  1.00000]
     --dataset-type rlds \
     --max-episodes 10 \
     --save-stats /data/benchmarks/openvla_mimicgen_int4.json
-</code></pre>
-          </div>
-         </div>
-         <div class="tabbed-block">
-          <div class="highlight">
-           <pre><span></span><code>jetson-containers run $(autotag nano_llm) \
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>jetson-containers run $(autotag nano_llm) \
   python3 -m nano_llm.vision.vla --api mlc \
     --model dusty-nv/openvla-7b-mimicgen \
     --quantization q8f16_ft \
@@ -1820,420 +2926,217 @@ gt   355  [-0.02387  0.00760 -0.00318  0.15965  0.07707  0.03281  1.00000]
     --dataset-type rlds \
     --max-episodes 10 \
     --save-stats /data/benchmarks/openvla_mimicgen_fp8.json
-</code></pre>
-          </div>
-         </div>
-         <div class="tabbed-block">
-          <div class="highlight">
-           <pre><span></span><code>jetson-containers run $(autotag nano_llm) \
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>jetson-containers run $(autotag nano_llm) \
   python3 -m nano_llm.vision.vla --api hf \
     --model dusty-nv/openvla-7b-mimicgen \
     --dataset dusty-nv/bridge_orig_ep100 \
     --dataset-type rlds \
     --max-episodes 10 \
     --save-stats /data/benchmarks/openvla_mimicgen_fp16.json
-</code></pre>
-          </div>
-         </div>
-        </div>
-       </div>
-       <p>
-        The results from this are collated in the next section along with the end-task success rates.  Time to see it in action!
-       </p>
-       <h2 id="inference-simulation">
-        Inference + Simulation
-       </h2>
-       <p>
-        To measure how well our model actually performs at completing the task, we spin up a MimicGen environment in
-        <a href="agent_studio.html">
-         Agent Studio
-        </a>
-        that's connected to the VLA model.  It counts the number of successful episodes by checking the reward issued by the sim, which is not used by the model but signals when the task was completed.  We use a horizon of 200 frames for evaluation, after which it is deemed to be a failure.
-       </p>
-       <div class="tabbed-set tabbed-alternate" data-tabs="3:3">
-        <input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"/>
-        <input id="__tabbed_3_2" name="__tabbed_3" type="radio"/>
-        <input id="__tabbed_3_3" name="__tabbed_3" type="radio"/>
-        <div class="tabbed-labels">
-         <label for="__tabbed_3_1">
-          INT4
-         </label>
-         <label for="__tabbed_3_2">
-          FP8
-         </label>
-         <label for="__tabbed_3_3">
-          FP16
-         </label>
-        </div>
-        <div class="tabbed-content">
-         <div class="tabbed-block">
-          <div class="highlight">
-           <pre><span></span><code>jetson-containers run $(autotag nano_llm) \
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>The results from this are collated in the next section along with the end-task success rates.  Time to see it in action!    </p>
+<h2 id="inference-simulation">Inference + Simulation</h2>
+<p>To measure how well our model actually performs at completing the task, we spin up a MimicGen environment in <a href="agent_studio.html">Agent Studio</a> that's connected to the VLA model.  It counts the number of successful episodes by checking the reward issued by the sim, which is not used by the model but signals when the task was completed.  We use a horizon of 200 frames for evaluation, after which it is deemed to be a failure.  </p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">INT4</label><label for="__tabbed_3_2">FP8</label><label for="__tabbed_3_3">FP16</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>jetson-containers run $(autotag nano_llm) \
   python3 -m nano_llm.studio --load OpenVLA-MimicGen-INT4
-</code></pre>
-          </div>
-         </div>
-         <div class="tabbed-block">
-          <div class="highlight">
-           <pre><span></span><code>jetson-containers run $(autotag nano_llm) \
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>jetson-containers run $(autotag nano_llm) \
   python3 -m nano_llm.studio --load OpenVLA-MimicGen-FP8
-</code></pre>
-          </div>
-         </div>
-         <div class="tabbed-block">
-          <div class="highlight">
-           <pre><span></span><code>jetson-containers run $(autotag nano_llm) \
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>jetson-containers run $(autotag nano_llm) \
   python3 -m nano_llm.studio --load OpenVLA-MimicGen-FP16
-</code></pre>
-          </div>
-         </div>
+</code></pre></div>
+</div>
+</div>
+</div>
+<video controls muted style="max-width: 100%">
+    <source src="images/agent_studio_openvla_mimicgen.mp4" type="video/mp4">
+</video>
+
+<p>To start the benchmarking, connect the output of the <code>AutoPrompt</code> node to the <code>OpenVLA</code> node.  On its own it will run forever - we did it for 100 episodes each, which can take several hours since the sim operates in lock step with the model (future experiments will train on actions accumulated from multiple timesteps and also reduce the model size to improve performance).</p>
+<table>
+<thead>
+<tr>
+<th>Quantization</th>
+<th style="text-align: center;">Train Accuracy</th>
+<th style="text-align: center;">Val Accuracy</th>
+<th style="text-align: center;">Task Success</th>
+<th style="text-align: center;">Avg Frames</th>
+<th style="text-align: center;">Latency</th>
+<th style="text-align: center;">FPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FP16</td>
+<td style="text-align: center;">96.5%</td>
+<td style="text-align: center;">85.4%</td>
+<td style="text-align: center;">86%</td>
+<td style="text-align: center;">132</td>
+<td style="text-align: center;">827 ms</td>
+<td style="text-align: center;">1.20</td>
+</tr>
+<tr>
+<td>FP8</td>
+<td style="text-align: center;">96.2%</td>
+<td style="text-align: center;">85.1%</td>
+<td style="text-align: center;">85%</td>
+<td style="text-align: center;">131</td>
+<td style="text-align: center;">467 ms</td>
+<td style="text-align: center;">2.14</td>
+</tr>
+<tr>
+<td>INT4</td>
+<td style="text-align: center;">95.4%</td>
+<td style="text-align: center;">84.4%</td>
+<td style="text-align: center;">84%</td>
+<td style="text-align: center;">138</td>
+<td style="text-align: center;">335 ms</td>
+<td style="text-align: center;">2.98</td>
+</tr>
+</tbody>
+</table>
+<p>This is using the model fine-tuned on 2500 episodes for 4 epochs, and although the task may have been simple, is evidence of achieving the sought-after success rates of ~85%.  Quantization has a negligible ~1% impact while scaling performance almost linearly.  The average number of frames is how long it took the robot to complete the task, which efficiency is another important end-metric to evalulate models by (consider the source teleop episodes were ~110 frames long, and we realized after that these averages include failed episodes during evaluation). The training dataset <code>dusty-nv/bridge_orig_ep2500</code> was used to measure the action Train Accuracy, while the previously unused and distinct <code>dusty-nv/bridge_orig_ep100</code> was used for Validation Accuracy.</p>
+<h2 id="episodes-vs-epochs">Episodes vs Epochs</h2>
+<p>Upon measuring the success rates of the other fine-tuned models that were trained on fewer episodes for more epochs, we can see the impact of increasing the size of the dataset:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Episodes</th>
+<th style="text-align: center;">Epochs</th>
+<th style="text-align: center;">Frames</th>
+<th style="text-align: center;">Task Success</th>
+<th style="text-align: center;">Avg Frames</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">500</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">550K</td>
+<td style="text-align: center;">23%</td>
+<td style="text-align: center;">186</td>
+</tr>
+<tr>
+<td style="text-align: center;">1000</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">660K</td>
+<td style="text-align: center;">48%</td>
+<td style="text-align: center;">165</td>
+</tr>
+<tr>
+<td style="text-align: center;">2500</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">1.1M</td>
+<td style="text-align: center;">84%</td>
+<td style="text-align: center;">138</td>
+</tr>
+</tbody>
+</table>
+<p>That isn't to say that the 2500-episode model still isn't overfit - it is after learning to always stack the smallr block and essentially ignore the instructions.  More task diversity in the training is required, which we can do now that we have the workflow.  And we want to branch out into real-world domains instead of test environments in simulation to prove model viability.  The amount of variance and data required to achieve generalist models in the challenging problem space of manipulation does raise interesting questions about purely random task learning versus more guided and curated approaches that ramp up in complexity as training progresses.</p>
+<h2 id="future-research">Future Research</h2>
+<p>Embodied agents are an exciting emerging area at the forefront of robotics and physical AI, with many promising avenues to investigate further.  Follow-up publications to OpenVLA include <a href="https://embodied-cot.github.io/">Embodied-CoT</a> and <a href="https://crossformer-model.github.io/">CrossFormer</a>, along with others sure to be in development.  In addition to proceeding to physical testing, these areas of interest we'll experiment with as research progresses:</p>
+<ul>
+<li>Smaller LLM with higher-resolution vision encoder(s)</li>
+<li>Multiple image inputs - multiple cameras and/or timesteps</li>
+<li>Action states from previous frame(s) as input</li>
+<li>Training on consecutive actions for larger timesteps</li>
+<li>Similar test model for UGV's in sim</li>
+<li>Using Isaac Lab and Robocasa</li>
+<li>sim2real deployment with ROS2</li>
+<li>Trade-offs of VLA vs VIT-based approaches</li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-       </div>
-       <video controls="" muted="" style="max-width: 100%">
-        <source src="images/agent_studio_openvla_mimicgen.mp4" type="video/mp4">
-        </source>
-       </video>
-       <p>
-        To start the benchmarking, connect the output of the
-        <code>
-         AutoPrompt
-        </code>
-        node to the
-        <code>
-         OpenVLA
-        </code>
-        node.  On its own it will run forever - we did it for 100 episodes each, which can take several hours since the sim operates in lock step with the model (future experiments will train on actions accumulated from multiple timesteps and also reduce the model size to improve performance).
-       </p>
-       <table>
-        <thead>
-         <tr>
-          <th>
-           Quantization
-          </th>
-          <th style="text-align: center;">
-           Train Accuracy
-          </th>
-          <th style="text-align: center;">
-           Val Accuracy
-          </th>
-          <th style="text-align: center;">
-           Task Success
-          </th>
-          <th style="text-align: center;">
-           Avg Frames
-          </th>
-          <th style="text-align: center;">
-           Latency
-          </th>
-          <th style="text-align: center;">
-           FPS
-          </th>
-         </tr>
-        </thead>
-        <tbody>
-         <tr>
-          <td>
-           FP16
-          </td>
-          <td style="text-align: center;">
-           96.5%
-          </td>
-          <td style="text-align: center;">
-           85.4%
-          </td>
-          <td style="text-align: center;">
-           86%
-          </td>
-          <td style="text-align: center;">
-           132
-          </td>
-          <td style="text-align: center;">
-           827 ms
-          </td>
-          <td style="text-align: center;">
-           1.20
-          </td>
-         </tr>
-         <tr>
-          <td>
-           FP8
-          </td>
-          <td style="text-align: center;">
-           96.2%
-          </td>
-          <td style="text-align: center;">
-           85.1%
-          </td>
-          <td style="text-align: center;">
-           85%
-          </td>
-          <td style="text-align: center;">
-           131
-          </td>
-          <td style="text-align: center;">
-           467 ms
-          </td>
-          <td style="text-align: center;">
-           2.14
-          </td>
-         </tr>
-         <tr>
-          <td>
-           INT4
-          </td>
-          <td style="text-align: center;">
-           95.4%
-          </td>
-          <td style="text-align: center;">
-           84.4%
-          </td>
-          <td style="text-align: center;">
-           84%
-          </td>
-          <td style="text-align: center;">
-           138
-          </td>
-          <td style="text-align: center;">
-           335 ms
-          </td>
-          <td style="text-align: center;">
-           2.98
-          </td>
-         </tr>
-        </tbody>
-       </table>
-       <p>
-        This is using the model fine-tuned on 2500 episodes for 4 epochs, and although the task may have been simple, is evidence of achieving the sought-after success rates of ~85%.  Quantization has a negligible ~1% impact while scaling performance almost linearly.  The average number of frames is how long it took the robot to complete the task, which efficiency is another important end-metric to evalulate models by (consider the source teleop episodes were ~110 frames long, and we realized after that these averages include failed episodes during evaluation). The training dataset
-        <code>
-         dusty-nv/bridge_orig_ep2500
-        </code>
-        was used to measure the action Train Accuracy, while the previously unused and distinct
-        <code>
-         dusty-nv/bridge_orig_ep100
-        </code>
-        was used for Validation Accuracy.
-       </p>
-       <h2 id="episodes-vs-epochs">
-        Episodes vs Epochs
-       </h2>
-       <p>
-        Upon measuring the success rates of the other fine-tuned models that were trained on fewer episodes for more epochs, we can see the impact of increasing the size of the dataset:
-       </p>
-       <table>
-        <thead>
-         <tr>
-          <th style="text-align: center;">
-           Episodes
-          </th>
-          <th style="text-align: center;">
-           Epochs
-          </th>
-          <th style="text-align: center;">
-           Frames
-          </th>
-          <th style="text-align: center;">
-           Task Success
-          </th>
-          <th style="text-align: center;">
-           Avg Frames
-          </th>
-         </tr>
-        </thead>
-        <tbody>
-         <tr>
-          <td style="text-align: center;">
-           500
-          </td>
-          <td style="text-align: center;">
-           10
-          </td>
-          <td style="text-align: center;">
-           550K
-          </td>
-          <td style="text-align: center;">
-           23%
-          </td>
-          <td style="text-align: center;">
-           186
-          </td>
-         </tr>
-         <tr>
-          <td style="text-align: center;">
-           1000
-          </td>
-          <td style="text-align: center;">
-           6
-          </td>
-          <td style="text-align: center;">
-           660K
-          </td>
-          <td style="text-align: center;">
-           48%
-          </td>
-          <td style="text-align: center;">
-           165
-          </td>
-         </tr>
-         <tr>
-          <td style="text-align: center;">
-           2500
-          </td>
-          <td style="text-align: center;">
-           4
-          </td>
-          <td style="text-align: center;">
-           1.1M
-          </td>
-          <td style="text-align: center;">
-           84%
-          </td>
-          <td style="text-align: center;">
-           138
-          </td>
-         </tr>
-        </tbody>
-       </table>
-       <p>
-        That isn't to say that the 2500-episode model still isn't overfit - it is after learning to always stack the smallr block and essentially ignore the instructions.  More task diversity in the training is required, which we can do now that we have the workflow.  And we want to branch out into real-world domains instead of test environments in simulation to prove model viability.  The amount of variance and data required to achieve generalist models in the challenging problem space of manipulation does raise interesting questions about purely random task learning versus more guided and curated approaches that ramp up in complexity as training progresses.
-       </p>
-       <h2 id="future-research">
-        Future Research
-       </h2>
-       <p>
-        Embodied agents are an exciting emerging area at the forefront of robotics and physical AI, with many promising avenues to investigate further.  Follow-up publications to OpenVLA include
-        <a href="https://embodied-cot.github.io/">
-         Embodied-CoT
-        </a>
-        and
-        <a href="https://crossformer-model.github.io/">
-         CrossFormer
-        </a>
-        , along with others sure to be in development.  In addition to proceeding to physical testing, these areas of interest we'll experiment with as research progresses:
-       </p>
-       <ul>
-        <li>
-         Smaller LLM with higher-resolution vision encoder(s)
-        </li>
-        <li>
-         Multiple image inputs - multiple cameras and/or timesteps
-        </li>
-        <li>
-         Action states from previous frame(s) as input
-        </li>
-        <li>
-         Training on consecutive actions for larger timesteps
-        </li>
-        <li>
-         Similar test model for UGV's in sim
-        </li>
-        <li>
-         Using Isaac Lab and Robocasa
-        </li>
-        <li>
-         sim2real deployment with ROS2
-        </li>
-        <li>
-         Trade-offs of VLA vs VIT-based approaches
-        </li>
-       </ul>
-      </article>
-     </div>
-     <script>
-      var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}
-     </script>
-     <script>
-      var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))
-     </script>
-    </div>
-    <button class="md-top md-icon" data-md-component="top" hidden="" type="button">
-     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z">
-      </path>
-     </svg>
-     Back to top
-    </button>
-   </main>
-   <footer class="md-footer">
-    <div class="md-footer-meta md-typeset">
-     <div class="md-footer-meta__inner md-grid">
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
-       <div class="md-copyright__highlight">
-        <ul class="global-footer__links">
-         <li>
-          <a href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/" target="_blank">
-           Privacy Policy
-          </a>
-         </li>
-         <li>
-          <a href="https://www.nvidia.com/en-us/privacy-center/" target="_blank">
-           Manage My Privacy
-          </a>
-         </li>
-         <li>
-          <a href="https://www.nvidia.com/en-us/preferences/email-preferences/" target="_blank">
-           Do Not Sell or Share My Data
-          </a>
-         </li>
-         <li>
-          <a href="https://www.nvidia.com/en-us/about-nvidia/legal-info/" target="_blank">
-           Legal
-          </a>
-         </li>
-         <li>
-          <a href="https://www.nvidia.com/en-us/about-nvidia/accessibility/" target="_blank">
-           Accessibility
-          </a>
-         </li>
-         <li>
-          <a href="https://www.nvidia.com/en-us/about-nvidia/company-policies/" target="_self">
-           Corporate Policies
-          </a>
-         </li>
-         <li>
-          <a href="https://www.nvidia.com/en-us/product-security/" target="_blank">
-           Product Security
-          </a>
-         </li>
-         <li>
-          <a href="https://www.nvidia.com/en-us/contact/" target="_blank">
-           Contact
-          </a>
-         </li>
-        </ul>
-        <div class="global-footer__copyright">
-         Copyright © 2024 NVIDIA Corporation
-        </div>
-       </div>
-      </div>
-     </div>
+  
+    <div class="md-copyright__highlight">
+      <ul class="global-footer__links"><li><a href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/" target="_blank">Privacy Policy</a></li><li> <a href="https://www.nvidia.com/en-us/privacy-center/" target="_blank">Manage My Privacy</a> </li> <li> <a href="https://www.nvidia.com/en-us/preferences/email-preferences/" target="_blank">Do Not Sell or Share My Data</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/legal-info/" target="_blank">Legal</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/accessibility/" target="_blank">Accessibility</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/company-policies/" target="_self">Corporate Policies</a> </li> <li> <a href="https://www.nvidia.com/en-us/product-security/" target="_blank">Product Security</a> </li> <li> <a href="https://www.nvidia.com/en-us/contact/" target="_blank">Contact</a> </li> </ul><div class="global-footer__copyright">Copyright &copy; 2024 NVIDIA Corporation</div>
     </div>
-   </footer>
+  
+  
+</div>
+      
+    </div>
   </div>
-  <div class="md-dialog" data-md-component="dialog">
-   <div class="md-dialog__inner md-typeset">
-   </div>
-  </div>
-  <script id="__config" type="application/json">
-   {"base": ".", "features": ["navigation.indexes", "navigation.expand", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.tabs.link", "content.code.copy", "announce.dismiss"], "search": "assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}
-  </script>
-  <!-- OneTrust Cookies Consent Notice start for www.jetson-ai-lab.com -->
-  <script charset="UTF-8" data-domain-script="018e2d65-efdf-7071-b793-f15ccf25c234" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" type="text/javascript">
-  </script>
-  <script type="text/javascript">
-   function OptanonWrapper() {        
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["navigation.indexes", "navigation.expand", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.tabs.link", "content.code.copy", "announce.dismiss"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+<!-- OneTrust Cookies Consent Notice start for www.jetson-ai-lab.com -->
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"  type="text/javascript" charset="UTF-8" data-domain-script="018e2d65-efdf-7071-b793-f15ccf25c234" ></script>
+<script type="text/javascript">
+function OptanonWrapper() {        
         var event = new Event('bannerLoaded');
         window.dispatchEvent(event);
     }
-  </script>
-  <!-- OneTrust Cookies Consent Notice end for www.jetson-ai-lab.com -->
-  <script src="https://images.nvidia.com/aem-dam/Solutions/ot-js/ot-custom.js" type="text/javascript">
-  </script>
-  <script src="//assets.adobedtm.com/5d4962a43b79/814eb6e9b4e1/launch-4bc07f1e0b0b.min.js">
-  </script>
-  <script src="assets/javascripts/bundle.13a4f30d.min.js">
-  </script>
-  <script>
-   window._6si = window._6si || [];
+</script>
+<!-- OneTrust Cookies Consent Notice end for www.jetson-ai-lab.com -->
+
+ <script type="text/javascript" src="https://images.nvidia.com/aem-dam/Solutions/ot-js/ot-custom.js"></script>
+<script src="//assets.adobedtm.com/5d4962a43b79/814eb6e9b4e1/launch-4bc07f1e0b0b.min.js"></script>
+
+      <script src="assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+<script>
+  window._6si = window._6si || [];
   window._6si.push(['enableEventTracking', true]);
   window._6si.push(['setToken', 'eb417ec30d332e34d732e2916f185311']);
   window._6si.push(['setEndpoint', 'b.6sc.co']);
@@ -2250,9 +3153,8 @@ gt   355  [-0.02387  0.00760 -0.00318  0.15965  0.07707  0.03281  1.00000]
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(gd, s);
   })();
-  </script>
-  <script type="text/javascript">
-   _satellite.pageBottom();
-  </script>
- </body>
+</script>
+<script type="text/javascript">_satellite.pageBottom();</script>
+
+  </body>
 </html>
