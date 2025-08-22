@@ -127,7 +127,7 @@ export class SearchBar {
 
     const sidebarSwitch = new ToggleSwitch({
       id: `${this.id}-sidebar-switch`, 
-      value: 'visible', 
+      value: 'hidden', 
       states: ['visible', 'hidden'], 
       labels: ['', ''],
       classes: [
@@ -153,6 +153,7 @@ export class SearchBar {
 
     const sidebar = SideBar({id: `${this.id}-sidebar`, searchBar: this});
     this.node.querySelector(`#${this.id}-results-area`).appendChild(sidebar);
+    sidebar.classList.add('hidden');
 
     sidebarSwitch.toggled((state) => {
       const result = sidebar.classList.toggle('hidden');

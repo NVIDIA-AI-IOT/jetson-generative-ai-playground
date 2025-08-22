@@ -19,7 +19,6 @@ export function SideBar({id, parent, searchBar}) {
 
   //const sidebar = node.querySelector('.sidebar');
 
-  const statusMsg = StatusMessages({parent: sidebar});
   const deviceConfig = DeviceConfigHelp({parent: sidebar});
   const downloadPanel = DownloadPanel({parent: sidebar, searchBar: searchBar});
   const pipPanel = PipPanel({parent: sidebar, searchBar: searchBar});
