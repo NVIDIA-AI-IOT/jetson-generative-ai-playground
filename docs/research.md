@@ -82,10 +82,9 @@ We hold virtual meetings that anyone is welcome to join and speak during. We dis
 
 	- **Time:** 9:00 AM PST / 12:00 PM EST / 5:00 PM GMT
 	- **Platform:** Microsoft Teams
-	- **Meeting Link:** [Join Meeting](https://teams.microsoft.com/l/meetup-join/19%3ameeting_NTA4ZmE4MDAtYWUwMS00ZTczLWE0YWEtNTE5Y2JkNTFmOWM1%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%221f165bb6-326c-4610-b292-af9159272b08%22%7d){:target="_blank"}
-	- **Meeting ID:** `264 770 145 196`
-	- **Passcode:** `Uwbdgj`
-	- **Calendar Invite:** [`Jetson AI Lab Research Group.ics`](research/invites/Jetson AI Lab Research Group.ics){:target="_blank"}
+	- **Meeting Link:** [Join Meeting](https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZWUwNTIxYmQtNGJmZC00MDA1LTkzN2MtYmFmMzJjZWUxNDFh%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%223e5863c5-26ea-489e-a546-cdc43df532ed%22%7d){:target="_blank"}
+	- **Meeting ID:** `288 976 487 014 3`
+	- **Passcode:** `6oG2uK2A`
 
 !!! abstract "Future Meetings"
 
@@ -100,12 +99,31 @@ Please join the `#events` channel on the [Discord](https://discord.gg/BmqNSK4886
 
 Our meeting recordings and resources are available for review and reference.
 
-!!! info "Recordings Archive"
-    All meeting recordings are stored on Google Drive: [Jetson AI Lab Research Group Recordings](https://drive.google.com/drive/folders/18BC7o32jorx_LzZXx5wW0Io_nf1ZwO6X?usp=sharing){:target="_blank"}
+<div class="admonition info">
+<p class="admonition-title">Recordings Archive</p>
+<h3><strong>Microsoft Teams:</strong> <span style="font-size: 0.9em; font-weight: normal;">(August 2025 - present)</span></h3>
+<table>
+  <thead>
+    <tr><th>Date</th><th>Topic</th><th>Link</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Sep 9, 2025</td>
+      <td>Jetson Community Back-to-School call</td>
+      <td>TBD</td>
+    </tr>
+    <tr>
+      <td>Aug 13, 2025</td>
+      <td>Jetson Community Q3 Kick-of call & new format</td>
+      <td><a href="https://nvidia-my.sharepoint.com/personal/zlo_nvidia_com/_layouts/15/stream.aspx?id=%2fpersonal%2fzlo_nvidia_com%2fDocuments%2fRecordings%2fJetson+AI+Lab+Research+Group+Call+-+One-time+kickoff+Wed+Aug+13%2c+2025-20250813_090244-Meeting+Recording.mp4&referrer=StreamWebApp.Web&referrerScenario=AddressBarCopied.view.31c337e8-488b-47c0-b4f8-c597d7a99728&xsdata=MDV8MDJ8YXNpZXJAbnZpZGlhLmNvbXxjODRmODZiNTcyMTc0ZGIwNzQ3YjA4ZGRkYzJkODVjM3w0MzA4M2QxNTcyNzM0MGMxYjdkYjM5ZWZkOWNjYzE3YXwwfDB8NjM4OTA4ODEwMjU4NzE2MjE5fFVua25vd258VFdGcGJHWnNiM2Q4ZXlKRmJYQjBlVTFoY0draU9uUnlkV1VzSWxZaU9pSXdMakF1TURBd01DSXNJbEFpT2lKWGFXNHpNaUlzSWtGT0lqb2lUV0ZwYkNJc0lsZFVJam95ZlE9PXwwfHx8&sdata=eUFzVHB1emtCd0ZPYUJ2KzBwTHcwYmFjRCs2bTFFZkl5aVF0d01FUDRyYz0%3d" target="_blank">Recording</a></td>
+    </tr>
+  </tbody>
+</table>
+<h3><strong>Google Drive:</strong> <span style="font-size: 0.9em; font-weight: normal;">(October 2024 - August 2025)</span></h3>
+<p><a href="https://drive.google.com/drive/folders/18BC7o32jorx_LzZXx5wW0Io_nf1ZwO6X?usp=sharing" target="_blank">Jetson AI Lab Research Group Recordings</a></p>
+<h3><strong>Youtube Developer Channel:</strong> <span style="font-size: 0.9em; font-weight: normal;">(April 2024 - October 2024)</span></h3>
 
-### Recent Meetings
 
-<!-- Keeping older meeting blocks hidden for brevity. -->
 
 
 <details><summary>October 15, 2024</summary>
@@ -323,6 +341,8 @@ Our meeting recordings and resources are available for review and reference.
 
 </details>
 		
+</div>
+
 ## Team Members
 
 Our research group brings together experts from academia, industry, and the open-source community who are passionate about advancing edge AI and robotics. Below are some of our sustaining members who have been actively contributing to generative AI in edge computing:

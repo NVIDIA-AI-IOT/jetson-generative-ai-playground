@@ -1,4 +1,3 @@
-<!-- Custom HTML site displayed as the Home chapter -->
 {% extends "main.html" %}
 {% block extrahead %}
   {{ super() }}
@@ -6,6 +5,15 @@
   <style>
     body {
       background-color: #efefef;
+    }
+    #search-bar-sidebar-status-rollup {
+      display: none !important;
+    }
+    #search-bar-sidebar {
+      display: none !important;
+    }
+    #search-bar-select2, #search-bar-select2 ~ * {
+      display: none !important;
     }
   </style>
 
@@ -36,7 +44,6 @@
 {% block content %}
 
   <div class="root-container flex-column" data-style-theme="nv-green">
-    <!-- dynamic content gets inserted here -->
   </div>
 
 {% endblock %}
