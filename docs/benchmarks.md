@@ -5,7 +5,12 @@ hide:
 
 # Benchmarks
 
-Below are AI inferencing benchmarks for [Jetson Orin Nano Super](https://developer.nvidia.com/blog/nvidia-jetson-orin-nano-developer-kit-gets-a-super-boost/?ncid=so-othe-293081-vt48) and [Jetson AGX Orin](#jetson-agx-orin).
+Below are AI inferencing benchmarks for [Jetson AGX Thor Developer Kit](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-thor/), [Jetson Orin Nano Super](https://developer.nvidia.com/blog/nvidia-jetson-orin-nano-developer-kit-gets-a-super-boost/?ncid=so-othe-293081-vt48) and [Jetson AGX Orin](#jetson-agx-orin).
+
+
+#### Jetson AGX Thor Developer Kit
+
+![](./images/thor-benchmark.png)
 
 #### Jetson Orin Nano Super
 
@@ -71,14 +76,14 @@ Below are AI inferencing benchmarks for [Jetson Orin Nano Super](https://develop
 
     ![](./svgs/SLM%20Text%20Generation%20Rate.svg)
 
-    Small language models are generally defined as having fewer than 7B parameters *(Llama-7B shown for reference)*   
+    Small language models are generally defined as having fewer than 7B parameters *(Llama-7B shown for reference)*
     For more data and info about running these models, see the [`SLM`](tutorial_slm.md) tutorial and [`MLC`](https://github.com/dusty-nv/jetson-containers/tree/master/packages/llm/mlc) container documentation.
 
 === "Vision Language Models (VLM)"
 
     ![](./svgs/Multimodal%20Streaming%20Rate.svg)
 
-    This measures the end-to-end pipeline performance for continuous streaming like with [Live Llava](tutorial_live-llava.md).  
+    This measures the end-to-end pipeline performance for continuous streaming like with [Live Llava](tutorial_live-llava.md).
     For more data and info about running these models, see the [`NanoVLM`](tutorial_nano-vlm.md) tutorial.
 
 === "Vision Transformers (ViT)"
