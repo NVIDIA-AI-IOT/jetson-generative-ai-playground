@@ -1,32 +1,32 @@
 <!-- Custom HTML site displayed as the Home chapter -->
-{% extends "main.html" %}
+<html>
+ <body>
+  {% extends "main.html" %}
 {% block extrahead %}
-  <script src="https://kit.fontawesome.com/1512963100.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script crossorigin="anonymous" src="https://kit.fontawesome.com/1512963100.js">
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
   {{ super() }}
 {% endblock %}
-
-<!-- Announcement bar -->
-{# block announce #}
+  <!-- Announcement bar -->
+  {# block announce #}
   <style>
-    .md-announce a { color: #76b900; text-decoration: underline;}
+   .md-announce a { color: #76b900; text-decoration: underline;}
     .md-announce a:focus { color: hsl(82, 100%, 72%);  text-decoration: underline; }
     .md-announce a:hover { color: hsl(82, 100%, 72%); text-decoration: underline;}
   </style>
-    <!--<div class="md-announce">See the updated <a href="research.html">meeting schedule</a> for additional office hours Tuesdays @ 9pm PT - join the <a href="https://discord.gg/BmqNSK4886" target="_blank">Discord</a> for the latest updates&nbsp;<i class="bi bi-nvidia" style="color: #76B900;"></i></span></div>-->
-    <!--<div class="md-announce">See the latest <a href="initial_setup_jon.html">Getting Started Guide</a> for Orin Nano Super, and <a href="cosmos.html">Cosmos WFM</a> on Jetson AGX Orin!&nbsp;<i class="bi bi-nvidia" style="color: #76B900;"></i></span></div>-->
-    <!--<div class="md-announce">⛄❄️ <b>Jetson Orin Nano Super</b> now available for $249 &nbsp;<span style="opacity: 0.875">(upgrade your Orin Nano with <a href="https://developer.nvidia.com/embedded/jetpack">JetPack</a> for up to 1.7X performance - see our <a href="https://developer.nvidia.com/blog/nvidia-jetson-orin-nano-developer-kit-gets-a-super-boost/?ncid=so-othe-293081-vt48" target="_blank">blog</a> for more info)</span></div>-->
-    <!--<div class="md-announce">The next research group meeting is on <a href="research.html#meeting-schedule">May 15th</a> at 9am PT! Catch up on the <a href="research.html#past-meetings">recordings</a> of the recent meetings.</div>-->
-    <!--<div class="md-announce">Congratulations to all the winners and participants of the <a href="https://blogs.nvidia.com/blog/glados-robot-hackster/" target="_blank">Hackster.io AI Innovation Challenge!</a></div>-->
-    <!--<div class="md-announce">Microsoft's open <a href="https://blogs.nvidia.com/blog/microsoft-open-phi-3-mini-language-models/" target="_blank">Phi-3 Mini</a> language models are out!  Try them today on Jetson with <a href="tutorial_ollama.html">ollama</a>.</div>-->
-    
-{# endblock #}
+  <!--<div class="md-announce">See the updated <a href="research.html">meeting schedule</a> for additional office hours Tuesdays @ 9pm PT - join the <a href="https://discord.gg/BmqNSK4886" target="_blank">Discord</a> for the latest updates&nbsp;<i class="bi bi-nvidia" style="color: #76B900;"></i></span></div>-->
+  <!--<div class="md-announce">See the latest <a href="initial_setup_jon.html">Getting Started Guide</a> for Orin Nano Super, and <a href="cosmos.html">Cosmos WFM</a> on Jetson AGX Orin!&nbsp;<i class="bi bi-nvidia" style="color: #76B900;"></i></span></div>-->
+  <!--<div class="md-announce">⛄❄️ <b>Jetson Orin Nano Super</b> now available for $249 &nbsp;<span style="opacity: 0.875">(upgrade your Orin Nano with <a href="https://developer.nvidia.com/embedded/jetpack">JetPack</a> for up to 1.7X performance - see our <a href="https://developer.nvidia.com/blog/nvidia-jetson-orin-nano-developer-kit-gets-a-super-boost/?ncid=so-othe-293081-vt48" target="_blank">blog</a> for more info)</span></div>-->
+  <!--<div class="md-announce">The next research group meeting is on <a href="research.html#meeting-schedule">May 15th</a> at 9am PT! Catch up on the <a href="research.html#past-meetings">recordings</a> of the recent meetings.</div>-->
+  <!--<div class="md-announce">Congratulations to all the winners and participants of the <a href="https://blogs.nvidia.com/blog/glados-robot-hackster/" target="_blank">Hackster.io AI Innovation Challenge!</a></div>-->
+  <!--<div class="md-announce">Microsoft's open <a href="https://blogs.nvidia.com/blog/microsoft-open-phi-3-mini-language-models/" target="_blank">Phi-3 Mini</a> language models are out!  Try them today on Jetson with <a href="tutorial_ollama.html">ollama</a>.</div>-->
+  {# endblock #}
 
 {% block tabs %}
 {{ super() }}
-<style>
-
-    .md-main {
+  <style>
+   .md-main {
         flex-grow: 0
     }
 
@@ -459,199 +459,290 @@
         height: 0.6rem;
         vertical-align: text-top;
     }
-</style>
-
-<!-- Main site Entry button descriptions -->
-<section class="tx-container">
-    <div class="md-grid md-typeset">
-      <div class="tx-hero">
-        <div class="tx-hero__content">
-            <h1> Generative AI at the Edge </h1>
-            <p>Bring generative AI to the world with NVIDIA<sup><small>&reg;</small></sup> Jetson&trade;</p>
-            <a href="tutorial-intro.html" title="Tutorials" class="md-button md-button--primary" style="padding-top: 0.7rem; padding-bottom: 0.7rem;">
-                Explore Tutorials
-            </a>
-            <a href="https://discord.gg/BmqNSK4886" style="padding-top: 0.6rem; padding-bottom: 0.6rem;" title="Join Discord" class="md-button" target="_blank">
-                <i class="bi bi-discord"></i>&nbsp;&nbsp;Discord
-            </a>
-            <!--<a href="https://www.youtube.com/playlist?list=PL5B692fm6--sdf3tQk-1kp9T65y8p-D5u" title="YouTube Playlist" class="md-button" target="_blank">
+  </style>
+  <!-- Main site Entry button descriptions -->
+  <section class="tx-container">
+   <div class="md-grid md-typeset">
+    <div class="tx-hero">
+     <div class="tx-hero__content">
+      <h1>
+       Generative AI at the Edge
+      </h1>
+      <p>
+       Bring generative AI to the world with NVIDIA
+       <sup>
+        <small>
+         ®
+        </small>
+       </sup>
+       Jetson™
+      </p>
+      <a class="md-button md-button--primary" href="tutorial-intro.html" style="padding-top: 0.7rem; padding-bottom: 0.7rem;" title="Tutorials">
+       Explore Tutorials
+      </a>
+      <a class="md-button" href="https://discord.gg/BmqNSK4886" style="padding-top: 0.6rem; padding-bottom: 0.6rem;" target="_blank" title="Join Discord">
+       <i class="bi bi-discord">
+       </i>
+       Discord
+      </a>
+      <!--<a href="https://www.youtube.com/playlist?list=PL5B692fm6--sdf3tQk-1kp9T65y8p-D5u" title="YouTube Playlist" class="md-button" target="_blank">
                 <i class="fa-solid fa-video"></i>&nbsp;&nbsp;Videos
-            </a>--> 
-            <!--
+            </a>-->
+      <!--
             <a href="https://developer.nvidia.com/blog/bringing-generative-ai-to-life-with-jetson/" title="Walkthrough Blog" class="md-button" target="_blank">
                 Walkthrough
             </a>
-            --> 
-        </div>
-        <div class="tx-hero__image">
-            <img src="./images/jetson-for-dev-ai-labs-icon-2974266-r3_ai-lab-text-generation-28.png" draggable="false">
-        </div>
-      </div>
+            -->
+     </div>
+     <div class="tx-hero__image">
+      <img draggable="false" src="./images/jetson-for-dev-ai-labs-icon-2974266-r3_ai-lab-text-generation-28.png"/>
+     </div>
     </div>
-</section>
-
-<!-- feature-box -->
-<section class="section">
-    <div class="top-hr">
-        <div class="row justify-content-center">
-            <div class="col-12 text-center">
-                <h2 class="section-title"><a href="tutorial-intro.html">Check out our tutorials</a></h2>
-            </div>
-            <!-- feature-box-item -->
-            <div class="col-lg-3 col-sm-6 mb-4 feature-box">
-                <a href="tutorial_text-generation.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height">
-                    <img src="./images/iconnv_text-generation_512x512.jpg" width="120" height="120">
-                    <h3 class="mb-3 mt-0">Text Generation</h3>
-                    <p class="feature-card-desc">Run LLM-based chat bot on Jetson</p>
-                    <p class="nv-teaser-text-link">Learn More <i class="fa-solid fa-angle-right"></i></p>
-                </a>
-            </div>
-            <div class="col-lg-3 col-sm-6 mb-4 feature-box">
-                <a href="tutorial_llava.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height" >
-                    <img src="./images/iconnv_text-vision_512x512.jpg" width="120" height="120">
-                    <h3 class="mb-3 mt-0">Text + Vision</h3>
-                    <p class="feature-card-desc">Run multimodal Vision-Language models to give your AI access to vision</p>
-                    <p class="nv-teaser-text-link">Learn More <i class="fa-solid fa-angle-right"></i></p>
-                </a>
-            </div>
-            <div class="col-lg-3 col-sm-6 mb-4 feature-box">
-                <a href="tutorial_stable-diffusion.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height" >
-                    <img src="./images/iconnv_image-generation_512x512.jpg" width="120" height="120">
-                    <h3 class="mb-3 mt-0">Image Generation</h3>
-                    <p class="feature-card-desc">Run diffusion models to generate stunning images interactively on Jetson</p>
-                    <p class="nv-teaser-text-link">Learn More <i class="fa-solid fa-angle-right"></i></p>
-                </a>
-            </div>
-            <div class="col-lg-3 col-sm-6 mb-4 feature-box">
-                <a href="tutorial_distillation.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height" >
-                    <img src="./images/iconnv_distillation_512x512.jpg" width="120" height="120">
-                    <h3 class="mb-3 mt-0">Distillation</h3>
-                    <p class="feature-card-desc">Learn a technique to bring the power of a large foundation model to Jetson
-                    <p class="nv-teaser-text-link">Learn More <i class="fa-solid fa-angle-right"></i></p>
-                </a>
-            </div>
-            <div class="col-lg-3 col-sm-6 mb-4 feature-box">
-                <a href="vit/index.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height" >
-                    <img src="./images/iconnv_nanosam_512x512.jpg" width="120" height="120">
-                    <h3 class="mb-3 mt-0">Vision Transformer (ViT)</h3>
-                    <p class="feature-card-desc">Vision Transformer examples, with models optimized to run in realtime on Jetson</p>
-                    <p class="nv-teaser-text-link">Learn More <i class="fa-solid fa-angle-right"></i></p>
-                </a>
-            </div>
-            <div class="col-lg-3 col-sm-6 mb-4 feature-box">
-                <a href="tutorial_nanodb.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height" >
-                    <img src="./images/iconnv_nanodb_512x512.jpg" width="120" height="120">
-                    <h3 class="mb-3 mt-0">NanoDB</h3>
-                    <p class="feature-card-desc">Multimodal vector database that uses embeddings for txt2img and img2img similarity search</p>
-                    <p class="nv-teaser-text-link">Learn More <i class="fa-solid fa-angle-right"></i></p>
-                </a>
-            </div>
-            <div class="col-lg-3 col-sm-6 mb-4 feature-box">
-                <a href="tutorial_whisper.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height" >
-                    <img src="./images/iconnv_audio-generation_512x512.jpg" width="120" height="120">
-                    <h3 class="mb-3 mt-0">Whisper</h3>
-                    <p class="feature-card-desc">Run OpenAI's Whisper model to transcribe audio</p>
-                    <p class="nv-teaser-text-link">Learn More <i class="fa-solid fa-angle-right"></i></p>
-                </a>
-            </div>
-            <div class="col-lg-3 col-sm-6 mb-4 feature-box">
-                <a href="tutorial_llamaspeak.html" class="bg-white shadow padding-feature-box-item text-center d-block match-height" >
-                    <img src="./images/iconnv_llamaspeak_512x512.jpg" width="120" height="120">
-                    <h3 class="mb-3 mt-0">Llamaspeak</h3>
-                    <p class="feature-card-desc">Live interaction with Llama LLM using NVIDIA Riva AST/TTS</p>
-                    <p class="nv-teaser-text-link">Learn More <i class="fa-solid fa-angle-right"></i></p>
-                </a>
-            </div>
-        </div>
+   </div>
+  </section>
+  <!-- feature-box -->
+  <section class="section">
+   <div class="top-hr">
+    <div class="row justify-content-center">
+     <div class="col-12 text-center">
+      <h2 class="section-title">
+       <a href="tutorial-intro.html">
+        Check out our tutorials
+       </a>
+      </h2>
+     </div>
+     <!-- feature-box-item -->
+     <div class="col-lg-3 col-sm-6 mb-4 feature-box">
+      <a class="bg-white shadow padding-feature-box-item text-center d-block match-height" href="tutorial_text-generation.html">
+       <img height="120" src="./images/iconnv_text-generation_512x512.jpg" width="120"/>
+       <h3 class="mb-3 mt-0">
+        Text Generation
+       </h3>
+       <p class="feature-card-desc">
+        Run LLM-based chat bot on Jetson
+       </p>
+       <p class="nv-teaser-text-link">
+        Learn More
+        <i class="fa-solid fa-angle-right">
+        </i>
+       </p>
+      </a>
+     </div>
+     <div class="col-lg-3 col-sm-6 mb-4 feature-box">
+      <a class="bg-white shadow padding-feature-box-item text-center d-block match-height" href="tutorial_llava.html">
+       <img height="120" src="./images/iconnv_text-vision_512x512.jpg" width="120"/>
+       <h3 class="mb-3 mt-0">
+        Text + Vision
+       </h3>
+       <p class="feature-card-desc">
+        Run multimodal Vision-Language models to give your AI access to vision
+       </p>
+       <p class="nv-teaser-text-link">
+        Learn More
+        <i class="fa-solid fa-angle-right">
+        </i>
+       </p>
+      </a>
+     </div>
+     <div class="col-lg-3 col-sm-6 mb-4 feature-box">
+      <a class="bg-white shadow padding-feature-box-item text-center d-block match-height" href="tutorial_stable-diffusion.html">
+       <img height="120" src="./images/iconnv_image-generation_512x512.jpg" width="120"/>
+       <h3 class="mb-3 mt-0">
+        Image Generation
+       </h3>
+       <p class="feature-card-desc">
+        Run diffusion models to generate stunning images interactively on Jetson
+       </p>
+       <p class="nv-teaser-text-link">
+        Learn More
+        <i class="fa-solid fa-angle-right">
+        </i>
+       </p>
+      </a>
+     </div>
+     <div class="col-lg-3 col-sm-6 mb-4 feature-box">
+      <a class="bg-white shadow padding-feature-box-item text-center d-block match-height" href="tutorial_distillation.html">
+       <img height="120" src="./images/iconnv_distillation_512x512.jpg" width="120"/>
+       <h3 class="mb-3 mt-0">
+        Distillation
+       </h3>
+       <p class="feature-card-desc">
+        Learn a technique to bring the power of a large foundation model to Jetson
+       </p>
+       <p class="nv-teaser-text-link">
+        Learn More
+        <i class="fa-solid fa-angle-right">
+        </i>
+       </p>
+      </a>
+     </div>
+     <div class="col-lg-3 col-sm-6 mb-4 feature-box">
+      <a class="bg-white shadow padding-feature-box-item text-center d-block match-height" href="vit/index.html">
+       <img height="120" src="./images/iconnv_nanosam_512x512.jpg" width="120"/>
+       <h3 class="mb-3 mt-0">
+        Vision Transformer (ViT)
+       </h3>
+       <p class="feature-card-desc">
+        Vision Transformer examples, with models optimized to run in realtime on Jetson
+       </p>
+       <p class="nv-teaser-text-link">
+        Learn More
+        <i class="fa-solid fa-angle-right">
+        </i>
+       </p>
+      </a>
+     </div>
+     <div class="col-lg-3 col-sm-6 mb-4 feature-box">
+      <a class="bg-white shadow padding-feature-box-item text-center d-block match-height" href="tutorial_nanodb.html">
+       <img height="120" src="./images/iconnv_nanodb_512x512.jpg" width="120"/>
+       <h3 class="mb-3 mt-0">
+        NanoDB
+       </h3>
+       <p class="feature-card-desc">
+        Multimodal vector database that uses embeddings for txt2img and img2img similarity search
+       </p>
+       <p class="nv-teaser-text-link">
+        Learn More
+        <i class="fa-solid fa-angle-right">
+        </i>
+       </p>
+      </a>
+     </div>
+     <div class="col-lg-3 col-sm-6 mb-4 feature-box">
+      <a class="bg-white shadow padding-feature-box-item text-center d-block match-height" href="tutorial_whisper.html">
+       <img height="120" src="./images/iconnv_audio-generation_512x512.jpg" width="120"/>
+       <h3 class="mb-3 mt-0">
+        Whisper
+       </h3>
+       <p class="feature-card-desc">
+        Run OpenAI's Whisper model to transcribe audio
+       </p>
+       <p class="nv-teaser-text-link">
+        Learn More
+        <i class="fa-solid fa-angle-right">
+        </i>
+       </p>
+      </a>
+     </div>
+     <div class="col-lg-3 col-sm-6 mb-4 feature-box">
+      <a class="bg-white shadow padding-feature-box-item text-center d-block match-height" href="tutorial_llamaspeak.html">
+       <img height="120" src="./images/iconnv_llamaspeak_512x512.jpg" width="120"/>
+       <h3 class="mb-3 mt-0">
+        Llamaspeak
+       </h3>
+       <p class="feature-card-desc">
+        Live interaction with Llama LLM using NVIDIA Riva AST/TTS
+       </p>
+       <p class="nv-teaser-text-link">
+        Learn More
+        <i class="fa-solid fa-angle-right">
+        </i>
+       </p>
+      </a>
+     </div>
     </div>
-</section>
-<!-- /feature-box -->
-
-
-<!-- feature-box -->
-<section class="section-gray">
-    <div class="top-hr">
-        <div class="row justify-content-center">
-            <div class="col-12 text-center">
-                <h2 class="section-title"><a href="benchmarks.html">Benchmarks</a></h2>
-            </div>
-            <!-- feature-box-item -->
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <a href="benchmarks.html#large-language-models-llm" class="padding-graph bg-white shadow text-center d-block match-height" style="height: 280px;">
-                    <img src="./images/graph_llm-text-generation.svg" style="width: 100%; height: 100%; object-fit:cover"></img>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <a href="benchmarks.html#vision-language-models-vlm" class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height" style="height: 280px;">
-                    <img src="./images/graph_vlm-text-generation.svg" style="width: 100%; height: 100%; object-fit:cover"></img>
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <a href="benchmarks.html#vision-transformers-vit" class="padding-graph bg-white shadow text-center d-block match-height" style="height: 280px;">
-                    <img src="./images/graph_vit-vision-transformers.svg" style="width: 100%; height: 100%; object-fit:cover"></img>
-                </a>
-            </div>
-        <a class="nv-teaser-text-link" href="benchmarks.html">Learn More <i class="fa-solid fa-angle-right"></i></a>
-        </div>
+   </div>
+  </section>
+  <!-- /feature-box -->
+  <!-- feature-box -->
+  <section class="section-gray">
+   <div class="top-hr">
+    <div class="row justify-content-center">
+     <div class="col-12 text-center">
+      <h2 class="section-title">
+       <a href="benchmarks.html">
+        Benchmarks
+       </a>
+      </h2>
+     </div>
+     <!-- feature-box-item -->
+     <div class="col-lg-4 col-sm-6 mb-4">
+      <a class="padding-graph bg-white shadow text-center d-block match-height" href="benchmarks.html#large-language-models-llm" style="height: 280px;">
+       <img src="./images/graph_llm-text-generation.svg" style="width: 100%; height: 100%; object-fit:cover"/>
+      </a>
+     </div>
+     <div class="col-lg-4 col-sm-6 mb-4">
+      <a class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height" href="benchmarks.html#vision-language-models-vlm" style="height: 280px;">
+       <img src="./images/graph_vlm-text-generation.svg" style="width: 100%; height: 100%; object-fit:cover"/>
+      </a>
+     </div>
+     <div class="col-lg-4 col-sm-6 mb-4">
+      <a class="padding-graph bg-white shadow text-center d-block match-height" href="benchmarks.html#vision-transformers-vit" style="height: 280px;">
+       <img src="./images/graph_vit-vision-transformers.svg" style="width: 100%; height: 100%; object-fit:cover"/>
+      </a>
+     </div>
+     <a class="nv-teaser-text-link" href="benchmarks.html">
+      Learn More
+      <i class="fa-solid fa-angle-right">
+      </i>
+     </a>
     </div>
-</section>
-<!-- /feature-box -->
-
-
-<!-- feature-box -->
-<section class="section">
-    <div class="top-hr">
-        <div class="row justify-content-center">
-            <div class="col-12 text-center">
-                <h2 class="section-title"><a href="community_articles.html">Community Projects</a></h2>
-            </div>
-            <!-- feature-box-item -->
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <a href="community_articles.html#daves-armoury-bringing-glados-to-life-with-robotics-and-ai-2-8-2024" class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height" width="415" height="280" target="_blank">
-                  <iframe src="https://www.youtube.com/embed/yNcKTZsHyfA" title="Bringing GLaDOS to life with Robotics and AI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" width="390" height="257" allowfullscreen></iframe>
-                  Dave's Armoury - Bringing GLaDOS to Life with Robotics and AI
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <a href="community_articles.html#hackster-ai-powered-application-for-the-blind-and-visually-impaired-12-13-2023" class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height" width="415px" height="280" target="_blank">
-                  <img src="https://hackster.imgix.net/uploads/attachments/1683310/_KUakkgQR2i.blob?auto=compress%2Cformat&w=390&h=257&fit=min" title="AI-Powered Application for the Blind and Visually Impaired"></img>
-                  Nurgaliyev Shakhizat - Vision2Audio: Blind Assistant Device
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <a href="community_articles.html#hackster-clearwater-underwater-image-enhancement-with-generative-ai-2-16-2024" class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height" width="415px" height="280" target="_blank">
-                  <img src="https://hackster.imgix.net/uploads/attachments/1685447/untitled_video_-_made_with_clipchamp_(1)_iHRjaZTew3.gif" width="390" height="257" title="ClearWater: Underwater Image Enhancement with Generative AI"></img>
-                  Vy Pham - ClearWater: Underwater Image Enhancement with Generative AI
-                </a>
-            </div>
-            <br/>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <a href="community_articles.html#hackster-seeed-studios-local-voice-chatbot-puts-a-speech-recognizing-llama-2-llm-on-your-jetson-2-7-2024" class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height" width="415" height="280" target="_blank">
-                  <iframe src="https://www.youtube.com/embed/Nc3D-qITDoU" title="Local Voice Chatbot: Deploy Riva and Llama2 on reComputer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" width="390" height="257" allowfullscreen></iframe>
-                  Seeed Studio - Local Voice Chatbot: Deploy Riva and Llama2 on Jetson
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <a href="community_articles.html#github-japanese-nmt-translation-for-stable-diffusion-2-23-2024" class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height" width="415px" height="280" target="_blank">
-                  <img src="./images/japanese-stable-diffusion.jpg" width="390" height="257" title="Japanese NMT Translation for Stable Diffusion"></img>
-                  Toshihiko Aoki - Japanese NMT Translation for Stable Diffusion
-                </a>
-            </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <a href="community_articles.html#nvidia-bringing-generative-ai-to-life-with-nvidia-jetson-11-7-2023" class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height" width="415" height="280" target="_blank">
-                  <iframe src="https://www.youtube.com/embed/6mCFzDatGGc" title="Bringing Generative AI to Life with NVIDIA Jetson" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" width="390" height="257" allowfullscreen></iframe>
-                  NVIDIA Webinar - Bringing Generative AI to Life with NVIDIA Jetson 
-                </a>
-            </div>
-        <a class="nv-teaser-text-link" href="community_articles.html">Learn More <i class="fa-solid fa-angle-right"></i></a>
-        </div>
+   </div>
+  </section>
+  <!-- /feature-box -->
+  <!-- feature-box -->
+  <section class="section">
+   <div class="top-hr">
+    <div class="row justify-content-center">
+     <div class="col-12 text-center">
+      <h2 class="section-title">
+       <a href="community_articles.html">
+        Community Projects
+       </a>
+      </h2>
+     </div>
+     <!-- feature-box-item -->
+     <div class="col-lg-4 col-sm-6 mb-4">
+      <a class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height" height="280" href="community_articles.html#daves-armoury-bringing-glados-to-life-with-robotics-and-ai-2-8-2024" target="_blank" width="415">
+       <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="257" src="https://www.youtube.com/embed/yNcKTZsHyfA" title="Bringing GLaDOS to life with Robotics and AI" width="390">
+       </iframe>
+       Dave's Armoury - Bringing GLaDOS to Life with Robotics and AI
+      </a>
+     </div>
+     <div class="col-lg-4 col-sm-6 mb-4">
+      <a class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height" height="280" href="community_articles.html#hackster-ai-powered-application-for-the-blind-and-visually-impaired-12-13-2023" target="_blank" width="415px">
+       <img src="https://hackster.imgix.net/uploads/attachments/1683310/_KUakkgQR2i.blob?auto=compress%2Cformat&amp;w=390&amp;h=257&amp;fit=min" title="AI-Powered Application for the Blind and Visually Impaired"/>
+       Nurgaliyev Shakhizat - Vision2Audio: Blind Assistant Device
+      </a>
+     </div>
+     <div class="col-lg-4 col-sm-6 mb-4">
+      <a class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height" height="280" href="community_articles.html#hackster-clearwater-underwater-image-enhancement-with-generative-ai-2-16-2024" target="_blank" width="415px">
+       <img height="257" src="https://hackster.imgix.net/uploads/attachments/1685447/untitled_video_-_made_with_clipchamp_(1)_iHRjaZTew3.gif" title="ClearWater: Underwater Image Enhancement with Generative AI" width="390"/>
+       Vy Pham - ClearWater: Underwater Image Enhancement with Generative AI
+      </a>
+     </div>
+     <br/>
+     <div class="col-lg-4 col-sm-6 mb-4">
+      <a class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height" height="280" href="community_articles.html#hackster-seeed-studios-local-voice-chatbot-puts-a-speech-recognizing-llama-2-llm-on-your-jetson-2-7-2024" target="_blank" width="415">
+       <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="257" src="https://www.youtube.com/embed/Nc3D-qITDoU" title="Local Voice Chatbot: Deploy Riva and Llama2 on reComputer" width="390">
+       </iframe>
+       Seeed Studio - Local Voice Chatbot: Deploy Riva and Llama2 on Jetson
+      </a>
+     </div>
+     <div class="col-lg-4 col-sm-6 mb-4">
+      <a class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height" height="280" href="community_articles.html#github-japanese-nmt-translation-for-stable-diffusion-2-23-2024" target="_blank" width="415px">
+       <img height="257" src="./images/japanese-stable-diffusion.jpg" title="Japanese NMT Translation for Stable Diffusion" width="390"/>
+       Toshihiko Aoki - Japanese NMT Translation for Stable Diffusion
+      </a>
+     </div>
+     <div class="col-lg-4 col-sm-6 mb-4">
+      <a class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height" height="280" href="community_articles.html#nvidia-bringing-generative-ai-to-life-with-nvidia-jetson-11-7-2023" target="_blank" width="415">
+       <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="257" src="https://www.youtube.com/embed/6mCFzDatGGc" title="Bringing Generative AI to Life with NVIDIA Jetson" width="390">
+       </iframe>
+       NVIDIA Webinar - Bringing Generative AI to Life with NVIDIA Jetson
+      </a>
+     </div>
+     <a class="nv-teaser-text-link" href="community_articles.html">
+      Learn More
+      <i class="fa-solid fa-angle-right">
+      </i>
+     </a>
     </div>
-</section>
-<!-- /feature-box -->
-
-
-<script type="text/javascript">
-function nat_at_top() {
+   </div>
+  </section>
+  <!-- /feature-box -->
+  <script type="text/javascript">
+   function nat_at_top() {
     var navtab  = document.getElementsByClassName('md-tabs');
     navtab[0].classList.add("topped");	
 }
@@ -663,22 +754,67 @@ window.addEventListener('scroll', function(){
     console.log(navtab);
     navtab[0].classList.toggle("topped", scroll < navtab[0].offsetHeight);	
 });
-</script>
-
-{% endblock %}
+  </script>
+  {% endblock %}
 {% block content %}
 
 {% endblock %}
 {% block footer %}
-<footer class="md-footer">
-  <div class="md-footer-meta md-typeset">
+  <footer class="md-footer">
+   <div class="md-footer-meta md-typeset">
     <div class="md-grid">
-      <div class="md-copyright">
-        <div class="md-copyright__highlight">
-          <ul class="global-footer__links"><li><a href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/" target="_blank">Privacy Policy</a></li><li> <a href="https://www.nvidia.com/en-us/privacy-center/" target="_blank">Manage My Privacy</a> </li> <li> <a href="https://www.nvidia.com/en-us/preferences/email-preferences/" target="_blank">Do Not Sell or Share My Data</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/legal-info/" target="_blank">Legal</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/accessibility/" target="_blank">Accessibility</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/company-policies/" target="_self">Corporate Policies</a> </li> <li> <a href="https://www.nvidia.com/en-us/product-security/" target="_blank">Product Security</a> </li> <li> <a href="https://www.nvidia.com/en-us/contact/" target="_blank">Contact</a> </li> </ul><div class="global-footer__copyright">Copyright © 2024 NVIDIA Corporation</div>
-        </div>
-      </div>        
+     <div class="md-copyright">
+      <div class="md-copyright__highlight">
+       <ul class="global-footer__links">
+        <li>
+         <a href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/" target="_blank">
+          Privacy Policy
+         </a>
+        </li>
+        <li>
+         <a href="https://www.nvidia.com/en-us/privacy-center/" target="_blank">
+          Manage My Privacy
+         </a>
+        </li>
+        <li>
+         <a href="https://www.nvidia.com/en-us/preferences/email-preferences/" target="_blank">
+          Do Not Sell or Share My Data
+         </a>
+        </li>
+        <li>
+         <a href="https://www.nvidia.com/en-us/about-nvidia/legal-info/" target="_blank">
+          Legal
+         </a>
+        </li>
+        <li>
+         <a href="https://www.nvidia.com/en-us/about-nvidia/accessibility/" target="_blank">
+          Accessibility
+         </a>
+        </li>
+        <li>
+         <a href="https://www.nvidia.com/en-us/about-nvidia/company-policies/" target="_self">
+          Corporate Policies
+         </a>
+        </li>
+        <li>
+         <a href="https://www.nvidia.com/en-us/product-security/" target="_blank">
+          Product Security
+         </a>
+        </li>
+        <li>
+         <a href="https://www.nvidia.com/en-us/contact/" target="_blank">
+          Contact
+         </a>
+        </li>
+       </ul>
+       <div class="global-footer__copyright">
+        Copyright © 2024 NVIDIA Corporation
+       </div>
+      </div>
+     </div>
     </div>
-  </div>
-</footer>
-{% endblock %}
+   </div>
+  </footer>
+  {% endblock %}
+ </body>
+</html>

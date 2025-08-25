@@ -1,83 +1,86 @@
----
+<html>
+ <body>
+  ---
 title: "Download the generated zip file"
 layout: default
 section: example
 ---
-
-<h2>The FileSaver API</h2>
-<ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active">
-        <a href="#file-saver-result" aria-controls="file-saver-result" role="tab" data-toggle="tab">
-            result
-        </a>
-    </li>
-    <li role="presentation">
-        <a href="#file-saver-js" aria-controls="file-saver-js" role="tab" data-toggle="tab">
-            js code
-        </a>
-    </li>
-    <li role="presentation">
-        <a href="#file-saver-html" aria-controls="file-saver-html" role="tab" data-toggle="tab">
-            html code
-        </a>
-    </li>
-</ul>
-<div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="file-saver-result">
-        <div class="show-example">
-            {% include_relative download-zip-file.inc/blob.html %}
-        </div>
+  <h2>
+   The FileSaver API
+  </h2>
+  <ul class="nav nav-tabs" role="tablist">
+   <li class="active" role="presentation">
+    <a aria-controls="file-saver-result" data-toggle="tab" href="#file-saver-result" role="tab">
+     result
+    </a>
+   </li>
+   <li role="presentation">
+    <a aria-controls="file-saver-js" data-toggle="tab" href="#file-saver-js" role="tab">
+     js code
+    </a>
+   </li>
+   <li role="presentation">
+    <a aria-controls="file-saver-html" data-toggle="tab" href="#file-saver-html" role="tab">
+     html code
+    </a>
+   </li>
+  </ul>
+  <div class="tab-content">
+   <div class="tab-pane active" id="file-saver-result" role="tabpanel">
+    <div class="show-example">
+     {% include_relative download-zip-file.inc/blob.html %}
     </div>
-    <div role="tabpanel" class="tab-pane" id="file-saver-js">
-{% highlight js %}
+   </div>
+   <div class="tab-pane" id="file-saver-js" role="tabpanel">
+    {% highlight js %}
 {% include_relative download-zip-file.inc/blob.js %}
 {% endhighlight %}
-    </div>
-    <div role="tabpanel" class="tab-pane" id="file-saver-html">
-{% highlight html %}
+   </div>
+   <div class="tab-pane" id="file-saver-html" role="tabpanel">
+    {% highlight html %}
 {% include_relative download-zip-file.inc/blob.html %}
 {% endhighlight %}
+   </div>
+  </div>
+  <h2>
+   The data URL
+  </h2>
+  <ul class="nav nav-tabs" role="tablist">
+   <li class="active" role="presentation">
+    <a aria-controls="data-uri-result" data-toggle="tab" href="#data-uri-result" role="tab">
+     result
+    </a>
+   </li>
+   <li role="presentation">
+    <a aria-controls="data-uri-js" data-toggle="tab" href="#data-uri-js" role="tab">
+     js code
+    </a>
+   </li>
+   <li role="presentation">
+    <a aria-controls="data-uri-html" data-toggle="tab" href="#data-uri-html" role="tab">
+     html code
+    </a>
+   </li>
+  </ul>
+  <div class="tab-content">
+   <div class="tab-pane active" id="data-uri-result" role="tabpanel">
+    <div class="show-example">
+     {% include_relative download-zip-file.inc/data_uri.html %}
     </div>
-</div>
-
-<h2>The data URL</h2>
-<ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active">
-        <a href="#data-uri-result" aria-controls="data-uri-result" role="tab" data-toggle="tab">
-            result
-        </a>
-    </li>
-    <li role="presentation">
-        <a href="#data-uri-js" aria-controls="data-uri-js" role="tab" data-toggle="tab">
-            js code
-        </a>
-    </li>
-    <li role="presentation">
-        <a href="#data-uri-html" aria-controls="data-uri-html" role="tab" data-toggle="tab">
-            html code
-        </a>
-    </li>
-</ul>
-<div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="data-uri-result">
-        <div class="show-example">
-            {% include_relative download-zip-file.inc/data_uri.html %}
-        </div>
-    </div>
-    <div role="tabpanel" class="tab-pane" id="data-uri-js">
-{% highlight js %}
+   </div>
+   <div class="tab-pane" id="data-uri-js" role="tabpanel">
+    {% highlight js %}
 {% include_relative download-zip-file.inc/data_uri.js %}
 {% endhighlight %}
-    </div>
-    <div role="tabpanel" class="tab-pane" id="data-uri-html">
-{% highlight html %}
+   </div>
+   <div class="tab-pane" id="data-uri-html" role="tabpanel">
+    {% highlight html %}
 {% include_relative download-zip-file.inc/data_uri.html %}
 {% endhighlight %}
-    </div>
-</div>
-
-<script type="text/javascript">
-(function () {
+   </div>
+  </div>
+  <script type="text/javascript">
+   (function () {
     // Blob
     if (JSZip.support.blob) {
         {% include_relative download-zip-file.inc/blob.js %}
@@ -90,4 +93,6 @@ section: example
     // data URI
     {% include_relative download-zip-file.inc/data_uri.js %}
 })();
-</script>
+  </script>
+ </body>
+</html>

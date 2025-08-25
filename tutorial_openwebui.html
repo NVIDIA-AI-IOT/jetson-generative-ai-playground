@@ -1,3113 +1,1837 @@
 <!-- Elements added to main will be displayed on all pages -->
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-        <meta name="description" content="Showcasing generative AI projects that run on Jetson">
-      
-      
-      
-      
-        <link rel="prev" href="tutorial_ollama.html">
-      
-      
-        <link rel="next" href="tutorial_llamaspeak.html">
-      
-      
-      <link rel="icon" href="images/nvidia-favicon-rgb-16x16px@2x.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.17">
-    
-    
-      
-        <title>Open WebUI - NVIDIA Jetson AI Lab</title>
-      
-    
-    
-      <link rel="stylesheet" href="assets/stylesheets/main.7e37652d.min.css">
-      
-        
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
-      
-      
-
-
-    
-    
-      
-    
-    
-      
-        
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=NVIDIA-NALA:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"NVIDIA-NALA";--md-code-font:"Roboto Mono"}</style>
-      
-    
-    
-      <link rel="stylesheet" href="css/colors.css">
-    
-      <link rel="stylesheet" href="css/extra.css">
-    
-      <link rel="stylesheet" href="css/nvidia-font.css">
-    
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-    
-      
-  
-
-
-  
-  
-
-<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SXH8S4Y8RW"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SXH8S4Y8RW",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SXH8S4Y8RW",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
-  
-    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
-  
-
-    
-    
-    
-  </head>
-  
-  
-    
-    
-      
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="nv-black-green" data-md-color-primary="nv-black-green" data-md-color-accent="nv-black-green">
-  
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#tutorial-open-webui" class="md-skip">
-          Skip to content
-        </a>
-      
-    </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-    
-      
-
-  
-
-<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="index.html" title="NVIDIA Jetson AI Lab" class="md-header__button md-logo" aria-label="NVIDIA Jetson AI Lab" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
-
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="Showcasing generative AI projects that run on Jetson" name="description"/>
+  <link href="tutorial_ollama.html" rel="prev"/>
+  <link href="tutorial_llamaspeak.html" rel="next"/>
+  <link href="images/nvidia-favicon-rgb-16x16px@2x.png" rel="icon"/>
+  <meta content="mkdocs-1.6.1, mkdocs-material-9.6.18" name="generator"/>
+  <title>
+   Open WebUI - NVIDIA Jetson AI Lab
+  </title>
+  <link href="assets/stylesheets/main.7e37652d.min.css" rel="stylesheet"/>
+  <link href="assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css?family=NVIDIA-NALA:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+  <style>
+   :root{--md-text-font:"NVIDIA-NALA";--md-code-font:"Roboto Mono"}
+  </style>
+  <link href="css/colors.css" rel="stylesheet"/>
+  <link href="css/extra.css" rel="stylesheet"/>
+  <link href="css/nvidia-font.css" rel="stylesheet"/>
+  <script>
+   __md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}
+  </script>
+  <script id="__analytics">
+   function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SXH8S4Y8RW"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SXH8S4Y8RW",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SXH8S4Y8RW",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}
+  </script>
+  <script>
+   "undefined"!=typeof __md_analytics&&__md_analytics()
+  </script>
+ </head>
+ <body data-md-color-accent="nv-black-green" data-md-color-primary="nv-black-green" data-md-color-scheme="nv-black-green" dir="ltr">
+  <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+  <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+  <label class="md-overlay" for="__drawer">
+  </label>
+  <div data-md-component="skip">
+   <a class="md-skip" href="#tutorial-open-webui">
+    Skip to content
+   </a>
+  </div>
+  <div data-md-component="announce">
+  </div>
+  <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+   <nav aria-label="Header" class="md-header__inner md-grid">
+    <a aria-label="NVIDIA Jetson AI Lab" class="md-header__button md-logo" data-md-component="logo" href="index.html" title="NVIDIA Jetson AI Lab">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54">
+      </path>
+     </svg>
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z">
+      </path>
+     </svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
-            NVIDIA Jetson AI Lab
-          </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
-            
-              Open WebUI
-            
-          </span>
-        </div>
+     <div class="md-header__ellipsis">
+      <div class="md-header__topic">
+       <span class="md-ellipsis">
+        NVIDIA Jetson AI Lab
+       </span>
       </div>
+      <div class="md-header__topic" data-md-component="header-topic">
+       <span class="md-ellipsis">
+        Open WebUI
+       </span>
+      </div>
+     </div>
     </div>
-    
-      
-        <form class="md-header__option" data-md-component="palette">
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="nv-black-green" data-md-color-primary="nv-black-green" data-md-color-accent="nv-black-green"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
-    
-  
-</form>
-      
-    
-    
-      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
-    
-    
-    
-      
-      
-        <label class="md-header__button md-icon" for="__search">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        </label>
-        <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-        </button>
-      </nav>
-      
+    <form class="md-header__option" data-md-component="palette">
+     <input aria-hidden="true" class="md-option" data-md-color-accent="nv-black-green" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="nv-black-green" data-md-color-scheme="nv-black-green" id="__palette_0" name="__palette" type="radio"/>
     </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+    <script>
+     var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}
+    </script>
+    <label class="md-header__button md-icon" for="__search">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5">
+      </path>
+     </svg>
+    </label>
+    <div class="md-search" data-md-component="search" role="dialog">
+     <label class="md-search__overlay" for="__search">
+     </label>
+     <div class="md-search__inner" role="search">
+      <form class="md-search__form" name="search">
+       <input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+       <label class="md-search__icon md-icon" for="__search">
+        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5">
+         </path>
+        </svg>
+        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z">
+         </path>
+        </svg>
+       </label>
+       <nav aria-label="Search" class="md-search__options">
+        <button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+         <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+          </path>
+         </svg>
+        </button>
+       </nav>
+      </form>
+      <div class="md-search__output">
+       <div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
         <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
+         <div class="md-search-result__meta">
+          Initializing search
+         </div>
+         <ol class="md-search-result__list" role="presentation">
+         </ol>
         </div>
+       </div>
       </div>
+     </div>
     </div>
-  </div>
-</div>
-      
-    
-    
-  </nav>
-  
-    
-      
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="index.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Home
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="models.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Models
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-    
-  
-  
-    
-    
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="tutorial-intro.html" class="md-tabs__link">
-          
-  
-  
-    
-  
-  Tutorials
-
-        </a>
+   </nav>
+   <nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+    <div class="md-grid">
+     <ul class="md-tabs__list">
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="index.html">
+        Home
+       </a>
       </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="benchmarks.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Benchmarks
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="community_articles.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Projects
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="research.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Research Group
-
-      </a>
-    </li>
-  
-
-      
-    </ul>
-  </div>
-</nav>
-    
-  
-</header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-
-  
-
-
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href="index.html" title="NVIDIA Jetson AI Lab" class="md-nav__button md-logo" aria-label="NVIDIA Jetson AI Lab" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
-
-    </a>
-    NVIDIA Jetson AI Lab
-  </label>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="index.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Home
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="models.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Models
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-        
-        
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    Tutorials
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            Tutorials
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial-intro.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Introduction
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    Jetson Setup Guide
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_2">
-            <span class="md-nav__icon md-icon"></span>
-            Jetson Setup Guide
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="initial_setup_jon.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    🚀 Initial Setup Guide - Jetson Orin Nano
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="initial_setup_jon_sdkm.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    🛸 Initial Setup (SDK Manager method)
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tips_ssd-docker.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    🔖 SSD + Docker
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tips_ram-optimization.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    🔖 Memory optimization
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="hackathon.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    🏆 Hackathon Guide
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    AI Microservices
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_3">
-            <span class="md-nav__icon md-icon"></span>
-            AI Microservices
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorials/microservices_intro.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Microservices Intro
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorials/microservices_vlm.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Microservices for VLM
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    Text (LLM)
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3_4">
-            <span class="md-nav__icon md-icon"></span>
-            Text (LLM)
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_text-generation.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    text-generation-webui
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_ollama.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Ollama
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Open WebUI
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="tutorial_openwebui.html" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    Open WebUI
-    
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#ollama-server" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ollama Server
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ollama-backend" class="md-nav__link">
-    <span class="md-ellipsis">
-      🦙 Ollama backend
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🦙 Ollama backend">
-      <ul class="md-nav__list">
-        
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="models.html">
+        Models
+       </a>
+      </li>
+      <li class="md-tabs__item md-tabs__item--active">
+       <a class="md-tabs__link" href="tutorial-intro.html">
+        Tutorials
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="benchmarks.html">
+        Benchmarks
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="community_articles.html">
+        Projects
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="research.html">
+        Research Group
+       </a>
+      </li>
+     </ul>
+    </div>
+   </nav>
+  </header>
+  <div class="md-container" data-md-component="container">
+   <main class="md-main" data-md-component="main">
+    <div class="md-main__inner md-grid">
+     <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+         <label class="md-nav__title" for="__drawer">
+          <a aria-label="NVIDIA Jetson AI Lab" class="md-nav__button md-logo" data-md-component="logo" href="index.html" title="NVIDIA Jetson AI Lab">
+           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54">
+            </path>
+           </svg>
+          </a>
+          NVIDIA Jetson AI Lab
+         </label>
+         <ul class="md-nav__list" data-md-scrollfix="">
           <li class="md-nav__item">
-  <a href="#case-2-ollama-container" class="md-nav__link">
-    <span class="md-ellipsis">
-      Case 2: Ollama container
-    </span>
-  </a>
-  
-</li>
-        
+           <a class="md-nav__link" href="index.html">
+            <span class="md-ellipsis">
+             Home
+            </span>
+           </a>
+          </li>
           <li class="md-nav__item">
-  <a href="#case-3-docker-compose-to-launch-both-at-the-same-time" class="md-nav__link">
-    <span class="md-ellipsis">
-      Case 3: Docker Compose to launch both at the same time
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#basic-usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      Basic Usage
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Basic Usage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-access-through-web-browser" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 1. Access through Web browser
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-complete-the-account-creation-process" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 2. Complete the Account Creation Process
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-download-an-slm-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 3. Download an SLM model
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-4-start-interacting-with-the-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 4. Start interacting with the model
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#usage-rag" class="md-nav__link">
-    <span class="md-ellipsis">
-      Usage - RAG
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Usage - RAG">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-create-a-knowledge-base" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 1. Create a knowledge base
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-add-files-to-the-knowledge-base" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 2. Add files to the knowledge base
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-create-a-custom-model-with-knowledge-base-access" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 3. Create a custom model with knowledge base access
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-4-configure-the-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 4. Configure the model
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-5-chat-with-your-custom-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 5. Chat with your custom model
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
-    <span class="md-ellipsis">
-      Troubleshooting
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Troubleshooting">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#open-web-ui-is-not-responding" class="md-nav__link">
-    <span class="md-ellipsis">
-      Open Web UI is not responding
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-to-create-a-new-account-for-open-webui-if-you-forgot-your-password" class="md-nav__link">
-    <span class="md-ellipsis">
-      How to Create a New Account for Open WebUI (If You Forgot Your Password)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="How to Create a New Account for Open WebUI (If You Forgot Your Password)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#delete-the-existing-open-webui-data-folder" class="md-nav__link">
-    <span class="md-ellipsis">
-      Delete the existing Open WebUI data folder:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#re-run-the-docker-container" class="md-nav__link">
-    <span class="md-ellipsis">
-      Re-run the Docker container
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-to-shut-down-open-webui" class="md-nav__link">
-    <span class="md-ellipsis">
-      How to Shut Down Open WebUI?
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#optional-setup-mlc-backend" class="md-nav__link">
-    <span class="md-ellipsis">
-      Optional Setup: 🤖 MLC backend
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Optional Setup: 🤖 MLC backend">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#case-1-separate-docker-run-commands" class="md-nav__link">
-    <span class="md-ellipsis">
-      Case 1: Separate docker run commands
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#case-2-docker-compose" class="md-nav__link">
-    <span class="md-ellipsis">
-      Case 2: Docker compose
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_llamaspeak.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    llamaspeak
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_nano-llm.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    NanoLLM
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tensorrt_llm.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    TensorRT-LLM
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_slm.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Small LLM (SLM)
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_api-examples.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    API Examples
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    Text + Vision (VLM)
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_5">
-            <span class="md-nav__icon md-icon"></span>
-            Text + Vision (VLM)
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_llava.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    LLaVA
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_live-llava.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Live LLaVA
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_nano-vlm.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    NanoVLM
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="llama_vlm.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Llama 3.2 Vision
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="agent_studio.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Agent Studio
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_6" >
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="vit/index.html" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    Vision Transformers (ViT)
-    
-  </span>
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
+           <a class="md-nav__link" href="models.html">
+            <span class="md-ellipsis">
+             Models
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+           <input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            <span class="md-ellipsis">
+             Tutorials
+            </span>
+            <span class="md-nav__icon md-icon">
+            </span>
+           </label>
+           <nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+            <label class="md-nav__title" for="__nav_3">
+             <span class="md-nav__icon md-icon">
+             </span>
+             Tutorials
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="tutorial-intro.html">
+               <span class="md-ellipsis">
+                Introduction
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" id="__nav_3_2" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+               <span class="md-ellipsis">
+                Jetson Setup Guide
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
               </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_6">
-            <span class="md-nav__icon md-icon"></span>
-            Vision Transformers (ViT)
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="vit/tutorial_efficientvit.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    EfficientViT
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="vit/tutorial_nanoowl.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    NanoOWL
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="vit/tutorial_nanosam.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    NanoSAM
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="vit/tutorial_sam.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    SAM
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="vit/tutorial_tam.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    TAM
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_distillation.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    📑 Knowledge Distillation
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_7" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    Robotics & Embodiment
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_7">
-            <span class="md-nav__icon md-icon"></span>
-            Robotics & Embodiment
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="cosmos.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Cosmos
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="genesis.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Genesis 🆕
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="lerobot.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    LeRobot
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="ros.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    ROS2 Nodes
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="openvla.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    OpenVLA
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="robopoint.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    RoboPoint 🆕
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_8" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    Image Generation
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_8">
-            <span class="md-nav__icon md-icon"></span>
-            Image Generation
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_comfyui_flux.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Flux & ComfyUI
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_stable-diffusion.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Stable Diffusion
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_stable-diffusion-xl.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Stable Diffusion XL
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="nerf.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    nerfstudio
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_9" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    RAG & Vector Database
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_9">
-            <span class="md-nav__icon md-icon"></span>
-            RAG & Vector Database
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_nanodb.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    NanoDB
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_llamaindex.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    LlamaIndex
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_jetson-copilot.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Jetson Copilot
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_10" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_10" id="__nav_3_10_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    SDK Integrations
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_10">
-            <span class="md-nav__icon md-icon"></span>
-            SDK Integrations
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_holoscan.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Holoscan SDK
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_jps.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Jetson Platform Services
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_gapi_workflows.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Gapi Workflows
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_gapi_microservices.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Gapi Micro Services
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_ultralytics.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Ultralytics YOLOv8
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_11" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_11" id="__nav_3_11_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    Audio
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_11_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_11">
-            <span class="md-nav__icon md-icon"></span>
-            Audio
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_whisper.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Whisper
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_audiocraft.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    AudioCraft
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tutorial_voicecraft.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    VoiceCraft
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="benchmarks.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Benchmarks
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="community_articles.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Projects
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="research.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Research Group
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-  </ul>
-</nav>
-                  </div>
-                </div>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_2_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_2">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Jetson Setup Guide
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="initial_setup_jon.html">
+                  <span class="md-ellipsis">
+                   🚀 Initial Setup Guide - Jetson Orin Nano
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="initial_setup_jon_sdkm.html">
+                  <span class="md-ellipsis">
+                   🛸 Initial Setup (SDK Manager method)
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tips_ssd-docker.html">
+                  <span class="md-ellipsis">
+                   🔖 SSD + Docker
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tips_ram-optimization.html">
+                  <span class="md-ellipsis">
+                   🔖 Memory optimization
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="hackathon.html">
+                  <span class="md-ellipsis">
+                   🏆 Hackathon Guide
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_3" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+               <span class="md-ellipsis">
+                AI Microservices
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_3_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_3">
+                <span class="md-nav__icon md-icon">
+                </span>
+                AI Microservices
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorials/microservices_intro.html">
+                  <span class="md-ellipsis">
+                   Microservices Intro
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorials/microservices_vlm.html">
+                  <span class="md-ellipsis">
+                   Microservices for VLM
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+              <input checked="" class="md-nav__toggle md-toggle" id="__nav_3_4" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+               <span class="md-ellipsis">
+                Text (LLM)
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="true" aria-labelledby="__nav_3_4_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_4">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Text (LLM)
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_text-generation.html">
+                  <span class="md-ellipsis">
+                   text-generation-webui
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_ollama.html">
+                  <span class="md-ellipsis">
+                   Ollama
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item md-nav__item--active">
+                 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+                 <label class="md-nav__link md-nav__link--active" for="__toc">
+                  <span class="md-ellipsis">
+                   Open WebUI
+                  </span>
+                  <span class="md-nav__icon md-icon">
+                  </span>
+                 </label>
+                 <a class="md-nav__link md-nav__link--active" href="tutorial_openwebui.html">
+                  <span class="md-ellipsis">
+                   Open WebUI
+                  </span>
+                 </a>
+                 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+                  <label class="md-nav__title" for="__toc">
+                   <span class="md-nav__icon md-icon">
+                   </span>
+                   Table of contents
+                  </label>
+                  <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#ollama-server">
+                     <span class="md-ellipsis">
+                      Ollama Server
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#ollama-backend">
+                     <span class="md-ellipsis">
+                      🦙 Ollama backend
+                     </span>
+                    </a>
+                    <nav aria-label="🦙 Ollama backend" class="md-nav">
+                     <ul class="md-nav__list">
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#case-2-ollama-container">
+                        <span class="md-ellipsis">
+                         Case 2: Ollama container
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#case-3-docker-compose-to-launch-both-at-the-same-time">
+                        <span class="md-ellipsis">
+                         Case 3: Docker Compose to launch both at the same time
+                        </span>
+                       </a>
+                      </li>
+                     </ul>
+                    </nav>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#basic-usage">
+                     <span class="md-ellipsis">
+                      Basic Usage
+                     </span>
+                    </a>
+                    <nav aria-label="Basic Usage" class="md-nav">
+                     <ul class="md-nav__list">
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#step-1-access-through-web-browser">
+                        <span class="md-ellipsis">
+                         Step 1. Access through Web browser
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#step-2-complete-the-account-creation-process">
+                        <span class="md-ellipsis">
+                         Step 2. Complete the Account Creation Process
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#step-3-download-an-slm-model">
+                        <span class="md-ellipsis">
+                         Step 3. Download an SLM model
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#step-4-start-interacting-with-the-model">
+                        <span class="md-ellipsis">
+                         Step 4. Start interacting with the model
+                        </span>
+                       </a>
+                      </li>
+                     </ul>
+                    </nav>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#usage-rag">
+                     <span class="md-ellipsis">
+                      Usage - RAG
+                     </span>
+                    </a>
+                    <nav aria-label="Usage - RAG" class="md-nav">
+                     <ul class="md-nav__list">
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#step-1-create-a-knowledge-base">
+                        <span class="md-ellipsis">
+                         Step 1. Create a knowledge base
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#step-2-add-files-to-the-knowledge-base">
+                        <span class="md-ellipsis">
+                         Step 2. Add files to the knowledge base
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#step-3-create-a-custom-model-with-knowledge-base-access">
+                        <span class="md-ellipsis">
+                         Step 3. Create a custom model with knowledge base access
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#step-4-configure-the-model">
+                        <span class="md-ellipsis">
+                         Step 4. Configure the model
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#step-5-chat-with-your-custom-model">
+                        <span class="md-ellipsis">
+                         Step 5. Chat with your custom model
+                        </span>
+                       </a>
+                      </li>
+                     </ul>
+                    </nav>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#troubleshooting">
+                     <span class="md-ellipsis">
+                      Troubleshooting
+                     </span>
+                    </a>
+                    <nav aria-label="Troubleshooting" class="md-nav">
+                     <ul class="md-nav__list">
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#open-web-ui-is-not-responding">
+                        <span class="md-ellipsis">
+                         Open Web UI is not responding
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#how-to-create-a-new-account-for-open-webui-if-you-forgot-your-password">
+                        <span class="md-ellipsis">
+                         How to Create a New Account for Open WebUI (If You Forgot Your Password)
+                        </span>
+                       </a>
+                       <nav aria-label="How to Create a New Account for Open WebUI (If You Forgot Your Password)" class="md-nav">
+                        <ul class="md-nav__list">
+                         <li class="md-nav__item">
+                          <a class="md-nav__link" href="#delete-the-existing-open-webui-data-folder">
+                           <span class="md-ellipsis">
+                            Delete the existing Open WebUI data folder:
+                           </span>
+                          </a>
+                         </li>
+                         <li class="md-nav__item">
+                          <a class="md-nav__link" href="#re-run-the-docker-container">
+                           <span class="md-ellipsis">
+                            Re-run the Docker container
+                           </span>
+                          </a>
+                         </li>
+                        </ul>
+                       </nav>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#how-to-shut-down-open-webui">
+                        <span class="md-ellipsis">
+                         How to Shut Down Open WebUI?
+                        </span>
+                       </a>
+                      </li>
+                     </ul>
+                    </nav>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#optional-setup-mlc-backend">
+                     <span class="md-ellipsis">
+                      Optional Setup: 🤖 MLC backend
+                     </span>
+                    </a>
+                    <nav aria-label="Optional Setup: 🤖 MLC backend" class="md-nav">
+                     <ul class="md-nav__list">
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#case-1-separate-docker-run-commands">
+                        <span class="md-ellipsis">
+                         Case 1: Separate docker run commands
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#case-2-docker-compose">
+                        <span class="md-ellipsis">
+                         Case 2: Docker compose
+                        </span>
+                       </a>
+                      </li>
+                     </ul>
+                    </nav>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_llamaspeak.html">
+                  <span class="md-ellipsis">
+                   llamaspeak
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_nano-llm.html">
+                  <span class="md-ellipsis">
+                   NanoLLM
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tensorrt_llm.html">
+                  <span class="md-ellipsis">
+                   TensorRT-LLM
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_slm.html">
+                  <span class="md-ellipsis">
+                   Small LLM (SLM)
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_api-examples.html">
+                  <span class="md-ellipsis">
+                   API Examples
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_5" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+               <span class="md-ellipsis">
+                Text + Vision (VLM)
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_5_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_5">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Text + Vision (VLM)
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_llava.html">
+                  <span class="md-ellipsis">
+                   LLaVA
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_live-llava.html">
+                  <span class="md-ellipsis">
+                   Live LLaVA
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_nano-vlm.html">
+                  <span class="md-ellipsis">
+                   NanoVLM
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="llama_vlm.html">
+                  <span class="md-ellipsis">
+                   Llama 3.2 Vision
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="agent_studio.html">
+                  <span class="md-ellipsis">
+                   Agent Studio
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_6" type="checkbox"/>
+              <div class="md-nav__link md-nav__container">
+               <a class="md-nav__link" href="vit/index.html">
+                <span class="md-ellipsis">
+                 Vision Transformers (ViT)
+                </span>
+               </a>
+               <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon">
+                </span>
+               </label>
               </div>
-            
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#ollama-server" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ollama Server
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ollama-backend" class="md-nav__link">
-    <span class="md-ellipsis">
-      🦙 Ollama backend
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🦙 Ollama backend">
-      <ul class="md-nav__list">
-        
+              <nav aria-expanded="false" aria-labelledby="__nav_3_6_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_6">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Vision Transformers (ViT)
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="vit/tutorial_efficientvit.html">
+                  <span class="md-ellipsis">
+                   EfficientViT
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="vit/tutorial_nanoowl.html">
+                  <span class="md-ellipsis">
+                   NanoOWL
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="vit/tutorial_nanosam.html">
+                  <span class="md-ellipsis">
+                   NanoSAM
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="vit/tutorial_sam.html">
+                  <span class="md-ellipsis">
+                   SAM
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="vit/tutorial_tam.html">
+                  <span class="md-ellipsis">
+                   TAM
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_distillation.html">
+                  <span class="md-ellipsis">
+                   📑 Knowledge Distillation
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_7" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+               <span class="md-ellipsis">
+                Robotics &amp; Embodiment
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_7_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_7">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Robotics &amp; Embodiment
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="cosmos.html">
+                  <span class="md-ellipsis">
+                   Cosmos
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="genesis.html">
+                  <span class="md-ellipsis">
+                   Genesis 🆕
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="lerobot.html">
+                  <span class="md-ellipsis">
+                   LeRobot
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="ros.html">
+                  <span class="md-ellipsis">
+                   ROS2 Nodes
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="openvla.html">
+                  <span class="md-ellipsis">
+                   OpenVLA
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="robopoint.html">
+                  <span class="md-ellipsis">
+                   RoboPoint 🆕
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" id="__nav_3_8" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+               <span class="md-ellipsis">
+                Image Generation
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_8_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_8">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Image Generation
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_comfyui_flux.html">
+                  <span class="md-ellipsis">
+                   Flux &amp; ComfyUI
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_stable-diffusion.html">
+                  <span class="md-ellipsis">
+                   Stable Diffusion
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_stable-diffusion-xl.html">
+                  <span class="md-ellipsis">
+                   Stable Diffusion XL
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="nerf.html">
+                  <span class="md-ellipsis">
+                   nerfstudio
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" id="__nav_3_9" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+               <span class="md-ellipsis">
+                RAG &amp; Vector Database
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_9_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_9">
+                <span class="md-nav__icon md-icon">
+                </span>
+                RAG &amp; Vector Database
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_nanodb.html">
+                  <span class="md-ellipsis">
+                   NanoDB
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_llamaindex.html">
+                  <span class="md-ellipsis">
+                   LlamaIndex
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_jetson-copilot.html">
+                  <span class="md-ellipsis">
+                   Jetson Copilot
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" id="__nav_3_10" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_10" id="__nav_3_10_label" tabindex="0">
+               <span class="md-ellipsis">
+                SDK Integrations
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_10_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_10">
+                <span class="md-nav__icon md-icon">
+                </span>
+                SDK Integrations
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_holoscan.html">
+                  <span class="md-ellipsis">
+                   Holoscan SDK
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_jps.html">
+                  <span class="md-ellipsis">
+                   Jetson Platform Services
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_gapi_workflows.html">
+                  <span class="md-ellipsis">
+                   Gapi Workflows
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_gapi_microservices.html">
+                  <span class="md-ellipsis">
+                   Gapi Micro Services
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_ultralytics.html">
+                  <span class="md-ellipsis">
+                   Ultralytics YOLOv8
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" id="__nav_3_11" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_11" id="__nav_3_11_label" tabindex="0">
+               <span class="md-ellipsis">
+                Audio
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_11_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_11">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Audio
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_whisper.html">
+                  <span class="md-ellipsis">
+                   Whisper
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_audiocraft.html">
+                  <span class="md-ellipsis">
+                   AudioCraft
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_voicecraft.html">
+                  <span class="md-ellipsis">
+                   VoiceCraft
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+            </ul>
+           </nav>
+          </li>
           <li class="md-nav__item">
-  <a href="#case-2-ollama-container" class="md-nav__link">
-    <span class="md-ellipsis">
-      Case 2: Ollama container
-    </span>
-  </a>
-  
-</li>
-        
+           <a class="md-nav__link" href="benchmarks.html">
+            <span class="md-ellipsis">
+             Benchmarks
+            </span>
+           </a>
+          </li>
           <li class="md-nav__item">
-  <a href="#case-3-docker-compose-to-launch-both-at-the-same-time" class="md-nav__link">
-    <span class="md-ellipsis">
-      Case 3: Docker Compose to launch both at the same time
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#basic-usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      Basic Usage
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Basic Usage">
-      <ul class="md-nav__list">
-        
+           <a class="md-nav__link" href="community_articles.html">
+            <span class="md-ellipsis">
+             Projects
+            </span>
+           </a>
+          </li>
           <li class="md-nav__item">
-  <a href="#step-1-access-through-web-browser" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 1. Access through Web browser
-    </span>
-  </a>
-  
-</li>
-        
+           <a class="md-nav__link" href="research.html">
+            <span class="md-ellipsis">
+             Research Group
+            </span>
+           </a>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+         <label class="md-nav__title" for="__toc">
+          <span class="md-nav__icon md-icon">
+          </span>
+          Table of contents
+         </label>
+         <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
           <li class="md-nav__item">
-  <a href="#step-2-complete-the-account-creation-process" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 2. Complete the Account Creation Process
-    </span>
-  </a>
-  
-</li>
-        
+           <a class="md-nav__link" href="#ollama-server">
+            <span class="md-ellipsis">
+             Ollama Server
+            </span>
+           </a>
+          </li>
           <li class="md-nav__item">
-  <a href="#step-3-download-an-slm-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 3. Download an SLM model
-    </span>
-  </a>
-  
-</li>
-        
+           <a class="md-nav__link" href="#ollama-backend">
+            <span class="md-ellipsis">
+             🦙 Ollama backend
+            </span>
+           </a>
+           <nav aria-label="🦙 Ollama backend" class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#case-2-ollama-container">
+               <span class="md-ellipsis">
+                Case 2: Ollama container
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#case-3-docker-compose-to-launch-both-at-the-same-time">
+               <span class="md-ellipsis">
+                Case 3: Docker Compose to launch both at the same time
+               </span>
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
           <li class="md-nav__item">
-  <a href="#step-4-start-interacting-with-the-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 4. Start interacting with the model
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#usage-rag" class="md-nav__link">
-    <span class="md-ellipsis">
-      Usage - RAG
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Usage - RAG">
-      <ul class="md-nav__list">
-        
+           <a class="md-nav__link" href="#basic-usage">
+            <span class="md-ellipsis">
+             Basic Usage
+            </span>
+           </a>
+           <nav aria-label="Basic Usage" class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#step-1-access-through-web-browser">
+               <span class="md-ellipsis">
+                Step 1. Access through Web browser
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#step-2-complete-the-account-creation-process">
+               <span class="md-ellipsis">
+                Step 2. Complete the Account Creation Process
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#step-3-download-an-slm-model">
+               <span class="md-ellipsis">
+                Step 3. Download an SLM model
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#step-4-start-interacting-with-the-model">
+               <span class="md-ellipsis">
+                Step 4. Start interacting with the model
+               </span>
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
           <li class="md-nav__item">
-  <a href="#step-1-create-a-knowledge-base" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 1. Create a knowledge base
-    </span>
-  </a>
-  
-</li>
-        
+           <a class="md-nav__link" href="#usage-rag">
+            <span class="md-ellipsis">
+             Usage - RAG
+            </span>
+           </a>
+           <nav aria-label="Usage - RAG" class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#step-1-create-a-knowledge-base">
+               <span class="md-ellipsis">
+                Step 1. Create a knowledge base
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#step-2-add-files-to-the-knowledge-base">
+               <span class="md-ellipsis">
+                Step 2. Add files to the knowledge base
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#step-3-create-a-custom-model-with-knowledge-base-access">
+               <span class="md-ellipsis">
+                Step 3. Create a custom model with knowledge base access
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#step-4-configure-the-model">
+               <span class="md-ellipsis">
+                Step 4. Configure the model
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#step-5-chat-with-your-custom-model">
+               <span class="md-ellipsis">
+                Step 5. Chat with your custom model
+               </span>
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
           <li class="md-nav__item">
-  <a href="#step-2-add-files-to-the-knowledge-base" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 2. Add files to the knowledge base
-    </span>
-  </a>
-  
-</li>
-        
+           <a class="md-nav__link" href="#troubleshooting">
+            <span class="md-ellipsis">
+             Troubleshooting
+            </span>
+           </a>
+           <nav aria-label="Troubleshooting" class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#open-web-ui-is-not-responding">
+               <span class="md-ellipsis">
+                Open Web UI is not responding
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#how-to-create-a-new-account-for-open-webui-if-you-forgot-your-password">
+               <span class="md-ellipsis">
+                How to Create a New Account for Open WebUI (If You Forgot Your Password)
+               </span>
+              </a>
+              <nav aria-label="How to Create a New Account for Open WebUI (If You Forgot Your Password)" class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#delete-the-existing-open-webui-data-folder">
+                  <span class="md-ellipsis">
+                   Delete the existing Open WebUI data folder:
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#re-run-the-docker-container">
+                  <span class="md-ellipsis">
+                   Re-run the Docker container
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#how-to-shut-down-open-webui">
+               <span class="md-ellipsis">
+                How to Shut Down Open WebUI?
+               </span>
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
           <li class="md-nav__item">
-  <a href="#step-3-create-a-custom-model-with-knowledge-base-access" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 3. Create a custom model with knowledge base access
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-4-configure-the-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 4. Configure the model
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-5-chat-with-your-custom-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 5. Chat with your custom model
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
-    <span class="md-ellipsis">
-      Troubleshooting
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Troubleshooting">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#open-web-ui-is-not-responding" class="md-nav__link">
-    <span class="md-ellipsis">
-      Open Web UI is not responding
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-to-create-a-new-account-for-open-webui-if-you-forgot-your-password" class="md-nav__link">
-    <span class="md-ellipsis">
-      How to Create a New Account for Open WebUI (If You Forgot Your Password)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="How to Create a New Account for Open WebUI (If You Forgot Your Password)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#delete-the-existing-open-webui-data-folder" class="md-nav__link">
-    <span class="md-ellipsis">
-      Delete the existing Open WebUI data folder:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#re-run-the-docker-container" class="md-nav__link">
-    <span class="md-ellipsis">
-      Re-run the Docker container
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-to-shut-down-open-webui" class="md-nav__link">
-    <span class="md-ellipsis">
-      How to Shut Down Open WebUI?
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#optional-setup-mlc-backend" class="md-nav__link">
-    <span class="md-ellipsis">
-      Optional Setup: 🤖 MLC backend
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Optional Setup: 🤖 MLC backend">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#case-1-separate-docker-run-commands" class="md-nav__link">
-    <span class="md-ellipsis">
-      Case 1: Separate docker run commands
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#case-2-docker-compose" class="md-nav__link">
-    <span class="md-ellipsis">
-      Case 2: Docker compose
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          
-            <div class="md-content" data-md-component="content">
-              <article class="md-content__inner md-typeset">
-                
-                  
-
-
-
-<h1 id="tutorial-open-webui">Tutorial - Open WebUI</h1>
-<p><a href="https://github.com/ollama/ollama" target="_blank">Open WebUI</a> is a versatile, browser-based interface for running and managing large language models (LLMs) locally, offering Jetson developers an intuitive platform to experiment with LLMs on their devices.</p>
-<p>It can work with Ollama as a backend as well as other backend that is compatible with OpenAI, which can also run well on Jetson.</p>
-<p><img alt="alt text" src="images/open_webui_on_desktop.png" /></p>
-<h2 id="ollama-server">Ollama Server</h2>
-<div class="admonition abstract">
-<p class="admonition-title">What you need</p>
-<ol>
-<li>
-<p>One of the following Jetson devices:</p>
-<p><span class="blobDarkGreen4">Jetson AGX Orin (64GB)</span>
-<span class="blobDarkGreen5">Jetson AGX Orin (32GB)</span>
-<span class="blobLightGreen3">Jetson Orin NX (16GB)</span>
-<span class="blobLightGreen3">Jetson Orin Nano (8GB)</span></p>
-</li>
-<li>
-<p>Running one of the following versions of <a href="https://developer.nvidia.com/embedded/jetpack" target="_blank">JetPack</a>:</p>
-<p><span class="blobPink1">JetPack 5 (L4T r35.x)</span>
-<span class="blobPink2">JetPack 6 (L4T r36.x)</span></p>
-</li>
-<li>
-<p><span class="markedYellow">NVMe SSD <strong>highly recommended</strong></span> for storage speed and space</p>
-<ul>
-<li><code>7GB</code> for <code>open-webui</code> container image</li>
-</ul>
-</li>
-</ol>
-</div>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+           <a class="md-nav__link" href="#optional-setup-mlc-backend">
+            <span class="md-ellipsis">
+             Optional Setup: 🤖 MLC backend
+            </span>
+           </a>
+           <nav aria-label="Optional Setup: 🤖 MLC backend" class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#case-1-separate-docker-run-commands">
+               <span class="md-ellipsis">
+                Case 1: Separate docker run commands
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#case-2-docker-compose">
+               <span class="md-ellipsis">
+                Case 2: Docker compose
+               </span>
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-content" data-md-component="content">
+      <article class="md-content__inner md-typeset">
+       <h1 id="tutorial-open-webui">
+        Tutorial - Open WebUI
+       </h1>
+       <p>
+        <a href="https://github.com/ollama/ollama" target="_blank">
+         Open WebUI
+        </a>
+        is a versatile, browser-based interface for running and managing large language models (LLMs) locally, offering Jetson developers an intuitive platform to experiment with LLMs on their devices.
+       </p>
+       <p>
+        It can work with Ollama as a backend as well as other backend that is compatible with OpenAI, which can also run well on Jetson.
+       </p>
+       <p>
+        <img alt="alt text" src="images/open_webui_on_desktop.png"/>
+       </p>
+       <h2 id="ollama-server">
+        Ollama Server
+       </h2>
+       <div class="admonition abstract">
+        <p class="admonition-title">
+         What you need
+        </p>
+        <ol>
+         <li>
+          <p>
+           One of the following Jetson devices:
+          </p>
+          <p>
+           <span class="blobDarkGreen4">
+            Jetson AGX Orin (64GB)
+           </span>
+           <span class="blobDarkGreen5">
+            Jetson AGX Orin (32GB)
+           </span>
+           <span class="blobLightGreen3">
+            Jetson Orin NX (16GB)
+           </span>
+           <span class="blobLightGreen3">
+            Jetson Orin Nano (8GB)
+           </span>
+          </p>
+         </li>
+         <li>
+          <p>
+           Running one of the following versions of
+           <a href="https://developer.nvidia.com/embedded/jetpack" target="_blank">
+            JetPack
+           </a>
+           :
+          </p>
+          <p>
+           <span class="blobPink1">
+            JetPack 5 (L4T r35.x)
+           </span>
+           <span class="blobPink2">
+            JetPack 6 (L4T r36.x)
+           </span>
+          </p>
+         </li>
+         <li>
+          <p>
+           <span class="markedYellow">
+            NVMe SSD
+            <strong>
+             highly recommended
+            </strong>
+           </span>
+           for storage speed and space
+          </p>
+          <ul>
+           <li>
+            <code>
+             7GB
+            </code>
+            for
+            <code>
+             open-webui
+            </code>
+            container image
+           </li>
+          </ul>
+         </li>
+        </ol>
+       </div>
+       <div class="highlight">
+        <pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-v<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/open-webui:/app/backend/data<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-e<span class="w"> </span><span class="nv">OLLAMA_BASE_URL</span><span class="o">=</span>http://127.0.0.1:11434<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--name<span class="w"> </span>open-webui<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--restart<span class="w"> </span>always<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>ghcr.io/open-webui/open-webui:main
-</code></pre></div>
-<h2 id="ollama-backend">🦙 Ollama backend</h2>
-<p>If you <a href="./tutorial_ollama.html">have installed Ollama</a>, you can just run the Open WebUI docker container without installing any other things.</p>
-<div class="highlight"><pre><span></span><code>sudo docker run -d --network=host \
+</code></pre>
+       </div>
+       <h2 id="ollama-backend">
+        🦙 Ollama backend
+       </h2>
+       <p>
+        If you
+        <a href="./tutorial_ollama.html">
+         have installed Ollama
+        </a>
+        , you can just run the Open WebUI docker container without installing any other things.
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>sudo docker run -d --network=host \
     -v ${HOME}/open-webui:/app/backend/data \
     -e OLLAMA_BASE_URL=http://127.0.0.1:11434 \
     --name open-webui \
     --restart always \
     ghcr.io/open-webui/open-webui:main
-</code></pre></div>
-<h3 id="case-2-ollama-container">Case 2: Ollama container</h3>
-<p>If you have not natively installed Ollama, you can also run <code>Ollama</code> in container using <code>jetson-containers</code>, after executing the above command to run Open WebUI container.</p>
-<div class="highlight"><pre><span></span><code>jetson-containers<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>ollama<span class="w"> </span><span class="k">$(</span>autotag<span class="w"> </span>ollama<span class="k">)</span>
-</code></pre></div>
-<blockquote>
-<p>You need to have <code>jetson-containers</code> installed</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dusty-nv/jetson-containers
+</code></pre>
+       </div>
+       <h3 id="case-2-ollama-container">
+        Case 2: Ollama container
+       </h3>
+       <p>
+        If you have not natively installed Ollama, you can also run
+        <code>
+         Ollama
+        </code>
+        in container using
+        <code>
+         jetson-containers
+        </code>
+        , after executing the above command to run Open WebUI container.
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>jetson-containers<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>ollama<span class="w"> </span><span class="k">$(</span>autotag<span class="w"> </span>ollama<span class="k">)</span>
+</code></pre>
+       </div>
+       <blockquote>
+        <p>
+         You need to have
+         <code>
+          jetson-containers
+         </code>
+         installed
+        </p>
+        <div class="highlight">
+         <pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dusty-nv/jetson-containers
 bash<span class="w"> </span>jetson-containers/install.sh
-</code></pre></div>
-</blockquote>
-<h3 id="case-3-docker-compose-to-launch-both-at-the-same-time">Case 3: Docker Compose to launch both at the same time</h3>
-<p>You can save the following YML file and issue <code>docker compose up</code>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">docker-compose.yml</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
+</code></pre>
+        </div>
+       </blockquote>
+       <h3 id="case-3-docker-compose-to-launch-both-at-the-same-time">
+        Case 3: Docker Compose to launch both at the same time
+       </h3>
+       <p>
+        You can save the following YML file and issue
+        <code>
+         docker compose up
+        </code>
+        .
+       </p>
+       <div class="tabbed-set tabbed-alternate" data-tabs="1:1">
+        <input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"/>
+        <div class="tabbed-labels">
+         <label for="__tabbed_1_1">
+          docker-compose.yml
+         </label>
+        </div>
+        <div class="tabbed-content">
+         <div class="tabbed-block">
+          <div class="highlight">
+           <pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="nt">open-webui</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/open-webui/open-webui:main</span>
 <span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">open-webui</span>
-<span class="w">    </span><span class="nt">network_mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;host&quot;</span>
+<span class="w">    </span><span class="nt">network_mode</span><span class="p">:</span><span class="w"> </span><span class="s">"host"</span>
 <span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OLLAMA_BASE_URL=http://127.0.0.1:11434</span>
 <span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;${HOME}/open-webui:/app/backend/data&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"${HOME}/open-webui:/app/backend/data"</span>
 
 <span class="nt">ollama</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dustynv/ollama:r36.4.0</span>
 <span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ollama</span>
 <span class="w">    </span><span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvidia</span>
-<span class="w">    </span><span class="nt">network_mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;host&quot;</span>
-<span class="w">    </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;8g&quot;</span>
+<span class="w">    </span><span class="nt">network_mode</span><span class="p">:</span><span class="w"> </span><span class="s">"host"</span>
+<span class="w">    </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="s">"8g"</span>
 <span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;/var/run/docker.sock:/var/run/docker.sock&quot;</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;${HOME}/data:/data&quot;</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;/etc/localtime:/etc/localtime:ro&quot;</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;/etc/timezone:/etc/timezone:ro&quot;</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;/run/jtop.sock:/run/jtop.sock&quot;</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<p>Once you save the above YAML file in a directory, issue the following.</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>up
-</code></pre></div>
-<p><img alt="" class="shadow" src="images/openwebui_docker-compose.png" /></p>
-<h2 id="basic-usage">Basic Usage</h2>
-<h3 id="step-1-access-through-web-browser">Step 1. Access through Web browser</h3>
-<p>Open a Web browser on a PC connected to the same network as your Jetson, and access the following address.</p>
-<div class="highlight"><pre><span></span><code>http://&lt;IP_ADDR&gt;:8080
-</code></pre></div>
-<p>You will see a initial web page like this.</p>
-<p><img alt="" class="shadow" src="images/openwebui_initial_screen.png" /></p>
-<p>Click "<strong>Get started <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M6 13h8l-3.5 3.5 1.42 1.42L17.84 12l-5.92-5.92L10.5 7.5 14 11H6z"/></svg></span> </strong>".</p>
-<h3 id="step-2-complete-the-account-creation-process">Step 2. Complete the Account Creation Process</h3>
-<p>Follow the on-screen prompts to create an account.</p>
-<p><img alt="" class="shadow" src="images/openwebui_get-started.png" /></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Note that <strong>all account information stays local</strong>, so privacy is maintained. You can use a random email address and password for this step as it is not verified or stored externally.</p>
-<p>However, make sure to remember the credentials, as you’ll need them to log in for future sessions.</p>
-<p>For more details, refer to the provided <a href="https://docs.openwebui.com/faq/#q-why-am-i-asked-to-sign-up-where-are-my-data-being-sent-to">information link</a> or instructions on the screen.</p>
-</div>
-<p>Once you "<strong>Create Admin Account</strong>", you will be presented with the release notes for the latest version of Open WebUI. To proceed, click "<strong>Okay, Let's Go!</strong>" button.</p>
-<p><img alt="" class="shadow" src="images/openwebui_release-note.png" /></p>
-<p>Once everything is set up, you should see the following UI appear.</p>
-<p><img alt="" class="shadow" src="images/openwebui_select-a-model.png" /></p>
-<h3 id="step-3-download-an-slm-model">Step 3. Download an SLM model</h3>
-<p>To download an SLM model, click the dropdown <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.41 8.58 12 13.17l4.59-4.59L18 10l-6 6-6-6z"/></svg></span> next to the "Select a model" section. Type the name of the model you want to try in "🔎 <strong>Search a model</strong>" field.</p>
-<p><img alt="" class="shadow" src="images/openwebui_search-llama3-2.png" /></p>
-<p>Once selected, you'll be prompted to download the model directly from Ollama.</p>
-<p><img alt="Downloading &quot;llama3.2&quot;" class="shadow" src="images/openwebui_download_llama3.2.png" /></p>
-<p>After the download, select the newly downloaded model from the list. In our case, it was the LLaMA 3.2:2B model.</p>
-<p><img alt="" class="shadow" src="images/openwebui_select_llama3.2.png" /></p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>After downloading your SLM model, you have the option to disconnect your Jetson unit from the internet. This allows you to validate that all subsequent interactions are powered exclusively by the local generative AI model, all running on this edge AI computer.</p>
-</div>
-<h3 id="step-4-start-interacting-with-the-model">Step 4. Start interacting with the model</h3>
-<p>You can now start interacting with the model, just like you would with any other LLM chatbot.</p>
-<p><img alt="" class="shadow" src="images/openwebui_question-la-to-sf.png" /></p>
-<h2 id="usage-rag">Usage - RAG</h2>
-<h3 id="step-1-create-a-knowledge-base">Step 1. Create a knowledge base</h3>
-<p>To enable RAG, you need to create a knowledge base that the LLM can reference to answer queries.</p>
-<p>Follow these steps to create a knowledge base:</p>
-<ul>
-<li>Open the Open WebUI interface.</li>
-<li>Click on Workspace.</li>
-<li>Select Knowledge from the top menu.</li>
-<li>Click the "➕" icon to create a new knowledge base.</li>
-</ul>
-<p><img alt="" class="shadow" src="images/openwebui_create-jetson-knowledge.gif" /></p>
-<h3 id="step-2-add-files-to-the-knowledge-base">Step 2. Add files to the knowledge base</h3>
-<p>After providing the necessary details and clicking "<strong>Create Knowledge</strong>", you will be redirected to the following page.</p>
-<p>Here, you can add files or entire directories to build your knowledge base.</p>
-<p><img alt="" class="shadow" src="images/openwebui_upload-files.png" /></p>
-<p>Select a local PDF file or other document files to upload.</p>
-<p><img alt="" class="shadow" src="images/openwebui_upload-select-file.png" /></p>
-<p><img alt="" class="shadow" src="images/openwebui_uploaded-file-being-processed.png" /></p>
-<p><img alt="" class="shadow" src="images/openwebui_file-added-successfully.png" /></p>
-<h3 id="step-3-create-a-custom-model-with-knowledge-base-access">Step 3. Create a custom model with knowledge base access</h3>
-<p>To leverage the knowledge base for more accurate and context-aware responses, you need to create a model that can access this information. By linking the model to the knowledge base, the LLM can reference the stored data to provide more precise and relevant answers to user queries.</p>
-<p>Follow these steps to create a model with knowledge base access</p>
-<ul>
-<li>Open the Open WebUI interface.</li>
-<li>Click on Workspace.</li>
-<li>Select Model from the top menu.</li>
-<li>Click the "➕" icon to create a new model.</li>
-</ul>
-<p><img alt="" class="shadow" src="images/openwebui_create-model-with-kb.gif" /></p>
-<h3 id="step-4-configure-the-model">Step 4. Configure the model</h3>
-<p>After clicking the "➕" icon, the following screen will appear.</p>
-<p><img alt="" class="shadow" src="images/openwebui_configure-model-with-kb.png" /></p>
-<p>Here, you can configure the model with the following info:</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>What to do</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Model name</strong></td>
-<td>Enter a name for your new model.</td>
-<td>"<strong>Jetson Expert</strong>"</td>
-</tr>
-<tr>
-<td><strong>Select a base model</strong> <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.41 8.58 12 13.17l4.59-4.59L18 10l-6 6-6-6z"/></svg></span></td>
-<td>Choose a base model from the list of models you've downloaded on your local Ollama server.</td>
-<td>"<code>llama3.2:3b</code>"</td>
-</tr>
-<tr>
-<td><strong>Select Knowledge</strong></td>
-<td>Click the button and select the newly created knowledge base from the list.</td>
-<td>"<strong>Jetson Documents</strong>"</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p><img alt="" class="shadow" src="images/openwebui_select-knowledge.png" /></p>
-</blockquote>
-<p>Once you enter necessary information, click "<strong>Save &amp; Create</strong>" button.</p>
-<p><img alt="" class="shadow" src="images/openwebui_jetson-expert-configured.png" /></p>
-<p>You will be taken back to the <strong>Models</strong> tab in the Workspace.</p>
-<p><img alt="" class="shadow" src="images/openwebui_models.png" /></p>
-<h3 id="step-5-chat-with-your-custom-model">Step 5. Chat with your custom model</h3>
-<p>You can now navigate to the chat window and select the newly created model.</p>
-<p>Use this model to ask questions related to the uploaded documents. This will help verify if the model can successfully retrieve information from the knowledge base.</p>
-<p><img alt="" class="shadow" src="images/openwebui_q_jon_power.png" /></p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<h3 id="open-web-ui-is-not-responding">Open Web UI is not responding</h3>
-<p>Reload the page on your web browser.</p>
-<h3 id="how-to-create-a-new-account-for-open-webui-if-you-forgot-your-password">How to Create a New Account for Open WebUI (If You Forgot Your Password)</h3>
-<p>If you need to create a new account in Open WebUI (for example, if you forgot your password), follow these steps to reset the account:</p>
-<h4 id="delete-the-existing-open-webui-data-folder">Delete the existing Open WebUI data folder:</h4>
-<p>This will remove all existing user account data and settings. Run the following command:</p>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/open-webui
-</code></pre></div>
-<h4 id="re-run-the-docker-container">Re-run the Docker container</h4>
-<p>This will recreate a fresh instance of Open WebUI, allowing you to create a new account.</p>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"/var/run/docker.sock:/var/run/docker.sock"</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"${HOME}/data:/data"</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"/etc/localtime:/etc/localtime:ro"</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"/etc/timezone:/etc/timezone:ro"</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"/run/jtop.sock:/run/jtop.sock"</span>
+</code></pre>
+          </div>
+         </div>
+        </div>
+       </div>
+       <p>
+        Once you save the above YAML file in a directory, issue the following.
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>up
+</code></pre>
+       </div>
+       <p>
+        <img alt="" class="shadow" src="images/openwebui_docker-compose.png"/>
+       </p>
+       <h2 id="basic-usage">
+        Basic Usage
+       </h2>
+       <h3 id="step-1-access-through-web-browser">
+        Step 1. Access through Web browser
+       </h3>
+       <p>
+        Open a Web browser on a PC connected to the same network as your Jetson, and access the following address.
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>http://&lt;IP_ADDR&gt;:8080
+</code></pre>
+       </div>
+       <p>
+        You will see a initial web page like this.
+       </p>
+       <p>
+        <img alt="" class="shadow" src="images/openwebui_initial_screen.png"/>
+       </p>
+       <p>
+        Click "
+        <strong>
+         Get started
+         <span class="twemoji">
+          <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+           <path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M6 13h8l-3.5 3.5 1.42 1.42L17.84 12l-5.92-5.92L10.5 7.5 14 11H6z">
+           </path>
+          </svg>
+         </span>
+        </strong>
+        ".
+       </p>
+       <h3 id="step-2-complete-the-account-creation-process">
+        Step 2. Complete the Account Creation Process
+       </h3>
+       <p>
+        Follow the on-screen prompts to create an account.
+       </p>
+       <p>
+        <img alt="" class="shadow" src="images/openwebui_get-started.png"/>
+       </p>
+       <div class="admonition note">
+        <p class="admonition-title">
+         Note
+        </p>
+        <p>
+         Note that
+         <strong>
+          all account information stays local
+         </strong>
+         , so privacy is maintained. You can use a random email address and password for this step as it is not verified or stored externally.
+        </p>
+        <p>
+         However, make sure to remember the credentials, as you’ll need them to log in for future sessions.
+        </p>
+        <p>
+         For more details, refer to the provided
+         <a href="https://docs.openwebui.com/faq/#q-why-am-i-asked-to-sign-up-where-are-my-data-being-sent-to">
+          information link
+         </a>
+         or instructions on the screen.
+        </p>
+       </div>
+       <p>
+        Once you "
+        <strong>
+         Create Admin Account
+        </strong>
+        ", you will be presented with the release notes for the latest version of Open WebUI. To proceed, click "
+        <strong>
+         Okay, Let's Go!
+        </strong>
+        " button.
+       </p>
+       <p>
+        <img alt="" class="shadow" src="images/openwebui_release-note.png"/>
+       </p>
+       <p>
+        Once everything is set up, you should see the following UI appear.
+       </p>
+       <p>
+        <img alt="" class="shadow" src="images/openwebui_select-a-model.png"/>
+       </p>
+       <h3 id="step-3-download-an-slm-model">
+        Step 3. Download an SLM model
+       </h3>
+       <p>
+        To download an SLM model, click the dropdown
+        <span class="twemoji">
+         <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.41 8.58 12 13.17l4.59-4.59L18 10l-6 6-6-6z">
+          </path>
+         </svg>
+        </span>
+        next to the "Select a model" section. Type the name of the model you want to try in "🔎
+        <strong>
+         Search a model
+        </strong>
+        " field.
+       </p>
+       <p>
+        <img alt="" class="shadow" src="images/openwebui_search-llama3-2.png"/>
+       </p>
+       <p>
+        Once selected, you'll be prompted to download the model directly from Ollama.
+       </p>
+       <p>
+        <img alt='Downloading "llama3.2"' class="shadow" src="images/openwebui_download_llama3.2.png"/>
+       </p>
+       <p>
+        After the download, select the newly downloaded model from the list. In our case, it was the LLaMA 3.2:2B model.
+       </p>
+       <p>
+        <img alt="" class="shadow" src="images/openwebui_select_llama3.2.png"/>
+       </p>
+       <div class="admonition tip">
+        <p class="admonition-title">
+         Tip
+        </p>
+        <p>
+         After downloading your SLM model, you have the option to disconnect your Jetson unit from the internet. This allows you to validate that all subsequent interactions are powered exclusively by the local generative AI model, all running on this edge AI computer.
+        </p>
+       </div>
+       <h3 id="step-4-start-interacting-with-the-model">
+        Step 4. Start interacting with the model
+       </h3>
+       <p>
+        You can now start interacting with the model, just like you would with any other LLM chatbot.
+       </p>
+       <p>
+        <img alt="" class="shadow" src="images/openwebui_question-la-to-sf.png"/>
+       </p>
+       <h2 id="usage-rag">
+        Usage - RAG
+       </h2>
+       <h3 id="step-1-create-a-knowledge-base">
+        Step 1. Create a knowledge base
+       </h3>
+       <p>
+        To enable RAG, you need to create a knowledge base that the LLM can reference to answer queries.
+       </p>
+       <p>
+        Follow these steps to create a knowledge base:
+       </p>
+       <ul>
+        <li>
+         Open the Open WebUI interface.
+        </li>
+        <li>
+         Click on Workspace.
+        </li>
+        <li>
+         Select Knowledge from the top menu.
+        </li>
+        <li>
+         Click the "➕" icon to create a new knowledge base.
+        </li>
+       </ul>
+       <p>
+        <img alt="" class="shadow" src="images/openwebui_create-jetson-knowledge.gif"/>
+       </p>
+       <h3 id="step-2-add-files-to-the-knowledge-base">
+        Step 2. Add files to the knowledge base
+       </h3>
+       <p>
+        After providing the necessary details and clicking "
+        <strong>
+         Create Knowledge
+        </strong>
+        ", you will be redirected to the following page.
+       </p>
+       <p>
+        Here, you can add files or entire directories to build your knowledge base.
+       </p>
+       <p>
+        <img alt="" class="shadow" src="images/openwebui_upload-files.png"/>
+       </p>
+       <p>
+        Select a local PDF file or other document files to upload.
+       </p>
+       <p>
+        <img alt="" class="shadow" src="images/openwebui_upload-select-file.png"/>
+       </p>
+       <p>
+        <img alt="" class="shadow" src="images/openwebui_uploaded-file-being-processed.png"/>
+       </p>
+       <p>
+        <img alt="" class="shadow" src="images/openwebui_file-added-successfully.png"/>
+       </p>
+       <h3 id="step-3-create-a-custom-model-with-knowledge-base-access">
+        Step 3. Create a custom model with knowledge base access
+       </h3>
+       <p>
+        To leverage the knowledge base for more accurate and context-aware responses, you need to create a model that can access this information. By linking the model to the knowledge base, the LLM can reference the stored data to provide more precise and relevant answers to user queries.
+       </p>
+       <p>
+        Follow these steps to create a model with knowledge base access
+       </p>
+       <ul>
+        <li>
+         Open the Open WebUI interface.
+        </li>
+        <li>
+         Click on Workspace.
+        </li>
+        <li>
+         Select Model from the top menu.
+        </li>
+        <li>
+         Click the "➕" icon to create a new model.
+        </li>
+       </ul>
+       <p>
+        <img alt="" class="shadow" src="images/openwebui_create-model-with-kb.gif"/>
+       </p>
+       <h3 id="step-4-configure-the-model">
+        Step 4. Configure the model
+       </h3>
+       <p>
+        After clicking the "➕" icon, the following screen will appear.
+       </p>
+       <p>
+        <img alt="" class="shadow" src="images/openwebui_configure-model-with-kb.png"/>
+       </p>
+       <p>
+        Here, you can configure the model with the following info:
+       </p>
+       <table>
+        <thead>
+         <tr>
+          <th>
+           Field
+          </th>
+          <th>
+           What to do
+          </th>
+          <th>
+           Example
+          </th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr>
+          <td>
+           <strong>
+            Model name
+           </strong>
+          </td>
+          <td>
+           Enter a name for your new model.
+          </td>
+          <td>
+           "
+           <strong>
+            Jetson Expert
+           </strong>
+           "
+          </td>
+         </tr>
+         <tr>
+          <td>
+           <strong>
+            Select a base model
+           </strong>
+           <span class="twemoji">
+            <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+             <path d="M7.41 8.58 12 13.17l4.59-4.59L18 10l-6 6-6-6z">
+             </path>
+            </svg>
+           </span>
+          </td>
+          <td>
+           Choose a base model from the list of models you've downloaded on your local Ollama server.
+          </td>
+          <td>
+           "
+           <code>
+            llama3.2:3b
+           </code>
+           "
+          </td>
+         </tr>
+         <tr>
+          <td>
+           <strong>
+            Select Knowledge
+           </strong>
+          </td>
+          <td>
+           Click the button and select the newly created knowledge base from the list.
+          </td>
+          <td>
+           "
+           <strong>
+            Jetson Documents
+           </strong>
+           "
+          </td>
+         </tr>
+        </tbody>
+       </table>
+       <blockquote>
+        <p>
+         <img alt="" class="shadow" src="images/openwebui_select-knowledge.png"/>
+        </p>
+       </blockquote>
+       <p>
+        Once you enter necessary information, click "
+        <strong>
+         Save &amp; Create
+        </strong>
+        " button.
+       </p>
+       <p>
+        <img alt="" class="shadow" src="images/openwebui_jetson-expert-configured.png"/>
+       </p>
+       <p>
+        You will be taken back to the
+        <strong>
+         Models
+        </strong>
+        tab in the Workspace.
+       </p>
+       <p>
+        <img alt="" class="shadow" src="images/openwebui_models.png"/>
+       </p>
+       <h3 id="step-5-chat-with-your-custom-model">
+        Step 5. Chat with your custom model
+       </h3>
+       <p>
+        You can now navigate to the chat window and select the newly created model.
+       </p>
+       <p>
+        Use this model to ask questions related to the uploaded documents. This will help verify if the model can successfully retrieve information from the knowledge base.
+       </p>
+       <p>
+        <img alt="" class="shadow" src="images/openwebui_q_jon_power.png"/>
+       </p>
+       <h2 id="troubleshooting">
+        Troubleshooting
+       </h2>
+       <h3 id="open-web-ui-is-not-responding">
+        Open Web UI is not responding
+       </h3>
+       <p>
+        Reload the page on your web browser.
+       </p>
+       <h3 id="how-to-create-a-new-account-for-open-webui-if-you-forgot-your-password">
+        How to Create a New Account for Open WebUI (If You Forgot Your Password)
+       </h3>
+       <p>
+        If you need to create a new account in Open WebUI (for example, if you forgot your password), follow these steps to reset the account:
+       </p>
+       <h4 id="delete-the-existing-open-webui-data-folder">
+        Delete the existing Open WebUI data folder:
+       </h4>
+       <p>
+        This will remove all existing user account data and settings. Run the following command:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/open-webui
+</code></pre>
+       </div>
+       <h4 id="re-run-the-docker-container">
+        Re-run the Docker container
+       </h4>
+       <p>
+        This will recreate a fresh instance of Open WebUI, allowing you to create a new account.
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-v<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/open-webui:/app/backend/data<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-e<span class="w"> </span><span class="nv">OLLAMA_BASE_URL</span><span class="o">=</span>http://127.0.0.1:11434<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--name<span class="w"> </span>open-webui<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--restart<span class="w"> </span>always<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>ghcr.io/open-webui/open-webui:main
-</code></pre></div>
-<h3 id="how-to-shut-down-open-webui">How to Shut Down Open WebUI?</h3>
-<p>To gracefully stop and remove the Open WebUI container, run the following commands:</p>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>stop<span class="w"> </span>open-webui
+</code></pre>
+       </div>
+       <h3 id="how-to-shut-down-open-webui">
+        How to Shut Down Open WebUI?
+       </h3>
+       <p>
+        To gracefully stop and remove the Open WebUI container, run the following commands:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>stop<span class="w"> </span>open-webui
 sudo<span class="w"> </span>docker<span class="w"> </span>rm<span class="w"> </span>open-webui
-</code></pre></div>
-<h2 id="optional-setup-mlc-backend">Optional Setup: 🤖 MLC backend</h2>
-<p>Instead of running Open WebUI with Ollama backend, we can run models with more performant backend with MLC that are designed to run optimally on Jetson and can communicate to Open WebUI through OpenAI compatible API.</p>
-<p><img alt="" class="shadow" src="images/jetson-ai-lab_models.png" /></p>
-<h3 id="case-1-separate-docker-run-commands">Case 1: Separate <code>docker run</code> commands</h3>
-<p>After running Open WebUI container with the following command, you can run the <code>docker run</code> command you find in the new <a href="models.html"><strong>Models</strong></a> page.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Open WebUI container</label><label for="__tabbed_2_2">MLC container with LLama 3.1 8B</label><label for="__tabbed_2_3">MLC container with DeepSeek R1 (Llama 8B)</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+</code></pre>
+       </div>
+       <h2 id="optional-setup-mlc-backend">
+        Optional Setup: 🤖 MLC backend
+       </h2>
+       <p>
+        Instead of running Open WebUI with Ollama backend, we can run models with more performant backend with MLC that are designed to run optimally on Jetson and can communicate to Open WebUI through OpenAI compatible API.
+       </p>
+       <p>
+        <img alt="" class="shadow" src="images/jetson-ai-lab_models.png"/>
+       </p>
+       <h3 id="case-1-separate-docker-run-commands">
+        Case 1: Separate
+        <code>
+         docker run
+        </code>
+        commands
+       </h3>
+       <p>
+        After running Open WebUI container with the following command, you can run the
+        <code>
+         docker run
+        </code>
+        command you find in the new
+        <a href="models.html">
+         <strong>
+          Models
+         </strong>
+        </a>
+        page.
+       </p>
+       <div class="tabbed-set tabbed-alternate" data-tabs="2:3">
+        <input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"/>
+        <input id="__tabbed_2_2" name="__tabbed_2" type="radio"/>
+        <input id="__tabbed_2_3" name="__tabbed_2" type="radio"/>
+        <div class="tabbed-labels">
+         <label for="__tabbed_2_1">
+          Open WebUI container
+         </label>
+         <label for="__tabbed_2_2">
+          MLC container with LLama 3.1 8B
+         </label>
+         <label for="__tabbed_2_3">
+          MLC container with DeepSeek R1 (Llama 8B)
+         </label>
+        </div>
+        <div class="tabbed-content">
+         <div class="tabbed-block">
+          <div class="highlight">
+           <pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-v<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/open-webui:/app/backend/data<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-e<span class="w"> </span><span class="nv">OLLAMA_BASE_URL</span><span class="o">=</span>http://127.0.0.1:11434<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--name<span class="w"> </span>open-webui<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>ghcr.io/open-webui/open-webui:main
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
+</code></pre>
+          </div>
+         </div>
+         <div class="tabbed-block">
+          <div class="highlight">
+           <pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-p<span class="w"> </span><span class="m">9000</span>:9000<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--pull<span class="w"> </span>always<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-e<span class="w"> </span><span class="nv">DOCKER_PULL</span><span class="o">=</span>on<span class="w"> </span><span class="se">\</span>
@@ -3120,10 +1844,12 @@ sudo<span class="w"> </span>docker<span class="w"> </span>rm<span class="w"> </s
 <span class="w">      </span>--max-batch-size<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
 <span class="w">      </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span><span class="se">\</span>
 <span class="w">      </span>--port<span class="w"> </span><span class="m">9000</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
+</code></pre>
+          </div>
+         </div>
+         <div class="tabbed-block">
+          <div class="highlight">
+           <pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-p<span class="w"> </span><span class="m">9000</span>:9000<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--pull<span class="w"> </span>always<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-e<span class="w"> </span><span class="nv">DOCKER_PULL</span><span class="o">=</span>on<span class="w"> </span><span class="se">\</span>
@@ -3137,16 +1863,40 @@ sudo<span class="w"> </span>docker<span class="w"> </span>rm<span class="w"> </s
 <span class="w">      </span>--chat-template<span class="w"> </span>deepseek_r1_llama<span class="w"> </span><span class="se">\</span>
 <span class="w">      </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span><span class="se">\</span>
 <span class="w">      </span>--port<span class="w"> </span><span class="m">9000</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<h3 id="case-2-docker-compose">Case 2: Docker compose</h3>
-<p>You can save the following YML file (select one, and save as <code>compose.yml</code>) and issue <code>docker compose up</code>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">compose.yml for Llama 3.1 8B</label><label for="__tabbed_3_2">compose.yml for DeepSeek R1 (Llama-8B)</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Save as compose.yml and run &#39;docker compose up&#39;</span>
+</code></pre>
+          </div>
+         </div>
+        </div>
+       </div>
+       <h3 id="case-2-docker-compose">
+        Case 2: Docker compose
+       </h3>
+       <p>
+        You can save the following YML file (select one, and save as
+        <code>
+         compose.yml
+        </code>
+        ) and issue
+        <code>
+         docker compose up
+        </code>
+        .
+       </p>
+       <div class="tabbed-set tabbed-alternate" data-tabs="3:2">
+        <input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"/>
+        <input id="__tabbed_3_2" name="__tabbed_3" type="radio"/>
+        <div class="tabbed-labels">
+         <label for="__tabbed_3_1">
+          compose.yml for Llama 3.1 8B
+         </label>
+         <label for="__tabbed_3_2">
+          compose.yml for DeepSeek R1 (Llama-8B)
+         </label>
+        </div>
+        <div class="tabbed-content">
+         <div class="tabbed-block">
+          <div class="highlight">
+           <pre><span></span><code><span class="c1"># Save as compose.yml and run 'docker compose up'</span>
 <span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">llm_server</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">stdin_open</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -3171,7 +1921,7 @@ sudo<span class="w"> </span>docker<span class="w"> </span>rm<span class="w"> </s
 <span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sudonim serve --model dusty-nv/Llama-3.1-8B-Instruct-q4f16_ft-MLC</span>
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--quantization q4f16_ft --max-batch-size 1 --host 0.0.0.0 --port 9000</span>
 <span class="w">    </span><span class="nt">healthcheck</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;CMD&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;curl&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-f&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;http://0.0.0.0:9000/v1/models&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"CMD"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"curl"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-f"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"http://0.0.0.0:9000/v1/models"</span><span class="p p-Indicator">]</span>
 <span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20s</span>
 <span class="w">      </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60s</span>
 <span class="w">      </span><span class="nt">retries</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">45</span>
@@ -3187,11 +1937,13 @@ sudo<span class="w"> </span>docker<span class="w"> </span>rm<span class="w"> </s
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OPENAI_API_BASE_URL=http://localhost:9000/v1</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OPENAI_API_KEY=foo</span>
 <span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;${HOME}/open-webui:/app/backend/data&quot;</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Save as compose.yml and run &#39;docker compose up&#39;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"${HOME}/open-webui:/app/backend/data"</span>
+</code></pre>
+          </div>
+         </div>
+         <div class="tabbed-block">
+          <div class="highlight">
+           <pre><span></span><code><span class="c1"># Save as compose.yml and run 'docker compose up'</span>
 <span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">llm_server</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">stdin_open</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -3216,7 +1968,7 @@ sudo<span class="w"> </span>docker<span class="w"> </span>rm<span class="w"> </s
 <span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sudonim serve --model dusty-nv/DeepSeek-R1-Distill-Llama-8B-q4f16_ft-MLC</span>
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--quantization q4f16_ft --max-batch-size 1 --chat-template deepseek_r1_llama --host 0.0.0.0 --port 9000</span>
 <span class="w">    </span><span class="nt">healthcheck</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;CMD&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;curl&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-f&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;http://0.0.0.0:9000/v1/models&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"CMD"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"curl"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-f"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"http://0.0.0.0:9000/v1/models"</span><span class="p p-Indicator">]</span>
 <span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20s</span>
 <span class="w">      </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60s</span>
 <span class="w">      </span><span class="nt">retries</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">45</span>
@@ -3232,95 +1984,126 @@ sudo<span class="w"> </span>docker<span class="w"> </span>rm<span class="w"> </s
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OPENAI_API_BASE_URL=http://localhost:9000/v1</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OPENAI_API_KEY=foo</span>
 <span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;${HOME}/open-webui:/app/backend/data&quot;</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<p>Once you save the above YAML file in a directory, issue the following.</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>up
-</code></pre></div>
-<p><img alt="alt text" class="shadow" src="images/openwebui_llama3.1-8b_compose.png" /></p>
-<p>Note that it generates faster than Ollama (llama.cpp).</p>
-<p><img alt="" class="shadow" src="images/openwebui_mlc_paris_to_swiss.png" /></p>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-                
-              </article>
-            </div>
-          
-          
-  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
-
-<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"${HOME}/open-webui:/app/backend/data"</span>
+</code></pre>
+          </div>
+         </div>
         </div>
-        
-          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
-  Back to top
-</button>
-        
-      </main>
-      
-        <footer class="md-footer">
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
+       </div>
+       <p>
+        Once you save the above YAML file in a directory, issue the following.
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>up
+</code></pre>
+       </div>
+       <p>
+        <img alt="alt text" class="shadow" src="images/openwebui_llama3.1-8b_compose.png"/>
+       </p>
+       <p>
+        Note that it generates faster than Ollama (llama.cpp).
+       </p>
+       <p>
+        <img alt="" class="shadow" src="images/openwebui_mlc_paris_to_swiss.png"/>
+       </p>
+      </article>
+     </div>
+     <script>
+      var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}
+     </script>
+     <script>
+      var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))
+     </script>
+    </div>
+    <button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z">
+      </path>
+     </svg>
+     Back to top
+    </button>
+   </main>
+   <footer class="md-footer">
+    <div class="md-footer-meta md-typeset">
+     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
-  
-    <div class="md-copyright__highlight">
-      <ul class="global-footer__links"><li><a href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/" target="_blank">Privacy Policy</a></li><li> <a href="https://www.nvidia.com/en-us/privacy-center/" target="_blank">Manage My Privacy</a> </li> <li> <a href="https://www.nvidia.com/en-us/preferences/email-preferences/" target="_blank">Do Not Sell or Share My Data</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/legal-info/" target="_blank">Legal</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/accessibility/" target="_blank">Accessibility</a> </li> <li> <a href="https://www.nvidia.com/en-us/about-nvidia/company-policies/" target="_self">Corporate Policies</a> </li> <li> <a href="https://www.nvidia.com/en-us/product-security/" target="_blank">Product Security</a> </li> <li> <a href="https://www.nvidia.com/en-us/contact/" target="_blank">Contact</a> </li> </ul><div class="global-footer__copyright">Copyright &copy; 2024 NVIDIA Corporation</div>
+       <div class="md-copyright__highlight">
+        <ul class="global-footer__links">
+         <li>
+          <a href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/" target="_blank">
+           Privacy Policy
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/privacy-center/" target="_blank">
+           Manage My Privacy
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/preferences/email-preferences/" target="_blank">
+           Do Not Sell or Share My Data
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/about-nvidia/legal-info/" target="_blank">
+           Legal
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/about-nvidia/accessibility/" target="_blank">
+           Accessibility
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/about-nvidia/company-policies/" target="_self">
+           Corporate Policies
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/product-security/" target="_blank">
+           Product Security
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/contact/" target="_blank">
+           Contact
+          </a>
+         </li>
+        </ul>
+        <div class="global-footer__copyright">
+         Copyright © 2024 NVIDIA Corporation
+        </div>
+       </div>
+      </div>
+     </div>
     </div>
-  
-  
-</div>
-      
-    </div>
+   </footer>
   </div>
-</footer>
-      
-    </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
-    </div>
-    
-    
-    
-      
-      <script id="__config" type="application/json">{"base": ".", "features": ["navigation.indexes", "navigation.expand", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.tabs.link", "content.code.copy", "announce.dismiss"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
-    
-    
-<!-- OneTrust Cookies Consent Notice start for www.jetson-ai-lab.com -->
-<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"  type="text/javascript" charset="UTF-8" data-domain-script="018e2d65-efdf-7071-b793-f15ccf25c234" ></script>
-<script type="text/javascript">
-function OptanonWrapper() {        
+  <div class="md-dialog" data-md-component="dialog">
+   <div class="md-dialog__inner md-typeset">
+   </div>
+  </div>
+  <script id="__config" type="application/json">
+   {"base": ".", "features": ["navigation.indexes", "navigation.expand", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.tabs.link", "content.code.copy", "announce.dismiss"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}
+  </script>
+  <!-- OneTrust Cookies Consent Notice start for www.jetson-ai-lab.com -->
+  <script charset="UTF-8" data-domain-script="018e2d65-efdf-7071-b793-f15ccf25c234" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   function OptanonWrapper() {        
         var event = new Event('bannerLoaded');
         window.dispatchEvent(event);
     }
-</script>
-<!-- OneTrust Cookies Consent Notice end for www.jetson-ai-lab.com -->
-
- <script type="text/javascript" src="https://images.nvidia.com/aem-dam/Solutions/ot-js/ot-custom.js"></script>
-<script src="//assets.adobedtm.com/5d4962a43b79/814eb6e9b4e1/launch-4bc07f1e0b0b.min.js"></script>
-
-      <script src="assets/javascripts/bundle.92b07e13.min.js"></script>
-      
-    
-<script>
-  window._6si = window._6si || [];
+  </script>
+  <!-- OneTrust Cookies Consent Notice end for www.jetson-ai-lab.com -->
+  <script src="https://images.nvidia.com/aem-dam/Solutions/ot-js/ot-custom.js" type="text/javascript">
+  </script>
+  <script src="//assets.adobedtm.com/5d4962a43b79/814eb6e9b4e1/launch-4bc07f1e0b0b.min.js">
+  </script>
+  <script src="assets/javascripts/bundle.92b07e13.min.js">
+  </script>
+  <script>
+   window._6si = window._6si || [];
   window._6si.push(['enableEventTracking', true]);
   window._6si.push(['setToken', 'eb417ec30d332e34d732e2916f185311']);
   window._6si.push(['setEndpoint', 'b.6sc.co']);
@@ -3337,8 +2120,9 @@ function OptanonWrapper() {
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(gd, s);
   })();
-</script>
-<script type="text/javascript">_satellite.pageBottom();</script>
-
-  </body>
+  </script>
+  <script type="text/javascript">
+   _satellite.pageBottom();
+  </script>
+ </body>
 </html>
