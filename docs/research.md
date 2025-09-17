@@ -78,7 +78,7 @@ Ongoing technical discussions are encouraged to occur on the forums, Discord, or
 
 We hold virtual meetings that anyone is welcome to join and speak during. We discuss the latest updates and experiments that we want to explore. Please remain courteous to others during the calls. We'll stick around after for anyone who has questions or didn't get the chance to be heard.
 
-!!! abstract "Next Meeting: Tuesday, September 9<sup>th</sup>, 2025"
+!!! abstract "Next Meeting: 2nd Tuesday of next month"
 
 	- **Time:** 9:00 AM PST / 12:00 PM EST / 5:00 PM GMT
 	- **Platform:** Microsoft Teams
@@ -101,32 +101,36 @@ Our meeting recordings and resources are available for review and reference.
 
 <div class="admonition info">
 <p class="admonition-title">Recordings Archive</p>
-<h3><strong>Microsoft Teams:</strong> <span style="font-size: 0.9em; font-weight: normal;">(August 2025 - present)</span></h3>
-<table>
-  <thead>
-    <tr><th>Date</th><th>Topic</th><th>Link</th></tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Sep 9, 2025</td>
-      <td>Jetson Community Back-to-School call</td>
-      <td>TBD</td>
-    </tr>
-    <tr>
-      <td>Aug 13, 2025</td>
-      <td>Jetson Community Q3 Kick-of call & new format</td>
-      <td><a href="https://nvidia-my.sharepoint.com/personal/zlo_nvidia_com/_layouts/15/stream.aspx?id=%2fpersonal%2fzlo_nvidia_com%2fDocuments%2fRecordings%2fJetson+AI+Lab+Research+Group+Call+-+One-time+kickoff+Wed+Aug+13%2c+2025-20250813_090244-Meeting+Recording.mp4&referrer=StreamWebApp.Web&referrerScenario=AddressBarCopied.view.31c337e8-488b-47c0-b4f8-c597d7a99728&xsdata=MDV8MDJ8YXNpZXJAbnZpZGlhLmNvbXxjODRmODZiNTcyMTc0ZGIwNzQ3YjA4ZGRkYzJkODVjM3w0MzA4M2QxNTcyNzM0MGMxYjdkYjM5ZWZkOWNjYzE3YXwwfDB8NjM4OTA4ODEwMjU4NzE2MjE5fFVua25vd258VFdGcGJHWnNiM2Q4ZXlKRmJYQjBlVTFoY0draU9uUnlkV1VzSWxZaU9pSXdMakF1TURBd01DSXNJbEFpT2lKWGFXNHpNaUlzSWtGT0lqb2lUV0ZwYkNJc0lsZFVJam95ZlE9PXwwfHx8&sdata=eUFzVHB1emtCd0ZPYUJ2KzBwTHcwYmFjRCs2bTFFZkl5aVF0d01FUDRyYz0%3d" target="_blank">Recording</a></td>
-    </tr>
-  </tbody>
-</table>
+<h3><strong>Youtube Developer Channel:</strong></h3>
+
+<details><summary>September 9, 2025 (Jetson Thor Introduction)</summary>
+
+		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/trvaafQqXMc" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+
+<p>Topics Covered:</p>
+
+<ul>
+    <li>Jetson Thor Introduction</li>
+</ul>
+
+</details>
+
+<details><summary>August 13, 2025 (Q3 Kickoff & New Format)</summary>
+
+		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/BFWt1JyOUFU" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+
+<p>Topics Covered:</p>
+
+<ul>
+    <li>Jetson Community Q3 Kickoff call & new format</li>
+</ul>
+
+</details>
+
 <h3><strong>Google Drive:</strong> <span style="font-size: 0.9em; font-weight: normal;">(October 2024 - August 2025)</span></h3>
 <p><a href="https://drive.google.com/drive/folders/18BC7o32jorx_LzZXx5wW0Io_nf1ZwO6X?usp=sharing" target="_blank">Jetson AI Lab Research Group Recordings</a></p>
-<h3><strong>Youtube Developer Channel:</strong> <span style="font-size: 0.9em; font-weight: normal;">(April 2024 - October 2024)</span></h3>
 
-
-
-
-<details><summary>October 15, 2024</summary>
+<details><summary>October 15, 2024 (LeRobot & Stanley H1 Humanoid)</summary>
 
 		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/Dpe48AVKc4c" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
@@ -139,7 +143,7 @@ Our meeting recordings and resources are available for review and reference.
 
 </details>
 
-<details><summary>October 1, 2024</summary>
+<details><summary>October 1, 2024 (ReMEmbR & Diffusion Policies)</summary>
 
 		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/HfJR3NwsM4M" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
@@ -152,7 +156,7 @@ Our meeting recordings and resources are available for review and reference.
 
 </details>
 
-<details><summary>September 17, 2024</summary>
+<details><summary>September 17, 2024 (NASA JPL ROSA & LeRobot Walkthrough)</summary>
 
 		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/Gys_AUOYZ4c" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
@@ -166,7 +170,7 @@ Our meeting recordings and resources are available for review and reference.
 
 </details>
 
-<details><summary>September 3, 2024</summary>
+<details><summary>September 3, 2024 (Edge NeRF & OpenVLA Review)</summary>
 
 		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/r1i3QQrRnfI" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
@@ -181,7 +185,7 @@ Our meeting recordings and resources are available for review and reference.
 
 </details>
 
-<details><summary>August 20, 2024</summary>
+<details><summary>August 20, 2024 (GenAI ROS Nodes & Isaac Sim)</summary>
 
 		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/WOv_GymDDNs" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
@@ -195,7 +199,7 @@ Our meeting recordings and resources are available for review and reference.
 
 </details>
 
-<details><summary>August 6, 2024</summary>
+<details><summary>August 6, 2024 (OpenVLA Fine-Tuning & Gemma-2)</summary>
 
 		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/W1o-9MZQYMA" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
@@ -209,7 +213,7 @@ Our meeting recordings and resources are available for review and reference.
 
 </details>
 
-<details><summary>July 23, 2024</summary>
+<details><summary>July 23, 2024 (Llama-3 Functions & OpenVLA MimicGen)</summary>
 
 		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/pURku7OAWuo" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
@@ -224,7 +228,7 @@ Our meeting recordings and resources are available for review and reference.
 
 </details>
 
-<details><summary>July 9, 2024</summary>
+<details><summary>July 9, 2024 (OpenVLA Quantization & Florence-2)</summary>
 
 		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/Ngaq2WCDlZM" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
@@ -239,7 +243,7 @@ Our meeting recordings and resources are available for review and reference.
 
 </details>
 
-<details><summary>June 25, 2024</summary>
+<details><summary>June 25, 2024 (Function Calling & Jetson Copilot)</summary>
 
 		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/mIrxJiF1NiI" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
@@ -254,7 +258,7 @@ Our meeting recordings and resources are available for review and reference.
 
 </details>
 
-<details><summary>June 11, 2024</summary>
+<details><summary>June 11, 2024 (Agent Studio & HomeAssistant)</summary>
 
 		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/0GV5cYKz7Rc" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
@@ -268,7 +272,7 @@ Our meeting recordings and resources are available for review and reference.
 
 </details>
 
-<details><summary>May 29, 2024</summary>
+<details><summary>May 29, 2024 (OpenAI Tools & Jetson Copilot)</summary>
 
 		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/aq7QS9AtwE8" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
@@ -282,7 +286,7 @@ Our meeting recordings and resources are available for review and reference.
 
 </details>
 
-<details><summary>May 15, 2024</summary>
+<details><summary>May 15, 2024 (VILA-1.5 & Voicecraft Container)</summary>
 
 		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/zoyONbiHd14" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
@@ -298,7 +302,7 @@ Our meeting recordings and resources are available for review and reference.
 
 </details>
 
-<details><summary>May 1, 2024</summary>
+<details><summary>May 1, 2024 (Function Calling & Home Assistant)</summary>
 
 		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/L4i5x8zzyNc" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
@@ -312,7 +316,7 @@ Our meeting recordings and resources are available for review and reference.
 
 </details>
 
-<details><summary>April 17, 2024</summary>
+<details><summary>April 17, 2024 (Ollama Support & Home Assistant)</summary>
 
 		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/F0v0OsqGsVw" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
@@ -327,7 +331,7 @@ Our meeting recordings and resources are available for review and reference.
 
 </details>
 
-<details><summary>April 3, 2024</summary>
+<details><summary>April 3, 2024 (Project Kickoffs)</summary>
 
 		<div><iframe width="850" height="476" src="https://www.youtube.com/embed/7w3RHoIIkNE" style="margin-top: 1em;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 
