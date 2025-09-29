@@ -101,6 +101,7 @@ nav:
       - NanoLLM: tutorial_nano-llm.md
       - TensorRT-LLM: tensorrt_llm.md
       - Small LLM (SLM): tutorial_slm.md
+      - Benchmarking: tutorial_benchmarking.md
       - API Examples: tutorial_api-examples.md
     - Text + Vision (VLM):
       - LLaVA: tutorial_llava.md
