@@ -42,7 +42,7 @@ We will use a pre-built Docker container published by NVIDIA that has vLLM and a
 Pull the container using the following command:
 
 ```bash
-docker pull TODO ADD URL
+docker pull nvcr.io/nvidia/vllm:25.09-py3
 ```
 
 ## 2. The Benchmarking Workflow
@@ -61,7 +61,7 @@ Open two terminal windows on your Jetson. We will refer to them as:
 In Terminal 1, start and enter the container:
 
 ```bash
-sudo docker run --rm -it --network host --shm-size=16g --ulimit memlock=-1 --ulimit stack=67108864 --runtime=nvidia --name=vllm UPDATE ME
+sudo docker run --rm -it --network host --shm-size=16g --ulimit memlock=-1 --ulimit stack=67108864 --runtime=nvidia --name=vllm nvcr.io/nvidia/vllm:25.09-py3
 ```
 
 Now, in Terminal 2, let's execute this command to access the same running container:
