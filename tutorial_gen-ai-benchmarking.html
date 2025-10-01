@@ -5,12 +5,12 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="Showcasing generative AI projects that run on Jetson" name="description"/>
-  <link href="tutorial_holoscan.html" rel="prev"/>
-  <link href="tutorial_gapi_workflows.html" rel="next"/>
+  <link href="agent_studio.html" rel="prev"/>
+  <link href="vit/index.html" rel="next"/>
   <link href="images/nvidia-favicon-rgb-16x16px@2x.png" rel="icon"/>
   <meta content="mkdocs-1.6.1, mkdocs-material-9.6.21" name="generator"/>
   <title>
-   Jetson Platform Services - NVIDIA Jetson AI Lab
+   Gen AI Benchmarking - NVIDIA Jetson AI Lab
   </title>
   <link href="assets/stylesheets/main.2a3383ac.min.css" rel="stylesheet"/>
   <link href="assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
@@ -38,7 +38,7 @@
   <label class="md-overlay" for="__drawer">
   </label>
   <div data-md-component="skip">
-   <a class="md-skip" href="#tutorial-jetson-platform-services">
+   <a class="md-skip" href="#gen-ai-benchmarking-llms-and-vlms-on-jetson">
     Skip to content
    </a>
   </div>
@@ -67,7 +67,7 @@
       </div>
       <div class="md-header__topic" data-md-component="header-topic">
        <span class="md-ellipsis">
-        Jetson Platform Services
+        Gen AI Benchmarking
        </span>
       </div>
      </div>
@@ -430,12 +430,125 @@
                </ul>
               </nav>
              </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="tutorial_gen-ai-benchmarking.html">
+             <li class="md-nav__item md-nav__item--active">
+              <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+              <label class="md-nav__link md-nav__link--active" for="__toc">
+               <span class="md-ellipsis">
+                Gen AI Benchmarking
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <a class="md-nav__link md-nav__link--active" href="tutorial_gen-ai-benchmarking.html">
                <span class="md-ellipsis">
                 Gen AI Benchmarking
                </span>
               </a>
+              <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+               <label class="md-nav__title" for="__toc">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Table of contents
+               </label>
+               <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#what-were-measuring-and-what-were-not">
+                  <span class="md-ellipsis">
+                   What We're Measuring (and What We're Not)
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#1-preparing-your-jetson-environment">
+                  <span class="md-ellipsis">
+                   1. Preparing Your Jetson Environment
+                  </span>
+                 </a>
+                 <nav aria-label="1. Preparing Your Jetson Environment" class="md-nav">
+                  <ul class="md-nav__list">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#get-the-vllm-container">
+                     <span class="md-ellipsis">
+                      Get the vLLM Container
+                     </span>
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#2-the-benchmarking-workflow">
+                  <span class="md-ellipsis">
+                   2. The Benchmarking Workflow
+                  </span>
+                 </a>
+                 <nav aria-label="2. The Benchmarking Workflow" class="md-nav">
+                  <ul class="md-nav__list">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#step-1-open-two-terminals">
+                     <span class="md-ellipsis">
+                      Step 1: Open Two Terminals
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#step-2-launch-the-container">
+                     <span class="md-ellipsis">
+                      Step 2: Launch the Container
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#step-3-serve-the-model-terminal-1">
+                     <span class="md-ellipsis">
+                      Step 3: Serve the Model (Terminal 1)
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#step-4-warm-up-the-model-terminal-2">
+                     <span class="md-ellipsis">
+                      Step 4: Warm Up the Model (Terminal 2)
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#step-5-run-the-official-benchmark-terminal-2">
+                     <span class="md-ellipsis">
+                      Step 5: Run the Official Benchmark (Terminal 2)
+                     </span>
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#3-analyzing-your-results">
+                  <span class="md-ellipsis">
+                   3. Analyzing Your Results
+                  </span>
+                 </a>
+                 <nav aria-label="3. Analyzing Your Results" class="md-nav">
+                  <ul class="md-nav__list">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#key-metrics-explained">
+                     <span class="md-ellipsis">
+                      Key Metrics Explained
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#concurrency-1-vs-8-the-trade-off">
+                     <span class="md-ellipsis">
+                      Concurrency 1 vs. 8: The Trade-Off
+                     </span>
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+               </ul>
+              </nav>
              </li>
              <li class="md-nav__item md-nav__item--nested">
               <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_7" type="checkbox"/>
@@ -650,8 +763,8 @@
                </ul>
               </nav>
              </li>
-             <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-              <input checked="" class="md-nav__toggle md-toggle" id="__nav_3_11" type="checkbox"/>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" id="__nav_3_11" type="checkbox"/>
               <label class="md-nav__link" for="__nav_3_11" id="__nav_3_11_label" tabindex="0">
                <span class="md-ellipsis">
                 SDK Integrations
@@ -659,7 +772,7 @@
                <span class="md-nav__icon md-icon">
                </span>
               </label>
-              <nav aria-expanded="true" aria-labelledby="__nav_3_11_label" class="md-nav" data-md-level="2">
+              <nav aria-expanded="false" aria-labelledby="__nav_3_11_label" class="md-nav" data-md-level="2">
                <label class="md-nav__title" for="__nav_3_11">
                 <span class="md-nav__icon md-icon">
                 </span>
@@ -673,9 +786,8 @@
                   </span>
                  </a>
                 </li>
-                <li class="md-nav__item md-nav__item--active">
-                 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-                 <a class="md-nav__link md-nav__link--active" href="tutorial_jps.html">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_jps.html">
                   <span class="md-ellipsis">
                    Jetson Platform Services
                   </span>
@@ -778,132 +890,527 @@
       <div class="md-sidebar__scrollwrap">
        <div class="md-sidebar__inner">
         <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+         <label class="md-nav__title" for="__toc">
+          <span class="md-nav__icon md-icon">
+          </span>
+          Table of contents
+         </label>
+         <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#what-were-measuring-and-what-were-not">
+            <span class="md-ellipsis">
+             What We're Measuring (and What We're Not)
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#1-preparing-your-jetson-environment">
+            <span class="md-ellipsis">
+             1. Preparing Your Jetson Environment
+            </span>
+           </a>
+           <nav aria-label="1. Preparing Your Jetson Environment" class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#get-the-vllm-container">
+               <span class="md-ellipsis">
+                Get the vLLM Container
+               </span>
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#2-the-benchmarking-workflow">
+            <span class="md-ellipsis">
+             2. The Benchmarking Workflow
+            </span>
+           </a>
+           <nav aria-label="2. The Benchmarking Workflow" class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#step-1-open-two-terminals">
+               <span class="md-ellipsis">
+                Step 1: Open Two Terminals
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#step-2-launch-the-container">
+               <span class="md-ellipsis">
+                Step 2: Launch the Container
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#step-3-serve-the-model-terminal-1">
+               <span class="md-ellipsis">
+                Step 3: Serve the Model (Terminal 1)
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#step-4-warm-up-the-model-terminal-2">
+               <span class="md-ellipsis">
+                Step 4: Warm Up the Model (Terminal 2)
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#step-5-run-the-official-benchmark-terminal-2">
+               <span class="md-ellipsis">
+                Step 5: Run the Official Benchmark (Terminal 2)
+               </span>
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#3-analyzing-your-results">
+            <span class="md-ellipsis">
+             3. Analyzing Your Results
+            </span>
+           </a>
+           <nav aria-label="3. Analyzing Your Results" class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#key-metrics-explained">
+               <span class="md-ellipsis">
+                Key Metrics Explained
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#concurrency-1-vs-8-the-trade-off">
+               <span class="md-ellipsis">
+                Concurrency 1 vs. 8: The Trade-Off
+               </span>
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+         </ul>
         </nav>
        </div>
       </div>
      </div>
      <div class="md-content" data-md-component="content">
       <article class="md-content__inner md-typeset">
-       <h1 id="tutorial-jetson-platform-services">
-        Tutorial - Jetson Platform Services
+       <h1 id="gen-ai-benchmarking-llms-and-vlms-on-jetson">
+        Gen AI Benchmarking: LLMs and VLMs on Jetson
        </h1>
        <p>
-        Jetson Plaform Services (JPS) provide a platform to simplify development, deployment and management of Edge AI applications on NVIDIA Jetson. JPS is a modular &amp; extensible architecture for developers to distill large complex applications into smaller modular microservice with APIs to integrate into other apps &amp; services. At its core are a collection of AI services leveraging generative AI, deep learning, and analytics, which provide state of the art capabilities including video analytics, video understanding and summarization, text based prompting, zero shot detection and spatio temporal analysis of object movement.
+        In this tutorial, we will walk you through benchmarking Large Language Models (LLMs) and Vision Language Models (VLMs) on your Jetson. For this guide, we'll use vLLM as our inference engine of choice due to its high throughput and efficiency. We'll focus on measuring the model's speed and performance, which are critical to give you an idea of how your system will react under different loads.
        </p>
        <p>
-        <img alt="VLM Workflow" src="images/jps_vlm_workflow.gif"/>
-        <em>
-         VLM Alert Workflow built with JPS
-        </em>
+        We will begin by serving the model, focusing on the key arguments to pass to vLLM. Then, we will capture and analyze the most critical metrics from our benchmark.
        </p>
-       <div class="admonition abstract">
-        <p class="admonition-title">
-         What you need
-        </p>
-        <ol>
-         <li>
-          <p>
-           One of the following Jetson devices:
-          </p>
-          <p>
-           <span class="blobDarkGreen4">
-            Jetson AGX Orin (64GB)
-           </span>
-           <span class="blobDarkGreen5">
-            Jetson AGX Orin (32GB)
-           </span>
-           <span class="blobLightGreen3">
-            Jetson Orin NX (16GB)
-           </span>
-           <span class="blobLightGreen4">
-            Jetson Orin Nano (8GB)
-           </span>
-          </p>
-         </li>
-         <li>
-          <p>
-           Running one of the following versions of
-           <a href="https://developer.nvidia.com/embedded/jetpack">
-            JetPack
-           </a>
-           :
-          </p>
-          <p>
-           <span class="blobPink2">
-            JetPack 6 (L4T r36.x)
-           </span>
-          </p>
-         </li>
-         <li>
-          <p>
-           <span class="markedYellow">
-            NVMe SSD
-            <strong>
-             highly recommended
-            </strong>
-           </span>
-           for storage speed and space
-          </p>
-         </li>
-        </ol>
+       <h2 id="what-were-measuring-and-what-were-not">
+        What We're Measuring (and What We're Not)
+       </h2>
+       <p>
+        In this tutorial, we are measuring the performance of the model, not its quality. Our goal is to answer questions like:
+       </p>
+       <ul>
+        <li>
+         How fast is it? (Latency)
+        </li>
+        <li>
+         How much work can it handle at once? (Throughput)
+        </li>
+       </ul>
+       <p>
+        We will not be evaluating the model's accuracy or how "smart" its answers are. We'll focus on these three key metrics:
+       </p>
+       <p>
+        <strong>
+         Time to First Token (TTFT)
+        </strong>
+        : How long a user has to wait before the model starts generating a response. This is crucial for a responsive user experience. The initial delay before the first token appears exists because the model must first process your entire input prompt (a step called 'prefill') to compute its internal state, known as the KV cache. This upfront work is what allows vLLM to generate all subsequent tokens extremely fast.
+       </p>
+       <p>
+        <strong>
+         Output Token Throughput (tok/s)
+        </strong>
+        : The total number of tokens the model can generate per second across all concurrent requests. This is our main measure of overall server capacity.
+       </p>
+       <p>
+        <strong>
+         Inter-Token Latency (ITL)
+        </strong>
+        : The average delay between each token generated in the response. This affects how smoothly the text appears to "stream" to the user.
+       </p>
+       <p>
+        Here is a simple example to illustrate these metrics:
+       </p>
+       <p>
+        Imagine a drone using an onboard VLM to detect fires from its camera feed. The model is constantly processing this feed with the prompt, "Do you see a fire?" and is connected to an alert system.
+       </p>
+       <p>
+        In this scenario, a low TTFT is critical, as it's the time from the camera seeing fire to the system generating the first word of an alert like "Yes...". The Output Token Throughput then determines how quickly the model can provide a full, detailed description like "...a large fire is spreading in the north quadrant."
+       </p>
+       <h2 id="1-preparing-your-jetson-environment">
+        1. Preparing Your Jetson Environment
+       </h2>
+       <p>
+        First, before starting the benchmark, we recommend you reboot the unit to make sure we are starting from a clean state. We also recommend setting your Jetson to MAXN mode.
+       </p>
+       <p>
+        You can do that by executing the following command.
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>sudo<span class="w"> </span>nvpmodel<span class="w"> </span>-m<span class="w"> </span><span class="m">0</span>
+</code></pre>
+       </div>
+       <h3 id="get-the-vllm-container">
+        Get the vLLM Container
+       </h3>
+       <p>
+        We will use a pre-built Docker container published by NVIDIA that has vLLM and all its dependencies. This guarantees a consistent environment for reproducible results and saves us from the complex process of building vLLM from source, which is necessary because official binaries are not provided for the Jetson platform.
+       </p>
+       <p>
+        Pull the container using the following command:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>docker<span class="w"> </span>pull<span class="w"> </span>nvcr.io/nvidia/vllm:25.09-py3
+</code></pre>
+       </div>
+       <h2 id="2-the-benchmarking-workflow">
+        2. The Benchmarking Workflow
+       </h2>
+       <p>
+        The benchmarking process requires two separate terminals because we need one to serve the model and another to send benchmark requests to it.
+       </p>
+       <h3 id="step-1-open-two-terminals">
+        Step 1: Open Two Terminals
+       </h3>
+       <p>
+        Open two terminal windows on your Jetson. We will refer to them as:
+       </p>
+       <ul>
+        <li>
+         Terminal 1 (Serving Terminal)
+        </li>
+        <li>
+         Terminal 2 (Benchmark Terminal)
+        </li>
+       </ul>
+       <h3 id="step-2-launch-the-container">
+        Step 2: Launch the Container
+       </h3>
+       <p>
+        In Terminal 1, start and enter the container:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-it<span class="w"> </span>--network<span class="w"> </span>host<span class="w"> </span>--shm-size<span class="o">=</span>16g<span class="w"> </span>--ulimit<span class="w"> </span><span class="nv">memlock</span><span class="o">=</span>-1<span class="w"> </span>--ulimit<span class="w"> </span><span class="nv">stack</span><span class="o">=</span><span class="m">67108864</span><span class="w"> </span>--runtime<span class="o">=</span>nvidia<span class="w"> </span>--name<span class="o">=</span>vllm<span class="w"> </span>nvcr.io/nvidia/vllm:25.09-py3
+</code></pre>
        </div>
        <p>
-        To get started with Jetson Platform Services, follow the quickstart guide to install and setup JPS. Then explore the reference workflows to learn how to use DeepStream, Analytics, Generative AI and more with JPS:
+        Now, in Terminal 2, let's execute this command to access the same running container:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vllm<span class="w"> </span>bash
+</code></pre>
+       </div>
+       <p>
+        You should now have two terminals, both inside the same running Docker container.
+       </p>
+       <h3 id="step-3-serve-the-model-terminal-1">
+        Step 3: Serve the Model (Terminal 1)
+       </h3>
+       <p>
+        In your Serving Terminal, run the following command to load the Meta-Llama-3.1-8B quantized model and start the server. This command tells vLLM to prepare the model to accept requests.
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><span class="nv">VLLM_ATTENTION_BACKEND</span><span class="o">=</span>FLASHINFER<span class="w"> </span>vllm<span class="w"> </span>serve<span class="w"> </span><span class="s2">"RedHatAI/Meta-Llama-3.1-8B-Instruct-quantized.w4a16"</span><span class="w"> </span><span class="se">\</span>
+--port<span class="w"> </span><span class="s2">"8000"</span><span class="w"> </span><span class="se">\</span>
+--host<span class="w"> </span><span class="s2">"0.0.0.0"</span><span class="w"> </span><span class="se">\</span>
+--trust_remote_code<span class="w"> </span><span class="se">\</span>
+--swap-space<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="se">\</span>
+--max-seq-len<span class="w"> </span><span class="m">32000</span><span class="w"> </span><span class="se">\</span>
+--max-model-len<span class="w"> </span><span class="m">32000</span><span class="w"> </span><span class="se">\</span>
+--tensor-parallel-size<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+--max-num-seqs<span class="w"> </span><span class="m">1024</span><span class="w"> </span><span class="se">\</span>
+--gpu-memory-utilization<span class="w"> </span><span class="m">0</span>.8
+</code></pre>
+       </div>
+       <p>
+        For this tutorial, we will be using this checkpoint
+        <code>
+         RedHatAI/Meta-Llama-3.1-8B-Instruct-quantized.w4a16
+        </code>
+        .
        </p>
        <p>
-        1)
-        <a href="https://docs.nvidia.com/jetson/jps/setup/quick-start.html">
-         Quick Start Guide
-        </a>
-        <br/>
-        2)
-        <a href="https://docs.nvidia.com/jetson/jps/setup/ai-nvr.html">
-         AI Powered Network Video Recorder
-        </a>
-        <br/>
-        3)
-        <a href="https://docs.nvidia.com/jetson/jps/workflows/zero_shot_detection_workflow.html">
-         Zero Shot Detection with NanoOWL
-        </a>
-        <br/>
-        4)
-        <a href="https://docs.nvidia.com/jetson/jps/workflows/vlm_workflow.html">
-         Visual Language Model Alerts
-        </a>
+        It is Llama 3.1 8B Instruct W4A16 quantized. But you can replace that checkpoint with any model checkpoint from Hugging Face, whether it is an LLM or a VLM.
        </p>
        <p>
-        The reference workflows demonstrate how to use the microservices provided in JPS to build full end to end systems on your Jetson.
+        <strong>
+         What these arguments mean:
+        </strong>
        </p>
+       <ul>
+        <li>
+         <code>
+          VLLM_ATTENTION_BACKEND=FLASHINFER
+         </code>
+         : We explicitly set this environment variable to use the FlashInfer backend. FlashInfer is a highly optimized library that significantly speeds up the core self-attention mechanism on NVIDIA GPUs by reducing memory traffic. Setting this ensures we are leveraging the fastest possible implementation for our benchmark. However, some models may not be fully compatible and could give a "CUDA Kernel not supported" error. If this happens, you can simply try an alternative like
+         <code>
+          VLLM_ATTENTION_BACKEND=FLASH_ATTN
+         </code>
+         .
+        </li>
+        <li>
+         <code>
+          --gpu-memory-utilization 0.8
+         </code>
+         : lets vLLM use ~80% of the total memory. Model weights load first and the remaining capacity within that 80% is pre-allocated to the KV cache.
+        </li>
+        <li>
+         <code>
+          --max-seq-len 32000
+         </code>
+         : Sets an upper limit on the input sequence length (the prompt only) that vLLM will accept for a single request.
+        </li>
+        <li>
+         <code>
+          --max-seq-len 32000
+         </code>
+         : Sets an upper bound on the model's context window (i.e. prompt tokens + output tokens) for a single request. vLLM will attempt to enforce this as the maximum total token count in memory for that request.
+        </li>
+       </ul>
        <p>
-        <img alt="JPS VLM Workflow" src="images/jps_vlm_workflow.png"/>
-        <em>
-         VLM Alert Workflow Architecture
-        </em>
+        Wait until you see the confirmation message that the server is running. It will look exactly like this:
        </p>
+       <div class="highlight">
+        <pre><span></span><code>(APIServer pid=92) INFO:     Waiting for application startup.
+(APIServer pid=92) INFO:     Application startup complete.
+</code></pre>
+       </div>
        <p>
-        View the links below to learn more about Jetson Platform Services:
-        <br/>
-        <em>
-         <a href="https://developer.nvidia.com/blog/develop-generative-ai-powered-visual-ai-agents-for-the-edge/">
-          VLM Alert Blog
-         </a>
-         <br/>
-        </em>
-        <a href="https://developer.nvidia.com/embedded/jetpack/jetson-platform-services-get-started">
-         JPS Product Page
+        Leave this terminal running. Do not close it.
+       </p>
+       <h3 id="step-4-warm-up-the-model-terminal-2">
+        Step 4: Warm Up the Model (Terminal 2)
+       </h3>
+       <p>
+        Before we run the real benchmark, we need to perform a "warm-up." This is a practice run that populates vLLM's internal caches, especially the
+        <a href="https://docs.vllm.ai/en/latest/features/automatic_prefix_caching.html">
+         prefix cache
         </a>
-        <br/>
-        <em>
-         <a href="https://docs.nvidia.com/jetson/jps/moj-overview.html">
-          JPS Documentation
-         </a>
-         <br/>
-        </em>
-        VLM Alert Demo Video
+        , allowing it to achieve its true peak performance during the actual test.
        </p>
-       <div>
-        <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="280" src="https://www.youtube.com/embed/0ZbDzaBfsrw" style="display: inline-block;" title="YouTube video player" width="500">
-        </iframe>
+       <p>
+        In your Benchmark Terminal, run this command. The results from this run should be ignored.
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>vllm<span class="w"> </span>bench<span class="w"> </span>serve<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--dataset-name<span class="w"> </span>random<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--model<span class="w"> </span>RedHatAI/Meta-Llama-3.1-8B-Instruct-quantized.w4a16<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--num-prompts<span class="w"> </span><span class="m">50</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--percentile-metrics<span class="w"> </span>ttft,tpot,itl,e2el<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--random-input-len<span class="w"> </span><span class="m">2048</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--random-output-len<span class="w"> </span><span class="m">128</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--max-concurrency<span class="w"> </span><span class="m">1</span>
+</code></pre>
+       </div>
+       <p>
+        <strong>
+         A Note on Dataset Choice.
+        </strong>
+        Since this tutorial is about performance (speed) rather than quality, the content of the dataset doesn't directly change latency/throughput; what matters are request shapes (token lengths), sampling/decoding settings, and concurrency. For synthetic runs, we use
+        <code>
+         --dataset-name random
+        </code>
+        , which lets us fix token counts precisely.
+       </p>
+       <p>
+        We set
+        <code>
+         --random-input-len 2048
+        </code>
+        and
+        <code>
+         --random-output-len 128
+        </code>
+        . For a RAG-style workload, increase
+        <code>
+         --random-input-len
+        </code>
+        to account for the retrieved context.
+       </p>
+       <p>
+        However, if you are benchmarking a Vision Language Model, it is crucial to use a dataset that includes images for meaningful results. For a VLM, you would need to change the
+        <code>
+         --dataset-name
+        </code>
+        argument and swap it with the right argument to load the dataset of your choice. We recommend using
+        <code>
+         lmarena-ai/vision-arena-bench-v0.1
+        </code>
+        .
+       </p>
+       <p>
+        The final command will look like this for the VLM:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>vllm<span class="w"> </span>bench<span class="w"> </span>serve<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--dataset-name<span class="w"> </span>hf<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--dataset-path<span class="w"> </span>lmarena-ai/vision-arena-bench-v0.1<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--hf-split<span class="w"> </span>train<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--model<span class="w"> </span>&lt;your_vlm_model&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--num-prompts<span class="w"> </span><span class="m">50</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--percentile-metrics<span class="w"> </span>ttft,tpot,itl,e2el<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--hf-output-len<span class="w"> </span><span class="m">128</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--max-concurrency<span class="w"> </span><span class="m">1</span>
+</code></pre>
+       </div>
+       <p>
+        For more information about the flags the vllm bench serve can take, please check out
+        <a href="https://docs.vllm.ai/en/v0.10.1/cli/bench/serve.html#options">
+         vLLM's documentation page
+        </a>
+        .
+       </p>
+       <p>
+        For the rest of the tutorial, we will be continuing with our example on the Llama 3.1 8B Instruct benchmark.
+       </p>
+       <h3 id="step-5-run-the-official-benchmark-terminal-2">
+        Step 5: Run the Official Benchmark (Terminal 2)
+       </h3>
+       <p>
+        Now you're ready to collect the real performance data. We will run the test twice: once to measure single-user performance and once to simulate a heavier load.
+       </p>
+       <p>
+        <strong>
+         Benchmark 1: Single-User Performance (Concurrency = 1)
+        </strong>
+       </p>
+       <p>
+        This test measures the best-case scenario for an individual user.
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>vllm<span class="w"> </span>bench<span class="w"> </span>serve<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--dataset-name<span class="w"> </span>random<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--model<span class="w"> </span>RedHatAI/Meta-Llama-3.1-8B-Instruct-quantized.w4a16<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--num-prompts<span class="w"> </span><span class="m">50</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--percentile-metrics<span class="w"> </span>ttft,tpot,itl,e2el<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--random-input-len<span class="w"> </span><span class="m">2048</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--random-output-len<span class="w"> </span><span class="m">128</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--max-concurrency<span class="w"> </span><span class="m">1</span>
+</code></pre>
+       </div>
+       <p>
+        <strong>
+         Benchmark 2: Multi-User Performance (Concurrency = 8)
+        </strong>
+       </p>
+       <p>
+        This test simulates 8 users sending requests at the same time to see how the system performs under load.
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>vllm<span class="w"> </span>bench<span class="w"> </span>serve<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--dataset-name<span class="w"> </span>random<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--model<span class="w"> </span>RedHatAI/Meta-Llama-3.1-8B-Instruct-quantized.w4a16<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--num-prompts<span class="w"> </span><span class="m">50</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--percentile-metrics<span class="w"> </span>ttft,tpot,itl,e2el<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--random-input-len<span class="w"> </span><span class="m">2048</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--random-output-len<span class="w"> </span><span class="m">128</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--max-concurrency<span class="w"> </span><span class="m">8</span>
+</code></pre>
+       </div>
+       <h2 id="3-analyzing-your-results">
+        3. Analyzing Your Results
+       </h2>
+       <p>
+        After your benchmark runs, you will get a summary table. Let's break down what the key numbers mean using the sample output below.
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>============ Serving Benchmark Result ============
+Successful requests:                     50        
+Maximum request concurrency:             1         
+Benchmark duration (s):                  233.17    
+Total input tokens:                      10058     
+Total generated tokens:                  10303     
+Request throughput (req/s):              0.21      
+Output token throughput (tok/s):         44.19     
+Total Token throughput (tok/s):          87.32     
+---------------Time to First Token----------------
+Mean TTFT (ms):                          32.02     
+Median TTFT (ms):                        31.38     
+P99 TTFT (ms):                           38.12     
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          22.61     
+Median TPOT (ms):                        22.56     
+P99 TPOT (ms):                           24.97     
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           22.47     
+Median ITL (ms):                         22.58     
+P99 ITL (ms):                            23.79     
+----------------End-to-end Latency----------------
+Mean E2EL (ms):                          4663.04   
+Median E2EL (ms):                        3450.02   
+P99 E2EL (ms):                           15030.27  
+==================================================
+</code></pre>
+       </div>
+       <h3 id="key-metrics-explained">
+        Key Metrics Explained
+       </h3>
+       <p>
+        <strong>
+         Output token throughput (tok/s): 44.19
+        </strong>
+       </p>
+       <p>
+        This metric measures the generation speed for a single user, and a result of 44.19 tokens/second indicates a very strong processing capability for a single request, delivering text much faster than a person can read.
+       </p>
+       <p>
+        <strong>
+         Mean TTFT (ms): 32.02
+        </strong>
+       </p>
+       <p>
+        This is the average initial wait time before a response begins generating. An extremely low result of just 32.02 milliseconds means the application will feel instantaneous and highly responsive to the user.
+       </p>
+       <p>
+        In the context of VLMs, this number would usually be higher, since we are not dealing with the text prompt only; we are dealing with an image as well.
+       </p>
+       <p>
+        <strong>
+         Mean ITL (ms): 22.47
+        </strong>
+       </p>
+       <p>
+        This measures the average time gap between each generated token after the first one. A low value of 22.47 milliseconds is excellent, as it translates directly to a fast and smooth streaming experience for the user.
+       </p>
+       <h3 id="concurrency-1-vs-8-the-trade-off">
+        Concurrency 1 vs. 8: The Trade-Off
+       </h3>
+       <p>
+        When you compare your results, you'll likely see a trade-off:
+       </p>
+       <ul>
+        <li>
+         Going from concurrency 1 to 8, the Output Token Throughput should increase significantly. The system is doing more total work.
+        </li>
+        <li>
+         However, the Mean TTFT and Mean ITL will also likely increase. Since the Jetson is now splitting its time between 8 requests instead of 1, each individual request takes longer to process.
+        </li>
+       </ul>
+       <p>
+        This is the classic trade-off between overall capacity and individual user experience. Your benchmark results help you find the right balance for your application.
+       </p>
+       <div class="admonition note">
+        <p class="admonition-title">
+         Note
+        </p>
+        <p>
+         The term "user" in this tutorial could mean the entity which consumes the output of the model which could be a robotic application using the model in a drone, a humanoid, or simply you using it as a local LLM inference hardware.
+        </p>
        </div>
       </article>
      </div>
