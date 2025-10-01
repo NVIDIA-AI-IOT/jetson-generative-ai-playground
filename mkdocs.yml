@@ -38,7 +38,6 @@ plugins:
         'tutorial_nanoowl.md': 'vit/tutorial_nanoowl.md'
         'tutorial_sam.md': 'vit/tutorial_sam.md'
         'tutorial_tam.md': 'vit/tutorial_tam.md'
-        'tutorial_benchmarking.md': 'tutorial_Performance-Testing.md'
 
 use_directory_urls: false
 
@@ -102,7 +101,6 @@ nav:
       - NanoLLM: tutorial_nano-llm.md
       - TensorRT-LLM: tensorrt_llm.md
       - Small LLM (SLM): tutorial_slm.md
-      - Performance Testing: tutorial_Performance-Testing.md
       - API Examples: tutorial_api-examples.md
     - Text + Vision (VLM):
       - LLaVA: tutorial_llava.md
@@ -110,6 +108,7 @@ nav:
       - NanoVLM: tutorial_nano-vlm.md
       - Llama 3.2 Vision: llama_vlm.md
       - Agent Studio: agent_studio.md
+    - Gen AI Benchmarking: tutorial_gen-ai-benchmarking.md
     - Vision Transformers (ViT):
       - vit/index.md
       - EfficientViT: vit/tutorial_efficientvit.md

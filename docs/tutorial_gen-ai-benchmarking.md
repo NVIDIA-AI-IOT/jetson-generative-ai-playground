@@ -1,6 +1,6 @@
-# Performance Testing: LLMs and VLMs on Jetson
+# Gen AI Benchmarking: LLMs and VLMs on Jetson
 
-In this tutorial, we will walk you through performance testing of Large Language Models (LLMs) and Vision Language Models (VLMs) on your Jetson. For this guide, we'll use vLLM as our inference engine of choice due to its high throughput and efficiency. We'll focus on measuring the model's speed and performance, which are critical to give you an idea of how your system will react under different loads.
+In this tutorial, we will walk you through benchmarking Large Language Models (LLMs) and Vision Language Models (VLMs) on your Jetson. For this guide, we'll use vLLM as our inference engine of choice due to its high throughput and efficiency. We'll focus on measuring the model's speed and performance, which are critical to give you an idea of how your system will react under different loads.
 
 We will begin by serving the model, focusing on the key arguments to pass to vLLM. Then, we will capture and analyze the most critical metrics from our benchmark.
 
@@ -27,7 +27,7 @@ In this scenario, a low TTFT is critical, as it's the time from the camera seein
 
 ## 1. Preparing Your Jetson Environment
 
-First, before starting the performance test, we recommend you reboot the unit to make sure we are starting from a clean state. We also recommend setting your Jetson to MAXN mode.
+First, before starting the benchmark, we recommend you reboot the unit to make sure we are starting from a clean state. We also recommend setting your Jetson to MAXN mode.
 
 You can do that by executing the following command.
 
@@ -45,16 +45,16 @@ Pull the container using the following command:
 docker pull nvcr.io/nvidia/vllm:25.09-py3
 ```
 
-## 2. The Performance Testing Workflow
+## 2. The Benchmarking Workflow
 
-The performance testing process requires two separate terminals because we need one to serve the model and another to send test requests to it.
+The benchmarking process requires two separate terminals because we need one to serve the model and another to send benchmark requests to it.
 
 ### Step 1: Open Two Terminals
 
 Open two terminal windows on your Jetson. We will refer to them as:
 
 - Terminal 1 (Serving Terminal)
-- Terminal 2 (Testing Terminal)
+- Terminal 2 (Benchmark Terminal)
 
 ### Step 2: Launch the Container
 
@@ -95,7 +95,7 @@ It is Llama 3.1 8B Instruct W4A16 quantized. But you can replace that checkpoint
 
 **What these arguments mean:**
 
-- `VLLM_ATTENTION_BACKEND=FLASHINFER`: We explicitly set this environment variable to use the FlashInfer backend. FlashInfer is a highly optimized library that significantly speeds up the core self-attention mechanism on NVIDIA GPUs by reducing memory traffic. Setting this ensures we are leveraging the fastest possible implementation for our performance test. However, some models may not be fully compatible and could give a "CUDA Kernel not supported" error. If this happens, you can simply try an alternative like `VLLM_ATTENTION_BACKEND=FLASH_ATTN`.
+- `VLLM_ATTENTION_BACKEND=FLASHINFER`: We explicitly set this environment variable to use the FlashInfer backend. FlashInfer is a highly optimized library that significantly speeds up the core self-attention mechanism on NVIDIA GPUs by reducing memory traffic. Setting this ensures we are leveraging the fastest possible implementation for our benchmark. However, some models may not be fully compatible and could give a "CUDA Kernel not supported" error. If this happens, you can simply try an alternative like `VLLM_ATTENTION_BACKEND=FLASH_ATTN`.
 - `--gpu-memory-utilization 0.8`: lets vLLM use ~80% of the total memory. Model weights load first and the remaining capacity within that 80% is pre-allocated to the KV cache.
 - `--max-seq-len 32000`: Sets an upper limit on the input sequence length (the prompt only) that vLLM will accept for a single request.
 - `--max-seq-len 32000`: Sets an upper bound on the model's context window (i.e. prompt tokens + output tokens) for a single request. vLLM will attempt to enforce this as the maximum total token count in memory for that request.
@@ -111,9 +111,9 @@ Leave this terminal running. Do not close it.
 
 ### Step 4: Warm Up the Model (Terminal 2)
 
-Before we run the real performance test, we need to perform a "warm-up." This is a practice run that populates vLLM's internal caches, especially the [prefix cache](https://docs.vllm.ai/en/latest/features/automatic_prefix_caching.html), allowing it to achieve its true peak performance during the actual test.
+Before we run the real benchmark, we need to perform a "warm-up." This is a practice run that populates vLLM's internal caches, especially the [prefix cache](https://docs.vllm.ai/en/latest/features/automatic_prefix_caching.html), allowing it to achieve its true peak performance during the actual test.
 
-In your Testing Terminal, run this command. The results from this run should be ignored.
+In your Benchmark Terminal, run this command. The results from this run should be ignored.
 
 ```bash
 vllm bench serve \
@@ -130,7 +130,7 @@ vllm bench serve \
 
 We set `--random-input-len 2048` and `--random-output-len 128`. For a RAG-style workload, increase `--random-input-len` to account for the retrieved context.
 
-However, if you are testing a Vision Language Model, it is crucial to use a dataset that includes images for meaningful results. For a VLM, you would need to change the `--dataset-name` argument and swap it with the right argument to load the dataset of your choice. We recommend using `lmarena-ai/vision-arena-bench-v0.1`.
+However, if you are benchmarking a Vision Language Model, it is crucial to use a dataset that includes images for meaningful results. For a VLM, you would need to change the `--dataset-name` argument and swap it with the right argument to load the dataset of your choice. We recommend using `lmarena-ai/vision-arena-bench-v0.1`.
 
 The final command will look like this for the VLM:
 
@@ -148,13 +148,13 @@ vllm bench serve \
 
 For more information about the flags the vllm bench serve can take, please check out [vLLM's documentation page](https://docs.vllm.ai/en/v0.10.1/cli/bench/serve.html#options).
 
-For the rest of the tutorial, we will be continuing with our example on the Llama 3.1 8B Instruct performance test.
+For the rest of the tutorial, we will be continuing with our example on the Llama 3.1 8B Instruct benchmark.
 
-### Step 5: Run the Official Performance Test (Terminal 2)
+### Step 5: Run the Official Benchmark (Terminal 2)
 
 Now you're ready to collect the real performance data. We will run the test twice: once to measure single-user performance and once to simulate a heavier load.
 
-**Test 1: Single-User Performance (Concurrency = 1)**
+**Benchmark 1: Single-User Performance (Concurrency = 1)**
 
 This test measures the best-case scenario for an individual user.
 
@@ -169,7 +169,7 @@ vllm bench serve \
   --max-concurrency 1
 ```
 
-**Test 2: Multi-User Performance (Concurrency = 8)**
+**Benchmark 2: Multi-User Performance (Concurrency = 8)**
 
 This test simulates 8 users sending requests at the same time to see how the system performs under load.
 
@@ -186,7 +186,7 @@ vllm bench serve \
 
 ## 3. Analyzing Your Results
 
-After your performance test runs, you will get a summary table. Let's break down what the key numbers mean using the sample output below.
+After your benchmark runs, you will get a summary table. Let's break down what the key numbers mean using the sample output below.
 
 ```
 ============ Serving Benchmark Result ============
@@ -240,7 +240,7 @@ When you compare your results, you'll likely see a trade-off:
 - Going from concurrency 1 to 8, the Output Token Throughput should increase significantly. The system is doing more total work.
 - However, the Mean TTFT and Mean ITL will also likely increase. Since the Jetson is now splitting its time between 8 requests instead of 1, each individual request takes longer to process.
 
-This is the classic trade-off between overall capacity and individual user experience. Your performance test results help you find the right balance for your application.
+This is the classic trade-off between overall capacity and individual user experience. Your benchmark results help you find the right balance for your application.
 
 !!! note
     The term "user" in this tutorial could mean the entity which consumes the output of the model which could be a robotic application using the model in a drone, a humanoid, or simply you using it as a local LLM inference hardware.
