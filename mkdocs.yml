@@ -90,6 +90,7 @@ nav:
       - 🔖 SSD + Docker: tips_ssd-docker.md
       - 🔖 Memory optimization: tips_ram-optimization.md
       - 🏆 Hackathon Guide: hackathon.md
+    - 🌸 Jetson Workshop: workshop_gtcdc2025.md
     - AI Microservices:
       - Microservices Intro : tutorials/microservices_intro.md
       - Microservices for VLM : tutorials/microservices_vlm.md
