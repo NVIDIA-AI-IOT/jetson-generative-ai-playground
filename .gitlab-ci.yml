@@ -1,11 +1,13 @@
 image: python:latest
+
 pages:
   stage: deploy
   only:
-    - master 
+    - master
     - main
   script:
     - pip install mkdocs-material
+    - pip install mkdocs-redirects
     - mkdocs build --site-dir public
   artifacts:
     paths:
