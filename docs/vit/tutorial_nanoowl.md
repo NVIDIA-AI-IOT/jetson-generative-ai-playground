@@ -51,7 +51,7 @@ jetson-containers run --workdir /opt/nanoowl $(autotag nanoowl)
 1. Install missing module.
 
     ```bash
-    pip install aiohttp
+    pip install aiohttp --index-url=https://pypi.jetson-ai-lab.io/jp6/cu126
     ```
 
 2. Launch the demo
