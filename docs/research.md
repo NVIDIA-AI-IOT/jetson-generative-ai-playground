@@ -868,5 +868,14 @@ Our research group brings together experts from academia, industry, and the open
 			</small>
 		</div>
 	</div>
+	<div class="bio-container col-lg-4 col-sm-4">
+		<div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+			<a href="https://www.linkedin.com/in/ori-nachum-73274745/" target="_blank"><img class="bio-image" src="research/images/Ori_Nachum.jpg"></img></a><br/>
+			<a href="https://www.linkedin.com/in/ori-nachum-73274745/" target="_blank"><img class="bio-logo" src="research/images/linkedin.png"></img></a>
+			<a href="https://www.youtube.com/@OriNachum" target="_blank"><img class="bio-logo" src="research/images/youtube.png"></img></a>
+			<a href="https://github.com/OriNachum" target="_blank"><img class="bio-logo" src="research/images/github.png"></img></a>
+			Ori Nachum, AI Expert, Innovation<br/>
+		</div>
+	</div>
 </div>
 
