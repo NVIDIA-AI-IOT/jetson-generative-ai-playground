@@ -104,6 +104,7 @@ nav:
       - Small LLM (SLM): tutorial_slm.md
       - API Examples: tutorial_api-examples.md
     - Text + Vision (VLM):
+      - Live VLM WebUI 🆕: tutorial_live-vlm-webui.md
       - LLaVA: tutorial_llava.md
       - Live LLaVA: tutorial_live-llava.md
       - NanoVLM: tutorial_nano-vlm.md
