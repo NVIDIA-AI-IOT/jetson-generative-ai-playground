@@ -1,0 +1,37 @@
+{
+  "container": {
+    "name": "Docker Container",
+    "tags": [],
+    "container_options": null,
+    "container_image": null,
+    "container_cmd": null,
+    "auto_update": null,
+    "CUDA_VISIBLE_DEVICES": "all"
+  },
+  "container_image": {
+    "name": "Container Image",
+    "tags": ["string"],
+    "help": "Specify the container image to run and launch the server.\nOn Jetson, pick a tag that is compatible with your version of JetPack.\nFor example, L4T r36.4.0 images are compatible with JetPack 6.1 and 6.2.\nThese are built from jetson-containers with CUDA and are on DockerHub."
+  },
+  "container_options": {
+    "name": "Docker Options",
+    "tags": ["string"],
+    "help": "These are extra prefix flags that get passed to 'docker run' when starting the container.  These are the arguments that come before the container image name, for example --volume ~/workspace:/workspace --env WORKSPACE=/workspace"
+  },
+  "container_cmd": {
+    "name": "Docker Run Cmd",
+    "tags": ["string"],
+    "help": "Template that builds the 'docker run' command from $OPTIONS $IMAGE $ARGS\nYou can change the startup command or arguments with this."
+  },
+  "auto_update": {
+    "name": "Auto Update",
+    "tags": ["string"],
+    "options": ["on", "off"],
+    "help": "When set to 'on', will automatically pull the latest container on start-up."
+  },
+  "server_host": {
+    "name": "Server IP / Port",
+    "tags": ["string"],
+    "help": "The server's hostname/IP and port that it is listening on for incoming requests.\n0.0.0.0 will listen on all network interfaces (127.0.0.1 from localhost only)\nThis IP address also gets populated in the examples, so set it to your device."
+  }
+}

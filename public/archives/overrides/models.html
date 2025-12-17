@@ -1,0 +1,113 @@
+<html>
+ <body>
+<!-- ARCHIVE DEPRECATION BANNER -->
+<div id="archive-banner" style="position:fixed;top:0;left:0;right:0;z-index:99999;background:linear-gradient(90deg,#1a1a1a 0%,#2d2d2d 100%);border-bottom:3px solid #76b900;padding:12px 20px;display:flex;align-items:center;justify-content:center;gap:20px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;box-shadow:0 2px 10px rgba(0,0,0,0.3);">
+  <span style="color:#fbbf24;font-size:20px;"></span>
+  <span style="color:#ffffff;font-size:14px;"><strong style="color:#fbbf24;">Archive Notice:</strong> This documentation is deprecated and no longer maintained.</span>
+  <a href="/" style="background:#76b900;color:#000;padding:8px 16px;border-radius:4px;text-decoration:none;font-weight:600;font-size:13px;transition:background 0.2s;">Visit New Jetson AI Lab </a>
+</div>
+<div style="height:60px;"></div>
+<!-- END ARCHIVE BANNER -->
+  {% extends "main.html" %}
+{% block extrahead %}
+  {{ super() }}
+  <style>
+   body {
+      background-color: #efefef;
+    }
+    #search-bar-sidebar-status-rollup {
+      display: none !important;
+    }
+    #search-bar-sidebar {
+      display: none !important;
+    }
+    #search-bar-select2, #search-bar-select2 ~ * {
+      display: none !important;
+    }
+  </style>
+  <script type="module">
+   import { GraphDB, SearchBar, QueryView} from '/portal/nanolab.js';
+
+    const GRAPH_DB = [
+      '/portal/dist/db.json',
+      /*'https://raw.githubusercontent.com/dusty-nv/jetson-containers/refs/heads/dev/data/graphdb/db.json'*/
+    ];
+
+    window.onload = () => {
+      GraphDB.load(GRAPH_DB).then(db => {
+        var searchBar = new SearchBar({
+          db: db,
+          tags: QueryView().tags,
+          parent: '.root-container'
+        });
+        console.log("[GraphDB]  Done loading");
+      });
+    };
+  </script>
+  {% endblock %}
+{% block tabs %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+  <div class="root-container flex-column" data-style-theme="nv-green">
+  </div>
+  {% endblock %}
+{% block footer %}
+  <footer class="md-footer">
+   <div class="md-footer-meta md-typeset">
+    <div class="md-grid">
+     <div class="md-copyright">
+      <div class="md-copyright__highlight">
+       <ul class="global-footer__links">
+        <li>
+         <a href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/" target="_blank">
+          Privacy Policy
+         </a>
+        </li>
+        <li>
+         <a href="https://www.nvidia.com/en-us/privacy-center/" target="_blank">
+          Manage My Privacy
+         </a>
+        </li>
+        <li>
+         <a href="https://www.nvidia.com/en-us/preferences/email-preferences/" target="_blank">
+          Do Not Sell or Share My Data
+         </a>
+        </li>
+        <li>
+         <a href="https://www.nvidia.com/en-us/about-nvidia/legal-info/" target="_blank">
+          Legal
+         </a>
+        </li>
+        <li>
+         <a href="https://www.nvidia.com/en-us/about-nvidia/accessibility/" target="_blank">
+          Accessibility
+         </a>
+        </li>
+        <li>
+         <a href="https://www.nvidia.com/en-us/about-nvidia/company-policies/" target="_self">
+          Corporate Policies
+         </a>
+        </li>
+        <li>
+         <a href="https://www.nvidia.com/en-us/product-security/" target="_blank">
+          Product Security
+         </a>
+        </li>
+        <li>
+         <a href="https://www.nvidia.com/en-us/contact/" target="_blank">
+          Contact
+         </a>
+        </li>
+       </ul>
+       <div class="global-footer__copyright">
+        Copyright © 2024 NVIDIA Corporation
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </footer>
+  {% endblock %}
+ </body>
+</html>

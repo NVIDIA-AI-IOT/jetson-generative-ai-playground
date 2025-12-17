@@ -1,0 +1,33 @@
+{
+  "max_batch_size": {
+    "name": "Max Batch Size",
+    "tags": ["number"],
+    "help": "The maximum number of generation requests to handle in parallel at one time."
+  },
+  "max_context_len": {
+    "name": "Max Context Len",
+    "tags": ["number"],
+    "help": "The maximum number of tokens in the chat history, including any system instruction, prompt, and future reply. Reduce this from the model's default to decrease memory usage. This can be left unset, and the model's default will be used."
+  },
+  "prefill_chunk": {
+    "name": "Prefill Chunk Len",
+    "tags": ["number"],
+    "help": "The maximum number of input tokens that can be prefilled into the KV cache at once. Longer prompts are prefilled in multiple batches.\nReduce this from the model's default to decrease memory usage."
+  },
+  "chat_template": {
+    "name": "Chat Template",
+    "tags": ["string"],
+    "placeholder": "<default>",
+    "help": "Manually set the model's conversation template.  Normally this will be attempted to be determined automatically, but in some cases needs set and is specific to runtime APIs and model types."
+  },
+  "tensor_parallel": {
+    "name": "Tensor Parallel",
+    "tags": ["number"],
+    "help": "The number of GPUs to split the model across (for multi-GPU systems)"
+  },
+  "cache_dir": {
+    "name": "Cache Dir",
+    "tags": ["path"],
+    "help": "Path on the server's native filesystem that will be mounted into the container\nfor saving the models.\nIt is recommended this be relocated to NVME storage."
+  }
+}

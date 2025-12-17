@@ -1,0 +1,10 @@
+{
+  "arm64": {
+    "name": "ARM64 (Jetson)",
+    "tags": []
+  },
+  "amd64": {
+    "name": "AMD64 (x86_64 + CUDA dGPU)",
+    "tags": []
+  }
+}

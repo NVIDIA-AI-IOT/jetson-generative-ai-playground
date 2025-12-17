@@ -1,0 +1,59 @@
+/*
+ * https://fossheim.io/writing/posts/accessible-theme-picker-html-css-js/
+ */
+
+[data-style-theme="nv-green"] {
+  /* base colors */
+  --nv-green: #76b900;
+  --nv-emerald: #008564;
+  --nv-blue: #0071c5;
+  --nv-purple: #5d1682;
+  --nv-yellow: #fac200;
+  --nv-orange: #ee9900;
+  --nv-maroon: #890c58;
+
+  /* tinted components */
+  --nv-green-rgb: 118, 185, 0;
+  --nv-green-h: 82; --nv-green-s: 100%; --nv-green-l: 36%;
+  --nv-green-hsl: var(--nv-green-h), var(--nv-green-s), var(--nv-green-l);
+
+  --nv-green-dark: hsl(var(--nv-green-h), var(--nv-green-s), calc(var(--nv-green-l) - 13.88888%)); 
+  --nv-green-darker: hsl(var(--nv-green-h), var(--nv-green-s), calc(var(--nv-green-l) - 20%)); 
+
+  /* shades of gray */
+  --theme-gray-light: rgb(205,205,205);
+  --theme-gray-med: rgb(140,140,140);
+  --theme-gray-dark: rgb(90,90,90);
+  --theme-gray-darker: rgb(68,68,68);
+
+  /* fonts */
+  --theme-text-font: "NVIDIA-NALA", Helvetica, Arial, sans-serif;
+  --theme-code-font: "Roboto Mono", Consolas, monospace;
+  
+  /* aliases */
+  --theme-primary: var(--nv-green);
+  --theme-primary-dark: var(--nv-green-dark);
+  --theme-primary-darker: var(--nv-green-darker);
+
+  /* code highlighting */
+  --code-inline: var(--theme-primary-fg);
+  --code-inline-bg: #777777;
+  --code-block-bg: #333333;
+  --code-base: hsl(140, 12%, 60%); /* #5C6E74; */
+  --code-selected: #b3d4fc;
+  --code-line-highlight: hsla(var(--nv-green-hsl), 0.15);
+  --code-line-accent: hsla(var(--nv-green-hsl), 0.9);
+  --code-comment: hsl(180, 7%, 60%);
+  --code-punctuation: hsl(135, 12%, 45%);
+  --code-property: var(--nv-yellow);
+  --code-selector: var(--nv-orange);
+  --code-operator: var(--code-punctuation);
+  --code-operator-bg: rgba(0,0,0,0);
+  --code-variable: var(--code-selector);
+  --code-function: var(--theme-primary-fg);
+  --code-keyword: hsl(82, 65%, 34%);
+}
+
+
+
+

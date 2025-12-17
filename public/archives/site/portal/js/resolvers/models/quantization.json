@@ -1,0 +1,71 @@
+{
+  "quantization": {
+    "name": "Quantization API",
+    "tags": ["enum"],
+    "help": "The inference API and type of quantization used."
+  },
+  "q4f16_ft": {
+    "name": "q4f16_ft (MLC)",
+    "tags": ["quantization", "mlc"]
+  },
+  "q4f16_0": {
+    "name": "q4f16_0 (MLC)",
+    "tags": ["quantization", "mlc"]
+  },
+  "q4f16_1": {
+    "name": "q4f16_1 (MLC)",
+    "tags": ["quantization", "mlc"]
+  },
+  "q4f32_1": {
+    "name": "q4f32_1 (MLC)",
+    "tags": ["quantization", "mlc"]
+  },
+  "q4f16_2": {
+    "name": "q4f16_2 (MLC)",
+    "tags": ["quantization", "mlc"]
+  },
+  "q4f16_1": {
+    "name": "q4f16_1 (MLC)",
+    "tags": ["quantization", "mlc"]
+  },
+  "q4f16_awq": {
+    "name": "q4f16_awq (MLC)",
+    "tags": ["quantization", "mlc"]
+  },
+  "e5m2_f16": {
+    "name": "e5m2_f16 (MLC)",
+    "tags": ["quantization", "mlc"]
+  },
+  "e4m3_f16": {
+    "name": "e4m3_f16 (MLC)",
+    "tags": ["quantization", "mlc"]
+  },
+  "e4m3_f16_max": {
+    "name": "e4m3_f16_max (MLC)",
+    "tags": ["quantization", "mlc"]
+  },
+  "q4_k_m": {
+    "name": "Q4_K_M (llama.cpp)",
+    "tags": ["quantization", "llama_cpp"]
+  },
+  "q4_k_l": {
+    "name": "Q4_K_L (llama.cpp)",
+    "tags": ["quantization", "llama_cpp"]
+  },
+  "q5_k_s": {
+    "name": "Q5_K_S (llama.cpp)",
+    "tags": ["quantization", "llama_cpp"]
+  },
+  "q5_k_m": {
+    "name": "Q5_K_M (llama.cpp)",
+    "tags": ["quantization", "llama_cpp"]
+  },
+  "q5_k_l": {
+    "name": "Q5_K_L (llama.cpp)",
+    "tags": ["quantization", "llama_cpp"]
+  },
+  "q6_k": {
+    "name": "Q6_K (llama.cpp)",
+    "tags": ["quantization", "llama_cpp"]
+  }
+}

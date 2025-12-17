@@ -1,0 +1,34 @@
+
+ 
+.code-container {
+  color: rgba(255,255,255,0.95);
+  background: var(--theme-gray-dark);
+  /*background: linear-gradient(165deg, rgb(0,0,0,0.475) 0%, rgb(0,0,0,0.55) 100%);*/
+  padding: 40px 10px 15px 10px;
+  font-size: 85%;
+}
+
+pre[class*="language-"] {
+  background: var(--theme-gray-darker);
+  padding: 12px 10px;
+  margin: 5px 0px 0px 0px;
+  height: 100%;
+}
+
+pre[class*="language-"] > code[class*="language-"] {
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+
+.code-block, .btn-float, .btn-absolute {
+  color: hsla(82deg, 100%, 38.1%, 1.0);
+  text-shadow: rgba(50,50,50,0.35) 3px 0 3px;
+  font-family: monospace;
+  font-weight: 500;
+}
+
+.llama-header .code-block {
+  padding-top: 20px;
+}
+

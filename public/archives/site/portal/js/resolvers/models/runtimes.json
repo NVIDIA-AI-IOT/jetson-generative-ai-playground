@@ -1,0 +1,51 @@
+{
+  "models": {
+    "name": "Models",
+    "tags": []
+  },
+  "api": {
+    "name": "Runtime API",
+    "tags": "enum",
+    "help": "The runtime library or container to use for inferencing."
+  },
+  "mlc": {
+    "name": "MLC",
+    "tags": "api",
+    "links": {
+      "mlc": {
+        "name": "MLC",
+        "url": "https://llm.mlc.ai/"
+      }
+    }
+  },
+  "mlc:jp6": {
+    "name": "dustynv/mlc:r36.4.0",
+    "docker_image": "dustynv/mlc:r36.4.0",
+    "tags": ["sudonim", "mlc", "l4t-r36"]
+  },
+  "llama_cpp": {
+    "name": "llama.cpp",
+    "tags": "api",
+    "links": {
+      "llama_cpp": {
+        "name": "llama.cpp",
+        "url": "https://github.com/ggerganov/llama.cpp"
+      }
+    }
+  },
+  "llama_cpp:jp6": {
+    "name": "dustynv/llama_cpp:r36.4.0",
+    "docker_image": "dustynv/llama_cpp:r36.4.0",
+    "tags": ["sudonim", "llama_cpp", "l4t-r36"]
+  },
+  "awq": {
+    "name": "AWQ TinyChat",
+    "tags": "api"
+  },
+  "sudonim": {
+    "docker_cmd": "sudonim serve",
+    "docker_options": "-it --rm",
+    "server_host": "0.0.0.0:9000",
+    "tags": ["container"]
+  }
+}
