@@ -1,0 +1,52 @@
+{
+  "Setup": {
+    "title": "Getting Started",
+    "icon": "🚀",
+    "colorClass": "bg-amber-100 text-amber-600",
+    "order": 1,
+    "description": "Set up your Jetson device and development environment"
+  },
+  "Fundamentals": {
+    "title": "Fundamentals",
+    "icon": "📚",
+    "colorClass": "bg-nvidia-green/10 text-nvidia-green",
+    "order": 2,
+    "description": "Core concepts for running GenAI on Jetson"
+  },
+  "Multimodal": {
+    "title": "Vision & Multimodal",
+    "icon": "👁️",
+    "colorClass": "bg-purple-100 text-purple-600",
+    "order": 3,
+    "description": "Vision-language models and multimodal AI"
+  },
+  "Text": {
+    "title": "Text Generation (LLM)",
+    "icon": "💬",
+    "colorClass": "bg-blue-100 text-blue-600",
+    "order": 4,
+    "description": "Large language models and text generation"
+  },
+  "Image": {
+    "title": "Image Generation",
+    "icon": "🎨",
+    "colorClass": "bg-pink-100 text-pink-600",
+    "order": 5,
+    "description": "Image generation and diffusion models"
+  },
+  "Audio": {
+    "title": "Audio & Speech",
+    "icon": "🎤",
+    "colorClass": "bg-orange-100 text-orange-600",
+    "order": 6,
+    "description": "Speech recognition and audio processing"
+  },
+  "Workshops": {
+    "title": "Workshops & Labs",
+    "icon": "🎓",
+    "colorClass": "bg-nvidia-green/10 text-nvidia-green",
+    "order": 7,
+    "description": "Hands-on workshops and guided labs"
+  }
+}
+

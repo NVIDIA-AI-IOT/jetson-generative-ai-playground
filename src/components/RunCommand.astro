@@ -1,0 +1,228 @@
+---
+import type { InferenceCategory } from '../lib/engines';
+import { enginesForCategory, defaultEngineForCategory } from '../lib/engines';
+
+interface SupportedEngine {
+	engine: string;
+	type?: string;
+	install_command?: string;
+	run_command?: string;
+	install_command_orin?: string;
+	run_command_orin?: string;
+	install_command_thor?: string;
+	run_command_thor?: string;
+}
+
+interface Props {
+	modelId: string;
+	modelName: string;
+	category: InferenceCategory;
+	forceModal?: boolean;
+    hfCheckpoint?: string;
+    supportedEngines?: SupportedEngine[];
+}
+
+const { modelId, modelName, category, forceModal = false, hfCheckpoint, supportedEngines } = Astro.props as Props;
+
+let engines = enginesForCategory(category);
+
+// Filter engines if supportedEngines is provided
+if (supportedEngines && supportedEngines.length > 0) {
+    const supportedIds = supportedEngines.map(e => e.engine.toLowerCase());
+    // Map markdown engine names (e.g., "Ollama", "vLLM") to engine IDs (e.g., "ollama", "vllm")
+    // Special handling for vLLM if needed, but toLowerCase usually works if IDs are lowercase
+    engines = engines.filter(e => supportedIds.includes(e.id) || supportedIds.includes(e.label.toLowerCase()));
+    
+    // If filtering resulted in empty list (mismatch), fall back to all category engines or handle error
+    if (engines.length === 0) {
+        // Fallback: try to find engines that match loosely
+         const allEngines = enginesForCategory(category);
+         engines = allEngines.filter(e => supportedIds.some(id => id.includes(e.id) || e.id.includes(id)));
+    }
+}
+
+const defaultEngine = defaultEngineForCategory(category);
+const defaultEngineId = defaultEngine?.id || (engines[0]?.id ?? '');
+
+const buttonId = `run-btn-${modelId}`;
+const modalId = `run-modal-${modelId}`;
+
+const jetsonDevices = ['Jetson Orin', 'Jetson Thor'];
+const jetpacks = ['6.1+', '6.0', '5.1'];
+
+const engineUi = engines.map((e) => ({ id: e.id, label: e.label }));
+
+// Build device-specific engine images from supportedEngines
+const engineImagesOrin: Record<string, string> = {
+	ollama: 'ollama/ollama:latest',
+	vllm: 'ghcr.io/nvidia-ai-iot/vllm:latest-jetson-orin',
+	llamacpp: 'ghcr.io/ggerganov/llama.cpp:server',
+	tensorrtllm: 'nvcr.io/nvidia/tensorrt-llm:latest',
+	diffusers: 'pytorch/pytorch:2.3.0-cuda12.1-cudnn8-runtime',
+	comfyui: 'ghcr.io/comfyanonymous/comfyui:latest',
+	whispercpp: 'ghcr.io/ggerganov/whisper.cpp:latest',
+	riva: 'nvcr.io/nvidia/riva/riva-speech:latest'
+};
+
+const engineImagesThor: Record<string, string> = {
+	ollama: 'ollama/ollama:latest',
+	vllm: 'ghcr.io/nvidia-ai-iot/vllm:latest-jetson-thor',
+	llamacpp: 'ghcr.io/ggerganov/llama.cpp:server',
+	tensorrtllm: 'nvcr.io/nvidia/tensorrt-llm:latest',
+	diffusers: 'pytorch/pytorch:2.3.0-cuda12.1-cudnn8-runtime',
+	comfyui: 'ghcr.io/comfyanonymous/comfyui:latest',
+	whispercpp: 'ghcr.io/ggerganov/whisper.cpp:latest',
+	riva: 'nvcr.io/nvidia/riva/riva-speech:latest'
+};
+
+// Legacy fallback (for backward compatibility)
+const engineImages = engineImagesOrin;
+---
+
+<button id={buttonId} data-run-open={modelId} class="px-3 py-1.5 rounded-md bg-nvidia-black text-nvidia-white hover:bg-nvidia-green hover:text-nvidia-black transition-colors text-xs font-bold">
+	Run
+	<span class="sr-only">Run {modelName}</span>
+</button>
+
+<div id={modalId} data-run-modal={modelId} class="hidden fixed inset-0 z-[60]" data-meta={JSON.stringify({ engineUi, engineImages, engineImagesOrin, engineImagesThor, jetsonDevices, jetpacks, defaultEngineId, category, modelId, modelName, hfCheckpoint })}>
+	<div data-overlay data-run-overlay class="absolute inset-0 backdrop-blur-sm transition-opacity" style="background-color: rgba(0, 0, 0, 0.4);"></div>
+	
+    <div class="absolute inset-0 flex items-center justify-center p-4 sm:p-6 pointer-events-none">
+        <div class="w-full max-w-5xl bg-white rounded-xl shadow-2xl pointer-events-auto flex flex-col max-h-[90vh] overflow-hidden border border-nvidia-gray-100">
+            
+            <!-- Header -->
+            <div class="px-6 py-5 border-b border-nvidia-gray-100 flex items-center justify-between bg-white shrink-0">
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-lg bg-nvidia-green/10 text-nvidia-green flex items-center justify-center">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-nvidia-black leading-none mb-1">{modelName}</h3>
+                        <p class="text-sm text-nvidia-gray-500">Quick Start Runner</p>
+                    </div>
+                </div>
+                <button data-close data-run-close class="text-nvidia-gray-400 hover:text-nvidia-black hover:bg-nvidia-gray-50 p-2 rounded-lg transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            <!-- Content -->
+            <div class="flex-1 overflow-hidden">
+                <div class="h-full flex flex-col lg:flex-row">
+                    
+                    <!-- Settings Panel (Left) -->
+                    <div class="w-full lg:w-5/12 p-6 overflow-y-auto bg-white border-b lg:border-b-0 lg:border-r border-nvidia-gray-100">
+                        <div class="space-y-8">
+                            
+                            <!-- Target Selection -->
+                            <section>
+                                <h4 class="text-xs font-bold text-nvidia-gray-400 uppercase tracking-wider mb-4">Target Environment</h4>
+                                <div class="space-y-4">
+                                    <div class="group">
+                                        <label class="block text-sm font-medium text-nvidia-gray-700 mb-1.5">Jetson Device</label>
+                                        <div class="relative">
+                                            <select data-device class="w-full appearance-none bg-nvidia-gray-50 border border-nvidia-gray-200 text-nvidia-black text-sm rounded-lg px-3 py-2.5 focus:ring-2 focus:ring-nvidia-green/20 focus:border-nvidia-green outline-none transition-all">
+                                                {jetsonDevices.map(d => (<option>{d}</option>))}
+                                            </select>
+                                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-nvidia-gray-500">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="group">
+                                        <label class="block text-sm font-medium text-nvidia-gray-700 mb-1.5">Inference Engine</label>
+                                        <div class="relative">
+                                            <select data-engine class="w-full appearance-none bg-nvidia-gray-50 border border-nvidia-gray-200 text-nvidia-black text-sm rounded-lg px-3 py-2.5 focus:ring-2 focus:ring-nvidia-green/20 focus:border-nvidia-green outline-none transition-all">
+                                                {engineUi.map(e => (
+                                                    <option value={e.id} selected={e.id === defaultEngineId}>{e.label}</option>
+                                                ))}
+                                            </select>
+                                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-nvidia-gray-500">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- Advanced Settings (vLLM only) -->
+                            <section data-vllm-config class="hidden pt-4 border-t border-nvidia-gray-100">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h4 class="text-xs font-bold text-nvidia-gray-400 uppercase tracking-wider">vLLM Configuration</h4>
+                                    <button data-advanced-toggle data-run-advanced-toggle class="text-xs font-medium text-nvidia-green hover:text-nvidia-green/80 flex items-center gap-1">
+                                        <span data-toggle-text>Show Advanced</span>
+                                        <svg data-toggle-icon class="w-3 h-3 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                    </button>
+                                </div>
+                                
+                                <div data-advanced class="hidden space-y-4">
+                                    <p class="text-xs text-nvidia-gray-500 mb-3">
+                                        Configure vLLM server parameters. Leave empty to use defaults.
+                                    </p>
+                                    
+                                    <div>
+                                        <label class="block text-xs font-medium text-nvidia-gray-600 mb-1">
+                                            Port
+                                            <span class="text-nvidia-gray-400 font-normal ml-1">(--port)</span>
+                                        </label>
+                                        <input data-vllm-port type="number" min="1024" max="65535" placeholder="8000" class="w-full bg-white border border-nvidia-gray-200 rounded px-2 py-1.5 text-sm focus:border-nvidia-green focus:ring-1 focus:ring-nvidia-green outline-none placeholder:text-nvidia-gray-300" />
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-xs font-medium text-nvidia-gray-600 mb-1">
+                                            Max Model Length
+                                            <span class="text-nvidia-gray-400 font-normal ml-1">(--max-model-len)</span>
+                                        </label>
+                                        <input data-vllm-max-model-len type="number" min="512" max="131072" step="512" placeholder="32000" class="w-full bg-white border border-nvidia-gray-200 rounded px-2 py-1.5 text-sm focus:border-nvidia-green focus:ring-1 focus:ring-nvidia-green outline-none placeholder:text-nvidia-gray-300" />
+                                        <p class="text-[10px] text-nvidia-gray-400 mt-1">Maximum context length the model can handle</p>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-xs font-medium text-nvidia-gray-600 mb-1">
+                                            GPU Memory Utilization
+                                            <span class="text-nvidia-gray-400 font-normal ml-1">(--gpu-memory-utilization)</span>
+                                        </label>
+                                        <input data-vllm-gpu-mem type="number" min="0.1" max="1.0" step="0.05" placeholder="0.9" class="w-full bg-white border border-nvidia-gray-200 rounded px-2 py-1.5 text-sm focus:border-nvidia-green focus:ring-1 focus:ring-nvidia-green outline-none placeholder:text-nvidia-gray-300" />
+                                        <p class="text-[10px] text-nvidia-gray-400 mt-1">Fraction of GPU memory to use (0.1 - 1.0)</p>
+                                    </div>
+
+                                    <div class="pt-2">
+                                        <button data-vllm-reset class="text-xs text-nvidia-gray-500 hover:text-nvidia-black underline decoration-dotted">Reset to defaults</button>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+
+                    <!-- Preview Panel (Right) -->
+                    <div class="w-full lg:w-7/12 bg-nvidia-gray-50 p-6 flex flex-col h-full overflow-hidden">
+                        <div class="flex items-center justify-between mb-4 shrink-0">
+                             <div class="flex bg-white rounded-lg p-1 shadow-sm border border-nvidia-gray-200">
+                                {['shell','python'].map((tab, idx) => (
+                                    <button 
+                                        class={`px-4 py-1.5 rounded-md text-xs font-bold transition-all ${idx===0 ? 'bg-nvidia-black text-nvidia-white shadow-sm' : 'text-nvidia-gray-600 hover:text-nvidia-black hover:bg-nvidia-gray-50'}`} 
+                                        data-tab={tab}
+                                    >
+                                        {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                                    </button>
+                                ))}
+                            </div>
+                            <button data-copy data-run-copy class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-nvidia-gray-200 text-nvidia-gray-700 hover:border-nvidia-green hover:text-nvidia-green transition-all shadow-sm text-xs font-bold">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                                Copy Command
+                            </button>
+                        </div>
+                        
+                        <div class="flex-1 relative group overflow-hidden rounded-xl border border-slate-800 shadow-lg bg-slate-900 min-h-[120px]">
+                             <pre class="h-full p-5 text-sm font-mono leading-relaxed overflow-auto text-slate-200 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent whitespace-pre-wrap break-words"><code data-snippet class="block">Loading command...</code></pre>
+                        </div>
+                        <p class="mt-3 text-[10px] text-center text-nvidia-gray-500">
+                            Commands are auto-generated based on your configuration settings.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

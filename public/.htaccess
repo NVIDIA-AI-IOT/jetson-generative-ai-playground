@@ -1,0 +1,13 @@
+# Protección contra indexación
+Header set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet, noimageindex"
+
+# Prevenir acceso directo a archivos sensibles
+<Files "*.json">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Redirigir a login si no está autenticado (opcional)
+# RewriteEngine On
+# RewriteCond %{HTTP_COOKIE} !jetsonAuth=true
+# RewriteRule ^(?!login\.html$).*$ /login [L,R=302] 

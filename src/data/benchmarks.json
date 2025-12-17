@@ -1,0 +1,82 @@
+[
+  {
+    "modelId": "gemma3n",
+    "modelName": "Gemma 3n",
+    "orin": {
+      "concurrency1": 30,
+      "concurrency8": 200,
+      "ttftMs": 320
+    },
+    "thor": {
+      "concurrency1": 60,
+      "concurrency8": 400,
+      "ttftMs": 160
+    }
+  },
+  {
+    "modelId": "llama4",
+    "modelName": "Llama 4",
+    "orin": {
+      "concurrency1": 18,
+      "concurrency8": 110,
+      "ttftMs": 450
+    },
+    "thor": {
+      "concurrency1": 36,
+      "concurrency8": 220,
+      "ttftMs": 225
+    }
+  },
+  {
+    "modelId": "llama-3-2-vision",
+    "modelName": "Llama 3.2 Vision",
+    "orin": {
+      "concurrency1": 13,
+      "concurrency8": 80,
+      "ttftMs": 600
+    },
+    "thor": {
+      "concurrency1": 26,
+      "concurrency8": 160,
+      "ttftMs": 300
+    }
+  },
+  {
+    "modelId": "llama-3-2",
+    "modelName": "Llama 3.2",
+    "orin": {
+      "concurrency1": 20,
+      "concurrency8": 125,
+      "ttftMs": 400
+    },
+    "thor": {
+      "concurrency1": 40,
+      "concurrency8": 250,
+      "ttftMs": 200
+    }
+  },
+  {
+    "modelId": "gemma-2",
+    "modelName": "Gemma 2",
+    "orin": {
+      "concurrency1": 28,
+      "concurrency8": 180,
+      "ttftMs": 350
+    },
+    "thor": {
+      "concurrency1": 56,
+      "concurrency8": 360,
+      "ttftMs": 175
+    }
+  }
+]
+
+
+
+
+
+
+
+
+
+

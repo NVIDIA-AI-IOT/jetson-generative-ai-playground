@@ -1,86 +1,80 @@
-# Jetson Generative AI Lab
+# Jetson AI Lab - Redesign
 
-Document generation status: [![example workflow](https://github.com/NVIDIA-AI-IOT/jetson-generative-ai-playground/actions/workflows/ci.yml/badge.svg)](https://github.com/NVIDIA-AI-IOT/jetson-generative-ai-playground/actions)
+Jetson AI Lab - Redesign is the refreshed NVIDIA experience for experimenting with Jetson-optimized generative AI models entirely on-device. The site pairs a polished Astro frontend with a content-driven workflow so new tutorials, models, and posts can be published without touching layout code.
 
-## About this repo
+## Highlights
 
-This repo is to host a tutorial documentation site for running generative AI models on NVIDIA Jetson devices.
+- Optimized showcase for flagship models such as Llama 4, Gemma 3n, SDXL, Whisper, and VoiceCraft
+- Curated tutorials, benchmarks, and blog posts with consistent styling and navigation
+- Local-first architecture: everything runs on Jetson hardware with no cloud dependency
+- Content authored in Markdown/JSON for fast iteration and git-friendly reviews
+- Public site by default; no password gate or authentication
 
-The auto generated documentation is hosted on the following, using their CI/CD feature to automatically generate/update the HTML documentation site upon new commit:
+## Technology Stack
 
-  - [GitHub Pages site](https://nvidia-ai-iot.github.io/jetson-generative-ai-playground)
+- **Astro 5** for the static-first front end
+- **Tailwind CSS** for the design system
+- **MDX & Markdown** for rich content with interactive elements
+- **TypeScript** for typings across data collections
 
-## How to use this repo locally
+## How the Project Is Organized
 
-### Option 1: Docker Setup (Linux systems with Docker)
-
-#### Initial setup
-
-https://squidfunk.github.io/mkdocs-material/getting-started/
-
-```bash
-sudo apt install -y docker.io
-sudo docker pull squidfunk/mkdocs-material
+```
+/
+├── src/
+│   ├── components/           Shared UI elements (e.g., AuthGuard)
+│   ├── content/              Markdown and JSON content repositories
+│   │   ├── home.json         Homepage metrics and featured models
+│   │   ├── models/           Model deep dives authored in Markdown
+│   │   ├── posts/            Blog articles
+│   │   └── tutorials/        Long-form tutorials with frontmatter
+│   ├── layouts/              Base layouts for pages and tutorials
+│   └── pages/                Astro routes for the site
+├── public/                   Static assets and robots configuration
+├── astro.config.mjs          Astro configuration
+├── tailwind.config.mjs       Tailwind theme definitions
+└── TUTORIAL_TEMPLATE.md      Authoring guide for new tutorials
 ```
 
-#### Start development server on http://localhost:8000
+### Authoring Workflow
+
+1. **Models**: Add a Markdown file under `src/content/models/` with frontmatter and sections for overview, benchmarks, and usage. Link the model from `src/pages/models/index.astro` if it should appear in the directory or homepage highlights.
+2. **Tutorials**: Follow the `TUTORIAL_TEMPLATE.md` instructions. Each tutorial is a Markdown file in `src/content/tutorials/` plus a three-line Astro wrapper under `src/pages/tutorials/`.
+3. **Posts**: Create Markdown files in `src/content/posts/` with publication metadata; the blog listing pulls entries automatically.
+4. **Homepage**: Adjust `src/content/home.json` to update hero metrics, featured models, and stats.
+
+### Development Tasks
+
+- `src/layouts/Layout.astro` centralizes metadata, navigation, and footer content.
+- `src/layouts/TutorialLayout.astro` renders tutorial Markdown with enhanced typography and handles related-content links.
+
+## Getting Started
 
 ```bash
-docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material
+npm install
+npm run dev
 ```
 
-### Option 2: Native Python Setup (Recommended for Windows)
+The development server defaults to <http://localhost:4321>.
 
-#### Initial setup
-
-1. **Install Python 3.8+ and pip** (if not already installed):
-   - Windows: Download from [python.org](https://www.python.org/downloads/) or use Microsoft Store
-
-2. **Install MkDocs Material and dependencies**:
-   ```bash
-   pip install mkdocs-material
-   pip install mkdocs-redirects
-   pip install beautifulsoup4
-   pip install lxml
-   ```
-
-#### Start development server on http://localhost:8000
+To build a production bundle:
 
 ```bash
-mkdocs serve
+npm run build
+npm run preview
 ```
 
-#### Build the site
+## Content Tips
 
-```bash
-mkdocs build
-```
+- Prefer Markdown headings and tables over raw HTML for consistent styling.
+- Keep tutorial frontmatter accurate; `difficulty` accepts `Beginner`, `Intermediate`, or `Advanced`.
+- Use the provided template for new tutorials to benefit from automatic navigation and SEO metadata.
+- Store media assets under `public/` and reference them with absolute paths.
 
-### Test the post-processing
+## Deployment
 
-```bash
-docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material build
-pip install beautifulsoup4
-pip install lxml
-python3 ./scripts/duplicate_site_with_postprocess.py ./site ./site_postprocessed
-sudo apt install python3-livereload
-livereload ./site_postprocessed
-```
+The project ships as static assets and works on Netlify, Vercel, or any static hosting service. Netlify defaults are already configured in `netlify.toml`.
 
-## Troubleshooting
+## Contact
 
-### Native Python Setup Issues
-
-**Windows:**
-- If `mkdocs` command is not found, ensure Python Scripts directory is in your PATH
-- Use `python -m mkdocs serve` if the direct command doesn't work
-- For corporate networks, you may need to use pip with proxy: `pip install --proxy http://proxy:port package-name`
-
-**Jetson:**
-- If you get permission errors, use `pip install --user` to install packages locally
-- Ensure you have sufficient disk space for the Python packages
-
-### Docker Setup Issues
-
-> If you get "docker: Got permission denied while trying to connect to the Docker daemon socket at ..." error,
-> issue `sudo usermod -aG docker $USER; newgrp docker` to get around with the issue.
+Asier Arranz (asier@nvidia.com)

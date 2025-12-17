@@ -1,0 +1,92 @@
+---
+interface Props {
+  tutorial: {
+    slug: string;
+    data: {
+      title: string;
+      description: string;
+      category: string;
+      tags: string[];
+      featured?: boolean;
+    };
+  };
+}
+
+const { tutorial } = Astro.props;
+
+const categoryColors: Record<string, string> = {
+  'Text': 'bg-blue-100 text-blue-800 border-blue-200',
+  'Image': 'bg-purple-100 text-purple-800 border-purple-200',
+  'Audio': 'bg-amber-100 text-amber-800 border-amber-200',
+  'Multimodal': 'bg-teal-100 text-teal-800 border-teal-200',
+  'Fundamentals': 'bg-nvidia-green/10 text-nvidia-green border-nvidia-green/20',
+  'Setup': 'bg-orange-100 text-orange-800 border-orange-200',
+  'Workshops': 'bg-rose-100 text-rose-800 border-rose-200',
+  'default': 'bg-gray-100 text-gray-800 border-gray-200'
+};
+
+const categoryColor = categoryColors[tutorial.data.category] || categoryColors['default'];
+---
+
+<article 
+  class="group relative flex flex-col sm:flex-row items-start sm:items-center gap-6 p-6 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:border-nvidia-green/30 transition-all duration-200"
+  data-item
+  data-category={tutorial.data.category}
+  data-tags={tutorial.data.tags.join(' ')}
+>
+  <a href={'/tutorials/' + tutorial.slug} class="absolute inset-0 z-10" aria-label={'Open ' + tutorial.data.title}></a>
+  
+  <div class="flex-shrink-0">
+    <div class={`inline-flex items-center justify-center w-12 h-12 rounded-lg border ${categoryColor}`}>
+       {tutorial.data.category === 'Text' && (
+         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+       )}
+       {tutorial.data.category === 'Image' && (
+         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+       )}
+       {tutorial.data.category === 'Audio' && (
+         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
+       )}
+       {tutorial.data.category === 'Multimodal' && (
+         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+       )}
+       {tutorial.data.category === 'Fundamentals' && (
+         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+       )}
+       {tutorial.data.category === 'Setup' && (
+         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+       )}
+       {tutorial.data.category === 'Workshops' && (
+         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+       )}
+    </div>
+  </div>
+
+  <div class="flex-1 min-w-0">
+    <div class="flex items-center gap-3 mb-1">
+      <h3 class="text-lg font-bold text-slate-900 group-hover:text-nvidia-green transition-colors truncate" data-title>
+        {tutorial.data.title}
+      </h3>
+      {tutorial.data.featured && (
+        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-nvidia-green/10 text-nvidia-green border border-nvidia-green/20">
+          Featured
+        </span>
+      )}
+    </div>
+    
+    <p class="text-slate-600 text-sm leading-relaxed line-clamp-2 mb-3" data-desc>
+      {tutorial.data.description}
+    </p>
+  </div>
+
+  <div class="hidden sm:flex items-center justify-center pl-4 border-l border-gray-100">
+    <div class="flex items-center gap-2 text-sm font-semibold text-nvidia-green group-hover:text-nvidia-green/80 transition-colors">
+      View Tutorial
+      <div class="p-1.5 rounded-full bg-nvidia-green/10 group-hover:bg-nvidia-green group-hover:text-white transition-all duration-300">
+        <svg class="w-4 h-4 transform group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,258 @@
+---
+import Layout from './Layout.astro';
+import { getEntry } from 'astro:content';
+
+const research = await getEntry('pages', 'research');
+
+if (!research) {
+  return Astro.redirect('/404');
+}
+
+const { Content } = await research.render();
+const { 
+  title, 
+  description, 
+  discord_url, 
+  forum_url, 
+  meeting_time, 
+  meeting_platform, 
+  meeting_link,
+  recordings_url,
+  research_topics,
+  past_meetings,
+  team_members 
+} = research.data;
+---
+
+<Layout title={title} description={description}>
+  <!-- Hero Section -->
+  <section class="relative bg-slate-900 text-white py-24 overflow-hidden">
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute -top-40 -right-40 w-96 h-96 bg-nvidia-green/20 rounded-full blur-3xl"></div>
+      <div class="absolute top-20 -left-20 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 right-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"></div>
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-6">
+          Jetson AI Lab<br/>
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-nvidia-green to-emerald-400">
+            Research Group
+          </span>
+        </h1>
+        <p class="text-xl text-slate-300 leading-relaxed mb-8">
+          {description}
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href={discord_url} target="_blank" rel="noopener" class="inline-flex items-center px-6 py-3 bg-nvidia-green text-slate-900 font-bold rounded-lg hover:bg-nvidia-green/90 transition-all">
+            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+            Join Discord
+          </a>
+          <a href={forum_url} target="_blank" rel="noopener" class="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-lg hover:bg-white/20 transition-all border border-white/10">
+            Jetson Forums
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming Meeting -->
+  <section class="py-16 bg-gradient-to-b from-nvidia-green/10 to-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-2xl shadow-lg border border-nvidia-green/20 p-8 md:p-12">
+        <div class="flex items-start gap-4 mb-6">
+          <div class="p-3 bg-nvidia-green/10 rounded-xl">
+            <svg class="w-8 h-8 text-nvidia-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <div>
+            <h2 class="text-2xl font-bold text-slate-900 mb-2">Upcoming Meetings</h2>
+            <p class="text-slate-600">Regular Series: <strong>2nd Tuesday of every month</strong></p>
+          </div>
+        </div>
+        
+        <div class="bg-slate-50 rounded-xl p-6 mb-8">
+          <h3 class="font-bold text-slate-900 mb-4">Next Meeting Details</h3>
+          <ul class="space-y-2 text-slate-600">
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-nvidia-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <strong>Time:</strong> {meeting_time}
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-nvidia-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+              <strong>Platform:</strong> {meeting_platform}
+            </li>
+          </ul>
+        </div>
+        
+        <a href={meeting_link} target="_blank" rel="noopener" class="inline-flex items-center px-6 py-3 bg-nvidia-green text-slate-900 font-bold rounded-lg hover:bg-nvidia-green/90 transition-all">
+          Join Meeting
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research Topics -->
+  {research_topics && research_topics.length > 0 && (
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-slate-900 mb-4">Research Topics</h2>
+          <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+            Our group explores cutting-edge research areas in edge AI and robotics. These topics represent our current focus areas.
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-4">
+          {research_topics.map(topic => (
+            <div class="flex gap-4">
+              <div class="flex-1 bg-slate-50 rounded-lg p-4 border border-slate-200 hover:border-nvidia-green/50 transition-colors">
+                <p class="text-slate-700">{topic.left}</p>
+              </div>
+              <div class="flex-1 bg-slate-50 rounded-lg p-4 border border-slate-200 hover:border-nvidia-green/50 transition-colors">
+                <p class="text-slate-700">{topic.right}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Main Content from Markdown -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-2xl shadow-sm p-8 md:p-12">
+        <div class="prose prose-slate prose-lg max-w-none
+          prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-slate-900
+          prose-p:text-slate-600 prose-p:leading-relaxed
+          prose-a:text-nvidia-green prose-a:no-underline hover:prose-a:underline
+          prose-strong:text-slate-900
+          prose-ul:text-slate-600
+          prose-li:text-slate-600
+        ">
+          <Content />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Past Meetings -->
+  {past_meetings && past_meetings.length > 0 && (
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-slate-900 mb-4">Past Meetings</h2>
+          <p class="text-lg text-slate-600">Our meeting recordings and resources are available for review</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {past_meetings.map(meeting => (
+            <div class="bg-white rounded-xl border border-slate-200 overflow-hidden hover:shadow-lg transition-shadow">
+              <div class="aspect-video bg-slate-900 relative">
+                <iframe 
+                  class="absolute inset-0 w-full h-full"
+                  src={`https://www.youtube.com/embed/${meeting.videoId}`}
+                  title={meeting.title}
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                  loading="lazy"
+                ></iframe>
+              </div>
+              <div class="p-5">
+                <p class="text-sm text-nvidia-green font-medium mb-1">{meeting.date}</p>
+                <h3 class="font-bold text-slate-900 mb-3">{meeting.title}</h3>
+                <ul class="text-sm text-slate-600 space-y-1">
+                  {meeting.topics.map(topic => (
+                    <li class="flex items-start gap-2">
+                      <span class="text-nvidia-green mt-1">•</span>
+                      {topic}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <div class="text-center mt-12">
+          <a href={recordings_url} target="_blank" rel="noopener" class="inline-flex items-center px-6 py-3 bg-slate-100 text-slate-700 font-semibold rounded-lg hover:bg-slate-200 transition-all">
+            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm0 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm-2 5v6l5 3 1-1.5-4-2.5V7h-2z"/></svg>
+            View All Recordings on Google Drive
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Team Members -->
+  {team_members && team_members.length > 0 && (
+    <section class="py-20 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-slate-900 mb-4">Core Contributors</h2>
+          <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+            Our research group brings together experts from academia, industry, and the open-source community who are passionate about advancing edge AI and robotics.
+          </p>
+        </div>
+        
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {team_members.map(member => (
+            <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition-shadow text-center">
+              <img 
+                src={member.image} 
+                alt={member.name}
+                class="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
+                loading="lazy"
+              />
+              <h3 class="font-bold text-slate-900">{member.name}</h3>
+              <p class="text-sm text-nvidia-green font-medium">{member.org}</p>
+              <p class="text-xs text-slate-500 mb-3">{member.role} | {member.location}</p>
+              <div class="flex justify-center gap-2 mb-3">
+                {member.linkedin && (
+                  <a href={member.linkedin} target="_blank" rel="noopener" class="p-2 bg-slate-100 rounded-full hover:bg-nvidia-green/10 transition-colors">
+                    <svg class="w-4 h-4 text-slate-600" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                  </a>
+                )}
+                {member.github && (
+                  <a href={member.github} target="_blank" rel="noopener" class="p-2 bg-slate-100 rounded-full hover:bg-nvidia-green/10 transition-colors">
+                    <svg class="w-4 h-4 text-slate-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                  </a>
+                )}
+              </div>
+              <div class="flex flex-wrap justify-center gap-1">
+                {member.expertise.slice(0, 2).map(skill => (
+                  <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-full">{skill}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-6">Ready to Join?</h2>
+      <p class="text-xl text-slate-300 mb-8">
+        By coordinating together as a group, we can keep up with the rapidly evolving pace of AI and more quickly arrive at deploying intelligent multimodal agents and autonomous robots into the field.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href={discord_url} target="_blank" rel="noopener" class="inline-flex items-center px-8 py-4 bg-nvidia-green text-slate-900 font-bold rounded-lg hover:bg-nvidia-green/90 transition-all">
+          <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+          Join Discord Community
+        </a>
+        <a href={forum_url} target="_blank" rel="noopener" class="inline-flex items-center px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-lg hover:bg-white/20 transition-all border border-white/20">
+          Visit Jetson Forums
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+

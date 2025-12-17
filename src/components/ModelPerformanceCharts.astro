@@ -1,0 +1,239 @@
+---
+interface DeviceBenchmark {
+  concurrency1: number;
+  concurrency8: number;
+  ttftMs: number;
+}
+
+interface Benchmark {
+  modelId: string;
+  modelName: string;
+  orin: DeviceBenchmark;
+  thor: DeviceBenchmark;
+}
+
+interface Props {
+  benchmarks: Benchmark[];
+}
+
+const { benchmarks } = Astro.props as Props;
+---
+
+<div class="bg-nvidia-white rounded-xl border border-nvidia-gray-200 p-6 shadow-sm">
+  <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-6">
+    <h3 id="chart-title" class="text-xl font-bold text-nvidia-black">Performance</h3>
+    
+    <div class="flex flex-col sm:flex-row gap-3">
+      <!-- Device Selector -->
+      <div class="inline-flex rounded-lg bg-nvidia-gray-100 p-1 self-start">
+        <button id="btn-orin" class="px-3 py-1.5 text-sm font-semibold rounded-md bg-nvidia-green text-nvidia-black hover:bg-nvidia-green transition-colors shadow-sm">Orin</button>
+        <button id="btn-thor" class="px-3 py-1.5 text-sm font-semibold rounded-md text-nvidia-gray-800 hover:bg-nvidia-gray-200 transition-colors">Thor</button>
+      </div>
+
+      <!-- Metric Selector -->
+      <div class="inline-flex rounded-lg bg-nvidia-gray-100 p-1 self-start">
+        <button id="btn-tps1" class="px-3 py-1.5 text-sm font-semibold rounded-md bg-nvidia-green text-nvidia-black hover:bg-nvidia-green transition-colors shadow-sm">Tokens/s (c=1)</button>
+        <button id="btn-tps8" class="px-3 py-1.5 text-sm font-semibold rounded-md text-nvidia-gray-800 hover:bg-nvidia-gray-200 transition-colors">Tokens/s (c=8)</button>
+        <button id="btn-ttft" class="px-3 py-1.5 text-sm font-semibold rounded-md text-nvidia-gray-800 hover:bg-nvidia-gray-200 transition-colors">Avg TTFT</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="relative h-[400px] w-full">
+    <canvas id="chart-main"></canvas>
+  </div>
+</div>
+
+<script is:inline define:vars={{ benchmarks }}>
+  window.jetsonBenchmarks = benchmarks;
+</script>
+
+<script>
+  import Chart from 'chart.js/auto';
+
+  // @ts-ignore
+  const benchmarks = window.jetsonBenchmarks || [];
+
+  // Colors
+  const nvidiaGreen = '#76B900'; 
+  const nvidiaTeal = '#00B5E2';  
+  const nvidiaDark = '#1A1F2C';
+  const nvidiaLightGray = '#E5E7EB';
+  
+  // Elements
+  const btnOrin = document.getElementById('btn-orin');
+  const btnThor = document.getElementById('btn-thor');
+  
+  const btnTps1 = document.getElementById('btn-tps1');
+  const btnTps8 = document.getElementById('btn-tps8');
+  const btnTtft = document.getElementById('btn-ttft');
+  
+  const titleEl = document.getElementById('chart-title');
+  const ctx = document.getElementById('chart-main') as HTMLCanvasElement;
+
+  let currentDevice = 'orin'; // 'orin' | 'thor'
+  let currentMetric = 'tps1'; // 'tps1' | 'tps8' | 'ttft'
+  let chartInstance: Chart | null = null;
+
+  function getChartConfig() {
+    // Extract values based on current state
+    const values = benchmarks.map((d: any) => {
+      const deviceData = d[currentDevice];
+      if (!deviceData) return 0;
+      
+      if (currentMetric === 'tps1') return deviceData.concurrency1;
+      if (currentMetric === 'tps8') return deviceData.concurrency8;
+      if (currentMetric === 'ttft') return deviceData.ttftMs;
+      return 0;
+    });
+
+    const labels = benchmarks.map((d: any) => d.modelName);
+
+    let label = '';
+    let yTitle = '';
+    let color = nvidiaGreen;
+
+    if (currentMetric === 'tps1') {
+      label = `Tokens/s (Concurrency 1)`;
+      yTitle = 'Tokens per Second';
+    } else if (currentMetric === 'tps8') {
+      label = `Tokens/s (Concurrency 8)`;
+      yTitle = 'Tokens per Second';
+    } else {
+      label = `Average TTFT (ms)`;
+      yTitle = 'Milliseconds';
+    }
+    
+    color = nvidiaGreen;
+    
+    const deviceName = currentDevice === 'orin' ? 'Jetson Orin' : 'Jetson Thor';
+    const fullTitle = `${label} on ${deviceName}`;
+
+    return { labels, values, label, yTitle, color, fullTitle, suggestedMax: Math.max(...values) * 1.2 };
+  }
+
+  function updateButtons() {
+    if (!btnOrin || !btnThor || !btnTps1 || !btnTps8 || !btnTtft) return;
+
+    // Reset device buttons
+    [btnOrin, btnThor].forEach(btn => {
+      btn.classList.remove('bg-nvidia-green', 'text-nvidia-black', 'hover:bg-nvidia-green', 'shadow-sm');
+      btn.classList.add('text-nvidia-gray-800', 'hover:bg-nvidia-gray-200');
+    });
+    // Set active device
+    const activeDeviceBtn = currentDevice === 'orin' ? btnOrin : btnThor;
+    activeDeviceBtn.classList.remove('text-nvidia-gray-800', 'hover:bg-nvidia-gray-200');
+    activeDeviceBtn.classList.add('bg-nvidia-green', 'text-nvidia-black', 'hover:bg-nvidia-green', 'shadow-sm');
+
+    // Reset metric buttons
+    [btnTps1, btnTps8, btnTtft].forEach(btn => {
+      btn.classList.remove('bg-nvidia-green', 'text-nvidia-black', 'hover:bg-nvidia-green', 'shadow-sm');
+      btn.classList.add('text-nvidia-gray-800', 'hover:bg-nvidia-gray-200');
+    });
+    // Set active metric
+    let activeMetricBtn;
+    if (currentMetric === 'tps1') activeMetricBtn = btnTps1;
+    else if (currentMetric === 'tps8') activeMetricBtn = btnTps8;
+    else activeMetricBtn = btnTtft;
+
+    activeMetricBtn?.classList.remove('text-nvidia-gray-800', 'hover:bg-nvidia-gray-200');
+    activeMetricBtn?.classList.add('bg-nvidia-green', 'text-nvidia-black', 'hover:bg-nvidia-green', 'shadow-sm');
+  }
+
+  function renderChart() {
+    if (!ctx || !titleEl) return;
+    const config = getChartConfig();
+    titleEl.textContent = config.fullTitle;
+    updateButtons();
+
+    if (chartInstance) {
+      chartInstance.data.labels = config.labels;
+      chartInstance.data.datasets[0].data = config.values;
+      chartInstance.data.datasets[0].label = config.label;
+      chartInstance.data.datasets[0].backgroundColor = config.color;
+      chartInstance.data.datasets[0].borderColor = config.color;
+      if (chartInstance.options.scales?.y?.title) {
+         chartInstance.options.scales.y.title.text = config.yTitle;
+      }
+      if (chartInstance.options.scales?.y) {
+          chartInstance.options.scales.y.suggestedMax = config.suggestedMax;
+      }
+      chartInstance.update();
+    } else {
+      chartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: config.labels,
+          datasets: [{
+            label: config.label,
+            data: config.values,
+            backgroundColor: config.color,
+            borderColor: config.color,
+            borderWidth: 1,
+            borderRadius: 6,
+            barPercentage: 0.6,
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: '#1A1F2C',
+              titleColor: '#fff',
+              bodyColor: '#fff',
+              padding: 12,
+              displayColors: false,
+              callbacks: {
+                label: function(context) {
+                  let label = context.dataset.label || '';
+                  if (label) {
+                    label += ': ';
+                  }
+                  if (context.parsed.y !== null) {
+                    label += context.parsed.y;
+                    if (currentMetric === 'ttft') label += ' ms';
+                  }
+                  return label;
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: '#1A1F2C', font: { weight: '600' } }
+            },
+            y: {
+              beginAtZero: true,
+              suggestedMax: config.suggestedMax,
+              grid: { color: '#E5E7EB' },
+              title: { 
+                display: true, 
+                text: config.yTitle,
+                color: '#6B7280',
+                font: { weight: '600' }
+              }
+            }
+          },
+          animation: {
+            duration: 400
+          }
+        }
+      });
+    }
+  }
+
+  if (btnOrin && btnThor && btnTps1 && btnTps8 && btnTtft) {
+    btnOrin.addEventListener('click', () => { currentDevice = 'orin'; renderChart(); });
+    btnThor.addEventListener('click', () => { currentDevice = 'thor'; renderChart(); });
+    
+    btnTps1.addEventListener('click', () => { currentMetric = 'tps1'; renderChart(); });
+    btnTps8.addEventListener('click', () => { currentMetric = 'tps8'; renderChart(); });
+    btnTtft.addEventListener('click', () => { currentMetric = 'ttft'; renderChart(); });
+
+    // Initial Render
+    renderChart();
+  }
+</script>

@@ -1,0 +1,217 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import RunCommand from '../../components/RunCommand.astro';
+import ModelPerformanceCharts from '../../components/ModelPerformanceCharts.astro';
+import llmBenchmarks from '../../data/benchmarks.json';
+
+const modelEntries = await getCollection('models');
+const collectionModels = modelEntries.map(entry => ({
+  id: entry.slug,
+  name: entry.data.title,
+  description: entry.data.short_description,
+  category: entry.data.type || 'Other',
+  family: entry.data.family || 'Other',
+  minimumJetson: entry.data.minimum_jetson || 'Orin NX',
+  memory: entry.data.memory_requirements,
+  size: entry.data.model_size,
+  order: entry.data.order ?? 999,
+  status: entry.data.is_new ? 'new' : 'stable',
+  highlighted: entry.data.is_new,
+  supported_inference_engines: entry.data.supported_inference_engines,
+  hf_checkpoint: entry.data.hf_checkpoint
+}));
+
+// Models come from content collection only, sorted by order within family
+const models = collectionModels.sort((a, b) => a.order - b.order);
+
+const families = Array.from(new Set(models.map(m => m.family)));
+---
+
+<Layout title="Models" description="Discover all generative AI models optimized for Jetson">
+  <!-- Hero Section -->
+  <section class="bg-nvidia-black text-nvidia-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-5xl font-bold mb-6">Supported Models</h1>
+        <p class="text-xl text-nvidia-gray-300 max-w-3xl mx-auto">
+          Run the latest generative AI models on your Jetson device
+        </p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Featured Models -->
+  {models.filter(m => m.highlighted).length > 0 && (
+    <section class="py-12 bg-nvidia-gray-50 border-b border-nvidia-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-8">
+          <h2 class="text-2xl font-bold text-nvidia-black">Featured Models</h2>
+          <p class="text-nvidia-gray-600 mt-1">Latest releases with day-0 support on Jetson</p>
+        </div>
+        
+        <div class="relative -mx-4 px-4 sm:mx-0 sm:px-0">
+          <div class="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide justify-center">
+            {models.filter(m => m.highlighted).map(model => (
+              <div class="w-[280px] sm:w-[300px] md:w-[320px] snap-center flex-shrink-0">
+                <article class="group flex flex-col h-full bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-lg transition-shadow duration-200 overflow-hidden">
+                  <div class="p-6 flex flex-col h-full">
+                    <div class="mb-4">
+                      <h3 class="text-lg font-bold text-slate-900 group-hover:text-nvidia-green transition-colors line-clamp-1">
+                        {model.name}
+                      </h3>
+                    </div>
+                    
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6 line-clamp-3 flex-grow">
+                      {model.description}
+                    </p>
+
+                    <div class="mt-auto pt-4 border-t border-gray-100 relative z-20">
+                      <div class="flex items-center gap-2">
+                        <RunCommand modelId={model.id} modelName={model.name} category={model.category} forceModal={model.category === 'Image'} supportedEngines={model.supported_inference_engines} hfCheckpoint={model.hf_checkpoint} />
+                        <a href={`/models/${model.id}`} class="px-3 py-1.5 rounded-md bg-nvidia-gray-100 text-nvidia-gray-900 hover:bg-nvidia-green hover:text-nvidia-black text-xs font-semibold transition-colors">
+                          Details
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- All Models Directory -->
+  <section class="py-20 bg-nvidia-white" id="directory">
+    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div class="max-w-2xl">
+          <h2 class="text-4xl font-bold text-nvidia-black mb-4">All Models</h2>
+          <p class="text-xl text-nvidia-gray-600">Compact directory, grouped by model family</p>
+        </div>
+        
+        <div class="w-full md:w-auto flex flex-col sm:flex-row gap-4">
+           <div class="relative">
+             <input 
+               type="text" 
+               id="model-search" 
+               placeholder="Search models..." 
+               class="w-full sm:w-64 pl-10 pr-4 py-2.5 rounded-lg border border-nvidia-gray-200 focus:border-nvidia-green focus:ring-1 focus:ring-nvidia-green outline-none transition-colors"
+             />
+             <svg class="w-5 h-5 text-nvidia-gray-400 absolute left-3 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+             </svg>
+           </div>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="models-grid">
+        {families.map(family => (
+          <div class="model-family-group bg-nvidia-white rounded-xl border border-nvidia-gray-200 h-full flex flex-col" data-family={family}>
+            <div class="px-5 py-4 border-b border-nvidia-gray-100 bg-nvidia-gray-50/50 rounded-t-xl">
+              <h3 class="text-lg font-bold text-nvidia-black">{family}</h3>
+            </div>
+            <div class="p-3 space-y-2 flex-1">
+              {models.filter(m => m.family === family).map(model => (
+                <div class="model-card p-3 rounded-lg border border-transparent hover:border-nvidia-green hover:bg-nvidia-gray-50 transition-all group" data-category={model.category} data-name={model.name.toLowerCase()}>
+                  <div class="flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-2 min-w-0">
+                      <span class="text-sm font-bold text-nvidia-black whitespace-nowrap group-hover:text-nvidia-green transition-colors">{model.name}</span>
+                      {model.status === 'new' && (
+                        <span class="bg-nvidia-green text-nvidia-black px-1.5 py-0.5 rounded-sm text-[10px] font-bold uppercase tracking-wide shrink-0">New</span>
+                      )}
+                    </div>
+                    <div class="flex items-center gap-2 shrink-0">
+                      <RunCommand modelId={model.id} modelName={model.name} category={model.category} forceModal={model.category === 'Image'} supportedEngines={model.supported_inference_engines} hfCheckpoint={model.hf_checkpoint} />
+                      <a href={`/models/${model.id}`} class="px-3 py-1.5 rounded-md bg-nvidia-gray-100 text-nvidia-gray-900 hover:bg-nvidia-green hover:text-nvidia-black text-xs font-semibold transition-colors">
+                        Details
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div id="no-results" class="hidden py-20 text-center">
+        <div class="text-6xl mb-4">🔍</div>
+        <h3 class="text-xl font-bold text-nvidia-black mb-2">No models found</h3>
+        <p class="text-nvidia-gray-600">Try adjusting your search or filters</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benchmarks Section -->
+  <section class="py-20 bg-nvidia-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-nvidia-black mb-6">Performance Comparison</h2>
+        <p class="text-xl text-nvidia-gray-600">Benchmarks on Jetson Orin AGX (32GB)</p>
+      </div>
+
+      <ModelPerformanceCharts benchmarks={llmBenchmarks} />
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // Search Logic
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('model-search') as HTMLInputElement;
+    const modelGroups = document.querySelectorAll('.model-family-group');
+    const noResults = document.getElementById('no-results');
+
+    let currentSearch = '';
+
+    function filterModels() {
+      let hasVisibleModels = false;
+
+      modelGroups.forEach(group => {
+        const cards = group.querySelectorAll('.model-card');
+        let visibleCardsInGroup = 0;
+
+        cards.forEach(card => {
+          const name = card.getAttribute('data-name') || '';
+          const matchesSearch = name.includes(currentSearch);
+
+          if (matchesSearch) {
+            (card as HTMLElement).style.display = 'flex';
+            visibleCardsInGroup++;
+            hasVisibleModels = true;
+          } else {
+            (card as HTMLElement).style.display = 'none';
+          }
+        });
+
+        // Show/Hide entire group if it has no visible cards
+        (group as HTMLElement).style.display = visibleCardsInGroup > 0 ? 'flex' : 'none';
+      });
+
+      if (noResults) {
+        noResults.classList.toggle('hidden', hasVisibleModels);
+      }
+    }
+
+    searchInput?.addEventListener('input', (e) => {
+      currentSearch = (e.target as HTMLInputElement).value.toLowerCase();
+      filterModels();
+    });
+  });
+</script>
+
+<style>
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+</style>

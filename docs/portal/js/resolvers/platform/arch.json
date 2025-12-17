@@ -1,8 +1,0 @@
-{
-  "arm64": {
-    "name": "ARM64 (Jetson)"
-  },
-  "amd64": {
-    "name": "AMD64 + CUDA"
-  }
-}

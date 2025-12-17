@@ -1,0 +1,40 @@
+{
+  "name": "jetson-ai-lab-redesign",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Official NVIDIA experience for running Jetson-optimized generative AI models locally",
+  "author": "NVIDIA Corporation",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "^6.0.0",
+    "astro": "^5.11.1",
+    "chart.js": "^4.4.4",
+    "tailwindcss": "^3.4.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.19",
+    "@types/node": "^20.0.0"
+  },
+  "keywords": [
+    "jetson",
+    "ai",
+    "nvidia",
+    "llm",
+    "whisper",
+    "sdxl",
+    "llama",
+    "edge-computing"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nvidia/jetson-ai-lab.git"
+  },
+  "homepage": "https://www.jetson-ai-lab.com"
+}
