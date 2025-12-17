@@ -1,21 +1,38 @@
-# Jetson AI Lab - Redesign
+# Jetson AI Lab 2.0 - Staging Repository
 
-Jetson AI Lab - Redesign is the refreshed NVIDIA experience for experimenting with Jetson-optimized generative AI models entirely on-device. The site pairs a polished Astro frontend with a content-driven workflow so new tutorials, models, and posts can be published without touching layout code.
+This is the **staging repository** for Jetson AI Lab 2.0, a complete redesign and rebump of the [jetson-generative-ai-playground](https://github.com/NVIDIA-AI-IOT/jetson-generative-ai-playground) using modern web technologies.
 
-## Highlights
+> **⚠️ Staging Repository**: This repository is for staging, testing, and validating the new Jetson AI Lab 2.0 before merging into the main repository.
 
-- Optimized showcase for flagship models such as Llama 4, Gemma 3n, SDXL, Whisper, and VoiceCraft
+## Migration Status
+
+This repository contains the content from **PR #318** (jetson-ai-lab-2.0 branch) from the original repository. We are using this staging environment to:
+
+- ✅ Verify the complete Astro-based redesign
+- 🔄 Complete and test CI/CD configuration
+- 🔄 Test GitHub Pages deployment (private)
+- 🔄 Validate all content and features
+- ⏳ Prepare for final merge to main repository
+
+## About
+
+Jetson AI Lab 2.0 is the refreshed NVIDIA experience for experimenting with Jetson-optimized generative AI models entirely on-device. The site pairs a polished Astro frontend with a content-driven workflow so new tutorials, models, and posts can be published without touching layout code.
+
+### Key Features
+
+- Optimized showcase for flagship models such as Llama 4, Gemma 3, SDXL, Whisper, and VoiceCraft
 - Curated tutorials, benchmarks, and blog posts with consistent styling and navigation
 - Local-first architecture: everything runs on Jetson hardware with no cloud dependency
 - Content authored in Markdown/JSON for fast iteration and git-friendly reviews
 - Public site by default; no password gate or authentication
 
-## Technology Stack
+### Technology Stack
 
-- **Astro 5** for the static-first front end
-- **Tailwind CSS** for the design system
-- **MDX & Markdown** for rich content with interactive elements
-- **TypeScript** for typings across data collections
+- **Astro 5** - Static-first frontend framework
+- **Tailwind CSS** - Design system and styling
+- **MDX & Markdown** - Rich content with interactive elements
+- **TypeScript** - Type safety across data collections
+- **Chart.js** - Interactive benchmark visualizations
 
 ## How the Project Is Organized
 
@@ -50,19 +67,49 @@ Jetson AI Lab - Redesign is the refreshed NVIDIA experience for experimenting wi
 
 ## Getting Started
 
+### Prerequisites
+
+- Node.js 18+ and npm
+- Git
+
+### Setup Instructions
+
+1. **Clone the repository**
+
+```bash
+git clone git@github.com:NVIDIA-AI-IOT/jetson-ai-lab-stg.git
+cd jetson-ai-lab-stg
+```
+
+2. **Install dependencies**
+
 ```bash
 npm install
+```
+
+3. **Start the development server**
+
+```bash
 npm run dev
 ```
 
-The development server defaults to <http://localhost:4321>.
+The development server will be available at <http://localhost:4321>
 
-To build a production bundle:
+4. **Build for production**
 
 ```bash
 npm run build
 npm run preview
 ```
+
+The preview server will serve the built site at <http://localhost:4321>
+
+### Available Scripts
+
+- `npm run dev` - Start development server with hot reload
+- `npm run build` - Build static site for production
+- `npm run preview` - Preview production build locally
+- `npm run astro` - Run Astro CLI commands
 
 ## Content Tips
 
@@ -73,8 +120,27 @@ npm run preview
 
 ## Deployment
 
-The project ships as static assets and works on Netlify, Vercel, or any static hosting service. Netlify defaults are already configured in `netlify.toml`.
+The project ships as static assets and works on Netlify, Vercel, GitHub Pages, or any static hosting service. Netlify defaults are already configured in `netlify.toml`.
+
+### Staging Website
+
+> **Coming Soon**: The staging site will be available at a private GitHub Pages URL once CI/CD is configured.
+
+Staging URL: TBD (private GitHub Pages)
+
+### CI/CD Pipeline
+
+> **Coming Soon**: GitHub Actions workflow for automated deployment.
+
+We are setting up automated deployment via GitHub Actions for:
+- ✅ Automated builds on push to main
+- ✅ Deployment to GitHub Pages (private)
+- ✅ Build status badges
+- ✅ Preview deployments for pull requests
 
 ## Contact
 
 Asier Arranz (asier@nvidia.com)
+Khalil Ben Khaled (kbenkhaled@nvidia.com, PR #318 author)
+Aditya Sahu (adsahu@nvidia.com)
+Chitoku Yato (cyato@nvidia.com)
