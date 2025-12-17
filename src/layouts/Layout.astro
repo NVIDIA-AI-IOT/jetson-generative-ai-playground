@@ -14,10 +14,32 @@ const { title, description = "Experience the latest generative AI models optimiz
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
     <title>{title} | Jetson AI Lab</title>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SXH8S4Y8RW"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-SXH8S4Y8RW');
+    </script>
+    
+    <!-- OneTrust Cookies Consent Notice start for www.jetson-ai-lab.com -->
+    <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" type="text/javascript" charset="UTF-8" data-domain-script="018e2d65-efdf-7071-b793-f15ccf25c234"></script>
+    <script is:inline type="text/javascript">
+      function OptanonWrapper() {
+        var event = new Event('bannerLoaded');
+        window.dispatchEvent(event);
+      }
+    </script>
+    <!-- OneTrust Cookies Consent Notice end for www.jetson-ai-lab.com -->
+    
+    <script type="text/javascript" src="https://images.nvidia.com/aem-dam/Solutions/ot-js/ot-custom.js"></script>
+    <script src="//assets.adobedtm.com/5d4962a43b79/814eb6e9b4e1/launch-4bc07f1e0b0b.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -83,6 +105,16 @@ const { title, description = "Experience the latest generative AI models optimiz
           </div>
         </div>
         <div class="mt-12 pt-8 border-t border-nvidia-gray-700">
+          <ul class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-nvidia-gray-400 mb-4">
+            <li><a href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/" target="_blank" class="hover:text-nvidia-white transition-colors duration-200">Privacy Policy</a></li>
+            <li><a href="https://www.nvidia.com/en-us/privacy-center/" target="_blank" class="hover:text-nvidia-white transition-colors duration-200">Manage My Privacy</a></li>
+            <li><a href="https://www.nvidia.com/en-us/preferences/email-preferences/" target="_blank" class="hover:text-nvidia-white transition-colors duration-200">Do Not Sell or Share My Data</a></li>
+            <li><a href="https://www.nvidia.com/en-us/about-nvidia/legal-info/" target="_blank" class="hover:text-nvidia-white transition-colors duration-200">Legal</a></li>
+            <li><a href="https://www.nvidia.com/en-us/about-nvidia/accessibility/" target="_blank" class="hover:text-nvidia-white transition-colors duration-200">Accessibility</a></li>
+            <li><a href="https://www.nvidia.com/en-us/about-nvidia/company-policies/" target="_self" class="hover:text-nvidia-white transition-colors duration-200">Corporate Policies</a></li>
+            <li><a href="https://www.nvidia.com/en-us/product-security/" target="_blank" class="hover:text-nvidia-white transition-colors duration-200">Product Security</a></li>
+            <li><a href="https://www.nvidia.com/en-us/contact/" target="_blank" class="hover:text-nvidia-white transition-colors duration-200">Contact</a></li>
+          </ul>
           <p class="text-nvidia-gray-400 text-sm text-center">
             © 2025 NVIDIA Corporation. All rights reserved.
           </p>
@@ -516,5 +548,27 @@ const { title, description = "Experience the latest generative AI models optimiz
         });
       })();
     </script>
+    
+    <!-- 6sense Tracking -->
+    <script is:inline>
+      window._6si = window._6si || [];
+      window._6si.push(['enableEventTracking', true]);
+      window._6si.push(['setToken', 'eb417ec30d332e34d732e2916f185311']);
+      window._6si.push(['setEndpoint', 'b.6sc.co']);
+      window._6si.push(['enableRetargeting', false]); 
+      
+      window._6si.push(['enableCompanyDetails', true]);
+      window._6si.push(['setEpsilonKey', '6f578ba72568231347d1bddb7102e53695302c28']);
+      
+      (function() {
+        var gd = document.createElement('script');
+        gd.type = 'text/javascript';
+        gd.async = true;
+        gd.src = '//j.6sc.co/6si.min.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gd, s);
+      })();
+    </script>
+    <script is:inline type="text/javascript">_satellite.pageBottom();</script>
   </body>
 </html> 
