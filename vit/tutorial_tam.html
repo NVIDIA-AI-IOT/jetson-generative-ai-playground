@@ -38,7 +38,7 @@
   <label class="md-overlay" for="__drawer">
   </label>
   <div data-md-component="skip">
-   <a class="md-skip" href="#tutorial-sam-segment-anything">
+   <a class="md-skip" href="#tutorial-tam-track-anything">
     Skip to content
    </a>
   </div>
@@ -899,8 +899,8 @@
      </div>
      <div class="md-content" data-md-component="content">
       <article class="md-content__inner md-typeset">
-       <h1 id="tutorial-sam-segment-anything">
-        Tutorial - SAM (Segment Anything)
+       <h1 id="tutorial-tam-track-anything">
+        Tutorial - TAM (Track Anything)
        </h1>
        <p>
         Let's run
@@ -909,7 +909,7 @@
           TAM
          </code>
         </a>
-        to perform Segment Anything on videos on NVIDIA Jetson.
+        to perform Track Anything on videos on NVIDIA Jetson.
        </p>
        <p>
         <img alt="" src="../images/TAM_screenshot_cat.png"/>
@@ -978,13 +978,13 @@
            </a>
            :
           </p>
-          <div class="highlight">
-           <pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dusty-nv/jetson-containers
-bash<span class="w"> </span>jetson-containers/install.sh
-</code></pre>
-          </div>
          </li>
         </ol>
+        <div class="highlight">
+         <pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dusty-nv/jetson-containers
+bash<span class="w"> </span>jetson-containers/install.sh
+</code></pre>
+        </div>
        </div>
        <h2 id="how-to-start">
         How to start
@@ -1001,7 +1001,7 @@ bash<span class="w"> </span>jetson-containers/install.sh
         commands to automatically pull or build a compatible container image.
        </p>
        <div class="highlight">
-        <pre><span></span><code>jetson-containers run $(autotag tam)
+        <pre><span></span><code>jetson-containers<span class="w"> </span>run<span class="w"> </span><span class="k">$(</span>autotag<span class="w"> </span>tam<span class="k">)</span>
 </code></pre>
        </div>
        <p>
@@ -1055,33 +1055,33 @@ bash<span class="w"> </span>jetson-containers/install.sh
         .
        </p>
        <div class="highlight">
-        <pre><span></span><code>Downloading checkpoints from Google Drive... tips: If you cannot see the progress bar, please try to download it manuall               and put it in the checkpointes directory. E2FGVI-HQ-CVPR22.pth: https://github.com/MCG-NKU/E2FGVI(E2FGVI-HQ model)
-Access denied with the following error:
+        <pre><span></span><code><span class="go">Downloading checkpoints from Google Drive... tips: If you cannot see the progress bar, please try to download it manuall               and put it in the checkpointes directory. E2FGVI-HQ-CVPR22.pth: https://github.com/MCG-NKU/E2FGVI(E2FGVI-HQ model)</span>
+<span class="go">Access denied with the following error:</span>
 
-        Cannot retrieve the public link of the file. You may need to change
-        the permission to 'Anyone with the link', or have had many accesses. 
+<span class="go">        Cannot retrieve the public link of the file. You may need to change</span>
+<span class="go">        the permission to 'Anyone with the link', or have had many accesses. </span>
 
-You may still be able to access the file from the browser:
+<span class="go">You may still be able to access the file from the browser:</span>
 
-         https://drive.google.com/uc?id=10wGdKSUOie0XmCr8SQ2A2FeDe-mfn5w3 
+<span class="go">         https://drive.google.com/uc?id=10wGdKSUOie0XmCr8SQ2A2FeDe-mfn5w3 </span>
 </code></pre>
        </div>
        <p>
         You can manually download the checkpoint file on your Docker host machine.
        </p>
        <div class="highlight">
-        <pre><span></span><code>cd jetson-containers/
-pip install gdown
-source ~/.profile
-gdown https://drive.google.com/uc?id=10wGdKSUOie0XmCr8SQ2A2FeDe-mfn5w3 
-mv E2FGVI-HQ-CVPR22.pth ./data/models/tam/
+        <pre><span></span><code><span class="nb">cd</span><span class="w"> </span>jetson-containers/
+pip<span class="w"> </span>install<span class="w"> </span>gdown
+<span class="nb">source</span><span class="w"> </span>~/.profile
+gdown<span class="w"> </span>https://drive.google.com/uc?id<span class="o">=</span>10wGdKSUOie0XmCr8SQ2A2FeDe-mfn5w3<span class="w"> </span>
+mv<span class="w"> </span>E2FGVI-HQ-CVPR22.pth<span class="w"> </span>./data/models/tam/
 </code></pre>
        </div>
        <p>
         And you can try running the TAM container.
        </p>
        <div class="highlight">
-        <pre><span></span><code>jetson-containers run $(autotag tam)
+        <pre><span></span><code>jetson-containers<span class="w"> </span>run<span class="w"> </span><span class="k">$(</span>autotag<span class="w"> </span>tam<span class="k">)</span>
 </code></pre>
        </div>
       </article>
