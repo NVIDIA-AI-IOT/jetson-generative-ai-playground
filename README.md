@@ -4,14 +4,22 @@ This is the **staging repository** for Jetson AI Lab 2.0, a complete redesign an
 
 > **⚠️ Staging Repository**: This repository is for staging, testing, and validating the new Jetson AI Lab 2.0 before merging into the main repository.
 
+## Deployment URLs
+
+| Environment | URL | Status |
+|-------------|-----|--------|
+| **Staging** | [https://ideal-adventure-zr1vkjp.pages.github.io/](https://ideal-adventure-zr1vkjp.pages.github.io/) | ✅ Active |
+| **Production** | [https://www.jetson-ai-lab.com](https://www.jetson-ai-lab.com) | ⏳ To be deployed (Still Mkdocs Material based) |
+
 ## Migration Status
 
 This repository contains the content from **PR #318** (jetson-ai-lab-2.0 branch) from the original repository. We are using this staging environment to:
 
 - ✅ Verify the complete Astro-based redesign
-- 🔄 Complete and test CI/CD configuration
-- 🔄 Test GitHub Pages deployment (private)
+- ✅ Complete and test CI/CD configuration
+- ✅ Test GitHub Pages deployment (private)
 - 🔄 Validate all content and features
+- 🔄 Performance testing and optimization
 - ⏳ Prepare for final merge to main repository
 
 ## About
@@ -124,19 +132,20 @@ The project ships as static assets and works on Netlify, Vercel, GitHub Pages, o
 
 ### Staging Website
 
-> **Coming Soon**: The staging site will be available at a private GitHub Pages URL once CI/CD is configured.
+The staging site is now live and deployed via GitHub Pages:
 
-Staging URL: TBD (private GitHub Pages)
+**🚀 Staging URL**: [https://ideal-adventure-zr1vkjp.pages.github.io/](https://ideal-adventure-zr1vkjp.pages.github.io/)
+
+This is a private GitHub Pages deployment for testing and validation before production release.
 
 ### CI/CD Pipeline
 
-> **Coming Soon**: GitHub Actions workflow for automated deployment.
+GitHub Actions workflow is configured for automated deployment:
 
-We are setting up automated deployment via GitHub Actions for:
 - ✅ Automated builds on push to main
 - ✅ Deployment to GitHub Pages (private)
-- ✅ Build status badges
-- ✅ Preview deployments for pull requests
+- ✅ Build artifacts and deployment logs
+- 🔄 Preview deployments for pull requests (in progress)
 
 ## Contact
 
