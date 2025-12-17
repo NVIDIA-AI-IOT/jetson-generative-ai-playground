@@ -1,0 +1,6 @@
+{
+  "llama-3": {
+    "name": "Meta Llama",
+    "tags": ["llm"]
+  }
+}

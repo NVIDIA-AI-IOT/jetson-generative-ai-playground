@@ -1,0 +1,3063 @@
+<!-- Elements added to main will be displayed on all pages -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="Showcasing generative AI projects that run on Jetson" name="description"/>
+  <link href="community_articles.html" rel="prev"/>
+  <link href="images/nvidia-favicon-rgb-16x16px@2x.png" rel="icon"/>
+  <meta content="mkdocs-1.6.1, mkdocs-material-9.7.0" name="generator"/>
+  <title>
+   Jetson AI Lab Research Group - NVIDIA Jetson AI Lab
+  </title>
+  <link href="assets/stylesheets/main.618322db.min.css" rel="stylesheet"/>
+  <link href="assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css?family=NVIDIA-NALA:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+  <style>
+   :root{--md-text-font:"NVIDIA-NALA";--md-code-font:"Roboto Mono"}
+  </style>
+  <link href="css/colors.css" rel="stylesheet"/>
+  <link href="css/extra.css" rel="stylesheet"/>
+  <link href="css/nvidia-font.css" rel="stylesheet"/>
+  <script>
+   __md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}
+  </script>
+  <script id="__analytics">
+   function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SXH8S4Y8RW"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SXH8S4Y8RW",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SXH8S4Y8RW",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}
+  </script>
+  <script>
+   "undefined"!=typeof __md_analytics&&__md_analytics()
+  </script>
+ </head>
+ <body data-md-color-accent="nv-black-green" data-md-color-primary="nv-black-green" data-md-color-scheme="nv-black-green" dir="ltr">
+<!-- ARCHIVE DEPRECATION BANNER -->
+<div id="archive-banner" style="position:fixed;top:0;left:0;right:0;z-index:99999;background:linear-gradient(90deg,#1a1a1a 0%,#2d2d2d 100%);border-bottom:3px solid #76b900;padding:12px 20px;display:flex;align-items:center;justify-content:center;gap:20px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;box-shadow:0 2px 10px rgba(0,0,0,0.3);">
+  <span style="color:#fbbf24;font-size:20px;"></span>
+  <span style="color:#ffffff;font-size:14px;"><strong style="color:#fbbf24;">Archive Notice:</strong> This documentation is deprecated and no longer maintained.</span>
+  <a href="/" style="background:#76b900;color:#000;padding:8px 16px;border-radius:4px;text-decoration:none;font-weight:600;font-size:13px;transition:background 0.2s;">Visit New Jetson AI Lab </a>
+</div>
+<div style="height:60px;"></div>
+<!-- END ARCHIVE BANNER -->
+  <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+  <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+  <label class="md-overlay" for="__drawer">
+  </label>
+  <div data-md-component="skip">
+   <a class="md-skip" href="#jetson-ai-lab-research-group">
+    Skip to content
+   </a>
+  </div>
+  <div data-md-component="announce">
+  </div>
+  <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+   <nav aria-label="Header" class="md-header__inner md-grid">
+    <a aria-label="NVIDIA Jetson AI Lab" class="md-header__button md-logo" data-md-component="logo" href="index.html" title="NVIDIA Jetson AI Lab">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54">
+      </path>
+     </svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z">
+      </path>
+     </svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+     <div class="md-header__ellipsis">
+      <div class="md-header__topic">
+       <span class="md-ellipsis">
+        NVIDIA Jetson AI Lab
+       </span>
+      </div>
+      <div class="md-header__topic" data-md-component="header-topic">
+       <span class="md-ellipsis">
+        Jetson AI Lab Research Group
+       </span>
+      </div>
+     </div>
+    </div>
+    <form class="md-header__option" data-md-component="palette">
+     <input aria-hidden="true" class="md-option" data-md-color-accent="nv-black-green" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="nv-black-green" data-md-color-scheme="nv-black-green" id="__palette_0" name="__palette" type="radio"/>
+    </form>
+    <script>
+     var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}
+    </script>
+    <label class="md-header__button md-icon" for="__search">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5">
+      </path>
+     </svg>
+    </label>
+    <div class="md-search" data-md-component="search" role="dialog">
+     <label class="md-search__overlay" for="__search">
+     </label>
+     <div class="md-search__inner" role="search">
+      <form class="md-search__form" name="search">
+       <input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+       <label class="md-search__icon md-icon" for="__search">
+        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5">
+         </path>
+        </svg>
+        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z">
+         </path>
+        </svg>
+       </label>
+       <nav aria-label="Search" class="md-search__options">
+        <button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+         <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+          </path>
+         </svg>
+        </button>
+       </nav>
+      </form>
+      <div class="md-search__output">
+       <div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+        <div class="md-search-result" data-md-component="search-result">
+         <div class="md-search-result__meta">
+          Initializing search
+         </div>
+         <ol class="md-search-result__list" role="presentation">
+         </ol>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </nav>
+   <nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+    <div class="md-grid">
+     <ul class="md-tabs__list">
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="index.html">
+        Home
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="models.html">
+        Models
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="tutorial-intro.html">
+        Tutorials
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="benchmarks.html">
+        Benchmarks
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="community_articles.html">
+        Projects
+       </a>
+      </li>
+      <li class="md-tabs__item md-tabs__item--active">
+       <a class="md-tabs__link" href="research.html">
+        Research Group
+       </a>
+      </li>
+     </ul>
+    </div>
+   </nav>
+  </header>
+  <div class="md-container" data-md-component="container">
+   <main class="md-main" data-md-component="main">
+    <div class="md-main__inner md-grid">
+     <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden="">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+         <label class="md-nav__title" for="__drawer">
+          <a aria-label="NVIDIA Jetson AI Lab" class="md-nav__button md-logo" data-md-component="logo" href="index.html" title="NVIDIA Jetson AI Lab">
+           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54">
+            </path>
+           </svg>
+          </a>
+          NVIDIA Jetson AI Lab
+         </label>
+         <ul class="md-nav__list" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="index.html">
+            <span class="md-ellipsis">
+             Home
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="models.html">
+            <span class="md-ellipsis">
+             Models
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item md-nav__item--nested">
+           <input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            <span class="md-ellipsis">
+             Tutorials
+            </span>
+            <span class="md-nav__icon md-icon">
+            </span>
+           </label>
+           <nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+            <label class="md-nav__title" for="__nav_3">
+             <span class="md-nav__icon md-icon">
+             </span>
+             Tutorials
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="tutorial-intro.html">
+               <span class="md-ellipsis">
+                Introduction
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" id="__nav_3_2" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+               <span class="md-ellipsis">
+                Jetson Setup Guide
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_2_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_2">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Jetson Setup Guide
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="initial_setup_jon.html">
+                  <span class="md-ellipsis">
+                   🚀 Initial Setup Guide - Jetson Orin Nano
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="initial_setup_jon_sdkm.html">
+                  <span class="md-ellipsis">
+                   🛸 Initial Setup (SDK Manager method)
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tips_ssd-docker.html">
+                  <span class="md-ellipsis">
+                   🔖 SSD + Docker
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tips_ram-optimization.html">
+                  <span class="md-ellipsis">
+                   🔖 Memory optimization
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="hackathon.html">
+                  <span class="md-ellipsis">
+                   🏆 Hackathon Guide
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="workshop_gtcdc2025.html">
+               <span class="md-ellipsis">
+                🌸 Jetson Workshop
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_4" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+               <span class="md-ellipsis">
+                AI Microservices
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_4_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_4">
+                <span class="md-nav__icon md-icon">
+                </span>
+                AI Microservices
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorials/microservices_intro.html">
+                  <span class="md-ellipsis">
+                   Microservices Intro
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorials/microservices_vlm.html">
+                  <span class="md-ellipsis">
+                   Microservices for VLM
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_5" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+               <span class="md-ellipsis">
+                Text (LLM)
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_5_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_5">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Text (LLM)
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_text-generation.html">
+                  <span class="md-ellipsis">
+                   text-generation-webui
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_ollama.html">
+                  <span class="md-ellipsis">
+                   Ollama
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_openwebui.html">
+                  <span class="md-ellipsis">
+                   Open WebUI
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_llamaspeak.html">
+                  <span class="md-ellipsis">
+                   llamaspeak
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_nano-llm.html">
+                  <span class="md-ellipsis">
+                   NanoLLM
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tensorrt_llm.html">
+                  <span class="md-ellipsis">
+                   TensorRT-LLM
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_slm.html">
+                  <span class="md-ellipsis">
+                   Small LLM (SLM)
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_api-examples.html">
+                  <span class="md-ellipsis">
+                   API Examples
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_6" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+               <span class="md-ellipsis">
+                Text + Vision (VLM)
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_6_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_6">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Text + Vision (VLM)
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_live-vlm-webui.html">
+                  <span class="md-ellipsis">
+                   Live VLM WebUI 🆕
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_llava.html">
+                  <span class="md-ellipsis">
+                   LLaVA
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_live-llava.html">
+                  <span class="md-ellipsis">
+                   Live LLaVA
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_nano-vlm.html">
+                  <span class="md-ellipsis">
+                   NanoVLM
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="llama_vlm.html">
+                  <span class="md-ellipsis">
+                   Llama 3.2 Vision
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="agent_studio.html">
+                  <span class="md-ellipsis">
+                   Agent Studio
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="tutorial_gen-ai-benchmarking.html">
+               <span class="md-ellipsis">
+                Gen AI Benchmarking 🆕
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_8" type="checkbox"/>
+              <div class="md-nav__link md-nav__container">
+               <a class="md-nav__link" href="vit/index.html">
+                <span class="md-ellipsis">
+                 Vision Transformers (ViT)
+                </span>
+               </a>
+               <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon">
+                </span>
+               </label>
+              </div>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_8_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_8">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Vision Transformers (ViT)
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="vit/tutorial_efficientvit.html">
+                  <span class="md-ellipsis">
+                   EfficientViT
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="vit/tutorial_nanoowl.html">
+                  <span class="md-ellipsis">
+                   NanoOWL
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="vit/tutorial_nanosam.html">
+                  <span class="md-ellipsis">
+                   NanoSAM
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="vit/tutorial_sam.html">
+                  <span class="md-ellipsis">
+                   SAM
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="vit/tutorial_tam.html">
+                  <span class="md-ellipsis">
+                   TAM
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_distillation.html">
+                  <span class="md-ellipsis">
+                   📑 Knowledge Distillation
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_9" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+               <span class="md-ellipsis">
+                Robotics &amp; Embodiment
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_9_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_9">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Robotics &amp; Embodiment
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="cosmos.html">
+                  <span class="md-ellipsis">
+                   Cosmos
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="genesis.html">
+                  <span class="md-ellipsis">
+                   Genesis 🆕
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="lerobot.html">
+                  <span class="md-ellipsis">
+                   LeRobot
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="ros.html">
+                  <span class="md-ellipsis">
+                   ROS2 Nodes
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="openvla.html">
+                  <span class="md-ellipsis">
+                   OpenVLA
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="robopoint.html">
+                  <span class="md-ellipsis">
+                   RoboPoint 🆕
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" id="__nav_3_10" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_10" id="__nav_3_10_label" tabindex="0">
+               <span class="md-ellipsis">
+                Image Generation
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_10_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_10">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Image Generation
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_comfyui_flux.html">
+                  <span class="md-ellipsis">
+                   Flux &amp; ComfyUI
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_stable-diffusion.html">
+                  <span class="md-ellipsis">
+                   Stable Diffusion
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_stable-diffusion-xl.html">
+                  <span class="md-ellipsis">
+                   Stable Diffusion XL
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="nerf.html">
+                  <span class="md-ellipsis">
+                   nerfstudio
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" id="__nav_3_11" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_11" id="__nav_3_11_label" tabindex="0">
+               <span class="md-ellipsis">
+                RAG &amp; Vector Database
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_11_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_11">
+                <span class="md-nav__icon md-icon">
+                </span>
+                RAG &amp; Vector Database
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_nanodb.html">
+                  <span class="md-ellipsis">
+                   NanoDB
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_llamaindex.html">
+                  <span class="md-ellipsis">
+                   LlamaIndex
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_jetson-copilot.html">
+                  <span class="md-ellipsis">
+                   Jetson Copilot
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" id="__nav_3_12" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_12" id="__nav_3_12_label" tabindex="0">
+               <span class="md-ellipsis">
+                SDK Integrations
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_12_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_12">
+                <span class="md-nav__icon md-icon">
+                </span>
+                SDK Integrations
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_holoscan.html">
+                  <span class="md-ellipsis">
+                   Holoscan SDK
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_jps.html">
+                  <span class="md-ellipsis">
+                   Jetson Platform Services
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_gapi_workflows.html">
+                  <span class="md-ellipsis">
+                   Gapi Workflows
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_gapi_microservices.html">
+                  <span class="md-ellipsis">
+                   Gapi Micro Services
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_ultralytics.html">
+                  <span class="md-ellipsis">
+                   Ultralytics YOLOv8
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" id="__nav_3_13" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_13" id="__nav_3_13_label" tabindex="0">
+               <span class="md-ellipsis">
+                Audio
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_13_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_13">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Audio
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_whisper.html">
+                  <span class="md-ellipsis">
+                   Whisper
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_audiocraft.html">
+                  <span class="md-ellipsis">
+                   AudioCraft
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_voicecraft.html">
+                  <span class="md-ellipsis">
+                   VoiceCraft
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="benchmarks.html">
+            <span class="md-ellipsis">
+             Benchmarks
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="community_articles.html">
+            <span class="md-ellipsis">
+             Projects
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item md-nav__item--active">
+           <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+           <label class="md-nav__link md-nav__link--active" for="__toc">
+            <span class="md-ellipsis">
+             Research Group
+            </span>
+            <span class="md-nav__icon md-icon">
+            </span>
+           </label>
+           <a class="md-nav__link md-nav__link--active" href="research.html">
+            <span class="md-ellipsis">
+             Research Group
+            </span>
+           </a>
+           <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+            <label class="md-nav__title" for="__toc">
+             <span class="md-nav__icon md-icon">
+             </span>
+             Table of contents
+            </label>
+            <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#research-topics">
+               <span class="md-ellipsis">
+                Research Topics
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#contribution-guidelines">
+               <span class="md-ellipsis">
+                Contribution Guidelines
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#meeting-schedule">
+               <span class="md-ellipsis">
+                Meeting Schedule
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#past-meetings">
+               <span class="md-ellipsis">
+                Past Meetings
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#team-members">
+               <span class="md-ellipsis">
+                Team Members
+               </span>
+              </a>
+              <nav aria-label="Team Members" class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#core-contributors">
+                  <span class="md-ellipsis">
+                   Core Contributors
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+            </ul>
+           </nav>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+         <label class="md-nav__title" for="__toc">
+          <span class="md-nav__icon md-icon">
+          </span>
+          Table of contents
+         </label>
+         <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#research-topics">
+            <span class="md-ellipsis">
+             Research Topics
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#contribution-guidelines">
+            <span class="md-ellipsis">
+             Contribution Guidelines
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#meeting-schedule">
+            <span class="md-ellipsis">
+             Meeting Schedule
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#past-meetings">
+            <span class="md-ellipsis">
+             Past Meetings
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#team-members">
+            <span class="md-ellipsis">
+             Team Members
+            </span>
+           </a>
+           <nav aria-label="Team Members" class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#core-contributors">
+               <span class="md-ellipsis">
+                Core Contributors
+               </span>
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-content" data-md-component="content">
+      <article class="md-content__inner md-typeset">
+       <h1 id="jetson-ai-lab-research-group">
+        Jetson AI Lab Research Group
+       </h1>
+       <p>
+        The Jetson AI Lab Research Group is a global collective for advancing open-source Edge ML, open to anyone to join and collaborate with others from the community and leverage each other's work. Our goal is using advanced AI for good in real-world applications in accessible and responsible ways. By coordinating together as a group, we can keep up with the rapidly evolving pace of AI and more quickly arrive at deploying intelligent multimodal agents and autonomous robots into the field.
+       </p>
+       <p>
+        There are virtual
+        <a href="#meeting-schedule">
+         meetings
+        </a>
+        that anyone is welcome to join, offline discussion on the
+        <a href="https://forums.developer.nvidia.com/c/agx-autonomous-machines/jetson-embedded-systems/jetson-projects/78" target="_blank">
+         Jetson Projects
+        </a>
+        forum, and guidelines for upstreaming open-source
+        <a href="#contribution-guidelines">
+         contributions
+        </a>
+        .
+       </p>
+       <div class="admonition abstract">
+        <p class="admonition-title">
+         Upcoming Meetings
+        </p>
+        <p>
+         <strong>
+          Regular Series Begins: 2nd Tuesday of every month starting September 9, 2025
+         </strong>
+        </p>
+        <p>
+         We are pleased to announce the resumption of the Jetson AI Lab Research Group Community calls. The primary objective of these calls remains consistent with our past meetings. We aim to discuss emerging trends, share insights on exciting projects undertaken by members of this group, address any issues or roadblocks, and explore new frameworks and libraries, among other topics.
+        </p>
+        <p>
+         We will share more details during the call. We look forward to reconnecting with all of you.
+        </p>
+        <p>
+         Join the
+         <a href="https://discord.gg/BmqNSK4886" target="_blank">
+          Discord
+         </a>
+         server to stay involved and receive the latest updates.
+        </p>
+       </div>
+       <h2 id="research-topics">
+        Research Topics
+       </h2>
+       <p>
+        Our group explores cutting-edge research areas in edge AI and robotics. These topics represent our current focus areas and will evolve as the state-of-the-art progresses and new challenges emerge:
+       </p>
+       <table>
+        <tr>
+         <td>
+          • Controller LLMs for dynamic pipeline code generation
+         </td>
+         <td>
+          • Fine-tuning LLM/VLM onboard Jetson AGX Orin 64GB
+         </td>
+        </tr>
+        <tr>
+         <td>
+          • HomeAssistant.io integration for smart home [
+          <a href="https://www.home-assistant.io" target="_blank">
+           1
+          </a>
+          ] [
+          <a href="https://github.com/dusty-nv/jetson-containers/pull/442" target="_blank">
+           2
+          </a>
+          ]
+         </td>
+         <td>
+          • Continuous multi-image VLM streaming and change detection
+         </td>
+        </tr>
+        <tr>
+         <td>
+          • Recurrent LLM architectures (Mamba, RKVW, etc) [
+          <a href="https://github.com/dusty-nv/jetson-containers/issues/447" target="_blank">
+           1
+          </a>
+          ]
+         </td>
+         <td>
+          • Lightweight low-memory streaming ASR/TTS models
+         </td>
+        </tr>
+        <tr>
+         <td>
+          • Diffusion models for image processing and enhancement
+         </td>
+         <td>
+          • Time Series Forecasting with Transformers [
+          <a href="https://huggingface.co/blog/autoformer" target="_blank">
+           1
+          </a>
+          ] [
+          <a href="https://github.com/time-series-foundation-models/lag-llama" target="_blank">
+           2
+          </a>
+          ]
+         </td>
+        </tr>
+        <tr>
+         <td>
+          • Guidance, grammars, and guardrails for constrained output
+         </td>
+         <td>
+          • Inline LLM function calling / plugins from API definitions
+         </td>
+        </tr>
+        <tr>
+         <td>
+          • ML DevOps, edge deployment, and orchestration
+         </td>
+         <td>
+          • Robotics, IoT, and cyberphysical systems integration
+         </td>
+        </tr>
+       </table>
+       <h2 id="contribution-guidelines">
+        Contribution Guidelines
+       </h2>
+       <p>
+        When experiments are successful, we package the results in ways that make them easily reusable for others to integrate into their own projects. We encourage contributions through multiple channels:
+       </p>
+       <div style="display: flex; align-items: center;">
+        <span style="min-width: 365px;">
+         <ul>
+          <li>
+           Open-source libraries &amp; code on GitHub
+          </li>
+          <li>
+           Models on
+           <a href="https://huggingface.co/models" target="_blank">
+            HuggingFace Hub
+           </a>
+          </li>
+          <li>
+           Containers provided by
+           <a href="https://github.com/dusty-nv/jetson-containers" target="_blank">
+            jetson-containers
+           </a>
+          </li>
+          <li>
+           Discussions on the
+           <a href="https://forums.developer.nvidia.com/c/agx-autonomous-machines/jetson-embedded-systems/jetson-projects/78" target="_blank">
+            Jetson Projects
+           </a>
+           forum
+          </li>
+          <li>
+           Documentation &amp; tutorials on Jetson AI Lab
+          </li>
+          <li>
+           <a href="https://www.hackster.io/" target="_blank">
+            Hackster.io
+           </a>
+           for hardware-centric builds
+          </li>
+         </ul>
+        </span>
+        <span style="margin-left: 2em;">
+         <img src="research/images/robots_0.jpg" style="max-height: 150px; border-radius: 8px;"/>
+        </span>
+       </div>
+       <p>
+        Ongoing technical discussions are encouraged to occur on the forums, Discord, or GitHub Issues, with status updates on projects given during the meetings.
+       </p>
+       <h2 id="meeting-schedule">
+        Meeting Schedule
+       </h2>
+       <p>
+        <strong>
+         Regular Series: 2nd Tuesday of every month starting September 9, 2025
+        </strong>
+       </p>
+       <p>
+        We hold virtual meetings that anyone is welcome to join and speak during. We discuss the latest updates and experiments that we want to explore. Please remain courteous to others during the calls. We'll stick around after for anyone who has questions or didn't get the chance to be heard.
+       </p>
+       <div class="admonition abstract">
+        <p class="admonition-title">
+         Next Meeting: 2nd Tuesday of next month
+        </p>
+        <ul>
+         <li>
+          <strong>
+           Time:
+          </strong>
+          9:00 AM PST / 12:00 PM EST / 5:00 PM GMT
+         </li>
+         <li>
+          <strong>
+           Platform:
+          </strong>
+          Microsoft Teams
+         </li>
+         <li>
+          <strong>
+           Meeting Link:
+          </strong>
+          <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZWUwNTIxYmQtNGJmZC00MDA1LTkzN2MtYmFmMzJjZWUxNDFh%40thread.v2/0?context=%7b%22Tid%22%3a%2243083d15-7273-40c1-b7db-39efd9ccc17a%22%2c%22Oid%22%3a%223e5863c5-26ea-489e-a546-cdc43df532ed%22%7d" target="_blank">
+           Join Meeting
+          </a>
+         </li>
+         <li>
+          <strong>
+           Meeting ID:
+          </strong>
+          <code>
+           288 976 487 014 3
+          </code>
+         </li>
+         <li>
+          <strong>
+           Passcode:
+          </strong>
+          <code>
+           6oG2uK2A
+          </code>
+         </li>
+        </ul>
+       </div>
+       <div class="admonition abstract">
+        <p class="admonition-title">
+         Future Meetings
+        </p>
+        <ul>
+         <li>
+          <strong>
+           October 14
+           <sup>
+            th
+           </sup>
+           , 2025
+          </strong>
+          - 2nd Tuesday
+         </li>
+         <li>
+          <strong>
+           November 11
+           <sup>
+            th
+           </sup>
+           , 2025
+          </strong>
+          - 2nd Tuesday
+         </li>
+         <li>
+          <strong>
+           December 9
+           <sup>
+            th
+           </sup>
+           , 2025
+          </strong>
+          - 2nd Tuesday
+         </li>
+         <li>
+          <strong>
+           January 13
+           <sup>
+            th
+           </sup>
+           , 2026
+          </strong>
+          - 2nd Tuesday
+         </li>
+        </ul>
+       </div>
+       <p>
+        Please join the
+        <code>
+         #events
+        </code>
+        channel on the
+        <a href="https://discord.gg/BmqNSK4886" target="_blank">
+         Discord
+        </a>
+        server for the latest info. The meetings will be recorded so anyone unable to attend live can watch them after.
+       </p>
+       <h2 id="past-meetings">
+        Past Meetings
+       </h2>
+       <p>
+        Our meeting recordings and resources are available for review and reference.
+       </p>
+       <div class="admonition info">
+        <p class="admonition-title">
+         Recordings Archive
+        </p>
+        <h3>
+         <strong>
+          Youtube Developer Channel:
+         </strong>
+        </h3>
+        <details>
+         <summary>
+          September 9, 2025 (Jetson Thor Introduction)
+         </summary>
+         <div>
+          <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="476" src="https://www.youtube.com/embed/trvaafQqXMc" style="margin-top: 1em;" title="YouTube video player" width="850">
+          </iframe>
+         </div>
+         <p>
+          Topics Covered:
+         </p>
+         <ul>
+          <li>
+           Jetson Thor Introduction
+          </li>
+         </ul>
+        </details>
+        <details>
+         <summary>
+          August 13, 2025 (Q3 Kickoff &amp; New Format)
+         </summary>
+         <div>
+          <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="476" src="https://www.youtube.com/embed/BFWt1JyOUFU" style="margin-top: 1em;" title="YouTube video player" width="850">
+          </iframe>
+         </div>
+         <p>
+          Topics Covered:
+         </p>
+         <ul>
+          <li>
+           Jetson Community Q3 Kickoff call &amp; new format
+          </li>
+         </ul>
+        </details>
+        <h3>
+         <strong>
+          Google Drive:
+         </strong>
+         <span style="font-size: 0.9em; font-weight: normal;">
+          (October 2024 - August 2025)
+         </span>
+        </h3>
+        <p>
+         <a href="https://drive.google.com/drive/folders/18BC7o32jorx_LzZXx5wW0Io_nf1ZwO6X?usp=sharing" target="_blank">
+          Jetson AI Lab Research Group Recordings
+         </a>
+        </p>
+        <details>
+         <summary>
+          October 15, 2024 (LeRobot &amp; Stanley H1 Humanoid)
+         </summary>
+         <div>
+          <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="476" src="https://www.youtube.com/embed/Dpe48AVKc4c" style="margin-top: 1em;" title="YouTube video player" width="850">
+          </iframe>
+         </div>
+         <p>
+          Topics Covered:
+         </p>
+         <ul>
+          <li>
+           <a href="./lerobot" target="_blank">
+            HuggingFace LeRobot
+           </a>
+           (Chitoku Yato)
+          </li>
+          <li>
+           <a href="https://www.davesarmoury.com/" target="_blank">
+            Stanley H1 Humanoid
+           </a>
+           (Dave Niewinski)
+          </li>
+         </ul>
+        </details>
+        <details>
+         <summary>
+          October 1, 2024 (ReMEmbR &amp; Diffusion Policies)
+         </summary>
+         <div>
+          <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="476" src="https://www.youtube.com/embed/HfJR3NwsM4M" style="margin-top: 1em;" title="YouTube video player" width="850">
+          </iframe>
+         </div>
+         <p>
+          Topics Covered:
+         </p>
+         <ul>
+          <li>
+           <a href="https://nvidia-ai-iot.github.io/remembr/" target="_blank">
+            ReMEmbR: Long-Horizon Memory for Navigation
+           </a>
+           (Abrar Anwar)
+          </li>
+          <li>
+           <a href="https://3d-diffusion-policy.github.io/" target="_blank">
+            Diffusion Policies
+           </a>
+           ,
+           <a href="https://github.com/qizekun/ShapeLLM" target="_blank">
+            Shape LLM
+           </a>
+           ,
+           <a href="https://paperswithcode.com/sota/3d-point-cloud-classification-on-scanobjectnn" target="_blank">
+            3D Encoders
+           </a>
+          </li>
+         </ul>
+        </details>
+        <details>
+         <summary>
+          September 17, 2024 (NASA JPL ROSA &amp; LeRobot Walkthrough)
+         </summary>
+         <div>
+          <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="476" src="https://www.youtube.com/embed/Gys_AUOYZ4c" style="margin-top: 1em;" title="YouTube video player" width="850">
+          </iframe>
+         </div>
+         <p>
+          Topics Covered:
+         </p>
+         <ul>
+          <li>
+           <a href="https://github.com/nasa-jpl/rosa" target="_blank">
+            NASA JPL - ROSA
+           </a>
+           (Rob Royce &amp; Shehryar Khattak)
+          </li>
+          <li>
+           <a href="https://www.jetson-ai-lab.com/lerobot.html" target="_blank">
+            LeRobot Walkthrough
+           </a>
+           (Chitoku Yato)
+          </li>
+          <li>
+           <a href="https://medium.com/@kabilankb2003/building-a-multimodal-ai-agent-integrating-vision-language-models-in-nvidia-isaac-sim-with-jetson-20592d4ef6c5" target="_blank">
+            VLM Agent in Isaac Sim/ROS
+           </a>
+           (Kabilan Kb)
+          </li>
+         </ul>
+        </details>
+        <details>
+         <summary>
+          September 3, 2024 (Edge NeRF &amp; OpenVLA Review)
+         </summary>
+         <div>
+          <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="476" src="https://www.youtube.com/embed/r1i3QQrRnfI" style="margin-top: 1em;" title="YouTube video player" width="850">
+          </iframe>
+         </div>
+         <p>
+          Topics Covered:
+         </p>
+         <ul>
+          <li>
+           <a href="https://github.com/dusty-nv/jetson-containers/tree/master/packages/nerf/nerfstudio" target="_blank">
+            Edge NeRF's and nerfstudio
+           </a>
+           (Johnny Núñez Cano)
+          </li>
+          <li>
+           Review of
+           <a href="https://www.jetson-ai-lab.com/openvla.html" target="_blank">
+            OpenVLA results
+           </a>
+           (Dustin Franklin)
+          </li>
+          <li>
+           <a href="https://github.com/tekntrash/oculusdobotcontrol/" target="_blank">
+            Oculus Interface for Jetson
+           </a>
+           (Al Costa)
+          </li>
+          <li>
+           <a href="https://developer.nvidia.com/blog/new-foundational-models-and-training-capabilities-with-nvidia-tao-5-5/" target="_blank">
+            TAO Toolkit 5.5
+           </a>
+          </li>
+         </ul>
+        </details>
+        <details>
+         <summary>
+          August 20, 2024 (GenAI ROS Nodes &amp; Isaac Sim)
+         </summary>
+         <div>
+          <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="476" src="https://www.youtube.com/embed/WOv_GymDDNs" style="margin-top: 1em;" title="YouTube video player" width="850">
+          </iframe>
+         </div>
+         <p>
+          Topics Covered:
+         </p>
+         <ul>
+          <li>
+           <a href="https://www.jetson-ai-lab.com/ros.html" target="_blank">
+            GenAI ROS Nodes for VLM
+           </a>
+           (Khannah Shaltiel)
+          </li>
+          <li>
+           <a href="https://github.com/kabilan2003/NVIDIA-Isaac-Sim-and-Isaac-ROS-Integration-on-Jetson-Orin-Nano" target="_blank">
+            Isaac Sim and Orin Nano with Hardware-in-the-Loop
+           </a>
+           (Kabilan Kb)
+          </li>
+          <li>
+           <a href="https://www.miruml.com/" target="_blank">
+            Miru Edge Deployment Infrastructure
+           </a>
+           (Vedant Nair)
+          </li>
+         </ul>
+        </details>
+        <details>
+         <summary>
+          August 6, 2024 (OpenVLA Fine-Tuning &amp; Gemma-2)
+         </summary>
+         <div>
+          <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="476" src="https://www.youtube.com/embed/W1o-9MZQYMA" style="margin-top: 1em;" title="YouTube video player" width="850">
+          </iframe>
+         </div>
+         <p>
+          Topics Covered:
+         </p>
+         <ul>
+          <li>
+           OpenVLA Fine-Tuning
+          </li>
+          <li>
+           Gemma-2-2b (Asier Arranz)
+          </li>
+          <li>
+           Ultralytics YOLOv8 (Lakshantha Dissanayake)
+          </li>
+         </ul>
+        </details>
+        <details>
+         <summary>
+          July 23, 2024 (Llama-3 Functions &amp; OpenVLA MimicGen)
+         </summary>
+         <div>
+          <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="476" src="https://www.youtube.com/embed/pURku7OAWuo" style="margin-top: 1em;" title="YouTube video player" width="850">
+          </iframe>
+         </div>
+         <p>
+          Topics Covered:
+         </p>
+         <ul>
+          <li>
+           <a href="https://huggingface.co/blog/llama31" target="_blank">
+            Llama-3
+           </a>
+           Function &amp; Specs
+          </li>
+          <li>
+           OpenVLA with
+           <a href="https://mimicgen.github.io/" target="_blank">
+            MimicGen
+           </a>
+          </li>
+          <li>
+           <a href="https://techcommunity.microsoft.com/t5/educator-developer-blog/running-phi-3-vision-via-onnx-on-jetson-platform/ba-p/4195041" target="_blank">
+            Phi-3 Vision via ONNX
+           </a>
+           (Jambo Chen)
+          </li>
+          <li>
+           <a href="https://genainerds.com/#/Gapi" target="_blank">
+            OStream GenRunner
+           </a>
+           (Kerry Shih)
+          </li>
+         </ul>
+        </details>
+        <details>
+         <summary>
+          July 9, 2024 (OpenVLA Quantization &amp; Florence-2)
+         </summary>
+         <div>
+          <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="476" src="https://www.youtube.com/embed/Ngaq2WCDlZM" style="margin-top: 1em;" title="YouTube video player" width="850">
+          </iframe>
+         </div>
+         <p>
+          Topics Covered:
+         </p>
+         <ul>
+          <li>
+           OpenVLA Quantization (
+           <a href="https://openvla.github.io/" target="_blank">
+            openvla.github.io
+           </a>
+           )
+          </li>
+          <li>
+           visualnav-transformer (
+           <a href="https://github.com/robodhruv/visualnav-transformer" target="_blank">
+            robodhruv/visualnav-transformer
+           </a>
+           )
+          </li>
+          <li>
+           Florence-2, Holoscan, Grammars (Nigel Nelson,
+           <a href="https://github.com/nvidia-holoscan/holohub/tree/main/applications/florence-2-vision" target="_blank">
+            florence-2-vision
+           </a>
+           )
+          </li>
+          <li>
+           LLaMa-Factory (
+           <a href="https://github.com/hiyouga/LLaMA-Factory" target="_blank">
+            hiyouga/LLaMA-Factory
+           </a>
+           )
+          </li>
+         </ul>
+        </details>
+        <details>
+         <summary>
+          June 25, 2024 (Function Calling &amp; Jetson Copilot)
+         </summary>
+         <div>
+          <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="476" src="https://www.youtube.com/embed/mIrxJiF1NiI" style="margin-top: 1em;" title="YouTube video player" width="850">
+          </iframe>
+         </div>
+         <p>
+          Topics Covered:
+         </p>
+         <ul>
+          <li>
+           Function Calling in Agent Studio
+          </li>
+          <li>
+           <a href="https://www.jetson-ai-lab.com/tutorial_jetson-copilot.html">
+            Jetson Copilot
+           </a>
+           (Chitoku Yato)
+          </li>
+          <li>
+           <a href="https://docs.nvidia.com/jetson/jps/moj-overview.html" target="_blank">
+            Jetson Platform Services
+           </a>
+           (Sammy Ochoa)
+          </li>
+          <li>
+           <a href="https://www.hackster.io/shahizat/fine-tuning-llms-using-nvidia-jetson-agx-orin-b17c4d" target="_blank">
+            On-device Fine-tuning
+           </a>
+           (Nurgaliyev Shakhizat)
+          </li>
+         </ul>
+        </details>
+        <details>
+         <summary>
+          June 11, 2024 (Agent Studio &amp; HomeAssistant)
+         </summary>
+         <div>
+          <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="476" src="https://www.youtube.com/embed/0GV5cYKz7Rc" style="margin-top: 1em;" title="YouTube video player" width="850">
+          </iframe>
+         </div>
+         <p>
+          Topics Covered:
+         </p>
+         <ul>
+          <li>
+           Agent Studio
+          </li>
+          <li>
+           HomeAssistant 2024.6
+          </li>
+          <li>
+           AWS IoT Greengrass (Romil Shah)
+          </li>
+         </ul>
+        </details>
+        <details>
+         <summary>
+          May 29, 2024 (OpenAI Tools &amp; Jetson Copilot)
+         </summary>
+         <div>
+          <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="476" src="https://www.youtube.com/embed/aq7QS9AtwE8" style="margin-top: 1em;" title="YouTube video player" width="850">
+          </iframe>
+         </div>
+         <p>
+          Topics Covered:
+         </p>
+         <ul>
+          <li>
+           OpenAI-style Tools with
+           <a href="https://huggingface.co/NousResearch/Hermes-2-Pro-Llama-3-8B" target="_blank">
+            NousResearch/Hermes-2-Pro-Llama-3-8B
+           </a>
+          </li>
+          <li>
+           Jetson Copilot with
+           <a href="https://github.com/dusty-nv/jetson-containers/tree/master/packages/rag/jetrag" target="_blank">
+            jetrag
+           </a>
+          </li>
+          <li>
+           <a href="https://github.com/NVIDIA-AI-IOT/whisper_trt" target="_blank">
+            whisper_trt
+           </a>
+           for Orin Nano
+          </li>
+         </ul>
+        </details>
+        <details>
+         <summary>
+          May 15, 2024 (VILA-1.5 &amp; Voicecraft Container)
+         </summary>
+         <div>
+          <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="476" src="https://www.youtube.com/embed/zoyONbiHd14" style="margin-top: 1em;" title="YouTube video player" width="850">
+          </iframe>
+         </div>
+         <p>
+          Topics Covered:
+         </p>
+         <ul>
+          <li>
+           <a href="https://forums.developer.nvidia.com/t/new-vila-1-5-multimodal-vision-language-models-released-in-3b-8b-13b-40b/291784" target="_blank">
+            VILA-1.5 on Video Sequences
+           </a>
+          </li>
+          <li>
+           Voicecraft Container (
+           <a href="https://github.com/dusty-nv/jetson-containers/pull/498" target="_blank">
+            Martin Cerven
+           </a>
+           )
+          </li>
+          <li>
+           JetBot / Nanosaur Updates for Orin Nano (Chitoku Yato &amp; Raffaello Bonghi)
+          </li>
+          <li>
+           Controller LLM &amp; Advanced Function Calling (
+           <a href="https://huggingface.co/NousResearch/Hermes-2-Pro-Llama-3-8B" target="_blank">
+            <code>
+             NousResearch/Hermes-2-Pro-Llama-3-8B
+            </code>
+           </a>
+           )
+          </li>
+          <li>
+           RAG Samples with LlamaIndex (Chitoku Yato)
+          </li>
+         </ul>
+        </details>
+        <details>
+         <summary>
+          May 1, 2024 (Function Calling &amp; Home Assistant)
+         </summary>
+         <div>
+          <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="476" src="https://www.youtube.com/embed/L4i5x8zzyNc" style="margin-top: 1em;" title="YouTube video player" width="850">
+          </iframe>
+         </div>
+         <p>
+          Topics Covered:
+         </p>
+         <ul>
+          <li>
+           <a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-agent-controller-llm/288229/2" target="_blank">
+            Function Calling with Llama-3
+           </a>
+          </li>
+          <li>
+           <a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-home-assistant-integration/288225" target="_blank">
+            Home Assistant / Wyoming (Mieszko Syty)
+           </a>
+          </li>
+          <li>
+           <a href="https://forums.developer.nvidia.com/t/system-to-capture-consumption-data-measuring-weight-and-temperature-of-products-disposed/290402" target="_blank">
+            Smart Sorting / Recycling (Alvaro Costa)
+           </a>
+          </li>
+         </ul>
+        </details>
+        <details>
+         <summary>
+          April 17, 2024 (Ollama Support &amp; Home Assistant)
+         </summary>
+         <div>
+          <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="476" src="https://www.youtube.com/embed/F0v0OsqGsVw" style="margin-top: 1em;" title="YouTube video player" width="850">
+          </iframe>
+         </div>
+         <p>
+          Topics Covered:
+         </p>
+         <ul>
+          <li>
+           <a href="https://forums.developer.nvidia.com/t/introducing-ollama-support-for-jetson-devices/289333" target="_blank">
+            Ollama Support for Jetson Devices
+           </a>
+          </li>
+          <li>
+           <a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-homeassistant-io-integration/288225" target="_blank">
+            Home Assistant Integration
+           </a>
+          </li>
+          <li>
+           <a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-ml-devops-containers-core-inferencing/288235/15?u=dusty_nv" target="_blank">
+            <code>
+             jetson-container
+            </code>
+            Updates
+           </a>
+          </li>
+          <li>
+           Upgrading JetBot with Orin Nano
+          </li>
+         </ul>
+        </details>
+        <details>
+         <summary>
+          April 3, 2024 (Project Kickoffs)
+         </summary>
+         <div>
+          <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="476" src="https://www.youtube.com/embed/7w3RHoIIkNE" style="margin-top: 1em;" title="YouTube video player" width="850">
+          </iframe>
+         </div>
+         <p>
+          Project Kickoffs:
+         </p>
+         <ul>
+          <li>
+           <a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-homeassistant-io-integration/288225" target="_blank">
+            Home Assistant Integration
+           </a>
+          </li>
+          <li>
+           <a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-controller-agent-llm/288229" target="_blank">
+            Agent Controller LLM
+           </a>
+          </li>
+          <li>
+           <a href="https://forums.developer.nvidia.com/t/jetson-ai-lab-ml-devops-containers-core-inferencing/288235" target="_blank">
+            ML DevOps, Containers, Core Inferencing
+           </a>
+          </li>
+         </ul>
+        </details>
+       </div>
+       <h2 id="team-members">
+        Team Members
+       </h2>
+       <p>
+        Our research group brings together experts from academia, industry, and the open-source community who are passionate about advancing edge AI and robotics. Below are some of our sustaining members who have been actively contributing to generative AI in edge computing:
+       </p>
+       <h3 id="core-contributors">
+        Core Contributors
+       </h3>
+       <style>
+        .shadow {
+   box-shadow: 0 5px 15px rgba(0, 0, 0, .1) !important;
+   transition: .3s ease;
+   display: block !important;
+}
+
+.padding-feature-box-item{
+   padding-left: 0.8rem!important;
+   padding-right: 0.8rem!important;
+   padding-top: 0.8rem!important;
+   padding-bottom: 0.8rem!important;
+}
+
+.padding-graph{
+   padding-left: 0.5rem!important;
+   padding-right: 0.5rem!important;
+   padding-top: 0.5rem!important;
+   padding-bottom: 0.5rem!important;
+}
+
+.d-block {
+   display: block!important;
+}
+
+.bg-white{background-color:#fff!important} 
+
+.col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
+   position: relative;
+   width: 100%;
+   min-height: 1px;
+   padding: 5px;
+}
+
+@media (min-width: 576px) {
+   .col-sm-6 {
+      -ms-flex: 0 0 50%;
+      flex: 0 0 50%;
+      max-width: 50%;
+   }
+   .col-sm-4 {
+      -ms-flex: 0 0 25%;
+      flex: 0 0 25%;
+      max-width: 25%;
+   }
+}
+@media (min-width: 720px) {
+   .col-lg-4 {
+      -ms-flex: 0 0 25%;
+      flex: 0 0 25%;
+      max-width: 25%;
+   }
+   .col-lg-3 {
+      -ms-flex: 0 0 33.333333%;
+      flex: 0 0 33.333333%;
+      max-width: 33.333333%;
+   }
+}
+@media (min-width: 992px) {
+   .col-lg-4 {
+      -ms-flex: 0 0 25%;
+      flex: 0 0 25%;
+      max-width: 25%;
+   }
+   .col-lg-3 {
+      -ms-flex: 0 0 33.333333%;
+      flex: 0 0 33.333333%;
+      max-width: 33.333333%;
+   }
+}
+.text-center {
+   text-align: center!important;
+}
+.justify-content-center {
+   -ms-flex-pack:center!important;justify-content:center!important
+}
+.row {
+   display:-ms-flexbox;
+   display:flex;
+   -ms-flex-wrap:wrap;
+   flex-wrap:wrap;
+}
+
+.bio-logo {
+    width: 25px;
+    vertical-align: middle;
+    opacity: 0.8;
+    filter: grayscale(1.0);
+}
+
+.bio-image {
+    max-height: 200px;
+    width: auto;
+    border-radius: 8px;
+}
+
+.bio-container {
+    min-width: 280px;
+    max-width: 320px;
+}
+       </style>
+       <div class="row justify-content-center">
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://www.linkedin.com/in/dustin-franklin-b3aaa173/" target="_blank">
+           <img class="bio-image" src="research/images/Dustin_Franklin.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/dustin-franklin-b3aaa173/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          <a href="https://www.youtube.com/playlist?list=PL5B692fm6--sdf3tQk-1kp9T65y8p-D5u" target="_blank">
+           <img class="bio-logo" src="research/images/youtube.png"/>
+          </a>
+          <a href="https://www.github.com/dusty-nv" target="_blank">
+           <img class="bio-logo" src="research/images/github.png"/>
+          </a>
+          Dustin Franklin, NVIDIA
+          <br/>
+          <small>
+           Principal Engineer | Pittsburgh, PA
+           <br/>
+           (
+           <a href="https://github.com/dusty-nv/jetson-inference" target="_blank">
+            jetson-inference
+           </a>
+           ,
+           <a href="https://github.com/dusty-nv/jetson-containers" target="_blank">
+            jetson-containers
+           </a>
+           )
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://www.hackster.io/shahizat" target="_blank">
+           <img class="bio-image" src="research/images/Shakhizat_Nurgaliyev.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/shakhizat-nurgaliyev/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          <a href="https://www.hackster.io/shahizat" target="_blank">
+           <img class="bio-logo" src="research/images/hackster.png"/>
+          </a>
+          Nurgaliyev Shakhizat
+          <br/>
+          <small>
+           Institute of Smart Systems and AI | Kazakhstan
+           <br/>
+           (
+           <a href="https://www.hackster.io/shahizat/ai-powered-application-for-the-blind-and-visually-impaired-df3f9e" target="_blank">
+            Assistive Devices
+           </a>
+           ,
+           <a href="https://www.hackster.io/shahizat/vision2audio-giving-the-blind-an-understanding-through-ai-33f929" target="_blank">
+            Vision2Audio
+           </a>
+           ,
+           <a href="https://www.hackster.io/shahizat/running-a-chatgpt-like-llm-llama2-on-a-nvidia-jetson-cluster-cbc7d4" target="_blank">
+            HPC
+           </a>
+           )
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://www.youtube.com/@kerseyfabs" target="_blank">
+           <img class="bio-image" src="research/images/Kris_Kersey.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/kriskersey/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          <a href="https://www.youtube.com/@kerseyfabs" target="_blank">
+           <img class="bio-logo" src="research/images/youtube.png"/>
+          </a>
+          Kris Kersey,
+          <small>
+           Kersey Fabrications
+          </small>
+          <br/>
+          <small>
+           Embedded Software Engineer | Atlanta, GA
+           <br/>
+           (
+           <a href="https://www.youtube.com/@oasis-project" target="_blank">
+            The OASIS Project
+           </a>
+           , AR/VR, 3D Fabrication)
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://www.linkedin.com/in/johnnycano/" target="_blank">
+           <img class="bio-image" src="research/images/Johnny_Cano.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/johnnycano/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          <a href="https://github.com/johnnynunez" target="_blank">
+           <img class="bio-logo" src="research/images/github.png"/>
+          </a>
+          Johnny Núñez Cano
+          <br/>
+          <small>
+           PhD Researcher in CV/AI | Barcelona, Spain
+           <br/>
+           (Recurrent LLMs, Pose &amp; Behavior Analysis)
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://www.linkedin.com/in/doruk-sonmez/" target="_blank">
+           <img class="bio-image" src="research/images/Doruk_Sonmez.png"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/doruk-sonmez/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          <a href="https://github.com/doruksonmez" target="_blank">
+           <img class="bio-logo" src="research/images/github.png"/>
+          </a>
+          Doruk Sönmez,
+          <a href="https://connecttech.com/jetson/" target="_blank">
+           ConnectTech
+          </a>
+          <br/>
+          <small>
+           Intelligent Video Analytics Engineer | Turkey
+           <br/>
+           (NVIDIA DLI Certified Instructor, IVA, VLM)
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://github.com/kingardor" target="_blank">
+           <img class="bio-image" src="research/images/Akash_James.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/akashjames/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          <a href="https://www.youtube.com/channel/UCgJZkbxrBpbuHv4jOFuR8zQ" target="_blank">
+           <img class="bio-logo" src="research/images/youtube.png"/>
+          </a>
+          <a href="https://github.com/kingardor" target="_blank">
+           <img class="bio-logo" src="research/images/github.png"/>
+          </a>
+          Akash James,
+          <a href="https://www.sparkcognition.com/" target="_blank">
+           <small>
+            Spark Cognition
+           </small>
+          </a>
+          <br/>
+          <small>
+           AI Architect, UC Berkeley Researcher | Oakland
+           <br/>
+           (NVIDIA AI Ambassador,
+           <a href="https://www.youtube.com/channel/UCgJZkbxrBpbuHv4jOFuR8zQ" target="_blank">
+            Personal Assistants
+           </a>
+           )
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://www.linkedin.com/in/mieszkosyty/" target="_blank">
+           <img class="bio-image" src="research/images/Mieszko_Syty.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.youtube.com/@FutureProofHomes" target="_blank">
+           <img class="bio-logo" src="research/images/youtube.png"/>
+          </a>
+          <a href="https://www.linkedin.com/in/mieszkosyty/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          <a href="https://github.com/ms1design" target="_blank">
+           <img class="bio-logo" src="research/images/github.png"/>
+          </a>
+          Mieszko Syty,
+          <a href="https://futureproofhomes.net/" target="_blank">
+           FutureProofHomes
+          </a>
+          <br/>
+          <small>
+           AI/ML Engineer | Warsaw, Poland
+           <br/>
+           (LLM, ML DevOps, Edge AI, Home Assistant,
+           <a href="https://futureproofhomes.net/pages/ai-base-station" target="_blank">
+            Nexus: AI Home Assistant
+           </a>
+           ,
+           <a href="https://github.com/dusty-nv/jetson-containers" target="_blank">
+            jetson-containers
+           </a>
+           )
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://jetsonhacks.com/" target="_blank">
+           <img class="bio-image" src="research/images/Jim_Benson.png"/>
+          </a>
+          <br/>
+          <a href="https://www.youtube.com/@JetsonHacks" target="_blank">
+           <img class="bio-logo" src="research/images/youtube.png"/>
+          </a>
+          <a href="https://github.com/jetsonhacks" target="_blank">
+           <img class="bio-logo" src="research/images/github.png"/>
+          </a>
+          Jim Benson,
+          <a href="https://jetsonhacks.com/" target="_blank">
+           JetsonHacks
+          </a>
+          <br/>
+          <small>
+           DIY Extraordinaire | Los Angeles, CA
+           <br/>
+           (AI in Education,
+           <a href="https://racecarj.com/" target="_blank">
+            RACECAR/J
+           </a>
+           )
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://www.linkedin.com/in/chitoku-yato-01ba304/" target="_blank">
+           <img class="bio-image" src="research/images/Chitoku_Yato.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/chitoku-yato-01ba304/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          <a href="https://github.com/tokk-nv" target="_blank">
+           <img class="bio-logo" src="research/images/github.png"/>
+          </a>
+          Chitoku Yato, NVIDIA
+          <br/>
+          <small>
+           Jetson AI DevTech | Santa Clara, CA
+           <br/>
+           (
+           <a href="https://jetbot.org/master/" target="_blank">
+            JetBot
+           </a>
+           ,
+           <a href="https://github.com/NVIDIA-AI-IOT/jetracer" target="_blank">
+            JetRacer
+           </a>
+           ,
+           <a href="https://nvidia-ai-iot.github.io/jetson-min-disk/" target="_blank">
+            MinDisk
+           </a>
+           , Containers)
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://www.linkedin.com/in/danasheahen/" target="_blank">
+           <img class="bio-image" src="research/images/Dana_Sheahen.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/danasheahen/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          Dana Sheahen, NVIDIA
+          <br/>
+          <small>
+           DLI Curriculum Developer | Santa Clara, CA
+           <br/>
+           (AI in Education,
+           <a href="https://developer.nvidia.com/embedded/learn/jetson-ai-certification-programs" target="_blank">
+            Jetson AI Fundamentals
+           </a>
+           )
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://www.linkedin.com/in/sammy-ochoa/" target="_blank">
+           <img class="bio-image" src="research/images/Sammy_Ochoa.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/sammy-ochoa/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          <a href="https://github.com/NVIDIA-AI-IOT/mmj_genai" target="_blank">
+           <img class="bio-logo" src="research/images/github.png"/>
+          </a>
+          Sammy Ochoa, NVIDIA
+          <br/>
+          <small>
+           Jetson AI DevTech | Austin, TX
+           <br/>
+           (
+           <a href="https://developer.nvidia.com/metropolis-microservices" target="_blank">
+            Metropolis Microservices
+           </a>
+           )
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://www.linkedin.com/in/john-w-213126183/" target="_blank">
+           <img class="bio-image" src="research/images/John_Welsh.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/john-w-213126183/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          <a href="https://github.com/jaybdub" target="_blank">
+           <img class="bio-logo" src="research/images/github.png"/>
+          </a>
+          John Welsh, NVIDIA
+          <br/>
+          <small>
+           (
+           <a href="https://www.jetson-ai-lab.com/vit/tutorial_nanoowl.html" target="_blank">
+            NanoOWL
+           </a>
+           ,
+           <a href="https://www.jetson-ai-lab.com/vit/tutorial_nanosam.html" target="_blank">
+            NanoSAM
+           </a>
+           ,
+           <a href="https://jetbot.org/master/" target="_blank">
+            JetBot
+           </a>
+           ,
+           <a href="https://github.com/NVIDIA-AI-IOT/jetracer" target="_blank">
+            JetRacer
+           </a>
+           ,
+           <a href="https://github.com/NVIDIA-AI-IOT/torch2trt" target="_blank">
+            torch2trt
+           </a>
+           ,
+           <a href="https://github.com/NVIDIA-AI-IOT/trt_pose" target="_blank">
+            trt_pose
+           </a>
+           ,
+           <a href="https://github.com/NVIDIA-AI-IOT/jetson-intro-to-distillation" target="_blank">
+            Knowledge Distillation
+           </a>
+           )
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://www.davesarmoury.com/" target="_blank">
+           <img class="bio-image" src="research/images/Dave_Niewinski.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/dave-niewinski-b5691132/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          <a href="https://www.youtube.com/davesarmoury" target="_blank">
+           <img class="bio-logo" src="research/images/youtube.png"/>
+          </a>
+          <a href="https://github.com/dniewinski" target="_blank">
+           <img class="bio-logo" src="research/images/github.png"/>
+          </a>
+          Dave Niewinski
+          <br/>
+          <small>
+           <a href="https://www.davesarmoury.com/" target="_blank">
+            Dave's Armoury
+           </a>
+           | Waterloo, Ontario
+           <br/>
+           (
+           <a href="https://youtu.be/yNcKTZsHyfA" target="_blank">
+            GLaDOS
+           </a>
+           ,
+           <a href="https://youtu.be/yNozb8ljpgI" target="_blank">
+            Fetch
+           </a>
+           ,
+           <a href="https://youtu.be/h0uvkaR6fvo" target="_blank">
+            Offroad La-Z-Boy
+           </a>
+           ,
+           <a href="https://www.youtube.com/watch?v=agUdUvgV-A8" target="_blank">
+            KUKA Bot
+           </a>
+           )
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://rebotnix.com/" target="_blank">
+           <img class="bio-image" src="research/images/Gary_Hilgemann.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/gary-hilgemann-84423a6b/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          <a href="https://www.youtube.com/channel/UCJv_UknY5ueEjbko2M2Iv4Q" target="_blank">
+           <img class="bio-logo" src="research/images/youtube.png"/>
+          </a>
+          <a href="https://github.com/rebotnix" target="_blank">
+           <img class="bio-logo" src="research/images/github.png"/>
+          </a>
+          Gary Hilgemann,
+          <a href="https://rebotnix.com/" target="_blank">
+           REBOTNIX
+          </a>
+          <br/>
+          <small>
+           CEO &amp; AI Roboticist | Lünen, Germany
+           <br/>
+           (
+           <a href="https://rebotnix.com/gustav/" target="_blank">
+            GUSTAV
+           </a>
+           ,
+           <a href="https://rebotnix.com/spike/" target="_blank">
+            SPIKE
+           </a>
+           ,
+           <a href="https://rebotnix.com/visiontools/" target="_blank">
+            VisionTools
+           </a>
+           ,
+           <a href="https://rebotnix.com/genai/" target="_blank">
+            GenAI
+           </a>
+           )
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://www.seeedstudio.com/tag/nvidia.html" target="_blank">
+           <img class="bio-image" src="research/images/Elaine_Wu.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/elaine1994/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          <a href="https://www.youtube.com/channel/UCJv_UknY5ueEjbko2M2Iv4Q" target="_blank">
+           <img class="bio-logo" src="research/images/youtube.png"/>
+          </a>
+          <a href="https://github.com/Seeed-Projects" target="_blank">
+           <img class="bio-logo" src="research/images/github.png"/>
+          </a>
+          Elaine Wu,
+          <a href="https://www.seeedstudio.com/tag/nvidia.html" target="_blank">
+           Seeed Studio
+          </a>
+          <br/>
+          <small>
+           AI &amp; Robotics Partnerships | Shenzhen, China
+           <br/>
+           (
+           <a href="https://www.seeedstudio.com/Nvidia-Jetson-c-2016.html" target="_blank">
+            reComputer
+           </a>
+           ,
+           <a href="https://wiki.seeedstudio.com/YOLOv8-TRT-Jetson/" target="_blank">
+            YOLOv8
+           </a>
+           ,
+           <a href="https://github.com/Seeed-Projects/LocalJARVIS" target="_blank">
+            LocalJARVIS
+           </a>
+           ,
+           <a href="https://wiki.seeedstudio.com/Local_Voice_Chatbot/" target="_blank">
+            Voice Bot
+           </a>
+           )
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://www.linkedin.com/in/pattydelafuente/" target="_blank">
+           <img class="bio-image" src="research/images/Patty_Delafuente.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/pattydelafuente/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          Patty Delafuente, NVIDIA
+          <br/>
+          <small>
+           Data Scientist &amp; UMBC PhD Student | MD
+           <br/>
+           (AI in Education,
+           <a href="https://www.nvidia.com/en-us/training/teaching-kits/" target="_blank">
+            DLI Robotics Teaching Kit
+           </a>
+           )
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://hanlab.mit.edu/songhan" target="_blank">
+           <img class="bio-image" src="research/images/Song_Han.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/songhanmit/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          <a href="https://github.com/mit-han-lab" target="_blank">
+           <img class="bio-logo" src="research/images/github.png"/>
+          </a>
+          Song Han,
+          <a href="https://hanlab.mit.edu/" target="_blank">
+           MIT HAN Lab
+          </a>
+          <br/>
+          <small>
+           <a href="https://research.nvidia.com/person/song-han" target="_blank">
+            NVIDIA Research
+           </a>
+           | Cambridge, MA
+           <br/>
+           (
+           <a href="https://github.com/Efficient-Large-Model" target="_blank">
+            Efficient Large Models
+           </a>
+           ,
+           <a href="https://github.com/mit-han-lab/llm-awq" target="_blank">
+            AWQ
+           </a>
+           ,
+           <a href="https://github.com/Efficient-Large-Model/VILA" target="_blank">
+            VILA
+           </a>
+           )
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://www.linkedin.com/in/bhughes/" target="_blank">
+           <img class="bio-image" src="research/images/Bryan_Hughes.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/bhughes/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          <a href="https://github.com/bryanhughes" target="_blank">
+           <img class="bio-logo" src="research/images/github.png"/>
+          </a>
+          Bryan Hughes, Mimzy AI
+          <br/>
+          <small>
+           Founder, Entrepreneur | SF Bay Area
+           <br/>
+           (Multimodal Assistants, AI at the Edge)
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://tqchen.com/" target="_blank">
+           <img class="bio-image" src="research/images/Tianqi_Chen.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/tianqi-chen-679a9856/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          <a href="https://github.com/mlc-ai/mlc-llm" target="_blank">
+           <img class="bio-logo" src="research/images/github.png"/>
+          </a>
+          Tianqi Chen,
+          <a href="https://catalyst.cs.cmu.edu/" target="_blank">
+           CMU Catalyst
+          </a>
+          <br/>
+          <small>
+           <a href="https://octo.ai/" target="_blank">
+            OctoML
+           </a>
+           , CTO | Seattle, WA
+           <br/>
+           (
+           <a href="https://llm.mlc.ai/" target="_blank">
+            MLC
+           </a>
+           ,
+           <a href="https://tvm.apache.org/" target="_blank">
+            Apache TVM
+           </a>
+           ,
+           <a href="https://xgboost.ai/" target="_blank">
+            XGBoost
+           </a>
+           )
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://www.linkedin.com/in/michael-gr%C3%BCner-9249562a/" target="_blank">
+           <img class="bio-image" src="research/images/Michael_Gruner.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/michael-gr%C3%BCner-9249562a/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          <a href="https://github.com/michaelgruner" target="_blank">
+           <img class="bio-logo" src="research/images/github.png"/>
+          </a>
+          Michael Grüner,
+          <a href="https://www.ridgerun.com/" target="_blank">
+           RidgeRun
+          </a>
+          <br/>
+          <small>
+           Team Lead / Architect | Costa Rica
+           <br/>
+           (Embedded Vision &amp; AI, Multimedia)
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://www.linkedin.com/in/jesse-flot-51b50bb9/" target="_blank">
+           <img class="bio-image" src="research/images/Jesse_Flot.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/jesse-flot-51b50bb9/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          Jesse Flot,
+          <a href="https://www.cmu.edu/roboticsacademy/" target="_blank">
+           CMU Robotics Academy
+          </a>
+          <br/>
+          <small>
+           Co-Director | Pittsburgh, PA
+           <br/>
+           (
+           <a href="https://www.cmu.edu/roboticsacademy/roboticscurriculum/nvidia_curriculum/applied_ai.html" target="_blank">
+            Applied AI &amp; Robotics
+           </a>
+           ,
+           <a href="https://www.cmu.edu/roboticsacademy/roboticscurriculum/nvidia_curriculum/autonomy_foundations.html" target="_blank">
+            Autonomy Foundations
+           </a>
+           )
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://www.linkedin.com/in/pjdecarlo/" target="_blank">
+           <img class="bio-image" src="research/images/Paul_DeCarlo.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/pjdecarlo/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          <a href="https://www.hackster.io/pjdecarlo" target="_blank">
+           <img class="bio-logo" src="research/images/hackster.png"/>
+          </a>
+          <a href="https://github.com/toolboc" target="_blank">
+           <img class="bio-logo" src="research/images/github.png"/>
+          </a>
+          Paul DeCarlo,
+          <a href="https://azure.microsoft.com/en-us/solutions/iot">
+           Microsoft
+          </a>
+          <br/>
+          <small>
+           Professor | University of Houston
+           <br/>
+           (
+           <a href="https://www.hackster.io/pjdecarlo/nvidia-deepstream-integration-with-azure-iot-central-d9f834">
+            Azure IoT
+           </a>
+           ,
+           <a href="https://github.com/toolboc/Intelligent-Video-Analytics-with-NVIDIA-Jetson-and-Microsoft-Azure" target="_blank">
+            Video Analytics
+           </a>
+           ,
+           <a href="https://www.hackster.io/pjdecarlo/llm-based-multimodal-ai-w-azure-open-ai-nvidia-jetson-135ff2" target="_blank">
+            Microsoft JARVIS
+           </a>
+           )
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://www.linkedin.com/in/michael-hansen-9885b2105/" target="_blank">
+           <img class="bio-image" src="research/images/Mike_Hansen.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/michael-hansen-9885b2105/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          <a href="https://github.com/synesthesiam" target="_blank">
+           <img class="bio-logo" src="research/images/github.png"/>
+          </a>
+          Mike Hansen,
+          <a href="https://www.nabucasa.com/" target="_blank">
+           Nabu Casa
+          </a>
+          <br/>
+          <small>
+           Voice Engineering Lead | Urbandale, Iowa
+           <br/>
+           (
+           <a href="https://www.home-assistant.io" target="_blank">
+            Home Assistant
+           </a>
+           ,
+           <a href="https://github.com/rhasspy/piper" target="_blank">
+            Piper TTS
+           </a>
+           ,
+           <a href="https://github.com/rhasspy/wyoming" target="_blank">
+            Wyoming
+           </a>
+           )
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://www.linkedin.com/in/lakshanthad/" target="_blank">
+           <img class="bio-image" src="research/images/Lakshantha_Dissanayake.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/lakshanthad/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          <a href="https://github.com/lakshanthad" target="_blank">
+           <img class="bio-logo" src="research/images/github.png"/>
+          </a>
+          <small>
+           Lakshantha Dissanayake,
+           <a href="https://www.ultralytics.com/" target="_blank">
+            Ultralytics
+           </a>
+          </small>
+          <br/>
+          <small>
+           Embedded CV Engineer | Vancouver, BC
+           <br/>
+           (
+           <a href="https://github.com/ultralytics/ultralytics" target="_blank">
+            YOLOv8
+           </a>
+           ,
+           <a href="https://docs.ultralytics.com/integrations/tensorrt/" target="_blank">
+            TensorRT
+           </a>
+           ,
+           <a href="https://docs.ultralytics.com/yolov5/tutorials/running_on_jetson_nano/" target="_blank">
+            DeepStream
+           </a>
+           )
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://www.linkedin.com/in/kerryshih" target="_blank">
+           <img class="bio-image" src="research/images/Kerry_Shih.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/kerryshih" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          <a href="https://www.youtube.com/channel/UCpxVxnt4KO2AzuV_XOE-97Q" target="_blank">
+           <img class="bio-logo" src="research/images/youtube.png"/>
+          </a>
+          Kerry Shih,
+          <a href="https://GenAINerds.com/" target="_blank">
+           GenAI Nerds
+          </a>
+          <br/>
+          <small>
+           Founder, CEO | Los Angeles, CA
+           <br/>
+           (
+           <a href="https://GenAINerds.com/#/Gapi" target="_blank">
+            Gapi
+           </a>
+           )
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://www.ece.cmu.edu/directory/bios/Ziad%20Youssfi.html" target="_blank">
+           <img class="bio-image" src="research/images/Ziad_Youssfi.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/ziadyoussfi/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          Ziad Youssfi,
+          <a href="https://www.ece.cmu.edu/directory/bios/Ziad%20Youssfi.html" target="_blank">
+           CMU
+          </a>
+          <br/>
+          <small>
+           ECE Professor | Pittsburgh, PA
+           <br/>
+           (ML in Robotics &amp; Embedded Systems)
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://www.linkedin.com/in/walterlucetti/" target="_blank">
+           <img class="bio-image" src="research/images/Walter_Lucetti.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/walterlucetti/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          <a href="https://github.com/Myzhar" target="_blank">
+           <img class="bio-logo" src="research/images/github.png"/>
+          </a>
+          Walter Lucetti,
+          <a href="https://www.stereolabs.com" target="_blank">
+           Stereolabs
+          </a>
+          <br/>
+          <small>
+           Robotics &amp; Vision Engineer | Paris, France
+           <br/>
+           (
+           <a href="https://www.myzhar.com" target="_blank">
+            MyzharBot
+           </a>
+           ,
+           <a href="https://github.com/stereolabs/zed-ros2-wrapper" target="_blank">
+            ROS2
+           </a>
+           ,
+           <a href="https://github.com/stereolabs/zed-gstreamer" target="_blank">
+            GStreamer
+           </a>
+           )
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://rnext.it/" target="_blank">
+           <img class="bio-image" src="research/images/Raffaello_Bonghi.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/raffaello-bonghi/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          <a href="https://github.com/rbonghi" target="_blank">
+           <img class="bio-logo" src="research/images/github.png"/>
+          </a>
+          <a href="https://www.youtube.com/@rbonghi" target="_blank">
+           <img class="bio-logo" src="research/images/youtube.png"/>
+          </a>
+          Raffaello Bonghi, NVIDIA
+          <br/>
+          <small>
+           AI &amp; Robotics Engineer | Manchester, UK
+           <br/>
+           (
+           <a href="https://nanosaur.ai/" target="_blank">
+            Nanosaur
+           </a>
+           ,
+           <a href="https://rpanther.github.io/" target="_blank">
+            Panther
+           </a>
+           ,
+           <a href="https://rnext.it/jetson_stats/" target="_blank">
+            jetson-stats
+           </a>
+           )
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://www.linkedin.com/in/alvaro01/" target="_blank">
+           <img class="bio-image" src="research/images/Alvaro_Costa.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/alvaro01/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          Alvaro Costa,
+          <a href="https://www.tekntrash.com/" target="_blank">
+           TeknTrash
+          </a>
+          <br/>
+          <small>
+           CEO &amp; Founder | Epsom, UK
+           <br/>
+           (
+           <a href="https://huggingface.co/datasets/TeknTrash/Stipra" target="_blank">
+            Stipra Dataset
+           </a>
+           , Industrial Automation)
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://www.linkedin.com/in/dvdprsn/" target="_blank">
+           <img class="bio-image" src="research/images/David_Pearson.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/dvdprsn/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          David Pearson,
+          <a href="https://connecttech.com/jetson/" target="_blank">
+           ConnectTech
+          </a>
+          <br/>
+          <small>
+           Embedded Systems Engineer | Ontario, CA
+           <br/>
+           (Edge AI Systems, Vision/Language Models)
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://www.linkedin.com/in/jason-seawall-65313a11/" target="_blank">
+           <img class="bio-image" src="research/images/Jason_Seawall.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/jason-seawall-65313a11/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          <a href="https://www.youtube.com/@Numurus-NEPI" target="_blank">
+           <img class="bio-logo" src="research/images/youtube.png"/>
+          </a>
+          <a href="https://github.com/nepi-engine" target="_blank">
+           <img class="bio-logo" src="research/images/github.png"/>
+          </a>
+          Jason Seawall,
+          <a href="https://numurus.com/" target="_blank">
+           Numurus
+          </a>
+          <br/>
+          <small>
+           CEO | Seattle, WA
+           <br/>
+           (
+           <a href="https://nepi.com/" target="_blank">
+            NEPI
+           </a>
+           , Edge AI &amp; Automation)
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://www.linkedin.com/in/martincerven/" target="_blank">
+           <img class="bio-image" src="research/images/Martin_Cerven.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/martincerven/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          <a href="https://www.youtube.com/c/martincerven/featured" target="_blank">
+           <img class="bio-logo" src="research/images/youtube.png"/>
+          </a>
+          <a href="https://github.com/martincerven" target="_blank">
+           <img class="bio-logo" src="research/images/github.png"/>
+          </a>
+          Martin Cerven
+          <br/>
+          <small>
+           AI Researcher | Germany
+           <br/>
+           (Autonomous Robotics, Voicecraft)
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://www.linkedin.com/in/rams16592/" target="_blank">
+           <img class="bio-image" src="research/images/Romil_Shah.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/rams16592/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          <a href="https://github.com/aws-samples/genai-at-edge" target="_blank">
+           <img class="bio-logo" src="research/images/github.png"/>
+          </a>
+          Romil Shah, Amazon
+          <br/>
+          <small>
+           GenAI IIoT @ AWS | San Jose, CA
+           <br/>
+           (
+           <a href="https://github.com/aws-samples/genai-at-edge" target="_blank">
+            <code>
+             aws-samples/genai-at-edge
+            </code>
+           </a>
+           )
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://www.linkedin.com/in/kabilan-kb/" target="_blank">
+           <img class="bio-image" src="research/images/Kabilan_Kb.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/kabilan-kb/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          <a href="https://www.youtube.com/@kabilankb2003" target="_blank">
+           <img class="bio-logo" src="research/images/youtube.png"/>
+          </a>
+          <a href="https://github.com/kabilan2003" target="_blank">
+           <img class="bio-logo" src="research/images/github.png"/>
+          </a>
+          Kabilan Kb, Roboticist
+          <br/>
+          <small>
+           NVIDIA DLI Ambassador | Tamil Nadu, IN
+           <br/>
+           (
+           <a href="https://medium.com/@kabilankb2003" target="_blank">
+            ROS2 Tutorials
+           </a>
+           ,
+           <a href="https://blogs.nvidia.com/blog/kabilan-kb-autonomous-wheelchair/" target="_blank">
+            Autonomous Wheelchair
+           </a>
+           )
+          </small>
+         </div>
+        </div>
+        <div class="bio-container col-lg-4 col-sm-4">
+         <div class="padding-graph bg-white shadow padding-feature-box-item text-center d-block match-height">
+          <a href="https://www.linkedin.com/in/ori-nachum-73274745/" target="_blank">
+           <img class="bio-image" src="research/images/Ori_Nachum.jpg"/>
+          </a>
+          <br/>
+          <a href="https://www.linkedin.com/in/ori-nachum-73274745/" target="_blank">
+           <img class="bio-logo" src="research/images/linkedin.png"/>
+          </a>
+          <a href="https://www.youtube.com/@OriNachum" target="_blank">
+           <img class="bio-logo" src="research/images/youtube.png"/>
+          </a>
+          <a href="https://github.com/OriNachum" target="_blank">
+           <img class="bio-logo" src="research/images/github.png"/>
+          </a>
+          Ori Nachum, AI Expert, Innovation
+          <br/>
+         </div>
+        </div>
+       </div>
+      </article>
+     </div>
+     <script>
+      var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}
+     </script>
+     <script>
+      var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))
+     </script>
+    </div>
+    <button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z">
+      </path>
+     </svg>
+     Back to top
+    </button>
+   </main>
+   <footer class="md-footer">
+    <div class="md-footer-meta md-typeset">
+     <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+       <div class="md-copyright__highlight">
+        <ul class="global-footer__links">
+         <li>
+          <a href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/" target="_blank">
+           Privacy Policy
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/privacy-center/" target="_blank">
+           Manage My Privacy
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/preferences/email-preferences/" target="_blank">
+           Do Not Sell or Share My Data
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/about-nvidia/legal-info/" target="_blank">
+           Legal
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/about-nvidia/accessibility/" target="_blank">
+           Accessibility
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/about-nvidia/company-policies/" target="_self">
+           Corporate Policies
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/product-security/" target="_blank">
+           Product Security
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/contact/" target="_blank">
+           Contact
+          </a>
+         </li>
+        </ul>
+        <div class="global-footer__copyright">
+         Copyright © 2024 NVIDIA Corporation
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <div class="md-dialog" data-md-component="dialog">
+   <div class="md-dialog__inner md-typeset">
+   </div>
+  </div>
+  <script id="__config" type="application/json">
+   {"annotate": null, "base": ".", "features": ["navigation.indexes", "navigation.expand", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.tabs.link", "content.code.copy", "announce.dismiss"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}
+  </script>
+  <!-- OneTrust Cookies Consent Notice start for www.jetson-ai-lab.com -->
+  <script charset="UTF-8" data-domain-script="018e2d65-efdf-7071-b793-f15ccf25c234" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   function OptanonWrapper() {        
+        var event = new Event('bannerLoaded');
+        window.dispatchEvent(event);
+    }
+  </script>
+  <!-- OneTrust Cookies Consent Notice end for www.jetson-ai-lab.com -->
+  <script src="https://images.nvidia.com/aem-dam/Solutions/ot-js/ot-custom.js" type="text/javascript">
+  </script>
+  <script src="//assets.adobedtm.com/5d4962a43b79/814eb6e9b4e1/launch-4bc07f1e0b0b.min.js">
+  </script>
+  <script src="assets/javascripts/bundle.e71a0d61.min.js">
+  </script>
+  <script>
+   window._6si = window._6si || [];
+  window._6si.push(['enableEventTracking', true]);
+  window._6si.push(['setToken', 'eb417ec30d332e34d732e2916f185311']);
+  window._6si.push(['setEndpoint', 'b.6sc.co']);
+  window._6si.push(['enableRetargeting', false]); 
+
+  window._6si.push(['enableCompanyDetails', true]);
+  window._6si.push(['setEpsilonKey', '6f578ba72568231347d1bddb7102e53695302c28']);
+
+  (function() {
+    var gd = document.createElement('script');
+    gd.type = 'text/javascript';
+    gd.async = true;
+    gd.src = '//j.6sc.co/6si.min.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gd, s);
+  })();
+  </script>
+  <script type="text/javascript">
+   _satellite.pageBottom();
+  </script>
+ </body>
+</html>

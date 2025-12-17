@@ -1,0 +1,2544 @@
+<!-- Elements added to main will be displayed on all pages -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="Showcasing generative AI projects that run on Jetson" name="description"/>
+  <link href="tutorial-intro.html" rel="prev"/>
+  <link href="initial_setup_jon_sdkm.html" rel="next"/>
+  <link href="images/nvidia-favicon-rgb-16x16px@2x.png" rel="icon"/>
+  <meta content="mkdocs-1.6.1, mkdocs-material-9.7.0" name="generator"/>
+  <title>
+   🚀 Initial Setup Guide - Jetson Orin Nano - NVIDIA Jetson AI Lab
+  </title>
+  <link href="assets/stylesheets/main.618322db.min.css" rel="stylesheet"/>
+  <link href="assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css?family=NVIDIA-NALA:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+  <style>
+   :root{--md-text-font:"NVIDIA-NALA";--md-code-font:"Roboto Mono"}
+  </style>
+  <link href="css/colors.css" rel="stylesheet"/>
+  <link href="css/extra.css" rel="stylesheet"/>
+  <link href="css/nvidia-font.css" rel="stylesheet"/>
+  <script>
+   __md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}
+  </script>
+  <script id="__analytics">
+   function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SXH8S4Y8RW"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SXH8S4Y8RW",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SXH8S4Y8RW",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}
+  </script>
+  <script>
+   "undefined"!=typeof __md_analytics&&__md_analytics()
+  </script>
+ </head>
+ <body data-md-color-accent="nv-black-green" data-md-color-primary="nv-black-green" data-md-color-scheme="nv-black-green" dir="ltr">
+<!-- ARCHIVE DEPRECATION BANNER -->
+<div id="archive-banner" style="position:fixed;top:0;left:0;right:0;z-index:99999;background:linear-gradient(90deg,#1a1a1a 0%,#2d2d2d 100%);border-bottom:3px solid #76b900;padding:12px 20px;display:flex;align-items:center;justify-content:center;gap:20px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;box-shadow:0 2px 10px rgba(0,0,0,0.3);">
+  <span style="color:#fbbf24;font-size:20px;"></span>
+  <span style="color:#ffffff;font-size:14px;"><strong style="color:#fbbf24;">Archive Notice:</strong> This documentation is deprecated and no longer maintained.</span>
+  <a href="/" style="background:#76b900;color:#000;padding:8px 16px;border-radius:4px;text-decoration:none;font-weight:600;font-size:13px;transition:background 0.2s;">Visit New Jetson AI Lab </a>
+</div>
+<div style="height:60px;"></div>
+<!-- END ARCHIVE BANNER -->
+  <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+  <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+  <label class="md-overlay" for="__drawer">
+  </label>
+  <div data-md-component="skip">
+   <a class="md-skip" href="#initial-setup-guide-for-jetson-orin-nano-developer-kit">
+    Skip to content
+   </a>
+  </div>
+  <div data-md-component="announce">
+  </div>
+  <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+   <nav aria-label="Header" class="md-header__inner md-grid">
+    <a aria-label="NVIDIA Jetson AI Lab" class="md-header__button md-logo" data-md-component="logo" href="index.html" title="NVIDIA Jetson AI Lab">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54">
+      </path>
+     </svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z">
+      </path>
+     </svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+     <div class="md-header__ellipsis">
+      <div class="md-header__topic">
+       <span class="md-ellipsis">
+        NVIDIA Jetson AI Lab
+       </span>
+      </div>
+      <div class="md-header__topic" data-md-component="header-topic">
+       <span class="md-ellipsis">
+        🚀 Initial Setup Guide - Jetson Orin Nano
+       </span>
+      </div>
+     </div>
+    </div>
+    <form class="md-header__option" data-md-component="palette">
+     <input aria-hidden="true" class="md-option" data-md-color-accent="nv-black-green" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="nv-black-green" data-md-color-scheme="nv-black-green" id="__palette_0" name="__palette" type="radio"/>
+    </form>
+    <script>
+     var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}
+    </script>
+    <label class="md-header__button md-icon" for="__search">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5">
+      </path>
+     </svg>
+    </label>
+    <div class="md-search" data-md-component="search" role="dialog">
+     <label class="md-search__overlay" for="__search">
+     </label>
+     <div class="md-search__inner" role="search">
+      <form class="md-search__form" name="search">
+       <input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+       <label class="md-search__icon md-icon" for="__search">
+        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5">
+         </path>
+        </svg>
+        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z">
+         </path>
+        </svg>
+       </label>
+       <nav aria-label="Search" class="md-search__options">
+        <button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+         <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+          </path>
+         </svg>
+        </button>
+       </nav>
+      </form>
+      <div class="md-search__output">
+       <div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+        <div class="md-search-result" data-md-component="search-result">
+         <div class="md-search-result__meta">
+          Initializing search
+         </div>
+         <ol class="md-search-result__list" role="presentation">
+         </ol>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </nav>
+   <nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+    <div class="md-grid">
+     <ul class="md-tabs__list">
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="index.html">
+        Home
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="models.html">
+        Models
+       </a>
+      </li>
+      <li class="md-tabs__item md-tabs__item--active">
+       <a class="md-tabs__link" href="tutorial-intro.html">
+        Tutorials
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="benchmarks.html">
+        Benchmarks
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="community_articles.html">
+        Projects
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="research.html">
+        Research Group
+       </a>
+      </li>
+     </ul>
+    </div>
+   </nav>
+  </header>
+  <div class="md-container" data-md-component="container">
+   <main class="md-main" data-md-component="main">
+    <div class="md-main__inner md-grid">
+     <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+         <label class="md-nav__title" for="__drawer">
+          <a aria-label="NVIDIA Jetson AI Lab" class="md-nav__button md-logo" data-md-component="logo" href="index.html" title="NVIDIA Jetson AI Lab">
+           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54">
+            </path>
+           </svg>
+          </a>
+          NVIDIA Jetson AI Lab
+         </label>
+         <ul class="md-nav__list" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="index.html">
+            <span class="md-ellipsis">
+             Home
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="models.html">
+            <span class="md-ellipsis">
+             Models
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+           <input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            <span class="md-ellipsis">
+             Tutorials
+            </span>
+            <span class="md-nav__icon md-icon">
+            </span>
+           </label>
+           <nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+            <label class="md-nav__title" for="__nav_3">
+             <span class="md-nav__icon md-icon">
+             </span>
+             Tutorials
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="tutorial-intro.html">
+               <span class="md-ellipsis">
+                Introduction
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+              <input checked="" class="md-nav__toggle md-toggle" id="__nav_3_2" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+               <span class="md-ellipsis">
+                Jetson Setup Guide
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="true" aria-labelledby="__nav_3_2_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_2">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Jetson Setup Guide
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item md-nav__item--active">
+                 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+                 <label class="md-nav__link md-nav__link--active" for="__toc">
+                  <span class="md-ellipsis">
+                   🚀 Initial Setup Guide - Jetson Orin Nano
+                  </span>
+                  <span class="md-nav__icon md-icon">
+                  </span>
+                 </label>
+                 <a class="md-nav__link md-nav__link--active" href="initial_setup_jon.html">
+                  <span class="md-ellipsis">
+                   🚀 Initial Setup Guide - Jetson Orin Nano
+                  </span>
+                 </a>
+                 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+                  <label class="md-nav__title" for="__toc">
+                   <span class="md-nav__icon md-icon">
+                   </span>
+                   Table of contents
+                  </label>
+                  <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#check-your-inventory">
+                     <span class="md-ellipsis">
+                      Check your inventory
+                     </span>
+                    </a>
+                    <nav aria-label="Check your inventory" class="md-nav">
+                     <ul class="md-nav__list">
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#storage">
+                        <span class="md-ellipsis">
+                         Storage
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#mean-to-access-terminal">
+                        <span class="md-ellipsis">
+                         Mean to access terminal
+                        </span>
+                       </a>
+                      </li>
+                     </ul>
+                    </nav>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#alternative-method-sdk-manager">
+                     <span class="md-ellipsis">
+                      🛸 Alternative method : SDK Manager
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#overall-flow-microsd-only-method">
+                     <span class="md-ellipsis">
+                      Overall flow (microSD-only method)
+                     </span>
+                    </a>
+                    <nav aria-label="Overall flow (microSD-only method)" class="md-nav">
+                     <ul class="md-nav__list">
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#walk-through-video">
+                        <span class="md-ellipsis">
+                         Walk-through Video
+                        </span>
+                       </a>
+                      </li>
+                     </ul>
+                    </nav>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#1-check-if-jetson-uefi-firmware-version-360">
+                     <span class="md-ellipsis">
+                      1️⃣ Check if Jetson UEFI Firmware version &gt; 36.0
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#determine-qspi-update-is-necessary-or-not">
+                     <span class="md-ellipsis">
+                      Determine QSPI update is necessary or not
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#2-boot-with-jetpack-513-sd-card-to-schedule-firmware-update">
+                     <span class="md-ellipsis">
+                      2️⃣ Boot with JetPack 5.1.3 SD card to schedule firmware update
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#3-reboot-and-observe-firmware-update-to-50">
+                     <span class="md-ellipsis">
+                      3️⃣ Reboot and observe firmware update to 5.0
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#4-run-qspi-updater-package-to-schedule-qspi-update">
+                     <span class="md-ellipsis">
+                      4️⃣ Run QSPI Updater package to schedule QSPI update
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#5-reboot-observe-qspi-update-and-power-off">
+                     <span class="md-ellipsis">
+                      5️⃣ Reboot, observe QSPI update, and power off
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#6-boot-with-jetpack-6x-sd-card">
+                     <span class="md-ellipsis">
+                      6️⃣ Boot with JetPack 6.x SD card
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#7-reboot-and-observe-firmware-update-to-3643">
+                     <span class="md-ellipsis">
+                      7️⃣ Reboot and observe firmware update to 36.4.3
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#8-unlock-super-performance">
+                     <span class="md-ellipsis">
+                      8️⃣ Unlock Super Performance
+                     </span>
+                    </a>
+                    <nav aria-label="8️⃣ Unlock Super Performance" class="md-nav">
+                     <ul class="md-nav__list">
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#switch-to-maxn-super-mode">
+                        <span class="md-ellipsis">
+                         Switch to MAXN SUPER mode
+                        </span>
+                       </a>
+                      </li>
+                     </ul>
+                    </nav>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#start-developing-on-jetpack-62">
+                     <span class="md-ellipsis">
+                      👍 Start developing on JetPack 6.2
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#next-step">
+                     <span class="md-ellipsis">
+                      Next step
+                     </span>
+                    </a>
+                    <nav aria-label="Next step" class="md-nav">
+                     <ul class="md-nav__list">
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#nvme-ssd-installation">
+                        <span class="md-ellipsis">
+                         NVMe SSD installation
+                        </span>
+                       </a>
+                      </li>
+                     </ul>
+                    </nav>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="initial_setup_jon_sdkm.html">
+                  <span class="md-ellipsis">
+                   🛸 Initial Setup (SDK Manager method)
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tips_ssd-docker.html">
+                  <span class="md-ellipsis">
+                   🔖 SSD + Docker
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tips_ram-optimization.html">
+                  <span class="md-ellipsis">
+                   🔖 Memory optimization
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="hackathon.html">
+                  <span class="md-ellipsis">
+                   🏆 Hackathon Guide
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="workshop_gtcdc2025.html">
+               <span class="md-ellipsis">
+                🌸 Jetson Workshop
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_4" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+               <span class="md-ellipsis">
+                AI Microservices
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_4_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_4">
+                <span class="md-nav__icon md-icon">
+                </span>
+                AI Microservices
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorials/microservices_intro.html">
+                  <span class="md-ellipsis">
+                   Microservices Intro
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorials/microservices_vlm.html">
+                  <span class="md-ellipsis">
+                   Microservices for VLM
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_5" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+               <span class="md-ellipsis">
+                Text (LLM)
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_5_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_5">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Text (LLM)
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_text-generation.html">
+                  <span class="md-ellipsis">
+                   text-generation-webui
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_ollama.html">
+                  <span class="md-ellipsis">
+                   Ollama
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_openwebui.html">
+                  <span class="md-ellipsis">
+                   Open WebUI
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_llamaspeak.html">
+                  <span class="md-ellipsis">
+                   llamaspeak
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_nano-llm.html">
+                  <span class="md-ellipsis">
+                   NanoLLM
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tensorrt_llm.html">
+                  <span class="md-ellipsis">
+                   TensorRT-LLM
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_slm.html">
+                  <span class="md-ellipsis">
+                   Small LLM (SLM)
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_api-examples.html">
+                  <span class="md-ellipsis">
+                   API Examples
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_6" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+               <span class="md-ellipsis">
+                Text + Vision (VLM)
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_6_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_6">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Text + Vision (VLM)
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_live-vlm-webui.html">
+                  <span class="md-ellipsis">
+                   Live VLM WebUI 🆕
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_llava.html">
+                  <span class="md-ellipsis">
+                   LLaVA
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_live-llava.html">
+                  <span class="md-ellipsis">
+                   Live LLaVA
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_nano-vlm.html">
+                  <span class="md-ellipsis">
+                   NanoVLM
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="llama_vlm.html">
+                  <span class="md-ellipsis">
+                   Llama 3.2 Vision
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="agent_studio.html">
+                  <span class="md-ellipsis">
+                   Agent Studio
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="tutorial_gen-ai-benchmarking.html">
+               <span class="md-ellipsis">
+                Gen AI Benchmarking 🆕
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_8" type="checkbox"/>
+              <div class="md-nav__link md-nav__container">
+               <a class="md-nav__link" href="vit/index.html">
+                <span class="md-ellipsis">
+                 Vision Transformers (ViT)
+                </span>
+               </a>
+               <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon">
+                </span>
+               </label>
+              </div>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_8_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_8">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Vision Transformers (ViT)
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="vit/tutorial_efficientvit.html">
+                  <span class="md-ellipsis">
+                   EfficientViT
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="vit/tutorial_nanoowl.html">
+                  <span class="md-ellipsis">
+                   NanoOWL
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="vit/tutorial_nanosam.html">
+                  <span class="md-ellipsis">
+                   NanoSAM
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="vit/tutorial_sam.html">
+                  <span class="md-ellipsis">
+                   SAM
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="vit/tutorial_tam.html">
+                  <span class="md-ellipsis">
+                   TAM
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_distillation.html">
+                  <span class="md-ellipsis">
+                   📑 Knowledge Distillation
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_9" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+               <span class="md-ellipsis">
+                Robotics &amp; Embodiment
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_9_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_9">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Robotics &amp; Embodiment
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="cosmos.html">
+                  <span class="md-ellipsis">
+                   Cosmos
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="genesis.html">
+                  <span class="md-ellipsis">
+                   Genesis 🆕
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="lerobot.html">
+                  <span class="md-ellipsis">
+                   LeRobot
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="ros.html">
+                  <span class="md-ellipsis">
+                   ROS2 Nodes
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="openvla.html">
+                  <span class="md-ellipsis">
+                   OpenVLA
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="robopoint.html">
+                  <span class="md-ellipsis">
+                   RoboPoint 🆕
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" id="__nav_3_10" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_10" id="__nav_3_10_label" tabindex="0">
+               <span class="md-ellipsis">
+                Image Generation
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_10_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_10">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Image Generation
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_comfyui_flux.html">
+                  <span class="md-ellipsis">
+                   Flux &amp; ComfyUI
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_stable-diffusion.html">
+                  <span class="md-ellipsis">
+                   Stable Diffusion
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_stable-diffusion-xl.html">
+                  <span class="md-ellipsis">
+                   Stable Diffusion XL
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="nerf.html">
+                  <span class="md-ellipsis">
+                   nerfstudio
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" id="__nav_3_11" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_11" id="__nav_3_11_label" tabindex="0">
+               <span class="md-ellipsis">
+                RAG &amp; Vector Database
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_11_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_11">
+                <span class="md-nav__icon md-icon">
+                </span>
+                RAG &amp; Vector Database
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_nanodb.html">
+                  <span class="md-ellipsis">
+                   NanoDB
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_llamaindex.html">
+                  <span class="md-ellipsis">
+                   LlamaIndex
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_jetson-copilot.html">
+                  <span class="md-ellipsis">
+                   Jetson Copilot
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" id="__nav_3_12" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_12" id="__nav_3_12_label" tabindex="0">
+               <span class="md-ellipsis">
+                SDK Integrations
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_12_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_12">
+                <span class="md-nav__icon md-icon">
+                </span>
+                SDK Integrations
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_holoscan.html">
+                  <span class="md-ellipsis">
+                   Holoscan SDK
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_jps.html">
+                  <span class="md-ellipsis">
+                   Jetson Platform Services
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_gapi_workflows.html">
+                  <span class="md-ellipsis">
+                   Gapi Workflows
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_gapi_microservices.html">
+                  <span class="md-ellipsis">
+                   Gapi Micro Services
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_ultralytics.html">
+                  <span class="md-ellipsis">
+                   Ultralytics YOLOv8
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" id="__nav_3_13" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_13" id="__nav_3_13_label" tabindex="0">
+               <span class="md-ellipsis">
+                Audio
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_13_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_13">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Audio
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_whisper.html">
+                  <span class="md-ellipsis">
+                   Whisper
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_audiocraft.html">
+                  <span class="md-ellipsis">
+                   AudioCraft
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_voicecraft.html">
+                  <span class="md-ellipsis">
+                   VoiceCraft
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="benchmarks.html">
+            <span class="md-ellipsis">
+             Benchmarks
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="community_articles.html">
+            <span class="md-ellipsis">
+             Projects
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="research.html">
+            <span class="md-ellipsis">
+             Research Group
+            </span>
+           </a>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+         <label class="md-nav__title" for="__toc">
+          <span class="md-nav__icon md-icon">
+          </span>
+          Table of contents
+         </label>
+         <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#check-your-inventory">
+            <span class="md-ellipsis">
+             Check your inventory
+            </span>
+           </a>
+           <nav aria-label="Check your inventory" class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#storage">
+               <span class="md-ellipsis">
+                Storage
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#mean-to-access-terminal">
+               <span class="md-ellipsis">
+                Mean to access terminal
+               </span>
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#alternative-method-sdk-manager">
+            <span class="md-ellipsis">
+             🛸 Alternative method : SDK Manager
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#overall-flow-microsd-only-method">
+            <span class="md-ellipsis">
+             Overall flow (microSD-only method)
+            </span>
+           </a>
+           <nav aria-label="Overall flow (microSD-only method)" class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#walk-through-video">
+               <span class="md-ellipsis">
+                Walk-through Video
+               </span>
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#1-check-if-jetson-uefi-firmware-version-360">
+            <span class="md-ellipsis">
+             1️⃣ Check if Jetson UEFI Firmware version &gt; 36.0
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#determine-qspi-update-is-necessary-or-not">
+            <span class="md-ellipsis">
+             Determine QSPI update is necessary or not
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#2-boot-with-jetpack-513-sd-card-to-schedule-firmware-update">
+            <span class="md-ellipsis">
+             2️⃣ Boot with JetPack 5.1.3 SD card to schedule firmware update
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#3-reboot-and-observe-firmware-update-to-50">
+            <span class="md-ellipsis">
+             3️⃣ Reboot and observe firmware update to 5.0
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#4-run-qspi-updater-package-to-schedule-qspi-update">
+            <span class="md-ellipsis">
+             4️⃣ Run QSPI Updater package to schedule QSPI update
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#5-reboot-observe-qspi-update-and-power-off">
+            <span class="md-ellipsis">
+             5️⃣ Reboot, observe QSPI update, and power off
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#6-boot-with-jetpack-6x-sd-card">
+            <span class="md-ellipsis">
+             6️⃣ Boot with JetPack 6.x SD card
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#7-reboot-and-observe-firmware-update-to-3643">
+            <span class="md-ellipsis">
+             7️⃣ Reboot and observe firmware update to 36.4.3
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#8-unlock-super-performance">
+            <span class="md-ellipsis">
+             8️⃣ Unlock Super Performance
+            </span>
+           </a>
+           <nav aria-label="8️⃣ Unlock Super Performance" class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#switch-to-maxn-super-mode">
+               <span class="md-ellipsis">
+                Switch to MAXN SUPER mode
+               </span>
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#start-developing-on-jetpack-62">
+            <span class="md-ellipsis">
+             👍 Start developing on JetPack 6.2
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#next-step">
+            <span class="md-ellipsis">
+             Next step
+            </span>
+           </a>
+           <nav aria-label="Next step" class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#nvme-ssd-installation">
+               <span class="md-ellipsis">
+                NVMe SSD installation
+               </span>
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-content" data-md-component="content">
+      <article class="md-content__inner md-typeset">
+       <h1 id="initial-setup-guide-for-jetson-orin-nano-developer-kit">
+        Initial Setup Guide for Jetson Orin Nano Developer Kit
+       </h1>
+       <p>
+        <img align="right" alt="" src="images/NVIDIA-JetsonOrin-3QTR-Front-Left_800px.png" width="300"/>
+       </p>
+       <div class="admonition note">
+        <p class="admonition-title">
+         Note
+        </p>
+        <p>
+         This guide is to supplement the official
+         <a href="https://developer.nvidia.com/embedded/learn/get-started-jetson-orin-nano-devkit">
+          <strong>
+           Jetson Orin Nano Developer Kit Getting Started Guide
+          </strong>
+         </a>
+         .
+        </p>
+       </div>
+       <p>
+        The NVIDIA®
+        <span class="blobLightGreen4">
+         Jetson Orin Nano™ Developer Kit
+        </span>
+        is a perfect kit to start your journey of local generative AI evaluation and development.
+       </p>
+       <p>
+        With the December 2024 software update (JetPack 6.1 (rev.1)), this advanced edge computer delivers up to 70% more performance, making it an even more powerful platform for the era of generative AI.
+       </p>
+       <p>
+        This guide explains the complete flow from opening the box, updating the firmware if needed, flashing the latest
+        <strong>
+         JetPack 6.2
+        </strong>
+        image on SD card, and the initial software setup, so that you will be ready for tutorials listed on this site and other AI projects.
+       </p>
+       <h2 id="check-your-inventory">
+        Check your inventory
+       </h2>
+       <p>
+        The following item is needed or highly desired to set up your Jetson Orin Nano Developer Kit.
+        <br/>
+        If you don't have them in your inventory, you want to arrange them and return to this guide once they are available.
+       </p>
+       <div class="admonition warning">
+        <p class="admonition-title">
+         What not come in the box - What you need/want to prepare
+        </p>
+        <h3 id="storage">
+         Storage
+        </h3>
+        <ul>
+         <li>
+          <span class="twemoji">
+           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 3H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m0 2v14H5V5z">
+            </path>
+           </svg>
+          </span>
+          microSD card (64GB or bigger)
+         </li>
+         <li>
+          <span class="twemoji">
+           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 3H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m0 2v14H5V5z">
+            </path>
+           </svg>
+          </span>
+          NVMe SSD (Optional, but highly recommended for following tutorials on this site)
+         </li>
+        </ul>
+        <p>
+         <img src="images/microsd_64gb.png" style="max-width:120px;"/>
+         <img src="images/ssd_nvme_1tb.png" style="max-width:540px;"/>
+        </p>
+        <h3 id="mean-to-access-terminal">
+         Mean to access terminal
+        </h3>
+        <p>
+         You need either of the following set:
+        </p>
+        <ul>
+         <li>
+          <span class="twemoji">
+           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 3H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m0 2v14H5V5z">
+            </path>
+           </svg>
+          </span>
+          DisplayPort cable,  DisplayPort capable monitor and a USB keyboard
+         </li>
+         <li>
+          <span class="twemoji">
+           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 3H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m0 2v14H5V5z">
+            </path>
+           </svg>
+          </span>
+          DisplayPort to HDMI cable and HDMI capable monitor (or TV) and a USB keyboard
+         </li>
+         <li>
+          <span class="twemoji">
+           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 3H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m0 2v14H5V5z">
+            </path>
+           </svg>
+          </span>
+          <a href="https://www.adafruit.com/product/954">
+           USB to TTL Serial cable
+           <span class="twemoji">
+            <svg viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+             <path d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2m6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.75.75 0 0 1-1.042-.018.75.75 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1">
+             </path>
+            </svg>
+           </span>
+          </a>
+          (Advanced)
+         </li>
+        </ul>
+       </div>
+       <div class="admonition danger">
+        <h2 id="alternative-method-sdk-manager">
+         🛸 Alternative method : SDK Manager
+        </h2>
+        <p>
+         In case you have an x86 PC running Ubuntu 22.04 or 20.04, then you can flash your Jetson Orin Nano Developer Kit with the latest firmware and JetPack all at once using
+         <strong>
+          NVIDIA SDK Manager
+         </strong>
+         .
+        </p>
+        <p>
+         Also, if you wish to not use a microSD card but rather use a large NVMe SSD for the OS and data, then you need to use SDK Manager to flash the latest JetPack on the NVMe SSD.
+        </p>
+        <pre class="mermaid"><code>flowchart LR
+    A(start) --&gt; B{Want to ditch microSD&lt;br&gt;and only use NVMe SSD?}
+    B --[YES] --&gt; S[🛸 SDK Manager method]
+    B --[No] --&gt; C{Have x86 PC running&lt;br&gt; Ubuntu 22.04/20.04?}
+    C --[YES] --&gt; S
+    C --[No] --&gt; U[🚀 microSD-only method]
+
+    style S stroke-width:3px, fill:#f3e9f2,stroke:#b544c4
+    style U stroke-width:3px, fill:#d2e9e5,stroke:#0e7a71</code></pre>
+        <p>
+         Click the button below to jump to a page that explains the alternative setup method using SDK Manager if you want to set your Jetson Orin Nano Developer Kit with an NVMe SSD or just want to flash all at once with your Ubuntu PC.
+        </p>
+        <p>
+         <a class="md-button md-button--darkpurple" href="initial_setup_jon_sdkm.html">
+          🛸 SDK Manager method
+         </a>
+        </p>
+        <p>
+         Otherwise, continue reading on this page for the microSD-only setup method.
+        </p>
+       </div>
+       <!-- ## Open the box
+
+!!! info "What you find in the box"
+
+    <img src="images/jetson-orin-nano-dev-kit-sd-slot.png" style="max-width:256px;" align="right">
+
+    ### :material-checkbox-marked-outline: Jetson Orin Nano Developer Kit
+
+    The Jetson Orin Nano Developer Kit consists of Jetson Orin Nano module (enlarged SO-DIMM form factor), and the reference carrier board.
+
+    It is designed to use a **microSD** card as the primary storage, thus the module (that has a big black heat sink with a fan) has a microSD card slot at the bottom side of the module.
+
+    ### :material-checkbox-marked-outline: 19V DC power supply -->
+       <h2 id="overall-flow-microsd-only-method">
+        Overall flow (microSD-only method)
+       </h2>
+       <div class="admonition info">
+        <p class="admonition-title">
+         Jetson Orin Nano Initial Setup Flowchart (microSD-only method)
+        </p>
+        <pre class="mermaid"><code>flowchart
+    A(start) --&gt; B{1️⃣ Check if Jetson UEFI Firmware&lt;br&gt;is newer than version 36.0}
+    B --[YES] --&gt; O[6️⃣ Boot with JetPack 6.2 microSD card&lt;br&gt; to schedule firmware update]
+    B --[No] --&gt; C[2️⃣ Boot with JetPack 5.1.3 microSD card&lt;br&gt;to schedule firmware update]
+    C --&gt; D[3️⃣ Reboot] --&gt; E{{Firmware update to 5.0 during reboot}}
+    E --&gt; F[4️⃣ Run QSPI updater] --&gt; G[5️⃣ Reboot] --&gt; H{{QSPI update during reboot - Firmware 36.4.0}}
+    H --&gt; O
+    O --&gt; P[7️⃣ Reboot]
+    P --&gt; Q{{Firmware update to 36.4.3 during reboot}}
+    Q --&gt; R[8️⃣ Unlock super performance]
+    R --&gt; S(👍 Start developing on JetPack 6.2)
+
+
+    style C fill:#fee
+    style D fill:#DEE,stroke:#333
+    style E stroke-width:2px,stroke-dasharray: 5 5
+    style F stroke-width:4px
+    style G fill:#DEE,stroke:#333
+    style H stroke-width:2px,stroke-dasharray: 5 5
+    style O fill:#fee
+    style P fill:#DEE,stroke:#333
+    style Q stroke-width:2px,stroke-dasharray: 5 5
+    style R fill:#f2d5ff</code></pre>
+       </div>
+       <p>
+        Note that it will undergo a total of
+        <strong>
+         three (3)
+        </strong>
+        reboot cycles.
+       </p>
+       <h3 id="walk-through-video">
+        Walk-through Video
+       </h3>
+       <details class="info">
+        <summary>
+         Click here to expand and watch video
+        </summary>
+        <p>
+         <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="480" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/7-U_zGUwAPQ?si=_BumnsGFGWm5Bpjz" title="YouTube video player" width="960">
+         </iframe>
+        </p>
+       </details>
+       <h2 id="1-check-if-jetson-uefi-firmware-version-360">
+        1️⃣ Check if Jetson UEFI Firmware version &gt;
+        <code>
+         36.0
+        </code>
+       </h2>
+       <p>
+        Your Jetson Orin Nano Developer Kit may have the latest firmware ("Jetson UEFI firmware" on QSPI-NOR flash memory) flashed at the factory.
+       </p>
+       <p>
+        If not, we need to go through a set of procedures to upgrade to the latest firmware. (Luckily, we can now do this all just on Jetson, meaning we don't need to use a host Ubuntu PC any more!)
+       </p>
+       <p>
+        So let's first check the version of your Jetson UEFI Firmware.
+        <br/>
+        You can take one of the following methods.
+       </p>
+       <div class="tabbed-set tabbed-alternate" data-tabs="1:3">
+        <input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"/>
+        <input id="__tabbed_1_2" name="__tabbed_1" type="radio"/>
+        <input id="__tabbed_1_3" name="__tabbed_1" type="radio"/>
+        <div class="tabbed-labels">
+         <label for="__tabbed_1_1">
+          <span class="twemoji">
+           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 16H3V4h18m0-2H3c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h7v2H8v2h8v-2h-2v-2h7a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2">
+            </path>
+           </svg>
+          </span>
+          Monitor-attached
+         </label>
+         <label for="__tabbed_1_2">
+          <span class="twemoji">
+           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 18v2h2v2H8v-2h2v-2H3a2 2 0 0 1-2-2V4L0 3l1.41-1.42 20.75 20.76-1.41 1.41L15 18zM3 16h10L3 6zM21 2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-.34l-2-2H21V4H6.66l-2-2z">
+            </path>
+           </svg>
+          </span>
+          Headless
+         </label>
+         <label for="__tabbed_1_3">
+          😁I'm feeling lucky
+         </label>
+        </div>
+        <div class="tabbed-content">
+         <div class="tabbed-block">
+          <ol>
+           <li>
+            Connect your monitor and USB keyboard to your developer kit.
+           </li>
+           <li>
+            Turn on the developer kit by plugging in the bundled DC power supply
+           </li>
+           <li>
+            Repeatedly press
+            <span class="keys">
+             <kbd class="key-escape">
+              Esc
+             </kbd>
+            </span>
+            key on the keyboard, especially after NVIDIA logo boot splash screen first appears on the monitor
+           </li>
+           <li>
+            You should see UEFI setup menu screen
+           </li>
+           <li>
+            Check the third line from the top (below "Not specified"), which should be the version number of Jetson UEFI firmware
+           </li>
+          </ol>
+          <blockquote>
+           <p>
+            Below image shows that this Jetson Orin Nano Developer Kit unit has the old UEFI firmware, indicating that the unit first needs its firmware/QSPI updated in order to run JetPack 6.x.
+            <img alt="computer screen showing UEFI menu" src="images/vlcsnap-2025-01-09-15h00m32s319.png" width="960"/>
+           </p>
+          </blockquote>
+         </div>
+         <div class="tabbed-block">
+          <ol>
+           <li>
+            <ul>
+             <li>
+              <code>
+               RXD
+              </code>
+              (Pin 3)
+              <span class="twemoji">
+               <svg viewbox="0 0 576 512" xmlns="http://www.w3.org/2000/svg">
+                <!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.-->
+                <path d="m470.6 374.6 96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l41.4 41.4H109.2l41.4-41.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-96 96c-6 6-9.4 14.1-9.4 22.6s3.4 16.6 9.4 22.6l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-41.4-41.4h357.5l-41.4 41.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z">
+                </path>
+               </svg>
+              </span>
+              Adafruit adaptor cable
+              <span class="blobGreen">
+               Green
+              </span>
+             </li>
+             <li>
+              <code>
+               TXD
+              </code>
+              (Pin 4)
+              <span class="twemoji">
+               <svg viewbox="0 0 576 512" xmlns="http://www.w3.org/2000/svg">
+                <!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.-->
+                <path d="m470.6 374.6 96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l41.4 41.4H109.2l41.4-41.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-96 96c-6 6-9.4 14.1-9.4 22.6s3.4 16.6 9.4 22.6l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-41.4-41.4h357.5l-41.4 41.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z">
+                </path>
+               </svg>
+              </span>
+              Adafruit adaptor cable
+              <span class="blobWhite">
+               White
+              </span>
+             </li>
+             <li>
+              <code>
+               GND
+              </code>
+              (Pin 7)
+              <span class="twemoji">
+               <svg viewbox="0 0 576 512" xmlns="http://www.w3.org/2000/svg">
+                <!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.-->
+                <path d="m470.6 374.6 96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l41.4 41.4H109.2l41.4-41.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-96 96c-6 6-9.4 14.1-9.4 22.6s3.4 16.6 9.4 22.6l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-41.4-41.4h357.5l-41.4 41.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z">
+                </path>
+               </svg>
+              </span>
+              Adafruit adaptor cable
+              <span class="blobBlack">
+               Black
+              </span>
+             </li>
+            </ul>
+            <p>
+             Connect USB to TTL Serial cable onto the following pins on
+             <code>
+              J14
+             </code>
+             "button" header of carrier board located under the Jetson module.
+            </p>
+            <p>
+             <a href="images/jon_adafruit_uart_cable.jpg">
+              <img alt="" src="images/jon_adafruit_uart_cable.jpg" width="640"/>
+             </a>
+            </p>
+            <blockquote>
+             <p>
+              For the detail, refer to
+              <a href="https://developer.nvidia.com/embedded/downloads#?search=Carrier%20Board%20Specification&amp;tx=$product,jetson_orin_nano">
+               Jetson Orin Nano Developer Kit Carrier Board Specification
+              </a>
+              .
+             </p>
+            </blockquote>
+           </li>
+           <li>
+            <p>
+             On your PC, run your console monitor program and open the USB serial port.
+            </p>
+           </li>
+           <li>
+            Power on the developer kit by plugging in the bundled DC power supply
+           </li>
+           <li>
+            On the PC console, repeatedly press
+            <span class="keys">
+             <kbd class="key-escape">
+              Esc
+             </kbd>
+            </span>
+            key on the keyboard, especially after NVIDIA logo boot splash screen first appears on the monitor
+           </li>
+           <li>
+            You should see UEFI setup menu screen
+           </li>
+           <li>
+            Check the third line from the top (below "Not specified"), which should be the version number of Jetson UEFI firmware
+           </li>
+          </ol>
+         </div>
+         <div class="tabbed-block">
+          <div class="admonition danger">
+           <p class="admonition-title">
+            Warning
+           </p>
+           <p>
+            <b>
+             Avoid leaving the device in a black screen state for extended periods or attempting to boot repeatedly with an SD card containing an incompatible JetPack version.
+            </b>
+           </p>
+           <p>
+            There is a chance that accumulated boot failures may trigger the L4T launcher to always boot into recovery kernel.
+           </p>
+           <p>
+            If this happens, even after switching to the proper JetPack 5.1.3 SD card, it won't boot from the SD card until we manually change the L4T Launcher setting.
+           </p>
+          </div>
+          <p>
+           Although we don't recommend for the above stated reason, you could skip to
+           <a href="#6-boot-with-jetpack-6x-sd-card">
+            <strong>
+             <em>
+              6️⃣ Boot with JetPack 6.x SD card
+             </em>
+            </strong>
+           </a>
+           , and try your luck to see if your Jetson just boots with the JetPack 6.x SD card.
+          </p>
+          <p>
+           If the Ubuntu desktop does not appear within 3 minutes and the screen remains black (as shown below), it indicates that the unit is running an older UEFI firmware version that is incompatible with the JetPack 6.x SD card.
+          </p>
+          <p>
+           <img alt="alt text" src="images/uefi_interactive_shell.png" width="640"/>
+          </p>
+          <p>
+           Turn the unit off, and skip to the next section (
+           <a href="#2-boot-with-jetpack-513-sd-card-to-schedule-firmware-update">
+            2️⃣ Boot with JetPack 5.1.3 SD card to schedule firmware update
+           </a>
+           ).
+          </p>
+         </div>
+        </div>
+       </div>
+       <h2 id="determine-qspi-update-is-necessary-or-not">
+        Determine QSPI update is necessary or not
+       </h2>
+       <div class="admonition warning">
+        <p class="admonition-title">
+         Attention
+        </p>
+        <p>
+         Select the appropriate tab below based on your firmware version you found in the above step.
+        </p>
+        <p>
+         If you found your Jetson Orin Nano needs its firmware updated to run JetPack 6.x, click
+         <a href="#__tabbed_2_1">
+          "
+          <span class="twemoji">
+           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 10.12h-6.78l2.74-2.82c-2.73-2.7-7.15-2.8-9.88-.1a6.887 6.887 0 0 0 0 9.8c2.73 2.7 7.15 2.7 9.88 0 1.36-1.35 2.04-2.92 2.04-4.9h2c0 1.98-.88 4.55-2.64 6.29-3.51 3.48-9.21 3.48-12.72 0-3.5-3.47-3.53-9.11-.02-12.58a8.987 8.987 0 0 1 12.65 0L21 3zM12.5 8v4.25l3.5 2.08-.72 1.21L11 13V8z">
+            </path>
+           </svg>
+          </span>
+          Firmware &lt; 36.0"
+         </a>
+         tab, and then additional step 2 to 5 will appear for you to follow.
+        </p>
+        <p>
+         If you know your Jetson Orin Nano has the latest firmware, stay on
+         <a href="#__tabbed_2_2">
+          "
+          <span class="twemoji">
+           <svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+            <!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.-->
+            <path d="M19.8 477.6c12 5 25.7 2.2 34.9-6.9L224 301.3V448c0 12.9 7.8 24.6 19.8 29.6s25.7 2.2 34.9-6.9L448 301.3V448c0 17.7 14.3 32 32 32s32-14.3 32-32V64c0-17.7-14.3-32-32-32s-32 14.3-32 32v146.7L278.6 41.3c-9.2-9.2-22.9-11.9-34.9-6.9S224 51.1 224 64v146.7L54.6 41.4c-9.2-9.2-22.9-11.9-34.9-6.9S0 51.1 0 64v384c0 12.9 7.8 24.6 19.8 29.6">
+            </path>
+           </svg>
+          </span>
+          Firmware 36.x"
+         </a>
+         tab, and skip to the next section (
+         <a href="#6-boot-with-jetpack-6x-sd-card">
+          <strong>
+           <em>
+            6️⃣ Boot with JetPack 6.x SD card
+           </em>
+          </strong>
+         </a>
+         )
+        </p>
+       </div>
+       <div class="tabbed-set tabbed-alternate" data-tabs="2:2">
+        <input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"/>
+        <input id="__tabbed_2_2" name="__tabbed_2" type="radio"/>
+        <div class="tabbed-labels">
+         <label for="__tabbed_2_1">
+          <span class="twemoji">
+           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 10.12h-6.78l2.74-2.82c-2.73-2.7-7.15-2.8-9.88-.1a6.887 6.887 0 0 0 0 9.8c2.73 2.7 7.15 2.7 9.88 0 1.36-1.35 2.04-2.92 2.04-4.9h2c0 1.98-.88 4.55-2.64 6.29-3.51 3.48-9.21 3.48-12.72 0-3.5-3.47-3.53-9.11-.02-12.58a8.987 8.987 0 0 1 12.65 0L21 3zM12.5 8v4.25l3.5 2.08-.72 1.21L11 13V8z">
+            </path>
+           </svg>
+          </span>
+          Firmware &lt; 36.0
+         </label>
+         <label for="__tabbed_2_2">
+          <span class="twemoji">
+           <svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+            <!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.-->
+            <path d="M19.8 477.6c12 5 25.7 2.2 34.9-6.9L224 301.3V448c0 12.9 7.8 24.6 19.8 29.6s25.7 2.2 34.9-6.9L448 301.3V448c0 17.7 14.3 32 32 32s32-14.3 32-32V64c0-17.7-14.3-32-32-32s-32 14.3-32 32v146.7L278.6 41.3c-9.2-9.2-22.9-11.9-34.9-6.9S224 51.1 224 64v146.7L54.6 41.4c-9.2-9.2-22.9-11.9-34.9-6.9S0 51.1 0 64v384c0 12.9 7.8 24.6 19.8 29.6">
+            </path>
+           </svg>
+          </span>
+          Firmware 36.x
+         </label>
+        </div>
+        <div class="tabbed-content">
+         <div class="tabbed-block">
+          <p>
+           Your Jetson Orin Nano
+           <strong>
+            needs
+           </strong>
+           its firmware updated in order to make JetPack 6.x SD card work.
+          </p>
+          <p>
+           Perform the following steps (2 to 5).
+          </p>
+          <h2 id="2-boot-with-jetpack-513-sd-card-to-schedule-firmware-update">
+           2️⃣ Boot with JetPack 5.1.3 SD card to schedule firmware update
+          </h2>
+          <p>
+           First, we need to run JetPack 5.1.3 in order to let its
+           <code>
+            nvidia-l4t-bootloader
+           </code>
+           package get its bootloader/firmware updater activated, so that the firmware update automatically runs the next time it reboots.
+          </p>
+          <ol>
+           <li>
+            <p>
+             Download SD card image on to your PC
+            </p>
+            <p>
+             On your PC, download JetPack 5.1.3 image for Jetson Orin Nano Developer Kit from the official
+             <a href="https://developer.nvidia.com/embedded/jetpack-sdk-513">
+              JetPack 5.1.3 page
+             </a>
+             or from the below direct link button.
+            </p>
+            <div class="admonition warning">
+             <p class="admonition-title">
+              Warning
+             </p>
+             <p>
+              NVIDIA had updated the JetPack 5.1.3 image on 5/28/2024, as the old version had some issue and the following process did not work.
+              <br/>
+              So please download and use the latest image (the new file name is
+              <strong>
+               <code>
+                JP513-orin-nano-sd-card-image_b29.zip
+               </code>
+              </strong>
+              ).
+             </p>
+            </div>
+            <p>
+             <a class="md-button md-button--primary" href="https://developer.nvidia.com/downloads/embedded/l4t/r35_release_v5.0/jp513-orin-nano-sd-card-image.zip">
+              Jetson Orin Nano Developer Kit
+              <br/>
+              JetPack 5.1.3 image
+             </a>
+            </p>
+           </li>
+           <li>
+            <p>
+             Use Balena Etcher to flash image to SD card
+            </p>
+            <p>
+             If you don't have Balena Etcher on your PC, download from
+             <a href="https://etcher.balena.io/">
+              Balena official site
+             </a>
+             .
+            </p>
+            <p>
+             <img alt="alt text" src="images/balena_etcher.png" width="360"/>
+            </p>
+           </li>
+           <li>
+            <p>
+             Insert the flashed microSD card into the slot on Jetson module
+            </p>
+            <p>
+             <img alt="" src="images/jetson-orin-nano-dev-kit-sd-slot.png" width="360"/>
+            </p>
+           </li>
+           <li>
+            <p>
+             Power-on
+            </p>
+            <p>
+             Turn on the Jetson Orin Nano Developer Kit
+             <strong>
+              with JetPack 5.1.3 SD card inserted
+             </strong>
+             by plugging in the DC power supply.
+            </p>
+           </li>
+           <li>
+            <p>
+             Complete the initial software setup (
+             <code>
+              oem-config
+             </code>
+             )
+            </p>
+            <div class="admonition info">
+             <p class="admonition-title">
+              Info
+             </p>
+             <p>
+              There is a chance that JetPack 5.1.3 SD card does not show any desktop UI on the attached display (the display remains black).
+             </p>
+             <p>
+              It would still schedule the UEFI firmware update in the background, so when you power cycle the unit, most likely it will perform the firmware update on the next boot up.
+             </p>
+             <p>
+              So if this happens, skip to the next step (
+              <a href="#3-reboot-and-observe-firmware-update-to-50">
+               Step 3️⃣
+              </a>
+              's bullet point
+              <code>
+               2
+              </code>
+              .).
+             </p>
+            </div>
+           </li>
+           <li>
+            <p>
+             Ensure firmware update is scheduled.
+            </p>
+            <p>
+             Once Jetson boots into Jetson Linux system, a background service automatically runs to schedule a firmware update (if needed) to be performed during the next boot-up process.
+            </p>
+            <p>
+             Once you see the following, or just wait about 5 minutes after powering on to ensure the scheduling is done, reboot.
+            </p>
+            <div class="tabbed-set tabbed-alternate" data-tabs="3:2">
+             <input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"/>
+             <input id="__tabbed_3_2" name="__tabbed_3" type="radio"/>
+             <div class="tabbed-labels">
+              <label for="__tabbed_3_1">
+               <span class="twemoji">
+                <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M21 16H3V4h18m0-2H3c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h7v2H8v2h8v-2h-2v-2h7a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2">
+                 </path>
+                </svg>
+               </span>
+               GUI
+              </label>
+              <label for="__tabbed_3_2">
+               <span class="twemoji">
+                <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M14 18v2h2v2H8v-2h2v-2H3a2 2 0 0 1-2-2V4L0 3l1.41-1.42 20.75 20.76-1.41 1.41L15 18zM3 16h10L3 6zM21 2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-.34l-2-2H21V4H6.66l-2-2z">
+                 </path>
+                </svg>
+               </span>
+               CUI
+              </label>
+             </div>
+             <div class="tabbed-content">
+              <div class="tabbed-block">
+               <p>
+                <img alt="" src="images/nvidia-l4t-bootloader-post-install-notification.png"/>
+               </p>
+              </div>
+              <div class="tabbed-block">
+               <div class="highlight">
+                <pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>nv-l4t-bootloader-config
+<span class="o">[</span>sudo<span class="o">]</span><span class="w"> </span>password<span class="w"> </span><span class="k">for</span><span class="w"> </span>jetson:
+●<span class="w"> </span>nv-l4t-bootloader-config.service<span class="w"> </span>-<span class="w"> </span>Configure<span class="w"> </span>bootloader<span class="w"> </span>service
+<span class="w">    </span>Loaded:<span class="w"> </span>loaded<span class="w"> </span><span class="o">(</span>/etc/systemd/system/nv-l4t-bootloader-config.service<span class="p">;</span><span class="w"> </span>enabled<span class="p">;</span><span class="w"> </span>vendor<span class="w"> </span>preset:<span class="w"> </span>enabled<span class="o">)</span>
+<span class="w">    </span>Active:<span class="w"> </span>inactive<span class="w"> </span><span class="o">(</span>dead<span class="o">)</span><span class="w"> </span>since<span class="w"> </span>Fri<span class="w"> </span><span class="m">2024</span>-05-03<span class="w"> </span><span class="m">13</span>:36:13<span class="w"> </span>PDT<span class="p">;</span><span class="w"> </span>1min<span class="w"> </span>57s<span class="w"> </span>ago
+<span class="w">    </span>Process:<span class="w"> </span><span class="m">11439</span><span class="w"> </span><span class="nv">ExecStart</span><span class="o">=</span>/opt/nvidia/l4t-bootloader-config/nv-l4t-bootloader-config.sh<span class="w"> </span>-v<span class="w"> </span><span class="o">(</span><span class="nv">code</span><span class="o">=</span>exited,<span class="w"> </span><span class="nv">status</span><span class="o">=</span><span class="m">0</span>/SUCCESS<span class="o">)</span>
+Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</span><span class="w"> </span><span class="o">(</span><span class="nv">code</span><span class="o">=</span>exited,<span class="w"> </span><span class="nv">status</span><span class="o">=</span><span class="m">0</span>/SUCCESS<span class="o">)</span>
+</code></pre>
+               </div>
+              </div>
+             </div>
+            </div>
+           </li>
+          </ol>
+          <h2 id="3-reboot-and-observe-firmware-update-to-50">
+           3️⃣ Reboot and observe firmware update to
+           <code>
+            5.0
+           </code>
+          </h2>
+          <ol>
+           <li>
+            <p>
+             Reboot
+            </p>
+            <p>
+             Reboot your Jetson Orin Nano Developer Kit.
+            </p>
+            <div class="tabbed-set tabbed-alternate" data-tabs="4:2">
+             <input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio"/>
+             <input id="__tabbed_4_2" name="__tabbed_4" type="radio"/>
+             <div class="tabbed-labels">
+              <label for="__tabbed_4_1">
+               <span class="twemoji">
+                <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M21 16H3V4h18m0-2H3c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h7v2H8v2h8v-2h-2v-2h7a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2">
+                 </path>
+                </svg>
+               </span>
+               GUI
+              </label>
+              <label for="__tabbed_4_2">
+               <span class="twemoji">
+                <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M14 18v2h2v2H8v-2h2v-2H3a2 2 0 0 1-2-2V4L0 3l1.41-1.42 20.75 20.76-1.41 1.41L15 18zM3 16h10L3 6zM21 2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-.34l-2-2H21V4H6.66l-2-2z">
+                 </path>
+                </svg>
+               </span>
+               CUI
+              </label>
+             </div>
+             <div class="tabbed-content">
+              <div class="tabbed-block">
+               <p>
+                On the Ubuntu desktop click the power icon (
+                <span class="twemoji">
+                 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="m16.56 5.44-1.45 1.45A5.97 5.97 0 0 1 18 12a6 6 0 0 1-6 6 6 6 0 0 1-6-6c0-2.17 1.16-4.06 2.88-5.12L7.44 5.44A7.96 7.96 0 0 0 4 12a8 8 0 0 0 8 8 8 8 0 0 0 8-8c0-2.72-1.36-5.12-3.44-6.56M13 3h-2v10h2">
+                  </path>
+                 </svg>
+                </span>
+                ) and select "
+                <strong>
+                 Restart...
+                </strong>
+                ".
+               </p>
+              </div>
+              <div class="tabbed-block">
+               <div class="highlight">
+                <pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>reboot
+</code></pre>
+               </div>
+              </div>
+             </div>
+            </div>
+           </li>
+           <li>
+            <p>
+             Observe firmware update
+            </p>
+            <p>
+             You should see the following during the boot up process.
+            </p>
+            <div class="tabbed-set tabbed-alternate" data-tabs="5:2">
+             <input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio"/>
+             <input id="__tabbed_5_2" name="__tabbed_5" type="radio"/>
+             <div class="tabbed-labels">
+              <label for="__tabbed_5_1">
+               <span class="twemoji">
+                <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M21 16H3V4h18m0-2H3c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h7v2H8v2h8v-2h-2v-2h7a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2">
+                 </path>
+                </svg>
+               </span>
+               With monitor
+              </label>
+              <label for="__tabbed_5_2">
+               <span class="twemoji">
+                <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M14 18v2h2v2H8v-2h2v-2H3a2 2 0 0 1-2-2V4L0 3l1.41-1.42 20.75 20.76-1.41 1.41L15 18zM3 16h10L3 6zM21 2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-.34l-2-2H21V4H6.66l-2-2z">
+                 </path>
+                </svg>
+               </span>
+               Headless (serial)
+              </label>
+             </div>
+             <div class="tabbed-content">
+              <div class="tabbed-block">
+               <p>
+                <img alt="" src="images/fw-update_from_3-0.JPG"/>
+               </p>
+              </div>
+              <div class="tabbed-block">
+               <p>
+                <img alt="" src="images/fw_update_4.1-to-5.0.png"/>
+               </p>
+              </div>
+             </div>
+            </div>
+            <p>
+             Once done, you will boot into JetPack 5.1.3 (again), with underlying firmware updated to
+             <code>
+              5.0-35550185
+             </code>
+             .
+            </p>
+           </li>
+          </ol>
+          <h2 id="4-run-qspi-updater-package-to-schedule-qspi-update">
+           4️⃣ Run QSPI Updater package to schedule QSPI update
+          </h2>
+          <p>
+           Now that your UEFI firmware is updated to 35.5.0 ( = JetPack 5.1.3 ), it is capable of updating the entire QSPI content to make it ready for JetPack 6.x.
+          </p>
+          <p>
+           We will run a special tool so that the entire QSPI update is scheduled to run automatically on the next boot-up.
+          </p>
+          <ol>
+           <li>
+            <p>
+             Double-check your firmware version is up to date (
+             <code>
+              35.5.0
+             </code>
+             = JetPack 5.1.3)
+            </p>
+            <p>
+             Once it reboots back into Jetson Linux system, on Jetson terminal, run the following:
+            </p>
+            <div class="highlight">
+             <pre><span></span><code>sudo<span class="w"> </span>nvbootctrl<span class="w"> </span>dump-slots-info
+</code></pre>
+            </div>
+            <p>
+             You should see something like the following, with the
+             <strong>
+              Current version
+             </strong>
+             indicating
+             <code>
+              35.5.0
+             </code>
+             .
+            </p>
+            <div class="no-select highlight">
+             <pre><span></span><code><span class="nt">Current version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">35.5.0</span>
+<span class="nt">Capsule update status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="nt">Current bootloader slot</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A</span>
+<span class="nt">Active bootloader slot</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A</span>
+<span class="nt">num_slots</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="nt">slot</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0,             status</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">normal</span>
+<span class="nt">slot</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1,             status</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">normal</span>
+</code></pre>
+            </div>
+           </li>
+           <li>
+            <p>
+             Install QSPI Updater Debian package to trigger the entire QSPI update
+            </p>
+            <div class="admonition note">
+             <p class="admonition-title">
+              Note
+             </p>
+             <p>
+              An Internet connection is required to download the QSPI updater package.
+             </p>
+            </div>
+            <p>
+             On Jetson terminal, run the following:
+            </p>
+            <div class="highlight">
+             <pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>nvidia-l4t-jetson-orin-nano-qspi-updater
+</code></pre>
+            </div>
+            <p>
+             Installing the
+             <code>
+              nvidia-l4t-jetson-orin-nano-qspi-updater
+             </code>
+             automatically runs its script to schedule the entire QSPI update to be performed during the next boot process, so that the firmware is ready for JetPack 6.x.
+            </p>
+           </li>
+          </ol>
+          <h2 id="5-reboot-observe-qspi-update-and-power-off">
+           5️⃣ Reboot, observe QSPI update, and power off
+          </h2>
+          <ol>
+           <li>
+            <p>
+             Reboot
+            </p>
+            <p>
+             Once the QSPI update is scheduled, reboot your Jetson Orin Nano Developer Kit.
+            </p>
+           </li>
+           <li>
+            <p>
+             Observe update
+            </p>
+            <p>
+             You can observe the QSPI update during the boot up process.
+            </p>
+           </li>
+           <li>
+            <p>
+             Power off
+            </p>
+            <p>
+             Once the update is done, it reboots and tries to boot, however it will get stuck
+             <strong>
+              UNLESS you change the SD card to JetPack 6.x one
+             </strong>
+             .
+            </p>
+            <p>
+             Therefore you should just power off the developer kit simply by disconnecting the DC power supply.
+            </p>
+            <div class="admonition danger">
+             <p class="admonition-title">
+              Attention
+             </p>
+             <p>
+              This part may look very confusing as neither the attached monitor nor the debug UART shows any explicit message on what action to take next.
+             </p>
+             <p>
+              What is going on here is that the Jetson's firmware (inside the QSPI-NOR flash memory) is now updated, ready for the JetPack 6.x SD card, however it is now incompatible with JetPack 5.1.3 SD card left in the Jetson module's slot, so after the reboot it gets stuck in the boot process.
+             </p>
+             <p>
+              So there is no issue with this boot halt (or endless rebooting).
+              <br/>
+              Simply power off the device and insert the new SD card.
+             </p>
+            </div>
+           </li>
+          </ol>
+         </div>
+         <div class="tabbed-block">
+          <blockquote>
+           <p>
+            Your Jetson Orin Nano has the latest firmware that is ready for JetPack 6.x SD card.
+           </p>
+           <p>
+            Skip to the next section (
+            <a href="#6-boot-with-jetpack-6x-sd-card">
+             <strong>
+              <em>
+               6️⃣ Boot with JetPack 6.x SD card
+              </em>
+             </strong>
+            </a>
+            )
+           </p>
+          </blockquote>
+         </div>
+        </div>
+       </div>
+       <h2 id="6-boot-with-jetpack-6x-sd-card">
+        6️⃣ Boot with JetPack 6.x SD card
+       </h2>
+       <p>
+        Once we know the onboard firmware is up-to-date and ready for JetPack 6.x, we can boot Jetson Orin Nano Developer Kit with a microSD card for JetPack 6.2.
+       </p>
+       <ol>
+        <li>
+         <p>
+          Download SD card image on to your PC
+         </p>
+         <p>
+          On your PC, download the latest JetPack 6.x image for Jetson Orin Nano Developer Kit from the official
+          <a href="https://developer.nvidia.com/embedded/jetpack">
+           JetPack page
+          </a>
+          or from the below direct link button.
+         </p>
+         <p>
+          <a class="md-button md-button--primary" href="https://developer.nvidia.com/downloads/embedded/L4T/r36_Release_v4.4/jp62-r1-orin-nano-sd-card-image.zip">
+           Jetson Orin Nano Developer Kit
+           <br/>
+           JetPack 6.2.1
+          </a>
+         </p>
+        </li>
+        <li>
+         <p>
+          Use Balena Etcher to flash image to SD card
+         </p>
+         <p>
+          Insert your microSD card into your PC's SD card slot, and use Balena Etcher to flash the SD card with the image you just downloaded.
+         </p>
+         <p>
+          If you don't have Balena Etcher on your PC, download from
+          <a href="https://etcher.balena.io/">
+           Balena official site
+          </a>
+          .
+         </p>
+         <p>
+          <img alt="alt text" src="images/balena_etcher.png" width="540"/>
+         </p>
+        </li>
+        <li>
+         <p>
+          Insert the
+          <strong>
+           JetPack 6.2
+          </strong>
+          microSD card into the slot on Jetson module
+         </p>
+         <p>
+          <img alt="" src="images/jetson-orin-nano-dev-kit-sd-slot.png" width="360"/>
+         </p>
+        </li>
+        <li>
+         <p>
+          Power-on by plugging the DC power supply
+         </p>
+        </li>
+        <li>
+         <p>
+          Complete the initial software setup (
+          <code>
+           oem-config
+          </code>
+          )
+         </p>
+        </li>
+        <li>
+         <p>
+          Ensure firmware update is scheduled.
+         </p>
+         <p>
+          JetPack 6.2 SD card will automatically schedule another firmware/bootloader update in the next (3rd and final) reboot cycle.
+         </p>
+         <div class="tabbed-set tabbed-alternate" data-tabs="6:2">
+          <input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio"/>
+          <input id="__tabbed_6_2" name="__tabbed_6" type="radio"/>
+          <div class="tabbed-labels">
+           <label for="__tabbed_6_1">
+            <span class="twemoji">
+             <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 16H3V4h18m0-2H3c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h7v2H8v2h8v-2h-2v-2h7a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2">
+              </path>
+             </svg>
+            </span>
+            GUI
+           </label>
+           <label for="__tabbed_6_2">
+            <span class="twemoji">
+             <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 18v2h2v2H8v-2h2v-2H3a2 2 0 0 1-2-2V4L0 3l1.41-1.42 20.75 20.76-1.41 1.41L15 18zM3 16h10L3 6zM21 2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-.34l-2-2H21V4H6.66l-2-2z">
+              </path>
+             </svg>
+            </span>
+            CUI
+           </label>
+          </div>
+          <div class="tabbed-content">
+           <div class="tabbed-block">
+            <p>
+             <img alt="" src="images/nvidia-l4t-bootloader-post-install-notification.png"/>
+            </p>
+           </div>
+           <div class="tabbed-block">
+            <div class="highlight">
+             <pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>nv-l4t-bootloader-config
+<span class="o">[</span>sudo<span class="o">]</span><span class="w"> </span>password<span class="w"> </span><span class="k">for</span><span class="w"> </span>jetson:
+●<span class="w"> </span>nv-l4t-bootloader-config.service<span class="w"> </span>-<span class="w"> </span>Configure<span class="w"> </span>bootloader<span class="w"> </span>service
+<span class="w">    </span>Loaded:<span class="w"> </span>loaded<span class="w"> </span><span class="o">(</span>/etc/systemd/system/nv-l4t-bootloader-config.service<span class="p">;</span><span class="w"> </span>enabled<span class="p">;</span><span class="w"> </span>vendor<span class="w"> </span>preset:<span class="w"> </span>enabled<span class="o">)</span>
+<span class="w">    </span>Active:<span class="w"> </span>inactive<span class="w"> </span><span class="o">(</span>dead<span class="o">)</span><span class="w"> </span>since<span class="w"> </span>Fri<span class="w"> </span><span class="m">2024</span>-05-03<span class="w"> </span><span class="m">13</span>:36:13<span class="w"> </span>PDT<span class="p">;</span><span class="w"> </span>1min<span class="w"> </span>57s<span class="w"> </span>ago
+<span class="w">    </span>Process:<span class="w"> </span><span class="m">11439</span><span class="w"> </span><span class="nv">ExecStart</span><span class="o">=</span>/opt/nvidia/l4t-bootloader-config/nv-l4t-bootloader-config.sh<span class="w"> </span>-v<span class="w"> </span><span class="o">(</span><span class="nv">code</span><span class="o">=</span>exited,<span class="w"> </span><span class="nv">status</span><span class="o">=</span><span class="m">0</span>/SUCCESS<span class="o">)</span>
+Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">11439</span><span class="w"> </span><span class="o">(</span><span class="nv">code</span><span class="o">=</span>exited,<span class="w"> </span><span class="nv">status</span><span class="o">=</span><span class="m">0</span>/SUCCESS<span class="o">)</span>
+</code></pre>
+            </div>
+           </div>
+          </div>
+         </div>
+        </li>
+       </ol>
+       <h2 id="7-reboot-and-observe-firmware-update-to-3643">
+        7️⃣ Reboot and observe firmware update to
+        <code>
+         36.4.3
+        </code>
+       </h2>
+       <ol>
+        <li>
+         <p>
+          Reboot your Jetson Orin Nano Developer Kit on JetPack 6.2 SD card to trigger the final firmware update (to
+          <code>
+           36.4.3
+          </code>
+          ).
+         </p>
+         <div class="tabbed-set tabbed-alternate" data-tabs="7:2">
+          <input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio"/>
+          <input id="__tabbed_7_2" name="__tabbed_7" type="radio"/>
+          <div class="tabbed-labels">
+           <label for="__tabbed_7_1">
+            <span class="twemoji">
+             <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 16H3V4h18m0-2H3c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h7v2H8v2h8v-2h-2v-2h7a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2">
+              </path>
+             </svg>
+            </span>
+            GUI
+           </label>
+           <label for="__tabbed_7_2">
+            <span class="twemoji">
+             <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 18v2h2v2H8v-2h2v-2H3a2 2 0 0 1-2-2V4L0 3l1.41-1.42 20.75 20.76-1.41 1.41L15 18zM3 16h10L3 6zM21 2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-.34l-2-2H21V4H6.66l-2-2z">
+              </path>
+             </svg>
+            </span>
+            CUI
+           </label>
+          </div>
+          <div class="tabbed-content">
+           <div class="tabbed-block">
+            <p>
+             On the Ubuntu desktop click the power icon (
+             <span class="twemoji">
+              <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+               <path d="m16.56 5.44-1.45 1.45A5.97 5.97 0 0 1 18 12a6 6 0 0 1-6 6 6 6 0 0 1-6-6c0-2.17 1.16-4.06 2.88-5.12L7.44 5.44A7.96 7.96 0 0 0 4 12a8 8 0 0 0 8 8 8 8 0 0 0 8-8c0-2.72-1.36-5.12-3.44-6.56M13 3h-2v10h2">
+               </path>
+              </svg>
+             </span>
+             ) and select "
+             <strong>
+              Restart...
+             </strong>
+             ".
+            </p>
+           </div>
+           <div class="tabbed-block">
+            <div class="highlight">
+             <pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>reboot
+</code></pre>
+            </div>
+           </div>
+          </div>
+         </div>
+        </li>
+        <li>
+         <p>
+          Observe firmware update
+         </p>
+         <p>
+          You should see the following during the boot up process.
+         </p>
+         <div class="tabbed-set tabbed-alternate" data-tabs="8:2">
+          <input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio"/>
+          <input id="__tabbed_8_2" name="__tabbed_8" type="radio"/>
+          <div class="tabbed-labels">
+           <label for="__tabbed_8_1">
+            <span class="twemoji">
+             <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 16H3V4h18m0-2H3c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h7v2H8v2h8v-2h-2v-2h7a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2">
+              </path>
+             </svg>
+            </span>
+            With monitor
+           </label>
+           <label for="__tabbed_8_2">
+            <span class="twemoji">
+             <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 18v2h2v2H8v-2h2v-2H3a2 2 0 0 1-2-2V4L0 3l1.41-1.42 20.75 20.76-1.41 1.41L15 18zM3 16h10L3 6zM21 2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-.34l-2-2H21V4H6.66l-2-2z">
+              </path>
+             </svg>
+            </span>
+            Headless (serial)
+           </label>
+          </div>
+          <div class="tabbed-content">
+           <div class="tabbed-block">
+            <p>
+             <img alt="alt text" src="images/fw-update_from_36-3-0.JPG" width="800"/>
+            </p>
+           </div>
+           <div class="tabbed-block">
+            <div class="highlight">
+             <pre><span></span><code>Jetson System firmware version 36.3.0-gcid-36106755 date 2025-04-25T02:38:25+00:
+
+ESC   to enter Setup.
+F11   to enter Boot Manager Menu.
+Enter to continue boot.
+
+Update Progress - 10% *****++++++++++++++++++++++++++++++++++++++++++++++++++
+</code></pre>
+            </div>
+           </div>
+          </div>
+         </div>
+        </li>
+       </ol>
+       <p>
+        Once done, you will boot into JetPack 6.2 again, with the underlying firmware updated to
+        <code>
+         36.4.3
+        </code>
+        , which unlock the Super performance.
+       </p>
+       <h2 id="8-unlock-super-performance">
+        8️⃣ Unlock Super Performance
+       </h2>
+       <div class="admonition warning">
+        <p class="admonition-title">
+         Attention
+        </p>
+        <p>
+         If your are booting with
+         <strong>
+          <em>
+           JetPack 6.1 (rev.1)
+          </em>
+         </strong>
+         SD card instead of JetPack 6.2 SD card, you may need to execute the following command after the final login and reboot your device.
+        </p>
+        <p>
+         This ensures that the
+         <strong>
+          MAXN
+         </strong>
+         performance mode becomes available on your system.
+        </p>
+        <div class="highlight">
+         <pre><span></span><code>sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/etc/nvpmodel.conf
+</code></pre>
+        </div>
+       </div>
+       <h3 id="switch-to-maxn-super-mode">
+        Switch to MAXN SUPER mode
+       </h3>
+       <p>
+        Note that the default power mode on JetPack 6.2 on Jetson Orin Nano Developer Kit is
+        <strong>
+         25W
+        </strong>
+        .
+        <br/>
+        To switch to the
+        <strong>
+         MAXN SUPER
+        </strong>
+        mode and unlock the unregulated performance, follow below steps:
+       </p>
+       <ol>
+        <li>
+         Click on the current power mode (
+         <strong>
+          25W
+         </strong>
+         ) by clicking the NVIDIA icon on the right side of the Ubuntu desktop’s top bar.
+        </li>
+        <li>
+         Select
+         <strong>
+          Power mode
+         </strong>
+         from the menu.
+        </li>
+        <li>
+         Choose
+         <strong>
+          MAXN SUPER
+         </strong>
+         to enable maximum performance.
+        </li>
+       </ol>
+       <p>
+        <img alt="alt text" src="images/jons_power-mode-to-maxn-super.png"/>
+       </p>
+       <h2 id="start-developing-on-jetpack-62">
+        👍 Start developing on JetPack 6.2
+       </h2>
+       <p>
+        🎊
+        <strong>
+         Congratulations!
+        </strong>
+        <br/>
+        Your Jetson Orin Nano Developer Kit is set up with JetPack 6.2 and you are ready to develop on JetPack 6.2.
+       </p>
+       <h2 id="next-step">
+        Next step
+       </h2>
+       <h3 id="nvme-ssd-installation">
+        NVMe SSD installation
+       </h3>
+       <p>
+        Take a look at
+        <a href="tips_ssd-docker.html">
+         this page
+        </a>
+        for installing NVMe SSD and setting up Docker with it.
+       </p>
+      </article>
+     </div>
+     <script>
+      var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}
+     </script>
+     <script>
+      var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))
+     </script>
+    </div>
+    <button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z">
+      </path>
+     </svg>
+     Back to top
+    </button>
+   </main>
+   <footer class="md-footer">
+    <div class="md-footer-meta md-typeset">
+     <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+       <div class="md-copyright__highlight">
+        <ul class="global-footer__links">
+         <li>
+          <a href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/" target="_blank">
+           Privacy Policy
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/privacy-center/" target="_blank">
+           Manage My Privacy
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/preferences/email-preferences/" target="_blank">
+           Do Not Sell or Share My Data
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/about-nvidia/legal-info/" target="_blank">
+           Legal
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/about-nvidia/accessibility/" target="_blank">
+           Accessibility
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/about-nvidia/company-policies/" target="_self">
+           Corporate Policies
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/product-security/" target="_blank">
+           Product Security
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/contact/" target="_blank">
+           Contact
+          </a>
+         </li>
+        </ul>
+        <div class="global-footer__copyright">
+         Copyright © 2024 NVIDIA Corporation
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <div class="md-dialog" data-md-component="dialog">
+   <div class="md-dialog__inner md-typeset">
+   </div>
+  </div>
+  <script id="__config" type="application/json">
+   {"annotate": null, "base": ".", "features": ["navigation.indexes", "navigation.expand", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.tabs.link", "content.code.copy", "announce.dismiss"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}
+  </script>
+  <!-- OneTrust Cookies Consent Notice start for www.jetson-ai-lab.com -->
+  <script charset="UTF-8" data-domain-script="018e2d65-efdf-7071-b793-f15ccf25c234" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   function OptanonWrapper() {        
+        var event = new Event('bannerLoaded');
+        window.dispatchEvent(event);
+    }
+  </script>
+  <!-- OneTrust Cookies Consent Notice end for www.jetson-ai-lab.com -->
+  <script src="https://images.nvidia.com/aem-dam/Solutions/ot-js/ot-custom.js" type="text/javascript">
+  </script>
+  <script src="//assets.adobedtm.com/5d4962a43b79/814eb6e9b4e1/launch-4bc07f1e0b0b.min.js">
+  </script>
+  <script src="assets/javascripts/bundle.e71a0d61.min.js">
+  </script>
+  <script>
+   window._6si = window._6si || [];
+  window._6si.push(['enableEventTracking', true]);
+  window._6si.push(['setToken', 'eb417ec30d332e34d732e2916f185311']);
+  window._6si.push(['setEndpoint', 'b.6sc.co']);
+  window._6si.push(['enableRetargeting', false]); 
+
+  window._6si.push(['enableCompanyDetails', true]);
+  window._6si.push(['setEpsilonKey', '6f578ba72568231347d1bddb7102e53695302c28']);
+
+  (function() {
+    var gd = document.createElement('script');
+    gd.type = 'text/javascript';
+    gd.async = true;
+    gd.src = '//j.6sc.co/6si.min.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gd, s);
+  })();
+  </script>
+  <script type="text/javascript">
+   _satellite.pageBottom();
+  </script>
+ </body>
+</html>

@@ -1,0 +1,560 @@
+{
+  "smol-2": {
+    "name": "Hugging Face Smol",
+    "header": "hf-smol-header",
+    "max_context_len": {
+      "placeholder": 8192
+    },
+    "prefill_chunk": {
+      "placeholder": 8192
+    },
+    "tags": [
+      "llm"
+    ],
+    "url": "Hugging-Face-Smol",
+    "links": {
+      "hf": {
+        "name": "Hugging Face",
+        "color": "yellow",
+        "url": "Hugging-Face-Smol"
+      }
+    }
+  },
+  "smol-2-135m": {
+    "name": "SmolLM2 135M",
+    "url": "hf.co/HuggingFaceTB/SmolLM2-135M-Instruct",
+    "tags": [
+      "smol-2",
+      "orin"
+    ],
+    "links": {
+      "hf": {
+        "name": "Hugging Face",
+        "color": "yellow",
+        "url": "hf.co/HuggingFaceTB/SmolLM2-135M-Instruct"
+      }
+    },
+    "created_at": "2024-10-31 13:41:10+00:00",
+    "last_modified": "2025-02-06 10:32:46+00:00"
+  },
+  "smol-2-360m": {
+    "name": "SmolLM2 360M",
+    "url": "hf.co/HuggingFaceTB/SmolLM2-360M-Instruct",
+    "tags": [
+      "smol-2",
+      "orin"
+    ],
+    "links": {
+      "hf": {
+        "name": "Hugging Face",
+        "color": "yellow",
+        "url": "hf.co/HuggingFaceTB/SmolLM2-360M-Instruct"
+      }
+    },
+    "created_at": "2024-10-31 13:41:35+00:00",
+    "last_modified": "2025-02-06 10:32:13+00:00"
+  },
+  "smol-2-1700m": {
+    "name": "SmolLM2 1.7B",
+    "url": "hf.co/HuggingFaceTB/SmolLM2-1.7B-Instruct",
+    "tags": [
+      "smol-2",
+      "orin"
+    ],
+    "links": {
+      "hf": {
+        "name": "Hugging Face",
+        "color": "yellow",
+        "url": "hf.co/HuggingFaceTB/SmolLM2-1.7B-Instruct"
+      }
+    },
+    "created_at": "2024-10-31 13:42:06+00:00",
+    "last_modified": "2025-02-06 10:31:41+00:00"
+  },
+  "smol-2-135m-q4f16_ft-mlc-jp6": {
+    "title": "SmolLM2 135M \u276f MLC q4f16_ft \u276f JetPack 6.1+",
+    "quantization": "q4f16_ft",
+    "tags": [
+      "smol-2-135m",
+      "q4f16_ft",
+      "mlc:jp6"
+    ],
+    "url": "dusty-nv/SmolLM2-135M-Instruct-q4f16_ft-MLC",
+    "created_at": "2024-12-10 03:58:18+00:00",
+    "last_modified": "2024-12-10 03:59:06+00:00"
+  },
+  "smol-2-135m-q4f16_1-mlc-jp6": {
+    "title": "SmolLM2 135M \u276f MLC q4f16_1 \u276f JetPack 6.1+",
+    "quantization": "q4f16_1",
+    "tags": [
+      "smol-2-135m",
+      "q4f16_1",
+      "mlc:jp6"
+    ],
+    "url": "mlc-ai/SmolLM2-135M-Instruct-q4f16_1-MLC",
+    "created_at": "2024-11-04 04:47:03+00:00",
+    "last_modified": "2024-11-04 05:48:11+00:00"
+  },
+  "smol-2-135m-q4f16_0-mlc-jp6": {
+    "title": "SmolLM2 135M \u276f MLC q4f16_0 \u276f JetPack 6.1+",
+    "quantization": "q4f16_0",
+    "tags": [
+      "smol-2-135m",
+      "q4f16_0",
+      "mlc:jp6"
+    ]
+  },
+  "smol-2-135m-q4f32_1-mlc-jp6": {
+    "title": "SmolLM2 135M \u276f MLC q4f32_1 \u276f JetPack 6.1+",
+    "quantization": "q4f32_1",
+    "tags": [
+      "smol-2-135m",
+      "q4f32_1",
+      "mlc:jp6"
+    ],
+    "url": "mlc-ai/SmolLM2-135M-Instruct-q4f32_1-MLC",
+    "created_at": "2024-11-04 04:45:40+00:00",
+    "last_modified": "2024-11-04 05:48:17+00:00"
+  },
+  "smol-2-135m-q4f16_2-mlc-jp6": {
+    "title": "SmolLM2 135M \u276f MLC q4f16_2 \u276f JetPack 6.1+",
+    "quantization": "q4f16_2",
+    "tags": [
+      "smol-2-135m",
+      "q4f16_2",
+      "mlc:jp6"
+    ]
+  },
+  "smol-2-135m-q4f16_awq-mlc-jp6": {
+    "title": "SmolLM2 135M \u276f MLC q4f16_awq \u276f JetPack 6.1+",
+    "quantization": "q4f16_awq",
+    "tags": [
+      "smol-2-135m",
+      "q4f16_awq",
+      "mlc:jp6"
+    ]
+  },
+  "smol-2-135m-e5m2_f16-mlc-jp6": {
+    "title": "SmolLM2 135M \u276f MLC e5m2_f16 \u276f JetPack 6.1+",
+    "quantization": "e5m2_f16",
+    "tags": [
+      "smol-2-135m",
+      "e5m2_f16",
+      "mlc:jp6"
+    ]
+  },
+  "smol-2-135m-e4m3_f16-mlc-jp6": {
+    "title": "SmolLM2 135M \u276f MLC e4m3_f16 \u276f JetPack 6.1+",
+    "quantization": "e4m3_f16",
+    "tags": [
+      "smol-2-135m",
+      "e4m3_f16",
+      "mlc:jp6"
+    ]
+  },
+  "smol-2-135m-e4m3_f16_max-mlc-jp6": {
+    "title": "SmolLM2 135M \u276f MLC e4m3_f16_max \u276f JetPack 6.1+",
+    "quantization": "e4m3_f16_max",
+    "tags": [
+      "smol-2-135m",
+      "e4m3_f16_max",
+      "mlc:jp6"
+    ]
+  },
+  "smol-2-135m-q4_k_m-gguf-jp6": {
+    "title": "SmolLM2 135M \u276f llama.cpp q4_k_m \u276f JetPack 6.1+",
+    "quantization": "q4_k_m",
+    "tags": [
+      "smol-2-135m",
+      "q4_k_m",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/SmolLM2-135M-Instruct-GGUF/SmolLM2-135M-Instruct-Q4_K_M.gguf",
+    "created_at": "2024-10-31 19:25:41+00:00",
+    "last_modified": "2024-10-31 19:41:37+00:00"
+  },
+  "smol-2-135m-q4_k_l-gguf-jp6": {
+    "title": "SmolLM2 135M \u276f llama.cpp q4_k_l \u276f JetPack 6.1+",
+    "quantization": "q4_k_l",
+    "tags": [
+      "smol-2-135m",
+      "q4_k_l",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/SmolLM2-135M-Instruct-GGUF/SmolLM2-135M-Instruct-Q4_K_L.gguf",
+    "created_at": "2024-10-31 19:25:41+00:00",
+    "last_modified": "2024-10-31 19:41:37+00:00"
+  },
+  "smol-2-135m-q5_k_s-gguf-jp6": {
+    "title": "SmolLM2 135M \u276f llama.cpp q5_k_s \u276f JetPack 6.1+",
+    "quantization": "q5_k_s",
+    "tags": [
+      "smol-2-135m",
+      "q5_k_s",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/SmolLM2-135M-Instruct-GGUF/SmolLM2-135M-Instruct-Q5_K_S.gguf",
+    "created_at": "2024-10-31 19:25:41+00:00",
+    "last_modified": "2024-10-31 19:41:37+00:00"
+  },
+  "smol-2-135m-q5_k_m-gguf-jp6": {
+    "title": "SmolLM2 135M \u276f llama.cpp q5_k_m \u276f JetPack 6.1+",
+    "quantization": "q5_k_m",
+    "tags": [
+      "smol-2-135m",
+      "q5_k_m",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/SmolLM2-135M-Instruct-GGUF/SmolLM2-135M-Instruct-Q5_K_M.gguf",
+    "created_at": "2024-10-31 19:25:41+00:00",
+    "last_modified": "2024-10-31 19:41:37+00:00"
+  },
+  "smol-2-135m-q5_k_l-gguf-jp6": {
+    "title": "SmolLM2 135M \u276f llama.cpp q5_k_l \u276f JetPack 6.1+",
+    "quantization": "q5_k_l",
+    "tags": [
+      "smol-2-135m",
+      "q5_k_l",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/SmolLM2-135M-Instruct-GGUF/SmolLM2-135M-Instruct-Q5_K_L.gguf",
+    "created_at": "2024-10-31 19:25:41+00:00",
+    "last_modified": "2024-10-31 19:41:37+00:00"
+  },
+  "smol-2-135m-q6_k-gguf-jp6": {
+    "title": "SmolLM2 135M \u276f llama.cpp q6_k \u276f JetPack 6.1+",
+    "quantization": "q6_k",
+    "tags": [
+      "smol-2-135m",
+      "q6_k",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/SmolLM2-135M-Instruct-GGUF/SmolLM2-135M-Instruct-Q6_K.gguf",
+    "created_at": "2024-10-31 19:25:41+00:00",
+    "last_modified": "2024-10-31 19:41:37+00:00"
+  },
+  "smol-2-360m-q4f16_ft-mlc-jp6": {
+    "title": "SmolLM2 360M \u276f MLC q4f16_ft \u276f JetPack 6.1+",
+    "quantization": "q4f16_ft",
+    "tags": [
+      "smol-2-360m",
+      "q4f16_ft",
+      "mlc:jp6"
+    ],
+    "url": "dusty-nv/SmolLM2-360M-Instruct-q4f16_ft-MLC",
+    "created_at": "2024-12-10 03:56:19+00:00",
+    "last_modified": "2024-12-10 03:57:13+00:00"
+  },
+  "smol-2-360m-q4f16_1-mlc-jp6": {
+    "title": "SmolLM2 360M \u276f MLC q4f16_1 \u276f JetPack 6.1+",
+    "quantization": "q4f16_1",
+    "tags": [
+      "smol-2-360m",
+      "q4f16_1",
+      "mlc:jp6"
+    ],
+    "url": "mlc-ai/SmolLM2-360M-Instruct-q4f16_1-MLC",
+    "created_at": "2024-11-04 04:43:42+00:00",
+    "last_modified": "2024-11-04 05:47:41+00:00"
+  },
+  "smol-2-360m-q4f16_0-mlc-jp6": {
+    "title": "SmolLM2 360M \u276f MLC q4f16_0 \u276f JetPack 6.1+",
+    "quantization": "q4f16_0",
+    "tags": [
+      "smol-2-360m",
+      "q4f16_0",
+      "mlc:jp6"
+    ]
+  },
+  "smol-2-360m-q4f32_1-mlc-jp6": {
+    "title": "SmolLM2 360M \u276f MLC q4f32_1 \u276f JetPack 6.1+",
+    "quantization": "q4f32_1",
+    "tags": [
+      "smol-2-360m",
+      "q4f32_1",
+      "mlc:jp6"
+    ],
+    "url": "mlc-ai/SmolLM2-360M-Instruct-q4f32_1-MLC",
+    "created_at": "2024-11-04 04:42:11+00:00",
+    "last_modified": "2024-11-04 05:47:50+00:00"
+  },
+  "smol-2-360m-q4f16_2-mlc-jp6": {
+    "title": "SmolLM2 360M \u276f MLC q4f16_2 \u276f JetPack 6.1+",
+    "quantization": "q4f16_2",
+    "tags": [
+      "smol-2-360m",
+      "q4f16_2",
+      "mlc:jp6"
+    ]
+  },
+  "smol-2-360m-q4f16_awq-mlc-jp6": {
+    "title": "SmolLM2 360M \u276f MLC q4f16_awq \u276f JetPack 6.1+",
+    "quantization": "q4f16_awq",
+    "tags": [
+      "smol-2-360m",
+      "q4f16_awq",
+      "mlc:jp6"
+    ]
+  },
+  "smol-2-360m-e5m2_f16-mlc-jp6": {
+    "title": "SmolLM2 360M \u276f MLC e5m2_f16 \u276f JetPack 6.1+",
+    "quantization": "e5m2_f16",
+    "tags": [
+      "smol-2-360m",
+      "e5m2_f16",
+      "mlc:jp6"
+    ]
+  },
+  "smol-2-360m-e4m3_f16-mlc-jp6": {
+    "title": "SmolLM2 360M \u276f MLC e4m3_f16 \u276f JetPack 6.1+",
+    "quantization": "e4m3_f16",
+    "tags": [
+      "smol-2-360m",
+      "e4m3_f16",
+      "mlc:jp6"
+    ]
+  },
+  "smol-2-360m-e4m3_f16_max-mlc-jp6": {
+    "title": "SmolLM2 360M \u276f MLC e4m3_f16_max \u276f JetPack 6.1+",
+    "quantization": "e4m3_f16_max",
+    "tags": [
+      "smol-2-360m",
+      "e4m3_f16_max",
+      "mlc:jp6"
+    ]
+  },
+  "smol-2-360m-q4_k_m-gguf-jp6": {
+    "title": "SmolLM2 360M \u276f llama.cpp q4_k_m \u276f JetPack 6.1+",
+    "quantization": "q4_k_m",
+    "tags": [
+      "smol-2-360m",
+      "q4_k_m",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/SmolLM2-360M-Instruct-GGUF/SmolLM2-360M-Instruct-Q4_K_M.gguf",
+    "created_at": "2024-10-31 19:25:10+00:00",
+    "last_modified": "2024-10-31 19:38:27+00:00"
+  },
+  "smol-2-360m-q4_k_l-gguf-jp6": {
+    "title": "SmolLM2 360M \u276f llama.cpp q4_k_l \u276f JetPack 6.1+",
+    "quantization": "q4_k_l",
+    "tags": [
+      "smol-2-360m",
+      "q4_k_l",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/SmolLM2-360M-Instruct-GGUF/SmolLM2-360M-Instruct-Q4_K_L.gguf",
+    "created_at": "2024-10-31 19:25:10+00:00",
+    "last_modified": "2024-10-31 19:38:27+00:00"
+  },
+  "smol-2-360m-q5_k_s-gguf-jp6": {
+    "title": "SmolLM2 360M \u276f llama.cpp q5_k_s \u276f JetPack 6.1+",
+    "quantization": "q5_k_s",
+    "tags": [
+      "smol-2-360m",
+      "q5_k_s",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/SmolLM2-360M-Instruct-GGUF/SmolLM2-360M-Instruct-Q5_K_S.gguf",
+    "created_at": "2024-10-31 19:25:10+00:00",
+    "last_modified": "2024-10-31 19:38:27+00:00"
+  },
+  "smol-2-360m-q5_k_m-gguf-jp6": {
+    "title": "SmolLM2 360M \u276f llama.cpp q5_k_m \u276f JetPack 6.1+",
+    "quantization": "q5_k_m",
+    "tags": [
+      "smol-2-360m",
+      "q5_k_m",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/SmolLM2-360M-Instruct-GGUF/SmolLM2-360M-Instruct-Q5_K_M.gguf",
+    "created_at": "2024-10-31 19:25:10+00:00",
+    "last_modified": "2024-10-31 19:38:27+00:00"
+  },
+  "smol-2-360m-q5_k_l-gguf-jp6": {
+    "title": "SmolLM2 360M \u276f llama.cpp q5_k_l \u276f JetPack 6.1+",
+    "quantization": "q5_k_l",
+    "tags": [
+      "smol-2-360m",
+      "q5_k_l",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/SmolLM2-360M-Instruct-GGUF/SmolLM2-360M-Instruct-Q5_K_L.gguf",
+    "created_at": "2024-10-31 19:25:10+00:00",
+    "last_modified": "2024-10-31 19:38:27+00:00"
+  },
+  "smol-2-360m-q6_k-gguf-jp6": {
+    "title": "SmolLM2 360M \u276f llama.cpp q6_k \u276f JetPack 6.1+",
+    "quantization": "q6_k",
+    "tags": [
+      "smol-2-360m",
+      "q6_k",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/SmolLM2-360M-Instruct-GGUF/SmolLM2-360M-Instruct-Q6_K.gguf",
+    "created_at": "2024-10-31 19:25:10+00:00",
+    "last_modified": "2024-10-31 19:38:27+00:00"
+  },
+  "smol-2-1700m-q4f16_ft-mlc-jp6": {
+    "title": "SmolLM2 1.7B \u276f MLC q4f16_ft \u276f JetPack 6.1+",
+    "quantization": "q4f16_ft",
+    "tags": [
+      "smol-2-1700m",
+      "q4f16_ft",
+      "mlc:jp6"
+    ],
+    "url": "dusty-nv/SmolLM2-1.7B-Instruct-q4f16_ft-MLC",
+    "created_at": "2024-12-09 15:31:43+00:00",
+    "last_modified": "2024-12-09 15:33:11+00:00"
+  },
+  "smol-2-1700m-q4f16_1-mlc-jp6": {
+    "title": "SmolLM2 1.7B \u276f MLC q4f16_1 \u276f JetPack 6.1+",
+    "quantization": "q4f16_1",
+    "tags": [
+      "smol-2-1700m",
+      "q4f16_1",
+      "mlc:jp6"
+    ],
+    "url": "mlc-ai/SmolLM2-1.7B-Instruct-q4f16_1-MLC",
+    "created_at": "2024-11-04 04:39:52+00:00",
+    "last_modified": "2024-11-04 05:47:05+00:00"
+  },
+  "smol-2-1700m-q4f16_0-mlc-jp6": {
+    "title": "SmolLM2 1.7B \u276f MLC q4f16_0 \u276f JetPack 6.1+",
+    "quantization": "q4f16_0",
+    "tags": [
+      "smol-2-1700m",
+      "q4f16_0",
+      "mlc:jp6"
+    ]
+  },
+  "smol-2-1700m-q4f32_1-mlc-jp6": {
+    "title": "SmolLM2 1.7B \u276f MLC q4f32_1 \u276f JetPack 6.1+",
+    "quantization": "q4f32_1",
+    "tags": [
+      "smol-2-1700m",
+      "q4f32_1",
+      "mlc:jp6"
+    ],
+    "url": "mlc-ai/SmolLM2-1.7B-Instruct-q4f32_1-MLC",
+    "created_at": "2024-11-04 04:39:06+00:00",
+    "last_modified": "2024-11-04 05:47:14+00:00"
+  },
+  "smol-2-1700m-q4f16_2-mlc-jp6": {
+    "title": "SmolLM2 1.7B \u276f MLC q4f16_2 \u276f JetPack 6.1+",
+    "quantization": "q4f16_2",
+    "tags": [
+      "smol-2-1700m",
+      "q4f16_2",
+      "mlc:jp6"
+    ]
+  },
+  "smol-2-1700m-q4f16_awq-mlc-jp6": {
+    "title": "SmolLM2 1.7B \u276f MLC q4f16_awq \u276f JetPack 6.1+",
+    "quantization": "q4f16_awq",
+    "tags": [
+      "smol-2-1700m",
+      "q4f16_awq",
+      "mlc:jp6"
+    ]
+  },
+  "smol-2-1700m-e5m2_f16-mlc-jp6": {
+    "title": "SmolLM2 1.7B \u276f MLC e5m2_f16 \u276f JetPack 6.1+",
+    "quantization": "e5m2_f16",
+    "tags": [
+      "smol-2-1700m",
+      "e5m2_f16",
+      "mlc:jp6"
+    ]
+  },
+  "smol-2-1700m-e4m3_f16-mlc-jp6": {
+    "title": "SmolLM2 1.7B \u276f MLC e4m3_f16 \u276f JetPack 6.1+",
+    "quantization": "e4m3_f16",
+    "tags": [
+      "smol-2-1700m",
+      "e4m3_f16",
+      "mlc:jp6"
+    ]
+  },
+  "smol-2-1700m-e4m3_f16_max-mlc-jp6": {
+    "title": "SmolLM2 1.7B \u276f MLC e4m3_f16_max \u276f JetPack 6.1+",
+    "quantization": "e4m3_f16_max",
+    "tags": [
+      "smol-2-1700m",
+      "e4m3_f16_max",
+      "mlc:jp6"
+    ]
+  },
+  "smol-2-1700m-q4_k_m-gguf-jp6": {
+    "title": "SmolLM2 1.7B \u276f llama.cpp q4_k_m \u276f JetPack 6.1+",
+    "quantization": "q4_k_m",
+    "tags": [
+      "smol-2-1700m",
+      "q4_k_m",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/SmolLM2-1.7B-Instruct-GGUF/SmolLM2-1.7B-Instruct-Q4_K_M.gguf",
+    "created_at": "2024-10-31 19:24:01+00:00",
+    "last_modified": "2024-10-31 19:34:13+00:00"
+  },
+  "smol-2-1700m-q4_k_l-gguf-jp6": {
+    "title": "SmolLM2 1.7B \u276f llama.cpp q4_k_l \u276f JetPack 6.1+",
+    "quantization": "q4_k_l",
+    "tags": [
+      "smol-2-1700m",
+      "q4_k_l",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/SmolLM2-1.7B-Instruct-GGUF/SmolLM2-1.7B-Instruct-Q4_K_L.gguf",
+    "created_at": "2024-10-31 19:24:01+00:00",
+    "last_modified": "2024-10-31 19:34:13+00:00"
+  },
+  "smol-2-1700m-q5_k_s-gguf-jp6": {
+    "title": "SmolLM2 1.7B \u276f llama.cpp q5_k_s \u276f JetPack 6.1+",
+    "quantization": "q5_k_s",
+    "tags": [
+      "smol-2-1700m",
+      "q5_k_s",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/SmolLM2-1.7B-Instruct-GGUF/SmolLM2-1.7B-Instruct-Q5_K_S.gguf",
+    "created_at": "2024-10-31 19:24:01+00:00",
+    "last_modified": "2024-10-31 19:34:13+00:00"
+  },
+  "smol-2-1700m-q5_k_m-gguf-jp6": {
+    "title": "SmolLM2 1.7B \u276f llama.cpp q5_k_m \u276f JetPack 6.1+",
+    "quantization": "q5_k_m",
+    "tags": [
+      "smol-2-1700m",
+      "q5_k_m",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/SmolLM2-1.7B-Instruct-GGUF/SmolLM2-1.7B-Instruct-Q5_K_M.gguf",
+    "created_at": "2024-10-31 19:24:01+00:00",
+    "last_modified": "2024-10-31 19:34:13+00:00"
+  },
+  "smol-2-1700m-q5_k_l-gguf-jp6": {
+    "title": "SmolLM2 1.7B \u276f llama.cpp q5_k_l \u276f JetPack 6.1+",
+    "quantization": "q5_k_l",
+    "tags": [
+      "smol-2-1700m",
+      "q5_k_l",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/SmolLM2-1.7B-Instruct-GGUF/SmolLM2-1.7B-Instruct-Q5_K_L.gguf",
+    "created_at": "2024-10-31 19:24:01+00:00",
+    "last_modified": "2024-10-31 19:34:13+00:00"
+  },
+  "smol-2-1700m-q6_k-gguf-jp6": {
+    "title": "SmolLM2 1.7B \u276f llama.cpp q6_k \u276f JetPack 6.1+",
+    "quantization": "q6_k",
+    "tags": [
+      "smol-2-1700m",
+      "q6_k",
+      "llama_cpp:jp6"
+    ],
+    "url": "bartowski/SmolLM2-1.7B-Instruct-GGUF/SmolLM2-1.7B-Instruct-Q6_K.gguf",
+    "created_at": "2024-10-31 19:24:01+00:00",
+    "last_modified": "2024-10-31 19:34:13+00:00"
+  }
+}

@@ -1,0 +1,7 @@
+/*
+ * Bundled resolver definitions
+ */
+
+import '../nanolab.js';
+
+${RESOLVER_LIST}

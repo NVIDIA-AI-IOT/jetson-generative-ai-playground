@@ -1,0 +1,37 @@
+{
+  "gemma-2": {
+    "name": "Google Gemma 2",
+    "header": "gemma-header",
+    "max_context_len": {"placeholder": 8192},
+    "prefill_chunk": {"placeholder": 8192},
+    "tags": ["llm"],
+    "links": {
+      "google": {
+        "name": "Google",
+        "url": "https://ai.google.dev/gemma"
+      }
+    }
+  },
+  "gemma-2-2b": {
+    "name": "Gemma 2 2B",
+    "url": "hf.co/google/gemma-2-2b-it",
+    "blacklist": ["q4f16_ft"],
+    "tags": ["gemma-2", "orin"]
+  },
+  "gemma-2-9b": {
+    "name": "Gemma 2 9B",
+    "url": "hf.co/google/gemma-2-9b-it",
+    "blacklist": ["q4f16_ft"],
+    "tags": ["gemma-2", "agx-orin", "orin-nx"]
+  },
+  "gemma-2-27b": {
+    "name": "Gemma 2 27B",
+    "url": "hf.co/google/gemma-2-27b-it",
+    "blacklist": ["q4f16_ft"],
+    "tags": ["gemma-2", "agx-orin"]
+  },
+  "gemma-2-.*gguf.*": {
+    "max_context_len": 8192,
+    "prefill_chunk": 8192
+  }
+}

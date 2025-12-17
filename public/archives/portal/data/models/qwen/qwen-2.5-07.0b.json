@@ -1,0 +1,66 @@
+{
+  "qwen-2.5-7b": {
+    "name": "Qwen 2.5 7B",
+    "title": "Qwen 2.5 7B",
+    "header": "qwen-header",
+    "tags": ["qwen-2.5", "agx-orin", "orin-nx", "orin-nano"],
+    "max_context_len": 2048,
+    "prefill_chunk": 1024,
+    "links": {
+      "meta": {
+        "name": "Qwen",
+        "url": "https://qwenlm.github.io",
+        "color": "blue"
+      },
+      "hf": {
+        "name": "Hugging Face",
+        "url": "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct",
+        "color": "yellow"
+      }
+    }
+  },
+  "qwen-2.5-7b-instruct-q4f16_ft-mlc": {
+    "name": "qwen/qwen2.5-1.5b-instruct-q4f16_ft",
+    "title": "Qwen-2.5-7B ❯ MLC q4f16_ft ❯ JetPack 6.1+",
+    "url": "hf.co/dusty-nv/Qwen2.5-7B-Instruct-q4f16_ft-MLC",
+    "quantization": "q4f16_ft",
+    "tags": ["qwen-2.5-7b", "mlc:jp6", "agx-orin", "orin-nx", "orin-nano"]
+  },
+  "qwen-2.5-7b-instruct-q4f16_1-mlc": {
+    "name": "qwen/qwen2.5-1.5b-instruct-q4f16_1",
+    "title": "Qwen-2.5-7B ❯ MLC q4f16_1 ❯ JetPack 6.1+",
+    "url": "hf.co/mlc-ai/Qwen2.5-7B-Instruct-q4f16_1-MLC",
+    "quantization": "q4f16_1",
+    "tags": ["qwen-2.5-7b", "mlc:jp6", "agx-orin", "orin-nx", "orin-nano"]
+  },
+  "qwen-2.5-7b-instruct-q4m-gguf": {
+    "name": "bartowski/Qwen2.5-7B-Instruct-GGUF",
+    "title": "Qwen-2.5-7B ❯ llama.cpp Q4_K_M ❯ JetPack 6.1+",
+    "url": "hf.co/bartowski/Qwen2.5-7B-Instruct-GGUF/Qwen2.5-7B-Instruct-Q4_K_M.gguf",
+    "quantization": "q4_k_m",
+    "tokenizer": "pcuenq/Llama-3.2-1B-Instruct-tokenizer",
+    "max_context_len": 2048,
+    "prefill_chunk": 1024,
+    "tags": ["qwen-2.5-7b", "llama_cpp:jp6", "agx-orin", "orin-nx", "orin-nano"]
+  },
+  "qwen-2.5-7b-instruct-q5m-gguf": {
+    "name": "bartowski/Qwen2.5-7B-Instruct-GGUF",
+    "title": "Qwen-2.5-7B ❯ llama.cpp Q5_K_M ❯ JetPack 6.1+",
+    "url": "hf.co/bartowski/Qwen2.5-7B-Instruct-GGUF/Qwen2.5-7B-Instruct-Q5_K_M.gguf",
+    "quantization": "q5_k_m",
+    "tokenizer": "pcuenq/Llama-3.2-1B-Instruct-tokenizer",
+    "max_context_len": 2048,
+    "prefill_chunk": 1024,
+    "tags": ["qwen-2.5-7b", "llama_cpp:jp6", "agx-orin", "orin-nx", "orin-nano"]
+  },
+  "qwen-2.5-7b-instruct-q6k-gguf": {
+    "name": "bartowski/Qwen2.5-7B-Instruct-GGUF",
+    "title": "Qwen-2.5-7B ❯ llama.cpp Q6_K ❯ JetPack 6.1+",
+    "url": "hf.co/bartowski/Qwen2.5-7B-Instruct-GGUF/Qwen2.5-7B-Instruct-Q6_K.gguf",
+    "quantization": "q6_k",
+    "tokenizer": "pcuenq/Llama-3.2-1B-Instruct-tokenizer",
+    "max_context_len": 2048,
+    "prefill_chunk": 1024,
+    "tags": ["qwen-2.5-7b", "llama_cpp:jp6", "agx-orin", "orin-nx", "orin-nano"]
+  }
+}

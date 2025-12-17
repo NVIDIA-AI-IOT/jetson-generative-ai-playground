@@ -1,0 +1,104 @@
+/*
+ * Styles and elements for certain models
+ */
+
+.modal-header-extensions {
+  background-repeat: no-repeat, no-repeat; 
+  background-position-x: 0px, right; 
+  height: 160px;
+}
+
+.generic-header {
+  height: 100px;
+}
+
+.vlm-header {
+  background-image: url('/portal/data/models/images/headers/solar-2.webp'); 
+  background-position-y: -110px;
+  background-size: 1465px 750px;
+}
+
+.llama-header {
+  padding-top: 20px;
+}
+
+.llama-pilot-header {
+  background-image: linear-gradient(270deg, rgba(63, 82, 166, 0) 32%, rgb(66, 122, 156) 49%, hsl(105.3, 14.2%, 46.3%) 100%),
+                    /*linear-gradient(90deg, rgba(205,205,205,0) 48%, rgba(205,205,205,1) 49%, rgba(205,205,205,0) 65%),*/
+                    url('/portal/data/models/images/headers/llama-pilot-title.webp'); 
+  background-size: 100%, 50%; 
+  background-position-y: 0px, -25px;
+}
+
+.llama-biker-header {
+  background-image: linear-gradient(95deg, hsl(155.3, 10.2%, 47.3%) 0%, hsl(200.3, 21.2%, 47.3%) 30%, rgb(53, 100, 129) 60%, rgba(63, 82, 166, 0) 70%), 
+                    url('/portal/data/models/images/headers/llama-biker-title.webp'); 
+  background-size: 100%, 40%; 
+  background-position-y: 0px, -31px;
+}
+
+.llama-goggles-header {
+  background-image: linear-gradient(95deg, hsl(80.2, 5.4%, 40.3%) 0%, hsl(31.3, 34.2%, 47.3%) 20%, rgb(48, 103, 137) 60%, rgba(63, 82, 166, 0) 70%),
+                    url('/portal/data/models/images/headers/llama-goggles-title.webp'); 
+  background-size: 100%, 40%; 
+  background-position-y: 0px, -31px;
+}
+
+.deepseek-header {
+  background-image: url('/portal/data/models/images/headers/deepseek.svg'), linear-gradient(175deg, hsl(218.8, 21.2%, 50.3%) 0%, hsl(219.1, 70.4%, 42.4%) 100%); 
+  background-size: 47%, 100%; 
+  background-position-y: 45px, 0px;
+  background-position-x: 565px, 0px;
+}
+
+.qwen-header {
+  --gradient-blue-purple: linear-gradient(100deg, hsl(218.8, 21.2%, 47.3%) 0%, rgb(90, 66, 156) 54%, rgba(63, 82, 166, 0) 70%);
+  --gradient-orange-purple: linear-gradient(100deg, hsl(36.4, 69%, 53.1%) 0%, rgb(90, 66, 156) 54%, rgba(63, 82, 166, 0) 70%);
+
+  background-image: var(--gradient-orange-purple), 
+                    url('/portal/data/models/images/headers/qwen-mountain-title.webp');
+  background-size: 100%, 46%; 
+  background-position-y: 0px, -20px;
+}
+
+.gemma-header {
+  background-image: linear-gradient(90deg, hsl(218.8, 21.2%, 50.3%) 0%, rgb(66, 39, 141) 57%, rgba(63, 82, 166, 0) 65%), 
+                    url('/portal/data/models/images/headers/chat-0.webp');
+  background-size: 100%, 48%;
+  background-position-x: 0px, 565px;
+  background-position-y: 0px, -74px;
+}
+
+.gemma-3-header {
+	background-image: url('/portal/data/models/images/headers/gemma3.svg'), linear-gradient(90deg, hsl(218.8, 21.2%, 50.3%) 0%, rgb(66, 39, 141) 57%, rgba(63, 82, 166, 0.9) 100%);
+	background-size: 48%, 100%;
+	background-position-x: 520px, 0px;
+	background-position-y: 30px, 0px;
+}
+
+.hf-smol-header {
+  background-image: linear-gradient(90deg, hsl(36.4, 69%, 53.1%) 0%, rgb(66, 39, 141) 56%, rgba(63, 82, 166, 0) 65%), 
+                      url('/portal/data/models/images/headers/smol-v2.webp');
+  background-size: 100%, 44%; 
+  background-position-y: 0px, -5px;
+}
+
+.phi-35-mini-header {
+  background-image: linear-gradient(90deg, hsl(205, 71%, 34%) 0%, rgb(47, 27, 103) 55%, rgba(63, 82, 166, 0) 70%), 
+                    url('/portal/data/models/images/headers/phi-3-mini-title.webp');
+  background-size: 100%, 56%; 
+  background-position-x: 0px, 525px; 
+  background-position-y: 0px, -82px;
+}
+
+.phi-35-mini-header-fit {
+  background-image: linear-gradient(90deg, hsl(205, 71%, 34%) 0%, rgb(47, 27, 103) 68%, rgba(63, 82, 166, 0) 85%), 
+                    url('/portal/data/models/images/headers/phi-3-mini-title.webp');
+  background-size: 100%, 32%; 
+  background-position-y: 0px, -30px;
+}
+
+#webui-nav-grid {
+  flex-wrap: wrap;
+  width: 1500px;
+}

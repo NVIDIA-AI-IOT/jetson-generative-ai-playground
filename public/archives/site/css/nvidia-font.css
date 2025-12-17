@@ -1,0 +1,63 @@
+/*
+	=============================================
+	NVIDIA Sans fonts
+    Owner: Vadim Leontjev (vleontjev@nvidia.com)
+	=============================================
+*/
+
+
+
+
+/* Set up for old browsers*/
+@supports not (font-variation-settings: normal) {
+    @font-face {
+      font-family: "NVIDIA-NALA";
+      src: url("https://images.nvidia.com/etc/designs/nvidiaGDC/clientlibs_base/fonts/nvidia-sans/NALA/NVIDIASans_NALA_W_Lt.woff") format("woff"),
+           url("https://images.nvidia.com/etc/designs/nvidiaGDC/clientlibs_base/fonts/nvidia-sans/NALA/NVIDIASans_NALA_W_Lt.woff2") format("woff2");
+      font-weight: 300;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "NVIDIA-NALA";
+      src: url("https://images.nvidia.com/etc/designs/nvidiaGDC/clientlibs_base/fonts/nvidia-sans/NALA/NVIDIASans_NALA_W_Rg.woff") format("woff"),
+           url("https://images.nvidia.com/etc/designs/nvidiaGDC/clientlibs_base/fonts/nvidia-sans/NALA/NVIDIASans_NALA_W_Rg.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "NVIDIA-NALA";
+      src: url("https://images.nvidia.com/etc/designs/nvidiaGDC/clientlibs_base/fonts/nvidia-sans/NALA/NVIDIASans_NALA_W_Md.woff") format("woff"),
+           url("https://images.nvidia.com/etc/designs/nvidiaGDC/clientlibs_base/fonts/nvidia-sans/NALA/NVIDIASans_NALA_W_Md.woff2") format("woff2");
+      font-weight: 500;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "NVIDIA-NALA";
+      src: url("https://images.nvidia.com/etc/designs/nvidiaGDC/clientlibs_base/fonts/nvidia-sans/NALA/NVIDIASans_NALA_W_Bd.woff") format("woff"),
+           url("https://images.nvidia.com/etc/designs/nvidiaGDC/clientlibs_base/fonts/nvidia-sans/NALA/NVIDIASans_NALA_W_Bd.woff2") format("woff2");
+      font-weight: 700;
+      font-style: normal;
+    }
+}
+
+/* Set up for modern browsers, all weights */
+@supports (font-variation-settings: normal) {
+     @font-face {
+        font-family: 'NVIDIA-NALA';
+        src: url('https://images.nvidia.com/etc/designs/nvidiaGDC/clientlibs_base/fonts/nvidia-sans/NALA/var/NVIDIASansVF_NALA_W_Wght.woff2') format('woff2 supports variations'),
+             url('https://images.nvidia.com/etc/designs/nvidiaGDC/clientlibs_base/fonts/nvidia-sans/NALA/var/NVIDIASansVF_NALA_W_Wght.woff2') format('woff2-variations');
+        font-weight: 100 1000;
+        font-stretch: 25% 151%;
+        font-style: normal;
+        font-display: swap;
+      }
+    @font-face {
+        font-family: 'NVIDIA-NALA';
+        src: url('https://images.nvidia.com/etc/designs/nvidiaGDC/clientlibs_base/fonts/nvidia-sans/NALA/var/NVIDIASansVF_Wght_NALA_W_Italic.woff2') format('woff2 supports variations'),
+             url('https://images.nvidia.com/etc/designs/nvidiaGDC/clientlibs_base/fonts/nvidia-sans/NALA/var/NVIDIASansVF_Wght_NALA_W_Italic.woff2') format('woff2-variations');
+        font-weight: 100 1000;
+        font-stretch: 25% 151%;
+        font-style: italic;
+        font-display: swap;
+      }
+}

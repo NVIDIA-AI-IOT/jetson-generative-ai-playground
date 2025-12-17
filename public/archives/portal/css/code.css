@@ -1,0 +1,70 @@
+.monospace {
+  font-family: monospace, monospace;
+  font-size: 85%;
+}
+
+.code {
+  font-family: monospace, monospace;
+  font-size: 12px;
+  color: rgb(235,235,235);
+}
+
+.code-editor {
+  max-height: calc(100% + 15px);
+}
+
+.code-container , .code-container a {
+  color: rgba(255,255,255,0.95);
+}
+
+.code-container a:hover {
+  text-decoration-color: hsla(82deg, 100%, 33.1%, 0.8);
+}
+
+.code-container {
+  color: rgba(255,255,255,0.95);
+  background: var(--theme-gray-dark);
+  /*background: linear-gradient(165deg, rgb(0,0,0,0.475) 0%, rgb(0,0,0,0.55) 100%);*/
+  padding: 5px 5px 10px 10px;
+}
+
+pre[class*="language-"] {
+  background: var(--theme-gray-darker);
+  height: 100%;
+  padding: 12px 10px;
+  /*margin: 10px;*/
+  /*border-radius: 5px;*/
+}
+
+pre[class*="language-"] > code[class*="language-"] {
+  background: none;
+  padding: 0;
+  margin: 0;
+  font-size: 15px;
+}
+
+/* Floating buttons used for copy + downloading code */
+.code-button {
+  font-size: 130%;
+  margin-left: 5px;
+  margin-right: 0px;
+  z-index: 100;
+  opacity: 0.75;
+  /*margin-left: auto;  https://stackoverflow.com/a/35270047 */
+}
+
+.code-button:hover {
+  color:  hsla(82deg, 100%, 38.1%, 1);
+  opacity: 1;
+}
+
+.code-block, .code-button, .btn-absolute {
+  color: hsla(82deg, 100%, 38.1%, 1.0);
+  text-shadow: rgba(50,50,50,0.35) 3px 0 3px;
+  font-family: monospace;
+  font-weight: 500;
+}
+
+.code-block {
+  padding-top: 20px;
+}

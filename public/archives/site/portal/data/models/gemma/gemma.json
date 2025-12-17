@@ -1,0 +1,6 @@
+{
+  "gemma-2": {
+    "name": "Google Gemma",
+    "tags": ["llm"]
+  }
+}

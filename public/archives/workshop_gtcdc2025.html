@@ -1,0 +1,5602 @@
+<!-- Elements added to main will be displayed on all pages -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="Showcasing generative AI projects that run on Jetson" name="description"/>
+  <link href="hackathon.html" rel="prev"/>
+  <link href="tutorials/microservices_intro.html" rel="next"/>
+  <link href="images/nvidia-favicon-rgb-16x16px@2x.png" rel="icon"/>
+  <meta content="mkdocs-1.6.1, mkdocs-material-9.7.0" name="generator"/>
+  <title>
+   🌸 Jetson Workshop - NVIDIA Jetson AI Lab
+  </title>
+  <link href="assets/stylesheets/main.618322db.min.css" rel="stylesheet"/>
+  <link href="assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css?family=NVIDIA-NALA:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+  <style>
+   :root{--md-text-font:"NVIDIA-NALA";--md-code-font:"Roboto Mono"}
+  </style>
+  <link href="css/colors.css" rel="stylesheet"/>
+  <link href="css/extra.css" rel="stylesheet"/>
+  <link href="css/nvidia-font.css" rel="stylesheet"/>
+  <script>
+   __md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}
+  </script>
+  <script id="__analytics">
+   function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-SXH8S4Y8RW"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-SXH8S4Y8RW",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-SXH8S4Y8RW",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}
+  </script>
+  <script>
+   "undefined"!=typeof __md_analytics&&__md_analytics()
+  </script>
+ </head>
+ <body data-md-color-accent="nv-black-green" data-md-color-primary="nv-black-green" data-md-color-scheme="nv-black-green" dir="ltr">
+<!-- ARCHIVE DEPRECATION BANNER -->
+<div id="archive-banner" style="position:fixed;top:0;left:0;right:0;z-index:99999;background:linear-gradient(90deg,#1a1a1a 0%,#2d2d2d 100%);border-bottom:3px solid #76b900;padding:12px 20px;display:flex;align-items:center;justify-content:center;gap:20px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;box-shadow:0 2px 10px rgba(0,0,0,0.3);">
+  <span style="color:#fbbf24;font-size:20px;"></span>
+  <span style="color:#ffffff;font-size:14px;"><strong style="color:#fbbf24;">Archive Notice:</strong> This documentation is deprecated and no longer maintained.</span>
+  <a href="/" style="background:#76b900;color:#000;padding:8px 16px;border-radius:4px;text-decoration:none;font-weight:600;font-size:13px;transition:background 0.2s;">Visit New Jetson AI Lab </a>
+</div>
+<div style="height:60px;"></div>
+<!-- END ARCHIVE BANNER -->
+  <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+  <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+  <label class="md-overlay" for="__drawer">
+  </label>
+  <div data-md-component="skip">
+   <a class="md-skip" href="#from-ai-exploration-to-production-deployment">
+    Skip to content
+   </a>
+  </div>
+  <div data-md-component="announce">
+  </div>
+  <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+   <nav aria-label="Header" class="md-header__inner md-grid">
+    <a aria-label="NVIDIA Jetson AI Lab" class="md-header__button md-logo" data-md-component="logo" href="index.html" title="NVIDIA Jetson AI Lab">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54">
+      </path>
+     </svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z">
+      </path>
+     </svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+     <div class="md-header__ellipsis">
+      <div class="md-header__topic">
+       <span class="md-ellipsis">
+        NVIDIA Jetson AI Lab
+       </span>
+      </div>
+      <div class="md-header__topic" data-md-component="header-topic">
+       <span class="md-ellipsis">
+        🌸 Jetson Workshop
+       </span>
+      </div>
+     </div>
+    </div>
+    <form class="md-header__option" data-md-component="palette">
+     <input aria-hidden="true" class="md-option" data-md-color-accent="nv-black-green" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="nv-black-green" data-md-color-scheme="nv-black-green" id="__palette_0" name="__palette" type="radio"/>
+    </form>
+    <script>
+     var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}
+    </script>
+    <label class="md-header__button md-icon" for="__search">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5">
+      </path>
+     </svg>
+    </label>
+    <div class="md-search" data-md-component="search" role="dialog">
+     <label class="md-search__overlay" for="__search">
+     </label>
+     <div class="md-search__inner" role="search">
+      <form class="md-search__form" name="search">
+       <input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+       <label class="md-search__icon md-icon" for="__search">
+        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5">
+         </path>
+        </svg>
+        <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z">
+         </path>
+        </svg>
+       </label>
+       <nav aria-label="Search" class="md-search__options">
+        <button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+         <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+          </path>
+         </svg>
+        </button>
+       </nav>
+      </form>
+      <div class="md-search__output">
+       <div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+        <div class="md-search-result" data-md-component="search-result">
+         <div class="md-search-result__meta">
+          Initializing search
+         </div>
+         <ol class="md-search-result__list" role="presentation">
+         </ol>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </nav>
+   <nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+    <div class="md-grid">
+     <ul class="md-tabs__list">
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="index.html">
+        Home
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="models.html">
+        Models
+       </a>
+      </li>
+      <li class="md-tabs__item md-tabs__item--active">
+       <a class="md-tabs__link" href="tutorial-intro.html">
+        Tutorials
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="benchmarks.html">
+        Benchmarks
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="community_articles.html">
+        Projects
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="research.html">
+        Research Group
+       </a>
+      </li>
+     </ul>
+    </div>
+   </nav>
+  </header>
+  <div class="md-container" data-md-component="container">
+   <main class="md-main" data-md-component="main">
+    <div class="md-main__inner md-grid">
+     <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+         <label class="md-nav__title" for="__drawer">
+          <a aria-label="NVIDIA Jetson AI Lab" class="md-nav__button md-logo" data-md-component="logo" href="index.html" title="NVIDIA Jetson AI Lab">
+           <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54">
+            </path>
+           </svg>
+          </a>
+          NVIDIA Jetson AI Lab
+         </label>
+         <ul class="md-nav__list" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="index.html">
+            <span class="md-ellipsis">
+             Home
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="models.html">
+            <span class="md-ellipsis">
+             Models
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+           <input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            <span class="md-ellipsis">
+             Tutorials
+            </span>
+            <span class="md-nav__icon md-icon">
+            </span>
+           </label>
+           <nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+            <label class="md-nav__title" for="__nav_3">
+             <span class="md-nav__icon md-icon">
+             </span>
+             Tutorials
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="tutorial-intro.html">
+               <span class="md-ellipsis">
+                Introduction
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" id="__nav_3_2" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+               <span class="md-ellipsis">
+                Jetson Setup Guide
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_2_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_2">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Jetson Setup Guide
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="initial_setup_jon.html">
+                  <span class="md-ellipsis">
+                   🚀 Initial Setup Guide - Jetson Orin Nano
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="initial_setup_jon_sdkm.html">
+                  <span class="md-ellipsis">
+                   🛸 Initial Setup (SDK Manager method)
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tips_ssd-docker.html">
+                  <span class="md-ellipsis">
+                   🔖 SSD + Docker
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tips_ram-optimization.html">
+                  <span class="md-ellipsis">
+                   🔖 Memory optimization
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="hackathon.html">
+                  <span class="md-ellipsis">
+                   🏆 Hackathon Guide
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--active">
+              <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+              <label class="md-nav__link md-nav__link--active" for="__toc">
+               <span class="md-ellipsis">
+                🌸 Jetson Workshop
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <a class="md-nav__link md-nav__link--active" href="workshop_gtcdc2025.html">
+               <span class="md-ellipsis">
+                🌸 Jetson Workshop
+               </span>
+              </a>
+              <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+               <label class="md-nav__title" for="__toc">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Table of contents
+               </label>
+               <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#workshop-overview">
+                  <span class="md-ellipsis">
+                   Workshop overview
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#experience-thors-raw-power-with-120b-intelligence">
+                  <span class="md-ellipsis">
+                   🚀 Experience: Thor's Raw Power with 120B Intelligence
+                  </span>
+                 </a>
+                 <nav aria-label="🚀 Experience: Thor's Raw Power with 120B Intelligence" class="md-nav">
+                  <ul class="md-nav__list">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#open-weight-models">
+                     <span class="md-ellipsis">
+                      Open Weight Models
+                     </span>
+                    </a>
+                    <nav aria-label="Open Weight Models" class="md-nav">
+                     <ul class="md-nav__list">
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#what-are-open-weights-models">
+                        <span class="md-ellipsis">
+                         What are Open Weights Models?**
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#why-this-matters-closed-vs-open-comparison">
+                        <span class="md-ellipsis">
+                         Why This Matters: Closed vs. Open Comparison
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#enter-gpt-oss-120b-game-changer">
+                        <span class="md-ellipsis">
+                         Enter GPT-OSS-120B: Game Changer 🎯
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#why-start-here">
+                        <span class="md-ellipsis">
+                         Why Start Here?
+                        </span>
+                       </a>
+                      </li>
+                     </ul>
+                    </nav>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#llm-inference-engine">
+                     <span class="md-ellipsis">
+                      LLM Inference Engine
+                     </span>
+                    </a>
+                    <nav aria-label="LLM Inference Engine" class="md-nav">
+                     <ul class="md-nav__list">
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#what-is-an-inference-engine">
+                        <span class="md-ellipsis">
+                         What is an Inference Engine?
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#what-is-llm-serving">
+                        <span class="md-ellipsis">
+                         What is LLM Serving?
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#popular-inference-engines">
+                        <span class="md-ellipsis">
+                         Popular Inference Engines
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#why-vllm-for-this-workshop">
+                        <span class="md-ellipsis">
+                         Why vLLM for This Workshop?
+                        </span>
+                       </a>
+                      </li>
+                     </ul>
+                    </nav>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#exercise-launch-your-first-120b-model">
+                     <span class="md-ellipsis">
+                      Exercise : Launch Your First 120B Model
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#1-starting-vllm-container">
+                     <span class="md-ellipsis">
+                      1️⃣ Starting vLLM container
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#2-set-tokenizer-encodings">
+                     <span class="md-ellipsis">
+                      2️⃣ Set Tokenizer Encodings
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#3-verify-pre-downloaded-model">
+                     <span class="md-ellipsis">
+                      3️⃣ Verify Pre-downloaded Model
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#4-launch-vllm-server">
+                     <span class="md-ellipsis">
+                      4️⃣ Launch vLLM Server
+                     </span>
+                    </a>
+                    <nav aria-label="4️⃣ Launch vLLM Server" class="md-nav">
+                     <ul class="md-nav__list">
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#stage-1-model-loading-35-seconds">
+                        <span class="md-ellipsis">
+                         Stage 1: Model Loading (~35 seconds)
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#stage-2-torch-compilation-45-seconds-longest-step">
+                        <span class="md-ellipsis">
+                         Stage 2: Torch Compilation (~45 seconds) 🐌 Longest step
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#stage-3-cuda-graph-capture-21-seconds">
+                        <span class="md-ellipsis">
+                         Stage 3: CUDA Graph Capture (~21 seconds)
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#stage-4-ready">
+                        <span class="md-ellipsis">
+                         Stage 4: Ready! 🏁
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#why-each-stage-matters">
+                        <span class="md-ellipsis">
+                         Why Each Stage Matters:
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#test-the-api-endpoints-optional">
+                        <span class="md-ellipsis">
+                         Test the API endpoints (Optional)
+                        </span>
+                       </a>
+                      </li>
+                     </ul>
+                    </nav>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#5-launch-open-webui">
+                     <span class="md-ellipsis">
+                      5️⃣ Launch Open WebUI
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#6-evaluate">
+                     <span class="md-ellipsis">
+                      6️⃣ Evaluate
+                     </span>
+                    </a>
+                    <nav aria-label="6️⃣ Evaluate" class="md-nav">
+                     <ul class="md-nav__list">
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#try-alternative-models">
+                        <span class="md-ellipsis">
+                         Try Alternative Models
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#evaluation-questions-to-consider">
+                        <span class="md-ellipsis">
+                         Evaluation Questions to Consider
+                        </span>
+                       </a>
+                      </li>
+                     </ul>
+                    </nav>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#7-stop-vllm-serving">
+                     <span class="md-ellipsis">
+                      7️⃣ Stop vLLM serving
+                     </span>
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#optimize-precision-engineering-fp16-fp8-fp4">
+                  <span class="md-ellipsis">
+                   🔧 Optimize: Precision Engineering (FP16 → FP8 → FP4)
+                  </span>
+                 </a>
+                 <nav aria-label="🔧 Optimize: Precision Engineering (FP16 → FP8 → FP4)" class="md-nav">
+                  <ul class="md-nav__list">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#1-test-fp16-model">
+                     <span class="md-ellipsis">
+                      1️⃣ Test FP16 model
+                     </span>
+                    </a>
+                    <nav aria-label="1️⃣ Test FP16 model" class="md-nav">
+                     <ul class="md-nav__list">
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#10-check-model-cache-and-size">
+                        <span class="md-ellipsis">
+                         1.0 Check model cache and size
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#11-serve">
+                        <span class="md-ellipsis">
+                         1.1 Serve
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#12-baseline-prompt-measurements">
+                        <span class="md-ellipsis">
+                         1.2 Baseline prompt &amp; measurements
+                        </span>
+                       </a>
+                      </li>
+                     </ul>
+                    </nav>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#2-fp8-quantization">
+                     <span class="md-ellipsis">
+                      2️⃣ FP8 Quantization
+                     </span>
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#3-fp4-quantization">
+                     <span class="md-ellipsis">
+                      3️⃣ FP4 Quantization
+                     </span>
+                    </a>
+                    <nav aria-label="3️⃣ FP4 Quantization" class="md-nav">
+                     <ul class="md-nav__list">
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#31-relaunch-in-fp4">
+                        <span class="md-ellipsis">
+                         3.1 Relaunch in FP4
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#32-evaluate-fp4-perf-and-accuracy">
+                        <span class="md-ellipsis">
+                         3.2 Evaluate FP4 perf and accuracy
+                        </span>
+                       </a>
+                      </li>
+                     </ul>
+                    </nav>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#4-speculative-decoding">
+                     <span class="md-ellipsis">
+                      4️⃣ Speculative Decoding
+                     </span>
+                    </a>
+                    <nav aria-label="4️⃣ Speculative Decoding" class="md-nav">
+                     <ul class="md-nav__list">
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#41-relaunch-with-speculative-decoding">
+                        <span class="md-ellipsis">
+                         4.1 Relaunch with Speculative Decoding
+                        </span>
+                       </a>
+                      </li>
+                      <li class="md-nav__item">
+                       <a class="md-nav__link" href="#42-test-performance-and-quality">
+                        <span class="md-ellipsis">
+                         4.2 Test Performance and Quality
+                        </span>
+                       </a>
+                      </li>
+                     </ul>
+                    </nav>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#troubleshooting">
+                  <span class="md-ellipsis">
+                   🚑 Troubleshooting
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#what-to-do-next">
+                  <span class="md-ellipsis">
+                   What to do next
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#appendix">
+                  <span class="md-ellipsis">
+                   Appendix
+                  </span>
+                 </a>
+                 <nav aria-label="Appendix" class="md-nav">
+                  <ul class="md-nav__list">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#pre-workshop-setup-for-organizers">
+                     <span class="md-ellipsis">
+                      Pre-Workshop Setup (For Organizers)
+                     </span>
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_4" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+               <span class="md-ellipsis">
+                AI Microservices
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_4_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_4">
+                <span class="md-nav__icon md-icon">
+                </span>
+                AI Microservices
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorials/microservices_intro.html">
+                  <span class="md-ellipsis">
+                   Microservices Intro
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorials/microservices_vlm.html">
+                  <span class="md-ellipsis">
+                   Microservices for VLM
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_5" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+               <span class="md-ellipsis">
+                Text (LLM)
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_5_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_5">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Text (LLM)
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_text-generation.html">
+                  <span class="md-ellipsis">
+                   text-generation-webui
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_ollama.html">
+                  <span class="md-ellipsis">
+                   Ollama
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_openwebui.html">
+                  <span class="md-ellipsis">
+                   Open WebUI
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_llamaspeak.html">
+                  <span class="md-ellipsis">
+                   llamaspeak
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_nano-llm.html">
+                  <span class="md-ellipsis">
+                   NanoLLM
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tensorrt_llm.html">
+                  <span class="md-ellipsis">
+                   TensorRT-LLM
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_slm.html">
+                  <span class="md-ellipsis">
+                   Small LLM (SLM)
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_api-examples.html">
+                  <span class="md-ellipsis">
+                   API Examples
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_6" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+               <span class="md-ellipsis">
+                Text + Vision (VLM)
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_6_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_6">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Text + Vision (VLM)
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_live-vlm-webui.html">
+                  <span class="md-ellipsis">
+                   Live VLM WebUI 🆕
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_llava.html">
+                  <span class="md-ellipsis">
+                   LLaVA
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_live-llava.html">
+                  <span class="md-ellipsis">
+                   Live LLaVA
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_nano-vlm.html">
+                  <span class="md-ellipsis">
+                   NanoVLM
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="llama_vlm.html">
+                  <span class="md-ellipsis">
+                   Llama 3.2 Vision
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="agent_studio.html">
+                  <span class="md-ellipsis">
+                   Agent Studio
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="tutorial_gen-ai-benchmarking.html">
+               <span class="md-ellipsis">
+                Gen AI Benchmarking 🆕
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_8" type="checkbox"/>
+              <div class="md-nav__link md-nav__container">
+               <a class="md-nav__link" href="vit/index.html">
+                <span class="md-ellipsis">
+                 Vision Transformers (ViT)
+                </span>
+               </a>
+               <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon">
+                </span>
+               </label>
+              </div>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_8_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_8">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Vision Transformers (ViT)
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="vit/tutorial_efficientvit.html">
+                  <span class="md-ellipsis">
+                   EfficientViT
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="vit/tutorial_nanoowl.html">
+                  <span class="md-ellipsis">
+                   NanoOWL
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="vit/tutorial_nanosam.html">
+                  <span class="md-ellipsis">
+                   NanoSAM
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="vit/tutorial_sam.html">
+                  <span class="md-ellipsis">
+                   SAM
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="vit/tutorial_tam.html">
+                  <span class="md-ellipsis">
+                   TAM
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_distillation.html">
+                  <span class="md-ellipsis">
+                   📑 Knowledge Distillation
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_9" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+               <span class="md-ellipsis">
+                Robotics &amp; Embodiment
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_9_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_9">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Robotics &amp; Embodiment
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="cosmos.html">
+                  <span class="md-ellipsis">
+                   Cosmos
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="genesis.html">
+                  <span class="md-ellipsis">
+                   Genesis 🆕
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="lerobot.html">
+                  <span class="md-ellipsis">
+                   LeRobot
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="ros.html">
+                  <span class="md-ellipsis">
+                   ROS2 Nodes
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="openvla.html">
+                  <span class="md-ellipsis">
+                   OpenVLA
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="robopoint.html">
+                  <span class="md-ellipsis">
+                   RoboPoint 🆕
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" id="__nav_3_10" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_10" id="__nav_3_10_label" tabindex="0">
+               <span class="md-ellipsis">
+                Image Generation
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_10_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_10">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Image Generation
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_comfyui_flux.html">
+                  <span class="md-ellipsis">
+                   Flux &amp; ComfyUI
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_stable-diffusion.html">
+                  <span class="md-ellipsis">
+                   Stable Diffusion
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_stable-diffusion-xl.html">
+                  <span class="md-ellipsis">
+                   Stable Diffusion XL
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="nerf.html">
+                  <span class="md-ellipsis">
+                   nerfstudio
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" id="__nav_3_11" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_11" id="__nav_3_11_label" tabindex="0">
+               <span class="md-ellipsis">
+                RAG &amp; Vector Database
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_11_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_11">
+                <span class="md-nav__icon md-icon">
+                </span>
+                RAG &amp; Vector Database
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_nanodb.html">
+                  <span class="md-ellipsis">
+                   NanoDB
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_llamaindex.html">
+                  <span class="md-ellipsis">
+                   LlamaIndex
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_jetson-copilot.html">
+                  <span class="md-ellipsis">
+                   Jetson Copilot
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" id="__nav_3_12" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_12" id="__nav_3_12_label" tabindex="0">
+               <span class="md-ellipsis">
+                SDK Integrations
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_12_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_12">
+                <span class="md-nav__icon md-icon">
+                </span>
+                SDK Integrations
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_holoscan.html">
+                  <span class="md-ellipsis">
+                   Holoscan SDK
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_jps.html">
+                  <span class="md-ellipsis">
+                   Jetson Platform Services
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_gapi_workflows.html">
+                  <span class="md-ellipsis">
+                   Gapi Workflows
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_gapi_microservices.html">
+                  <span class="md-ellipsis">
+                   Gapi Micro Services
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_ultralytics.html">
+                  <span class="md-ellipsis">
+                   Ultralytics YOLOv8
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item md-nav__item--nested">
+              <input class="md-nav__toggle md-toggle" id="__nav_3_13" type="checkbox"/>
+              <label class="md-nav__link" for="__nav_3_13" id="__nav_3_13_label" tabindex="0">
+               <span class="md-ellipsis">
+                Audio
+               </span>
+               <span class="md-nav__icon md-icon">
+               </span>
+              </label>
+              <nav aria-expanded="false" aria-labelledby="__nav_3_13_label" class="md-nav" data-md-level="2">
+               <label class="md-nav__title" for="__nav_3_13">
+                <span class="md-nav__icon md-icon">
+                </span>
+                Audio
+               </label>
+               <ul class="md-nav__list" data-md-scrollfix="">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_whisper.html">
+                  <span class="md-ellipsis">
+                   Whisper
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_audiocraft.html">
+                  <span class="md-ellipsis">
+                   AudioCraft
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="tutorial_voicecraft.html">
+                  <span class="md-ellipsis">
+                   VoiceCraft
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="benchmarks.html">
+            <span class="md-ellipsis">
+             Benchmarks
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="community_articles.html">
+            <span class="md-ellipsis">
+             Projects
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="research.html">
+            <span class="md-ellipsis">
+             Research Group
+            </span>
+           </a>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+         <label class="md-nav__title" for="__toc">
+          <span class="md-nav__icon md-icon">
+          </span>
+          Table of contents
+         </label>
+         <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#workshop-overview">
+            <span class="md-ellipsis">
+             Workshop overview
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#experience-thors-raw-power-with-120b-intelligence">
+            <span class="md-ellipsis">
+             🚀 Experience: Thor's Raw Power with 120B Intelligence
+            </span>
+           </a>
+           <nav aria-label="🚀 Experience: Thor's Raw Power with 120B Intelligence" class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#open-weight-models">
+               <span class="md-ellipsis">
+                Open Weight Models
+               </span>
+              </a>
+              <nav aria-label="Open Weight Models" class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#what-are-open-weights-models">
+                  <span class="md-ellipsis">
+                   What are Open Weights Models?**
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#why-this-matters-closed-vs-open-comparison">
+                  <span class="md-ellipsis">
+                   Why This Matters: Closed vs. Open Comparison
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#enter-gpt-oss-120b-game-changer">
+                  <span class="md-ellipsis">
+                   Enter GPT-OSS-120B: Game Changer 🎯
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#why-start-here">
+                  <span class="md-ellipsis">
+                   Why Start Here?
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#llm-inference-engine">
+               <span class="md-ellipsis">
+                LLM Inference Engine
+               </span>
+              </a>
+              <nav aria-label="LLM Inference Engine" class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#what-is-an-inference-engine">
+                  <span class="md-ellipsis">
+                   What is an Inference Engine?
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#what-is-llm-serving">
+                  <span class="md-ellipsis">
+                   What is LLM Serving?
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#popular-inference-engines">
+                  <span class="md-ellipsis">
+                   Popular Inference Engines
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#why-vllm-for-this-workshop">
+                  <span class="md-ellipsis">
+                   Why vLLM for This Workshop?
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#exercise-launch-your-first-120b-model">
+               <span class="md-ellipsis">
+                Exercise : Launch Your First 120B Model
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#1-starting-vllm-container">
+               <span class="md-ellipsis">
+                1️⃣ Starting vLLM container
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#2-set-tokenizer-encodings">
+               <span class="md-ellipsis">
+                2️⃣ Set Tokenizer Encodings
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#3-verify-pre-downloaded-model">
+               <span class="md-ellipsis">
+                3️⃣ Verify Pre-downloaded Model
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#4-launch-vllm-server">
+               <span class="md-ellipsis">
+                4️⃣ Launch vLLM Server
+               </span>
+              </a>
+              <nav aria-label="4️⃣ Launch vLLM Server" class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#stage-1-model-loading-35-seconds">
+                  <span class="md-ellipsis">
+                   Stage 1: Model Loading (~35 seconds)
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#stage-2-torch-compilation-45-seconds-longest-step">
+                  <span class="md-ellipsis">
+                   Stage 2: Torch Compilation (~45 seconds) 🐌 Longest step
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#stage-3-cuda-graph-capture-21-seconds">
+                  <span class="md-ellipsis">
+                   Stage 3: CUDA Graph Capture (~21 seconds)
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#stage-4-ready">
+                  <span class="md-ellipsis">
+                   Stage 4: Ready! 🏁
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#why-each-stage-matters">
+                  <span class="md-ellipsis">
+                   Why Each Stage Matters:
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#test-the-api-endpoints-optional">
+                  <span class="md-ellipsis">
+                   Test the API endpoints (Optional)
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#5-launch-open-webui">
+               <span class="md-ellipsis">
+                5️⃣ Launch Open WebUI
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#6-evaluate">
+               <span class="md-ellipsis">
+                6️⃣ Evaluate
+               </span>
+              </a>
+              <nav aria-label="6️⃣ Evaluate" class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#try-alternative-models">
+                  <span class="md-ellipsis">
+                   Try Alternative Models
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#evaluation-questions-to-consider">
+                  <span class="md-ellipsis">
+                   Evaluation Questions to Consider
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#7-stop-vllm-serving">
+               <span class="md-ellipsis">
+                7️⃣ Stop vLLM serving
+               </span>
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#optimize-precision-engineering-fp16-fp8-fp4">
+            <span class="md-ellipsis">
+             🔧 Optimize: Precision Engineering (FP16 → FP8 → FP4)
+            </span>
+           </a>
+           <nav aria-label="🔧 Optimize: Precision Engineering (FP16 → FP8 → FP4)" class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#1-test-fp16-model">
+               <span class="md-ellipsis">
+                1️⃣ Test FP16 model
+               </span>
+              </a>
+              <nav aria-label="1️⃣ Test FP16 model" class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#10-check-model-cache-and-size">
+                  <span class="md-ellipsis">
+                   1.0 Check model cache and size
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#11-serve">
+                  <span class="md-ellipsis">
+                   1.1 Serve
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#12-baseline-prompt-measurements">
+                  <span class="md-ellipsis">
+                   1.2 Baseline prompt &amp; measurements
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#2-fp8-quantization">
+               <span class="md-ellipsis">
+                2️⃣ FP8 Quantization
+               </span>
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#3-fp4-quantization">
+               <span class="md-ellipsis">
+                3️⃣ FP4 Quantization
+               </span>
+              </a>
+              <nav aria-label="3️⃣ FP4 Quantization" class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#31-relaunch-in-fp4">
+                  <span class="md-ellipsis">
+                   3.1 Relaunch in FP4
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#32-evaluate-fp4-perf-and-accuracy">
+                  <span class="md-ellipsis">
+                   3.2 Evaluate FP4 perf and accuracy
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#4-speculative-decoding">
+               <span class="md-ellipsis">
+                4️⃣ Speculative Decoding
+               </span>
+              </a>
+              <nav aria-label="4️⃣ Speculative Decoding" class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#41-relaunch-with-speculative-decoding">
+                  <span class="md-ellipsis">
+                   4.1 Relaunch with Speculative Decoding
+                  </span>
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#42-test-performance-and-quality">
+                  <span class="md-ellipsis">
+                   4.2 Test Performance and Quality
+                  </span>
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#troubleshooting">
+            <span class="md-ellipsis">
+             🚑 Troubleshooting
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#what-to-do-next">
+            <span class="md-ellipsis">
+             What to do next
+            </span>
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#appendix">
+            <span class="md-ellipsis">
+             Appendix
+            </span>
+           </a>
+           <nav aria-label="Appendix" class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#pre-workshop-setup-for-organizers">
+               <span class="md-ellipsis">
+                Pre-Workshop Setup (For Organizers)
+               </span>
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-content" data-md-component="content">
+      <article class="md-content__inner md-typeset">
+       <h1 id="from-ai-exploration-to-production-deployment">
+        From AI Exploration to Production Deployment
+       </h1>
+       <p>
+        <img align="right" alt="" src="images/jetson-agx-thor-family-key-visual-03-v002-eb-1k.jpg" width="30%"/>
+       </p>
+       <p>
+        <em>
+         Master inference optimization on Jetson Thor with vLLM
+        </em>
+       </p>
+       <blockquote>
+        <p>
+         Welcome! In this hands-on workshop, you’ll unlock truly high-performance,
+         <strong>
+          on-device
+         </strong>
+         generative AI using the new
+         <a href="https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-thor/">
+          <strong>
+           NVIDIA Jetson Thor
+          </strong>
+         </a>
+         .
+         <br/>
+         You’ll start by unleashing Thor's full potential with a state-of-the-art 120B model, then step through practical optimizations --
+         <strong>
+          FP8
+         </strong>
+         ,
+         <strong>
+          FP4
+         </strong>
+         , and
+         <strong>
+          speculative decoding
+         </strong>
+         -- measuring speed vs. quality at each stage.
+        </p>
+       </blockquote>
+       <h2 id="workshop-overview">
+        Workshop overview
+       </h2>
+       <div class="tabbed-set tabbed-alternate" data-tabs="1:2">
+        <input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"/>
+        <input id="__tabbed_1_2" name="__tabbed_1" type="radio"/>
+        <div class="tabbed-labels">
+         <label for="__tabbed_1_1">
+          <span class="twemoji">
+           <svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg">
+            <!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.-->
+            <path d="M128 96c0-35.3 28.7-64 64-64h352c35.3 0 64 28.7 64 64v240h-96v-16c0-17.7-14.3-32-32-32h-64c-17.7 0-32 14.3-32 32v16H254.9c10.9-18.8 17.1-40.7 17.1-64 0-70.7-57.3-128-128-128-5.4 0-10.8.3-16 1zm205 352c-5.1-24.2-16.3-46.1-32.1-64H608c0 35.3-28.7 64-64 64zM64 272a80 80 0 1 1 160 0 80 80 0 1 1-160 0M0 480c0-53 43-96 96-96h96c53 0 96 43 96 96 0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32">
+            </path>
+           </svg>
+          </span>
+          GTC DC 2025 Workshop 🌸
+         </label>
+         <label for="__tabbed_1_2">
+          <span class="twemoji">
+           <svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+            <!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.-->
+            <path d="M277.8 8.6c-12.3-11.4-31.3-11.4-43.5 0l-224 208c-9.6 9-12.8 22.9-8 35.1S18.8 272 32 272h16v176c0 35.3 28.7 64 64 64h288c35.3 0 64-28.7 64-64V272h16c13.2 0 25-8.1 29.8-20.3s1.6-26.2-8-35.1zM200 256a56 56 0 1 1 112 0 56 56 0 1 1-112 0m-56 176c0-44.2 35.8-80 80-80h64c44.2 0 80 35.8 80 80 0 8.8-7.2 16-16 16H160c-8.8 0-16-7.2-16-16">
+            </path>
+           </svg>
+          </span>
+          Self-paced
+         </label>
+        </div>
+        <div class="tabbed-content">
+         <div class="tabbed-block">
+          <p>
+           <span class="twemoji">
+            <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+             <path d="M4 20h14v2H4c-1.1 0-2-.9-2-2V6h2zM22 4v12c0 1.1-.9 2-2 2H8c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h12c1.1 0 2 .9 2 2m-2 0H8v12h12zm-2 2h-5v7l2.5-1.5L18 13z">
+             </path>
+            </svg>
+           </span>
+           <strong>
+            What you will learn
+           </strong>
+          </p>
+          <ul>
+           <li>
+            <strong>
+             Deploy production-grade LLM serving
+            </strong>
+            - Set up vLLM with OpenAI-compatible APIs on Thor hardware
+           </li>
+           <li>
+            <strong>
+             Master quantization strategies
+            </strong>
+            - Compare FP16 → FP8 → FP4 performance vs. quality trade-offs systematically
+           </li>
+           <li>
+            <strong>
+             Implement advanced optimizations
+            </strong>
+            - Apply speculative decoding and other techniques for maximum throughput
+           </li>
+          </ul>
+          <p>
+           <span class="twemoji">
+            <svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+             <!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.-->
+             <path d="M224 248a120 120 0 1 0 0-240 120 120 0 1 0 0 240m-29.7 56C95.8 304 16 383.8 16 482.3c0 16.4 13.3 29.7 29.7 29.7h356.6c16.4 0 29.7-13.3 29.7-29.7 0-98.5-79.8-178.3-178.3-178.3z">
+             </path>
+            </svg>
+           </span>
+           <strong>
+            Who is this for
+           </strong>
+          </p>
+          <ul>
+           <li>
+            Teams building edge applications/products (robots, kiosks, appliances) who need
+            <strong>
+             fast, private, API-compatible
+            </strong>
+            LLMs without cloud dependency.
+           </li>
+           <li>
+            Developers interested in learning inference optimizations
+           </li>
+          </ul>
+          <p>
+           <span class="twemoji">
+            <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+             <path d="M3 5v16h16v2H3c-1.1 0-2-.9-2-2V5zm18-4H7c-1.11 0-2 .89-2 2v14c0 1.1.9 2 2 2h14c1.11 0 2-.89 2-2V3c0-1.1-.9-2-2-2m0 16H7V3h14zm-10-3H8v2h3zm4 0h-3v2h3zm-4-3H8v2h3zm4 0h-3v2h3zm-4-3H8v2h3zm4 0h-3v2h3z">
+             </path>
+            </svg>
+           </span>
+           <strong>
+            What we provide
+           </strong>
+          </p>
+          <ul>
+           <li>
+            <strong>
+             Hardware
+            </strong>
+            : Jetson AGX Thor Developer Kit setup in rack
+            <ul>
+             <li>
+              Jetson HUD : To help you locate your device and monitor the hardware stats
+             </li>
+            </ul>
+           </li>
+           <li>
+            <strong>
+             Software
+            </strong>
+            : BSP pre-installed, Docker pre-setup
+            <ul>
+             <li>
+              <strong>
+               Containers
+              </strong>
+              : Container images pre-pulled (downloaded)
+             </li>
+             <li>
+              <strong>
+               Data
+              </strong>
+              : Some models are pre-downloaded (to save time for workshop)
+             </li>
+            </ul>
+           </li>
+           <li>
+            <strong>
+             Access
+            </strong>
+            : Headless, through the network (SSH + Web UI)
+            <ul>
+             <li>
+              Network topology
+             </li>
+            </ul>
+           </li>
+          </ul>
+          <p>
+           <img alt="" src="./images/jetson_thor_racks.jpg" width="50%"/>
+           <img alt="" src="./images/jetson_hud.jpg" width="40%"/>
+          </p>
+          <p>
+           <span class="twemoji">
+            <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+             <path d="M20 16V4H8v12zm2 0c0 1.1-.9 2-2 2H8c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h12c1.1 0 2 .9 2 2zm-6 4v2H4c-1.1 0-2-.9-2-2V7h2v13zM14.2 5q-1.35 0-2.1.6c-.5.4-.8 1-.8 1.8h1.9c0-.3.1-.5.3-.7.2-.1.4-.2.7-.2s.6.1.8.3.3.4.3.8c0 .3-.1.6-.2.8s-.4.4-.6.6c-.5.3-.9.6-1 .9-.4.2-.5.6-.5 1.1h2c0-.3 0-.6.1-.7.1-.2.3-.4.5-.5.4-.2.8-.5 1.1-.9.3-.5.5-.9.5-1.4 0-.8-.3-1.4-.8-1.8-.5-.5-1.3-.7-2.2-.7M13 12v2h2v-2z">
+             </path>
+            </svg>
+           </span>
+           <strong>
+            Need Help?
+           </strong>
+          </p>
+          <p>
+           Use the "Red-Cup, Blue-Cup" system:
+          </p>
+          <ul>
+           <li>
+            🔴
+            <strong>
+             Red cup on top
+            </strong>
+            : I need help from a TA
+           </li>
+           <li>
+            🔵
+            <strong>
+             Blue cup on top
+            </strong>
+            : I'm good to go (problem resolved)
+           </li>
+          </ul>
+         </div>
+         <div class="tabbed-block">
+          <p>
+           <span class="twemoji">
+            <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+             <path d="M4 20h14v2H4c-1.1 0-2-.9-2-2V6h2zM22 4v12c0 1.1-.9 2-2 2H8c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h12c1.1 0 2 .9 2 2m-2 0H8v12h12zm-2 2h-5v7l2.5-1.5L18 13z">
+             </path>
+            </svg>
+           </span>
+           <strong>
+            What you will learn
+           </strong>
+          </p>
+          <ul>
+           <li>
+            <strong>
+             Deploy production-grade LLM serving
+            </strong>
+            - Set up vLLM with OpenAI-compatible APIs on Thor hardware
+           </li>
+           <li>
+            <strong>
+             Master quantization strategies
+            </strong>
+            - Compare FP16 → FP8 → FP4 performance vs. quality trade-offs systematically
+           </li>
+           <li>
+            <strong>
+             Implement advanced optimizations
+            </strong>
+            - Apply speculative decoding and other techniques for maximum throughput
+           </li>
+          </ul>
+          <p>
+           <span class="twemoji">
+            <svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+             <!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.-->
+             <path d="M224 248a120 120 0 1 0 0-240 120 120 0 1 0 0 240m-29.7 56C95.8 304 16 383.8 16 482.3c0 16.4 13.3 29.7 29.7 29.7h356.6c16.4 0 29.7-13.3 29.7-29.7 0-98.5-79.8-178.3-178.3-178.3z">
+             </path>
+            </svg>
+           </span>
+           <strong>
+            Who is this for
+           </strong>
+          </p>
+          <ul>
+           <li>
+            Developer interested in learning how to use VLLM and learning inference optimizations.
+           </li>
+           <li>
+            Teams building edge applications/products (robots, kiosks, appliances) who need
+            <strong>
+             fast, private, API-compatible
+            </strong>
+            LLMs without cloud dependency.
+           </li>
+          </ul>
+          <p>
+           <span class="twemoji">
+            <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+             <path d="M3 5v16h16v2H3c-1.1 0-2-.9-2-2V5zm18-4H7c-1.11 0-2 .89-2 2v14c0 1.1.9 2 2 2h14c1.11 0 2-.89 2-2V3c0-1.1-.9-2-2-2m0 16H7V3h14zm-10-3H8v2h3zm4 0h-3v2h3zm-4-3H8v2h3zm4 0h-3v2h3zm-4-3H8v2h3zm4 0h-3v2h3z">
+             </path>
+            </svg>
+           </span>
+           <strong>
+            What You Need
+           </strong>
+          </p>
+          <ul>
+           <li>
+            <strong>
+             Hardware
+            </strong>
+            : Jetson AGX Thor Developer Kit
+           </li>
+           <li>
+            <strong>
+             Software
+            </strong>
+            : BSP installed (
+            <a href="https://docs.nvidia.com/jetson/agx-thor-devkit/user-guide/latest/quick_start.html">
+             Thor Getting Started
+            </a>
+            ), Docker setup (
+            <a href="https://docs.nvidia.com/jetson/agx-thor-devkit/user-guide/latest/setup_docker.html">
+             Thor link
+            </a>
+            ,
+            <a href="https://www.jetson-ai-lab.com/tips_ssd-docker.html#docker">
+             Orin link
+            </a>
+            )
+            <ul>
+             <li>
+              Containers: NGC's
+              <code>
+               vllm
+              </code>
+              container (
+              <a href="https://catalog.ngc.nvidia.com/orgs/nvidia/containers/vllm/tags?version=25.09-py3">
+               <code>
+                nvcr.io/nvidia/vllm:25.09-py3
+               </code>
+              </a>
+              ), Open WebUI official container(
+              <code>
+               ghcr.io/open-webui/open-webui:main
+              </code>
+              )
+             </li>
+            </ul>
+           </li>
+           <li>
+            <strong>
+             Access
+            </strong>
+            : Monitor-attached or Headless (SSH)
+           </li>
+          </ul>
+         </div>
+        </div>
+       </div>
+       <details class="info">
+        <summary>
+         Why Thor?
+        </summary>
+        <p>
+         Thor’s memory capacity enables
+         <strong>
+          large models
+         </strong>
+         and
+         <strong>
+          large context windows
+         </strong>
+         , allows
+         <strong>
+          serving multiple models concurrently
+         </strong>
+         , and supports
+         <strong>
+          high-concurrency batching
+         </strong>
+         on-device.
+        </p>
+        <details class="quote">
+         <summary>
+          Why not ...?
+         </summary>
+         <p>
+          Other platform could be used for this workshop, like
+          <strong>
+           DGX Spark
+          </strong>
+          , which also offer 128GB unified memory.
+          <br/>
+          Jetson provides more deployment ready platform for your products.
+         </p>
+        </details>
+       </details>
+       <hr/>
+       <h2 id="experience-thors-raw-power-with-120b-intelligence">
+        🚀 Experience: Thor's Raw Power with 120B Intelligence
+       </h2>
+       <div class="admonition note">
+        <p class="admonition-title">
+         The Open Weights Revolution 🔓
+        </p>
+        <h3 id="open-weight-models">
+         Open Weight Models
+        </h3>
+        <h4 id="what-are-open-weights-models">
+         What are Open Weights Models?**
+        </h4>
+        <p>
+         Unlike
+         <strong>
+          closed models
+         </strong>
+         (GPT-4, Claude, Gemini),
+         <strong>
+          open weights models
+         </strong>
+         give you:
+        </p>
+        <ul>
+         <li>
+          <strong>
+           Complete model access
+          </strong>
+          : Download and run locally
+         </li>
+         <li>
+          <strong>
+           Data privacy
+          </strong>
+          : Your data never leaves your device
+         </li>
+         <li>
+          <strong>
+           No API dependencies
+          </strong>
+          : Work offline, no rate limits
+         </li>
+         <li>
+          <strong>
+           Customization freedom
+          </strong>
+          : Fine-tune for your specific needs
+         </li>
+         <li>
+          <strong>
+           Cost control
+          </strong>
+          : No per-token charges
+         </li>
+        </ul>
+        <h4 id="why-this-matters-closed-vs-open-comparison">
+         Why This Matters: Closed vs. Open Comparison
+        </h4>
+        <table>
+         <thead>
+          <tr>
+           <th>
+            Aspect
+           </th>
+           <th>
+            Closed Models (GPT-4, etc.)
+           </th>
+           <th>
+            Open Weights Models
+           </th>
+          </tr>
+         </thead>
+         <tbody>
+          <tr>
+           <td>
+            <strong>
+             Privacy
+            </strong>
+           </td>
+           <td>
+            Data sent to external servers
+           </td>
+           <td>
+            Stays on your device
+           </td>
+          </tr>
+          <tr>
+           <td>
+            <strong>
+             Latency
+            </strong>
+           </td>
+           <td>
+            Network dependent
+           </td>
+           <td>
+            Local inference speed
+           </td>
+          </tr>
+          <tr>
+           <td>
+            <strong>
+             Availability
+            </strong>
+           </td>
+           <td>
+            Internet required
+           </td>
+           <td>
+            Works offline
+           </td>
+          </tr>
+          <tr>
+           <td>
+            <strong>
+             Customization
+            </strong>
+           </td>
+           <td>
+            Limited via prompts
+           </td>
+           <td>
+            Full fine-tuning possible
+           </td>
+          </tr>
+          <tr>
+           <td>
+            <strong>
+             Cost
+            </strong>
+           </td>
+           <td>
+            Pay per token/request
+           </td>
+           <td>
+            Hardware cost only
+           </td>
+          </tr>
+          <tr>
+           <td>
+            <strong>
+             Compliance
+            </strong>
+           </td>
+           <td>
+            External data handling
+           </td>
+           <td>
+            Full control
+           </td>
+          </tr>
+         </tbody>
+        </table>
+        <h4 id="enter-gpt-oss-120b-game-changer">
+         Enter GPT-OSS-120B: Game Changer 🎯
+        </h4>
+        <p>
+         <strong>
+          OpenAI's GPT-OSS-120B
+         </strong>
+         represents a breakthrough:
+        </p>
+        <ul>
+         <li>
+          <strong>
+           First major open weights model
+          </strong>
+          from OpenAI
+         </li>
+         <li>
+          <strong>
+           120 billion parameters
+          </strong>
+          of GPT-quality intelligence
+         </li>
+         <li>
+          <strong>
+           Massive compute requirements
+          </strong>
+          - needs serious hardware
+         </li>
+        </ul>
+        <p>
+         <strong>
+          The Thor Advantage:
+         </strong>
+        </p>
+        <ul>
+         <li>
+          <strong>
+           One of the few platforms
+          </strong>
+          capable of running GPT-OSS-120B at the edge
+         </li>
+         <li>
+          <strong>
+           Real-time inference
+          </strong>
+          without cloud dependencies
+         </li>
+         <li>
+          <strong>
+           Perfect for evaluation
+          </strong>
+          : Test if the model fits your domain
+         </li>
+         <li>
+          <strong>
+           Baseline assessment
+          </strong>
+          : Understand capabilities before fine-tuning
+         </li>
+        </ul>
+        <h4 id="why-start-here">
+         Why Start Here?
+        </h4>
+        <p>
+         Before you invest in fine-tuning or domain adaptation:
+        </p>
+        <ol>
+         <li>
+          <strong>
+           Domain Knowledge Check
+          </strong>
+          : Does the base model understand your field?
+         </li>
+         <li>
+          <strong>
+           Performance Baseline
+          </strong>
+          : How well does it perform out-of-the-box?
+         </li>
+         <li>
+          <strong>
+           Use Case Validation
+          </strong>
+          : Is this the right model architecture?
+         </li>
+         <li>
+          <strong>
+           Resource Planning
+          </strong>
+          : What hardware do you actually need?
+         </li>
+        </ol>
+        <p>
+         <strong>
+          Thor lets you answer these questions locally, privately, and immediately.
+         </strong>
+        </p>
+       </div>
+       <div class="admonition note">
+        <p class="admonition-title">
+         Understanding LLM Inference and Serving
+        </p>
+        <h3 id="llm-inference-engine">
+         LLM Inference Engine
+        </h3>
+        <h4 id="what-is-an-inference-engine">
+         What is an Inference Engine?
+        </h4>
+        <p>
+         An
+         <strong>
+          inference engine
+         </strong>
+         is specialized software that takes a trained AI model and executes it efficiently to generate predictions or responses.
+         <br/>
+         Think of it as the "runtime" for your AI model.
+        </p>
+        <p>
+         <strong>
+          Key responsibilities:
+         </strong>
+        </p>
+        <ul>
+         <li>
+          <strong>
+           Model loading
+          </strong>
+          : Reading model weights into memory
+         </li>
+         <li>
+          <strong>
+           Memory management
+          </strong>
+          : Optimizing GPU/CPU memory usage
+         </li>
+         <li>
+          <strong>
+           Request handling
+          </strong>
+          : Processing multiple concurrent requests
+         </li>
+         <li>
+          <strong>
+           Optimization
+          </strong>
+          : Applying techniques like quantization, batching, caching
+         </li>
+        </ul>
+        <h4 id="what-is-llm-serving">
+         What is LLM Serving?
+        </h4>
+        <p>
+         <strong>
+          LLM serving
+         </strong>
+         means making a large language model available as a service that applications can interact with through APIs.
+         <br/>
+         Instead of running the model directly in your application, you:
+        </p>
+        <ol>
+         <li>
+          <strong>
+           Deploy the model
+          </strong>
+          on a server (including Jetson Thor)
+         </li>
+         <li>
+          <strong>
+           Expose HTTP endpoints
+          </strong>
+          for requests
+         </li>
+         <li>
+          <strong>
+           Provide universal APIs
+          </strong>
+          (like OpenAI's format)
+         </li>
+         <li>
+          <strong>
+           Handle concurrent users
+          </strong>
+          efficiently
+         </li>
+        </ol>
+        <p>
+         <strong>
+          Benefits of serving vs. direct integration:
+         </strong>
+        </p>
+        <ul>
+         <li>
+          ✅
+          <strong>
+           Scalability
+          </strong>
+          : Handle multiple applications/users
+         </li>
+         <li>
+          ✅
+          <strong>
+           Resource sharing
+          </strong>
+          : One model serves many clients
+         </li>
+         <li>
+          ✅
+          <strong>
+           API standardization
+          </strong>
+          : Consistent interface across models
+         </li>
+         <li>
+          ✅
+          <strong>
+           Optimization
+          </strong>
+          : Specialized engines for maximum performance
+         </li>
+        </ul>
+        <h4 id="popular-inference-engines">
+         Popular Inference Engines
+        </h4>
+        <table>
+         <thead>
+          <tr>
+           <th>
+            Engine
+           </th>
+           <th>
+            Strengths
+           </th>
+           <th>
+            Best For
+           </th>
+          </tr>
+         </thead>
+         <tbody>
+          <tr>
+           <td>
+            <strong>
+             <a href="https://github.com/vllm-project/vllm">
+              vLLM
+             </a>
+            </strong>
+           </td>
+           <td>
+            High throughput, PagedAttention, OpenAI compatibility
+           </td>
+           <td>
+            Production serving, high concurrency
+           </td>
+          </tr>
+          <tr>
+           <td>
+            <strong>
+             <a href="https://github.com/sgl-project/sglang">
+              SGLang
+             </a>
+            </strong>
+           </td>
+           <td>
+            Structured generation, complex workflows, multi-modal
+           </td>
+           <td>
+            Advanced use cases, structured outputs
+           </td>
+          </tr>
+          <tr>
+           <td>
+            <strong>
+             <a href="https://ollama.com/">
+              Ollama
+             </a>
+            </strong>
+           </td>
+           <td>
+            Easy setup, local-first, model management
+           </td>
+           <td>
+            Development, personal use, quick prototyping
+           </td>
+          </tr>
+          <tr>
+           <td>
+            <strong>
+             <a href="https://github.com/ggml-org/llama.cpp">
+              llama.cpp
+             </a>
+            </strong>
+           </td>
+           <td>
+            CPU-focused, lightweight, quantization
+           </td>
+           <td>
+            Resource-constrained environments
+           </td>
+          </tr>
+          <tr>
+           <td>
+            <strong>
+             <a href="https://github.com/NVIDIA/TensorRT-LLM">
+              TensorRT-LLM
+             </a>
+            </strong>
+           </td>
+           <td>
+            Maximum performance, NVIDIA optimization
+           </td>
+           <td>
+            Latency-critical applications, Limited support for Jetson
+           </td>
+          </tr>
+          <tr>
+           <td>
+            <strong>
+             <a href="https://huggingface.co/docs/text-generation-inference/en/index">
+              Text Generation Inference
+             </a>
+            </strong>
+           </td>
+           <td>
+            HuggingFace integration, streaming
+           </td>
+           <td>
+            HuggingFace ecosystem
+           </td>
+          </tr>
+         </tbody>
+        </table>
+        <div class="admonition info">
+         <p class="admonition-title">
+          Ollama ↔ llama.cpp Relationship
+         </p>
+         <p>
+          <strong>
+           Ollama
+          </strong>
+          is built on top of
+          <strong>
+           llama.cpp
+          </strong>
+          as its inference engine. Think of it as:
+         </p>
+         <ul>
+          <li>
+           <strong>
+            llama.cpp
+           </strong>
+           : The low-level inference engine (C++ implementation)
+          </li>
+          <li>
+           <strong>
+            Ollama
+           </strong>
+           : The user-friendly wrapper with model management, API server, and easy installation
+          </li>
+         </ul>
+         <p>
+          Ollama handles downloading models, managing versions, and providing a simple API, while llama.cpp does the actual inference work underneath. This is why they're often used together - Ollama for convenience, llama.cpp for the core performance.
+         </p>
+        </div>
+        <h4 id="why-vllm-for-this-workshop">
+         Why vLLM for This Workshop?
+        </h4>
+        <p>
+         <strong>
+          vLLM excels at production-grade serving:
+         </strong>
+        </p>
+        <ul>
+         <li>
+          🚀
+          <strong>
+           PagedAttention
+          </strong>
+          : Revolutionary memory management for high throughput
+         </li>
+         <li>
+          🔌
+          <strong>
+           OpenAI compatibility
+          </strong>
+          : Drop-in replacement for existing applications
+         </li>
+         <li>
+          ⚡
+          <strong>
+           Advanced optimizations
+          </strong>
+          : Continuous batching, speculative decoding, quantization
+         </li>
+         <li>
+          🎯
+          <strong>
+           Thor optimization
+          </strong>
+          : NVIDIA provides and maintains vllm containers on (
+          <a href="https://catalog.ngc.nvidia.com/orgs/nvidia/containers/vllm/tags?version=25.09-py3">
+           NGC
+          </a>
+          )
+         </li>
+         <li>
+          📊
+          <strong>
+           Production ready
+          </strong>
+          : Built for real-world deployment scenarios
+         </li>
+        </ul>
+        <p>
+         <strong>
+          Perfect for learning inference optimization
+         </strong>
+         because you can see the impact of each technique (FP8, FP4, speculative decoding) on real performance metrics.
+        </p>
+       </div>
+       <h3 id="exercise-launch-your-first-120b-model">
+        Exercise : Launch Your First 120B Model
+       </h3>
+       <p>
+        Ready to experience Thor's raw power?
+        <br/>
+        In this exercise, you'll launch OpenAI's GPT-OSS-120B model locally using vLLM. Follow the steps below to get your local AI powerhouse running 💪.
+       </p>
+       <h3 id="1-starting-vllm-container">
+        1️⃣ Starting vLLM container
+       </h3>
+       <p>
+        Start running the vLLM container (provided by NVIDIA on NGC).
+        <br/>
+        We mount some local (on host) directories for making models downloaded persist and re-using cache:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-it<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--network<span class="w"> </span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--shm-size<span class="o">=</span>16g<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--ulimit<span class="w"> </span><span class="nv">memlock</span><span class="o">=</span>-1<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--ulimit<span class="w"> </span><span class="nv">stack</span><span class="o">=</span><span class="m">67108864</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--runtime<span class="o">=</span>nvidia<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--name<span class="o">=</span>vllm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span><span class="nv">$HOME</span>/data/models/huggingface:/root/.cache/huggingface<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span><span class="nv">$HOME</span>/data/vllm_cache:/root/.cache/vllm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>nvcr.io/nvidia/vllm:25.09-py3
+</code></pre>
+       </div>
+       <p>
+        <strong>
+         Key mount points:
+        </strong>
+       </p>
+       <table>
+        <thead>
+         <tr>
+          <th>
+           Host Path
+          </th>
+          <th>
+           Container Path
+          </th>
+          <th>
+           Purpose
+          </th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr>
+          <td>
+           <code>
+            $HOME/data/models/huggingface
+           </code>
+          </td>
+          <td>
+           <code>
+            /root/.cache/huggingface
+           </code>
+          </td>
+          <td>
+           Model weights cache
+          </td>
+         </tr>
+         <tr>
+          <td>
+           <code>
+            $HOME/data/vllm_cache
+           </code>
+          </td>
+          <td>
+           <code>
+            /root/.cache/vllm
+           </code>
+          </td>
+          <td>
+           Torch compilation cache
+          </td>
+         </tr>
+        </tbody>
+       </table>
+       <h3 id="2-set-tokenizer-encodings">
+        2️⃣ Set Tokenizer Encodings
+       </h3>
+       <p>
+        Configure the required tokenizer files for GPT-OSS models:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>mkdir<span class="w"> </span>/etc/encodings
+wget<span class="w"> </span>https://openaipublic.blob.core.windows.net/encodings/cl100k_base.tiktoken<span class="w"> </span>-O<span class="w"> </span>/etc/encodings/cl100k_base.tiktoken
+wget<span class="w"> </span>https://openaipublic.blob.core.windows.net/encodings/o200k_base.tiktoken<span class="w"> </span>-O<span class="w"> </span>/etc/encodings/o200k_base.tiktoken
+<span class="nb">export</span><span class="w"> </span><span class="nv">TIKTOKEN_ENCODINGS_BASE</span><span class="o">=</span>/etc/encodings
+</code></pre>
+       </div>
+       <details class="info">
+        <summary>
+         About This Workaround
+        </summary>
+        <p>
+         This tokenizer configuration is required for GPT-OSS models to avoid
+         <code>
+          HarmonyError: error downloading or loading vocab file
+         </code>
+         errors. The solution involves:
+        </p>
+        <ul>
+         <li>
+          <strong>
+           Pre-downloading tiktoken files
+          </strong>
+          from OpenAI's public blob storage
+         </li>
+         <li>
+          <strong>
+           Setting TIKTOKEN_ENCODINGS_BASE
+          </strong>
+          environment variable to point to local files
+         </li>
+         <li>
+          <strong>
+           Avoiding network dependency
+          </strong>
+          during model initialization
+         </li>
+        </ul>
+        <p>
+         <strong>
+          Related Resources:
+         </strong>
+        </p>
+        <ul>
+         <li>
+          <strong>
+           <a href="https://github.com/vllm-project/vllm/issues/22525">
+            vLLM Issue #22525
+           </a>
+          </strong>
+          - Official GitHub issue documenting this exact error with GPT-OSS models
+         </li>
+         <li>
+          <a href="https://docs.vllm.ai/">
+           vLLM Official Documentation
+          </a>
+          - General vLLM configuration and troubleshooting
+         </li>
+         <li>
+          <a href="https://github.com/vllm-project/vllm/issues">
+           vLLM GitHub Issues
+          </a>
+          - Community solutions and discussions
+         </li>
+         <li>
+          <a href="https://github.com/openai/tiktoken">
+           OpenAI Tiktoken Repository
+          </a>
+          - Tokenizer implementation details
+         </li>
+        </ul>
+        <p>
+         This workaround is particularly important for air-gapped environments or when OpenAI's blob storage is inaccessible.
+        </p>
+       </details>
+       <h3 id="3-verify-pre-downloaded-model">
+        3️⃣ Verify Pre-downloaded Model
+       </h3>
+       <p>
+        Inside the container, check if the model is available:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><span class="c1"># Check if model is available</span>
+ls<span class="w"> </span>-la<span class="w"> </span>/root/.cache/huggingface/hub/models--openai--gpt-oss-120b/
+du<span class="w"> </span>-h<span class="w"> </span>/root/.cache/huggingface/hub/models--openai--gpt-oss-120b/
+<span class="c1"># Should show ~122GB - no download needed!</span>
+</code></pre>
+       </div>
+       <p>
+        Even if you don't find the pre-downloaded models you can skip ahead to the next step.
+vLLM downloads the model automatically.
+       </p>
+       <h3 id="4-launch-vllm-server">
+        4️⃣ Launch vLLM Server
+       </h3>
+       <p>
+        Start the vLLM inference server:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>vllm<span class="w"> </span>serve<span class="w"> </span>openai/gpt-oss-120b
+</code></pre>
+       </div>
+       <p>
+        <strong>
+         What happens next:
+        </strong>
+       </p>
+       <p>
+        The vLLM serve command will take approximately
+        <strong>
+         2.5 minutes
+        </strong>
+        to complete startup on Thor. Watch for the final "Application startup complete" message to know when it's ready!
+       </p>
+       <details class="note">
+        <summary>
+         Why vLLM Startup Takes Time
+        </summary>
+        <p>
+         <strong>
+          Understanding the ~2.5 minute startup sequence:
+         </strong>
+        </p>
+        <h4 id="stage-1-model-loading-35-seconds">
+         Stage 1: Model Loading (~35 seconds)
+        </h4>
+        <div class="highlight">
+         <pre><span></span><code>Parse safetensors files: 100%|████████████████████| 15/15 [00:01&lt;00:00, 14.70it/s]
+Loading safetensors checkpoint shards: 100%|████████████████████| 15/15 [00:24&lt;00:00,  1.64s/it]
+INFO: Loading weights took 24.72 seconds
+</code></pre>
+        </div>
+        <p>
+         <strong>
+          What's happening:
+         </strong>
+        </p>
+        <ul>
+         <li>
+          💿
+          <strong>
+           Reading 122GB of model weights
+          </strong>
+          from storage into GPU memory
+         </li>
+         <li>
+          🗃️
+          <strong>
+           Parsing 15 safetensors files
+          </strong>
+          containing the neural network parameters
+         </li>
+         <li>
+          📥
+          <strong>
+           Memory allocation
+          </strong>
+          on Thor's 128GB unified memory
+         </li>
+         <li>
+          💵
+          <strong>
+           Fast with pre-cache
+          </strong>
+          (vs. hours without!)
+         </li>
+        </ul>
+        <h4 id="stage-2-torch-compilation-45-seconds-longest-step">
+         Stage 2: Torch Compilation (~45 seconds) 🐌
+         <strong>
+          Longest step
+         </strong>
+        </h4>
+        <div class="highlight">
+         <pre><span></span><code>INFO: torch.compile takes 45.2s in total for 1 model(s)
+</code></pre>
+        </div>
+        <p>
+         <strong>
+          What's happening:
+         </strong>
+        </p>
+        <ul>
+         <li>
+          🔧
+          <strong>
+           Kernel optimization
+          </strong>
+          : PyTorch compiles custom CUDA kernels for Thor's GPU
+         </li>
+         <li>
+          ⚡
+          <strong>
+           Performance tuning
+          </strong>
+          : Creates optimized inference paths for this specific model
+         </li>
+         <li>
+          💾
+          <strong>
+           Cache generation
+          </strong>
+          : Saves compiled kernels to
+          <code>
+           /root/.cache/vllm
+          </code>
+          for future use
+         </li>
+         <li>
+          🎯
+          <strong>
+           One-time cost
+          </strong>
+          : Subsequent startups reuse this compilation cache
+         </li>
+        </ul>
+        <p>
+         <strong>
+          Workshop Optimization Strategy:
+         </strong>
+        </p>
+        <p>
+         For workshops, this compilation step can be pre-warmed to reduce startup time:
+        </p>
+        <ul>
+         <li>
+          <strong>
+           Pre-workshop setup
+          </strong>
+          : Organizers run vLLM once to generate compilation cache (~2GB)
+         </li>
+         <li>
+          <strong>
+           Cache distribution
+          </strong>
+          : Copy
+          <code>
+           /root/.cache/vllm
+          </code>
+          to all workshop units using
+          <code>
+           rsync
+          </code>
+         </li>
+         <li>
+          <strong>
+           Volume mount
+          </strong>
+          : Workshop containers mount pre-warmed cache with
+          <code>
+           -v $HOME/data/vllm_cache:/root/.cache/vllm
+          </code>
+         </li>
+         <li>
+          <strong>
+           Result
+          </strong>
+          : Stage 2 drops from ~45 seconds to ~5 seconds with pre-warmed cache!
+         </li>
+        </ul>
+        <p>
+         <strong>
+          Alternative for quick demos
+         </strong>
+         : Use
+         <code>
+          --compilation-config '{"level": 0}'
+         </code>
+         to reduce optimization for faster startup (~60s total vs ~150s)
+        </p>
+        <h4 id="stage-3-cuda-graph-capture-21-seconds">
+         Stage 3: CUDA Graph Capture (~21 seconds)
+        </h4>
+        <div class="highlight">
+         <pre><span></span><code>INFO: Graph capturing finished in 21.0 secs
+</code></pre>
+        </div>
+        <p>
+         <strong>
+          What's happening:
+         </strong>
+        </p>
+        <ul>
+         <li>
+          📊
+          <strong>
+           Execution graph recording
+          </strong>
+          : Captures the inference computation flow
+         </li>
+         <li>
+          🚀
+          <strong>
+           GPU optimization
+          </strong>
+          : Pre-allocates memory and optimizes kernel launches
+         </li>
+         <li>
+          ⚡
+          <strong>
+           Batching preparation
+          </strong>
+          : Sets up efficient request batching mechanisms
+         </li>
+        </ul>
+        <h4 id="stage-4-ready">
+         Stage 4: Ready! 🏁
+        </h4>
+        <div class="highlight">
+         <pre><span></span><code>(APIServer pid=92) INFO:     Waiting for application startup.
+(APIServer pid=92) INFO:     Application startup complete.
+</code></pre>
+        </div>
+        <p>
+         <strong>
+          What's happening:
+         </strong>
+        </p>
+        <ul>
+         <li>
+          🎯
+          <strong>
+           Final initialization
+          </strong>
+          : API server completes startup sequence
+         </li>
+         <li>
+          🌐
+          <strong>
+           Endpoints active
+          </strong>
+          : HTTP server begins accepting requests on port 8000
+         </li>
+         <li>
+          ✅
+          <strong>
+           Ready for inference
+          </strong>
+          : Model is fully loaded and optimized
+         </li>
+        </ul>
+        <h4 id="why-each-stage-matters">
+         Why Each Stage Matters:
+        </h4>
+        <ul>
+         <li>
+          <strong>
+           Stage 1
+          </strong>
+          enables the model to run at all
+         </li>
+         <li>
+          <strong>
+           Stage 2
+          </strong>
+          makes inference fast (without this, responses would be much slower)
+         </li>
+         <li>
+          <strong>
+           Stage 3
+          </strong>
+          enables high-throughput concurrent requests
+         </li>
+         <li>
+          <strong>
+           Stage 4
+          </strong>
+          confirms everything is ready for your first chat!
+         </li>
+        </ul>
+       </details>
+       <h4 id="test-the-api-endpoints-optional">
+        Test the API endpoints (Optional)
+       </h4>
+       <p>
+        Test your vLLM server is working:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><span class="c1"># Check available models</span>
+curl<span class="w"> </span>http://localhost:8000/v1/models
+
+<span class="c1"># Test chat completion</span>
+curl<span class="w"> </span>http://localhost:8000/v1/chat/completions<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">'{</span>
+<span class="s1">    "model": "openai/gpt-oss-120b",</span>
+<span class="s1">    "messages": [{"role": "user", "content": "Hello! Tell me about Jetson Thor."}],</span>
+<span class="s1">    "max_tokens": 100</span>
+<span class="s1">  }'</span>
+</code></pre>
+       </div>
+       <details class="note">
+        <summary>
+         Understanding the Serving Architecture
+        </summary>
+        <p>
+         <strong>
+          What does "serve" mean?
+         </strong>
+        </p>
+        <p>
+         When vLLM "serves" a model, it:
+        </p>
+        <ul>
+         <li>
+          ✅
+          <strong>
+           Loads the model
+          </strong>
+          into GPU memory (GPT-OSS-120B)
+         </li>
+         <li>
+          ✅
+          <strong>
+           Creates an API server
+          </strong>
+          listening on port 8000
+         </li>
+         <li>
+          ✅
+          <strong>
+           Exposes HTTP endpoints
+          </strong>
+          for inference requests
+         </li>
+         <li>
+          ✅
+          <strong>
+           Handles concurrent requests
+          </strong>
+          with optimized batching
+         </li>
+        </ul>
+        <p>
+         <strong>
+          What is vLLM exposing?
+         </strong>
+        </p>
+        <p>
+         vLLM creates a
+         <strong>
+          REST API server
+         </strong>
+         at
+         <code>
+          http://localhost:8000
+         </code>
+         with endpoints like:
+        </p>
+        <ul>
+         <li>
+          <code>
+           /v1/chat/completions
+          </code>
+          - Chat-style conversations
+         </li>
+         <li>
+          <code>
+           /v1/completions
+          </code>
+          - Text completion
+         </li>
+         <li>
+          <code>
+           /v1/models
+          </code>
+          - List available models
+         </li>
+         <li>
+          <code>
+           /health
+          </code>
+          - Server health check
+         </li>
+        </ul>
+        <p>
+         <strong>
+          OpenAI-Compatible Endpoint
+         </strong>
+        </p>
+        <p>
+         vLLM implements the
+         <strong>
+          same API format
+         </strong>
+         as OpenAI's GPT models:
+        </p>
+        <ul>
+         <li>
+          ✅
+          <strong>
+           Same request format
+          </strong>
+          - JSON with
+          <code>
+           messages
+          </code>
+          ,
+          <code>
+           model
+          </code>
+          ,
+          <code>
+           max_tokens
+          </code>
+         </li>
+         <li>
+          ✅
+          <strong>
+           Same response format
+          </strong>
+          - Structured JSON responses
+         </li>
+         <li>
+          ✅
+          <strong>
+           Drop-in replacement
+          </strong>
+          - Existing OpenAI code works unchanged
+         </li>
+         <li>
+          ✅
+          <strong>
+           Local inference
+          </strong>
+          - No data leaves your device
+         </li>
+        </ul>
+       </details>
+       <h3 id="5-launch-open-webui">
+        5️⃣ Launch Open WebUI
+       </h3>
+       <p>
+        Start the web interface for easy interaction:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-v<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/open-webui:/app/backend/data<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-e<span class="w"> </span><span class="nv">OPENAI_API_BASE_URL</span><span class="o">=</span>http://0.0.0.0:8000/v1<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--name<span class="w"> </span>open-webui<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>ghcr.io/open-webui/open-webui:main
+</code></pre>
+       </div>
+       <p>
+        <strong>
+         Access the interface:
+        </strong>
+       </p>
+       <ol>
+        <li>
+         Open your browser to
+         <code>
+          http://localhost:8080
+         </code>
+        </li>
+        <li>
+         Create an account (stored locally)
+        </li>
+        <li>
+         Start chatting with your local 120B model!
+        </li>
+       </ol>
+       <p>
+        <img alt="" src="./images/vllm_openwebui_dc.png" style="box-shadow: 0 4px 8px rgba(0,0,0,0.3); border-radius: 8px;"/>
+       </p>
+       <div class="admonition info">
+        <p class="admonition-title">
+         Info
+        </p>
+        <p>
+         Check out
+         <a href="tutorial_openwebui.html">
+          Open WebUI tutorial
+         </a>
+         on Jetson AI Lab.
+        </p>
+       </div>
+       <details class="note">
+        <summary>
+         About Open WebUI
+        </summary>
+        <p>
+         <strong>
+          What role does Open WebUI play?
+         </strong>
+        </p>
+        <p>
+         Open WebUI is a
+         <strong>
+          web-based chat interface
+         </strong>
+         that:
+        </p>
+        <ul>
+         <li>
+          🌐
+          <strong>
+           Provides a familiar ChatGPT-like UI
+          </strong>
+          in your browser
+         </li>
+         <li>
+          🔌
+          <strong>
+           Connects to your local vLLM server
+          </strong>
+          (not OpenAI's servers)
+         </li>
+         <li>
+          💬
+          <strong>
+           Handles conversations
+          </strong>
+          with chat history and context
+         </li>
+         <li>
+          🎛️
+          <strong>
+           Offers model controls
+          </strong>
+          (temperature, max tokens, etc.)
+         </li>
+         <li>
+          📊
+          <strong>
+           Shows performance metrics
+          </strong>
+          (tokens/sec, response time)
+         </li>
+        </ul>
+        <p>
+         <strong>
+          Architecture Flow:
+         </strong>
+        </p>
+        <div class="highlight">
+         <pre><span></span><code>You → Open WebUI (Browser) → vLLM Server → GPT-OSS-120B → Response
+</code></pre>
+        </div>
+        <p>
+         <strong>
+          Key Benefits:
+         </strong>
+        </p>
+        <ul>
+         <li>
+          🔒
+          <strong>
+           Complete privacy
+          </strong>
+          - No data sent to external servers
+         </li>
+         <li>
+          ⚡
+          <strong>
+           Local performance
+          </strong>
+          - Thor's inference speed
+         </li>
+         <li>
+          🎯
+          <strong>
+           Production testing
+          </strong>
+          - Real application interface
+         </li>
+         <li>
+          📈
+          <strong>
+           Performance monitoring
+          </strong>
+          - See actual tokens/sec
+         </li>
+        </ul>
+       </details>
+       <h3 id="6-evaluate">
+        6️⃣ Evaluate
+       </h3>
+       <p>
+        Interact with OpenAI's gpt-oss-120b model!
+        <br/>
+       </p>
+       <p>
+        This is your chance to evaluate the accuracy, generalizability, and the performance of the model.
+        <br/>
+        Use Open WebUI to test different scenarios and see how Thor handles this massive 120B parameter model.
+       </p>
+       <details class="note">
+        <summary>
+         Suggested Evaluation Methods
+        </summary>
+        <p>
+         <strong>
+          🧠 Domain Knowledge Testing
+         </strong>
+        </p>
+        <p>
+         Try prompts from your specific domain to see if the base model understands your field:
+        </p>
+        <ul>
+         <li>
+          <strong>
+           Technical
+          </strong>
+          : "Explain the differences between ROS1 and ROS2 for robotics development"
+         </li>
+         <li>
+          <strong>
+           Scientific
+          </strong>
+          : "What are the key considerations for autonomous vehicle sensor fusion?"
+         </li>
+         <li>
+          <strong>
+           Business
+          </strong>
+          : "Outline a go-to-market strategy for an edge AI product"
+         </li>
+         <li>
+          <strong>
+           Creative
+          </strong>
+          : "Write a technical blog post about deploying AI at the edge"
+         </li>
+        </ul>
+        <p>
+         <strong>
+          ⚡ Performance Monitoring
+         </strong>
+        </p>
+        <p>
+         Watch the Open WebUI interface for key metrics:
+        </p>
+        <ul>
+         <li>
+          <strong>
+           Time-to-First-Token (TTFT)
+          </strong>
+          : How quickly does the first word appear?
+         </li>
+         <li>
+          <strong>
+           Tokens/second
+          </strong>
+          : What's the sustained generation speed?
+         </li>
+         <li>
+          <strong>
+           Response quality
+          </strong>
+          : Is the output coherent and relevant?
+         </li>
+         <li>
+          <strong>
+           Context handling
+          </strong>
+          : Try longer conversations to test memory
+         </li>
+        </ul>
+        <p>
+         <strong>
+          🎯 Capability Assessment
+         </strong>
+        </p>
+        <p>
+         Test different types of tasks:
+        </p>
+        <ul>
+         <li>
+          <strong>
+           Reasoning
+          </strong>
+          : Multi-step problem solving
+         </li>
+         <li>
+          <strong>
+           Code generation
+          </strong>
+          : Write Python scripts or explain algorithms
+         </li>
+         <li>
+          <strong>
+           Analysis
+          </strong>
+          : Summarize complex technical documents
+         </li>
+         <li>
+          <strong>
+           Instruction following
+          </strong>
+          : Give specific formatting requirements
+         </li>
+        </ul>
+        <h4 id="try-alternative-models">
+         Try Alternative Models
+        </h4>
+        <p>
+         <strong>
+          GPT-OSS-20B (Faster Alternative)
+         </strong>
+        </p>
+        <p>
+         If you want to compare performance vs. capability trade-offs:
+        </p>
+        <p>
+         Stop the current model serving by hitting
+         <span class="keys">
+          <kbd class="key-control">
+           Ctrl
+          </kbd>
+          <span>
+           +
+          </span>
+          <kbd class="key-c">
+           C
+          </kbd>
+         </span>
+         , then start a new model serving.
+        </p>
+        <div class="highlight">
+         <pre><span></span><code><span class="c1"># Inside container</span>
+vllm<span class="w"> </span>serve<span class="w"> </span>openai/gpt-oss-20b
+</code></pre>
+        </div>
+        <p>
+         <strong>
+          Other Popular Models to Explore
+         </strong>
+        </p>
+        <ul>
+         <li>
+          <strong>
+           Llama-3.1-70B-Instruct
+          </strong>
+          : Meta's flagship model
+         </li>
+         <li>
+          <strong>
+           Qwen2.5-72B-Instruct
+          </strong>
+          : Strong multilingual capabilities
+         </li>
+         <li>
+          <strong>
+           Mixtral-8x22B-Instruct-v0.1
+          </strong>
+          : Mixture of experts architecture
+         </li>
+        </ul>
+        <h4 id="evaluation-questions-to-consider">
+         Evaluation Questions to Consider
+        </h4>
+        <p>
+         As you interact with the model, think about:
+        </p>
+        <ul>
+         <li>
+          <strong>
+           Is this model suitable for my use case?
+          </strong>
+          Does it understand your domain well enough?
+         </li>
+         <li>
+          <strong>
+           What's the performance vs. quality trade-off?
+          </strong>
+          Could a smaller model work just as well?
+         </li>
+         <li>
+          <strong>
+           How does local inference compare to cloud APIs?
+          </strong>
+          Consider latency, privacy, and cost
+         </li>
+         <li>
+          <strong>
+           What would fine-tuning add?
+          </strong>
+          Identify gaps that domain-specific training could fill
+         </li>
+        </ul>
+       </details>
+       <h3 id="7-stop-vllm-serving">
+        7️⃣ Stop vLLM serving
+       </h3>
+       <p>
+        You can continue to the next section "Optimize" by just stopping the current model serving by hitting
+        <span class="keys">
+         <kbd class="key-control">
+          Ctrl
+         </kbd>
+         <span>
+          +
+         </span>
+         <kbd class="key-c">
+          C
+         </kbd>
+        </span>
+        and keeping the container running.
+       </p>
+       <p>
+        However,
+        <strong>
+         even when just stopping the vLLM serving process
+        </strong>
+        , you need to clear GPU memory to make it available for the next model.
+       </p>
+       <ol>
+        <li>
+         <p>
+          <strong>
+           Stop the vLLM serving:
+          </strong>
+         </p>
+         <p>
+          Press
+          <span class="keys">
+           <kbd class="key-control">
+            Ctrl
+           </kbd>
+           <span>
+            +
+           </span>
+           <kbd class="key-c">
+            C
+           </kbd>
+          </span>
+          on the terminal where you ran
+          <code>
+           vllm serve
+          </code>
+          command.
+         </p>
+        </li>
+        <li>
+         <p>
+          <strong>
+           ⚠️ CRITICAL: Clear GPU memory cache (Workaround)
+          </strong>
+         </p>
+         <p>
+          Due to the vLLM limitation, run this command on the
+          <strong>
+           HOST
+          </strong>
+          (outside the container):
+         </p>
+         <div class="highlight">
+          <pre><span></span><code>sudo<span class="w"> </span>sysctl<span class="w"> </span>-w<span class="w"> </span>vm.drop_caches<span class="o">=</span><span class="m">3</span>
+</code></pre>
+         </div>
+        </li>
+        <li>
+         <p>
+          <strong>
+           Verify memory cleared:
+          </strong>
+         </p>
+         <div class="highlight">
+          <pre><span></span><code>jtop
+<span class="c1"># GPU memory should drop to baseline (~3-6GB)</span>
+</code></pre>
+         </div>
+         <p>
+          <video autoplay="" controls="" width="100%">
+           <source src="./images/workaround_drop_caches_h264_720p.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+           </source>
+          </video>
+         </p>
+        </li>
+       </ol>
+       <div class="admonition warning">
+        <p class="admonition-title">
+         Why This Workaround is Always Needed (For Now)
+        </p>
+        <p>
+         <strong>
+          This is an interim measure
+         </strong>
+         due to a current vLLM bug/limitation where GPU memory cache is not properly released when stopping the serving process.
+        </p>
+        <p>
+         Without this workaround, you may see 26GB+ of GPU memory still allocated, which prevents new models from loading in the optimization section.
+        </p>
+        <p>
+         📋
+         <strong>
+          See detailed explanation:
+         </strong>
+         <a href="#critical-gpu-memory-not-released-after-stopping-vllm">
+          🚑 Troubleshooting → GPU Memory Not Released
+         </a>
+        </p>
+        <p>
+         <strong>
+          Expected Future:
+         </strong>
+         This workaround will become unnecessary once vLLM fixes the memory management issue in future releases.
+        </p>
+       </div>
+       <hr/>
+       <h2 id="optimize-precision-engineering-fp16-fp8-fp4">
+        🔧 Optimize: Precision Engineering (FP16 → FP8 → FP4)
+       </h2>
+       <p>
+        Now that you've experienced Thor's raw power with the 120B model, it's time to dive into the
+        <strong>
+         real engineering work
+        </strong>
+        of model deployment optimization.
+        <br/>
+        In this section, we'll systematically explore how to balance
+        <strong>
+         performance vs. quality
+        </strong>
+        through precision engineering—taking a production-ready model through FP16 → FP8 → FP4 quantization while measuring the impact at each step.
+       </p>
+       <p>
+        We'll use
+        <strong>
+         Llama-3.1-8B-Instruct (FP16)
+        </strong>
+        as our baseline.
+       </p>
+       <h3 id="1-test-fp16-model">
+        1️⃣ Test FP16 model
+       </h3>
+       <h4 id="10-check-model-cache-and-size">
+        1.0 Check model cache and size
+       </h4>
+       <p>
+        First, let's examine the FP16 model to understand its memory footprint:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><span class="c1"># Check the cached model location and size</span>
+ls<span class="w"> </span>-la<span class="w"> </span><span class="nv">$HOME</span>/data/models/huggingface/hub/models--meta-llama--Llama-3.1-8B-Instruct/
+
+<span class="c1"># Get detailed size breakdown</span>
+du<span class="w"> </span>-h<span class="w"> </span><span class="nv">$HOME</span>/data/models/huggingface/hub/models--meta-llama--Llama-3.1-8B-Instruct/
+
+<span class="c1"># Check individual model weight files (stored as hash-named blobs)</span>
+ls<span class="w"> </span>-lh<span class="w"> </span><span class="nv">$HOME</span>/data/models/huggingface/hub/models--meta-llama--Llama-3.1-8B-Instruct/blobs/
+
+<span class="c1"># Alternative: Check the actual model files in snapshots directory</span>
+find<span class="w"> </span><span class="nv">$HOME</span>/data/models/huggingface/hub/models--meta-llama--Llama-3.1-8B-Instruct/snapshots/<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-name<span class="w"> </span><span class="s2">"*.safetensors"</span><span class="w"> </span>-exec<span class="w"> </span>ls<span class="w"> </span>-lh<span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+</code></pre>
+       </div>
+       <p>
+        <strong>
+         Expected output:
+        </strong>
+       </p>
+       <ul>
+        <li>
+         <strong>
+          Total model size
+         </strong>
+         : ~30GB (15GB actual + 15GB in snapshots - HuggingFace cache structure)
+        </li>
+        <li>
+         <strong>
+          Actual model weights
+         </strong>
+         : ~15GB in FP16 precision
+        </li>
+        <li>
+         <strong>
+          4 safetensors files
+         </strong>
+         : Each ~4GB containing the neural network weights (stored as hash-named blobs)
+        </li>
+        <li>
+         <strong>
+          Memory bandwidth impact
+         </strong>
+         : Every token generation requires accessing these 15GB of weights
+        </li>
+       </ul>
+       <details class="note">
+        <summary>
+         HuggingFace Cache Structure
+        </summary>
+        <p>
+         The
+         <code>
+          du -h
+         </code>
+         command shows ~30GB total because HuggingFace stores files in both
+         <code>
+          /blobs/
+         </code>
+         (hash-named) and
+         <code>
+          /snapshots/
+         </code>
+         (symbolic links). The actual model size is ~15GB, but the cache structure doubles the apparent disk usage.
+        </p>
+       </details>
+       <div class="admonition info">
+        <p class="admonition-title">
+         Why Model Size Matters for Performance
+        </p>
+        <p>
+         <strong>
+          Memory Bandwidth Bottleneck
+         </strong>
+         : Thor's unified memory architecture means that the 15GB of FP16 weights must be transferred over memory bandwidth for each inference step. This is why we see ~10-11 tokens/s baseline performance - we're bandwidth-limited, not compute-limited!
+        </p>
+        <p>
+         <strong>
+          Quantization Impact
+         </strong>
+         : Reducing precision (FP8 → FP4) doesn't just save memory - it
+         <strong>
+          dramatically improves performance
+         </strong>
+         by reducing bandwidth requirements.
+        </p>
+       </div>
+       <h4 id="11-serve">
+        1.1 Serve
+       </h4>
+       <div class="highlight">
+        <pre><span></span><code>vllm<span class="w"> </span>serve<span class="w"> </span>meta-llama/Llama-3.1-8B-Instruct
+</code></pre>
+       </div>
+       <p>
+        Once loaded, select the model in Open WebUI.
+       </p>
+       <h4 id="12-baseline-prompt-measurements">
+        1.2 Baseline prompt &amp; measurements
+       </h4>
+       <p>
+        <strong>
+         Prompt (copy/paste):
+        </strong>
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>Write a 5-sentence paragraph explaining the main benefit of using Jetson Thor for an autonomous robotics developer.
+</code></pre>
+       </div>
+       <p>
+        <strong>
+         Observe:
+        </strong>
+       </p>
+       <ul>
+        <li>
+         <strong>
+          Time-to-First-Token (TTFT)
+         </strong>
+         — perceived latency
+        </li>
+        <li>
+         <strong>
+          Tokens/sec
+         </strong>
+         — throughput (use Open WebUI stats or API logs)
+        </li>
+        <li>
+         <strong>
+          Answer quality
+         </strong>
+         — coherence, accuracy, task fit
+        </li>
+       </ul>
+       <details class="example">
+        <summary>
+         API test without UI
+        </summary>
+        <div class="highlight">
+         <pre><span></span><code>curl<span class="w"> </span>http://localhost:8000/v1/chat/completions<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s1">'{</span>
+<span class="s1">        "model": "meta-llama/Llama-3.1-8B-Instruct",</span>
+<span class="s1">        "messages": [</span>
+<span class="s1">            {</span>
+<span class="s1">                "role": "user",</span>
+<span class="s1">                "content": "Write a 5-sentence paragraph explaining the main benefit of using Jetson Thor for an autonomous robotics developer."</span>
+<span class="s1">            }</span>
+<span class="s1">        ],</span>
+<span class="s1">        "max_tokens": 256,</span>
+<span class="s1">        "temperature": 0.7</span>
+<span class="s1">      }'</span>
+</code></pre>
+        </div>
+       </details>
+       <hr/>
+       <h3 id="2-fp8-quantization">
+        2️⃣ FP8 Quantization
+       </h3>
+       <p>
+        FP8 reduces memory bandwidth/footprint and
+        <strong>
+         often matches FP16 quality
+        </strong>
+        for many tasks.
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>vllm<span class="w"> </span>serve<span class="w"> </span>nvidia/Llama-3.1-8B-Instruct-FP8
+</code></pre>
+       </div>
+       <p>
+        Select this FP8 variant in Open WebUI and repeat the same prompt.
+Compare
+        <strong>
+         TTFT
+        </strong>
+        ,
+        <strong>
+         tokens/sec
+        </strong>
+        , and
+        <strong>
+         answer quality
+        </strong>
+        vs. FP16.
+       </p>
+       <hr/>
+       <h3 id="3-fp4-quantization">
+        3️⃣ FP4 Quantization
+       </h3>
+       <p>
+        Let's push further!
+        <br/>
+        FP4 halves memory again vs. FP8 and is
+        <strong>
+         much faster
+        </strong>
+        , but may introduce noticeable quality drift (hallucinations, repetition).
+       </p>
+       <h4 id="31-relaunch-in-fp4">
+        3.1 Relaunch in FP4
+       </h4>
+       <div class="highlight">
+        <pre><span></span><code>vllm<span class="w"> </span>serve<span class="w"> </span>nvidia/Llama-3.1-8B-Instruct-FP4
+</code></pre>
+       </div>
+       <h4 id="32-evaluate-fp4-perf-and-accuracy">
+        3.2 Evaluate FP4 perf and accuracy
+       </h4>
+       <p>
+        Run the
+        <strong>
+         same prompt
+        </strong>
+        and evaluate:
+       </p>
+       <ul>
+        <li>
+         🚀
+         <strong>
+          Speed
+         </strong>
+         : should be visibly faster than FP16/FP8 both in terms of TTFT and generation speed.
+        </li>
+        <li>
+         <p>
+          🎯
+          <strong>
+           Quality
+          </strong>
+          : check fidelity to the prompt and coherence
+         </p>
+         <div class="admonition question">
+          <p class="admonition-title">
+           The Quality Question
+          </p>
+          <p>
+           Now, read the answer very carefully. Is it still as high-quality? Does it answer the prompt accurately? Do you see any strange wording, repetition, or nonsensical statements? This is the trade-off in action, and you are now experiencing the core challenge of on-device AI optimization.
+          </p>
+         </div>
+        </li>
+       </ul>
+       <details class="success">
+        <summary>
+         Performance Recap (FP16 → FP8 → FP4)
+        </summary>
+        <p>
+         ** 💡 Thor Performance Discovery: Memory Bandwidth is the Bottleneck**
+        </p>
+        <p>
+         Our systematic testing revealed that Thor's performance is
+         <strong>
+          memory bandwidth limited
+         </strong>
+         , not compute limited. Each precision reduction directly translates to performance gains:
+        </p>
+        <table>
+         <thead>
+          <tr>
+           <th>
+            Precision
+           </th>
+           <th>
+            Model Memory
+           </th>
+           <th>
+            Startup Time
+           </th>
+           <th>
+            Generation Speed
+           </th>
+           <th>
+            vs FP16 Performance
+           </th>
+           <th>
+            Memory Reduction
+           </th>
+          </tr>
+         </thead>
+         <tbody>
+          <tr>
+           <td>
+            <strong>
+             FP16
+            </strong>
+            (Baseline)
+           </td>
+           <td>
+            14.99 GiB
+           </td>
+           <td>
+            ~25s
+           </td>
+           <td>
+            10.7 tok/s
+           </td>
+           <td>
+            Baseline
+           </td>
+           <td>
+            -
+           </td>
+          </tr>
+          <tr>
+           <td>
+            <strong>
+             FP8
+            </strong>
+           </td>
+           <td>
+            8.49 GiB
+           </td>
+           <td>
+            20.3s
+           </td>
+           <td>
+            <strong>
+             14.2 tok/s
+            </strong>
+           </td>
+           <td>
+            <strong>
+             +33% faster
+            </strong>
+           </td>
+           <td>
+            43% less
+           </td>
+          </tr>
+          <tr>
+           <td>
+            <strong>
+             FP4
+            </strong>
+           </td>
+           <td>
+            6.07 GiB
+           </td>
+           <td>
+            21.1s
+           </td>
+           <td>
+            <strong>
+             19.1 tok/s
+            </strong>
+           </td>
+           <td>
+            <strong>
+             +78% faster
+            </strong>
+           </td>
+           <td>
+            59% less
+           </td>
+          </tr>
+         </tbody>
+        </table>
+        <p>
+         <strong>
+          🔍 Key Engineering Insights:
+         </strong>
+        </p>
+        <ul>
+         <li>
+          <strong>
+           Linear relationship
+          </strong>
+          : Memory reduction directly correlates with performance improvement
+         </li>
+         <li>
+          <strong>
+           Thor's architecture
+          </strong>
+          : 128GB unified memory optimized for capacity, not bandwidth
+         </li>
+         <li>
+          <strong>
+           Quantization impact
+          </strong>
+          : Not just memory savings - dramatic performance gains
+         </li>
+         <li>
+          <strong>
+           Production trade-offs
+          </strong>
+          : Speed vs. quality decisions based on real measurements
+         </li>
+        </ul>
+        <p>
+         <strong>
+          ☑️ Workshop Validation:
+         </strong>
+        </p>
+        <ul>
+         <li>
+          ✅
+          <strong>
+           Memory bandwidth theory confirmed
+          </strong>
+          - 59% less data = 78% faster inference
+         </li>
+         <li>
+          ✅
+          <strong>
+           Consistent startup times
+          </strong>
+          - All models load in ~20-25 seconds
+         </li>
+         <li>
+          ✅
+          <strong>
+           Predictable scaling
+          </strong>
+          - Each precision step shows measurable improvements
+         </li>
+         <li>
+          ✅
+          <strong>
+           Real engineering decisions
+          </strong>
+          - Data-driven optimization choices
+         </li>
+        </ul>
+        <p>
+         <strong>
+          Next step
+         </strong>
+         : Test quality differences to complete the performance vs. accuracy trade-off analysis!
+        </p>
+       </details>
+       <details class="tip">
+        <summary>
+         Want to Quantize Models Yourself?
+        </summary>
+        <p>
+         <strong>
+          We used NVIDIA's pre-quantized models for convenience, but you can quantize your own models!
+         </strong>
+        </p>
+        <p>
+         <strong>
+          🔧 NVIDIA Tools &amp; Resources:
+         </strong>
+        </p>
+        <ul>
+         <li>
+          <strong>
+           <a href="https://github.com/NVIDIA/TensorRT-Model-Optimizer">
+            NVIDIA TensorRT Model Optimizer
+           </a>
+          </strong>
+          - Official NVIDIA quantization toolkit
+         </li>
+         <li>
+          <strong>
+           <a href="https://github.com/NVIDIA/TensorRT-Model-Optimizer">
+            NVIDIA ModelOpt
+           </a>
+          </strong>
+          - Advanced model optimization including FP8/FP4 quantization
+         </li>
+        </ul>
+        <p>
+         <strong>
+          🛠️ Popular Open-Source Tools:
+         </strong>
+        </p>
+        <ul>
+         <li>
+          <strong>
+           <a href="https://github.com/PanQiWei/AutoGPTQ">
+            AutoGPTQ
+           </a>
+          </strong>
+          - Easy GPTQ quantization for various models
+         </li>
+         <li>
+          <strong>
+           <a href="https://github.com/TimDettmers/bitsandbytes">
+            BitsAndBytes
+           </a>
+          </strong>
+          - 4-bit and 8-bit quantization library
+         </li>
+         <li>
+          <strong>
+           <a href="https://github.com/ggerganov/llama.cpp">
+            GGML/llama.cpp
+           </a>
+          </strong>
+          - Quantization for CPU inference
+         </li>
+         <li>
+          <strong>
+           <a href="https://huggingface.co/docs/optimum/index">
+            Optimum
+           </a>
+          </strong>
+          - HuggingFace's optimization library
+         </li>
+        </ul>
+        <p>
+         <strong>
+          📚 Learning Resources:
+         </strong>
+        </p>
+        <ul>
+         <li>
+          <strong>
+           <a href="https://huggingface.co/blog/merve/quantization">
+            Quantization Fundamentals
+           </a>
+          </strong>
+          - HuggingFace blog series
+         </li>
+         <li>
+          <strong>
+           <a href="https://docs.nvidia.com/deeplearning/performance/index.html">
+            NVIDIA Deep Learning Performance Guide
+           </a>
+          </strong>
+          - Comprehensive optimization guide
+         </li>
+         <li>
+          <strong>
+           <a href="https://docs.vllm.ai/en/latest/quantization/supported_methods.html">
+            vLLM Quantization Documentation
+           </a>
+          </strong>
+          - Supported quantization methods
+         </li>
+        </ul>
+        <p>
+         <strong>
+          ⚡ Quick Start Example:
+         </strong>
+        </p>
+        <div class="highlight">
+         <pre><span></span><code><span class="c1"># Using AutoGPTQ to quantize your own model</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">auto_gptq</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutoGPTQForCausalLM</span><span class="p">,</span> <span class="n">BaseQuantizeConfig</span>
+
+<span class="n">quantize_config</span> <span class="o">=</span> <span class="n">BaseQuantizeConfig</span><span class="p">(</span>
+    <span class="n">bits</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>  <span class="c1"># FP4 quantization</span>
+    <span class="n">group_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
+    <span class="n">desc_act</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoGPTQForCausalLM</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+    <span class="s2">"your-model-name"</span><span class="p">,</span>
+    <span class="n">quantize_config</span>
+<span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">quantize</span><span class="p">(</span><span class="n">calibration_dataset</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save_quantized</span><span class="p">(</span><span class="s2">"./quantized-model"</span><span class="p">)</span>
+</code></pre>
+        </div>
+       </details>
+       <h3 id="4-speculative-decoding">
+        4️⃣ Speculative Decoding
+       </h3>
+       <p>
+        In Part 3, we pushed our model to FP4. We got a
+        <strong>
+         massive boost in speed
+        </strong>
+        and a
+        <strong>
+         huge reduction in memory
+        </strong>
+        , but we also hit the trade-off:
+        <strong>
+         the quality can start to degrade
+        </strong>
+        .
+       </p>
+       <p>
+        So, the next logical question is:
+        <strong>
+         Can we get even faster than our FP4 model, but without sacrificing any more quality?
+        </strong>
+       </p>
+       <p>
+        <strong>
+         The answer is yes.
+        </strong>
+        We can do this by using
+        <strong>
+         Speculative Decoding
+        </strong>
+        .
+       </p>
+       <div class="admonition info">
+        <p class="admonition-title">
+         How Speculative Decoding Works
+        </p>
+        <p>
+         This is a
+         <strong>
+          clever technique that doesn't change the model's weights at all
+         </strong>
+         . Instead, it uses a second, much smaller
+         <strong>
+          "draft" model
+         </strong>
+         that runs alongside our main FP4 model.
+        </p>
+        <p>
+         <strong>
+          The Process:
+         </strong>
+        </p>
+        <ol>
+         <li>
+          <strong>
+           Draft Phase
+          </strong>
+          : This tiny, super-fast model "guesses"
+          <strong>
+           5 tokens ahead
+          </strong>
+         </li>
+         <li>
+          <strong>
+           Verification Phase
+          </strong>
+          : Our larger, "smart" FP4 model
+          <strong>
+           checks all 5 of those guesses at once
+          </strong>
+          in a single step
+         </li>
+         <li>
+          <strong>
+           Results
+          </strong>
+          :
+          <ul>
+           <li>
+            ✅
+            <strong>
+             If the guesses are correct
+            </strong>
+            : We get
+            <strong>
+             5 tokens for the price of 1
+            </strong>
+            → huge speedup
+           </li>
+           <li>
+            ❌
+            <strong>
+             If a guess is wrong
+            </strong>
+            : The main model simply corrects it and continues
+           </li>
+          </ul>
+         </li>
+        </ol>
+        <p>
+         <img src="https://developer-blogs.nvidia.com/wp-content/uploads/2025/09/speculative-decoding-verification-phase-target-model.gif" width="66%"/>
+        </p>
+        <p>
+         <strong>
+          🎯 Key Takeaway
+         </strong>
+         : The final output is
+         <strong>
+          mathematically identical
+         </strong>
+         to what the FP4 model would have produced on its own. We are getting a significant performance boost
+         <strong>
+          "for free,"
+         </strong>
+         with
+         <strong>
+          no additional quality loss
+         </strong>
+         .
+        </p>
+        <p>
+         <strong>
+          Learn More
+         </strong>
+         :
+        </p>
+        <ul>
+         <li>
+          <strong>
+           <a href="https://developer.nvidia.com/blog/an-introduction-to-speculative-decoding-for-reducing-latency-in-ai-inference/">
+            NVIDIA Developer Blog: Introduction to Speculative Decoding
+           </a>
+          </strong>
+          - Comprehensive guide to speculative decoding techniques
+         </li>
+         <li>
+          <strong>
+           <a href="https://docs.vllm.ai/en/v0.10.1/features/spec_decode.html">
+            vLLM Speculative Decoding Documentation
+           </a>
+          </strong>
+          - Official implementation guide
+         </li>
+         <li>
+          <strong>
+           <a href="https://arxiv.org/abs/2503.01840">
+            EAGLE-3 Research Paper
+           </a>
+          </strong>
+          - Academic paper: "Scaling up Inference Acceleration of Large Language Models via Training-Time Test"
+         </li>
+        </ul>
+       </div>
+       <h4 id="41-relaunch-with-speculative-decoding">
+        4.1 Relaunch with Speculative Decoding
+       </h4>
+       <p>
+        Let's stop the last server. This time, our command is a bit more complex. We're telling vLLM to serve our FP4 model, but to also load a specific
+        <strong>
+         "draft" model (EAGLE3)
+        </strong>
+        to help it.
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><span class="c1"># Stop current FP4 serving (Ctrl+C)</span>
+<span class="c1"># Then launch with speculative decoding:</span>
+vllm<span class="w"> </span>serve<span class="w"> </span>nvidia/Llama-3.1-8B-Instruct-FP4<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--trust_remote_code<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--speculative-config<span class="w"> </span><span class="s1">'{"method":"eagle3","model":"yuhuili/EAGLE3-LLaMA3.1-Instruct-8B","num_speculative_tokens":5}'</span>
+</code></pre>
+       </div>
+       <details class="note">
+        <summary>
+         What's Happening Here
+        </summary>
+        <ul>
+         <li>
+          <strong>
+           Main model
+          </strong>
+          :
+          <code>
+           nvidia/Llama-3.1-8B-Instruct-FP4
+          </code>
+          (our optimized FP4 model)
+         </li>
+         <li>
+          <strong>
+           Draft model
+          </strong>
+          :
+          <code>
+           yuhuili/EAGLE3-LLaMA3.1-Instruct-8B
+          </code>
+          (tiny, fast predictor)
+         </li>
+         <li>
+          <strong>
+           Speculation depth
+          </strong>
+          : 5 tokens ahead
+         </li>
+         <li>
+          <strong>
+           Trust remote code
+          </strong>
+          : Required for EAGLE3 implementation
+         </li>
+        </ul>
+       </details>
+       <div class="admonition info">
+        <p class="admonition-title">
+         What is EAGLE3?
+        </p>
+        <p>
+         <strong>
+          EAGLE3
+         </strong>
+         (Extrapolation Algorithm for Greater Language-model Efficiency) is a
+         <strong>
+          specific implementation of speculative decoding
+         </strong>
+         that uses a small, specialized "draft" model to predict multiple tokens ahead of the main model.
+        </p>
+        <p>
+         <strong>
+          Key Features:
+         </strong>
+        </p>
+        <ul>
+         <li>
+          <strong>
+           Lightweight architecture
+          </strong>
+          : Much smaller than the main model (~850MB vs ~6GB)
+         </li>
+         <li>
+          <strong>
+           Fast prediction
+          </strong>
+          : Generates 5 token candidates in parallel
+         </li>
+         <li>
+          <strong>
+           Model-specific training
+          </strong>
+          : Trained specifically for Llama-3.1 models
+         </li>
+         <li>
+          <strong>
+           Zero quality loss
+          </strong>
+          : Main model verifies all predictions, ensuring identical output
+         </li>
+        </ul>
+        <p>
+         <strong>
+          How it works:
+         </strong>
+        </p>
+        <ol>
+         <li>
+          <strong>
+           EAGLE3 draft model
+          </strong>
+          quickly generates 5 potential next tokens
+         </li>
+         <li>
+          <strong>
+           Main FP4 model
+          </strong>
+          evaluates all 5 predictions in a single forward pass
+         </li>
+         <li>
+          <strong>
+           Accepts correct predictions
+          </strong>
+          and continues from the first incorrect one
+         </li>
+         <li>
+          <strong>
+           Result
+          </strong>
+          : Up to 5x speedup when predictions are accurate
+         </li>
+        </ol>
+        <p>
+         <strong>
+          Why "EAGLE3"
+         </strong>
+         : This is the third generation of the EAGLE algorithm, optimized for better acceptance rates and broader model compatibility.
+        </p>
+        <p>
+         <strong>
+          Learn More
+         </strong>
+         :
+        </p>
+        <ul>
+         <li>
+          <a href="https://docs.vllm.ai/en/v0.10.1/features/spec_decode.html#speculating-using-eagle-based-draft-models">
+           vLLM Speculative Decoding Documentation
+          </a>
+          - "Speculating using EAGLE based draft models" section.
+         </li>
+         <li>
+          <a href="https://arxiv.org/abs/2503.01840">
+           EAGLE-3 Research Paper
+          </a>
+          - Academic paper: "Scaling up Inference Acceleration of Large Language Models via Training-Time Test"
+         </li>
+        </ul>
+       </div>
+       <h4 id="42-test-performance-and-quality">
+        4.2 Test Performance and Quality
+       </h4>
+       <p>
+        Once it's loaded, go back to
+        <strong>
+         Open WebUI
+        </strong>
+        . The model name will be the same as before (
+        <code>
+         nvidia/Llama-3.1-8B-Instruct-FP4
+        </code>
+        ), but it's now running with its new
+        <strong>
+         speculative assistant
+        </strong>
+        .
+       </p>
+       <p>
+        <strong>
+         Now let's prompt it again and pay very close attention to these two things:
+        </strong>
+       </p>
+       <ol>
+        <li>
+         <p>
+          <strong>
+           🚀 Generation Speed
+          </strong>
+          : Look at the throughput. The words should appear to
+          <strong>
+           fly onto the screen
+          </strong>
+          . This should be the
+          <strong>
+           fastest version we've seen today
+          </strong>
+          .
+         </p>
+         <p>
+          <video autoplay="" controls="" loop="" muted="" width="100%">
+           <source src="https://github.com/user-attachments/assets/b6f0bceb-8ef0-4bc0-be29-3e46d885a403" type="video/mp4">
+            Your browser does not support the video tag.
+           </source>
+          </video>
+         </p>
+         <details class="success">
+          <summary>
+           Performance Recap: The Complete Optimization Journey
+          </summary>
+          <p>
+           <strong>
+            🎯 From 10.7 to 25.6+ tokens/second - A 2.4x Performance Breakthrough!
+           </strong>
+          </p>
+          <table>
+           <thead>
+            <tr>
+             <th>
+              Configuration
+             </th>
+             <th>
+              Memory
+             </th>
+             <th>
+              Generation (Short)
+             </th>
+             <th>
+              Generation (Long)
+             </th>
+             <th>
+              vs FP16
+             </th>
+             <th>
+              Best Case
+             </th>
+            </tr>
+           </thead>
+           <tbody>
+            <tr>
+             <td>
+              <strong>
+               FP16
+              </strong>
+              (Baseline)
+             </td>
+             <td>
+              14.99 GiB
+             </td>
+             <td>
+              10.7 tok/s
+             </td>
+             <td>
+              ~10.7 tok/s
+             </td>
+             <td>
+              Baseline
+             </td>
+             <td>
+              Baseline
+             </td>
+            </tr>
+            <tr>
+             <td>
+              <strong>
+               FP8
+              </strong>
+             </td>
+             <td>
+              8.49 GiB
+             </td>
+             <td>
+              14.2 tok/s
+             </td>
+             <td>
+              ~14.2 tok/s
+             </td>
+             <td>
+              <strong>
+               +33%
+              </strong>
+             </td>
+             <td>
+              +33%
+             </td>
+            </tr>
+            <tr>
+             <td>
+              <strong>
+               FP4
+              </strong>
+             </td>
+             <td>
+              6.07 GiB
+             </td>
+             <td>
+              19.1 tok/s
+             </td>
+             <td>
+              ~19.1 tok/s
+             </td>
+             <td>
+              <strong>
+               +78%
+              </strong>
+             </td>
+             <td>
+              +78%
+             </td>
+            </tr>
+            <tr>
+             <td>
+              <strong>
+               FP4 + Speculative
+              </strong>
+             </td>
+             <td>
+              6.86 GiB
+             </td>
+             <td>
+              14.3 tok/s
+             </td>
+             <td>
+              <strong>
+               25.6 tok/s
+              </strong>
+             </td>
+             <td>
+              <strong>
+               +139%
+              </strong>
+             </td>
+             <td>
+              <strong>
+               +139%
+              </strong>
+             </td>
+            </tr>
+           </tbody>
+          </table>
+          <p>
+           <strong>
+            🔍 Key Engineering Insights:
+           </strong>
+          </p>
+          <ul>
+           <li>
+            <strong>
+             Memory bandwidth bottleneck confirmed
+            </strong>
+            : Thor's performance scales directly with memory reduction
+           </li>
+           <li>
+            <strong>
+             Context matters for speculation
+            </strong>
+            : Short responses show modest gains, long responses show dramatic improvements
+           </li>
+           <li>
+            <strong>
+             Speculative decoding sweet spot
+            </strong>
+            : Most effective for structured, longer content generation
+           </li>
+           <li>
+            <strong>
+             Production decision framework
+            </strong>
+            : Choose based on your specific use case and content length
+           </li>
+          </ul>
+          <p>
+           <strong>
+            🚀 Ultimate Result
+           </strong>
+           :
+           <strong>
+            25.6 tokens/second
+           </strong>
+           for long content - nearly
+           <strong>
+            2.4x faster
+           </strong>
+           than our FP16 baseline!
+          </p>
+         </details>
+        </li>
+        <li>
+         <p>
+          <strong>
+           🎯 Quality
+          </strong>
+          : Compare this answer very closely to the one you got in Part 3 (FP4). The quality should be
+          <strong>
+           essentially unchanged
+          </strong>
+          . This proves that speculative decoding is purely a
+          <strong>
+           performance optimization
+          </strong>
+          and does not change the model's final output.
+         </p>
+        </li>
+       </ol>
+       <div class="admonition info">
+        <p class="admonition-title">
+         Where this truly shines
+        </p>
+        <p>
+         On
+         <strong>
+          70B-class
+         </strong>
+         models, FP4 + speculative decoding can feel close to smaller models for interactivity, while preserving large-model competence.
+        </p>
+       </div>
+       <hr/>
+       <h2 id="troubleshooting">
+        🚑 Troubleshooting
+       </h2>
+       <details class="warning">
+        <summary>
+         Critical: GPU Memory Not Released After Stopping vLLM
+        </summary>
+        <p>
+         <strong>
+          Common Issue:
+         </strong>
+         Even after stopping the vLLM container, GPU memory remains allocated (e.g., 26GB+ still in use).
+        </p>
+        <p>
+         <strong>
+          Root Cause:
+         </strong>
+         Current vLLM version has a known issue where inference cache is not properly freed when the container stops.
+        </p>
+        <p>
+         <strong>
+          Immediate Solution:
+         </strong>
+        </p>
+        <div class="highlight">
+         <pre><span></span><code><span class="c1"># Run this command on the HOST after stopping vLLM container</span>
+sudo<span class="w"> </span>sysctl<span class="w"> </span>-w<span class="w"> </span>vm.drop_caches<span class="o">=</span><span class="m">3</span>
+</code></pre>
+        </div>
+        <p>
+         <strong>
+          Video demonstration:
+         </strong>
+        </p>
+        <p>
+         <video autoplay="" controls="" width="100%">
+          <source src="./images/workaround_drop_caches_h264_720p.mp4" type="video/mp4">
+           Your browser does not support the video tag.
+          </source>
+         </video>
+        </p>
+        <p>
+         <strong>
+          When to use this:
+         </strong>
+         - After every vLLM container stop
+- Before starting a new model inference session
+- When
+         <code>
+          jtop
+         </code>
+         shows unexpectedly high GPU memory usage
+        </p>
+        <p>
+         <strong>
+          Alternative (if the above doesn't work):
+         </strong>
+        </p>
+        <div class="highlight">
+         <pre><span></span><code><span class="c1"># More aggressive memory clearing</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>docker
+<span class="c1"># Or as last resort:</span>
+sudo<span class="w"> </span>reboot
+</code></pre>
+        </div>
+        <p>
+         🔗
+         <strong>
+          Related Issues:
+         </strong>
+        </p>
+        <ul>
+         <li>
+          <strong>
+           <a href="https://forums.developer.nvidia.com/t/vllm-container-on-jetson-thor-second-start-fails-until-vm-drop-caches-3-system-issue-or-thor-vllm-container-25-08-py3-base-bug/347575">
+            NVIDIA Forums: vLLM container on Jetson Thor second start fails until vm.drop_caches=3
+           </a>
+          </strong>
+          - Exact issue and workaround discussion
+         </li>
+         <li>
+          <strong>
+           <a href="https://github.com/vllm-project/vllm/issues/11230">
+            GitHub Issue #11230: Increased VRAM usage [OOM][KV cache]
+           </a>
+          </strong>
+          - Related memory management issues
+         </li>
+        </ul>
+       </details>
+       <details class="warning">
+        <summary>
+         NVML Errors and Model Architecture Failures
+        </summary>
+        <p>
+         <strong>
+          Common Issue:
+         </strong>
+         If you see errors like:
+-
+         <code>
+          Can't initialize NVML
+         </code>
+         -
+         <code>
+          NVMLError_Unknown: Unknown Error
+         </code>
+         -
+         <code>
+          Model architectures ['GptOssForCausalLM'] failed to be inspected
+         </code>
+        </p>
+        <p>
+         <strong>
+          Root Cause:
+         </strong>
+         Malformed Docker daemon configuration
+        </p>
+        <p>
+         <strong>
+          Check Docker daemon.json:
+         </strong>
+        </p>
+        <div class="highlight">
+         <pre><span></span><code>cat<span class="w"> </span>/etc/docker/daemon.json
+</code></pre>
+        </div>
+        <p>
+         <strong>
+          If the file is missing the default-runtime configuration:
+         </strong>
+        </p>
+        <div class="highlight">
+         <pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"runtimes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"nvidia"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">            </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nvidia-container-runtime"</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// ❌ Missing "default-runtime": "nvidia" !</span>
+</code></pre>
+        </div>
+        <p>
+         <strong>
+          Fix with complete configuration:
+         </strong>
+        </p>
+        <div class="highlight">
+         <pre><span></span><code>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/docker/daemon.json
+</code></pre>
+        </div>
+        <p>
+         <strong>
+          Correct content:
+         </strong>
+        </p>
+        <div class="highlight">
+         <pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"runtimes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"nvidia"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">            </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nvidia-container-runtime"</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"default-runtime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nvidia"</span>
+<span class="p">}</span>
+</code></pre>
+        </div>
+        <p>
+         <strong>
+          Apply the fix:
+         </strong>
+        </p>
+        <div class="highlight">
+         <pre><span></span><code><span class="c1"># Restart Docker daemon</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>docker
+
+<span class="c1"># Verify Docker is running</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>docker
+
+<span class="c1"># Test NVIDIA runtime (Thor-compatible CUDA 13)</span>
+docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>--runtime<span class="o">=</span>nvidia<span class="w"> </span>nvcr.io/nvidia/cuda:13.0.0-runtime-ubuntu24.04<span class="w"> </span>nvidia-smi
+
+<span class="c1"># Restart your vLLM container</span>
+docker<span class="w"> </span>stop<span class="w"> </span>vllm<span class="w">  </span><span class="c1"># if running</span>
+<span class="c1"># Then relaunch with the corrected Docker configuration</span>
+</code></pre>
+        </div>
+        <p>
+         <strong>
+          If Docker Runtime Issues Persist:
+         </strong>
+        </p>
+        <p>
+         Try a system reboot - this often resolves Docker runtime configuration issues:
+        </p>
+        <div class="highlight">
+         <pre><span></span><code>sudo<span class="w"> </span>reboot
+</code></pre>
+        </div>
+        <p>
+         <strong>
+          Why reboot helps:
+         </strong>
+         - Complete Docker daemon restart with new configuration
+- Fresh NVIDIA driver/runtime initialization
+- Proper CDI device registration
+- All system services start in correct order
+        </p>
+        <p>
+         <strong>
+          After reboot, test immediately:
+         </strong>
+        </p>
+        <div class="highlight">
+         <pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>--runtime<span class="o">=</span>nvidia<span class="w"> </span>nvcr.io/nvidia/cuda:13.0.0-runtime-ubuntu24.04<span class="w"> </span>nvidia-smi
+</code></pre>
+        </div>
+        <p>
+         <strong>
+          Tested on:
+         </strong>
+         L4T (Jetson Linux) r38.2.2
+        </p>
+       </details>
+       <details class="warning">
+        <summary>
+         Stuck GPU Memory Allocations
+        </summary>
+        <p>
+         <strong>
+          Symptom:
+         </strong>
+         vLLM fails with "insufficient GPU memory" despite stopping containers
+        </p>
+        <p>
+         <strong>
+          Example error:
+         </strong>
+        </p>
+        <div class="highlight">
+         <pre><span></span><code>ValueError: Free memory on device (14.45/122.82 GiB) on startup is less than
+desired GPU memory utilization (0.7, 85.98 GiB)
+</code></pre>
+        </div>
+        <p>
+         <strong>
+          Diagnosis:
+         </strong>
+        </p>
+        <div class="highlight">
+         <pre><span></span><code><span class="c1"># Check current GPU memory usage</span>
+jtop
+<span class="c1"># Expected baseline: ~3-6GB system usage</span>
+<span class="c1"># Problem: 25GB+ or 100GB+ unexplained usage</span>
+</code></pre>
+        </div>
+        <p>
+         <strong>
+          Solution sequence:
+         </strong>
+        </p>
+        <div class="highlight">
+         <pre><span></span><code><span class="c1"># 1. Stop all containers</span>
+docker<span class="w"> </span>stop<span class="w"> </span><span class="k">$(</span>docker<span class="w"> </span>ps<span class="w"> </span>-q<span class="k">)</span><span class="w"> </span><span class="m">2</span>&gt;/dev/null
+docker<span class="w"> </span>rm<span class="w"> </span><span class="k">$(</span>docker<span class="w"> </span>ps<span class="w"> </span>-aq<span class="k">)</span><span class="w"> </span><span class="m">2</span>&gt;/dev/null
+
+<span class="c1"># 2. Restart Docker daemon</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>docker
+
+<span class="c1"># 3. Check if memory cleared</span>
+jtop
+
+<span class="c1"># 4. If memory still high (&gt;10GB baseline), reboot system</span>
+sudo<span class="w"> </span>reboot
+</code></pre>
+        </div>
+        <p>
+         <strong>
+          Root Cause Investigation:
+         </strong>
+         This appears to be related to GPU memory allocations not being properly released at the driver level. We're investigating the exact cause and will update this section with a more targeted solution.
+        </p>
+        <p>
+         <strong>
+          Workaround for now:
+         </strong>
+         System reboot reliably clears stuck allocations.
+        </p>
+       </details>
+       <details class="warning">
+        <summary>
+         User Permissions and Docker Access
+        </summary>
+        <p>
+         <strong>
+          Verify user permissions:
+         </strong>
+        </p>
+        <div class="highlight">
+         <pre><span></span><code>groups<span class="w"> </span><span class="nv">$USER</span><span class="w">  </span><span class="c1"># Should include 'docker'</span>
+</code></pre>
+        </div>
+        <p>
+         <strong>
+          Check GPU accessibility:
+         </strong>
+        </p>
+        <div class="highlight">
+         <pre><span></span><code>nvidia-smi
+<span class="c1"># Or test via Docker:</span>
+docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>--runtime<span class="o">=</span>nvidia<span class="w"> </span>nvcr.io/nvidia/cuda:13.0.0-runtime-ubuntu24.04<span class="w"> </span>nvidia-smi
+</code></pre>
+        </div>
+       </details>
+       <details class="warning">
+        <summary>
+         HuggingFace Gated Repository Access Error
+        </summary>
+        <p>
+         <strong>
+          Common Issue:
+         </strong>
+         When trying to serve Llama models (e.g.,
+         <code>
+          meta-llama/Llama-3.1-8B-Instruct
+         </code>
+         ), you see:
+        </p>
+        <div class="highlight">
+         <pre><span></span><code>OSError: You are trying to access a gated repo.
+Make sure to have access to it at https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct.
+401 Client Error.
+Cannot access gated repo for url https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct/resolve/main/config.json.
+Access to model meta-llama/Llama-3.1-8B-Instruct is restricted. You must have access to it and be authenticated to access it.
+</code></pre>
+        </div>
+        <p>
+         <strong>
+          Root Cause:
+         </strong>
+         Meta's Llama models are "gated" on HuggingFace, requiring:
+1.
+         <strong>
+          HuggingFace account
+         </strong>
+         with access approval
+2.
+         <strong>
+          Authentication token
+         </strong>
+         configured in the container
+        </p>
+        <p>
+         <strong>
+          Workshop Solution (Pre-downloaded Models):
+         </strong>
+        </p>
+        <p>
+         This workshop
+         <strong>
+          cleverly avoids this issue
+         </strong>
+         by pre-downloading model weights to the host system. When you use the volume mount
+         <code>
+          -v $HOME/data/models/huggingface:/root/.cache/huggingface
+         </code>
+         , vLLM finds the local model files and doesn't need to authenticate with HuggingFace.
+        </p>
+        <p>
+         <strong>
+          If You Need Authentication (Post-Workshop):
+         </strong>
+        </p>
+        <div class="highlight">
+         <pre><span></span><code><span class="c1"># 1. Get HuggingFace token from https://huggingface.co/settings/tokens</span>
+<span class="c1"># 2. Inside the container, authenticate:</span>
+pip<span class="w"> </span>install<span class="w"> </span>huggingface_hub
+huggingface-cli<span class="w"> </span>login
+<span class="c1"># Enter your token when prompted</span>
+
+<span class="c1"># 3. Or set environment variable:</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">HUGGING_FACE_HUB_TOKEN</span><span class="o">=</span><span class="s2">"your_token_here"</span>
+</code></pre>
+        </div>
+        <p>
+         <strong>
+          Workshop Advantage:
+         </strong>
+         - ✅
+         <strong>
+          No authentication needed
+         </strong>
+         - Models are pre-cached locally
+- ✅
+         <strong>
+          Faster startup
+         </strong>
+         - No network downloads during workshop
+- ✅
+         <strong>
+          Reliable access
+         </strong>
+         - Works even without internet connectivity
+- ✅
+         <strong>
+          Focus on optimization
+         </strong>
+         - Skip the credential setup complexity
+        </p>
+       </details>
+       <details class="warning">
+        <summary>
+         Model doesn't appear in Open WebUI
+        </summary>
+        <ul>
+         <li>
+          Confirm WebUI uses
+          <code>
+           OPENAI_API_BASE_URL=http://&lt;thor-ip&gt;:8000/v1
+          </code>
+         </li>
+         <li>
+          Check with
+          <code>
+           curl http://localhost:8000/v1/models
+          </code>
+         </li>
+         <li>
+          Verify
+          <code>
+           docker logs open-webui
+          </code>
+          shows successful backend registration
+         </li>
+         <li>
+          Check that vLLM is listening on
+          <code>
+           0.0.0.0:8000
+          </code>
+         </li>
+        </ul>
+       </details>
+       <details class="warning">
+        <summary>
+         OOM or slow loads
+        </summary>
+        <ul>
+         <li>
+          Reduce
+          <strong>
+           context window
+          </strong>
+          or switch to
+          <strong>
+           FP8/FP4
+          </strong>
+         </li>
+         <li>
+          Ensure
+          <strong>
+           swap
+          </strong>
+          is configured appropriately on Thor for your image
+         </li>
+         <li>
+          Close unused sessions/models
+         </li>
+        </ul>
+       </details>
+       <details class="warning">
+        <summary>
+         Tokenizers/encodings error
+        </summary>
+        <ul>
+         <li>
+          Re-export
+          <code>
+           TIKTOKEN_ENCODINGS_BASE
+          </code>
+         </li>
+         <li>
+          Confirm files exist under
+          <code>
+           /etc/encodings/*.tiktoken
+          </code>
+         </li>
+        </ul>
+       </details>
+       <hr/>
+       <h2 id="what-to-do-next">
+        What to do next
+       </h2>
+       <ul>
+        <li>
+         Try a
+         <strong>
+          70B
+         </strong>
+         FP4 model with speculative decoding and compare UX to 8B
+        </li>
+        <li>
+         Add observability:
+         <strong>
+          latency histograms
+         </strong>
+         ,
+         <strong>
+          p95 TTFT
+         </strong>
+         ,
+         <strong>
+          tokens/sec
+         </strong>
+        </li>
+       </ul>
+       <hr/>
+       <h2 id="appendix">
+        Appendix
+       </h2>
+       <h3 id="pre-workshop-setup-for-organizers">
+        Pre-Workshop Setup (For Organizers)
+       </h3>
+       <div class="admonition info">
+        <p class="admonition-title">
+         Directory Structure Alignment
+        </p>
+        <p>
+         <strong>
+          Following jetson-containers convention with optimization caching:
+         </strong>
+        </p>
+        <p>
+         We use
+         <code>
+          $HOME/data/
+         </code>
+         as the unified data directory structure:
+        </p>
+        <div class="highlight">
+         <pre><span></span><code>/home/jetson/data/                    177G total
+├── models/huggingface/               176G (all workshop models)
+│   ├── hub/                          167G
+│   │   ├── models--openai--gpt-oss-120b                   122G (120B main model)
+│   │   ├── models--meta-llama--Llama-3.1-8B-Instruct      30G (FP16 baseline)
+│   │   ├── models--nvidia--Llama-3.1-8B-Instruct-FP8      8.5G (FP8 quantized)
+│   │   ├── models--nvidia--Llama-3.1-8B-Instruct-FP4      5.7G (FP4 quantized)
+│   │   └── models--yuhuili--EAGLE3-LLaMA3.1-Instruct-8B   811M (Speculative draft)
+│   ├── xet/                          9.3G (HuggingFace cache)
+│   └── modules/                      4KB
+└── vllm_cache/torch_compile_cache/   628M (6 pre-warmed compilation caches)
+    ├── 248df3d3e5/ (97M), 71b2b46784/ (78M), 92deee5901/ (141M)
+    ├── b7ef42f749/ (92M), cd8c499fb2/ (116M), fce60ae060/ (107M)
+    └── (optimized for all model variants - instant startup!)
+</code></pre>
+        </div>
+        <p>
+         This ensures:
+        </p>
+        <ul>
+         <li>
+          ✅
+          <strong>
+           Consistency
+          </strong>
+          with existing Jetson workflows
+         </li>
+         <li>
+          ✅
+          <strong>
+           Familiar paths
+          </strong>
+          for jetson-containers users
+         </li>
+         <li>
+          ✅
+          <strong>
+           Easy integration
+          </strong>
+          with other Jetson AI tools
+         </li>
+         <li>
+          ✅
+          <strong>
+           Standardized model storage
+          </strong>
+          across projects
+         </li>
+         <li>
+          ✅
+          <strong>
+           Pre-warmed optimization
+          </strong>
+          for instant startup
+         </li>
+        </ul>
+       </div>
+       <div class="admonition warning">
+        <p class="admonition-title">
+         Storage Requirements
+        </p>
+        <p>
+         <strong>
+          Total storage needed per Thor unit:
+         </strong>
+        </p>
+        <p>
+         <strong>
+          Container Images (~15GB):
+         </strong>
+         -
+         <strong>
+          vLLM container
+         </strong>
+         :
+         <code>
+          nvcr.io/nvidia/vllm:25.09-py3
+         </code>
+         (~8GB)
+-
+         <strong>
+          Open WebUI container
+         </strong>
+         :
+         <code>
+          ghcr.io/open-webui/open-webui:main
+         </code>
+         (~2GB)
+-
+         <strong>
+          CUDA base container
+         </strong>
+         :
+         <code>
+          nvcr.io/nvidia/cuda:13.0.0-runtime-ubuntu24.04
+         </code>
+         (~3GB)
+        </p>
+        <p>
+         <strong>
+          Model Weights (~140GB):
+         </strong>
+         -
+         <strong>
+          GPT-OSS-120B
+         </strong>
+         : ~122GB (main workshop model)
+-
+         <strong>
+          Llama-3.1-8B-Instruct (FP16)
+         </strong>
+         : ~15GB
+-
+         <strong>
+          Llama-3.1-8B-Instruct-FP8
+         </strong>
+         : ~8GB (NVIDIA quantized)
+-
+         <strong>
+          Llama-3.1-8B-Instruct-FP4
+         </strong>
+         : ~6GB (NVIDIA quantized)
+-
+         <strong>
+          EAGLE3 draft model
+         </strong>
+         : ~850MB (for speculative decoding)
+        </p>
+        <p>
+         <strong>
+          System Components (~10GB):
+         </strong>
+         -
+         <strong>
+          vLLM compilation cache
+         </strong>
+         : ~2GB (torch.compile optimizations)
+-
+         <strong>
+          HuggingFace tokenizer cache
+         </strong>
+         : ~500MB
+-
+         <strong>
+          System utilities
+         </strong>
+         :
+         <code>
+          jtop
+         </code>
+         ,
+         <code>
+          nvtop
+         </code>
+         , monitoring tools (~100MB)
+-
+         <strong>
+          Workshop workspace
+         </strong>
+         : Scripts, logs, examples (~1GB)
+-
+         <strong>
+          Docker overlay storage
+         </strong>
+         : ~6GB
+        </p>
+        <p>
+         <strong>
+          Total Required
+         </strong>
+         : ~165GB
+         <strong>
+          Recommended per unit
+         </strong>
+         : 200GB+ free space for comfortable operation and future expansion
+        </p>
+       </div>
+       <p>
+        <strong>
+         Model Pre-download Process:
+        </strong>
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><span class="c1"># 1. Download model once (takes 30-60 minutes depending on network)</span>
+sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-it<span class="w"> </span>--runtime<span class="o">=</span>nvidia<span class="w"> </span>--name<span class="o">=</span>vllm-download<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>nvcr.io/nvidia/vllm:25.09-py3
+
+<span class="c1"># Inside container, trigger model download:</span>
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"</span>
+<span class="s2">from transformers import AutoTokenizer</span>
+<span class="s2">tokenizer = AutoTokenizer.from_pretrained('openai/gpt-oss-120b')</span>
+<span class="s2">print('Model downloaded successfully!')</span>
+<span class="s2">"</span>
+
+<span class="c1"># 2. Copy model cache to host (jetson-containers structure)</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$ROOT</span>/data/models
+docker<span class="w"> </span>cp<span class="w"> </span>vllm-download:/root/.cache/huggingface<span class="w"> </span><span class="nv">$ROOT</span>/data/models/
+
+<span class="c1"># 3. Verify model size</span>
+du<span class="w"> </span>-h<span class="w"> </span><span class="nv">$ROOT</span>/data/models/huggingface/hub/models--openai--gpt-oss-120b/
+<span class="c1"># Should show ~122GB</span>
+</code></pre>
+       </div>
+       <p>
+        <strong>
+         Distribute to all workshop units:
+        </strong>
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><span class="c1"># Copy to each Thor unit (adjust IPs/hostnames)</span>
+<span class="k">for</span><span class="w"> </span>unit<span class="w"> </span><span class="k">in</span><span class="w"> </span>thor-<span class="o">{</span><span class="m">01</span>..60<span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span>rsync<span class="w"> </span>-av<span class="w"> </span>--progress<span class="w"> </span><span class="nv">$ROOT</span>/data/models/<span class="w"> </span><span class="si">${</span><span class="nv">unit</span><span class="si">}</span>:<span class="nv">$ROOT</span>/data/models/
+<span class="k">done</span>
+</code></pre>
+       </div>
+       <hr/>
+      </article>
+     </div>
+     <script>
+      var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}
+     </script>
+     <script>
+      var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))
+     </script>
+    </div>
+    <button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+     <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z">
+      </path>
+     </svg>
+     Back to top
+    </button>
+   </main>
+   <footer class="md-footer">
+    <div class="md-footer-meta md-typeset">
+     <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+       <div class="md-copyright__highlight">
+        <ul class="global-footer__links">
+         <li>
+          <a href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/" target="_blank">
+           Privacy Policy
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/privacy-center/" target="_blank">
+           Manage My Privacy
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/preferences/email-preferences/" target="_blank">
+           Do Not Sell or Share My Data
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/about-nvidia/legal-info/" target="_blank">
+           Legal
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/about-nvidia/accessibility/" target="_blank">
+           Accessibility
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/about-nvidia/company-policies/" target="_self">
+           Corporate Policies
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/product-security/" target="_blank">
+           Product Security
+          </a>
+         </li>
+         <li>
+          <a href="https://www.nvidia.com/en-us/contact/" target="_blank">
+           Contact
+          </a>
+         </li>
+        </ul>
+        <div class="global-footer__copyright">
+         Copyright © 2024 NVIDIA Corporation
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <div class="md-dialog" data-md-component="dialog">
+   <div class="md-dialog__inner md-typeset">
+   </div>
+  </div>
+  <script id="__config" type="application/json">
+   {"annotate": null, "base": ".", "features": ["navigation.indexes", "navigation.expand", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.tabs.link", "content.code.copy", "announce.dismiss"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}
+  </script>
+  <!-- OneTrust Cookies Consent Notice start for www.jetson-ai-lab.com -->
+  <script charset="UTF-8" data-domain-script="018e2d65-efdf-7071-b793-f15ccf25c234" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   function OptanonWrapper() {        
+        var event = new Event('bannerLoaded');
+        window.dispatchEvent(event);
+    }
+  </script>
+  <!-- OneTrust Cookies Consent Notice end for www.jetson-ai-lab.com -->
+  <script src="https://images.nvidia.com/aem-dam/Solutions/ot-js/ot-custom.js" type="text/javascript">
+  </script>
+  <script src="//assets.adobedtm.com/5d4962a43b79/814eb6e9b4e1/launch-4bc07f1e0b0b.min.js">
+  </script>
+  <script src="assets/javascripts/bundle.e71a0d61.min.js">
+  </script>
+  <script>
+   window._6si = window._6si || [];
+  window._6si.push(['enableEventTracking', true]);
+  window._6si.push(['setToken', 'eb417ec30d332e34d732e2916f185311']);
+  window._6si.push(['setEndpoint', 'b.6sc.co']);
+  window._6si.push(['enableRetargeting', false]); 
+
+  window._6si.push(['enableCompanyDetails', true]);
+  window._6si.push(['setEpsilonKey', '6f578ba72568231347d1bddb7102e53695302c28']);
+
+  (function() {
+    var gd = document.createElement('script');
+    gd.type = 'text/javascript';
+    gd.async = true;
+    gd.src = '//j.6sc.co/6si.min.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gd, s);
+  })();
+  </script>
+  <script type="text/javascript">
+   _satellite.pageBottom();
+  </script>
+ </body>
+</html>
