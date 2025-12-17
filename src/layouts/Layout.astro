@@ -18,7 +18,7 @@ const { title, description = "Experience the latest generative AI models optimiz
     <meta name="generator" content={Astro.generator} />
     <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
     <title>{title} | Jetson AI Lab</title>
-    
+
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SXH8S4Y8RW"></script>
     <script is:inline>
@@ -27,9 +27,9 @@ const { title, description = "Experience the latest generative AI models optimiz
       gtag('js', new Date());
       gtag('config', 'G-SXH8S4Y8RW');
     </script>
-    
+
     <!-- OneTrust Cookies Consent Notice start for www.jetson-ai-lab.com -->
-    <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" type="text/javascript" charset="UTF-8" data-domain-script="018e2d65-efdf-7071-b793-f15ccf25c234"></script>
+    <script is:inline src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" type="text/javascript" charset="UTF-8" data-domain-script="018e2d65-efdf-7071-b793-f15ccf25c234"></script>
     <script is:inline type="text/javascript">
       function OptanonWrapper() {
         var event = new Event('bannerLoaded');
@@ -37,9 +37,9 @@ const { title, description = "Experience the latest generative AI models optimiz
       }
     </script>
     <!-- OneTrust Cookies Consent Notice end for www.jetson-ai-lab.com -->
-    
-    <script type="text/javascript" src="https://images.nvidia.com/aem-dam/Solutions/ot-js/ot-custom.js"></script>
-    <script src="//assets.adobedtm.com/5d4962a43b79/814eb6e9b4e1/launch-4bc07f1e0b0b.min.js"></script>
+
+    <script is:inline type="text/javascript" src="https://images.nvidia.com/aem-dam/Solutions/ot-js/ot-custom.js"></script>
+    <script is:inline src="//assets.adobedtm.com/5d4962a43b79/814eb6e9b4e1/launch-4bc07f1e0b0b.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -83,7 +83,7 @@ const { title, description = "Experience the latest generative AI models optimiz
               <span class="text-2xl font-nvidia font-bold">Jetson AI Lab</span>
             </div>
             <p class="text-nvidia-gray-300 mb-6 text-lg leading-relaxed">
-              Experience the latest generative AI models optimized for Jetson. 
+              Experience the latest generative AI models optimized for Jetson.
               Run locally, without depending on the cloud.
             </p>
           </div>
@@ -121,7 +121,7 @@ const { title, description = "Experience the latest generative AI models optimiz
         </div>
       </div>
     </footer>
-    
+
     <script>
       (function () {
         function qs(root, sel) { return root.querySelector(sel); }
@@ -133,7 +133,7 @@ const { title, description = "Experience the latest generative AI models optimiz
             '-v /mnt/nvme/cache:/cache'
           ].join(' \\\n  ');
         }
-        
+
         // Default engine images fallback
         var defaultEngineImages = {
           ollama: 'ollama/ollama:latest',
@@ -145,11 +145,11 @@ const { title, description = "Experience the latest generative AI models optimiz
           whispercpp: 'ghcr.io/ggerganov/whisper.cpp:latest',
           riva: 'nvcr.io/nvidia/riva/riva-speech:latest'
         };
-        
+
         function getEngineImage(meta, engine, device) {
           // Determine if Thor or Orin based on device selection
           var isThor = device && device.toLowerCase().includes('thor');
-          
+
           // Try device-specific images first
           if (isThor && meta.engineImagesThor && meta.engineImagesThor[engine]) {
             return meta.engineImagesThor[engine];
@@ -157,7 +157,7 @@ const { title, description = "Experience the latest generative AI models optimiz
           if (!isThor && meta.engineImagesOrin && meta.engineImagesOrin[engine]) {
             return meta.engineImagesOrin[engine];
           }
-          
+
           // Fallback to legacy engineImages
           if (meta.engineImages && meta.engineImages[engine]) {
             return meta.engineImages[engine];
@@ -178,7 +178,7 @@ const { title, description = "Experience the latest generative AI models optimiz
                 // Highlight commands and keywords
                 var highlighted = escapeHtml(line)
                   // Commands at start of line or after pipe/semicolon
-                  .replace(/^(sudo|docker|ollama|vllm|python|curl|git|bash|wget|chmod|chown|cd|mkdir|rm|cp|mv|cat|echo|export|source|pip|npm|jetson-containers|trtllm-run|riva_start)(\s)/g, 
+                  .replace(/^(sudo|docker|ollama|vllm|python|curl|git|bash|wget|chmod|chown|cd|mkdir|rm|cp|mv|cat|echo|export|source|pip|npm|jetson-containers|trtllm-run|riva_start)(\s)/g,
                     '<span class="text-cyan-400">$1</span>$2')
                   // Docker/command flags
                   .replace(/(\s)(--?[\w-]+)/g, '$1<span class="text-emerald-400">$2</span>')
@@ -199,7 +199,7 @@ const { title, description = "Experience the latest generative AI models optimiz
                   return '<span class="text-slate-500">' + escapeHtml(line) + '</span>';
                 }
                 var highlighted = escapeHtml(line)
-                  .replace(/\b(import|from|def|class|return|if|else|elif|try|except|for|while|in|as|with|True|False|None)\b/g, 
+                  .replace(/\b(import|from|def|class|return|if|else|elif|try|except|for|while|in|as|with|True|False|None)\b/g,
                     '<span class="text-purple-400">$1</span>')
                   .replace(/\b(print|requests|json)\b/g, '<span class="text-cyan-400">$1</span>')
                   .replace(/(["'][^"']*["'])/g, '<span class="text-emerald-400">$1</span>');
@@ -224,7 +224,7 @@ const { title, description = "Experience the latest generative AI models optimiz
           }
           return escapeHtml(txt);
         }
-        
+
         function escapeHtml(text) {
           var div = document.createElement('div');
           div.textContent = text;
@@ -234,10 +234,10 @@ const { title, description = "Experience the latest generative AI models optimiz
         function buildVllmCommand(meta, st) {
           var model = meta.hfCheckpoint || 'model/checkpoint';
           var parts = ['vllm serve ' + model];
-          
+
           // Always include --trust-remote-code
           parts.push('--trust-remote-code');
-          
+
           // Add optional parameters if provided
           if (st.vllmPort) {
             parts.push('--port ' + st.vllmPort);
@@ -248,14 +248,14 @@ const { title, description = "Experience the latest generative AI models optimiz
           if (st.vllmGpuMem) {
             parts.push('--gpu-memory-utilization ' + st.vllmGpuMem);
           }
-          
+
           // Format with line continuations for readability
           if (parts.length > 2) {
             return parts.join(' \\\n    ');
           }
           return parts.join(' ');
         }
-        
+
         function engineRunLine(engine, modelId, port, ctx, batch, steps, meta, st) {
           var m = sanitize(modelId);
           var engineLower = (engine || '').toLowerCase();
@@ -277,16 +277,16 @@ const { title, description = "Experience the latest generative AI models optimiz
           var image = getEngineImage(meta, engineLower, st.device);
           var container = sanitize(st.engine) + '-' + sanitize(meta.modelId);
           var runLine = engineRunLine(engineLower, meta.modelId, st.port, st.ctx, st.batch, st.steps, meta, st);
-          
+
           if (engineLower === 'ollama') {
               return runLine;
           }
-          
+
           // For vLLM with multiline command, format nicely
           if (engineLower === 'vllm' && runLine.includes('\\\n')) {
             return 'sudo docker run -it --rm --pull always \\\n    --runtime=nvidia --network host \\\n    ' + image + ' \\\n    ' + runLine;
           }
-          
+
           return 'sudo docker run -it --rm --pull always --runtime=nvidia --network host ' + image + ' ' + runLine;
         }
 
@@ -336,7 +336,7 @@ const { title, description = "Experience the latest generative AI models optimiz
           var id = meta.modelId || '';
           var checked = modal.querySelector('input[name="engine-' + id + '"]:checked');
           var engineSel = modal.querySelector('[data-engine]');
-          
+
           // Get engine value with multiple fallbacks
           var engineVal = '';
           if (engineSel && engineSel.value) {
@@ -348,12 +348,12 @@ const { title, description = "Experience the latest generative AI models optimiz
           } else {
             engineVal = 'ollama'; // ultimate fallback
           }
-          
+
           // Get vLLM specific parameters (only if inputs exist and have values)
           var vllmPortEl = qs(modal, '[data-vllm-port]');
           var vllmMaxModelLenEl = qs(modal, '[data-vllm-max-model-len]');
           var vllmGpuMemEl = qs(modal, '[data-vllm-gpu-mem]');
-          
+
           return {
             engine: engineVal,
             device: qs(modal, '[data-device]') ? qs(modal, '[data-device]').value : undefined,
@@ -369,12 +369,12 @@ const { title, description = "Experience the latest generative AI models optimiz
             vllmGpuMem: vllmGpuMemEl && vllmGpuMemEl.value ? vllmGpuMemEl.value : ''
           };
         }
-        
+
         function updateVllmConfigVisibility(modal) {
           var engineSel = qs(modal, '[data-engine]');
           var vllmConfig = qs(modal, '[data-vllm-config]');
           if (!vllmConfig) return;
-          
+
           var engineVal = engineSel ? engineSel.value.toLowerCase() : '';
           if (engineVal === 'vllm') {
             vllmConfig.classList.remove('hidden');
@@ -389,7 +389,7 @@ const { title, description = "Experience the latest generative AI models optimiz
             var meta = JSON.parse(metaStr);
             var st = getState(modal, meta);
             var pre = qs(modal, '[data-snippet]');
-            
+
             if (!pre) {
               console.warn('RunCommand: Could not find [data-snippet] element');
               return;
@@ -406,12 +406,12 @@ const { title, description = "Experience the latest generative AI models optimiz
               txt = buildPython(meta, st);
               lang = 'python';
             }
-            
+
             // Ensure we always have some output
             if (!txt) {
               txt = '# Unable to generate command. Please check your configuration.';
             }
-            
+
             // Apply syntax highlighting
             pre.innerHTML = highlightSyntax(txt, lang);
           } catch (err) {
@@ -495,7 +495,7 @@ const { title, description = "Experience the latest generative AI models optimiz
             }
             return;
           }
-          
+
           var advToggle = e.target.closest('[data-run-advanced-toggle]');
           if (advToggle) {
             var modal = advToggle.closest('[data-run-modal]');
@@ -514,7 +514,7 @@ const { title, description = "Experience the latest generative AI models optimiz
             }
             return;
           }
-          
+
           // vLLM reset button
           var vllmReset = e.target.closest('[data-vllm-reset]');
           if (vllmReset) {
@@ -548,18 +548,18 @@ const { title, description = "Experience the latest generative AI models optimiz
         });
       })();
     </script>
-    
+
     <!-- 6sense Tracking -->
     <script is:inline>
       window._6si = window._6si || [];
       window._6si.push(['enableEventTracking', true]);
       window._6si.push(['setToken', 'eb417ec30d332e34d732e2916f185311']);
       window._6si.push(['setEndpoint', 'b.6sc.co']);
-      window._6si.push(['enableRetargeting', false]); 
-      
+      window._6si.push(['enableRetargeting', false]);
+
       window._6si.push(['enableCompanyDetails', true]);
       window._6si.push(['setEpsilonKey', '6f578ba72568231347d1bddb7102e53695302c28']);
-      
+
       (function() {
         var gd = document.createElement('script');
         gd.type = 'text/javascript';
@@ -571,4 +571,4 @@ const { title, description = "Experience the latest generative AI models optimiz
     </script>
     <script is:inline type="text/javascript">_satellite.pageBottom();</script>
   </body>
-</html> 
+</html>
