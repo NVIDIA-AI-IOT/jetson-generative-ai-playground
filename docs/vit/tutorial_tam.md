@@ -1,6 +1,6 @@
-# Tutorial - SAM (Segment Anything)
+# Tutorial - TAM (Track Anything)
 
-Let's run [`TAM`](https://github.com/gaomingqi/Track-Anything) to perform Segment Anything on videos on NVIDIA Jetson.
+Let's run [`TAM`](https://github.com/gaomingqi/Track-Anything) to perform Track Anything on videos on NVIDIA Jetson.
 
 ![](../images/TAM_screenshot_cat.png)
 
@@ -22,16 +22,16 @@ Let's run [`TAM`](https://github.com/gaomingqi/Track-Anything) to perform Segmen
 
     4. Clone and setup [`jetson-containers`](https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md){:target="_blank"}:
     
-		```bash
-		git clone https://github.com/dusty-nv/jetson-containers
-		bash jetson-containers/install.sh
-		``` 
+    ```bash
+    git clone https://github.com/dusty-nv/jetson-containers
+    bash jetson-containers/install.sh
+    ``` 
 
 ## How to start
 
 Use the `jetson-containers run` and `autotag` commands to automatically pull or build a compatible container image.
 
-```
+```bash
 jetson-containers run $(autotag tam)
 ```
 
@@ -59,7 +59,7 @@ Check out the [official tutorial](https://github.com/gaomingqi/Track-Anything/bl
 
 You may find the TAM app fails to download a checkpoint file `E2FGVI-HQ-CVPR22.pth`.
 
-```
+```console
 Downloading checkpoints from Google Drive... tips: If you cannot see the progress bar, please try to download it manuall               and put it in the checkpointes directory. E2FGVI-HQ-CVPR22.pth: https://github.com/MCG-NKU/E2FGVI(E2FGVI-HQ model)
 Access denied with the following error:
 
@@ -74,7 +74,7 @@ You may still be able to access the file from the browser:
 
 You can manually download the checkpoint file on your Docker host machine.
 
-```
+```bash
 cd jetson-containers/
 pip install gdown
 source ~/.profile
@@ -84,6 +84,6 @@ mv E2FGVI-HQ-CVPR22.pth ./data/models/tam/
 
 And you can try running the TAM container.
 
-```
+```bash
 jetson-containers run $(autotag tam)
 ```
