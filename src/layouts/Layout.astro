@@ -45,6 +45,24 @@ const { title, description = "Experience the latest generative AI models optimiz
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body class="bg-nvidia-white text-nvidia-black">
+    <!-- Migration Notice Banner -->
+    <div id="migration-notice" class="bg-gradient-to-r from-nvidia-green to-gray-100 text-black px-4 py-3 shadow-lg" style="display: none;">
+      <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3 flex-1">
+          <span class="text-2xl">🎉</span>
+          <div class="flex-1">
+            <p class="font-semibold">Welcome to Jetson AI Lab 2.0!</p>
+            <p class="text-sm">We've redesigned the site with curated tutorials. Looking for old content?
+              <a href="/archive/index.html" class="underline font-medium hover:text-white">Browse the archive →</a>
+            </p>
+          </div>
+        </div>
+        <button id="dismiss-notice" class="text-black hover:text-white font-bold text-xl px-2 py-1 rounded hover:bg-black/10 transition-colors" aria-label="Dismiss">
+          ×
+        </button>
+      </div>
+    </div>
+
     <header class="bg-nvidia-white border-b border-nvidia-gray-200 sticky top-0 z-50">
       <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -546,6 +564,32 @@ const { title, description = "Experience the latest generative AI models optimiz
           var modal = e.target.closest('[data-run-modal]');
           if (modal) render(modal);
         });
+      })();
+    </script>
+
+    <!-- 6sense Tracking -->
+    <!-- Migration Notice Handler -->
+    <script is:inline>
+      // Show migration notice banner if not dismissed
+      (function() {
+        const notice = document.getElementById('migration-notice');
+        const dismissBtn = document.getElementById('dismiss-notice');
+        const storageKey = 'jetson-ai-lab-migration-notice-dismissed';
+
+        // Check if user has dismissed the notice
+        const isDismissed = localStorage.getItem(storageKey);
+
+        if (!isDismissed && notice) {
+          notice.style.display = 'block';
+        }
+
+        // Handle dismiss
+        if (dismissBtn) {
+          dismissBtn.addEventListener('click', function() {
+            localStorage.setItem(storageKey, 'true');
+            notice.style.display = 'none';
+          });
+        }
       })();
     </script>
 
