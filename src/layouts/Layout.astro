@@ -361,20 +361,25 @@ const { title, description = "Experience the latest generative AI models optimiz
         function buildShell(meta, st) {
           var engineLower = (st.engine || '').toLowerCase();
           
-          // Check for full custom command from supportedEngines (for vLLM)
-          if (engineLower === 'vllm' && meta.supportedEngines && meta.supportedEngines.length > 0) {
-            var vllmEngine = meta.supportedEngines.find(function(e) {
-              return e.engine && e.engine.toLowerCase() === 'vllm';
+          // Check for full custom command from supportedEngines (for vLLM and llama.cpp)
+          if (meta.supportedEngines && meta.supportedEngines.length > 0) {
+            var customEngine = meta.supportedEngines.find(function(e) {
+              if (!e.engine) return false;
+              var engineName = e.engine.toLowerCase();
+              // Match by exact name or by removing dots/special chars (llama.cpp -> llamacpp)
+              var normalizedName = engineName.replace(/[.\-_]/g, '');
+              var normalizedEngineLower = engineLower.replace(/[.\-_]/g, '');
+              return engineName === engineLower || normalizedName === normalizedEngineLower;
             });
-            if (vllmEngine) {
+            if (customEngine) {
               var customCmd = null;
               var device = st.device || 'Jetson Orin';
-              if (device === 'Jetson Thor' && vllmEngine.run_command_thor) {
-                customCmd = vllmEngine.run_command_thor;
-              } else if (device === 'Jetson Orin' && vllmEngine.run_command_orin) {
-                customCmd = vllmEngine.run_command_orin;
-              } else if (vllmEngine.run_command) {
-                customCmd = vllmEngine.run_command;
+              if (device === 'Jetson Thor' && customEngine.run_command_thor) {
+                customCmd = customEngine.run_command_thor;
+              } else if (device === 'Jetson Orin' && customEngine.run_command_orin) {
+                customCmd = customEngine.run_command_orin;
+              } else if (customEngine.run_command) {
+                customCmd = customEngine.run_command;
               }
               if (customCmd) {
                 return customCmd;

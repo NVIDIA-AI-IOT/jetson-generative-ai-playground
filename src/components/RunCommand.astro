@@ -72,7 +72,7 @@ const engineUi = engines.map((e) => ({ id: e.id, label: e.label }));
 const engineImagesOrin: Record<string, string> = {
 	ollama: 'ollama/ollama:latest',
 	vllm: 'ghcr.io/nvidia-ai-iot/vllm:latest-jetson-orin',
-	llamacpp: 'ghcr.io/ggerganov/llama.cpp:server',
+	llamacpp: 'ghcr.io/nvidia-ai-iot/llama_cpp:latest-jetson-orin',
 	tensorrtllm: 'nvcr.io/nvidia/tensorrt-llm:latest',
 	diffusers: 'pytorch/pytorch:2.3.0-cuda12.1-cudnn8-runtime',
 	comfyui: 'ghcr.io/comfyanonymous/comfyui:latest',
@@ -83,7 +83,7 @@ const engineImagesOrin: Record<string, string> = {
 const engineImagesThor: Record<string, string> = {
 	ollama: 'ollama/ollama:latest',
 	vllm: 'ghcr.io/nvidia-ai-iot/vllm:latest-jetson-thor',
-	llamacpp: 'ghcr.io/ggerganov/llama.cpp:server',
+	llamacpp: 'ghcr.io/nvidia-ai-iot/llama_cpp:latest-jetson-thor',
 	tensorrtllm: 'nvcr.io/nvidia/tensorrt-llm:latest',
 	diffusers: 'pytorch/pytorch:2.3.0-cuda12.1-cudnn8-runtime',
 	comfyui: 'ghcr.io/comfyanonymous/comfyui:latest',

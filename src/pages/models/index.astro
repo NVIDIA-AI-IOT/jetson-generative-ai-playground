@@ -66,7 +66,7 @@ const families = Array.from(new Set(models.map(m => m.family)));
                       {model.description}
                     </p>
 
-                    <div class="mt-auto pt-4 border-t border-gray-100 relative z-20">
+                    <div class="mt-auto pt-4 border-t border-gray-100">
                       <div class="flex items-center gap-2">
                         <RunCommand modelId={model.id} modelName={model.name} category={model.category} forceModal={model.category === 'Image'} supportedEngines={model.supported_inference_engines} hfCheckpoint={model.hf_checkpoint} />
                         <a href={`/models/${model.id}`} class="px-3 py-1.5 rounded-md bg-nvidia-gray-100 text-nvidia-gray-900 hover:bg-nvidia-green hover:text-nvidia-black text-xs font-semibold transition-colors">
