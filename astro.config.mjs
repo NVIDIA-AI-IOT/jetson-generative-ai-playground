@@ -33,12 +33,10 @@ export default defineConfig({
     '/workshop_gtcdc2025.html': '/tutorials/workshop-gtc-dc-2025/',
     '/workshop_gtcdc2025': '/tutorials/workshop-gtc-dc-2025/',
     
-    // Main sections
+    // Main sections - only redirect .html versions
     '/models.html': '/models/',
-    '/models': '/models/',
     '/benchmarks.html': '/archive/benchmarks.html',
     '/research.html': '/research/',
-    '/research': '/research/',
     '/community_articles.html': '/community/',
     
     // Catch common patterns - redirect to archive
