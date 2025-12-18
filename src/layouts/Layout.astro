@@ -98,15 +98,37 @@ const { title, description = "Experience the latest generative AI models optimiz
             <a href="/research" class="text-nvidia-black hover:text-nvidia-green hover:bg-nvidia-gray-50 px-4 py-2 text-sm font-medium rounded-md transition-colors duration-200">Research Group</a>
           </div>
           <div class="md:hidden flex items-center">
-            <button class="text-nvidia-black hover:text-nvidia-green p-2">
+            <button id="mobile-menu-button" class="text-nvidia-black hover:text-nvidia-green p-2" aria-label="Toggle menu">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
               </svg>
             </button>
           </div>
         </div>
+        <!-- Mobile menu, hidden by default -->
+        <div id="mobile-menu" class="hidden md:hidden pb-4">
+          <a href="/" class="block text-nvidia-black hover:text-nvidia-green hover:bg-nvidia-gray-50 px-4 py-3 text-base font-medium rounded-md transition-colors duration-200">Home</a>
+          <a href="/models" class="block text-nvidia-black hover:text-nvidia-green hover:bg-nvidia-gray-50 px-4 py-3 text-base font-medium rounded-md transition-colors duration-200">Models</a>
+          <a href="/tutorials" class="block text-nvidia-black hover:text-nvidia-green hover:bg-nvidia-gray-50 px-4 py-3 text-base font-medium rounded-md transition-colors duration-200">Tutorials</a>
+          <a href="/community" class="block text-nvidia-black hover:text-nvidia-green hover:bg-nvidia-gray-50 px-4 py-3 text-base font-medium rounded-md transition-colors duration-200">Projects</a>
+          <a href="/research" class="block text-nvidia-black hover:text-nvidia-green hover:bg-nvidia-gray-50 px-4 py-3 text-base font-medium rounded-md transition-colors duration-200">Research Group</a>
+        </div>
       </nav>
     </header>
+    
+    <!-- Mobile Menu Toggle Script -->
+    <script is:inline>
+      (function() {
+        var menuButton = document.getElementById('mobile-menu-button');
+        var mobileMenu = document.getElementById('mobile-menu');
+        
+        if (menuButton && mobileMenu) {
+          menuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+          });
+        }
+      })();
+    </script>
 
     <main class="min-h-screen">
       <slot />
