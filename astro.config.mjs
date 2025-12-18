@@ -1,14 +1,18 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
+import rehypeMermaid from 'rehype-mermaid';
 
 export default defineConfig({
   integrations: [tailwind()],
   site: 'https://www.jetson-ai-lab.com',
   markdown: {
-    shikiConfig: {
+    syntaxHighlight: {
+      type: 'shiki',
       theme: 'github-dark',
-      wrap: true
-    }
+      wrap: true,
+      excludeLangs: ['mermaid'], // Disable syntax highlighting for Mermaid
+    },
+    rehypePlugins: [rehypeMermaid], // Render Mermaid diagrams at build time
   },
   redirects: {
     // Jetson Setup Guide
@@ -18,7 +22,7 @@ export default defineConfig({
     '/initial_setup_jon_sdkm': '/tutorials/initial-setup-sdk-manager/',
     '/tips_ssd-docker.html': '/tutorials/ssd-docker-setup/',
     '/tips_ssd-docker': '/tutorials/ssd-docker-setup/',
-    
+
     // Tutorials
     '/tutorial_ollama.html': '/tutorials/ollama/',
     '/tutorial_ollama': '/tutorials/ollama/',
@@ -32,13 +36,13 @@ export default defineConfig({
     '/tutorial_gen-ai-benchmarking': '/tutorials/genai-benchmarking/',
     '/workshop_gtcdc2025.html': '/tutorials/workshop-gtc-dc-2025/',
     '/workshop_gtcdc2025': '/tutorials/workshop-gtc-dc-2025/',
-    
+
     // Main sections - only redirect .html versions
     '/models.html': '/models/',
     '/benchmarks.html': '/archive/benchmarks.html',
     '/research.html': '/research/',
     '/community_articles.html': '/community/',
-    
+
     // Catch common patterns - redirect to archive
     '/tutorial-intro.html': '/archive/tutorial-intro.html',
     '/tutorial-intro': '/archive/tutorial-intro.html',
