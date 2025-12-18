@@ -1,6 +1,6 @@
 # Jetson AI Lab
 
-[![Deploy to GitHub Pages](https://github.com/NVIDIA-AI-IOT/jetson-generative-ai-playground/actions/workflows/ci.yml/badge.svg)](https://github.com/NVIDIA-AI-IOT/jetson-generative-ai-playground/actions/workflows/ci.yml)
+[![Deploy to GitHub Pages](https://github.com/NVIDIA-AI-IOT/jetson-ai-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/NVIDIA-AI-IOT/jetson-ai-lab/actions/workflows/ci.yml)
 
 **[www.jetson-ai-lab.com](https://www.jetson-ai-lab.com)**
 
@@ -59,8 +59,8 @@ Jetson AI Lab pairs a modern Astro frontend with a content-driven workflow, enab
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/NVIDIA-AI-IOT/jetson-generative-ai-playground.git
-cd jetson-generative-ai-playground
+git clone https://github.com/NVIDIA-AI-IOT/jetson-ai-lab.git
+cd jetson-ai-lab
 ```
 
 2. **Install dependencies**
@@ -163,7 +163,6 @@ See [LICENSE](LICENSE) for details.
 
 For questions or contributions, please open an issue or contact the maintainers.
 
-- Asier Arranz (asier@nvidia.com)
-- Khalil Ben Khaled (kbenkhaled@nvidia.com)
-- Aditya Sahu (adsahu@nvidia.com)
-- Chitoku Yato (cyato@nvidia.com)
+- Khalil Ben Khaled 
+- Aditya Sahu 
+- Chitoku Yato
