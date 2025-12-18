@@ -6,13 +6,13 @@ export default defineConfig({
   integrations: [tailwind()],
   site: 'https://www.jetson-ai-lab.com',
   markdown: {
-    shikiConfig: {
+    syntaxHighlight: {
+      type: 'shiki',
       theme: 'github-dark',
-      wrap: true
+      wrap: true,
+      excludeLangs: ['mermaid'], // Disable syntax highlighting for Mermaid
     },
-    rehypePlugins: [
-      [rehypeMermaid, { strategy: 'inline-svg' }]
-    ]
+    rehypePlugins: [rehypeMermaid], // Render Mermaid diagrams at build time
   },
   redirects: {
     // Jetson Setup Guide

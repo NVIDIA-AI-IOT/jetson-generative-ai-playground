@@ -48,6 +48,18 @@ Also, if you wish to not use a microSD card but rather use a large NVMe SSD for 
 - Have x86 PC running Ubuntu 22.04/20.04? → Use SDK Manager method
 - Otherwise → Use this microSD-only method
 
+```mermaid
+flowchart LR
+    A(start) --> B{Want to ditch microSD<br>and only use NVMe SSD?}
+    B --YES --> S[🛸 SDK Manager method]
+    B --No --> C{Have x86 PC running<br> Ubuntu 22.04/20.04?}
+    C --YES --> S
+    C --No --> U[🚀 microSD-only method]
+
+    style S stroke-width:3px, fill:#f3e9f2,stroke:#b544c4
+    style U stroke-width:3px, fill:#d2e9e5,stroke:#0e7a71
+```
+
 See our [SDK Manager Setup Guide](/tutorials/initial-setup-sdk-manager) for that method.
 
 ---
@@ -63,6 +75,31 @@ See our [SDK Manager Setup Guide](/tutorials/initial-setup-sdk-manager) for that
 7. Reboot (Firmware update to 36.4.3 during reboot)
 8. **Unlock super performance**
 9. 👍 Start developing on JetPack 6.2
+
+```mermaid
+flowchart TD
+    A(start) --> B{1️⃣ Check if Jetson UEFI Firmware<br>is newer than version 36.0}
+    B --YES --> O[6️⃣ Boot with JetPack 6.2 microSD card<br>to schedule firmware update]
+    B --No --> C[2️⃣ Boot with JetPack 5.1.3 microSD card<br>to schedule firmware update]
+    C --> D[3️⃣ Reboot] --> E{{Firmware update to 5.0 during reboot}}
+    E --> F[4️⃣ Run QSPI updater] --> G[5️⃣ Reboot] --> H{{QSPI update during reboot - Firmware 36.4.0}}
+    H --> O
+    O --> P[7️⃣ Reboot]
+    P --> Q{{Firmware update to 36.4.3 during reboot}}
+    Q --> R[8️⃣ Unlock super performance]
+    R --> S(👍 Start developing on JetPack 6.2)
+
+    style C fill:#fee
+    style D fill:#DEE,stroke:#333
+    style E stroke-width:2px,stroke-dasharray: 5 5
+    style F stroke-width:4px
+    style G fill:#DEE,stroke:#333
+    style H stroke-width:2px,stroke-dasharray: 5 5
+    style O fill:#fee
+    style P fill:#DEE,stroke:#333
+    style Q stroke-width:2px,stroke-dasharray: 5 5
+    style R fill:#f2d5ff
+```
 
 Note that it will undergo a total of **three (3)** reboot cycles.
 

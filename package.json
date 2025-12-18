@@ -16,12 +16,13 @@
     "@astrojs/tailwind": "^6.0.0",
     "astro": "^5.11.1",
     "chart.js": "^4.4.4",
-    "rehype-mermaid": "^3.0.0",
     "tailwindcss": "^3.4.0"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.19",
-    "@types/node": "^20.0.0"
+    "@types/node": "^20.0.0",
+    "playwright": "^1.57.0",
+    "rehype-mermaid": "^3.0.0"
   },
   "keywords": [
     "jetson",
