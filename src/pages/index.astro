@@ -43,7 +43,7 @@ const sourceColors: Record<string, { bg: string; text: string }> = {
         </div>
       </div>
       <div class="flex-1 flex justify-center lg:justify-end">
-        <img src="https://www.jetson-ai-lab.com/images/jetson-for-dev-ai-labs-icon-2974266-r3_ai-lab-text-generation-28.png" alt="NVIDIA Jetson AI Illustration" class="max-w-[192px] md:max-w-[288px] w-auto h-auto" />
+        <img src="/images/hero/jetson-family-line_50pcnt.png" alt="NVIDIA Jetson AI Illustration" class="max-w-[192px] md:max-w-[640px] w-auto h-auto" />
       </div>
     </div>
   </section>
@@ -106,7 +106,7 @@ const sourceColors: Record<string, { bg: string; text: string }> = {
         <h2 class="text-3xl font-bold text-nvidia-black mb-4">Quick Access</h2>
         <p class="text-xl text-nvidia-gray-600">Jump straight to what you need</p>
       </div>
-      
+
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <!-- Setup -->
         <a href="/tutorials#section-setup" class="group bg-nvidia-white rounded-xl p-6 border border-nvidia-gray-200 hover:border-nvidia-green hover:shadow-md transition-all duration-200">
@@ -181,7 +181,7 @@ const sourceColors: Record<string, { bg: string; text: string }> = {
               {/* Media */}
               <div class="relative aspect-video bg-nvidia-gray-100 overflow-hidden">
                 {project.data.video ? (
-                  <iframe 
+                  <iframe
                     src={project.data.video}
                     class="w-full h-full"
                     frameborder="0"
@@ -190,8 +190,8 @@ const sourceColors: Record<string, { bg: string; text: string }> = {
                     loading="lazy"
                   ></iframe>
                 ) : project.data.image ? (
-                  <img 
-                    src={project.data.image} 
+                  <img
+                    src={project.data.image}
                     alt={project.data.title}
                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     loading="lazy"
@@ -203,23 +203,23 @@ const sourceColors: Record<string, { bg: string; text: string }> = {
                     </svg>
                   </div>
                 )}
-                
+
                 {/* Source Badge */}
                 <span class={`absolute top-3 left-3 px-2 py-1 text-xs font-bold rounded ${colors.bg} ${colors.text}`}>
                   {project.data.source}
                 </span>
               </div>
-              
+
               {/* Content */}
               <div class="p-5">
                 <div class="flex items-center justify-between mb-2">
                   <span class="text-sm text-nvidia-gray-500">{project.data.author}</span>
                 </div>
-                
+
                 <h3 class="text-lg font-bold text-nvidia-black mb-2 group-hover:text-nvidia-green transition-colors line-clamp-2">
                   {project.data.title}
                 </h3>
-                
+
                 <p class="text-nvidia-gray-600 text-sm line-clamp-2">
                   {project.data.description}
                 </p>
