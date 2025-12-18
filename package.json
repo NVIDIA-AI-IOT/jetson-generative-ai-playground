@@ -15,6 +15,7 @@
   "dependencies": {
     "@astrojs/tailwind": "^6.0.0",
     "astro": "^5.11.1",
+    "astro-expressive-code": "^0.41.5",
     "chart.js": "^4.4.4",
     "tailwindcss": "^3.4.0"
   },
