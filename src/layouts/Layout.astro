@@ -28,18 +28,37 @@ const { title, description = "Experience the latest generative AI models optimiz
       gtag('config', 'G-SXH8S4Y8RW');
     </script>
 
-    <!-- OneTrust Cookies Consent Notice start for www.jetson-ai-lab.com -->
-    <script is:inline src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" type="text/javascript" charset="UTF-8" data-domain-script="018e2d65-efdf-7071-b793-f15ccf25c234"></script>
-    <script is:inline type="text/javascript">
-      function OptanonWrapper() {
-        var event = new Event('bannerLoaded');
-        window.dispatchEvent(event);
+    <!-- OneTrust Cookies Consent Notice - Only on Production -->
+    <!-- Excluded on localhost/staging to avoid popup loop on non-production domains -->
+    <script is:inline>
+      // Only load OneTrust on production domain
+      if (window.location.hostname === 'www.jetson-ai-lab.com' || window.location.hostname === 'jetson-ai-lab.com') {
+        // OneTrust Cookie Consent
+        var script1 = document.createElement('script');
+        script1.src = 'https://cdn.cookielaw.org/scripttemplates/otSDKStub.js';
+        script1.type = 'text/javascript';
+        script1.charset = 'UTF-8';
+        script1.setAttribute('data-domain-script', '018e2d65-efdf-7071-b793-f15ccf25c234');
+        document.head.appendChild(script1);
+        
+        // OptanonWrapper callback
+        window.OptanonWrapper = function() {
+          var event = new Event('bannerLoaded');
+          window.dispatchEvent(event);
+        };
+        
+        // OneTrust custom JS
+        var script2 = document.createElement('script');
+        script2.src = 'https://images.nvidia.com/aem-dam/Solutions/ot-js/ot-custom.js';
+        script2.type = 'text/javascript';
+        document.head.appendChild(script2);
+        
+        // Adobe DTM
+        var script3 = document.createElement('script');
+        script3.src = '//assets.adobedtm.com/5d4962a43b79/814eb6e9b4e1/launch-4bc07f1e0b0b.min.js';
+        document.head.appendChild(script3);
       }
     </script>
-    <!-- OneTrust Cookies Consent Notice end for www.jetson-ai-lab.com -->
-
-    <script is:inline type="text/javascript" src="https://images.nvidia.com/aem-dam/Solutions/ot-js/ot-custom.js"></script>
-    <script is:inline src="//assets.adobedtm.com/5d4962a43b79/814eb6e9b4e1/launch-4bc07f1e0b0b.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
