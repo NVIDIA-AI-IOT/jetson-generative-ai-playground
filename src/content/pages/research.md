@@ -60,7 +60,7 @@ past_meetings:
 team_members:
   - name: "Dustin Franklin"
     role: "Principal Engineer"
-    org: "NVIDIA"
+    org: ""
     location: "Pittsburgh, PA"
     image: "/images/research/Dustin_Franklin.jpg"
     linkedin: "https://www.linkedin.com/in/dustin-franklin-b3aaa173/"
