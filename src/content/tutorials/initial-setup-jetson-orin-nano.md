@@ -5,6 +5,7 @@ category: "Setup"
 section: "Jetson Setup"
 order: 1
 tags: ["setup", "jetson", "orin-nano", "jetpack", "firmware", "microsd", "getting-started"]
+hero_image: "/images/hero/isometric_jon-devkit.png"
 ---
 
 > This guide supplements the official [Jetson Orin Nano Developer Kit Getting Started Guide](https://developer.nvidia.com/embedded/learn/get-started-jetson-orin-nano-devkit).
