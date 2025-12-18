@@ -47,7 +47,23 @@ const defaultEngineId = defaultEngine?.id || (engines[0]?.id ?? '');
 const buttonId = `run-btn-${modelId}`;
 const modalId = `run-modal-${modelId}`;
 
-const jetsonDevices = ['Jetson Orin', 'Jetson Thor'];
+// Determine which devices are supported based on run commands
+const allDevices = ['Jetson Orin', 'Jetson Thor'];
+let jetsonDevices = allDevices;
+
+if (supportedEngines && supportedEngines.length > 0) {
+    const hasOrin = supportedEngines.some(e => e.run_command_orin || e.run_command);
+    const hasThor = supportedEngines.some(e => e.run_command_thor);
+    
+    const availableDevices: string[] = [];
+    if (hasOrin) availableDevices.push('Jetson Orin');
+    if (hasThor) availableDevices.push('Jetson Thor');
+    
+    if (availableDevices.length > 0) {
+        jetsonDevices = availableDevices;
+    }
+}
+
 const jetpacks = ['6.1+', '6.0', '5.1'];
 
 const engineUi = engines.map((e) => ({ id: e.id, label: e.label }));
@@ -84,7 +100,7 @@ const engineImages = engineImagesOrin;
 	<span class="sr-only">Run {modelName}</span>
 </button>
 
-<div id={modalId} data-run-modal={modelId} class="hidden fixed inset-0 z-[60]" data-meta={JSON.stringify({ engineUi, engineImages, engineImagesOrin, engineImagesThor, jetsonDevices, jetpacks, defaultEngineId, category, modelId, modelName, hfCheckpoint })}>
+<div id={modalId} data-run-modal={modelId} class="hidden fixed inset-0 z-[60]" data-meta={JSON.stringify({ engineUi, engineImages, engineImagesOrin, engineImagesThor, jetsonDevices, jetpacks, defaultEngineId, category, modelId, modelName, hfCheckpoint, supportedEngines })}>
 	<div data-overlay data-run-overlay class="absolute inset-0 backdrop-blur-sm transition-opacity" style="background-color: rgba(0, 0, 0, 0.4);"></div>
 	
     <div class="absolute inset-0 flex items-center justify-center p-4 sm:p-6 pointer-events-none">
@@ -199,7 +215,7 @@ const engineImages = engineImagesOrin;
                     <div class="w-full lg:w-7/12 bg-nvidia-gray-50 p-6 flex flex-col h-full overflow-hidden">
                         <div class="flex items-center justify-between mb-4 shrink-0">
                              <div class="flex bg-white rounded-lg p-1 shadow-sm border border-nvidia-gray-200">
-                                {['shell','python'].map((tab, idx) => (
+                                {['shell'].map((tab, idx) => (
                                     <button 
                                         class={`px-4 py-1.5 rounded-md text-xs font-bold transition-all ${idx===0 ? 'bg-nvidia-black text-nvidia-white shadow-sm' : 'text-nvidia-gray-600 hover:text-nvidia-black hover:bg-nvidia-gray-50'}`} 
                                         data-tab={tab}

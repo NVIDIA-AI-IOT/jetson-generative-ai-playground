@@ -269,6 +269,33 @@ const { title, description = "Experience the latest generative AI models optimiz
         }
 
         function buildVllmCommand(meta, st) {
+          // Check for custom run command from supportedEngines
+          if (meta.supportedEngines && meta.supportedEngines.length > 0) {
+            var vllmEngine = meta.supportedEngines.find(function(e) {
+              return e.engine && e.engine.toLowerCase() === 'vllm';
+            });
+            if (vllmEngine) {
+              var customCmd = null;
+              var device = st.device || 'Jetson Orin';
+              if (device === 'Jetson Thor' && vllmEngine.run_command_thor) {
+                customCmd = vllmEngine.run_command_thor;
+              } else if (device === 'Jetson Orin' && vllmEngine.run_command_orin) {
+                customCmd = vllmEngine.run_command_orin;
+              } else if (vllmEngine.run_command) {
+                customCmd = vllmEngine.run_command;
+              }
+              if (customCmd) {
+                // Return just the vllm serve part (after the docker run command)
+                var vllmIndex = customCmd.indexOf('vllm serve');
+                if (vllmIndex !== -1) {
+                  return customCmd.substring(vllmIndex);
+                }
+                return customCmd;
+              }
+            }
+          }
+
+          // Fallback to generic command
           var model = meta.hfCheckpoint || 'model/checkpoint';
           var parts = ['vllm serve ' + model];
 
@@ -311,6 +338,28 @@ const { title, description = "Experience the latest generative AI models optimiz
 
         function buildShell(meta, st) {
           var engineLower = (st.engine || '').toLowerCase();
+          
+          // Check for full custom command from supportedEngines (for vLLM)
+          if (engineLower === 'vllm' && meta.supportedEngines && meta.supportedEngines.length > 0) {
+            var vllmEngine = meta.supportedEngines.find(function(e) {
+              return e.engine && e.engine.toLowerCase() === 'vllm';
+            });
+            if (vllmEngine) {
+              var customCmd = null;
+              var device = st.device || 'Jetson Orin';
+              if (device === 'Jetson Thor' && vllmEngine.run_command_thor) {
+                customCmd = vllmEngine.run_command_thor;
+              } else if (device === 'Jetson Orin' && vllmEngine.run_command_orin) {
+                customCmd = vllmEngine.run_command_orin;
+              } else if (vllmEngine.run_command) {
+                customCmd = vllmEngine.run_command;
+              }
+              if (customCmd) {
+                return customCmd;
+              }
+            }
+          }
+          
           var image = getEngineImage(meta, engineLower, st.device);
           var container = sanitize(st.engine) + '-' + sanitize(meta.modelId);
           var runLine = engineRunLine(engineLower, meta.modelId, st.port, st.ctx, st.batch, st.steps, meta, st);

@@ -2,7 +2,6 @@
 interface DeviceBenchmark {
   concurrency1: number;
   concurrency8: number;
-  ttftMs: number;
 }
 
 interface Benchmark {
@@ -34,7 +33,6 @@ const { benchmarks } = Astro.props as Props;
       <div class="inline-flex rounded-lg bg-nvidia-gray-100 p-1 self-start">
         <button id="btn-tps1" class="px-3 py-1.5 text-sm font-semibold rounded-md bg-nvidia-green text-nvidia-black hover:bg-nvidia-green transition-colors shadow-sm">Tokens/s (c=1)</button>
         <button id="btn-tps8" class="px-3 py-1.5 text-sm font-semibold rounded-md text-nvidia-gray-800 hover:bg-nvidia-gray-200 transition-colors">Tokens/s (c=8)</button>
-        <button id="btn-ttft" class="px-3 py-1.5 text-sm font-semibold rounded-md text-nvidia-gray-800 hover:bg-nvidia-gray-200 transition-colors">Avg TTFT</button>
       </div>
     </div>
   </div>
@@ -66,13 +64,12 @@ const { benchmarks } = Astro.props as Props;
   
   const btnTps1 = document.getElementById('btn-tps1');
   const btnTps8 = document.getElementById('btn-tps8');
-  const btnTtft = document.getElementById('btn-ttft');
   
   const titleEl = document.getElementById('chart-title');
   const ctx = document.getElementById('chart-main') as HTMLCanvasElement;
 
   let currentDevice = 'orin'; // 'orin' | 'thor'
-  let currentMetric = 'tps1'; // 'tps1' | 'tps8' | 'ttft'
+  let currentMetric = 'tps1'; // 'tps1' | 'tps8'
   let chartInstance: Chart | null = null;
 
   function getChartConfig() {
@@ -83,7 +80,6 @@ const { benchmarks } = Astro.props as Props;
       
       if (currentMetric === 'tps1') return deviceData.concurrency1;
       if (currentMetric === 'tps8') return deviceData.concurrency8;
-      if (currentMetric === 'ttft') return deviceData.ttftMs;
       return 0;
     });
 
@@ -96,12 +92,9 @@ const { benchmarks } = Astro.props as Props;
     if (currentMetric === 'tps1') {
       label = `Tokens/s (Concurrency 1)`;
       yTitle = 'Tokens per Second';
-    } else if (currentMetric === 'tps8') {
+    } else {
       label = `Tokens/s (Concurrency 8)`;
       yTitle = 'Tokens per Second';
-    } else {
-      label = `Average TTFT (ms)`;
-      yTitle = 'Milliseconds';
     }
     
     color = nvidiaGreen;
@@ -113,7 +106,7 @@ const { benchmarks } = Astro.props as Props;
   }
 
   function updateButtons() {
-    if (!btnOrin || !btnThor || !btnTps1 || !btnTps8 || !btnTtft) return;
+    if (!btnOrin || !btnThor || !btnTps1 || !btnTps8) return;
 
     // Reset device buttons
     [btnOrin, btnThor].forEach(btn => {
@@ -126,15 +119,12 @@ const { benchmarks } = Astro.props as Props;
     activeDeviceBtn.classList.add('bg-nvidia-green', 'text-nvidia-black', 'hover:bg-nvidia-green', 'shadow-sm');
 
     // Reset metric buttons
-    [btnTps1, btnTps8, btnTtft].forEach(btn => {
+    [btnTps1, btnTps8].forEach(btn => {
       btn.classList.remove('bg-nvidia-green', 'text-nvidia-black', 'hover:bg-nvidia-green', 'shadow-sm');
       btn.classList.add('text-nvidia-gray-800', 'hover:bg-nvidia-gray-200');
     });
     // Set active metric
-    let activeMetricBtn;
-    if (currentMetric === 'tps1') activeMetricBtn = btnTps1;
-    else if (currentMetric === 'tps8') activeMetricBtn = btnTps8;
-    else activeMetricBtn = btnTtft;
+    const activeMetricBtn = currentMetric === 'tps1' ? btnTps1 : btnTps8;
 
     activeMetricBtn?.classList.remove('text-nvidia-gray-800', 'hover:bg-nvidia-gray-200');
     activeMetricBtn?.classList.add('bg-nvidia-green', 'text-nvidia-black', 'hover:bg-nvidia-green', 'shadow-sm');
@@ -193,7 +183,6 @@ const { benchmarks } = Astro.props as Props;
                   }
                   if (context.parsed.y !== null) {
                     label += context.parsed.y;
-                    if (currentMetric === 'ttft') label += ' ms';
                   }
                   return label;
                 }
@@ -225,13 +214,12 @@ const { benchmarks } = Astro.props as Props;
     }
   }
 
-  if (btnOrin && btnThor && btnTps1 && btnTps8 && btnTtft) {
+  if (btnOrin && btnThor && btnTps1 && btnTps8) {
     btnOrin.addEventListener('click', () => { currentDevice = 'orin'; renderChart(); });
     btnThor.addEventListener('click', () => { currentDevice = 'thor'; renderChart(); });
     
     btnTps1.addEventListener('click', () => { currentMetric = 'tps1'; renderChart(); });
     btnTps8.addEventListener('click', () => { currentMetric = 'tps8'; renderChart(); });
-    btnTtft.addEventListener('click', () => { currentMetric = 'ttft'; renderChart(); });
 
     // Initial Render
     renderChart();

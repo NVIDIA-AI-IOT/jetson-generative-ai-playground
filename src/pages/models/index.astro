@@ -150,7 +150,7 @@ const families = Array.from(new Set(models.map(m => m.family)));
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-4xl font-bold text-nvidia-black mb-6">Performance Comparison</h2>
-        <p class="text-xl text-nvidia-gray-600">Benchmarks on Jetson Orin AGX (32GB)</p>
+        <p class="text-xl text-nvidia-gray-600">Benchmarks on Jetson running vLLM</p>
       </div>
 
       <ModelPerformanceCharts benchmarks={llmBenchmarks} />
