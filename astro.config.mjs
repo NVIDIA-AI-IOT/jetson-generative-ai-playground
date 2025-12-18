@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
+import rehypeMermaid from 'rehype-mermaid';
 
 export default defineConfig({
   integrations: [tailwind()],
@@ -8,7 +9,10 @@ export default defineConfig({
     shikiConfig: {
       theme: 'github-dark',
       wrap: true
-    }
+    },
+    rehypePlugins: [
+      [rehypeMermaid, { strategy: 'inline-svg' }]
+    ]
   },
   redirects: {
     // Jetson Setup Guide
