@@ -20,7 +20,9 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.19",
-    "@types/node": "^20.0.0"
+    "@types/node": "^20.0.0",
+    "playwright": "^1.57.0",
+    "rehype-mermaid": "^3.0.0"
   },
   "keywords": [
     "jetson",

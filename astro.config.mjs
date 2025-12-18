@@ -1,14 +1,18 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
+import rehypeMermaid from 'rehype-mermaid';
 
 export default defineConfig({
   integrations: [tailwind()],
   site: 'https://www.jetson-ai-lab.com',
   markdown: {
-    shikiConfig: {
+    syntaxHighlight: {
+      type: 'shiki',
       theme: 'github-dark',
-      wrap: true
-    }
+      wrap: true,
+      excludeLangs: ['mermaid'], // Disable syntax highlighting for Mermaid
+    },
+    rehypePlugins: [rehypeMermaid], // Render Mermaid diagrams at build time
   },
   redirects: {
     // Jetson Setup Guide
