@@ -113,26 +113,40 @@
   <script>
     // Check if this looks like an old MkDocs URL
     const path = window.location.pathname;
-    const oldUrlPatterns = [
-      /\.html$/,
-      /^\/tutorial_/,
-      /^\/tips_/,
-      /^\/vit\//,
-      /^\/tutorials\/microservices/,
-    ];
     
-    const isOldUrl = oldUrlPatterns.some(pattern => pattern.test(path));
-    
-    if (isOldUrl) {
-      // Construct archive URL
-      let archivePath = path;
-      if (!archivePath.endsWith('.html')) {
-        archivePath = archivePath + '.html';
-      }
-      const archiveUrl = '/archive' + archivePath;
+    // IMPORTANT: Don't redirect if already under /archive/ to prevent infinite loops
+    if (path.startsWith('/archive/')) {
+      // Already in archive - show 404, don't redirect
+      console.log('Already in archive, not redirecting');
+    } 
+    // Handle typo: /archives/ (with 's') -> /archive/
+    else if (path.startsWith('/archives/')) {
+      const fixedPath = path.replace('/archives/', '/archive/');
+      window.location.href = fixedPath;
+    }
+    else {
+      // Check for old MkDocs URL patterns
+      const oldUrlPatterns = [
+        /\.html$/,
+        /^\/tutorial_/,
+        /^\/tips_/,
+        /^\/vit\//,
+        /^\/tutorials\/microservices/,
+      ];
       
-      // Redirect immediately
-      window.location.href = archiveUrl;
+      const isOldUrl = oldUrlPatterns.some(pattern => pattern.test(path));
+      
+      if (isOldUrl) {
+        // Construct archive URL
+        let archivePath = path;
+        if (!archivePath.endsWith('.html')) {
+          archivePath = archivePath + '.html';
+        }
+        const archiveUrl = '/archive' + archivePath;
+        
+        // Redirect immediately
+        window.location.href = archiveUrl;
+      }
     }
   </script>
 </body>
