@@ -703,6 +703,11 @@ const { title, description = "Experience the latest generative AI models optimiz
         s.parentNode.insertBefore(gd, s);
       })();
     </script>
-    <script is:inline type="text/javascript">_satellite.pageBottom();</script>
+    <script is:inline type="text/javascript">
+      // Only call _satellite if Adobe DTM is loaded (production only)
+      if (typeof _satellite !== 'undefined') {
+        _satellite.pageBottom();
+      }
+    </script>
   </body>
 </html>
