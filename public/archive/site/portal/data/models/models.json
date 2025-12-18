@@ -1,0 +1,16 @@
+{
+  "models": {
+    "name": "Models",
+    "tags": []
+  },
+  "llm": {
+    "name": "Language Models (LLM / SLM)",
+    "tags": ["models"],
+    "max_batch_size": 1,
+    "max_context_len": null,
+    "prefill_chunk": null,
+    "hf_token": null,
+    "cache_dir": "~/.cache",
+    "property_order": ["url", "container_image", "quantization", "max_batch_size"]
+  }
+}

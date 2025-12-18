@@ -1,0 +1,48 @@
+/*
+ * Flexbox grid layouts
+ * https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+ */
+
+/*.root-container * {
+  all: initial;
+  font-family: var(--theme-text-font);
+}*/
+
+.container, .root-container {
+  display: flex;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-wrap-reverse {
+  flex-wrap: wrap-reverse;
+}
+
+.no-wrap {
+  flex-wrap: nowrap;
+}
+
+.no-shrink {
+  flex-shrink: 0;
+}
+
+.fill-space {
+  flex: 1;
+}

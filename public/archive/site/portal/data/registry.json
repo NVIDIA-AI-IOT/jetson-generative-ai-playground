@@ -1,0 +1,428 @@
+{
+  "models": {
+    "name": "Models",
+    "tags": []
+  },
+  "env": {
+    "name": "environment",
+    "tags": []
+  },
+  "property": {
+    "name": "property",
+    "tags": []
+  },
+  "bool": {
+    "name": "bool",
+    "tags": ["property"]
+  },
+  "number": {
+    "name": "number",
+    "tags": ["property"]
+  },
+  "enum": {
+    "name": "enum",
+    "tags": ["property"]
+  },
+  "string": {
+    "name": "string",
+    "tags": ["property"]
+  },
+  "path": {
+    "name": "Path",
+    "tags": ["string"],
+    "help": "A local path on the server."
+  },
+  "url": {
+    "name": "Path or URL",
+    "tags": ["string"],
+    "help": "URL of the model repo or local path on the server.\nIf needed, the model will be downloaded to the cache directory and quantized.\nThis location may also refer to model weights that have already been quantized."
+  },
+  "passkey": {
+    "name": "Password, API Key, or Access Token",
+    "tags": ["string"]
+  },
+  "llm": {
+    "name": "Language Models (LLM / SLM)",
+    "tags": ["models"],
+    "hf_token": "$HUGGINGFACE_TOKEN",
+    "max_batch_size": 1,
+    "max_context_len": null,
+    "prefill_chunk": null,
+    "cache_dir": "~/.cache"
+  },
+  "vlm": {
+    "name": "Vision / Language Models",
+    "tags": ["models"]
+  },
+  "cache_dir": {
+    "name": "Cache Dir",
+    "tags": ["path"],
+    "help": "Path on the server's native filesystem that will be mounted\ninto the container for saving the models.\nIt is recommended this be relocated to NVME storage."
+  },
+  "api": {
+    "name": "Runtime API",
+    "tags": ["enum"],
+    "help": "The runtime library or container to use for inferencing."
+  },
+  "mlc": {
+    "name": "MLC",
+    "tags": ["api"]
+  },
+  "quantization": {
+    "name": "Quantization",
+    "tags": ["enum"],
+    "help": "The type of quantization used."
+  },
+  "q4f16_ft": {
+    "name": "q4f16_ft",
+    "tags": ["quantization"]
+  },
+  "q4f16_1": {
+    "name": "q4f16_1",
+    "tags": ["quantization"]
+  },
+  "max_batch_size": {
+    "name": "Max Batch Size",
+    "tags": ["number"],
+    "help": "The maximum number of generation requests to handle in parallel at one time."
+  },
+  "max_context_len": {
+    "name": "Max Context Len",
+    "tags": ["number"],
+    "help": "The maximum number of tokens in the chat, including any system instruction, prompt, and reply. Reduce this from the model's default to decrease memory usage. This can be left unset and the model's default will be used."
+  },
+  "prefill_chunk": {
+    "name": "Prefill Chunk Len",
+    "tags": ["number"],
+    "help": "The maximum number of input tokens that can be prefilled into the KV cache at once. Longer prompts are prefilled in multiple batches.\nReduce this from the model's default to decrease memory usage."
+  },
+  "tensor_parallel": {
+    "name": "Tensor Parallel",
+    "tags": ["number"],
+    "help": "The number of GPUs to split the model across (for multi-GPU systems)"
+  },
+  "hf_token": {
+    "name": "HF Token",
+    "tags": ["passkey"],
+    "help": "Your $HF_TOKEN or API key used for access to gated models on HuggingFace Hub.\nThis is only needed if you are downloading a private model."
+  },
+  "container": {
+    "name": "Docker Container",
+    "tags": [],
+    "container_options": null,
+    "container_image": null,
+    "container_cmd": null,
+    "CUDA_VISIBLE_DEVICES": "0"
+  },
+  "container_image": {
+    "name": "Docker Image",
+    "tags": ["string"],
+    "help": "Specify the container image that will be run.\nOn Jetson, pick a tag that is compatible with your version of JetPack-L4T.\nThese are built from jetson-containers and are on DockerHub."
+  },
+  "container_options": {
+    "name": "Docker Options",
+    "tags": ["string"],
+    "help": "These are additional options that get passed to 'docker run' when starting the container.  These are the settings that come before the container image name, for example --volume ~/workspace:/workspace --env WORKSPACE=/workspace"
+  },
+  "container_cmd": {
+    "name": "Docker Run Cmd",
+    "tags": ["string"],
+    "help": "Override the default CMD that gets run when the container starts.\nFor example `python3 -c 'import torch; print(torch.cuda.is_available())'`"
+  },
+  "CUDA_VISIBLE_DEVICES": {
+    "name": "CUDA Device IDs",
+    "tags": ["string", "env"],
+    "help": "A comma-separated list of the GPU device indexes or UUIDs to enable.\nThis is the CUDA_VISIBLE_DEVICES environment variable and --gpus option in Docker.\nFor Jetson or other single-GPU systems, this should remain set to 0, which indicates the first detected GPU.\nClearing thie field with a blank input will result in container being run without CUDA enabled."
+  },
+  "jetson": {
+    "name": "Jetson",
+    "tags": []
+  },
+  "orin-nano": {
+    "name": "Orin Nano",
+    "tags": ["jetson"],
+    "pin": true
+  },
+  "orin-nx": {
+    "name": "Orin NX",
+    "tags": ["jetson"],
+    "pin": true
+  },
+  "agx-orin": {
+    "name": "AGX Orin",
+    "tags": ["jetson"],
+    "pin": true
+  },
+  "llama-3": {
+    "name": "Meta Llama",
+    "tags": ["llm"]
+  },
+  "llama-3.2-1b": {
+    "name": "Llama 3.2 1B",
+    "title": "Llama 3.2 1B",
+    "header": "llama-goggles-header",
+    "tags": ["llama-3", "agx-orin", "orin-nx", "orin-nano"],
+    "links": {
+      "meta": {
+        "name": "Meta",
+        "url": "https://huggingface.co/gemma/gemma-2-2b-it",
+        "color": "blue"
+      },
+      "hf": {
+        "name": "Hugging Face",
+        "url": "https://huggingface.co/gemma/gemma-2-2b-it",
+        "color": "yellow"
+      }
+    }
+  },
+  "llama-3.2-1b-q4f16_ft-mlc": {
+    "name": "Llama-3.2-1B-q4f16_ft-MLC",
+    "url": "hf.co/dusty-nv/Llama-3.2-3B-Instruct-q4f16_ft-MLC",
+    "api": "mlc",
+    "quantization": "q4f16_ft",
+    "tags": ["llama-3.2-1b", "container", "mlc", "q4f16_ft", "agx-orin", "orin-nx", "orin-nano"]
+  },
+  "llama-3.2-1b-q4f16_1-mlc": {
+    "name": "Llama-3.2-1B-q4f16_1-MLC",
+    "url": "hf.co/mlc-ai/Llama-3.2-3B-Instruct-q4f16_1-MLC",
+    "api": "mlc",
+    "quantization": "q4f16_1",
+    "tags": ["llama-3.2-1b", "container", "mlc", "q4f16_1", "agx-orin", "orin-nx", "orin-nano"]
+  },
+  "llama-3.2-3b": {
+    "name": "Llama 3.2 3B",
+    "title": "Llama 3.2 3B",
+    "header": "llama-pilot-header",
+    "tags": ["llama-3", "agx-orin", "orin-nx", "orin-nano"],
+    "links": {
+      "meta": {
+        "name": "Meta",
+        "url": "https://huggingface.co/gemma/gemma-2-2b-it",
+        "color": "blue"
+      },
+      "hf": {
+        "name": "Hugging Face",
+        "url": "https://huggingface.co/gemma/gemma-2-2b-it",
+        "color": "yellow"
+      }
+    }
+  },
+  "llama-3.2-3b-q4f16_ft-mlc": {
+    "name": "Llama-3.2-3B-q4f16_ft-MLC",
+    "url": "hf.co/dusty-nv/Llama-3.2-3B-Instruct-q4f16_ft-MLC",
+    "api": "mlc",
+    "quantization": "q4f16_ft",
+    "tags": ["llama-3.2-8b", "container", "mlc", "q4f16_ft", "agx-orin", "orin-nx", "orin-nano"]
+  },
+  "llama-3.2-3b-q4f16_1-mlc": {
+    "name": "Llama-3.2-3B-q4f16_1-MLC",
+    "url": "hf.co/mlc-ai/Llama-3.2-3B-Instruct-q4f16_1-MLC",
+    "api": "mlc",
+    "quantization": "q4f16_1",
+    "tags": ["llama-3.2-3b", "container", "mlc", "q4f16_1", "agx-orin", "orin-nx", "orin-nano"]
+  },
+  "llama-3.2-8b": {
+    "name": "Llama 3.2 8B",
+    "title": "Llama 3.2 8B",
+    "header": "llama-biker-header",
+    "tags": ["llama-3", "agx-orin", "orin-nx", "orin-nano"],
+    "links": {
+      "meta": {
+        "name": "Meta",
+        "url": "https://huggingface.co/gemma/gemma-2-2b-it",
+        "color": "blue"
+      },
+      "hf": {
+        "name": "Hugging Face",
+        "url": "https://huggingface.co/gemma/gemma-2-2b-it",
+        "color": "yellow"
+      }
+    }
+  },
+  "llama-3.2-8b-q4f16_ft-mlc": {
+    "name": "Llama-3.2-8B-q4f16_ft-MLC",
+    "url": "hf.co/dusty-nv/Llama-3.2-3B-Instruct-q4f16_ft-MLC",
+    "api": "mlc",
+    "quantization": "q4f16_ft",
+    "tags": ["llama-3.2-8b", "container", "mlc", "q4f16_ft", "agx-orin", "orin-nx", "orin-nano"]
+  },
+  "llama-3.2-8b-q4f16_1-mlc": {
+    "name": "Llama-3.2-3B-q4f16_1-MLC",
+    "url": "hf.co/mlc-ai/Llama-3.2-3B-Instruct-q4f16_1-MLC",
+    "api": "mlc",
+    "quantization": "q4f16_1",
+    "tags": ["llama-3.2-8b", "container", "mlc", "q4f16_1", "agx-orin", "orin-nx", "orin-nano"]
+  },
+  "llama-3.3-70b": {
+    "name": "Llama 3.3 70B",
+    "title": "Llama 3.3 70B",
+    "header": "llama-biker-header",
+    "tags": ["llama-3", "agx-orin"],
+    "links": {
+      "meta": {
+        "name": "Meta",
+        "url": "https://huggingface.co/gemma/gemma-2-2b-it",
+        "color": "blue"
+      },
+      "hf": {
+        "name": "Hugging Face",
+        "url": "https://huggingface.co/gemma/gemma-2-2b-it",
+        "color": "yellow"
+      }
+    }
+  },
+  "llama-3.3-70b-q4f16_ft-mlc": {
+    "name": "Llama-3.3-70B-q4f16_ft-MLC",
+    "url": "hf.co/dusty-nv/Llama-3.2-3B-Instruct-q4f16_ft-MLC",
+    "api": "mlc",
+    "quantization": "q4f16_ft",
+    "tags": ["llama-3.3-70b", "container", "mlc", "q4f16_ft", "agx-orin"]
+  },
+  "llama-3.3-70b-q4f16_1-mlc": {
+    "name": "Llama-3.3-70B-q4f16_1-MLC",
+    "url": "hf.co/mlc-ai/Llama-3.2-3B-Instruct-q4f16_1-MLC",
+    "api": "mlc",
+    "quantization": "q4f16_1",
+    "tags": ["llama-3.3-70b", "container", "mlc", "q4f16_1", "agx-orin"]
+  },
+  "gemma-2": {
+    "name": "Google Gemma",
+    "tags": ["llm"],
+    "header": "gemma-header"
+  },
+  "gemma-2-2b": {
+    "name": "Gemma-2-2B",
+    "title": "Gemma 2 (2B)",
+    "tags": ["gemma-2", "agx-orin", "orin-nx", "orin-nano"],
+    "url": "https://huggingface.co/gemma/gemma-2-2b-it",
+    "api": "hf",
+    "links": {
+      "meta": {
+        "name": "Google",
+        "url": "https://huggingface.co/gemma/gemma-2-2b-it",
+        "color": "blue"
+      },
+      "hf": {
+        "name": "Hugging Face",
+        "url": "https://huggingface.co/gemma/gemma-2-2b-it",
+        "color": "yellow"
+      }
+    }
+  },
+  "gemma-2-2B-q4f16_ft-mlc": {
+    "name": "gemma-2-2B-q4f16_ft-mlc",
+    "url": "hf.co/dusty-nv/qwen-2.5-1.5B-Instruct-q4f16_ft-MLC",
+    "api": "mlc",
+    "quantization": "q4f16_ft",
+    "tags": ["gemma-2-2b", "container", "mlc", "q4f16_ft", "agx-orin", "orin-nx", "orin-nano"]
+  },
+  "gemma-2-9b": {
+    "name": "gemma-2-9b",
+    "title": "Gemma 2 (2B)",
+    "tags": ["gemma-2", "agx-orin", "orin-nx"],
+    "url": "https://huggingface.co/gemma/gemma-2-9b-it",
+    "api": "hf",
+    "links": {
+      "meta": {
+        "name": "Google",
+        "url": "https://huggingface.co/gemma/gemma-2-9b-it",
+        "color": "blue"
+      },
+      "hf": {
+        "name": "Hugging Face",
+        "url": "https://huggingface.co/gemma/gemma-2-9b-it",
+        "color": "yellow"
+      }
+    }
+  },
+  "gemma-2-9B-q4f16_ft-mlc": {
+    "name": "gemma-2-9B-q4f16_ft-mlc",
+    "url": "hf.co/dusty-nv/qwen-2.5-1.5B-Instruct-q4f16_ft-MLC",
+    "api": "mlc",
+    "quantization": "q4f16_ft",
+    "tags": ["gemma-2-9b", "container", "mlc", "q4f16_ft", "agx-orin", "orin-nx", "orin-nano"]
+  },
+  "qwen-2.5": {
+    "name": "Qwen 2.5",
+    "tags": ["llm"],
+    "header": "qwen-header"
+  },
+  "qwen-2.5-1.5B": {
+    "name": "Qwen-2.5-1.5B",
+    "title": "Qwen 2.5 (1.5B)",
+    "tags": ["qwen-2.5", "agx-orin", "orin-nx", "orin-nano"],
+    "links": {
+      "meta": {
+        "name": "Qwen",
+        "url": "https://huggingface.co/gemma/gemma-2-2b-it",
+        "color": "purple"
+      },
+      "hf": {
+        "name": "Hugging Face",
+        "url": "https://huggingface.co/gemma/gemma-2-2b-it",
+        "color": "yellow"
+      }
+    }
+  },
+  "qwen-2.5-1.5B-q4f16_ft-mlc": {
+    "name": "qwen-2.5-1.5B-q4f16_ft-MLC",
+    "url": "hf.co/dusty-nv/qwen-2.5-1.5B-Instruct-q4f16_ft-MLC",
+    "api": "mlc",
+    "quantization": "q4f16_ft",
+    "tags": ["qwen-2.5-1.5B", "container", "mlc", "q4f16_ft", "agx-orin", "orin-nx", "orin-nano"]
+  },
+  "smol-2": {
+    "name": "Hugging Face SmolLM",
+    "title": "SmolLM v2",
+    "tags": ["llm"],
+    "header": "hf-smol-header"
+  },
+  "smol-2-1.5B": {
+    "name": "SmolLM2 1.5B",
+    "title": "SmolLM 2 <b>1.5B</b>",
+    "tags": ["smol-2", "agx-orin", "orin-nx", "orin-nano"],
+    "links": {
+      "hf": {
+        "name": "Hugging Face",
+        "url": "https://huggingface.co/gemma/gemma-2-2b-it",
+        "color": "yellow"
+      }
+    }
+  },
+  "smol-2.5-1.5B-q4f16_ft-mlc": {
+    "name": "smol-2.5-1.5B-q4f16_ft-MLC",
+    "url": "hf.co/dusty-nv/qwen-2.5-1.5B-Instruct-q4f16_ft-MLC",
+    "api": "mlc",
+    "quantization": "q4f16_ft",
+    "tags": ["smol-2-1.5B", "container", "mlc", "q4f16_ft", "agx-orin", "orin-nx", "orin-nano"]
+  },
+  "phi-3.5": {
+    "name": "Microsoft Phi",
+    "tags": ["llm"],
+    "header": "phi-35-mini-header"
+  },
+  "phi-3.5-mini-instruct": {
+    "name": "Phi 3.5 Mini Instruct",
+    "title": "Phi 3.5 Mini Instruct",
+    "tags": ["phi-3.5", "agx-orin", "orin-nx", "orin-nano"],
+    "links": {
+      "meta": {
+        "name": "Microsoft",
+        "url": "https://huggingface.co/gemma/gemma-2-2b-it",
+        "color": "blue"
+      },
+      "hf": {
+        "name": "Hugging Face",
+        "url": "https://huggingface.co/gemma/gemma-2-2b-it",
+        "color": "yellow"
+      }
+    }
+  },
+  "phi-3.5-mini-instruct-q4f16_ft-mlc": {
+    "name": "phi-3.5-mini-instruct-q4f16_ft-MLC",
+    "url": "hf.co/dusty-nv/phi-3.5-mini-instruct-q4f16_ft-MLC",
+    "api": "mlc",
+    "quantization": "q4f16_ft",
+    "tags": ["phi-3.5-mini-instruct", "container", "mlc", "q4f16_ft", "agx-orin", "orin-nx", "orin-nano"]
+  }
+}

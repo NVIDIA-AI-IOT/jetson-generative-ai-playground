@@ -1,0 +1,154 @@
+---
+// Custom 404 page that redirects old MkDocs URLs to the archive
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found - Jetson AI Lab</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      color: #333;
+    }
+    .container {
+      text-align: center;
+      max-width: 600px;
+    }
+    h1 {
+      font-size: 4rem;
+      color: #76b900;
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    .message {
+      font-size: 1.1rem;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+    .redirect-notice {
+      background: #f0f9e8;
+      border: 1px solid #76b900;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+    .redirect-notice p {
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .redirect-notice code {
+      background: #e8e8e8;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+    .buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: #76b900;
+      color: #000;
+    }
+    .btn-primary:hover {
+      background: #8ed100;
+    }
+    .btn-secondary {
+      background: #f0f0f0;
+      color: #333;
+      border: 1px solid #ddd;
+    }
+    .btn-secondary:hover {
+      background: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>404</h1>
+    <h2>Page Not Found</h2>
+    
+    <div class="redirect-notice" id="redirect-notice" style="display: none;">
+      <p>Looking for an old page? Redirecting to the archive...</p>
+      <p>Archive URL: <code id="archive-url"></code></p>
+    </div>
+    
+    <p class="message">
+      The page you're looking for might have been moved or doesn't exist. 
+      If you were looking for documentation from the old site, it may be available in our archive.
+    </p>
+    
+    <div class="buttons">
+      <a href="/" class="btn btn-primary">Go to Homepage</a>
+      <a href="/archive/" class="btn btn-secondary">Browse Archive</a>
+    </div>
+  </div>
+
+  <script>
+    // Check if this looks like an old MkDocs URL
+    const path = window.location.pathname;
+    
+    // IMPORTANT: Don't redirect if already under /archive/ to prevent infinite loops
+    if (path.startsWith('/archive/')) {
+      // Already in archive - show 404, don't redirect
+      console.log('Already in archive, not redirecting');
+    } 
+    // Handle typo: /archives/ (with 's') -> /archive/
+    else if (path.startsWith('/archives/')) {
+      const fixedPath = path.replace('/archives/', '/archive/');
+      window.location.href = fixedPath;
+    }
+    else {
+      // Check for old MkDocs URL patterns
+      const oldUrlPatterns = [
+        /\.html$/,
+        /^\/tutorial_/,
+        /^\/tips_/,
+        /^\/vit\//,
+        /^\/tutorials\/microservices/,
+      ];
+      
+      const isOldUrl = oldUrlPatterns.some(pattern => pattern.test(path));
+      
+      if (isOldUrl) {
+        // Construct archive URL
+        let archivePath = path;
+        if (!archivePath.endsWith('.html')) {
+          archivePath = archivePath + '.html';
+        }
+        const archiveUrl = '/archive' + archivePath;
+        
+        // Redirect immediately
+        window.location.href = archiveUrl;
+      }
+    }
+  </script>
+</body>
+</html>
+

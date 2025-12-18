@@ -1,0 +1,66 @@
+{
+  "llama-3.1-8b": {
+    "name": "Llama 3.1 8B",
+    "title": "Llama 3.1 8B",
+    "header": "llama-biker-header",
+    "tags": ["llama-3", "agx-orin", "orin-nx", "orin-nano"],
+    "max_context_len": {"placeholder": 131072},
+    "prefill_chunk": {"placeholder": 8192},
+    "links": {
+      "meta": {
+        "name": "Meta",
+        "url": "https://www.llama.com/",
+        "color": "blue"
+      },
+      "hf": {
+        "name": "Hugging Face",
+        "url": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct",
+        "color": "yellow"
+      }
+    }
+  },
+  "llama-3.1-8b-instruct-q4f16_ft-mlc": {
+    "name": "meta-llama/llama-3.1-8b-instruct-q4f16_ft",
+    "title": "Llama-3.1-8B ❯ MLC q4f16_ft ❯ JetPack 6.1+",
+    "url": "hf.co/dusty-nv/Llama-3.1-8B-Instruct-q4f16_ft-MLC",
+    "quantization": "q4f16_ft",
+    "tags": ["llama-3.1-8b", "mlc:jp6", "agx-orin", "orin-nx", "orin-nano"]
+  },
+  "llama-3.1-8b-instruct-q4f16_1-mlc": {
+    "name": "meta-llama/llama-3.1-8b-instruct-q4f16_1",
+    "title": "Llama-3.1-8B ❯ MLC q4f16_1 ❯ JetPack 6.1+",
+    "url": "hf.co/mlc-ai/Llama-3.1-8B-Instruct-q4f16_1-MLC",
+    "quantization": "q4f16_1",
+    "tags": ["llama-3.1-8b", "mlc:jp6", "agx-orin", "orin-nx", "orin-nano"]
+  },
+  "llama-3.1-8b-instruct-q4m-gguf": {
+    "name": "bartowski/Llama-3.1-8B-Instruct-GGUF",
+    "title": "Llama-3.1-8B ❯ llama.cpp Q4_K_M ❯ JetPack 6.1+",
+    "url": "hf.co/bartowski/Llama-3.1-8B-Instruct-GGUF/Llama-3.1-8B-Instruct-Q4_K_M.gguf",
+    "quantization": "q4_k_m",
+    "tokenizer": "pcuenq/Llama-3.2-1B-Instruct-tokenizer",
+    "max_context_len": 8192,
+    "prefill_chunk": 8192,
+    "tags": ["llama-3.1-8b", "llama_cpp:jp6", "agx-orin", "orin-nx", "orin-nano"]
+  },
+  "llama-3.1-8b-instruct-q5m-gguf": {
+    "name": "bartowski/Llama-3.1-8B-Instruct-GGUF",
+    "title": "Llama-3.1-8B ❯ llama.cpp Q5_K_M ❯ JetPack 6.1+",
+    "url": "hf.co/bartowski/Llama-3.1-8B-Instruct-GGUF/Llama-3.1-8B-Instruct-Q5_K_M.gguf",
+    "quantization": "q5_k_m",
+    "tokenizer": "pcuenq/Llama-3.2-1B-Instruct-tokenizer",
+    "max_context_len": 8192,
+    "prefill_chunk": 8192,
+    "tags": ["llama-3.1-8b", "llama_cpp:jp6", "agx-orin", "orin-nx", "orin-nano"]
+  },
+  "llama-3.1-8b-instruct-q6k-gguf": {
+    "name": "bartowski/Llama-3.1-8B-Instruct-GGUF",
+    "title": "Llama-3.1-8B ❯ llama.cpp Q6_K ❯ JetPack 6.1+",
+    "url": "hf.co/bartowski/Llama-3.1-8B-Instruct-GGUF/Llama-3.1-8B-Instruct-Q6_K.gguf",
+    "quantization": "q6_k",
+    "tokenizer": "pcuenq/Llama-3.2-1B-Instruct-tokenizer",
+    "max_context_len": 8192,
+    "prefill_chunk": 8192,
+    "tags": ["llama-3.1-8b", "llama_cpp:jp6", "agx-orin", "orin-nx", "orin-nano"]
+  }
+}

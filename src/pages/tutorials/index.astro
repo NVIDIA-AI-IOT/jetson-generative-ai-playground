@@ -1,0 +1,363 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import TutorialSection from '../../components/TutorialSection.astro';
+import TutorialCard from '../../components/TutorialCard.astro';
+import categoryConfig from '../../data/categories.json';
+
+const allTutorials = await getCollection('tutorials');
+const featuredTutorials = allTutorials.filter(t => t.data.featured);
+
+// Group tutorials by category
+const tutorialsByCategory = allTutorials.reduce((acc, tutorial) => {
+  const cat = tutorial.data.category;
+  if (!acc[cat]) acc[cat] = [];
+  acc[cat].push(tutorial);
+  return acc;
+}, {} as Record<string, typeof allTutorials>);
+
+// Get categories that have tutorials, sorted by order
+const activeCategories = Object.keys(tutorialsByCategory)
+  .filter(cat => tutorialsByCategory[cat].length > 0)
+  .sort((a, b) => (categoryConfig[a]?.order || 99) - (categoryConfig[b]?.order || 99));
+
+// Count totals
+const totalTutorials = allTutorials.length;
+const featuredCount = allTutorials.filter(t => t.data.featured).length;
+---
+
+<Layout title="Tutorials - Jetson AI Lab" description="Master Generative AI on NVIDIA Jetson with our step-by-step guides and tutorials.">
+  <!-- Hero Section -->
+  <section class="relative bg-nvidia-black text-white py-24 overflow-hidden">
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute -top-40 -right-40 w-96 h-96 bg-nvidia-green/20 rounded-full blur-3xl"></div>
+      <div class="absolute top-20 -left-20 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-6">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-nvidia-white to-nvidia-gray-300">
+          Tutorials
+        </span>
+      </h1>
+      <p class="text-xl text-nvidia-gray-300 max-w-2xl mx-auto leading-relaxed">
+        Step-by-step guides to deploy, experiment, and run cutting-edge AI models on NVIDIA Jetson devices.
+      </p>
+      
+      <div class="mt-10 flex flex-wrap justify-center gap-4">
+        <a href="#all-tutorials" class="px-6 py-3 bg-nvidia-green text-nvidia-black font-bold rounded-lg hover:bg-nvidia-green/90 transition-all">
+          Browse All
+        </a>
+        <a href="https://github.com/dusty-nv/jetson-containers" target="_blank" rel="noopener" class="px-6 py-3 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-lg hover:bg-white/20 transition-all border border-white/10">
+          Jetson Containers
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Tutorials Section -->
+  {featuredTutorials.length > 0 && (
+    <section class="py-12 bg-nvidia-gray-50 border-b border-nvidia-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-8">
+          <h2 class="text-2xl font-bold text-nvidia-black">Featured Guides</h2>
+          <p class="text-nvidia-gray-600 mt-1">Hand-picked tutorials to get you started</p>
+        </div>
+
+        <div class="relative -mx-4 px-4 sm:mx-0 sm:px-0">
+          <div id="featured-carousel" class="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide justify-center">
+            {featuredTutorials.map(tutorial => (
+              <div class="w-[280px] sm:w-[300px] md:w-[320px] snap-center flex-shrink-0">
+                <TutorialCard tutorial={tutorial} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Main Content -->
+  <section id="all-tutorials" class="py-12 bg-nvidia-white min-h-screen scroll-mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row gap-8">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="lg:w-64 flex-shrink-0">
+          <div class="lg:sticky lg:top-24">
+            <!-- Search -->
+            <div class="mb-6">
+              <div class="relative">
+                <input 
+                  id="tutorial-search" 
+                  type="text" 
+                  placeholder="Search tutorials..." 
+                  class="w-full pl-10 pr-4 py-2.5 rounded-lg border border-nvidia-gray-200 bg-nvidia-white focus:ring-2 focus:ring-nvidia-green focus:border-transparent transition-all outline-none text-sm"
+                />
+                <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-nvidia-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+              </div>
+              <div id="search-results" class="hidden mt-2 bg-nvidia-white rounded-lg border border-nvidia-gray-200 shadow-lg max-h-80 overflow-y-auto"></div>
+            </div>
+            
+            <!-- Category Quick Links -->
+            <nav class="bg-nvidia-gray-50 rounded-xl border border-nvidia-gray-200 overflow-hidden">
+              <div class="px-4 py-3 bg-nvidia-gray-100 border-b border-nvidia-gray-200">
+                <h3 class="font-semibold text-nvidia-black text-sm">Jump to Section</h3>
+              </div>
+              <div class="p-2">
+                {activeCategories.map(cat => (
+                  <a 
+                    href={`#section-${cat.toLowerCase()}`}
+                    class="nav-link flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-nvidia-gray-100 transition-colors group"
+                    data-category={cat}
+                  >
+                    <span class="text-lg">{categoryConfig[cat]?.icon || '📄'}</span>
+                    <div class="flex-1">
+                      <div class="text-sm font-medium text-nvidia-black group-hover:text-nvidia-green transition-colors">
+                        {categoryConfig[cat]?.title || cat}
+                      </div>
+                      <div class="text-xs text-nvidia-gray-500">
+                        {tutorialsByCategory[cat].length} tutorials
+                      </div>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </nav>
+            
+            <!-- Resources -->
+            <div class="mt-6 bg-nvidia-green/5 rounded-xl p-4 border border-nvidia-green/20">
+              <h3 class="font-semibold text-nvidia-black text-sm mb-3">Resources</h3>
+              <div class="space-y-2">
+                <a 
+                  href="https://github.com/dusty-nv/jetson-containers" 
+                  target="_blank"
+                  rel="noopener"
+                  class="flex items-center gap-2 text-sm text-nvidia-gray-600 hover:text-nvidia-green transition-colors"
+                >
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                  Jetson Containers
+                </a>
+                <a 
+                  href="/models" 
+                  class="flex items-center gap-2 text-sm text-nvidia-gray-600 hover:text-nvidia-green transition-colors"
+                >
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                  </svg>
+                  Supported Models
+                </a>
+              </div>
+            </div>
+          </div>
+        </aside>
+        
+        <!-- Tutorial Sections -->
+        <main class="flex-1 min-w-0">
+          <div class="space-y-4" id="tutorial-sections">
+            {activeCategories.map((cat, index) => (
+              <div id={`section-${cat.toLowerCase()}`} class="scroll-mt-24">
+                <TutorialSection 
+                  title={categoryConfig[cat]?.title || cat}
+                  icon={categoryConfig[cat]?.icon || '📄'}
+                  tutorials={tutorialsByCategory[cat]}
+                  sectionId={cat.toLowerCase()}
+                  colorClass={categoryConfig[cat]?.colorClass || 'bg-nvidia-gray-100 text-nvidia-gray-600'}
+                  defaultOpen={index === 0}
+                />
+              </div>
+            ))}
+          </div>
+          
+          <!-- Empty State (for search) -->
+          <div id="no-results" class="hidden py-16 text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-nvidia-gray-100 mb-4">
+              <svg class="w-8 h-8 text-nvidia-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-medium text-nvidia-black">No tutorials found</h3>
+            <p class="text-nvidia-gray-600 mt-1">Try a different search term</p>
+            <button id="clear-search" class="mt-4 text-nvidia-green font-semibold hover:underline">
+              Clear search
+            </button>
+          </div>
+        </main>
+      </div>
+    </div>
+  </section>
+
+<script is:inline>
+  (() => {
+    const searchInput = document.getElementById('tutorial-search');
+    const searchResults = document.getElementById('search-results');
+    const sections = document.getElementById('tutorial-sections');
+    const noResults = document.getElementById('no-results');
+    const clearBtn = document.getElementById('clear-search');
+    
+    // Collect all tutorials for search
+    const tutorials = [];
+    document.querySelectorAll('.tutorial-item').forEach(item => {
+      const title = item.querySelector('.font-medium')?.textContent || '';
+      const desc = item.querySelector('.text-nvidia-gray-600')?.textContent || '';
+      const href = item.getAttribute('href') || '';
+      const section = item.closest('.tutorial-section')?.dataset.section || '';
+      tutorials.push({ title, desc, href, section, element: item });
+    });
+    
+    let searchTimeout;
+    
+    searchInput?.addEventListener('input', (e) => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        const query = e.target.value.toLowerCase().trim();
+        
+        if (query.length === 0) {
+          // Reset view
+          searchResults?.classList.add('hidden');
+          sections?.classList.remove('hidden');
+          noResults?.classList.add('hidden');
+          return;
+        }
+        
+        // Filter tutorials
+        const matches = tutorials.filter(t => 
+          t.title.toLowerCase().includes(query) || 
+          t.desc.toLowerCase().includes(query)
+        );
+        
+        if (matches.length === 0) {
+          searchResults?.classList.add('hidden');
+          sections?.classList.add('hidden');
+          noResults?.classList.remove('hidden');
+        } else {
+          // Show results
+          sections?.classList.add('hidden');
+          noResults?.classList.add('hidden');
+          searchResults?.classList.remove('hidden');
+          
+          searchResults.innerHTML = matches.map(t => `
+            <a href="${t.href}" class="flex items-center gap-3 p-3 hover:bg-nvidia-gray-50 transition-colors border-b border-nvidia-gray-100 last:border-0">
+              <div class="w-1.5 h-1.5 rounded-full bg-nvidia-green flex-shrink-0"></div>
+              <div class="flex-1 min-w-0">
+                <div class="font-medium text-nvidia-black truncate">${t.title}</div>
+                <div class="text-sm text-nvidia-gray-600 truncate">${t.desc}</div>
+              </div>
+              <svg class="w-4 h-4 text-nvidia-gray-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+          `).join('');
+        }
+      }, 200);
+    });
+    
+    clearBtn?.addEventListener('click', () => {
+      if (searchInput) searchInput.value = '';
+      searchResults?.classList.add('hidden');
+      sections?.classList.remove('hidden');
+      noResults?.classList.add('hidden');
+    });
+    
+    // Smooth scroll for nav links
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href?.startsWith('#')) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            // Expand the section if collapsed
+            const section = target.querySelector('.tutorial-section');
+            const header = section?.querySelector('.section-header');
+            const content = section?.querySelector('.section-content');
+            
+            if (header?.getAttribute('aria-expanded') === 'false') {
+              header.click();
+            }
+            
+            // Scroll to section
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      });
+    });
+    
+    // Highlight active section on scroll
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -70% 0px',
+      threshold: 0
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const id = entry.target.id;
+        const navLink = document.querySelector(`.nav-link[href="#${id}"]`);
+        
+        if (entry.isIntersecting) {
+          document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('bg-nvidia-green/10');
+            link.querySelector('.font-medium')?.classList.remove('text-nvidia-green');
+          });
+          navLink?.classList.add('bg-nvidia-green/10');
+          navLink?.querySelector('.font-medium')?.classList.add('text-nvidia-green');
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('[id^="section-"]').forEach(section => {
+      observer.observe(section);
+    });
+    
+    // Carousel Logic for Featured Tutorials
+    const track = document.getElementById('featured-carousel');
+    const prev = document.getElementById('featured-prev');
+    const next = document.getElementById('featured-next');
+    
+    if (track && prev && next) {
+      prev.addEventListener('click', () => {
+        track.scrollBy({ left: -340, behavior: 'smooth' });
+      });
+      next.addEventListener('click', () => {
+        track.scrollBy({ left: 340, behavior: 'smooth' });
+      });
+    }
+  })();
+</script>
+
+<style>
+  /* Custom scrollbar for search results */
+  #search-results::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  #search-results::-webkit-scrollbar-track {
+    background: #f3f3f3;
+  }
+  
+  #search-results::-webkit-scrollbar-thumb {
+    background: #d1d1d1;
+    border-radius: 3px;
+  }
+  
+  #search-results::-webkit-scrollbar-thumb:hover {
+    background: #b4b4b4;
+  }
+  
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+</style>
+</Layout>

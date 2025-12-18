@@ -1,7 +1,0 @@
-_site
-.c9revisions
-.DS_Store
-.jekyll-metadata
-*~
-node_modules
-sauce_connect.log

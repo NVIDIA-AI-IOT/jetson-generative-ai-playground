@@ -1,0 +1,86 @@
+[
+  {
+    "modelId": "llama-3-2-3b",
+    "modelName": "Llama 3.2 3B",
+    "orin": {
+      "concurrency1": 52.58,
+      "concurrency8": 240.68
+    },
+    "thor": {
+      "concurrency1": 65.83,
+      "concurrency8": 330.72
+    }
+  },
+  {
+    "modelId": "llama-3-1-8b",
+    "modelName": "Llama 3.1 8B",
+    "orin": {
+      "concurrency1": 28.14,
+      "concurrency8": 112.33
+    },
+    "thor": {
+      "concurrency1": 44,
+      "concurrency8": 251
+    }
+  },
+  {
+    "modelId": "llama-3-3-70b",
+    "modelName": "Llama 3.3 70B",
+    "orin": {
+      "concurrency1": 2.93,
+      "concurrency8": 7.38
+    },
+    "thor": {
+      "concurrency1": 6.27,
+      "concurrency8": 41.5
+    }
+  },
+  {
+    "modelId": "qwen3-4b",
+    "modelName": "Qwen 3 4B",
+    "orin": {
+      "concurrency1": 42.15,
+      "concurrency8": 193.83
+    },
+    "thor": {
+      "concurrency1": 56.46,
+      "concurrency8": 273.37
+    }
+  },
+  {
+    "modelId": "qwen3-8b",
+    "modelName": "Qwen 3 8B",
+    "orin": {
+      "concurrency1": 26.53,
+      "concurrency8": 142.99
+    },
+    "thor": {
+      "concurrency1": 41.55,
+      "concurrency8": 229.38
+    }
+  },
+  {
+    "modelId": "qwen3-30b-a3b",
+    "modelName": "Qwen 3 30B-A3B",
+    "orin": {
+      "concurrency1": 31.43,
+      "concurrency8": 76.69
+    },
+    "thor": {
+      "concurrency1": 61.01,
+      "concurrency8": 226.42
+    }
+  },
+  {
+    "modelId": "qwen3-32b",
+    "modelName": "Qwen 3 32B",
+    "orin": {
+      "concurrency1": 6.22,
+      "concurrency8": 16.84
+    },
+    "thor": {
+      "concurrency1": 13.19,
+      "concurrency8": 79.1
+    }
+  }
+]

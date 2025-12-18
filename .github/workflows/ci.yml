@@ -1,65 +1,83 @@
-name: ci 
+# CI/CD Pipeline for Astro site deployment to GitHub Pages
+# Following Astro's recommended build process: https://docs.astro.build/en/develop-and-build/
+
+name: Deploy Astro to GitHub Pages
+
 on:
   push:
     branches:
-      - master 
       - main
+      - master
   workflow_dispatch:
+
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+env:
+  BUILD_PATH: "."
+
 jobs:
-  deploy:
+  build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          python-version: 3.x
-      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV 
-      - uses: actions/cache@v3
-        with:
-          key: mkdocs-material-${{ env.cache_id }}
-          path: .cache
-          restore-keys: |
-            mkdocs-material-
-         
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: ${{ env.BUILD_PATH }}/package-lock.json
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      # Install dependencies using npm ci for clean, reproducible builds
       - name: Install dependencies
-        run: |   
-          pip install mkdocs-material
-          pip install mkdocs-redirects
-          pip install beautifulsoup4
-          pip install lxml
+        run: npm ci
+        working-directory: ${{ env.BUILD_PATH }}
 
-      - name: Get mkdocs-material version
+      # Display Astro version for debugging
+      - name: Get Astro version
+        run: npx astro --version
+        working-directory: ${{ env.BUILD_PATH }}
+
+      # Build the Astro site
+      # Astro outputs to dist/ by default
+      # --site and --base are passed to configure for GitHub Pages URL structure
+      - name: Build with Astro
         run: |
-          MKDOCS_MATERIAL_VERSION=$(pip show mkdocs-material | grep Version | cut -d ' ' -f 2)
-          echo "MKDOCS_MATERIAL_VERSION=$MKDOCS_MATERIAL_VERSION" >> $GITHUB_ENV
+          npm run build \
+            -- \
+            --site "${{ steps.pages.outputs.origin }}" \
+            --base "${{ steps.pages.outputs.base_path }}"
+        working-directory: ${{ env.BUILD_PATH }}
 
-      - name: Build the MkDocs site
-        run: |
-          mkdocs build
-            # Custom step to modify HTML files
+      # Upload the dist/ folder as a GitHub Pages artifact
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ env.BUILD_PATH }}/dist
 
-      - name: Duplicate the generated site dir with postprocessing (non-blocking)
-        run: |
-          if python ./scripts/duplicate_site_with_postprocess.py ./site ../site_postprocessed; then
-            echo "Post-processing OK"
-          else
-            echo "Post-processing failed, using unprocessed site"
-            rm -rf ../site_postprocessed
-            cp -r ./site ../site_postprocessed
-          fi
-
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-          git fetch origin gh-pages
-          git checkout gh-pages || git checkout --orphan gh-pages
-          ls -lh
-          git status
-          cp -r ../site_postprocessed/* .
-          git add .
-          git commit -m "Deployed ${GITHUB_SHA} with mkdocs-material v${{ env.MKDOCS_MATERIAL_VERSION }} and HTML post-processing"
-          git push origin gh-pages --force
+        id: deployment
+        uses: actions/deploy-pages@v4

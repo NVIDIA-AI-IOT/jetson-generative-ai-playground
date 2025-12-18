@@ -1,0 +1,184 @@
+---
+interface Tutorial {
+  slug: string;
+  data: {
+    title: string;
+    description: string;
+    category: string;
+    section?: string;
+    order?: number;
+    tags: string[];
+    featured?: boolean;
+    isNew?: boolean;
+  };
+}
+
+interface Props {
+  title: string;
+  icon: string;
+  tutorials: Tutorial[];
+  sectionId: string;
+  colorClass: string;
+  defaultOpen?: boolean;
+}
+
+const { title, icon, tutorials, sectionId, colorClass, defaultOpen = false } = Astro.props;
+
+// Group tutorials by section
+const groupedTutorials = tutorials.reduce((acc, tutorial) => {
+  const section = tutorial.data.section || 'General';
+  if (!acc[section]) acc[section] = [];
+  acc[section].push(tutorial);
+  return acc;
+}, {} as Record<string, Tutorial[]>);
+
+// Sort tutorials within each section by order
+Object.keys(groupedTutorials).forEach(section => {
+  groupedTutorials[section].sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+});
+
+const sectionNames = Object.keys(groupedTutorials);
+---
+
+<div class="tutorial-section" data-section={sectionId}>
+  <button 
+    class="section-header group w-full flex items-center justify-between p-4 rounded-xl bg-nvidia-gray-50 border border-nvidia-gray-200 hover:border-nvidia-green/50 hover:shadow-md transition-all duration-200"
+    aria-expanded={defaultOpen ? "true" : "false"}
+    aria-controls={`section-content-${sectionId}`}
+  >
+    <div class="flex items-center gap-4">
+      <div class={`flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center ${colorClass} group-hover:scale-110 transition-transform`}>
+        <span class="text-xl" set:html={icon}></span>
+      </div>
+      <div class="text-left">
+        <h3 class="text-lg font-bold text-nvidia-black group-hover:text-nvidia-green transition-colors">
+          {title}
+        </h3>
+        <p class="text-sm text-nvidia-gray-600">
+          {tutorials.length} tutorial{tutorials.length !== 1 ? 's' : ''}
+        </p>
+      </div>
+    </div>
+    <div class="flex items-center gap-3">
+      <div class="hidden sm:flex items-center gap-1.5">
+        {tutorials.some(t => t.data.isNew) && (
+          <span class="px-2 py-0.5 text-xs font-semibold bg-nvidia-green/10 text-nvidia-green rounded-full border border-nvidia-green/20">
+            NEW
+          </span>
+        )}
+        {tutorials.some(t => t.data.featured) && (
+          <span class="px-2 py-0.5 text-xs font-semibold bg-amber-100 text-amber-700 rounded-full border border-amber-200">
+            Featured
+          </span>
+        )}
+      </div>
+      <svg 
+        class="w-5 h-5 text-nvidia-gray-400 transform transition-transform duration-200 chevron-icon"
+        fill="none" 
+        stroke="currentColor" 
+        viewBox="0 0 24 24"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+      </svg>
+    </div>
+  </button>
+  
+  <div 
+    id={`section-content-${sectionId}`}
+    class="section-content overflow-hidden transition-all duration-300 ease-in-out"
+    style={defaultOpen ? "" : "max-height: 0;"}
+  >
+    <div class="pt-3 pl-4 space-y-4">
+      {sectionNames.map(sectionName => (
+        <div class="subsection">
+          {sectionNames.length > 1 && (
+            <h4 class="text-xs font-semibold text-nvidia-gray-500 uppercase tracking-wider mb-2 pl-2">
+              {sectionName}
+            </h4>
+          )}
+          <div class="space-y-1">
+            {groupedTutorials[sectionName].map(tutorial => (
+              <a 
+                href={`/tutorials/${tutorial.slug}`}
+                class="tutorial-item group/item flex items-center gap-3 p-3 rounded-lg hover:bg-nvidia-gray-50 transition-all duration-150 border border-transparent hover:border-nvidia-gray-200"
+              >
+                <div class="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-nvidia-gray-300 group-hover/item:bg-nvidia-green transition-colors"></div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-2">
+                    <span class="font-medium text-nvidia-black group-hover/item:text-nvidia-green transition-colors truncate">
+                      {tutorial.data.title}
+                    </span>
+                    {tutorial.data.isNew && (
+                      <span class="flex-shrink-0 px-1.5 py-0.5 text-[10px] font-bold bg-nvidia-green text-nvidia-white rounded">
+                        NEW
+                      </span>
+                    )}
+                    {tutorial.data.featured && (
+                      <svg class="flex-shrink-0 w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                      </svg>
+                    )}
+                  </div>
+                  <p class="text-sm text-nvidia-gray-600 line-clamp-1 mt-0.5">
+                    {tutorial.data.description}
+                  </p>
+                </div>
+                <svg 
+                  class="flex-shrink-0 w-4 h-4 text-nvidia-gray-300 group-hover/item:text-nvidia-green group-hover/item:translate-x-0.5 transition-all"
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .section-header[aria-expanded="true"] .chevron-icon {
+    transform: rotate(180deg);
+  }
+  
+  .section-content {
+    max-height: 0;
+  }
+  
+  .section-content.expanded {
+    max-height: 2000px;
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.tutorial-section').forEach(section => {
+    const header = section.querySelector('.section-header');
+    const content = section.querySelector('.section-content');
+    
+    if (header && content) {
+      // Initialize state
+      const isExpanded = header.getAttribute('aria-expanded') === 'true';
+      if (isExpanded) {
+        content.classList.add('expanded');
+        (content as HTMLElement).style.maxHeight = content.scrollHeight + 'px';
+      }
+      
+      header.addEventListener('click', () => {
+        const expanded = header.getAttribute('aria-expanded') === 'true';
+        header.setAttribute('aria-expanded', String(!expanded));
+        
+        if (expanded) {
+          content.classList.remove('expanded');
+          (content as HTMLElement).style.maxHeight = '0';
+        } else {
+          content.classList.add('expanded');
+          (content as HTMLElement).style.maxHeight = content.scrollHeight + 'px';
+        }
+      });
+    }
+  });
+</script>

@@ -1,0 +1,75 @@
+.tab-scroll-container {
+  overflow-y: scroll;
+  max-height: 445px;
+  margin: 45px 0px 0px 0px;
+}
+
+.tab-page-container {
+  background: rgba(255,255,255,0.06);
+  margin: 0px 0px 7px 0px;
+  padding: 7px 20px 5px 10px;
+  /*overflow-y: scroll;
+  scrollbar-color: rgb(255,255,255,0.6) hsla(82deg, 100%, 33.1%, 0.8);*/
+  border-radius: 5px;
+}
+
+.tab-page-container:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+.tab-page-body {
+  padding-bottom: 5px;
+}
+
+.tab-page-expand {
+  float: right; 
+  /*right: 10px;*/
+  /*border: 2px solid;
+  border-radius: 50%;*/
+  width: 30px;
+  height: 30px;
+  font-size: 125%;
+  text-align: center;
+  text-shadow: rgba(50,50,50,0.8) 2px 2px 3px;
+  color: rgb(210,210,210);
+  z-index: 999;
+}
+
+.tab-page-expand:hover {
+  color: rgb(225,225,225);
+}
+
+.tab-page-expand::before {
+  vertical-align: 0em;
+}
+
+.tab-page-expand:hover:before {
+  font-weight: 600 !important;
+}
+
+.tab-page-title-div {
+  margin-bottom: 10px;
+}
+
+.tab-page-title {
+  font-weight: 400;
+  font-size: 110%;
+  line-height: 135%;
+  color: rgb(230,230,230);
+  text-decoration: underline;
+  text-underline-offset: 7px;
+  text-decoration-color: rgb(180,180,180);
+  text-shadow: rgba(50,50,50,0.6) 3px 2px 4px;
+}
+
+.tab-page-title:hover {
+  color: rgb(240,240,240);
+  text-decoration-color: rgb(200,200,200);
+}
+
+.tab-page-text {
+  font-weight: 400;
+  /*font-size: 83%;*/
+  font-size: 14px;
+  color: rgb(210,210,210);
+}

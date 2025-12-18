@@ -1,0 +1,686 @@
+---
+
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Experience the latest generative AI models optimized for Jetson. Run locally, without depending on the cloud." } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+    <title>{title} | Jetson AI Lab</title>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SXH8S4Y8RW"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-SXH8S4Y8RW');
+    </script>
+
+    <!-- OneTrust Cookies Consent Notice - Only on Production -->
+    <!-- Excluded on localhost/staging to avoid popup loop on non-production domains -->
+    <script is:inline>
+      // Only load OneTrust on production domain
+      if (window.location.hostname === 'www.jetson-ai-lab.com' || window.location.hostname === 'jetson-ai-lab.com') {
+        // OneTrust Cookie Consent
+        var script1 = document.createElement('script');
+        script1.src = 'https://cdn.cookielaw.org/scripttemplates/otSDKStub.js';
+        script1.type = 'text/javascript';
+        script1.charset = 'UTF-8';
+        script1.setAttribute('data-domain-script', '018e2d65-efdf-7071-b793-f15ccf25c234');
+        document.head.appendChild(script1);
+        
+        // OptanonWrapper callback
+        window.OptanonWrapper = function() {
+          var event = new Event('bannerLoaded');
+          window.dispatchEvent(event);
+        };
+        
+        // OneTrust custom JS
+        var script2 = document.createElement('script');
+        script2.src = 'https://images.nvidia.com/aem-dam/Solutions/ot-js/ot-custom.js';
+        script2.type = 'text/javascript';
+        document.head.appendChild(script2);
+        
+        // Adobe DTM
+        var script3 = document.createElement('script');
+        script3.src = '//assets.adobedtm.com/5d4962a43b79/814eb6e9b4e1/launch-4bc07f1e0b0b.min.js';
+        document.head.appendChild(script3);
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-nvidia-white text-nvidia-black">
+    <!-- Migration Notice Banner -->
+    <div id="migration-notice" class="bg-gradient-to-r from-nvidia-green to-gray-100 text-black px-4 py-3 shadow-lg" style="display: none;">
+      <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3 flex-1">
+          <span class="text-2xl">🎉</span>
+          <div class="flex-1">
+            <p class="font-semibold">Welcome to Jetson AI Lab 2.0!</p>
+            <p class="text-sm">We've redesigned the site with curated tutorials. Looking for old content?
+              <a href="/archive/index.html" class="underline font-medium hover:text-white">Browse the archive →</a>
+            </p>
+          </div>
+        </div>
+        <button id="dismiss-notice" class="text-black hover:text-white font-bold text-xl px-2 py-1 rounded hover:bg-black/10 transition-colors" aria-label="Dismiss">
+          ×
+        </button>
+      </div>
+    </div>
+
+    <header class="bg-nvidia-white border-b border-nvidia-gray-200 sticky top-0 z-50">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center">
+            <a href="/" class="flex items-center">
+              <span class="text-2xl font-nvidia font-bold text-nvidia-black">Jetson AI Lab</span>
+            </a>
+          </div>
+          <div class="hidden md:flex items-center space-x-1">
+            <a href="/" class="text-nvidia-black hover:text-nvidia-green hover:bg-nvidia-gray-50 px-4 py-2 text-sm font-medium rounded-md transition-colors duration-200">Home</a>
+            <a href="/models" class="text-nvidia-black hover:text-nvidia-green hover:bg-nvidia-gray-50 px-4 py-2 text-sm font-medium rounded-md transition-colors duration-200">Models</a>
+            <a href="/tutorials" class="text-nvidia-black hover:text-nvidia-green hover:bg-nvidia-gray-50 px-4 py-2 text-sm font-medium rounded-md transition-colors duration-200">Tutorials</a>
+            <a href="/community" class="text-nvidia-black hover:text-nvidia-green hover:bg-nvidia-gray-50 px-4 py-2 text-sm font-medium rounded-md transition-colors duration-200">Projects</a>
+            <a href="/research" class="text-nvidia-black hover:text-nvidia-green hover:bg-nvidia-gray-50 px-4 py-2 text-sm font-medium rounded-md transition-colors duration-200">Research Group</a>
+          </div>
+          <div class="md:hidden flex items-center">
+            <button class="text-nvidia-black hover:text-nvidia-green p-2">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="min-h-screen">
+      <slot />
+    </main>
+
+    <footer class="bg-nvidia-black text-nvidia-white">
+      <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+          <div class="col-span-1 md:col-span-2">
+            <div class="flex items-center mb-6">
+              <span class="text-2xl font-nvidia font-bold">Jetson AI Lab</span>
+            </div>
+            <p class="text-nvidia-gray-300 mb-6 text-lg leading-relaxed">
+              Experience the latest generative AI models optimized for Jetson.
+              Run locally, without depending on the cloud.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-sm font-semibold text-nvidia-gray-300 tracking-wider uppercase mb-6">Resources</h3>
+            <ul class="space-y-3">
+              <li><a href="/models" class="text-nvidia-gray-300 hover:text-nvidia-white transition-colors duration-200">Models</a></li>
+              <li><a href="/tutorials" class="text-nvidia-gray-300 hover:text-nvidia-white transition-colors duration-200">Tutorials</a></li>
+              <li><a href="/community" class="text-nvidia-gray-300 hover:text-nvidia-white transition-colors duration-200">Projects</a></li>
+              <li><a href="/research" class="text-nvidia-gray-300 hover:text-nvidia-white transition-colors duration-200">Research Group</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-sm font-semibold text-nvidia-gray-300 tracking-wider uppercase mb-6">NVIDIA</h3>
+            <ul class="space-y-3">
+              <li><a href="https://developer.nvidia.com" class="text-nvidia-gray-300 hover:text-nvidia-white transition-colors duration-200">Developer Portal</a></li>
+              <li><a href="https://www.nvidia.com" class="text-nvidia-gray-300 hover:text-nvidia-white transition-colors duration-200">NVIDIA.com</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-12 pt-8 border-t border-nvidia-gray-700">
+          <ul class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-nvidia-gray-400 mb-4">
+            <li><a href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/" target="_blank" class="hover:text-nvidia-white transition-colors duration-200">Privacy Policy</a></li>
+            <li><a href="https://www.nvidia.com/en-us/privacy-center/" target="_blank" class="hover:text-nvidia-white transition-colors duration-200">Manage My Privacy</a></li>
+            <li><a href="https://www.nvidia.com/en-us/preferences/email-preferences/" target="_blank" class="hover:text-nvidia-white transition-colors duration-200">Do Not Sell or Share My Data</a></li>
+            <li><a href="https://www.nvidia.com/en-us/about-nvidia/legal-info/" target="_blank" class="hover:text-nvidia-white transition-colors duration-200">Legal</a></li>
+            <li><a href="https://www.nvidia.com/en-us/about-nvidia/accessibility/" target="_blank" class="hover:text-nvidia-white transition-colors duration-200">Accessibility</a></li>
+            <li><a href="https://www.nvidia.com/en-us/about-nvidia/company-policies/" target="_self" class="hover:text-nvidia-white transition-colors duration-200">Corporate Policies</a></li>
+            <li><a href="https://www.nvidia.com/en-us/product-security/" target="_blank" class="hover:text-nvidia-white transition-colors duration-200">Product Security</a></li>
+            <li><a href="https://www.nvidia.com/en-us/contact/" target="_blank" class="hover:text-nvidia-white transition-colors duration-200">Contact</a></li>
+          </ul>
+          <p class="text-nvidia-gray-400 text-sm text-center">
+            © 2025 NVIDIA Corporation. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        function qs(root, sel) { return root.querySelector(sel); }
+        function qsa(root, sel) { return Array.from(root.querySelectorAll(sel)); }
+        function sanitize(name) { return (name || '').toLowerCase().replace(/[^a-z0-9\-]/g, '-'); }
+        function baseMounts() {
+          return [
+            '-v $HOME/.cache/huggingface:/root/.cache/huggingface',
+            '-v /mnt/nvme/cache:/cache'
+          ].join(' \\\n  ');
+        }
+
+        // Default engine images fallback
+        var defaultEngineImages = {
+          ollama: 'ollama/ollama:latest',
+          vllm: 'ghcr.io/nvidia-ai-iot/vllm:latest-jetson-orin',
+          llamacpp: 'ghcr.io/ggerganov/llama.cpp:server',
+          tensorrtllm: 'nvcr.io/nvidia/tensorrt-llm:latest',
+          diffusers: 'pytorch/pytorch:2.3.0-cuda12.1-cudnn8-runtime',
+          comfyui: 'ghcr.io/comfyanonymous/comfyui:latest',
+          whispercpp: 'ghcr.io/ggerganov/whisper.cpp:latest',
+          riva: 'nvcr.io/nvidia/riva/riva-speech:latest'
+        };
+
+        function getEngineImage(meta, engine, device) {
+          // Determine if Thor or Orin based on device selection
+          var isThor = device && device.toLowerCase().includes('thor');
+
+          // Try device-specific images first
+          if (isThor && meta.engineImagesThor && meta.engineImagesThor[engine]) {
+            return meta.engineImagesThor[engine];
+          }
+          if (!isThor && meta.engineImagesOrin && meta.engineImagesOrin[engine]) {
+            return meta.engineImagesOrin[engine];
+          }
+
+          // Fallback to legacy engineImages
+          if (meta.engineImages && meta.engineImages[engine]) {
+            return meta.engineImages[engine];
+          }
+          return defaultEngineImages[engine] || 'ubuntu:22.04';
+        }
+
+        function highlightSyntax(txt, lang) {
+          // Simple syntax highlighting for shell/bash commands
+          if (lang === 'shell' || lang === 'bash') {
+            return txt
+              .split('\n')
+              .map(function(line) {
+                // Comments
+                if (line.trim().startsWith('#')) {
+                  return '<span class="text-slate-500">' + escapeHtml(line) + '</span>';
+                }
+                // Highlight commands and keywords
+                var highlighted = escapeHtml(line)
+                  // Commands at start of line or after pipe/semicolon
+                  .replace(/^(sudo|docker|ollama|vllm|python|curl|git|bash|wget|chmod|chown|cd|mkdir|rm|cp|mv|cat|echo|export|source|pip|npm|jetson-containers|trtllm-run|riva_start)(\s)/g,
+                    '<span class="text-cyan-400">$1</span>$2')
+                  // Docker/command flags
+                  .replace(/(\s)(--?[\w-]+)/g, '$1<span class="text-emerald-400">$2</span>')
+                  // URLs and paths
+                  .replace(/(https?:\/\/[^\s]+)/g, '<span class="text-amber-400">$1</span>')
+                  // Environment variables
+                  .replace(/(\$\w+|\$\{[^}]+\})/g, '<span class="text-purple-400">$1</span>');
+                return highlighted;
+              })
+              .join('\n');
+          }
+          // Python highlighting
+          if (lang === 'python') {
+            return txt
+              .split('\n')
+              .map(function(line) {
+                if (line.trim().startsWith('#')) {
+                  return '<span class="text-slate-500">' + escapeHtml(line) + '</span>';
+                }
+                var highlighted = escapeHtml(line)
+                  .replace(/\b(import|from|def|class|return|if|else|elif|try|except|for|while|in|as|with|True|False|None)\b/g,
+                    '<span class="text-purple-400">$1</span>')
+                  .replace(/\b(print|requests|json)\b/g, '<span class="text-cyan-400">$1</span>')
+                  .replace(/(["'][^"']*["'])/g, '<span class="text-emerald-400">$1</span>');
+                return highlighted;
+              })
+              .join('\n');
+          }
+          // YAML/Compose highlighting
+          if (lang === 'yaml') {
+            return txt
+              .split('\n')
+              .map(function(line) {
+                if (line.trim().startsWith('#')) {
+                  return '<span class="text-slate-500">' + escapeHtml(line) + '</span>';
+                }
+                var highlighted = escapeHtml(line)
+                  .replace(/^(\s*)([\w_-]+)(:)/gm, '$1<span class="text-cyan-400">$2</span>$3')
+                  .replace(/(["'][^"']*["'])/g, '<span class="text-emerald-400">$1</span>');
+                return highlighted;
+              })
+              .join('\n');
+          }
+          return escapeHtml(txt);
+        }
+
+        function escapeHtml(text) {
+          var div = document.createElement('div');
+          div.textContent = text;
+          return div.innerHTML;
+        }
+
+        function buildVllmCommand(meta, st) {
+          // Check for custom run command from supportedEngines
+          if (meta.supportedEngines && meta.supportedEngines.length > 0) {
+            var vllmEngine = meta.supportedEngines.find(function(e) {
+              return e.engine && e.engine.toLowerCase() === 'vllm';
+            });
+            if (vllmEngine) {
+              var customCmd = null;
+              var device = st.device || 'Jetson Orin';
+              if (device === 'Jetson Thor' && vllmEngine.run_command_thor) {
+                customCmd = vllmEngine.run_command_thor;
+              } else if (device === 'Jetson Orin' && vllmEngine.run_command_orin) {
+                customCmd = vllmEngine.run_command_orin;
+              } else if (vllmEngine.run_command) {
+                customCmd = vllmEngine.run_command;
+              }
+              if (customCmd) {
+                // Return just the vllm serve part (after the docker run command)
+                var vllmIndex = customCmd.indexOf('vllm serve');
+                if (vllmIndex !== -1) {
+                  return customCmd.substring(vllmIndex);
+                }
+                return customCmd;
+              }
+            }
+          }
+
+          // Fallback to generic command
+          var model = meta.hfCheckpoint || 'model/checkpoint';
+          var parts = ['vllm serve ' + model];
+
+          // Always include --trust-remote-code
+          parts.push('--trust-remote-code');
+
+          // Add optional parameters if provided
+          if (st.vllmPort) {
+            parts.push('--port ' + st.vllmPort);
+          }
+          if (st.vllmMaxModelLen) {
+            parts.push('--max-model-len ' + st.vllmMaxModelLen);
+          }
+          if (st.vllmGpuMem) {
+            parts.push('--gpu-memory-utilization ' + st.vllmGpuMem);
+          }
+
+          // Format with line continuations for readability
+          if (parts.length > 2) {
+            return parts.join(' \\\n    ');
+          }
+          return parts.join(' ');
+        }
+
+        function engineRunLine(engine, modelId, port, ctx, batch, steps, meta, st) {
+          var m = sanitize(modelId);
+          var engineLower = (engine || '').toLowerCase();
+          switch (engineLower) {
+            case 'ollama': return 'ollama run ' + m;
+            case 'vllm': return buildVllmCommand(meta, st || {});
+            case 'llamacpp': return './server -m /models/' + m + '.gguf -c ' + ctx + ' -b ' + batch + ' --port ' + port;
+            case 'tensorrtllm': return 'trtllm-run --engine-dir /engines/' + m + ' --max-batch-size ' + batch + ' --http-port ' + port;
+            case 'diffusers': return 'python run_' + m + '.py --output /outputs --steps ' + (steps || 25);
+            case 'comfyui': return 'python main.py --listen --port ' + port;
+            case 'whispercpp': return './main -m /models/ggml-base.en.bin -f sample.wav';
+            case 'riva': return 'riva_start.sh && riva_start_client.sh';
+            default: return 'echo "Run ' + m + '"';
+          }
+        }
+
+        function buildShell(meta, st) {
+          var engineLower = (st.engine || '').toLowerCase();
+          
+          // Check for full custom command from supportedEngines (for vLLM)
+          if (engineLower === 'vllm' && meta.supportedEngines && meta.supportedEngines.length > 0) {
+            var vllmEngine = meta.supportedEngines.find(function(e) {
+              return e.engine && e.engine.toLowerCase() === 'vllm';
+            });
+            if (vllmEngine) {
+              var customCmd = null;
+              var device = st.device || 'Jetson Orin';
+              if (device === 'Jetson Thor' && vllmEngine.run_command_thor) {
+                customCmd = vllmEngine.run_command_thor;
+              } else if (device === 'Jetson Orin' && vllmEngine.run_command_orin) {
+                customCmd = vllmEngine.run_command_orin;
+              } else if (vllmEngine.run_command) {
+                customCmd = vllmEngine.run_command;
+              }
+              if (customCmd) {
+                return customCmd;
+              }
+            }
+          }
+          
+          var image = getEngineImage(meta, engineLower, st.device);
+          var container = sanitize(st.engine) + '-' + sanitize(meta.modelId);
+          var runLine = engineRunLine(engineLower, meta.modelId, st.port, st.ctx, st.batch, st.steps, meta, st);
+
+          if (engineLower === 'ollama') {
+              return runLine;
+          }
+
+          // For vLLM with multiline command, format nicely
+          if (engineLower === 'vllm' && runLine.includes('\\\n')) {
+            return 'sudo docker run -it --rm --pull always \\\n    --runtime=nvidia --network host \\\n    ' + image + ' \\\n    ' + runLine;
+          }
+
+          return 'sudo docker run -it --rm --pull always --runtime=nvidia --network host ' + image + ' ' + runLine;
+        }
+
+        function buildCompose(meta, st) {
+          var image = (meta.engineImages && meta.engineImages[st.engine]) || 'ubuntu:22.04';
+          var service = sanitize(st.engine) + '-' + sanitize(meta.modelId);
+          return [
+            'services:',
+            '  ' + service + ':',
+            '    image: ' + image,
+            '    container_name: ' + service,
+            '    network_mode: "host"',
+            '    deploy:',
+            '      resources:',
+            '        reservations:',
+            '          devices:',
+            '            - capabilities: ["gpu"]',
+            '    environment:',
+            '      - HF_HUB_ENABLE_HF_TRANSFER=1',
+            '    volumes:',
+            '      - $HOME/.cache/huggingface:/root/.cache/huggingface',
+            '      - /mnt/nvme/cache:/cache',
+            '    command: >-',
+            '      ' + engineRunLine(st.engine, meta.modelId, st.port, st.ctx, st.batch, st.steps, meta)
+          ].join('\n');
+        }
+
+        function buildPython(meta, st) {
+          var base = [
+            'import requests',
+            '',
+            'URL = f"http://localhost:' + st.port + '/v1/chat/completions"',
+            'payload = {"model": "local-model", "messages": [{"role":"user","content":"Hello Jetson"}]}',
+            'try:',
+            '    r = requests.post(URL, json=payload, timeout=60)',
+            '    print(r.json())',
+            'except Exception as e:',
+            '    print("Request failed:", e)'
+          ].join('\n');
+          if (st.engine === 'diffusers' || st.engine === 'comfyui') {
+            return ['# Example client for image generation servers', '# Replace with the API of the selected engine', base].join('\n');
+          }
+          return base;
+        }
+
+        function getState(modal, meta) {
+          var id = meta.modelId || '';
+          var checked = modal.querySelector('input[name="engine-' + id + '"]:checked');
+          var engineSel = modal.querySelector('[data-engine]');
+
+          // Get engine value with multiple fallbacks
+          var engineVal = '';
+          if (engineSel && engineSel.value) {
+            engineVal = engineSel.value;
+          } else if (checked && checked.value) {
+            engineVal = checked.value;
+          } else if (meta.defaultEngineId) {
+            engineVal = meta.defaultEngineId;
+          } else {
+            engineVal = 'ollama'; // ultimate fallback
+          }
+
+          // Get vLLM specific parameters (only if inputs exist and have values)
+          var vllmPortEl = qs(modal, '[data-vllm-port]');
+          var vllmMaxModelLenEl = qs(modal, '[data-vllm-max-model-len]');
+          var vllmGpuMemEl = qs(modal, '[data-vllm-gpu-mem]');
+
+          return {
+            engine: engineVal,
+            device: qs(modal, '[data-device]') ? qs(modal, '[data-device]').value : undefined,
+            jetpack: qs(modal, '[data-jetpack]') ? qs(modal, '[data-jetpack]').value : undefined,
+            port: Number(qs(modal, '[data-port]') ? qs(modal, '[data-port]').value : 9000),
+            batch: Number(qs(modal, '[data-batch]') ? qs(modal, '[data-batch]').value : 1),
+            ctx: Number(qs(modal, '[data-ctx]') ? qs(modal, '[data-ctx]').value : 4096),
+            steps: Number(qs(modal, '[data-steps]') ? qs(modal, '[data-steps]').value : 25),
+            tab: modal.getAttribute('data-tab') || 'shell',
+            // vLLM parameters - only include if user entered a value
+            vllmPort: vllmPortEl && vllmPortEl.value ? vllmPortEl.value : '',
+            vllmMaxModelLen: vllmMaxModelLenEl && vllmMaxModelLenEl.value ? vllmMaxModelLenEl.value : '',
+            vllmGpuMem: vllmGpuMemEl && vllmGpuMemEl.value ? vllmGpuMemEl.value : ''
+          };
+        }
+
+        function updateVllmConfigVisibility(modal) {
+          var engineSel = qs(modal, '[data-engine]');
+          var vllmConfig = qs(modal, '[data-vllm-config]');
+          if (!vllmConfig) return;
+
+          var engineVal = engineSel ? engineSel.value.toLowerCase() : '';
+          if (engineVal === 'vllm') {
+            vllmConfig.classList.remove('hidden');
+          } else {
+            vllmConfig.classList.add('hidden');
+          }
+        }
+
+        function render(modal) {
+          try {
+            var metaStr = modal.getAttribute('data-meta') || '{}';
+            var meta = JSON.parse(metaStr);
+            var st = getState(modal, meta);
+            var pre = qs(modal, '[data-snippet]');
+
+            if (!pre) {
+              console.warn('RunCommand: Could not find [data-snippet] element');
+              return;
+            }
+            var txt = '';
+            var lang = 'shell';
+            if (st.tab === 'shell') {
+              txt = buildShell(meta, st);
+              lang = 'shell';
+            } else if (st.tab === 'compose') {
+              txt = buildCompose(meta, st);
+              lang = 'yaml';
+            } else {
+              txt = buildPython(meta, st);
+              lang = 'python';
+            }
+
+            // Ensure we always have some output
+            if (!txt) {
+              txt = '# Unable to generate command. Please check your configuration.';
+            }
+
+            // Apply syntax highlighting
+            pre.innerHTML = highlightSyntax(txt, lang);
+          } catch (err) {
+            console.error('RunCommand render error:', err);
+            var pre = qs(modal, '[data-snippet]');
+            if (pre) {
+              pre.innerHTML = '<span class="text-slate-500"># Error generating command. Please refresh and try again.</span>';
+            }
+          }
+        }
+
+        function openModal(modal) {
+          modal.classList.remove('hidden');
+          // Force active tab to shell if not set
+          if (!modal.getAttribute('data-tab')) {
+             modal.setAttribute('data-tab', 'shell');
+             // Update button visual state - only target actual buttons, not the modal itself
+             var shellBtn = modal.querySelector('button[data-tab="shell"]');
+             if(shellBtn) {
+                 var all = qsa(modal, 'button[data-tab]');
+                 all.forEach(function (b) {
+                    b.classList.remove('bg-nvidia-black','text-nvidia-white','border-nvidia-black');
+                    b.classList.add('bg-nvidia-gray-100','text-nvidia-gray-800','border-nvidia-gray-200');
+                 });
+                 shellBtn.classList.add('bg-nvidia-black','text-nvidia-white','border-nvidia-black');
+                 shellBtn.classList.remove('bg-nvidia-gray-100','text-nvidia-gray-800','border-nvidia-gray-200');
+             }
+          }
+          // Show/hide vLLM config based on current engine
+          updateVllmConfigVisibility(modal);
+          render(modal);
+        }
+
+        function closeModal(modal) {
+          modal.classList.add('hidden');
+        }
+
+        function setActiveTab(modal, btn) {
+          // Only style actual tab buttons, not the modal container
+          var all = qsa(modal, 'button[data-tab]');
+          all.forEach(function (b) {
+            b.classList.remove('bg-nvidia-black','text-nvidia-white','shadow-sm');
+            b.classList.add('text-nvidia-gray-600','hover:text-nvidia-black','hover:bg-nvidia-gray-50');
+          });
+          btn.classList.add('bg-nvidia-black','text-nvidia-white','shadow-sm');
+          btn.classList.remove('text-nvidia-gray-600','hover:text-nvidia-black','hover:bg-nvidia-gray-50');
+          modal.setAttribute('data-tab', btn.getAttribute('data-tab') || 'shell');
+          render(modal);
+        }
+
+        document.addEventListener('click', function (e) {
+          var openBtn = e.target.closest('[data-run-open]');
+          if (openBtn) {
+            var id = openBtn.getAttribute('data-run-open');
+            var modal = document.querySelector('[data-run-modal="' + id + '"]');
+            if (modal) openModal(modal);
+            return;
+          }
+          var closeEl = e.target.closest('[data-run-close],[data-run-overlay]');
+          if (closeEl) {
+            var modal = closeEl.closest('[data-run-modal]');
+            if (modal) closeModal(modal);
+            return;
+          }
+          var tabBtn = e.target.closest('button[data-tab]');
+          if (tabBtn) {
+            var modal = tabBtn.closest('[data-run-modal]');
+            // Make sure we're not treating the modal container as a tab button
+            if (modal && tabBtn !== modal) setActiveTab(modal, tabBtn);
+            return;
+          }
+          var copyBtn = e.target.closest('[data-run-copy]');
+          if (copyBtn) {
+            var modal = copyBtn.closest('[data-run-modal]');
+            var pre = modal && qs(modal, '[data-snippet]');
+            if (pre) {
+              navigator.clipboard.writeText(pre.textContent || '');
+              var original = copyBtn.textContent;
+              copyBtn.textContent = 'Copied';
+              setTimeout(function () { copyBtn.textContent = original || 'Copy'; }, 1200);
+            }
+            return;
+          }
+
+          var advToggle = e.target.closest('[data-run-advanced-toggle]');
+          if (advToggle) {
+            var modal = advToggle.closest('[data-run-modal]');
+            var panel = modal && qs(modal, '[data-advanced]');
+            var toggleText = advToggle.querySelector('[data-toggle-text]');
+            var toggleIcon = advToggle.querySelector('[data-toggle-icon]');
+            if (panel) {
+              panel.classList.toggle('hidden');
+              // Update toggle text and icon
+              if (toggleText) {
+                toggleText.textContent = panel.classList.contains('hidden') ? 'Show Advanced' : 'Hide Advanced';
+              }
+              if (toggleIcon) {
+                toggleIcon.style.transform = panel.classList.contains('hidden') ? '' : 'rotate(180deg)';
+              }
+            }
+            return;
+          }
+
+          // vLLM reset button
+          var vllmReset = e.target.closest('[data-vllm-reset]');
+          if (vllmReset) {
+            var modal = vllmReset.closest('[data-run-modal]');
+            if (modal) {
+              var vllmPort = qs(modal, '[data-vllm-port]');
+              var vllmMaxLen = qs(modal, '[data-vllm-max-model-len]');
+              var vllmGpuMem = qs(modal, '[data-vllm-gpu-mem]');
+              if (vllmPort) vllmPort.value = '';
+              if (vllmMaxLen) vllmMaxLen.value = '';
+              if (vllmGpuMem) vllmGpuMem.value = '';
+              render(modal);
+            }
+            return;
+          }
+        });
+
+        document.addEventListener('change', function (e) {
+          var modal = e.target.closest('[data-run-modal]');
+          if (modal) {
+            // Check if engine dropdown changed
+            if (e.target.matches('[data-engine]')) {
+              updateVllmConfigVisibility(modal);
+            }
+            render(modal);
+          }
+        });
+        document.addEventListener('input', function (e) {
+          var modal = e.target.closest('[data-run-modal]');
+          if (modal) render(modal);
+        });
+      })();
+    </script>
+
+    <!-- 6sense Tracking -->
+    <!-- Migration Notice Handler -->
+    <script is:inline>
+      // Show migration notice banner if not dismissed
+      (function() {
+        const notice = document.getElementById('migration-notice');
+        const dismissBtn = document.getElementById('dismiss-notice');
+        const storageKey = 'jetson-ai-lab-migration-notice-dismissed';
+
+        // Check if user has dismissed the notice
+        const isDismissed = localStorage.getItem(storageKey);
+
+        if (!isDismissed && notice) {
+          notice.style.display = 'block';
+        }
+
+        // Handle dismiss
+        if (dismissBtn) {
+          dismissBtn.addEventListener('click', function() {
+            localStorage.setItem(storageKey, 'true');
+            notice.style.display = 'none';
+          });
+        }
+      })();
+    </script>
+
+    <!-- 6sense Tracking -->
+    <script is:inline>
+      window._6si = window._6si || [];
+      window._6si.push(['enableEventTracking', true]);
+      window._6si.push(['setToken', 'eb417ec30d332e34d732e2916f185311']);
+      window._6si.push(['setEndpoint', 'b.6sc.co']);
+      window._6si.push(['enableRetargeting', false]);
+
+      window._6si.push(['enableCompanyDetails', true]);
+      window._6si.push(['setEpsilonKey', '6f578ba72568231347d1bddb7102e53695302c28']);
+
+      (function() {
+        var gd = document.createElement('script');
+        gd.type = 'text/javascript';
+        gd.async = true;
+        gd.src = '//j.6sc.co/6si.min.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gd, s);
+      })();
+    </script>
+    <script is:inline type="text/javascript">_satellite.pageBottom();</script>
+  </body>
+</html>

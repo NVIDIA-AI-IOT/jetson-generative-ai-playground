@@ -1,86 +1,169 @@
-# Jetson Generative AI Lab
+# Jetson AI Lab
 
-Document generation status: [![example workflow](https://github.com/NVIDIA-AI-IOT/jetson-generative-ai-playground/actions/workflows/ci.yml/badge.svg)](https://github.com/NVIDIA-AI-IOT/jetson-generative-ai-playground/actions)
+[![Deploy to GitHub Pages](https://github.com/NVIDIA-AI-IOT/jetson-generative-ai-playground/actions/workflows/ci.yml/badge.svg)](https://github.com/NVIDIA-AI-IOT/jetson-generative-ai-playground/actions/workflows/ci.yml)
 
-## About this repo
+**[www.jetson-ai-lab.com](https://www.jetson-ai-lab.com)**
 
-This repo is to host a tutorial documentation site for running generative AI models on NVIDIA Jetson devices.
+The NVIDIA Jetson AI Lab is your guide to running generative AI models entirely on-device with NVIDIA Jetson. Explore optimized tutorials, benchmarks, and hands-on examples for LLMs, VLMs, image generation, speech recognition, and more.
 
-The auto generated documentation is hosted on the following, using their CI/CD feature to automatically generate/update the HTML documentation site upon new commit:
+## About
 
-  - [GitHub Pages site](https://nvidia-ai-iot.github.io/jetson-generative-ai-playground)
+Jetson AI Lab pairs a modern Astro frontend with a content-driven workflow, enabling new tutorials, models, and posts to be published without touching layout code.
 
-## How to use this repo locally
+### Key Features
 
-### Option 1: Docker Setup (Linux systems with Docker)
+- Optimized showcase for flagship models: Llama 4, Gemma 3, Qwen, SDXL, Whisper, and more
+- Curated tutorials, benchmarks, and community resources with consistent styling
+- Local-first architecture: everything runs on Jetson hardware with no cloud dependency
+- Content authored in Markdown/JSON for fast iteration and git-friendly reviews
+- Archive of legacy documentation at `/archive/`
 
-#### Initial setup
+### Technology Stack
 
-https://squidfunk.github.io/mkdocs-material/getting-started/
+- **Astro 5** - Static-first frontend framework
+- **Tailwind CSS** - Design system and styling
+- **MDX & Markdown** - Rich content with interactive elements
+- **TypeScript** - Type safety across data collections
+- **Chart.js** - Interactive benchmark visualizations
 
-```bash
-sudo apt install -y docker.io
-sudo docker pull squidfunk/mkdocs-material
+## Project Structure
+
+```
+/
+├── src/
+│   ├── components/           Shared UI elements
+│   ├── content/              Markdown and JSON content repositories
+│   │   ├── home.json         Homepage metrics and featured models
+│   │   ├── models/           Model deep dives authored in Markdown
+│   │   ├── posts/            Blog articles
+│   │   └── tutorials/        Long-form tutorials with frontmatter
+│   ├── layouts/              Base layouts for pages and tutorials
+│   └── pages/                Astro routes for the site
+├── public/
+│   ├── archive/              Legacy MkDocs documentation (static)
+│   └── images/               Static assets
+├── astro.config.mjs          Astro configuration with redirects
+├── tailwind.config.mjs       Tailwind theme definitions
+└── TUTORIAL_TEMPLATE.md      Authoring guide for new tutorials
 ```
 
-#### Start development server on http://localhost:8000
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+ and npm
+- Git
+
+### Local Development
+
+1. **Clone the repository**
 
 ```bash
-docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material
+git clone https://github.com/NVIDIA-AI-IOT/jetson-generative-ai-playground.git
+cd jetson-generative-ai-playground
 ```
 
-### Option 2: Native Python Setup (Recommended for Windows)
-
-#### Initial setup
-
-1. **Install Python 3.8+ and pip** (if not already installed):
-   - Windows: Download from [python.org](https://www.python.org/downloads/) or use Microsoft Store
-
-2. **Install MkDocs Material and dependencies**:
-   ```bash
-   pip install mkdocs-material
-   pip install mkdocs-redirects
-   pip install beautifulsoup4
-   pip install lxml
-   ```
-
-#### Start development server on http://localhost:8000
+2. **Install dependencies**
 
 ```bash
-mkdocs serve
+npm install
 ```
 
-#### Build the site
+3. **Start the development server**
 
 ```bash
-mkdocs build
+npm run dev
 ```
 
-### Test the post-processing
+The development server will be available at http://localhost:4321
+
+4. **Build for production**
 
 ```bash
-docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material build
-pip install beautifulsoup4
-pip install lxml
-python3 ./scripts/duplicate_site_with_postprocess.py ./site ./site_postprocessed
-sudo apt install python3-livereload
-livereload ./site_postprocessed
+npm run build
+npm run preview
 ```
 
-## Troubleshooting
+### Available Scripts
 
-### Native Python Setup Issues
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server with hot reload |
+| `npm run build` | Build static site for production |
+| `npm run preview` | Preview production build locally |
+| `npm run astro` | Run Astro CLI commands |
 
-**Windows:**
-- If `mkdocs` command is not found, ensure Python Scripts directory is in your PATH
-- Use `python -m mkdocs serve` if the direct command doesn't work
-- For corporate networks, you may need to use pip with proxy: `pip install --proxy http://proxy:port package-name`
+## Content Authoring
 
-**Jetson:**
-- If you get permission errors, use `pip install --user` to install packages locally
-- Ensure you have sufficient disk space for the Python packages
+### Adding Tutorials
 
-### Docker Setup Issues
+1. Create a Markdown file in `src/content/tutorials/` with appropriate frontmatter
+2. Create a matching `.astro` wrapper in `src/pages/tutorials/`
+3. Follow the `TUTORIAL_TEMPLATE.md` guide for formatting
 
-> If you get "docker: Got permission denied while trying to connect to the Docker daemon socket at ..." error,
-> issue `sudo usermod -aG docker $USER; newgrp docker` to get around with the issue.
+### Adding Models
+
+Add a Markdown file under `src/content/models/` with frontmatter for overview, benchmarks, and usage examples.
+
+### Updating Homepage
+
+Edit `src/content/home.json` to update hero metrics, featured models, and stats.
+
+### Content Tips
+
+- Use Markdown headings and tables for consistent styling
+- Set `difficulty` in tutorial frontmatter: `Beginner`, `Intermediate`, or `Advanced`
+- Store media assets under `public/` and reference with absolute paths
+
+## URL Redirects
+
+Old MkDocs URLs are automatically redirected:
+
+| Old URL | New URL |
+|---------|---------|
+| `/tutorial_ollama.html` | `/tutorials/ollama/` |
+| `/tutorial_live-vlm-webui.html` | `/tutorials/live-vlm-webui/` |
+| `/models.html` | `/models/` |
+| Other `.html` URLs | `/archive/[original-path]` |
+
+Redirects are configured in `astro.config.mjs` and the custom `404.astro` page.
+
+## Deployment
+
+The site is automatically deployed to GitHub Pages via GitHub Actions on every push to `main`.
+
+- **Production URL**: https://www.jetson-ai-lab.com
+- **Build Output**: Static HTML/CSS/JS in `dist/`
+
+### CI/CD Pipeline
+
+The `.github/workflows/ci.yml` workflow handles:
+
+- ✅ Automated builds on push to `main`
+- ✅ Deployment to GitHub Pages
+- ✅ Node.js 20 with npm caching
+
+## Archive
+
+Legacy MkDocs documentation is preserved at `/archive/` with a deprecation banner linking to the new site. This ensures old bookmarks and external links continue to work.
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/new-tutorial`)
+3. Commit your changes (`git commit -m 'Add new tutorial'`)
+4. Push to the branch (`git push origin feature/new-tutorial`)
+5. Open a Pull Request
+
+## License
+
+See [LICENSE](LICENSE) for details.
+
+## Contact
+
+For questions or contributions, please open an issue or contact the maintainers.
+
+- Asier Arranz (asier@nvidia.com)
+- Khalil Ben Khaled (kbenkhaled@nvidia.com)
+- Aditya Sahu (adsahu@nvidia.com)
+- Chitoku Yato (cyato@nvidia.com)

@@ -1,0 +1,75 @@
+{
+  "hero": {
+    "title": "Experience Generative AI on Jetson",
+    "subtitle": "Run the latest AI models locally",
+    "description": "Discover optimized models for Jetson devices. Run Llama, Whisper, and more without cloud dependencies. Perfect for students, researchers, and developers."
+  },
+  "features": [
+    {
+      "title": "Local & Offline",
+      "description": "Run AI models directly on your Jetson device without internet connectivity",
+      "icon": "🚀"
+    },
+    {
+      "title": "Optimized Performance",
+      "description": "Models specifically tuned for Jetson hardware for maximum efficiency",
+      "icon": "⚡"
+    },
+    {
+      "title": "Easy Setup",
+      "description": "Simple installation and configuration with comprehensive tutorials",
+      "icon": "🛠️"
+    },
+    {
+      "title": "Production Ready",
+      "description": "Enterprise-grade models ready for real-world applications",
+      "icon": "🏭"
+    }
+  ],
+  "stats": [
+    {
+      "number": "15+",
+      "label": "Optimized Models"
+    },
+    {
+      "number": "25+",
+      "label": "Tutorials"
+    },
+    {
+      "number": "3",
+      "label": "Supported Devices"
+    },
+    {
+      "number": "100%",
+      "label": "Local & Offline"
+    }
+  ],
+  "featuredModels": [
+    {
+      "title": "Gemma 3n",
+      "description": "Google's latest lightweight language model optimized for edge devices",
+      "badge": "NEW",
+      "performance": {
+        "tokensPerSecond": "25-35 tokens/s",
+        "memoryUsage": "4GB RAM",
+        "quantization": "4-bit (GPTQ)",
+        "modelSize": "2.1GB"
+      },
+      "devices": ["Jetson Orin", "Jetson Xavier"],
+      "link": "/models/gemma-3n"
+    },
+    {
+      "title": "Llama 4",
+      "description": "Meta's advanced language model with improved reasoning capabilities",
+      "badge": "NEW",
+      "performance": {
+        "tokensPerSecond": "15-20 tokens/s",
+        "memoryUsage": "8GB RAM",
+        "quantization": "8-bit (AWQ)",
+        "modelSize": "4.7GB"
+      },
+      "devices": ["Jetson Orin", "Jetson Xavier", "Jetson Nano"],
+      "link": "/models/llama-4"
+    }
+  ]
+} 
