@@ -25,7 +25,7 @@ const sourceColors: Record<string, { bg: string; text: string }> = {
       <div class="absolute -top-40 -right-40 w-96 h-96 bg-nvidia-green/20 rounded-full blur-3xl"></div>
       <div class="absolute top-20 -left-20 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
     </div>
-    
+
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-6">
         <span class="bg-clip-text text-transparent bg-gradient-to-r from-nvidia-white to-nvidia-gray-300">
@@ -35,12 +35,12 @@ const sourceColors: Record<string, { bg: string; text: string }> = {
       <p class="text-xl text-nvidia-gray-300 max-w-2xl mx-auto leading-relaxed">
         Discover guides, tutorials, and articles contributed by the community showcasing generative AI on the Jetson platform.
       </p>
-      
+
       <div class="mt-10 flex flex-wrap justify-center gap-4">
         <a href="https://discord.gg/nvidia-jetson" target="_blank" rel="noopener" class="px-6 py-3 bg-nvidia-green text-nvidia-black font-bold rounded-lg hover:bg-nvidia-green/90 transition-all">
           Join Discord
         </a>
-        <a href="https://github.com/dusty-nv/jetson-containers" target="_blank" rel="noopener" class="px-6 py-3 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-lg hover:bg-white/20 transition-all border border-white/10">
+        <a href="https://github.com/nvidia-ai-iot/jetson-ai-lab" target="_blank" rel="noopener" class="px-6 py-3 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-lg hover:bg-white/20 transition-all border border-white/10">
           Contribute on GitHub
         </a>
       </div>
@@ -58,7 +58,7 @@ const sourceColors: Record<string, { bg: string; text: string }> = {
               {/* Media */}
               <div class="relative aspect-video bg-nvidia-gray-100 overflow-hidden">
                 {project.data.video ? (
-                  <iframe 
+                  <iframe
                     src={project.data.video}
                     class="w-full h-full"
                     frameborder="0"
@@ -66,8 +66,8 @@ const sourceColors: Record<string, { bg: string; text: string }> = {
                     allowfullscreen
                   ></iframe>
                 ) : project.data.image ? (
-                  <img 
-                    src={project.data.image} 
+                  <img
+                    src={project.data.image}
                     alt={project.data.title}
                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
@@ -78,13 +78,13 @@ const sourceColors: Record<string, { bg: string; text: string }> = {
                     </svg>
                   </div>
                 )}
-                
+
                 {/* Source Badge */}
                 <span class={`absolute top-3 left-3 px-2 py-1 text-xs font-bold rounded ${colors.bg} ${colors.text}`}>
                   {project.data.source}
                 </span>
               </div>
-              
+
               {/* Content */}
               <div class="p-5">
                 <div class="flex items-center justify-between mb-2">
@@ -93,15 +93,15 @@ const sourceColors: Record<string, { bg: string; text: string }> = {
                     {new Date(project.data.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                   </span>
                 </div>
-                
+
                 <h3 class="text-lg font-bold text-nvidia-black mb-2 group-hover:text-nvidia-green transition-colors line-clamp-2">
                   {project.data.title}
                 </h3>
-                
+
                 <p class="text-nvidia-gray-600 text-sm line-clamp-3">
                   {project.data.description}
                 </p>
-                
+
                 {project.data.tags && (
                   <div class="flex flex-wrap gap-1.5 mt-4">
                     {project.data.tags.slice(0, 3).map((tag: string) => (
